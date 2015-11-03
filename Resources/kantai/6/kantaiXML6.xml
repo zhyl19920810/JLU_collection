@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data version="2.0">
+    <!--the number of the equip:  6-->
+    <name kantaiName="赤城" kantaiFullName="赤城级正规航空母舰一号舰"/>
+    <kantaiBaseAtrr kantaiNumber="6" kantaiType="109" buildTime="14400" updateLv="25" fuel="60" ammo="55" speed="4" range="4" maxHp="74" transformTimes="0"/>
+    <kantaiMaxAtrr maxLuck="59" maxAntiSubmarine="0" maxDodge="69" maxAntiAir="79" maxTorpedo="0" maxSearchEnemy="44" maxFirePower="49" maxArmor="79"/>
+    <kantaiInitAtrr initSearchEnemy="44" initArmor="28" initLuck="12" initAntiSubmarine="0" initDodge="28" initTorpedo="0" initFirePower="0" initAntiAir="32"/>
+    <equipData kantaiEquipSize="3">
+        <kantaiEquipInit>
+            <array>20</array>
+            <array>23</array>
+            <array>16</array>
+        </kantaiEquipInit>
+        <planeLoad>
+            <array>18</array>
+            <array>18</array>
+            <array>27</array>
+        </planeLoad>
+    </equipData>
+</data>

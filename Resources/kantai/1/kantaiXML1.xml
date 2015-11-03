@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data version="2.0">
+    <!--the number of the equip:  1-->
+    <name kantaiName="长门" kantaiFullName="长门级战列舰1号舰"/>
+    <kantaiBaseAtrr kantaiNumber="1" kantaiType="110" buildTime="14400" updateLv="25" fuel="100" ammo="130" speed="4" range="4" maxHp="80" transformTimes="0"/>
+    <kantaiMaxAtrr maxLuck="32" maxAntiSubmarine="0" maxDodge="69" maxAntiAir="99" maxTorpedo="0" maxSearchEnemy="49" maxFirePower="99" maxArmor="98"/>
+    <kantaiInitAtrr initSearchEnemy="12" initArmor="75" initLuck="20" initAntiSubmarine="0" initDodge="24" initTorpedo="0" initFirePower="82" initAntiAir="31"/>
+    <equipData kantaiEquipSize="3">
+        <kantaiEquipInit>
+            <array>2</array>
+            <array>4</array>
+            <array>12</array>
+        </kantaiEquipInit>
+        <planeLoad>
+            <array>11</array>
+            <array>11</array>
+            <array>11</array>
+        </planeLoad>
+    </equipData>
+</data>

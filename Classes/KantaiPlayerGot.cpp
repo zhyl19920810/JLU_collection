@@ -1,0 +1,303 @@
+//
+//  KantaiPlayerGot.cpp
+//  kancolle_alpha
+//
+//  Created by 岩林张 on 7/31/15.
+//
+//
+
+#include "KantaiPlayerGot.h"
+
+
+Kantai::Kantai(ValueVector& _kantaiData)
+{
+    equipGrid.resize(4);
+    geneNewKantai(_kantaiData);
+}
+
+Kantai::Kantai(int _id,LoadState loadState)
+{
+    equipGrid.resize(4);
+    switch (loadState)
+    {
+        case READ_KANTAI_DATABASE:
+        {
+            kantaiKey=_id;
+            break;
+        }
+ 
+        default:
+            break;
+    }
+}
+
+Kantai::Kantai(int _kantaiKey,ValueVector& _kantaiData)
+{
+    equipGrid.resize(4);
+    kantaiKey=_kantaiKey;
+    geneNewKantai(_kantaiData);
+}
+
+void Kantai::geneNewKantai(ValueVector &_kantaiData)
+{
+    
+    ValueMap _name=_kantaiData[0].asValueMap();
+    kantaiName=_name.at("kantaiName").asString();
+    kantaiFullName=_name.at("kantaiFullName").asString();
+    
+    ///这里返回插入从数据库获得的主键
+    kantaiKey=1;   /////////??????
+    
+    ValueMap _kantaiBaseAtrr=_kantaiData[1].asValueMap();
+    kantaiNumber=_kantaiBaseAtrr.at("kantaiNumber").asInt();
+    kantaiType=_kantaiBaseAtrr.at("kantaiType").asInt();
+    currLV=1;
+    
+    
+    maxFuel=currFuel=_kantaiBaseAtrr.at("fuel").asInt();
+    currAmmo=maxAmmo=_kantaiBaseAtrr.at("ammo").asInt();
+    speed=_kantaiBaseAtrr.at("speed").asInt();
+    initRange=range=_kantaiBaseAtrr.at("range").asInt();
+    currHp=maxHp=_kantaiBaseAtrr.at("maxHp").asInt();
+    
+    
+    currExp=0;
+    
+    ///这里的设定根据一个映射表根据
+    updateExp=10000; //////////?????
+    
+    
+    ValueMap _kantaiInitAtrr=_kantaiData[3].asValueMap();
+    firePower=_kantaiInitAtrr.at("initFirePower").asInt();
+    armor=_kantaiInitAtrr.at("initArmor").asInt();
+    torpedo=_kantaiInitAtrr.at("initTorpedo").asInt();
+    dodge=_kantaiInitAtrr.at("initDodge").asInt();
+    antiAir=_kantaiInitAtrr.at("initAntiAir").asInt();
+    AntiSubMarine=_kantaiInitAtrr.at("initAntiSubmarine").asInt();
+    searchEnemy=_kantaiInitAtrr.at("initSearchEnemy").asInt();
+    luck=_kantaiInitAtrr.at("initLuck").asInt();
+    
+    fatigueValue=49;
+    
+    kantaiLock=false;
+    
+    kantaiStar=1;
+    
+    kantaiState=1;///??????
+
+    ValueVector _planeLoad=_kantaiData[6].asValueVector();
+    for (auto it=_planeLoad.begin(); it!=_planeLoad.end(); ++it)
+    {
+        planeLoad.push_back(it->asInt());
+    }
+    
+    
+    
+    
+}
+
+///set Attrubute
+void Kantai::setCurrLV(int _currLV)
+{
+    currLV=_currLV;
+    KantaiDB::getInstance()->setCurrLV(kantaiKey, currLV);
+}
+
+void Kantai::setCurrFuel(int _currFuel)
+{
+    currFuel=_currFuel;
+    KantaiDB::getInstance()->setCurrFuel(kantaiKey, _currFuel);
+}
+
+void Kantai::setCurrAmmo(int _currAmmo)
+{
+    currAmmo=_currAmmo;
+    KantaiDB::getInstance()->setCurrAmmo(kantaiKey, _currAmmo);
+}
+void Kantai::setCurrRange(int _currRange)
+{
+    range=_currRange;
+    KantaiDB::getInstance()->setCurrRange(kantaiKey, _currRange);
+}
+void Kantai::setCurrHp(int _currHp)
+{
+    currHp=_currHp;
+    KantaiDB::getInstance()->setCurrHp(kantaiKey, _currHp);
+}
+
+
+void Kantai::setCurrExp(int _currExp)
+{
+    currExp=_currExp;
+    KantaiDB::getInstance()->setCurrExp(kantaiKey, _currExp);
+}
+void Kantai::setUpdateExp(int _updateExp)
+{
+    updateExp=_updateExp;
+    KantaiDB::getInstance()->setUpdateExp(kantaiKey, _updateExp);
+}
+void Kantai::setFirePower(int _firePower)
+{
+    firePower=_firePower;
+    KantaiDB::getInstance()->setFirePower(kantaiKey, _firePower);
+}
+void Kantai::setArmor(int _armor)
+{
+    armor=_armor;
+    KantaiDB::getInstance()->setArmor(kantaiKey, _armor);
+}
+void Kantai::setTorpedo(int _torpedo)
+{
+    torpedo=_torpedo;
+    KantaiDB::getInstance()->setTorpedo(kantaiKey, _torpedo);
+}
+void Kantai::setDodge(int _dodge)
+{
+    dodge=_dodge;
+    KantaiDB::getInstance()->setDodge(kantaiKey, _dodge);
+}
+void Kantai::setAntiAir(int _antiAir)
+{
+    antiAir=_antiAir;
+    KantaiDB::getInstance()->setAntiAir(kantaiKey, _antiAir);
+}
+void Kantai::_setAntiSubmarine(int _antiSubmarine)
+{
+    AntiSubMarine=_antiSubmarine;
+    KantaiDB::getInstance()->setAntiSubmarine(kantaiKey, _antiSubmarine);
+}
+void Kantai::setSearchEnemy(int _serachEnemy)
+{
+    searchEnemy=_serachEnemy;
+    KantaiDB::getInstance()->setSearchEnemy(kantaiKey, _serachEnemy);
+}
+void Kantai::setLuck(int _luck)
+{
+    luck=_luck;
+    KantaiDB::getInstance()->setLuck(kantaiKey, _luck);
+}
+void Kantai::setFatigueValue(int _fatigueValue)
+{
+    fatigueValue=_fatigueValue;
+    KantaiDB::getInstance()->setFatigueValue(kantaiKey, _fatigueValue);
+}
+void Kantai::setKantaiLock(int _kantaiLock)
+{
+    kantaiLock=_kantaiLock;
+    KantaiDB::getInstance()->setKantaiLock(kantaiKey, _kantaiLock);
+}
+void Kantai::setKantaiStar(int _kantaiStar)
+{
+    kantaiStar=_kantaiStar;
+    KantaiDB::getInstance()->setKantaiStar(kantaiKey, _kantaiStar);
+}
+void Kantai::setKantaiState(int _kantaiState)
+{
+    kantaiState=_kantaiState;
+    KantaiDB::getInstance()->setKantaiState(kantaiKey, _kantaiState);
+}
+
+bool Kantai::canAirBattle()
+{
+    if (kantaiType!=KantaiType::Air_Cruiser
+        &&kantaiType!=KantaiType::Armor_Carrier
+        &&kantaiType!=KantaiType::Diving_Carrier
+        &&kantaiType!=KantaiType::Carrier
+        &&kantaiType!=KantaiType::Light_Carrier
+        &&kantaiType!=KantaiType::Seaplane_Carrier)
+    {
+        return false;
+    }
+    
+    for (int i=0; i<6; ++i)
+    {
+        if (equipGrid[i])
+        {
+            auto equipType=equipGrid[i]->getequipType();
+            if (equipType==equipScope::Aircraft||equipType==equipScope::SeaPlane)
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+Equip* Kantai::getMainCannon()
+{
+    for (int i=0; i<6; ++i)
+    {
+        if (equipGrid[i]!=nullptr)
+        {
+            auto type=equipGrid[i]->getequipType();
+            if (type==equipType::Small_Caliber
+                ||type==equipType::Medium_Caliber
+                ||type==equipType::Large_Caliber) {
+                return equipGrid[i];
+            }
+        }
+    }
+    return nullptr;
+}
+
+
+//
+//
+//
+//
+//void KantaiPrint::PrintKantaiInfo(const Kantai &_kantai)
+//{
+//    log("kantaiName:   %s",_kantai.getkantaiName().c_str());
+//    log("kantaiFullName:  %s",_kantai.getkantaiFullName().c_str());
+//    log("kantaiKey:    %d",_kantai.getkantaiKey());
+//    log("kantaiNumber:    %d",_kantai.getkantaiNumber());
+//    log("kantaiType:    %d",_kantai.getkantaiType());
+//    log("currLv:    %d",_kantai.getcurrLV());
+//    log("currFuel:    %d",_kantai.getcurrFuel());
+//    log("maxFuel:    %d",_kantai.getmaxFuel());
+//    log("currAmmo:    %d",_kantai.getcurrAmmo());
+//    log("maxAmmo:    %d",_kantai.getmaxAmmo());
+//    log("speed:    %d",_kantai.getspeed());
+//    log("initRange:    %d",_kantai.getinitRange());
+//    log("range:    %d",_kantai.getrange());
+//    log("currHp:    %d",_kantai.getcurrHp());
+//    log("maxHp:    %d",_kantai.getmaxHp());
+//    log("currExp:    %d",_kantai.getcurrExp());
+//    log("updateExp:    %d",_kantai.getupdateExp());
+//    log("firePower:    %d",_kantai.getfirePower());
+//    log("armor:    %d",_kantai.getarmor());
+//    log("torpedo:    %d",_kantai.gettorpedo());
+//    log("dodge:    %d",_kantai.getdodge());
+//    log("antiAir:    %d",_kantai.getantiAir());
+//    log("AntiSubMarine:    %d",_kantai.getAntiSubMarine());
+//    log("searchEnemy:    %d",_kantai.getsearchEnemy());
+//    log("luck:    %d",_kantai.getluck());
+//    log("fatigueValue:    %d",_kantai.getfatigueValue());
+//    log("kantaiLock:    %d",_kantai.getkantaiLock());
+//    log("kantaiStar:    %d",_kantai.getkantaiStar());
+//    log("kantaiState:    %d",_kantai.getkantaiStar());
+////    auto _equipgrid=_kantai.getEquipgrid();
+////    
+////    log("kantaiEquipSize:    %d",_equipgrid->getkantaiEquipSize());
+////    
+////    const std::map<equilp_iter,Equip*> &_equipData=_equipgrid->getequipData();
+////    
+////    EquipPrint zhang;
+////    for (auto it=_equipData.cbegin(); it!=_equipData.cend(); ++it)
+////    {
+////        zhang.PrintEquipInfo(it->second);
+////    }
+////    int count=1;
+////    const std::map<equilp_iter,plane_load> &_planeLoad=_equipgrid->getplaneLoad();
+////    for (auto it=_planeLoad.cbegin(); it!=_planeLoad.cend(); ++it)
+////    {
+////        log("the %d  is:  %d",count++,it->second);
+////    }
+//    
+//    
+//    
+//}
+//
+//
+
+

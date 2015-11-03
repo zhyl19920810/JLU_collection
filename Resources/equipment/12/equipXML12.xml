@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data version="1.0">
+    <!--the number of the equip:  1-->
+    <equipBaseAtrribute equipNumber="21" equipName="林哥左手" equipScope="130" equipType="140" isPlane="0"/>
+    <equipAdvanceAtrr firePower="1" antiAir="3"/>
+    <supKantaiType>
+        <supKantaiType>102</supKantaiType>
+        <supKantaiType>103</supKantaiType>
+        <supKantaiType>104</supKantaiType>
+        <supKantaiType>113</supKantaiType>
+        <supKantaiType>114</supKantaiType>
+        <supKantaiType>117</supKantaiType>
+        <supKantaiType>116</supKantaiType>
+    </supKantaiType>
+</data>
