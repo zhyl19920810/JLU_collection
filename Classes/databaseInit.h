@@ -32,6 +32,9 @@ private:
     
     void initKantaiEquip(const Player *player,std::unordered_map<int,std::pair<int, int>>& _kantaiEquipMap);
     
+    std::vector<int> parsePlaneLoad(char* planeLoad);
+    
+    std::string convertToStr(std::vector<int> &planeLoadVec);
 };
 
 

@@ -131,7 +131,7 @@ float BattleHero::showAttackingAnime(float delay)
         {
             removeChild(equipmentLabel);
         }
-        equipmentLabel=Sprite::create("//////////////");
+        equipmentLabel=Sprite::create("interface/BattleMain/BattleMain_53.png");
         equipmentLabel->setPosition(650,100);
         equipmentLabel->setOpacity(0);
         

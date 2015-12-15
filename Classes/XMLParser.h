@@ -13,6 +13,8 @@
 #include "XMLBase.h"
 #include "Mission.h"
 
+class Kantai;
+class Equip;
 
 USING_NS_CC;
 
@@ -25,12 +27,14 @@ public:
     
     Mission* readMissionXml(std::string id);
     
+    EquipImp* readEquipXml(int equipNumber);
+    
+    Kantai* readKantaiXml(int kantaiNumber);
     
 private:
     XMLParser();
     
     static XMLParser* instance;
-    
     
 };
 

@@ -6,6 +6,8 @@
 #include "databaseBase.h"
 #include "portScene.h"
 #include "GameScene.h"
+#include "MissionNode.h"
+#include "TestScene.h"
 
 #define DEBUG_MODE true
 
@@ -29,6 +31,42 @@ void AppDelegate::initGLContextAttrs()
 
     GLView::setGLContextAttrs(glContextAttrs);
 }
+
+void battleModel(Director* director)
+{
+    //init db
+    DBBase::init("/Volumes/opengl/kancolle_beta/Resources/database/kancolle_2.sqlite3");
+    DBInit init;
+    auto player=Player::getInstance();
+    player=init.initDB(1);
+    
+    if (DEBUG_MODE)
+    {
+        Fleet* allies=Player::getInstance()->fleetData[0];
+        
+        MissionNode node;
+        Fleet* enemy=node.parseEnemyFleet("-2");
+        
+        
+        auto battleModel=new BattleModel(allies,enemy,DanZong,DanZong);
+        GameScene* scene=new GameScene(battleModel);
+        director->runWithScene(scene);
+    }
+}
+
+void portModel(Director* director)
+{
+    DBBase::init("/Volumes/opengl/kancolle_beta/Resources/database/kancolle_2.sqlite3");
+    DBInit init;
+    auto player=Player::getInstance();
+    player=init.initDB(1);
+    
+    auto scene=PortScene::createScene();
+    director->runWithScene(scene);
+    
+}
+
+
 
 // If you want to use packages manager to install more packages, 
 // don't modify or remove this function
@@ -57,33 +95,20 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     register_all_packages();
-
-    //init db
-    DBBase::init("/Volumes/opengl/kancolle_alpha/Resources/database/kancolle_2.sqlite3");
-    DBInit init;
-    auto player=Player::getInstance();
-    player=init.initDB(1);
     
-    if (DEBUG_MODE)
-    {
-        Fleet* allies=Player::getInstance()->fleetData[0];
-        
-        
-        
-        Fleet* enemy=Player::getInstance()->fleetData[0];
-        auto battleModel=new BattleModel(allies,enemy,DanZong,DanZong);
-        GameScene* scene=new GameScene(battleModel);
-        director->runWithScene(scene);
-        
-    }
+    //battleModel(director);
+    portModel(director);
     
-//    // create a scene. it's an autorelease object
-//    auto scene = DatabaseLayer::createScene();
-//    // run
-//    director->runWithScene(scene);
+    
+    //auto scene = TestScene::createScene();
+    // run
+    //director->runWithScene(scene);
 
     return true;
 }
+
+
+
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {

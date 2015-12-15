@@ -300,7 +300,7 @@ void SallyScene::setFormationCallback(Ref* ref, FormationType formation)
     
     auto battleModel=new BattleModel(allies,enemy,formation,DanZong);
     GameScene* scene=new GameScene(battleModel);
-    Director::getInstance()->replaceScene(scene);
+    Director::getInstance()->pushScene(scene);
     
     
 }

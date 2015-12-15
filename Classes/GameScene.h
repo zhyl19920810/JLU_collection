@@ -40,7 +40,7 @@ class GameScene:public Scene
 public:
     GameScene(BattleModel* model);
     
-    
+    void resetFireBattle();
     
     
     
@@ -52,7 +52,7 @@ private:
     
     
 private:
-    void onStatusOverCallback();
+    void onStatusOverCallBack();
     void initCharacters();
     void initEnemy();
     void BattleStart();
@@ -61,6 +61,7 @@ private:
     void doScout();
     void scoutResult();
     void airBattle();
+    void fireBattle();
     void dayEnd();
     
     void nextStatus(float DelayTime);

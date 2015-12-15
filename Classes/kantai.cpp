@@ -6,18 +6,17 @@
 //
 //
 
-#include "KantaiPlayerGot.h"
+#include "kantai.h"
 
 
 Kantai::Kantai(ValueVector& _kantaiData)
 {
-    equipGrid.resize(4);
+    equipGrid.resize(_kantaiData[4].asInt());
     geneNewKantai(_kantaiData);
 }
 
 Kantai::Kantai(int _id,LoadState loadState)
 {
-    equipGrid.resize(4);
     switch (loadState)
     {
         case READ_KANTAI_DATABASE:
@@ -25,15 +24,19 @@ Kantai::Kantai(int _id,LoadState loadState)
             kantaiKey=_id;
             break;
         }
- 
         default:
             break;
     }
 }
 
+
 Kantai::Kantai(int _kantaiKey,ValueVector& _kantaiData)
 {
-    equipGrid.resize(4);
+    int size=_kantaiData[4].asInt();
+    equipGrid.resize(size);
+    planeLoadPr.resize(size);
+    maxPlaneLoad.resize(size);
+    
     kantaiKey=_kantaiKey;
     geneNewKantai(_kantaiData);
 }
@@ -41,59 +44,57 @@ Kantai::Kantai(int _kantaiKey,ValueVector& _kantaiData)
 void Kantai::geneNewKantai(ValueVector &_kantaiData)
 {
     
-    ValueMap _name=_kantaiData[0].asValueMap();
-    kantaiName=_name.at("kantaiName").asString();
-    kantaiFullName=_name.at("kantaiFullName").asString();
-    
-    ///这里返回插入从数据库获得的主键
-    kantaiKey=1;   /////////??????
-    
-    ValueMap _kantaiBaseAtrr=_kantaiData[1].asValueMap();
-    kantaiNumber=_kantaiBaseAtrr.at("kantaiNumber").asInt();
-    kantaiType=_kantaiBaseAtrr.at("kantaiType").asInt();
-    currLV=1;
-    
-    
-    maxFuel=currFuel=_kantaiBaseAtrr.at("fuel").asInt();
-    currAmmo=maxAmmo=_kantaiBaseAtrr.at("ammo").asInt();
-    speed=_kantaiBaseAtrr.at("speed").asInt();
-    initRange=range=_kantaiBaseAtrr.at("range").asInt();
-    currHp=maxHp=_kantaiBaseAtrr.at("maxHp").asInt();
-    
-    
-    currExp=0;
-    
-    ///这里的设定根据一个映射表根据
-    updateExp=10000; //////////?????
-    
-    
-    ValueMap _kantaiInitAtrr=_kantaiData[3].asValueMap();
-    firePower=_kantaiInitAtrr.at("initFirePower").asInt();
-    armor=_kantaiInitAtrr.at("initArmor").asInt();
-    torpedo=_kantaiInitAtrr.at("initTorpedo").asInt();
-    dodge=_kantaiInitAtrr.at("initDodge").asInt();
-    antiAir=_kantaiInitAtrr.at("initAntiAir").asInt();
-    AntiSubMarine=_kantaiInitAtrr.at("initAntiSubmarine").asInt();
-    searchEnemy=_kantaiInitAtrr.at("initSearchEnemy").asInt();
-    luck=_kantaiInitAtrr.at("initLuck").asInt();
-    
-    fatigueValue=49;
-    
-    kantaiLock=false;
-    
-    kantaiStar=1;
-    
-    kantaiState=1;///??????
-
-    ValueVector _planeLoad=_kantaiData[6].asValueVector();
-    for (auto it=_planeLoad.begin(); it!=_planeLoad.end(); ++it)
-    {
-        planeLoad.push_back(it->asInt());
-    }
-    
-    
-    
-    
+//    ValueMap _name=_kantaiData[0].asValueMap();
+//    kantaiName=_name.at("kantaiName").asString();
+//    kantaiFullName=_name.at("kantaiFullName").asString();
+//    
+////    ///这里返回插入从数据库获得的主键
+////    kantaiKey=1;   /////////??????
+//    
+//    ValueMap _kantaiBaseAtrr=_kantaiData[1].asValueMap();
+//    kantaiNumber=_kantaiBaseAtrr.at("kantaiNumber").asInt();
+//    kantaiType=_kantaiBaseAtrr.at("kantaiType").asInt();
+//    currLV=1;
+//    
+//    
+//    maxFuel=currFuel=_kantaiBaseAtrr.at("fuel").asInt();
+//    currAmmo=maxAmmo=_kantaiBaseAtrr.at("ammo").asInt();
+//    speed=_kantaiBaseAtrr.at("speed").asInt();
+//    initRange=range=_kantaiBaseAtrr.at("range").asInt();
+//    currHp=maxHp=_kantaiBaseAtrr.at("maxHp").asInt();
+//    
+//    
+//    currExp=0;
+//    
+//    ///这里的设定根据一个映射表根据
+//    updateExp=10000; //////////?????
+//    
+//    
+//    ValueMap _kantaiInitAtrr=_kantaiData[3].asValueMap();
+//    firePower=_kantaiInitAtrr.at("initFirePower").asInt();
+//    armor=_kantaiInitAtrr.at("initArmor").asInt();
+//    torpedo=_kantaiInitAtrr.at("initTorpedo").asInt();
+//    dodge=_kantaiInitAtrr.at("initDodge").asInt();
+//    antiAir=_kantaiInitAtrr.at("initAntiAir").asInt();
+//    AntiSubMarine=_kantaiInitAtrr.at("initAntiSubmarine").asInt();
+//    searchEnemy=_kantaiInitAtrr.at("initSearchEnemy").asInt();
+//    luck=_kantaiInitAtrr.at("initLuck").asInt();
+//    
+//    fatigueValue=49;
+//    
+//    kantaiLock=false;
+//    
+//    kantaiStar=1;
+//    
+//    kantaiState=1;///??????
+//    if (_kantaiData[4].asInt())
+//    {
+//        ValueVector _planeLoad=_kantaiData[6].asValueVector();
+//        for (auto it=_planeLoad.begin(); it!=_planeLoad.end(); ++it)
+//        {
+//            planeLoad.push_back(it->asInt());
+//        }
+//    }
 }
 
 ///set Attrubute
@@ -121,7 +122,11 @@ void Kantai::setCurrRange(int _currRange)
 }
 void Kantai::setCurrHp(int _currHp)
 {
+    if(_currHp<0)
+        currHp=0;
     currHp=_currHp;
+    setBrokenType();
+    
     KantaiDB::getInstance()->setCurrHp(kantaiKey, _currHp);
 }
 
@@ -191,7 +196,7 @@ void Kantai::setKantaiStar(int _kantaiStar)
     kantaiStar=_kantaiStar;
     KantaiDB::getInstance()->setKantaiStar(kantaiKey, _kantaiStar);
 }
-void Kantai::setKantaiState(int _kantaiState)
+void Kantai::setKantaiState(KantaiState _kantaiState)
 {
     kantaiState=_kantaiState;
     KantaiDB::getInstance()->setKantaiState(kantaiKey, _kantaiState);
@@ -230,9 +235,9 @@ Equip* Kantai::getMainCannon()
         if (equipGrid[i]!=nullptr)
         {
             auto type=equipGrid[i]->getequipType();
-            if (type==equipType::Small_Caliber
-                ||type==equipType::Medium_Caliber
-                ||type==equipType::Large_Caliber) {
+            if (type==EquipType::Small_Caliber
+                ||type==EquipType::Medium_Caliber
+                ||type==EquipType::Large_Caliber) {
                 return equipGrid[i];
             }
         }
@@ -240,6 +245,89 @@ Equip* Kantai::getMainCannon()
     return nullptr;
 }
 
+void Kantai::setBrokenType()
+{
+    float percentage=(float)currHp/(float)maxHp;
+    
+    if (percentage>0.75)
+    {
+        brokenType=BrokenType::normal;
+    }
+    else if(percentage>0.5)
+    {
+        brokenType=BrokenType::tiny;
+    }
+    else if(percentage>0.25)
+    {
+        brokenType=BrokenType::mid;
+    }
+    else if(percentage>0)
+    {
+        brokenType=BrokenType::large;
+    }
+    else
+    {
+        brokenType=BrokenType::drown;
+    }
+}
+
+void Kantai::getDamage(int damage)
+{
+    if (damage>0)
+    {
+        this->currHp=currHp-damage;
+        
+        if (this->currHp<0)
+        {
+            currHp=0;
+        }
+        
+        float persentage=(float)currHp/(float)maxHp;
+        
+        if (persentage>0.75)
+        {
+            brokenType=BrokenType::normal;
+        }
+        else if(persentage>0.5)
+        {
+            brokenType=BrokenType::tiny;
+        }
+        else if(persentage>0.25)
+        {
+            brokenType=BrokenType::mid;
+        }
+        else if(persentage>0)
+        {
+            brokenType=BrokenType::large;
+        }
+        else
+        {
+            brokenType=BrokenType::drown;
+        }
+        
+    }
+}
+
+
+bool Kantai::canAttack()
+{
+    if (kantaiType==KantaiType::Carrier||kantaiType==KantaiType::Light_Carrier)
+    {
+        float percentage=currHp/maxHp;
+        if (percentage<=0.5)
+        {
+            return false;
+        }
+    }
+    
+    
+    if (currHp==0)
+    {
+        return false;
+    }
+    
+    return true;
+}
 
 //
 //

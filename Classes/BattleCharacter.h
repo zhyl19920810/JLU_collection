@@ -10,7 +10,7 @@
 #define __kancolle_beta__BattleCharacter__
 
 #include "cocos2d.h"
-#include "KantaiPlayerGot.h"
+#include "kantai.h"
 #include "CharacterCard.h"
 #include "AnimationMaker.h"
 #include "BattleBar.h"

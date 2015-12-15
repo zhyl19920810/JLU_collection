@@ -134,14 +134,14 @@ void Player::buildNewEquip(int _equipNumber,int _kantaiKey,int _position)
             CCASSERT(false, "can not find the kantai in the function buildNewEquip");
         }
         int _equipKey=EquipDB::getInstance()->getNewEquipByNumber(_equipNumber,_kantaiKey,_position);
-        Equip* _equip=new Equip(_equipKey,_equipNumber);
+        Equip* _equip=Equip::create(_equipKey,_equipNumber);
         kantai->equipGrid[_position-1]=_equip;
         equipData.push_back(_equip);
     }
     else
     {
         int _equipKey=EquipDB::getInstance()->getNewEquipByNumber(_equipNumber);
-        Equip* _equip=new Equip(_equipKey,_equipNumber);
+        Equip* _equip=Equip::create(_equipKey,_equipNumber);
         equipData.push_back(_equip);
     }
 }
@@ -261,7 +261,7 @@ void Player::buildNewKantai(int _kantaiNumber)
     int size=static_cast<int>(_equipKey.size());
     for (int i=0;i<size;++i)
     {
-        Equip* equip=new Equip(_equipKey[i].first, _equipKey[i].second);
+        Equip* equip=Equip::create(_equipKey[i].first, _equipKey[i].second);
         _kantai->equipGrid[i]=equip;
         equipData.push_back(equip);
     }

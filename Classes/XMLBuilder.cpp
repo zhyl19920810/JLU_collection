@@ -1175,41 +1175,44 @@ ValueVector XMLBuilder::readKantaiXML(int _kantaiNumber)
     _kantaiData.push_back(Value(_kantaiEquipSize));
     
     
-    
-    //kantaiEquipInit
-    ValueMapIntKey _kantaiEquipInit;
-    int count=0;
-    XMLElement *kantaiEquipInit=equipData->FirstChildElement();
-    if (kantaiEquipInit)
+    if (_kantaiEquipSize)
     {
-        XMLElement *equipInit=kantaiEquipInit->FirstChildElement();
-        _kantaiEquipInit[count++]=std::atoi(equipInit->GetText());
-        while (equipInit->NextSiblingElement())
+        //kantaiEquipInit
+        ValueMapIntKey _kantaiEquipInit;
+        int count=0;
+        XMLElement *kantaiEquipInit=equipData->FirstChildElement();
+        if (kantaiEquipInit)
         {
-            equipInit=equipInit->NextSiblingElement();
-            log("%s",equipInit->Value());
+            XMLElement *equipInit=kantaiEquipInit->FirstChildElement();
             _kantaiEquipInit[count++]=std::atoi(equipInit->GetText());
+            while (equipInit->NextSiblingElement())
+            {
+                equipInit=equipInit->NextSiblingElement();
+                log("%s",equipInit->Value());
+                _kantaiEquipInit[count++]=std::atoi(equipInit->GetText());
+            }
+            
         }
+        _kantaiData.push_back(Value(_kantaiEquipInit));
         
-    }
-    _kantaiData.push_back(Value(_kantaiEquipInit));
-    
-    
-    //planeLoad
-    ValueVector _planeLoad;
-    XMLElement *planeLoad=kantaiEquipInit->NextSiblingElement();
-    if (planeLoad)
-    {
-        XMLElement *planeLoadEle=planeLoad->FirstChildElement();
-        _planeLoad.push_back(Value(std::atoi(planeLoadEle->GetText())));
-        while (planeLoadEle->NextSiblingElement())
+        
+        //planeLoad
+        ValueVector _planeLoad;
+        XMLElement *planeLoad=kantaiEquipInit->NextSiblingElement();
+        if (planeLoad)
         {
-            planeLoadEle=planeLoadEle->NextSiblingElement();
+            XMLElement *planeLoadEle=planeLoad->FirstChildElement();
             _planeLoad.push_back(Value(std::atoi(planeLoadEle->GetText())));
+            while (planeLoadEle->NextSiblingElement())
+            {
+                planeLoadEle=planeLoadEle->NextSiblingElement();
+                _planeLoad.push_back(Value(std::atoi(planeLoadEle->GetText())));
+            }
+            
         }
-        
+        _kantaiData.push_back(Value(_planeLoad));
+
     }
-    _kantaiData.push_back(Value(_planeLoad));
     
     return _kantaiData;
 
@@ -1310,11 +1313,11 @@ void XMLBuilder::writeXMLCallback(Ref* pSender)
     Equip* zhang;
     for (int i=0; i<10; ++i)
     {
-        zhang=new Equip(i,1);
+        zhang=Equip::create(i, 1);
     }
     
-    EquipPrint printEquip;
-    printEquip.PrintEquipInfo(zhang);
+    //EquipPrint printEquip;
+    //printEquip.PrintEquipInfo(zhang);
     //ValueVector zhang=XMLBuilder::readEquipXml(1);
     //XMLBuilder::printEquipXML(zhang);
 }

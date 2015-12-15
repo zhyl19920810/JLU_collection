@@ -62,6 +62,8 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		F4014AF31BF0E8A100C9C5AE /* equip in Resources */ = {isa = PBXBuildFile; fileRef = F4014AF21BF0E8A000C9C5AE /* equip */; };
+		F4014AF41BF0E8A100C9C5AE /* equip in Resources */ = {isa = PBXBuildFile; fileRef = F4014AF21BF0E8A000C9C5AE /* equip */; };
 		F4036D1D1BDA1F0A002788AA /* kantai in Resources */ = {isa = PBXBuildFile; fileRef = F4036D1C1BDA1F0A002788AA /* kantai */; };
 		F4036D1E1BDA1F0A002788AA /* kantai in Resources */ = {isa = PBXBuildFile; fileRef = F4036D1C1BDA1F0A002788AA /* kantai */; };
 		F4036D201BDA1F16002788AA /* interface in Resources */ = {isa = PBXBuildFile; fileRef = F4036D1F1BDA1F16002788AA /* interface */; };
@@ -81,10 +83,10 @@
 		F4036D861BDA1FDD002788AA /* equipDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D391BDA1FDD002788AA /* equipDB.cpp */; };
 		F4036D881BDA1FDD002788AA /* equipGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D3B1BDA1FDD002788AA /* equipGrid.cpp */; };
 		F4036D8A1BDA1FDD002788AA /* fleetDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D3D1BDA1FDD002788AA /* fleetDB.cpp */; };
-		F4036D8C1BDA1FDD002788AA /* FleetPlayerGot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D3F1BDA1FDD002788AA /* FleetPlayerGot.cpp */; };
+		F4036D8C1BDA1FDD002788AA /* Fleet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D3F1BDA1FDD002788AA /* Fleet.cpp */; };
 		F4036D901BDA1FDD002788AA /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D431BDA1FDD002788AA /* HelloWorldScene.cpp */; };
 		F4036D941BDA1FDD002788AA /* kantaiDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D461BDA1FDD002788AA /* kantaiDB.cpp */; };
-		F4036D981BDA1FDD002788AA /* KantaiPlayerGot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D4A1BDA1FDD002788AA /* KantaiPlayerGot.cpp */; };
+		F4036D981BDA1FDD002788AA /* kantai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D4A1BDA1FDD002788AA /* kantai.cpp */; };
 		F4036D9A1BDA1FDD002788AA /* layerSelecter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D4C1BDA1FDD002788AA /* layerSelecter.cpp */; };
 		F4036D9C1BDA1FDD002788AA /* Mission.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D4E1BDA1FDD002788AA /* Mission.cpp */; };
 		F4036D9E1BDA1FDD002788AA /* MissionContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D501BDA1FDD002788AA /* MissionContainer.cpp */; };
@@ -131,12 +133,12 @@
 		F4036E121BDA2316002788AA /* AppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D2C1BDA1FDD002788AA /* AppDelegate.h */; };
 		F4036E131BDA2316002788AA /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D431BDA1FDD002788AA /* HelloWorldScene.cpp */; };
 		F4036E141BDA2316002788AA /* HelloWorldScene.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D441BDA1FDD002788AA /* HelloWorldScene.h */; };
-		F4036E151BDA2316002788AA /* KantaiPlayerGot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D4A1BDA1FDD002788AA /* KantaiPlayerGot.cpp */; };
-		F4036E161BDA2316002788AA /* KantaiPlayerGot.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D4B1BDA1FDD002788AA /* KantaiPlayerGot.h */; };
+		F4036E151BDA2316002788AA /* kantai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D4A1BDA1FDD002788AA /* kantai.cpp */; };
+		F4036E161BDA2316002788AA /* kantai.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D4B1BDA1FDD002788AA /* kantai.h */; };
 		F4036E171BDA2316002788AA /* Equip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D371BDA1FDD002788AA /* Equip.cpp */; };
 		F4036E181BDA2316002788AA /* Equip.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D381BDA1FDD002788AA /* Equip.h */; };
-		F4036E191BDA2316002788AA /* FleetPlayerGot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D3F1BDA1FDD002788AA /* FleetPlayerGot.cpp */; };
-		F4036E1A1BDA2316002788AA /* FleetPlayerGot.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D401BDA1FDD002788AA /* FleetPlayerGot.h */; };
+		F4036E191BDA2316002788AA /* Fleet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D3F1BDA1FDD002788AA /* Fleet.cpp */; };
+		F4036E1A1BDA2316002788AA /* Fleet.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D401BDA1FDD002788AA /* Fleet.h */; };
 		F4036E1B1BDA2316002788AA /* equipGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D3B1BDA1FDD002788AA /* equipGrid.cpp */; };
 		F4036E1C1BDA2316002788AA /* equipGrid.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D3C1BDA1FDD002788AA /* equipGrid.h */; };
 		F4036E1D1BDA2316002788AA /* SystemHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4036D701BDA1FDD002788AA /* SystemHeader.cpp */; };
@@ -192,6 +194,7 @@
 		F42865E91BDBD12C00045E66 /* BattleCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42865E61BDBD12C00045E66 /* BattleCharacter.cpp */; };
 		F42865EC1BDBD18100045E66 /* AnimationMaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42865EA1BDBD18100045E66 /* AnimationMaker.cpp */; };
 		F42865ED1BDBD18100045E66 /* AnimationMaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42865EA1BDBD18100045E66 /* AnimationMaker.cpp */; };
+		F45F91221BF4BCA600327120 /* TestScene.h in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE81BF380210078C5C0 /* TestScene.h */; };
 		F467184C1BE88E6300320B0A /* BattleEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F467184A1BE88E6300320B0A /* BattleEnemy.cpp */; };
 		F467184D1BE893F700320B0A /* BattleEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F467184A1BE88E6300320B0A /* BattleEnemy.cpp */; };
 		F467184E1BE893F700320B0A /* BattleEnemy.h in Sources */ = {isa = PBXBuildFile; fileRef = F467184B1BE88E6300320B0A /* BattleEnemy.h */; };
@@ -202,6 +205,8 @@
 		F4B191DF1BE74B56000A41C3 /* AnimationMaker.h in Sources */ = {isa = PBXBuildFile; fileRef = F42865EB1BDBD18100045E66 /* AnimationMaker.h */; };
 		F4B191E01BE74B56000A41C3 /* CharacterCard.h in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F371BDCB2E100180F6B /* CharacterCard.h */; };
 		F4B191E11BE74B56000A41C3 /* BattleHero.h in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F401BDCD9B900180F6B /* BattleHero.h */; };
+		F4D6CBE91BF380210078C5C0 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE71BF380210078C5C0 /* TestScene.cpp */; };
+		F4D6CBEA1BF380210078C5C0 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE71BF380210078C5C0 /* TestScene.cpp */; };
 		F4D8028E1BE604EB0032C724 /* Mission.xml in Resources */ = {isa = PBXBuildFile; fileRef = F4D8028D1BE604EB0032C724 /* Mission.xml */; };
 		F4D8028F1BE604EB0032C724 /* Mission.xml in Resources */ = {isa = PBXBuildFile; fileRef = F4D8028D1BE604EB0032C724 /* Mission.xml */; };
 		F4E62F381BDCB2E100180F6B /* CharacterCard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F361BDCB2E100180F6B /* CharacterCard.cpp */; };
@@ -296,6 +301,7 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		F4014AF21BF0E8A000C9C5AE /* equip */ = {isa = PBXFileReference; lastKnownFileType = folder; path = equip; sourceTree = "<group>"; };
 		F4036D1C1BDA1F0A002788AA /* kantai */ = {isa = PBXFileReference; lastKnownFileType = folder; path = kantai; sourceTree = "<group>"; };
 		F4036D1F1BDA1F16002788AA /* interface */ = {isa = PBXFileReference; lastKnownFileType = folder; path = interface; sourceTree = "<group>"; };
 		F4036D221BDA1F1A002788AA /* furniture */ = {isa = PBXFileReference; lastKnownFileType = folder; path = furniture; sourceTree = "<group>"; };
@@ -319,14 +325,14 @@
 		F4036D3C1BDA1FDD002788AA /* equipGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = equipGrid.h; path = ../Classes/equipGrid.h; sourceTree = "<group>"; };
 		F4036D3D1BDA1FDD002788AA /* fleetDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fleetDB.cpp; sourceTree = "<group>"; };
 		F4036D3E1BDA1FDD002788AA /* fleetDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fleetDB.h; sourceTree = "<group>"; };
-		F4036D3F1BDA1FDD002788AA /* FleetPlayerGot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FleetPlayerGot.cpp; path = ../Classes/FleetPlayerGot.cpp; sourceTree = "<group>"; };
-		F4036D401BDA1FDD002788AA /* FleetPlayerGot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FleetPlayerGot.h; path = ../Classes/FleetPlayerGot.h; sourceTree = "<group>"; };
+		F4036D3F1BDA1FDD002788AA /* Fleet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Fleet.cpp; path = ../Classes/Fleet.cpp; sourceTree = "<group>"; };
+		F4036D401BDA1FDD002788AA /* Fleet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fleet.h; path = ../Classes/Fleet.h; sourceTree = "<group>"; };
 		F4036D431BDA1FDD002788AA /* HelloWorldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloWorldScene.cpp; sourceTree = "<group>"; };
 		F4036D441BDA1FDD002788AA /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldScene.h; sourceTree = "<group>"; };
 		F4036D461BDA1FDD002788AA /* kantaiDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = kantaiDB.cpp; sourceTree = "<group>"; };
 		F4036D471BDA1FDD002788AA /* kantaiDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kantaiDB.h; sourceTree = "<group>"; };
-		F4036D4A1BDA1FDD002788AA /* KantaiPlayerGot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KantaiPlayerGot.cpp; path = ../Classes/KantaiPlayerGot.cpp; sourceTree = "<group>"; };
-		F4036D4B1BDA1FDD002788AA /* KantaiPlayerGot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KantaiPlayerGot.h; path = ../Classes/KantaiPlayerGot.h; sourceTree = "<group>"; };
+		F4036D4A1BDA1FDD002788AA /* kantai.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = kantai.cpp; path = ../Classes/kantai.cpp; sourceTree = "<group>"; };
+		F4036D4B1BDA1FDD002788AA /* kantai.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = kantai.h; path = ../Classes/kantai.h; sourceTree = "<group>"; };
 		F4036D4C1BDA1FDD002788AA /* layerSelecter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = layerSelecter.cpp; sourceTree = "<group>"; };
 		F4036D4D1BDA1FDD002788AA /* layerSelecter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = layerSelecter.h; sourceTree = "<group>"; };
 		F4036D4E1BDA1FDD002788AA /* Mission.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mission.cpp; sourceTree = "<group>"; };
@@ -386,6 +392,8 @@
 		F42865EB1BDBD18100045E66 /* AnimationMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationMaker.h; sourceTree = "<group>"; };
 		F467184A1BE88E6300320B0A /* BattleEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleEnemy.cpp; sourceTree = "<group>"; };
 		F467184B1BE88E6300320B0A /* BattleEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleEnemy.h; sourceTree = "<group>"; };
+		F4D6CBE71BF380210078C5C0 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
+		F4D6CBE81BF380210078C5C0 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
 		F4D8028D1BE604EB0032C724 /* Mission.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Mission.xml; sourceTree = "<group>"; };
 		F4E62F361BDCB2E100180F6B /* CharacterCard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CharacterCard.cpp; sourceTree = "<group>"; };
 		F4E62F371BDCB2E100180F6B /* CharacterCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterCard.h; sourceTree = "<group>"; };
@@ -512,6 +520,7 @@
 			isa = PBXGroup;
 			children = (
 				F4D8028D1BE604EB0032C724 /* Mission.xml */,
+				F4014AF21BF0E8A000C9C5AE /* equip */,
 				F40CF9821BDB51B200DD897F /* map */,
 				F4036D281BDA1F39002788AA /* equipment */,
 				F4036D251BDA1F31002788AA /* database */,
@@ -536,6 +545,8 @@
 				F4036DCD1BDA20DE002788AA /* entity */,
 				F4036DCC1BDA20A9002788AA /* stdafx */,
 				F4036DC61BDA1FF4002788AA /* interface */,
+				F4D6CBE71BF380210078C5C0 /* TestScene.cpp */,
+				F4D6CBE81BF380210078C5C0 /* TestScene.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -714,8 +725,8 @@
 		F4036DCF1BDA20FD002788AA /* fleet */ = {
 			isa = PBXGroup;
 			children = (
-				F4036D3F1BDA1FDD002788AA /* FleetPlayerGot.cpp */,
-				F4036D401BDA1FDD002788AA /* FleetPlayerGot.h */,
+				F4036D3F1BDA1FDD002788AA /* Fleet.cpp */,
+				F4036D401BDA1FDD002788AA /* Fleet.h */,
 			);
 			name = fleet;
 			sourceTree = "<group>";
@@ -732,8 +743,8 @@
 		F4036DD11BDA210A002788AA /* kantai */ = {
 			isa = PBXGroup;
 			children = (
-				F4036D4A1BDA1FDD002788AA /* KantaiPlayerGot.cpp */,
-				F4036D4B1BDA1FDD002788AA /* KantaiPlayerGot.h */,
+				F4036D4A1BDA1FDD002788AA /* kantai.cpp */,
+				F4036D4B1BDA1FDD002788AA /* kantai.h */,
 			);
 			name = kantai;
 			sourceTree = "<group>";
@@ -931,6 +942,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				F4014AF31BF0E8A100C9C5AE /* equip in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				F40CF9831BDB51B200DD897F /* map in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -968,6 +980,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F40CF9841BDB51B200DD897F /* map in Resources */,
+				F4014AF41BF0E8A100C9C5AE /* equip in Resources */,
 				46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */,
 				F4036D1E1BDA1F0A002788AA /* kantai in Resources */,
 				F4036D2A1BDA1F39002788AA /* equipment in Resources */,
@@ -992,6 +1005,7 @@
 			files = (
 				F40CF98E1BDB6A5A00DD897F /* BattleModel.cpp in Sources */,
 				F4036DA61BDA1FDD002788AA /* playerDB.cpp in Sources */,
+				F4D6CBE91BF380210078C5C0 /* TestScene.cpp in Sources */,
 				F4036DAE1BDA1FDD002788AA /* portMainLayer.cpp in Sources */,
 				F4036DB21BDA1FDD002788AA /* portRemodeLayer.cpp in Sources */,
 				F40CF9891BDB69A300DD897F /* Formation.cpp in Sources */,
@@ -1019,8 +1033,8 @@
 				F4036D9C1BDA1FDD002788AA /* Mission.cpp in Sources */,
 				F4036D941BDA1FDD002788AA /* kantaiDB.cpp in Sources */,
 				F4036D9A1BDA1FDD002788AA /* layerSelecter.cpp in Sources */,
-				F4036D8C1BDA1FDD002788AA /* FleetPlayerGot.cpp in Sources */,
-				F4036D981BDA1FDD002788AA /* KantaiPlayerGot.cpp in Sources */,
+				F4036D8C1BDA1FDD002788AA /* Fleet.cpp in Sources */,
+				F4036D981BDA1FDD002788AA /* kantai.cpp in Sources */,
 				F40CF97F1BDB4D1E00DD897F /* XMLBase.cpp in Sources */,
 				F4036DAC1BDA1FDD002788AA /* portFactoryLayer.cpp in Sources */,
 				F4036DB01BDA1FDD002788AA /* portOrganizeLayer.cpp in Sources */,
@@ -1043,6 +1057,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F45F91221BF4BCA600327120 /* TestScene.h in Sources */,
 				F467184D1BE893F700320B0A /* BattleEnemy.cpp in Sources */,
 				F467184E1BE893F700320B0A /* BattleEnemy.h in Sources */,
 				F4B191DB1BE74B56000A41C3 /* GameScene.cpp in Sources */,
@@ -1069,6 +1084,7 @@
 				F4036E051BDA2316002788AA /* databaseBase.cpp in Sources */,
 				F4036E061BDA2316002788AA /* databaseBase.h in Sources */,
 				F4036E071BDA2316002788AA /* databaseInit.cpp in Sources */,
+				F4D6CBEA1BF380210078C5C0 /* TestScene.cpp in Sources */,
 				F42865E91BDBD12C00045E66 /* BattleCharacter.cpp in Sources */,
 				F4036E081BDA2316002788AA /* databaseInit.h in Sources */,
 				F4036E091BDA2316002788AA /* equipDB.cpp in Sources */,
@@ -1085,13 +1101,13 @@
 				F4036E121BDA2316002788AA /* AppDelegate.h in Sources */,
 				F4036E131BDA2316002788AA /* HelloWorldScene.cpp in Sources */,
 				F4036E141BDA2316002788AA /* HelloWorldScene.h in Sources */,
-				F4036E151BDA2316002788AA /* KantaiPlayerGot.cpp in Sources */,
-				F4036E161BDA2316002788AA /* KantaiPlayerGot.h in Sources */,
+				F4036E151BDA2316002788AA /* kantai.cpp in Sources */,
+				F4036E161BDA2316002788AA /* kantai.h in Sources */,
 				F4036E171BDA2316002788AA /* Equip.cpp in Sources */,
 				F4E62F391BDCB2E100180F6B /* CharacterCard.cpp in Sources */,
 				F4036E181BDA2316002788AA /* Equip.h in Sources */,
-				F4036E191BDA2316002788AA /* FleetPlayerGot.cpp in Sources */,
-				F4036E1A1BDA2316002788AA /* FleetPlayerGot.h in Sources */,
+				F4036E191BDA2316002788AA /* Fleet.cpp in Sources */,
+				F4036E1A1BDA2316002788AA /* Fleet.h in Sources */,
 				F4036E1B1BDA2316002788AA /* equipGrid.cpp in Sources */,
 				F4036E1C1BDA2316002788AA /* equipGrid.h in Sources */,
 				F4036E1D1BDA2316002788AA /* SystemHeader.cpp in Sources */,

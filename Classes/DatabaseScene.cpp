@@ -8,7 +8,7 @@
 
 #include "DatabaseScene.h"
 #include "Equip.h"
-#include "KantaiPlayerGot.h"
+#include "kantai.h"
 #include "databaseBase.h"
 #include "databaseInit.h"
 #include <time.h>

@@ -55,13 +55,15 @@ public:
     
     
     inline Air_Control getAirControl(){return airControl;}
-    
-    
-    
-    
-    
 
     
+    void getFireDamage(bool alliesAttack, int alliesIndex, int enemyIndex, bool &doubleHit, bool &specialAttack, bool &ci,int &damage, bool &critical,bool &miss);
+    
+    void resetFireBattle();
+
+    bool getNextIndexToFire(bool &allies, int &index);
+
+    int getTargetIndex(bool alliesAttack);
     
     
     
@@ -84,15 +86,18 @@ private:
     
     float formationCorrection(FormationType type,bool antiSubmarine);
     
-    float TwordCorrection(T_Word t);
+    float TWordCorrection(T_Word t);
     
     float brokenCorrection(BrokenType type);
     
     float ammoCorrection();
     
-    
+    BrokenType getBrokenType(int currentHP,int maxHp);
     
     void insertToRangeVector(Shooting_Range range,int index);
+    
+    
+    
     std::vector<int> exlongIndex;
     std::vector<int> longIndex;
     std::vector<int> midIndex;

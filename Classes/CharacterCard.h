@@ -10,7 +10,7 @@
 #define __kancolle_beta__CharacterCard__
 
 #include "cocos2d.h"
-#include "KantaiPlayerGot.h"
+#include "kantai.h"
 
 USING_NS_CC;
 

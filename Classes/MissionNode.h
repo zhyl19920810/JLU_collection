@@ -10,7 +10,7 @@
 #define __kancolle_alpha__MissionNode__
 
 #include "cocos2d.h"
-#include "FleetPlayerGot.h"
+#include "Fleet.h"
 #include "Compass.h"
 
 USING_NS_CC;
@@ -35,7 +35,7 @@ public:
     
     void available(Fleet* allies);
     
-    void parseEnemyFleet(const std::string &name);
+    Fleet* parseEnemyFleet(const std::string &name);
     
     Compass_Direction compassDirection;
     

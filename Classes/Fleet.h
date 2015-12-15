@@ -10,7 +10,7 @@
 #define __kancolle_alpha__FleetPlayerGot__
 
 #include "cocos2d.h"
-#include "KantaiPlayerGot.h"
+#include "kantai.h"
 #include "fleetDB.h"
 #include <vector>
 
@@ -32,7 +32,7 @@ enum FleetState
 //public: void set##varName(varType var) {varName=var;}\
 
 
-class Fleet
+class Fleet:public Ref
 {
     CC_GETVALUE(int, fleetKey);
     CC_RWVALUE(std::string, fleetName);
@@ -42,9 +42,11 @@ public:
     
     Fleet(int _fleetKey):fleetKey(_fleetKey){}
     
-   // void modifyShip(int location,Kantai* kantai=NULL);
+    //create
+    static Fleet* create(int _fleetKey);
     
-    //void setKantai(Kantai* kantai,int position){ship[--position]=kantai;}
+    static Fleet* create(std::string& enemyName);
+
     void setFleetName(const std::string& _fleetName);
     
     void setFleetState(FleetState _fleetState);
@@ -56,6 +58,9 @@ public:
     std::vector<Kantai*> ship;
 
     
+protected:
+    Fleet();
+    
 private:
     int fleetKey;
     
@@ -66,53 +71,6 @@ private:
 };
 
 
-
-
-
-
-
-//class Fleet:public Ref
-//{
-//    
-//    CC_SYNTHESIZE(std::string,fleetName,FleetName);
-//public:
-//    Fleet(std::initializer_list<Kantai*> data,std::string s="第一舰队"):fleetNumber(fleetCount),fleetName(s)
-//    {
-//        if(data.size()<=6)
-//        {
-//            //std::for_each(data.begin(), data.end(), fleetData);
-//            ++fleetCount;
-//        }
-//     
-//    }
-//    
-//    Kantai* getFleet(int _kantaiLoc){return fleetData[_kantaiLoc];}
-//    
-//    void setFleet(int _kantaiLoc,Kantai* _kantai)
-//    {
-//        if(_kantaiLoc>6)
-//        {
-//            CCASSERT(false, "this is something wring with set fleet");
-//        }
-//        else
-//        {
-//            fleetData[_kantaiLoc]=_kantai;
-//        }
-//    }
-//    
-//    
-//    
-//private:
-//    const int fleetNumber;
-//    
-//    std::array<Kantai*,6> fleetData;
-//    
-//    int fleetState;
-//    
-//    
-//    static int fleetCount;
-//    
-//};
 
 
 

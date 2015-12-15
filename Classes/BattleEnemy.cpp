@@ -175,7 +175,7 @@ void BattleEnemy::updateInformationBoard()
 {
     if (informationBoard == nullptr)
     {
-        informationBoard = Sprite::create("interface/BattleMain/BattleMain568.png");
+        informationBoard = Sprite::create("interface/BattleMain/BattleMain_568.png");
         parent->addChild(informationBoard);
         informationBoard->setPosition(600, 70);
         informationBoard->setZOrder(4);

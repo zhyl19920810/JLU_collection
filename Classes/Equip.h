@@ -12,52 +12,12 @@
 #include "cocos2d.h"
 #include "XMLControl.h"
 #include "equipDB.h"
+#include <set>
+
+
 USING_NS_CC;
 
 
-//class Equip:public Ref
-//{
-//
-//public:
-//    Equip(int _equipNumber);
-//
-//    int GetEquipKey() const;
-//
-//    int GetEquipNumber() const;
-//
-//    std::string GetEquipName() const;
-//
-//    int GetEquipScope() const;
-//
-//    int GetEquipType() const;
-//
-//    bool GetIsPlane() const;
-//
-//    ValueMap GetEquipAdvanceAtrr() const;
-//
-//    ValueVector GetSupKantaiType() const;
-//
-//
-//
-//private:
-//    //数据库中主键名字poi
-//    int equipKey;
-//
-//    int equipNumber;
-//
-//    std::string equipName;
-//
-//    int equipScope;
-//
-//    int equipType;
-//
-//    bool isPlane;
-//
-//    ValueMap equipAdvanceAtrr;
-//
-//    ValueVector supKantaiType;
-//
-//};
 
 #define CC_GETVALUE(varType,varName)\
 public: varType get##varName(void) const {return varName;}\
@@ -65,11 +25,6 @@ public: varType get##varName(void) const {return varName;}\
 #define CC_RWVALUE(varType,varName)\
 public: varType get##varName(void) const {return varName;}\
 public: void set##varName(varType var) {varName=var;}\
-
-
-
-
-class EquipImp;
 
 
 #define CC_GETVALUEIMP(varType,varName)\
@@ -80,43 +35,51 @@ public: varType get##varName(void) const {return equipImp->get##varName();}\
 public: void set##varName(varType var) {equipImp->set##varName(var);}\
 
 
+
+class EquipImp;
+class EquipDec;
+class EquipPoolManager;
+
+
 class EquipImp
 {
-    CC_RWVALUE(int, equipNumber);
+    CC_GETVALUE(int, equipNumber);
     
-    CC_RWVALUE(std::string, equipName);
-    CC_RWVALUE(int, equipScope);
-    CC_RWVALUE(int, equipType);
-    CC_RWVALUE(bool, isPlane);
+    CC_GETVALUE(std::string, equipName);
+    CC_GETVALUE(Shooting_Range, equipScope);
+    CC_GETVALUE(EquipType, equipType);
+    CC_GETVALUE(bool, isPlane);
     
-    CC_RWVALUE(int, firePower);
-    CC_RWVALUE(int, AviTorpedo);
-    CC_RWVALUE(int, AviBomb);
-    CC_RWVALUE(int, antiAir);
-    CC_RWVALUE(int, antiSubmarine);
-    CC_RWVALUE(int, searchEnemy);
-    CC_RWVALUE(int, hitRate);
-    CC_RWVALUE(int, dodge);
-    CC_RWVALUE(int, range);
-    CC_RWVALUE(int, armor);
+    CC_GETVALUE(int, firePower);
+    CC_GETVALUE(int, AviTorpedo);
+    CC_GETVALUE(int, AviBomb);
+    CC_GETVALUE(int, antiAir);
+    CC_GETVALUE(int, antiSubmarine);
+    CC_GETVALUE(int, searchEnemy);
+    CC_GETVALUE(int, hitRate);
+    CC_GETVALUE(int, dodge);
+    CC_GETVALUE(int, range);
+    CC_GETVALUE(int, armor);
     
 public:
-    EquipImp(int _equipNumber);
+    static EquipImp* create(int _equipNumber);
     
-    EquipImp(ValueVector& _equipData);
+    std::set<KantaiType>& getSupKantaiType();
     
-    ValueVector getSupKantaiType();
+    ~EquipImp();
     
+protected:
+    EquipImp();
+    
+    friend class XMLParser;
 private:
-    inline void _equipImp(ValueVector& _equipData);
-    
     int equipNumber;
     
     std::string equipName;
     
-    int equipScope;
+    Shooting_Range equipScope;
     
-    int equipType;
+    EquipType equipType;
     
     bool isPlane;
     
@@ -140,9 +103,7 @@ private:
     
     int armor;
     
-    ValueVector supKantaiType;
-    
-    
+    std::set<KantaiType> supKantaiType;
     
 };
 
@@ -150,29 +111,43 @@ private:
 
 
 
-class Equip
+class Equip:public Ref
 {
     CC_RWVALUE(int,equipKey);
     CC_RWVALUE(int, equipNumber);
     
-    CC_RWVALUEIMP(std::string, equipName);
-    CC_RWVALUEIMP(int, equipScope);
-    CC_RWVALUEIMP(int, equipType);
-    CC_RWVALUEIMP(bool, isPlane);
+    CC_GETVALUEIMP(std::string, equipName);
+    CC_GETVALUEIMP(Shooting_Range, equipScope);
+    CC_GETVALUEIMP(EquipType, equipType);
+    CC_GETVALUEIMP(bool, isPlane);
     
-    CC_RWVALUEIMP(int, firePower);
-    CC_RWVALUEIMP(int, AviTorpedo);
-    CC_RWVALUEIMP(int, AviBomb);
-    CC_RWVALUEIMP(int, antiAir);
-    CC_RWVALUEIMP(int, antiSubmarine);
-    CC_RWVALUEIMP(int, searchEnemy);
-    CC_RWVALUEIMP(int, hitRate);
-    CC_RWVALUEIMP(int, dodge);
-    CC_RWVALUEIMP(int, range);
-    CC_RWVALUEIMP(int, armor);
+    CC_GETVALUEIMP(int, firePower);
+    CC_GETVALUEIMP(int, AviTorpedo);
+    CC_GETVALUEIMP(int, AviBomb);
+    CC_GETVALUEIMP(int, antiAir);
+    CC_GETVALUEIMP(int, antiSubmarine);
+    CC_GETVALUEIMP(int, searchEnemy);
+    CC_GETVALUEIMP(int, hitRate);
+    CC_GETVALUEIMP(int, dodge);
+    CC_GETVALUEIMP(int, range);
+    CC_GETVALUEIMP(int, armor);
+    
 public:
-    Equip(int equipKey,int equipNumber);
+    static Equip* create();
     
+    static Equip* create(int equipKey,int equipNumber,Ref* parent=0);
+    
+    void init(int equipKey,int equipNumber,Ref* parent);
+    
+    void setKantai(Ref* parent);
+    
+    Ref* getKantai() const;
+    
+    ~Equip();
+    
+    std::set<KantaiType>& getSupKantaiType() const;
+protected:
+    Equip();
     
 private:
     int equipKey;
@@ -181,52 +156,45 @@ private:
     
     EquipImp* equipImp;
     
-    //db
-    
+    Ref* parent;
 };
-
 
 
 
 class EquipDec
 {
-    CC_RWVALUEIMP(int, equipNumber);
+    CC_GETVALUEIMP(int, equipNumber);
     
-    CC_RWVALUEIMP(std::string, equipName);
-    CC_RWVALUEIMP(int, equipScope);
-    CC_RWVALUEIMP(int, equipType);
-    CC_RWVALUEIMP(bool, isPlane);
+    CC_GETVALUEIMP(std::string, equipName);
+    CC_GETVALUEIMP(Shooting_Range, equipScope);
+    CC_GETVALUEIMP(EquipType, equipType);
+    CC_GETVALUEIMP(bool, isPlane);
     
-    CC_RWVALUEIMP(int, firePower);
-    CC_RWVALUEIMP(int, AviTorpedo);
-    CC_RWVALUEIMP(int, AviBomb);
-    CC_RWVALUEIMP(int, antiAir);
-    CC_RWVALUEIMP(int, antiSubmarine);
-    CC_RWVALUEIMP(int, searchEnemy);
-    CC_RWVALUEIMP(int, hitRate);
-    CC_RWVALUEIMP(int, dodge);
-    CC_RWVALUEIMP(int, range);
-    CC_RWVALUEIMP(int, armor);
+    CC_GETVALUEIMP(int, firePower);
+    CC_GETVALUEIMP(int, AviTorpedo);
+    CC_GETVALUEIMP(int, AviBomb);
+    CC_GETVALUEIMP(int, antiAir);
+    CC_GETVALUEIMP(int, antiSubmarine);
+    CC_GETVALUEIMP(int, searchEnemy);
+    CC_GETVALUEIMP(int, hitRate);
+    CC_GETVALUEIMP(int, dodge);
+    CC_GETVALUEIMP(int, range);
+    CC_GETVALUEIMP(int, armor);
 
-    
+friend class EquipPoolManager;
 public:
-    EquipDec(ValueVector& _equipData,int _count=1):equipImp(new EquipImp(_equipData)),count(_count)
-    {
-        
-    }
+    EquipDec(EquipImp* equipimp);
     
-    void addCount(){++count;}
-    
-    void minusCount(){--count;}
+    void clear();
     
     int getCount() const
     {
         return count;
     }
     
-    ~EquipDec();
+    EquipImp* getEquipImp() const
+    {return equipImp;}
     
-    EquipImp* getEquipImp(){return equipImp;}
 private:
     EquipImp* equipImp;
     int count;
@@ -234,30 +202,32 @@ private:
 
 
 
-
-
-class EquipDecData
+class EquipPoolManager
 {
 public:
-    static EquipImp* insertEquip(ValueVector& _equipData);
+    static EquipPoolManager* getInstance();
     
-    static void deleteEquip(int equipNumber);
+    void deleteEquip(int equipNumber);
     
-    static EquipImp* insertEquip(int equipNumber);
+    EquipImp* insertEquip(int equipNumber);
     
+    void clear();
+    
+    void print();
 private:
-    static std::map<int,EquipDec*> impData;
+    static EquipPoolManager* equipDecData;
+    
+    std::map<int,EquipDec*> impData;
 };
 
 
 class EquipPrint
 {
 public:
-    void PrintEquipInfo(const Equip &_equip);
+    static void PrintEquipInfo(const Equip &_equip);
     
-    void PrintEquipInfo(Equip *_equip);
+    static void PrintEquipInfo(Equip *_equip);
 };
-
 
 
 #endif /* defined(__kancolle_alpha__Equip__) */

@@ -6,7 +6,7 @@
 //
 //
 
-#include "FleetPlayerGot.h"
+#include "Fleet.h"
 
 Fleet::Fleet(int _fleetKey,const std::string& _fleetName,FleetState _fleetState):fleetKey(_fleetKey),fleetName(_fleetName),fleetState(_fleetState)
 {
@@ -24,20 +24,20 @@ bool Fleet::addShipNoDatabase(Kantai *kantai)
     return true;
 }
 
+Fleet* Fleet::create(std::string &enemyName)
+{
+    
+    
+    
+    
+    
+}
 
-//void Fleet::modifyShip(int location, Kantai* kantai)
-//{
-//    if (!kantai)
-//    {
-//        ship[location]=nullptr;
-//    }
-//    else
-//    {
-//        ship[location]=kantai;
-//    }
-//    
-//}
-//
+Fleet::Fleet()
+{
+    ship.resize(6);
+}
+
 
 int Fleet::size()
 {

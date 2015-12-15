@@ -11,8 +11,9 @@
 
 #include "cocos2d.h"
 #include "SystemHeader.h"
-#include "equipGrid.h"
+//#include "equipGrid.h"
 #include "kantaiDB.h"
+#include "Equip.h"
 
 USING_NS_CC;
 
@@ -84,27 +85,37 @@ enum LoadState
     READ_KANTAI_DATABASE
 };
 
+enum KantaiState
+{
+    Free,
+    Repairing,
+    Expedition,
+    Error,
+};
+
 
 class Kantai:public Ref
 {
+
+    friend class XMLParser;
+    
     CC_RWVALUE(std::string, kantaiName);
     CC_RWVALUE(std::string, kantaiFullName);
     CC_GETVALUE(int, kantaiKey);
     CC_RWVALUE(int, kantaiNumber);
-    CC_RWVALUE(int, kantaiType);
+    CC_RWVALUE(KantaiType, kantaiType);
 
     CC_RWVALUE(int, maxFuel);
     CC_RWVALUE(int, maxAmmo);
     CC_RWVALUE(int, speed);
-    CC_RWVALUE(int, initRange);
     CC_RWVALUE(int, maxHp);
-    
+    CC_RWVALUE(int, buildTime);
+    CC_RWVALUE(int, transformTimes);
     
     CC_RWVALUE(int,currLV);
     CC_RWVALUE(int,currFuel);
     CC_RWVALUE(int,currAmmo);
     CC_RWVALUE(int,range);
-    CC_RWVALUE(int,currHp);
     CC_RWVALUE(int,currExp);
     CC_RWVALUE(int,updateExp);
     CC_RWVALUE(int,firePower);
@@ -118,8 +129,17 @@ class Kantai:public Ref
     CC_RWVALUE(int,fatigueValue);
     CC_RWVALUE(int,kantaiLock);
     CC_RWVALUE(int,kantaiStar);
-    CC_RWVALUE(int, kantaiState);
-
+    CC_RWVALUE(KantaiState, kantaiState);
+    
+    CC_RWVALUE(int, maxLuck);
+    CC_RWVALUE(int, maxAntiSubmarine);
+    CC_RWVALUE(int, maxDodge);
+    CC_RWVALUE(int, maxAntiAir);
+    CC_RWVALUE(int, maxTorpedo);
+    CC_RWVALUE(int, maxSearchEnemy);
+    CC_RWVALUE(int, maxFirePower);
+    CC_RWVALUE(int, maxArmor);
+    
 public:
     Kantai(int _id,LoadState loadState);
     
@@ -165,112 +185,130 @@ public:
     
     void setKantaiStar(int kantaiStar);
     
-    void setKantaiState(int kantaiState);
+    void setKantaiState(KantaiState kantaiState);
     
     bool canAirBattle();
     
     Equip* getMainCannon();
     
-public:
-    std::vector<Equip*> equipGrid;
+    void setBrokenType();
     
-    std::vector<int> planeLoad;
+    BrokenType getBrokenType() const {return brokenType;}
+    
+    int getcurrHp() const {return currHp;}
+    
+    void setcurrHp(int val)
+    {
+        currHp=val;
+        setBrokenType();
+    }
+    
+    void getDamage(int damage);
+    
+    bool canAttack();
+
+protected:
+    Kantai(){}
     
 private:
     
     inline void geneNewKantai(ValueVector& _kantaiData);
+    
 
     //kantai's name poi(english name + transform condition(using vol)poi）
     //for example 金刚(kongo) 金刚改(kongoVol1) 金刚二改(kongoVol2)
+    //name
     std::string kantaiName;
     
     std::string kantaiFullName;
     
-    
-    int kantaiKey;
-    
-    //kantai's number poi
+    //kantaiBaseAttr
     int kantaiNumber;
     
-    //kantai's type poi
-    int kantaiType;
+    KantaiType kantaiType;
     
-    int currLV;  //rw
+    int buildTime;
     
+    int updateLv;
     
-    int currFuel; //rw
+    int currLV;
     
+    int currFuel;//不再xml中
     
     int maxFuel;
     
-    
-    int currAmmo; //rw
-    
+    int currAmmo;///不在xml中
     
     int maxAmmo;
     
-    
     int speed;
     
+    int range;
     
-    int initRange;
+    int currHp;//不再xml中
     
-    
-    int range; //rw
-    
-    //current Hp poi
-    int currHp;  //rw
-    
-    //max Hp poi
     int maxHp;
     
+    int transformTimes;
     
-    int currExp;  //rw
+    //kantaiInitAtrr
+    int searchEnemy=0;
     
+    int armor=0;
     
-    int updateExp;  //rw
+    int luck=0;
     
+    int AntiSubMarine=0;
     
-    //the power fire of kantai poi
-    int firePower=0; //rw
+    int dodge=0;
     
-    //the armor of kantai poi
-    int armor=0;  //rw
+    int torpedo=0;
     
-    //torpedo poi
-    int torpedo=0;  //rw
+    int firePower=0;
     
-    //dodge poi
-    int dodge=0;  //rw
+    int antiAir=0;
     
-    //antiAir poi
-    int antiAir=0;  //rw
+    //kantaiMaxAtrr
+    int maxLuck;
     
-    //anti submarine poi
-    int AntiSubMarine=0;  //rw
+    int maxAntiSubmarine;
     
-    //search enemy poi
-    int searchEnemy=0;  //rw
+    int maxDodge;
     
-    //luck poi
-    int luck=0;  //rw
+    int maxAntiAir;
     
-    //fatigue value influences the attack capability of the kantai poi
-    int fatigueValue; //rw
+    int maxTorpedo;
     
+    int maxSearchEnemy;
     
-    bool kantaiLock;  //rw
+    int maxFirePower;
     
-    
-    int kantaiStar;  //rw
-    
-    int kantaiState;
-    
-    /////////////////equipment start ////////////////////////
-    
+    int maxArmor;
 
-    //EquipGrid* equipgrid;
-    /////////////////equipment end //////////////////////////
+    ///exp由固定函数生成
+    int currExp;
+    
+    int updateExp;
+    
+    //剩余其他
+    int kantaiKey;
+    //fatigue value influences the attack capability of the kantai poi
+    int fatigueValue;
+    
+    bool kantaiLock;
+    
+    int kantaiStar;
+    
+    KantaiState kantaiState;
+    
+    BrokenType brokenType;
+    
+public:
+    std::vector<Equip*> equipGrid;
+    
+    std::vector<int> planeLoadPr;
+    
+    std::vector<int> maxPlaneLoad;
     
     
 };

@@ -99,7 +99,7 @@ typedef enum
     AntiAir_Equip,            //高射装置
     OthersType,            //其他装备类型
     Deep_Sea_Type            //深海装备类型
-}equipType;
+}EquipType;
 
 
 class NameResolution

@@ -11,8 +11,8 @@
 
 #include "cocos2d.h"
 #include "Equip.h"
-#include "FleetPlayerGot.h"
-#include "KantaiPlayerGot.h"
+#include "Fleet.h"
+#include "kantai.h"
 #include "playerDB.h"
 #include "XMLControl.h"
 #include "fleetDB.h"

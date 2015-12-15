@@ -67,7 +67,7 @@ void MissionNode::setType(const std::string& type)
     }
 }
 
-void MissionNode::parseEnemyFleet(const std::string &name)
+Fleet* MissionNode::parseEnemyFleet(const std::string &name)
 {
     std::vector<std::string> strings;
     split(name, "#", strings); //split text in script by "#"
@@ -78,4 +78,5 @@ void MissionNode::parseEnemyFleet(const std::string &name)
         Kantai* _kantai=new Kantai(temp);
         enemyFleet->addShipNoDatabase(_kantai);
     }
+    return enemyFleet;
 }
