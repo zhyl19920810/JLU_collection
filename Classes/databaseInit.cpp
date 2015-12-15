@@ -37,11 +37,61 @@ void logAllData(std::unordered_map<int,Kantai*> _kantaiMap,
     {
         log("equipKey: %d  kantaiKey: %d  position: %d",it->first,it->second.first,it->second.second);
     }
-    
-    
-    
 }
 
+
+std::vector<int> DBInit::parsePlaneLoad(char* planeLoad)
+{
+    std::vector<int> returnVec;
+    if (!planeLoad)
+    {
+        return returnVec;
+    }
+    
+    std::string s=(std::string)planeLoad;
+    std::string temp="";
+    std::stringstream ss;
+    
+    int number=0;
+    for (int i=0; i<strlen(planeLoad); ++i)
+    {
+        if (s[i]!='#') {
+            temp+=s[i];
+        }
+        else
+        {
+            ss<<temp;
+            ss>>number;
+            returnVec.push_back(number);
+            temp.clear();
+            ss.clear();
+        }
+    }
+    if (temp!="")
+    {
+        ss<<temp;
+        ss>>number;
+        returnVec.push_back(number);
+        temp.clear();
+    }
+    return returnVec;
+}
+
+std::string DBInit::convertToStr(std::vector<int> &planeLoadVec)
+{
+    std::string planeLoadStr;
+    if (!planeLoadVec.empty())
+    {
+        planeLoadStr+=std::to_string(planeLoadVec[0]);
+        
+        for (int i=1; i<planeLoadVec.size(); ++i)
+        {
+            planeLoadStr+="#";
+            planeLoadStr+=std::to_string(planeLoadVec[i]);
+        }
+    }
+    return planeLoadStr;
+}
 
 
 ///////////init///////////////////////
@@ -235,6 +285,9 @@ void DBInit::initKantai(const Player* player,std::unordered_map<int,Kantai*>& _k
             int kantaiLock=sqlite3_column_int(statement, 18);
             int kantaiStar=sqlite3_column_int(statement, 19);
             int kantaiState=sqlite3_column_int(statement, 20);
+            char* planeLoadPr=(char *)sqlite3_column_text(statement, 21);
+            std::vector<int> _planeLoadPr=parsePlaneLoad(planeLoadPr);
+            
             
             auto kantai=new Kantai(keytaiKey,READ_KANTAI_DATABASE);
             kantai->setkantaiNumber(kantaiNumber);
@@ -257,7 +310,8 @@ void DBInit::initKantai(const Player* player,std::unordered_map<int,Kantai*>& _k
             kantai->setfatigueValue(fatigueValue);
             kantai->setkantaiLock(kantaiLock);
             kantai->setkantaiStar(kantaiStar);
-            kantai->setkantaiState(kantaiState);
+            kantai->setkantaiState(static_cast<KantaiState>(kantaiState));
+            
             
             //插入kantai具体数据通过xml方式
             
@@ -270,18 +324,38 @@ void DBInit::initKantai(const Player* player,std::unordered_map<int,Kantai*>& _k
             ValueMap _kantaiBaseAtrr=_kantaiData[1].asValueMap();
             kantai->setmaxAmmo(_kantaiBaseAtrr["ammo"].asInt());
             kantai->setmaxFuel(_kantaiBaseAtrr["fuel"].asInt());
-            kantai->setkantaiType(_kantaiBaseAtrr["kantaiType"].asInt());
+            kantai->setkantaiType(static_cast<KantaiType>(_kantaiBaseAtrr["kantaiType"].asInt()));
             kantai->setspeed(_kantaiBaseAtrr["speed"].asInt());
             kantai->setrange(_kantaiBaseAtrr["range"].asInt());
-            kantai->setinitRange(_kantaiBaseAtrr["range"].asInt());
             kantai->setmaxHp(_kantaiBaseAtrr["maxHp"].asInt());
+            kantai->setbuildTime(_kantaiBaseAtrr["buildTime"].asInt());
+            kantai->settransformTimes(_kantaiBaseAtrr["transformTimes"].asInt());
             
-            ValueVector _planeLoad=_kantaiData[6].asValueVector();
-            for (int i=0;i<_planeLoad.size();++i)
+            
+            ValueMap _kantaiMaxAttr=_kantaiData[2].asValueMap();
+            kantai->setmaxLuck(_kantaiMaxAttr["maxLuck"].asInt());
+            kantai->setmaxAntiSubmarine(_kantaiMaxAttr["maxAntiSubmarine"].asInt());
+            kantai->setmaxDodge(_kantaiMaxAttr["maxDodge"].asInt());
+            kantai->setmaxAntiAir(_kantaiMaxAttr["maxAntiAir"].asInt());
+            kantai->setmaxTorpedo(_kantaiMaxAttr["maxArmor"].asInt());
+            kantai->setmaxSearchEnemy(_kantaiMaxAttr["maxSearchEnemy"].asInt());
+            kantai->setmaxFirePower(_kantaiMaxAttr["maxFirePower"].asInt());
+            kantai->setmaxArmor(_kantaiMaxAttr["maxArmor"].asInt());
+            
+            int equipSize=_kantaiData[4].asInt();
+            kantai->equipGrid.resize(equipSize);
+            //kantai->planeLoadPr.resize(equipSize);
+            kantai->maxPlaneLoad.resize(equipSize);
+            
+
+            
+            kantai->planeLoadPr=_planeLoadPr;
+            ValueVector _maxPlaneLoad=_kantaiData[6].asValueVector();
+            for (int i=0;i<equipSize;++i)
             {
-                kantai->planeLoad.push_back(_planeLoad[i].asInt());
+                kantai->maxPlaneLoad[i]=_maxPlaneLoad[i].asInt();
             }
-            
+            kantai->setBrokenType();
             
             _kantaiMap.insert(std::pair<int,Kantai*>(keytaiKey,kantai));
         }
@@ -304,7 +378,7 @@ void DBInit::initEquip(const Player* player,std::unordered_map<int,Equip*>& _kan
         {
             int _equipKey=sqlite3_column_int(statement, 0);
             int _equipNumber=sqlite3_column_int(statement, 1);
-            Equip* equip=new Equip(_equipKey,_equipNumber);
+            Equip* equip=Equip::create(_equipKey,_equipNumber);
             _kantaiEquip.insert(std::pair<int, Equip*>(_equipKey,equip));
         }
     }

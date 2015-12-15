@@ -15,9 +15,9 @@ bool AnimationMaker::damageNumberInitialized=false;
 
 float AnimationMaker::playPlaneAnimation(cocos2d::Node *parent, float delay)
 {
-    Sprite *plane1 = Sprite::create("item_up/055.png");
-    Sprite *plane2 = Sprite::create("item_up/113.png");
-    Sprite *plane3 = Sprite::create("item_up/024.png");
+    Sprite *plane1 = Sprite::create("equip/item_up/055.png");
+    Sprite *plane2 = Sprite::create("equip/item_up/113.png");
+    Sprite *plane3 = Sprite::create("equip/item_up/024.png");
     plane1->setScale(0.5);
     plane2->setScale(0.7);
     plane3->setScale(0.6);
@@ -63,7 +63,7 @@ float AnimationMaker::playAirBattleAnimation(cocos2d::Node *parent, float delay)
     
     for (int i=0; i<planeNumber; ++i)
     {
-        Sprite* plane1=Sprite::create("BattleMain/image 469.png");
+        Sprite* plane1=Sprite::create("interface/BattleMain/BattleMain_506.png");
         
         plane1->setPosition(-50+x*(i+5),30-i*5);
         plane1->setScale(0.7);
@@ -131,11 +131,11 @@ void AnimationMaker::makeExplodeAnimation()
 {
     Vector<SpriteFrame*> animFrames;
     Animation* animation;
-    for (int i=386; i<414; i+=2)
+    for (int i=393; i<421; i+=2)
     {
         Image* image=new Image();
         std::string numStr=std::to_string(i);
-        image->initWithImageFile("BattleMain/image "+numStr+".png");
+        image->initWithImageFile("interface/BattleMain/BattleMain_"+numStr+".png");
         Texture2D* texture=new Texture2D();
         int x=image->getWidth();
         int y=image->getHeight();
@@ -173,13 +173,13 @@ void AnimationMaker::playShakingAnimation(cocos2d::Node *target, float delay)
 
 void AnimationMaker::InitDamageNumber()
 {
-    for (int i=616,j=0; i<636; i+=2)
+    for (int i=688,j=0; i<708; i+=2)
     {
         Image* image=new Image();
         std::string fileStr=std::to_string(i);
-        image->initWithImageFile("BattleMain/image " + fileStr + ".png");
+        image->initWithImageFile("interface/BattleMain/BattleMain_" + fileStr + ".png");
         std::string numStr="damage"+std::to_string(j);
-        if (i==636)
+        if (i==708)
         {
             numStr="miss";
         }
@@ -187,21 +187,21 @@ void AnimationMaker::InitDamageNumber()
         ++j;
     }
     
-    for (int i=638,j=0; i<658; i+=2)
+    for (int i=710,j=0; i<730; i+=2)
     {
         Image* image=new Image();
         std::string fileStr=std::to_string(i);
         
-        image->initWithImageFile("BattleMain/image " + fileStr + ".png");
+        image->initWithImageFile("interface/BattleMain/BattleMain_" + fileStr + ".png");
         std::string numStr="critical"+std::to_string(j);
-        if (i==658) {
+        if (i==730) {
             numStr="invaliddamage";
         }
         Texture2D* texture=TextureCache::sharedTextureCache()->addImage(image, numStr);
         ++j;
     }
     Image* image=new Image();
-    image->initWithImageFile("BattleMain/image 661.png");
+    image->initWithImageFile("interface/BattleMain/BattleMain_733.png");
     Texture2D* texture=TextureCache::sharedTextureCache()->addImage(image, "critical");
     damageNumberInitialized=true;
 }
