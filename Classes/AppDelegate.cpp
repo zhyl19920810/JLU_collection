@@ -35,7 +35,8 @@ void AppDelegate::initGLContextAttrs()
 void battleModel(Director* director)
 {
     //init db
-    DBBase::init("/Volumes/opengl/kancolle_beta/Resources/database/kancolle_2.sqlite3");
+    std::string filename = FileUtils::getInstance()->fullPathForFilename("database/kancolle_2.sqlite3");
+    DBBase::init(filename);
     DBInit init;
     auto player=Player::getInstance();
     player=init.initDB(1);
@@ -56,7 +57,8 @@ void battleModel(Director* director)
 
 void portModel(Director* director)
 {
-    DBBase::init("/Volumes/opengl/kancolle_beta/Resources/database/kancolle_2.sqlite3");
+    std::string filename = FileUtils::getInstance()->fullPathForFilename("database/kancolle_2.sqlite3");
+    DBBase::init(filename);
     DBInit init;
     auto player=Player::getInstance();
     player=init.initDB(1);
@@ -86,7 +88,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     // turn on display FPS
-    director->getOpenGLView()->setDesignResolutionSize(800, 480, ResolutionPolicy::EXACT_FIT);
+    director->getOpenGLView()->setDesignResolutionSize(800, 480, ResolutionPolicy::SHOW_ALL);
     glview->setFrameSize(800, 480);
     
     director->setDisplayStats(true);

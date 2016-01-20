@@ -194,6 +194,53 @@
 		F42865E91BDBD12C00045E66 /* BattleCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42865E61BDBD12C00045E66 /* BattleCharacter.cpp */; };
 		F42865EC1BDBD18100045E66 /* AnimationMaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42865EA1BDBD18100045E66 /* AnimationMaker.cpp */; };
 		F42865ED1BDBD18100045E66 /* AnimationMaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42865EA1BDBD18100045E66 /* AnimationMaker.cpp */; };
+		F44D26C01C4D198400438F3C /* XMLBuilder.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D731BDA1FDD002788AA /* XMLBuilder.h */; };
+		F44D26C11C4D198400438F3C /* XMLParser.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D771BDA1FDD002788AA /* XMLParser.h */; };
+		F44D26C21C4D198400438F3C /* XMLBase.h in Sources */ = {isa = PBXBuildFile; fileRef = F40CF97E1BDB4D1E00DD897F /* XMLBase.h */; };
+		F44D26C31C4D198400438F3C /* Player.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D571BDA1FDD002788AA /* Player.h */; };
+		F44D26C41C4D198400438F3C /* DatabaseScene.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D361BDA1FDD002788AA /* DatabaseScene.h */; };
+		F44D26C51C4D198400438F3C /* XMLControl.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D751BDA1FDD002788AA /* XMLControl.h */; };
+		F44D26C61C4D198400438F3C /* databaseBase.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D301BDA1FDD002788AA /* databaseBase.h */; };
+		F44D26C71C4D198400438F3C /* databaseInit.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D341BDA1FDD002788AA /* databaseInit.h */; };
+		F44D26C81C4D198400438F3C /* equipDB.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D3A1BDA1FDD002788AA /* equipDB.h */; };
+		F44D26C91C4D198400438F3C /* fleetDB.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D3E1BDA1FDD002788AA /* fleetDB.h */; };
+		F44D26CA1C4D198400438F3C /* kantaiDB.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D471BDA1FDD002788AA /* kantaiDB.h */; };
+		F44D26CB1C4D198400438F3C /* playerDB.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D591BDA1FDD002788AA /* playerDB.h */; };
+		F44D26CC1C4D198400438F3C /* AppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D2C1BDA1FDD002788AA /* AppDelegate.h */; };
+		F44D26CD1C4D198400438F3C /* HelloWorldScene.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D441BDA1FDD002788AA /* HelloWorldScene.h */; };
+		F44D26CE1C4D198400438F3C /* kantai.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D4B1BDA1FDD002788AA /* kantai.h */; };
+		F44D26CF1C4D198400438F3C /* Equip.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D381BDA1FDD002788AA /* Equip.h */; };
+		F44D26D01C4D198400438F3C /* Fleet.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D401BDA1FDD002788AA /* Fleet.h */; };
+		F44D26D11C4D198400438F3C /* equipGrid.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D3C1BDA1FDD002788AA /* equipGrid.h */; };
+		F44D26D21C4D198400438F3C /* SystemHeader.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D711BDA1FDD002788AA /* SystemHeader.h */; };
+		F44D26D31C4D198400438F3C /* Formation.h in Sources */ = {isa = PBXBuildFile; fileRef = F40CF9881BDB69A300DD897F /* Formation.h */; };
+		F44D26D41C4D198400438F3C /* MissionNode.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D531BDA1FDD002788AA /* MissionNode.h */; };
+		F44D26D51C4D198400438F3C /* SallyScene.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D6D1BDA1FDD002788AA /* SallyScene.h */; };
+		F44D26D61C4D198400438F3C /* Compass.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D2E1BDA1FDD002788AA /* Compass.h */; };
+		F44D26D71C4D198400438F3C /* BattleModel.h in Sources */ = {isa = PBXBuildFile; fileRef = F40CF98D1BDB6A5A00DD897F /* BattleModel.h */; };
+		F44D26D81C4D198400438F3C /* GameScene.h in Sources */ = {isa = PBXBuildFile; fileRef = F42865E01BDBC33700045E66 /* GameScene.h */; };
+		F44D26D91C4D198400438F3C /* BattleBar.h in Sources */ = {isa = PBXBuildFile; fileRef = F42865E31BDBC52B00045E66 /* BattleBar.h */; };
+		F44D26DA1C4D198400438F3C /* BattleCharacter.h in Sources */ = {isa = PBXBuildFile; fileRef = F42865E71BDBD12C00045E66 /* BattleCharacter.h */; };
+		F44D26DB1C4D198400438F3C /* AnimationMaker.h in Sources */ = {isa = PBXBuildFile; fileRef = F42865EB1BDBD18100045E66 /* AnimationMaker.h */; };
+		F44D26DC1C4D198400438F3C /* CharacterCard.h in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F371BDCB2E100180F6B /* CharacterCard.h */; };
+		F44D26DD1C4D198400438F3C /* BattleHero.h in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F401BDCD9B900180F6B /* BattleHero.h */; };
+		F44D26DE1C4D198400438F3C /* BattleEnemy.h in Sources */ = {isa = PBXBuildFile; fileRef = F467184B1BE88E6300320B0A /* BattleEnemy.h */; };
+		F44D26DF1C4D198400438F3C /* Mission.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D4F1BDA1FDD002788AA /* Mission.h */; };
+		F44D26E01C4D198400438F3C /* MissionContainer.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D511BDA1FDD002788AA /* MissionContainer.h */; };
+		F44D26E11C4D198400438F3C /* MissionSelectPage.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D551BDA1FDD002788AA /* MissionSelectPage.h */; };
+		F44D26E21C4D198400438F3C /* layerSelecter.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D4D1BDA1FDD002788AA /* layerSelecter.h */; };
+		F44D26E31C4D198400438F3C /* portBattleLayer.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D5D1BDA1FDD002788AA /* portBattleLayer.h */; };
+		F44D26E41C4D198400438F3C /* portFactoryLayer.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D5F1BDA1FDD002788AA /* portFactoryLayer.h */; };
+		F44D26E51C4D198400438F3C /* portMainLayer.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D611BDA1FDD002788AA /* portMainLayer.h */; };
+		F44D26E61C4D198400438F3C /* portOrganizeLayer.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D631BDA1FDD002788AA /* portOrganizeLayer.h */; };
+		F44D26E71C4D198400438F3C /* portRemodeLayer.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D651BDA1FDD002788AA /* portRemodeLayer.h */; };
+		F44D26E81C4D198400438F3C /* portRepairLayer.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D671BDA1FDD002788AA /* portRepairLayer.h */; };
+		F44D26E91C4D198400438F3C /* portScene.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D691BDA1FDD002788AA /* portScene.h */; };
+		F44D26EA1C4D198400438F3C /* portSupplyLayer.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D6B1BDA1FDD002788AA /* portSupplyLayer.h */; };
+		F44D26EB1C4D198400438F3C /* TestScene.h in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE81BF380210078C5C0 /* TestScene.h */; };
+		F44D26EE1C4D19A700438F3C /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F44D26EC1C4D19A700438F3C /* libsqlite3.0.tbd */; };
+		F44D26EF1C4D19A700438F3C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F44D26ED1C4D19A700438F3C /* libsqlite3.tbd */; };
+		F44D26F11C4D1D2300438F3C /* database in Sources */ = {isa = PBXBuildFile; fileRef = F4036D251BDA1F31002788AA /* database */; };
 		F45F91221BF4BCA600327120 /* TestScene.h in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE81BF380210078C5C0 /* TestScene.h */; };
 		F467184C1BE88E6300320B0A /* BattleEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F467184A1BE88E6300320B0A /* BattleEnemy.cpp */; };
 		F467184D1BE893F700320B0A /* BattleEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F467184A1BE88E6300320B0A /* BattleEnemy.cpp */; };
@@ -390,6 +437,8 @@
 		F42865E71BDBD12C00045E66 /* BattleCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleCharacter.h; sourceTree = "<group>"; };
 		F42865EA1BDBD18100045E66 /* AnimationMaker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationMaker.cpp; sourceTree = "<group>"; };
 		F42865EB1BDBD18100045E66 /* AnimationMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationMaker.h; sourceTree = "<group>"; };
+		F44D26EC1C4D19A700438F3C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
+		F44D26ED1C4D19A700438F3C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
 		F467184A1BE88E6300320B0A /* BattleEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleEnemy.cpp; sourceTree = "<group>"; };
 		F467184B1BE88E6300320B0A /* BattleEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleEnemy.h; sourceTree = "<group>"; };
 		F4D6CBE71BF380210078C5C0 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
@@ -406,6 +455,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F44D26EE1C4D19A700438F3C /* libsqlite3.0.tbd in Frameworks */,
+				F44D26EF1C4D19A700438F3C /* libsqlite3.tbd in Frameworks */,
 				52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */,
 				1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */,
 				D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */,
@@ -493,6 +544,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F44D26EC1C4D19A700438F3C /* libsqlite3.0.tbd */,
+				F44D26ED1C4D19A700438F3C /* libsqlite3.tbd */,
 				F4036E3F1BDA2369002788AA /* libsqlite3.dylib */,
 				F4036DD81BDA2270002788AA /* libsqlite3.0.dylib */,
 				8262943D1AAF051F00CB7CF7 /* Security.framework */,
@@ -889,7 +942,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = MDDB52YB8L;
+						DevelopmentTeam = ULTMCZG472;
 					};
 				};
 			};
@@ -1003,6 +1056,51 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F44D26F11C4D1D2300438F3C /* database in Sources */,
+				F44D26C01C4D198400438F3C /* XMLBuilder.h in Sources */,
+				F44D26C11C4D198400438F3C /* XMLParser.h in Sources */,
+				F44D26C21C4D198400438F3C /* XMLBase.h in Sources */,
+				F44D26C31C4D198400438F3C /* Player.h in Sources */,
+				F44D26C41C4D198400438F3C /* DatabaseScene.h in Sources */,
+				F44D26C51C4D198400438F3C /* XMLControl.h in Sources */,
+				F44D26C61C4D198400438F3C /* databaseBase.h in Sources */,
+				F44D26C71C4D198400438F3C /* databaseInit.h in Sources */,
+				F44D26C81C4D198400438F3C /* equipDB.h in Sources */,
+				F44D26C91C4D198400438F3C /* fleetDB.h in Sources */,
+				F44D26CA1C4D198400438F3C /* kantaiDB.h in Sources */,
+				F44D26CB1C4D198400438F3C /* playerDB.h in Sources */,
+				F44D26CC1C4D198400438F3C /* AppDelegate.h in Sources */,
+				F44D26CD1C4D198400438F3C /* HelloWorldScene.h in Sources */,
+				F44D26CE1C4D198400438F3C /* kantai.h in Sources */,
+				F44D26CF1C4D198400438F3C /* Equip.h in Sources */,
+				F44D26D01C4D198400438F3C /* Fleet.h in Sources */,
+				F44D26D11C4D198400438F3C /* equipGrid.h in Sources */,
+				F44D26D21C4D198400438F3C /* SystemHeader.h in Sources */,
+				F44D26D31C4D198400438F3C /* Formation.h in Sources */,
+				F44D26D41C4D198400438F3C /* MissionNode.h in Sources */,
+				F44D26D51C4D198400438F3C /* SallyScene.h in Sources */,
+				F44D26D61C4D198400438F3C /* Compass.h in Sources */,
+				F44D26D71C4D198400438F3C /* BattleModel.h in Sources */,
+				F44D26D81C4D198400438F3C /* GameScene.h in Sources */,
+				F44D26D91C4D198400438F3C /* BattleBar.h in Sources */,
+				F44D26DA1C4D198400438F3C /* BattleCharacter.h in Sources */,
+				F44D26DB1C4D198400438F3C /* AnimationMaker.h in Sources */,
+				F44D26DC1C4D198400438F3C /* CharacterCard.h in Sources */,
+				F44D26DD1C4D198400438F3C /* BattleHero.h in Sources */,
+				F44D26DE1C4D198400438F3C /* BattleEnemy.h in Sources */,
+				F44D26DF1C4D198400438F3C /* Mission.h in Sources */,
+				F44D26E01C4D198400438F3C /* MissionContainer.h in Sources */,
+				F44D26E11C4D198400438F3C /* MissionSelectPage.h in Sources */,
+				F44D26E21C4D198400438F3C /* layerSelecter.h in Sources */,
+				F44D26E31C4D198400438F3C /* portBattleLayer.h in Sources */,
+				F44D26E41C4D198400438F3C /* portFactoryLayer.h in Sources */,
+				F44D26E51C4D198400438F3C /* portMainLayer.h in Sources */,
+				F44D26E61C4D198400438F3C /* portOrganizeLayer.h in Sources */,
+				F44D26E71C4D198400438F3C /* portRemodeLayer.h in Sources */,
+				F44D26E81C4D198400438F3C /* portRepairLayer.h in Sources */,
+				F44D26E91C4D198400438F3C /* portScene.h in Sources */,
+				F44D26EA1C4D198400438F3C /* portSupplyLayer.h in Sources */,
+				F44D26EB1C4D198400438F3C /* TestScene.h in Sources */,
 				F40CF98E1BDB6A5A00DD897F /* BattleModel.cpp in Sources */,
 				F4036DA61BDA1FDD002788AA /* playerDB.cpp in Sources */,
 				F4D6CBE91BF380210078C5C0 /* TestScene.cpp in Sources */,
@@ -1171,7 +1269,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1195,6 +1295,8 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.cocogame.Kantai;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -1207,7 +1309,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;
@@ -1229,6 +1333,8 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.cocogame.Kantai;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -1243,6 +1349,7 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1276,6 +1383,7 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;

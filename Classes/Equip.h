@@ -135,7 +135,7 @@ class Equip:public Ref
 public:
     static Equip* create();
     
-    static Equip* create(int equipKey,int equipNumber,Ref* parent=0);
+    static Equip* create(int equipKey,int equipNumber,Ref* parent=NULL);
     
     void init(int equipKey,int equipNumber,Ref* parent);
     
@@ -146,6 +146,8 @@ public:
     ~Equip();
     
     std::set<KantaiType>& getSupKantaiType() const;
+    
+    void changeKantai(Ref* kantai){parent=kantai;}
 protected:
     Equip();
     

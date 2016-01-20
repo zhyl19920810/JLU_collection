@@ -218,7 +218,6 @@ Player* DBInit::initPlayer(int _playerKey)
             returnPlayer->setmaxKantaiSize(initPlayerProp.initMaxKantaiSize(_currLV));
             returnPlayer->setmaxEquipSize(initPlayerProp.initMaxEquipSize(_currLV));
             returnPlayer->setmaxFleetSize(_maxFleetSize);
-            
         }
     }
     

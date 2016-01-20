@@ -106,9 +106,9 @@ EquipImp* XMLParser::readEquipXml(int _equipNumber)
 {
     EquipImp* equipImp=new EquipImp;
     
-    std::string filePath="/Volumes/opengl/kancolle_beta/Resources/equipment/";
+    std::string filePath="equipment/";
     filePath+=std::to_string(_equipNumber)+"/equipXML"+std::to_string(_equipNumber)+".xml";
-    
+    filePath=FileUtils::getInstance()->fullPathForFilename(filePath);
     
     XMLDocument *pDoc = new XMLDocument();
     XMLError errorId = pDoc->LoadFile(filePath.c_str());

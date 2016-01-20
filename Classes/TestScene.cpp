@@ -23,7 +23,7 @@ Scene* TestScene::createScene()
 
 TestScene::TestScene()
 {
-    Sprite* bg=Sprite::create("/Volumes/opengl/kancolle_beta/Resources/equip/btxt_flat/001.png");
+    Sprite* bg=Sprite::create("equip/btxt_flat/001.png");
     addChild(bg);
     Equip* zhang1;
     for (int i=0; i<1000; ++i)

@@ -60,7 +60,7 @@ void XMLBuilder::setButton()
 void XMLBuilder::readXML(int _kantaiNumber)
 {
     
-    std::string filePath="/Volumes/opengl/kancolle_alpha/Resources/kantai/";
+    std::string filePath="kantai/";
     filePath+=std::to_string(_kantaiNumber)+"/"+std::to_string(_kantaiNumber)+".xml";
     //std::string filePath="/Volumes/opengl/kancolle_alpha/Resources/21.xml";
     XMLDocument *pDoc = new XMLDocument();
@@ -136,7 +136,7 @@ void XMLBuilder::readXML(int _kantaiNumber)
 ValueVector XMLBuilder::readXML1(int _kantaiNumber)
 {
     
-    std::string filePath="/Volumes/opengl/kancolle_alpha/Resources/kantai/";
+    std::string filePath="kantai/";
     filePath+=std::to_string(_kantaiNumber)+"/"+std::to_string(_kantaiNumber)+".xml";
     //std::string filePath="/Volumes/opengl/kancolle_alpha/Resources/21.xml";
     XMLDocument *pDoc = new XMLDocument();
@@ -259,7 +259,7 @@ ValueVector XMLBuilder::readXML1(int _kantaiNumber)
 void XMLBuilder::writeXML(int _kantaiNumber)
 {
     
-    std::string filePath="/Volumes/opengl/kancolle_alpha/Resources/kantai/";
+    std::string filePath="kantai/";
     filePath+=std::to_string(_kantaiNumber)+"/"+std::to_string(_kantaiNumber)+".xml";
     XMLDocument *pDoc=new XMLDocument();
     
@@ -464,7 +464,7 @@ void XMLBuilder::writeEquipXml(ValueVector _equipData)
     
 
     
-    std::string filePath="/Volumes/opengl/kancolle_alpha/Resources/equipment/";
+    std::string filePath="equipment/";
     filePath+=std::to_string(_equipNumber)+"/equipXML"+std::to_string(_equipNumber)+".xml";
     XMLDocument *pDoc=new XMLDocument();
     
@@ -552,9 +552,9 @@ void XMLBuilder::writeEquipXml(ValueVector _equipData)
 ValueVector XMLBuilder::readEquipXml(int _equipNumber)
 {
 
-    std::string filePath="/Volumes/opengl/kancolle_alpha/Resources/equipment/";
+    std::string filePath="equipment/";
     filePath+=std::to_string(_equipNumber)+"/equipXML"+std::to_string(_equipNumber)+".xml";
-    //std::string filePath="/Volumes/opengl/kancolle_alpha/Resources/21.xml";
+    filePath=FileUtils::getInstance()->fullPathForFilename(filePath);
     XMLDocument *pDoc = new XMLDocument();
     XMLError errorId = pDoc->LoadFile(filePath.c_str());
     if (errorId != 0) {
@@ -853,7 +853,7 @@ void XMLBuilder::writeKantaiXml(ValueVector _kantaiData)
     
     
 
-    std::string filePath="/Volumes/opengl/kancolle_alpha/Resources/kantai/";
+    std::string filePath="kantai/";
     filePath+=std::to_string(_kantaiNumber)+"/kantaiXML"+std::to_string(_kantaiNumber)+".xml";
     XMLDocument *pDoc=new XMLDocument();
     
@@ -1043,13 +1043,15 @@ ValueVector XMLBuilder::buildTheKantaiXML()
 
 ValueVector XMLBuilder::readKantaiXML(int _kantaiNumber)
 {
-    std::string filePath="/Volumes/opengl/kancolle_beta/Resources/kantai/";
+    std::string filePath="kantai/";
+    
     if (_kantaiNumber<0)
     {
         filePath+=std::to_string(_kantaiNumber)+"/kantaiXML.xml";
     }
     else
     filePath+=std::to_string(_kantaiNumber)+"/kantaiXML"+std::to_string(_kantaiNumber)+".xml";
+    filePath=FileUtils::getInstance()->fullPathForFilename(filePath);
     XMLDocument *pDoc = new XMLDocument();
     XMLError errorId = pDoc->LoadFile(filePath.c_str());
     if (errorId != 0) {
