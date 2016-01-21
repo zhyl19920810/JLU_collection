@@ -260,6 +260,11 @@
 		F4E62F391BDCB2E100180F6B /* CharacterCard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F361BDCB2E100180F6B /* CharacterCard.cpp */; };
 		F4E62F411BDCD9B900180F6B /* BattleHero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F3F1BDCD9B900180F6B /* BattleHero.cpp */; };
 		F4E62F421BDCD9B900180F6B /* BattleHero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F3F1BDCD9B900180F6B /* BattleHero.cpp */; };
+		F4FABB041C50D30600F75BCE /* KantaiMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB021C50D30600F75BCE /* KantaiMgr.cpp */; };
+		F4FABB071C50D34000F75BCE /* loadTxt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB051C50D34000F75BCE /* loadTxt.cpp */; };
+		F4FABB0A1C50D36C00F75BCE /* EquipMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB081C50D36B00F75BCE /* EquipMgr.cpp */; };
+		F4FABB0D1C50D3E400F75BCE /* ExpMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0B1C50D3E400F75BCE /* ExpMgr.cpp */; };
+		F4FABB101C50D42600F75BCE /* Singleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0E1C50D42600F75BCE /* Singleton.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -448,6 +453,16 @@
 		F4E62F371BDCB2E100180F6B /* CharacterCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterCard.h; sourceTree = "<group>"; };
 		F4E62F3F1BDCD9B900180F6B /* BattleHero.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleHero.cpp; sourceTree = "<group>"; };
 		F4E62F401BDCD9B900180F6B /* BattleHero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleHero.h; sourceTree = "<group>"; };
+		F4FABB021C50D30600F75BCE /* KantaiMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KantaiMgr.cpp; sourceTree = "<group>"; };
+		F4FABB031C50D30600F75BCE /* KantaiMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KantaiMgr.hpp; sourceTree = "<group>"; };
+		F4FABB051C50D34000F75BCE /* loadTxt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = loadTxt.cpp; sourceTree = "<group>"; };
+		F4FABB061C50D34000F75BCE /* loadTxt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = loadTxt.hpp; sourceTree = "<group>"; };
+		F4FABB081C50D36B00F75BCE /* EquipMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EquipMgr.cpp; sourceTree = "<group>"; };
+		F4FABB091C50D36B00F75BCE /* EquipMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EquipMgr.hpp; sourceTree = "<group>"; };
+		F4FABB0B1C50D3E400F75BCE /* ExpMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExpMgr.cpp; sourceTree = "<group>"; };
+		F4FABB0C1C50D3E400F75BCE /* ExpMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExpMgr.hpp; sourceTree = "<group>"; };
+		F4FABB0E1C50D42600F75BCE /* Singleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Singleton.cpp; sourceTree = "<group>"; };
+		F4FABB0F1C50D42600F75BCE /* Singleton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Singleton.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -816,6 +831,9 @@
 		F4036DD31BDA2160002788AA /* backGround */ = {
 			isa = PBXGroup;
 			children = (
+				F4FABB0E1C50D42600F75BCE /* Singleton.cpp */,
+				F4FABB0F1C50D42600F75BCE /* Singleton.hpp */,
+				F4FABB011C50D2D200F75BCE /* CSV */,
 				F4036DD71BDA2216002788AA /* XML */,
 				F4036DD61BDA21A9002788AA /* player */,
 				F4036DD51BDA2185002788AA /* scene */,
@@ -892,6 +910,21 @@
 				F40CF98D1BDB6A5A00DD897F /* BattleModel.h */,
 			);
 			name = battleModel;
+			sourceTree = "<group>";
+		};
+		F4FABB011C50D2D200F75BCE /* CSV */ = {
+			isa = PBXGroup;
+			children = (
+				F4FABB021C50D30600F75BCE /* KantaiMgr.cpp */,
+				F4FABB031C50D30600F75BCE /* KantaiMgr.hpp */,
+				F4FABB051C50D34000F75BCE /* loadTxt.cpp */,
+				F4FABB061C50D34000F75BCE /* loadTxt.hpp */,
+				F4FABB081C50D36B00F75BCE /* EquipMgr.cpp */,
+				F4FABB091C50D36B00F75BCE /* EquipMgr.hpp */,
+				F4FABB0B1C50D3E400F75BCE /* ExpMgr.cpp */,
+				F4FABB0C1C50D3E400F75BCE /* ExpMgr.hpp */,
+			);
+			name = CSV;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1072,6 +1105,7 @@
 				F44D26CC1C4D198400438F3C /* AppDelegate.h in Sources */,
 				F44D26CD1C4D198400438F3C /* HelloWorldScene.h in Sources */,
 				F44D26CE1C4D198400438F3C /* kantai.h in Sources */,
+				F4FABB071C50D34000F75BCE /* loadTxt.cpp in Sources */,
 				F44D26CF1C4D198400438F3C /* Equip.h in Sources */,
 				F44D26D01C4D198400438F3C /* Fleet.h in Sources */,
 				F44D26D11C4D198400438F3C /* equipGrid.h in Sources */,
@@ -1096,6 +1130,7 @@
 				F44D26E41C4D198400438F3C /* portFactoryLayer.h in Sources */,
 				F44D26E51C4D198400438F3C /* portMainLayer.h in Sources */,
 				F44D26E61C4D198400438F3C /* portOrganizeLayer.h in Sources */,
+				F4FABB101C50D42600F75BCE /* Singleton.cpp in Sources */,
 				F44D26E71C4D198400438F3C /* portRemodeLayer.h in Sources */,
 				F44D26E81C4D198400438F3C /* portRepairLayer.h in Sources */,
 				F44D26E91C4D198400438F3C /* portScene.h in Sources */,
@@ -1114,6 +1149,7 @@
 				F4036DC01BDA1FDD002788AA /* XMLBuilder.cpp in Sources */,
 				F42865EC1BDBD18100045E66 /* AnimationMaker.cpp in Sources */,
 				F4036D8A1BDA1FDD002788AA /* fleetDB.cpp in Sources */,
+				F4FABB041C50D30600F75BCE /* KantaiMgr.cpp in Sources */,
 				F4036D881BDA1FDD002788AA /* equipGrid.cpp in Sources */,
 				F4036DA01BDA1FDD002788AA /* MissionNode.cpp in Sources */,
 				F4E62F381BDCB2E100180F6B /* CharacterCard.cpp in Sources */,
@@ -1131,6 +1167,8 @@
 				F4036D9C1BDA1FDD002788AA /* Mission.cpp in Sources */,
 				F4036D941BDA1FDD002788AA /* kantaiDB.cpp in Sources */,
 				F4036D9A1BDA1FDD002788AA /* layerSelecter.cpp in Sources */,
+				F4FABB0A1C50D36C00F75BCE /* EquipMgr.cpp in Sources */,
+				F4FABB0D1C50D3E400F75BCE /* ExpMgr.cpp in Sources */,
 				F4036D8C1BDA1FDD002788AA /* Fleet.cpp in Sources */,
 				F4036D981BDA1FDD002788AA /* kantai.cpp in Sources */,
 				F40CF97F1BDB4D1E00DD897F /* XMLBase.cpp in Sources */,

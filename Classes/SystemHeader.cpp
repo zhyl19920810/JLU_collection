@@ -8,42 +8,6 @@
 
 #include "SystemHeader.h"
 
-////database key
-int DatabaseKey::maxFleetKey=0;
-int DatabaseKey::maxKantaiKey=0;
-int DatabaseKey::maxEquipKey=0;
-
-int DatabaseKey::getFleetKey()
-{
-    return maxFleetKey;
-}
-
-int DatabaseKey::getKantaiKey()
-{
-    return maxKantaiKey;
-}
-
-int DatabaseKey::getEquipKey()
-{
-    return maxEquipKey;
-}
-
-void DatabaseKey::setFleetKey(int fleetKey)
-{
-    maxFleetKey=fleetKey;
-}
-
-void DatabaseKey::setKantaiKey(int kantaiKey)
-{
-    maxKantaiKey=kantaiKey;
-}
-
-void DatabaseKey::setEquipKey(int equipKey)
-{
-    maxEquipKey=equipKey;
-}
-
-
 
 
 std::string NameResolution::EquipScopeReso(int _equipScope)
@@ -281,23 +245,6 @@ std::string NameResolution::EquipTypeReso(int _equipType)
     return nullptr;
 }
 
-
-
-int updateExp::getUpdateExpByType(int kantaiLV)
-{
-    if (kantaiLV>100)
-    {
-        return -1;
-    }
-    else if (kantaiLV<0)
-    {
-        return -2;
-    }
-    else
-    {
-        return data[kantaiLV-1];
-    }
-}
 
 
 int InitPlayerProp::initPlayerUpdateExpByLV(int _currLV)

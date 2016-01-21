@@ -219,7 +219,7 @@ bool Kantai::canAirBattle()
         if (equipGrid[i])
         {
             auto equipType=equipGrid[i]->getequipType();
-            if (equipType==equipScope::Aircraft||equipType==equipScope::SeaPlane)
+            if (equipType==EquipScope::Aircraft||equipType==EquipScope::SeaPlane)
             {
                 return true;
             }
