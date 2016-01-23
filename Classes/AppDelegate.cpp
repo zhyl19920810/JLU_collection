@@ -63,6 +63,7 @@ void portModel(Director* director)
     sGameManger.LoadResource();
     Player::newInstance();
     std::string filename = FileUtils::getInstance()->fullPathForFilename("database/kancolle_2.sqlite3");
+    //std::string filename="/Volumes/opengl/kancolle_beta/Resources/database/kancolle_2.sqlite3";
     DBBase::init(filename);
     DBInit init;
     init.initDB(1);
@@ -106,11 +107,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //battleModel(director);
     portModel(director);
     
-    
-    //auto scene = TestScene::createScene();
-    // run
-    //director->runWithScene(scene);
-
     return true;
 }
 

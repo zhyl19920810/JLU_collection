@@ -16,6 +16,10 @@ parent(NULL)
 
 Kantai::~Kantai()
 {
+    for (int i=0; equipGrid.size(); ++i)
+    {
+        equipGrid[i]=NULL;
+    }
     kantaiImp=NULL;
     parent=NULL;
 }
@@ -55,7 +59,7 @@ void Kantai::init(int kantaiKey, int kantaiNumber, LoadState state,Ref* parent)
     this->kantaiNumber=kantaiNumber;
     this->kantaiKey=kantaiKey;
     switch (state) {
-        case LoadState::INIT_KANTAI:
+        case LoadState::INIT_UNIT:
         {
             kantaiImp=sKantaiMgr.GetKantaiMap(kantaiNumber);
             currLV=kantaiImp->lv;

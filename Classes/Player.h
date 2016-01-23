@@ -21,12 +21,7 @@
 using namespace cocos2d;
 
 
-#define CC_GETVALUE(varType,varName)\
-public: varType get##varName(void) const {return varName;}\
 
-#define CC_RWVALUE(varType,varName)\
-public: varType get##varName(void) const {return varName;}\
-public: void set##varName(varType var) {varName=var;}\
 
 class Player;
 
@@ -141,63 +136,55 @@ public:
     void initDatabaseData(std::unordered_map<int,Fleet*>& _fleetData,std::unordered_map<int,Kantai*>& _kantaiData,std::unordered_map<int,Equip*>& _equipData);
     
     //equip
-    void buildNewEquip(int _equipNumber,int _kantaiKey=-1,int _position=0);
-    
+    Equip* buildNewEquip(int _equipNumber,int _kantaiKey=-1,int _position=0);
     void deleteEquip(Equip* _equip);
-    
     void deleteEquip(int _equipKey);
-    
-    void removeEquip(Kantai* _kantai,int _position);
-    
-    int _deleteEquipNodb(Equip* _equip);//No db
-    
-    inline int deleteEquipByEquipKey(int _equipKey);//No db
-    
-    
-
-    
+    void removeEquip(Kantai* _kantai,int _position);//从装备上撤出但不删除
     void changeEquipPosition(int _equipKey,int _kantaiKey,int _position);
-    
-    
+    void changeEquipPosition(Equip* equip,Kantai* kantai,int _position);
     inline Equip* findEquipByEquipKey(int _equipKey);
     
     
-    //kantai
-    void buildNewKantai(int _kantaiNumber);
+private:
+    void _changeEquipPosition(Equip* _equip,Kantai* _kantai,int _position);
+    int _deleteEquipNodb(Equip* _equip);//No db
+    inline int _deleteEquipByEquipKey(int _equipKey);//No db
     
-    void deleteKantai(int _kantaiKey); //装备也删除
     
-    void deleteKantai(Fleet& _fleet,int _position);
-    
-    void removeKantai(Fleet& _fleet,int _position);
-    
-    void changeKantaiPosition(int _kantaiKey,int _fleetNumber,int _position);
-    
-    //fleet
-    void buildNewFleet(int _fleetKey);
-    
-    void deleteFleet(int _fleetNumber); //只删除fleet，舰娘放回表中
 public:
     
+    //kantai
+    Kantai* buildNewKantai(int _kantaiNumber);
+    void deleteKantai(int _kantaiKey); //装备也删除
+    void deleteKantai(Kantai* kantai);
+    void removeKantai(Fleet* _fleet,int _position);
+    void changeKantaiPosition(int _kantaiKey,int _fleetNumber,int _position);
+    void changeKantaiPosition(Kantai* kantai,Fleet* fleet,int position);
+    inline Kantai* findKantaiByKantaiKey(int _kantaiKey);
+    
+private:
+    void _changeKantaiPosition(Kantai* kantai,Fleet* fleet,int position);
+public:
+    //fleet
+    Fleet* buildNewFleet();
+    void buildNewFleet(int _fleetKey);
+    void deleteFleet(int _fleetKey); //只删除fleet，舰娘放回表中
+    Fleet* findFleetByFleetKey(int _fleetKey);
+    
+public:
     std::vector<Kantai*> kantaiData;
     std::vector<Fleet*> fleetData;
     std::vector<Equip*> equipData;
     std::vector<int> planeLoad;
     
 
-    //kantai
-    inline Kantai* findKantaiByKantaiKey(int _kantaiKey);
 
-    //fleet
-    Fleet* findFleetByFleetKey(int _fleetKey);
 protected:
     Player();
     
 //dock
 private:
     std::vector<KantaiDock*> kantaiDock;
-   
-    
 };
 
 
@@ -213,7 +200,7 @@ public:
         {
             if (*it)
             {
-                log("==>fleet %d",(*it)->getfleetKey());
+                log("==>fleet %d",(*it)->getFleetKey());
                 for (int i=0; i<6; ++i)
                 {
                     if ((*it)->ship[i])

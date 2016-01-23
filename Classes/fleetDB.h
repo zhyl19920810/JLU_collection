@@ -17,7 +17,7 @@ using namespace cocos2d;
 class FleetDB:public DBBase
 {
 public:
-    void getNewFleetByNumber(int fleetKey);
+    void getNewFleetByNumber(int fleetKey,const std::string& name,int fleetState);
     
     static FleetDB* getInstance();
     

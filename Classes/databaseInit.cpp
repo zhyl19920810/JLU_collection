@@ -25,7 +25,7 @@ void logAllData(std::unordered_map<int,Kantai*> _kantaiMap,
     
     for (auto it=_fleetMap.begin(); it!=_fleetMap.end(); ++it)
     {
-        log("fleetKey: %d   fleetKey: %d",it->first,it->second->getfleetKey());
+        log("fleetKey: %d   fleetKey: %d",it->first,it->second->getFleetKey());
     }
     
     for (auto it=_fleetKantaiMap.begin(); it!=_fleetKantaiMap.end(); ++it)
@@ -111,7 +111,7 @@ void DBInit::initDB(int _playerKey)
     initPlayer(_playerKey);
     
     initFleet(_fleetMap);
-
+    sPlayer.changeKantaiPosition(sPlayer.buildNewKantai(23), _fleetMap.begin()->second, 1);
     initKantai(_kantaiMap);
 
     initEquip(_equipMap);
@@ -234,7 +234,9 @@ void DBInit::initFleet(std::unordered_map<int,Fleet*>& _kantaiFleet)
             int fleetKey=sqlite3_column_int(statement, 0);
             std::string fleetName=std::string((const char *)sqlite3_column_text(statement, 1));
             FleetState fleetState=static_cast<FleetState>(sqlite3_column_int(statement, 2));
-            auto fleet=new Fleet(fleetKey,fleetName,fleetState);
+            auto fleet=Fleet::create(fleetKey,READ_KANTAI_DATABASE);
+            fleet->fleetName=fleetName;
+            fleet->fleetState=fleetState;
             _kantaiFleet.insert(std::pair<int, Fleet*>(fleetKey,fleet));
         }
     }

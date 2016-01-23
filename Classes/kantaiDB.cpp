@@ -38,16 +38,23 @@ int KantaiDB::getNewKantaiByNumber(int kantaiNumber)
     int _antiSubmarine=tmp->initAntiSubmarine;
     int _searchEnemy=tmp->initSearchEnemy;
     int _luck=tmp->initLuck;
-
+    std::string _planeLoadPr;
     
-    std::string sqlStr="INSERT OR REPLACE INTO player_got_kantai(kantaiKey,kantaiNumber,currLV,currFuel,currAmmo,currRange,currHP,currExp,updateExp,firePower,armor,torpedo,dodge,antiAir,antiSubmarine,searchEnemy,luck,fatigueValue,kantaiLock,kantaiStar,kantaiState) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    _planeLoadPr+=to_string(tmp->planeLoad[0]);
+    for (int i=1; i<tmp->kantaiEquipSize; ++i)
+    {
+        _planeLoadPr+="#";
+        _planeLoadPr+=to_string(tmp->planeLoad[i]);
+    }
+    
+    std::string sqlStr="INSERT OR REPLACE INTO player_got_kantai(kantaiKey,kantaiNumber,currLV,currFuel,currAmmo,currRange,currHP,currExp,updateExp,firePower,armor,torpedo,dodge,antiAir,antiSubmarine,searchEnemy,luck,fatigueValue,kantaiLock,kantaiStar,kantaiState,planeLoadPr) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
     
     sqlite3_stmt* statement;
     
     if (sqlite3_prepare_v2(kancolleDB, sqlStr.c_str(), -1, &statement, NULL)==SQLITE_OK)
     {
-        //sqlite3_bind_int(statement ,1, 1);
+        sqlite3_bind_int(statement ,1, 20);
         sqlite3_bind_int(statement ,2, kantaiNumber);
         sqlite3_bind_int(statement ,3, _lv);
         sqlite3_bind_int(statement ,4, _fuel);
@@ -68,9 +75,11 @@ int KantaiDB::getNewKantaiByNumber(int kantaiNumber)
         sqlite3_bind_int(statement ,19, 0); //kantaiLock
         sqlite3_bind_int(statement ,20, 0); //kantaiStar?????
         sqlite3_bind_int(statement ,21, 1); //kantaiState?????
+        sqlite3_bind_text(statement, 22,_planeLoadPr.c_str(), -1, NULL);
         
         if (sqlite3_step(statement)!=SQLITE_DONE)
         {
+            log("%s",sqlite3_errmsg(kancolleDB));
             CCASSERT(false, "Insert Data failure.");
         }
     }

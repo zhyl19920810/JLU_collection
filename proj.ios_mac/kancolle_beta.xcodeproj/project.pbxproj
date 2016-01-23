@@ -252,6 +252,7 @@
 		F4B191DF1BE74B56000A41C3 /* AnimationMaker.h in Sources */ = {isa = PBXBuildFile; fileRef = F42865EB1BDBD18100045E66 /* AnimationMaker.h */; };
 		F4B191E01BE74B56000A41C3 /* CharacterCard.h in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F371BDCB2E100180F6B /* CharacterCard.h */; };
 		F4B191E11BE74B56000A41C3 /* BattleHero.h in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F401BDCD9B900180F6B /* BattleHero.h */; };
+		F4CA47EC1C53D160000945DE /* SqlitePath.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CA47EB1C53D160000945DE /* SqlitePath.m */; };
 		F4D6CBE91BF380210078C5C0 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE71BF380210078C5C0 /* TestScene.cpp */; };
 		F4D6CBEA1BF380210078C5C0 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE71BF380210078C5C0 /* TestScene.cpp */; };
 		F4D8028E1BE604EB0032C724 /* Mission.xml in Resources */ = {isa = PBXBuildFile; fileRef = F4D8028D1BE604EB0032C724 /* Mission.xml */; };
@@ -448,6 +449,7 @@
 		F44D26ED1C4D19A700438F3C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
 		F467184A1BE88E6300320B0A /* BattleEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleEnemy.cpp; sourceTree = "<group>"; };
 		F467184B1BE88E6300320B0A /* BattleEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleEnemy.h; sourceTree = "<group>"; };
+		F4CA47EB1C53D160000945DE /* SqlitePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqlitePath.m; sourceTree = "<group>"; };
 		F4D6CBE71BF380210078C5C0 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
 		F4D6CBE81BF380210078C5C0 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
 		F4D8028D1BE604EB0032C724 /* Mission.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Mission.xml; sourceTree = "<group>"; };
@@ -830,6 +832,7 @@
 				F4036D2C1BDA1FDD002788AA /* AppDelegate.h */,
 				F4036D431BDA1FDD002788AA /* HelloWorldScene.cpp */,
 				F4036D441BDA1FDD002788AA /* HelloWorldScene.h */,
+				F4CA47EB1C53D160000945DE /* SqlitePath.m */,
 			);
 			name = init;
 			sourceTree = "<group>";
@@ -1123,6 +1126,7 @@
 				F44D26D41C4D198400438F3C /* MissionNode.h in Sources */,
 				F44D26D51C4D198400438F3C /* SallyScene.h in Sources */,
 				F44D26D61C4D198400438F3C /* Compass.h in Sources */,
+				F4CA47EC1C53D160000945DE /* SqlitePath.m in Sources */,
 				F44D26D71C4D198400438F3C /* BattleModel.h in Sources */,
 				F44D26D81C4D198400438F3C /* GameScene.h in Sources */,
 				F44D26D91C4D198400438F3C /* BattleBar.h in Sources */,

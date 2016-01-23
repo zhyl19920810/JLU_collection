@@ -8,30 +8,41 @@
 
 #include "Fleet.h"
 
-Fleet::Fleet(int _fleetKey,const std::string& _fleetName,FleetState _fleetState):fleetKey(_fleetKey),fleetName(_fleetName),fleetState(_fleetState)
-{
-    ship.resize(6);
-}
 
-bool Fleet::addShipNoDatabase(Kantai *kantai)
+Fleet* Fleet::create(int fleetKey,LoadState state)
 {
-    if (ship.size()>=6)
-    {
-        return false;
+    Fleet* fleet=new Fleet;
+    if (fleet) {
+        fleet->init(fleetKey, state);
     }
-    ship.push_back(kantai);
-    
-    return true;
+    else
+    {
+        CCASSERT(false, "can not init the fleet");
+    }
+    return fleet;
 }
 
-Fleet* Fleet::create(std::string &enemyName)
+
+void Fleet::init(int fleetKey, LoadState state)
 {
-    
-    
-    
-    
-    
+    this->fleetKey=fleetKey;
+    switch (state)
+    {
+        case LoadState::INIT_UNIT:
+        {
+            fleetState=Fleet_Free;
+            this->fleetName="new FLEET";
+            break;
+        }
+        case LoadState::READ_KANTAI_DATABASE:
+        {
+            break;
+        }
+        default:
+            break;
+    }
 }
+
 
 Fleet::Fleet()
 {
@@ -39,7 +50,7 @@ Fleet::Fleet()
 }
 
 
-int Fleet::size()
+int Fleet::KantaiSize()
 {
     int count=0;
     for (int i=0; i<6; ++i)
@@ -50,9 +61,7 @@ int Fleet::size()
         }
     }
     return count;
-    
 }
-
 
 
 void Fleet::setFleetName(const std::string &_fleetName)

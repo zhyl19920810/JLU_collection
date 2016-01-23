@@ -16,47 +16,35 @@
 
 USING_NS_CC;
 
-enum FleetState
+
+
+
+typedef enum
 {
-    KANTAI_UNUSE=120,
-    KANTAI_ATTACK,
-    KANTAI_PVP,
-    KANTAI_EXPEDITION
-};
-
-#define CC_GETVALUE(varType,varName)\
-public: varType get##varName(void) const {return varName;}\
-
-#define CC_RWVALUE(varType,varName)\
-public: varType get##varName(void) const {return varName;}\
-public: void set##varName(varType var) {varName=var;}\
+    Fleet_Free,
+    Fleet_Battle,
+    Fleet_Expedition,
+    Fleet_Error,
+}FleetState;
 
 
 class Fleet:public Ref
 {
-    CC_GETVALUE(int, fleetKey);
-    CC_RWVALUE(std::string, fleetName);
-    CC_RWVALUE(FleetState, fleetState);
+    friend class DBInit;
 public:
-    Fleet(int _fleetKey,const std::string& _fleetName,FleetState _fleetState);
+    static Fleet* create(int fleetKey,LoadState state);
+    void init(int fleetKey,LoadState state);
     
-    Fleet(int _fleetKey):fleetKey(_fleetKey){}
-    
-    //create
-    static Fleet* create(int _fleetKey);
-    
-    static Fleet* create(std::string& enemyName);
-
+    int getFleetKey() const {return fleetKey;}
     void setFleetName(const std::string& _fleetName);
-    
+    std::string getFleetName() const {return fleetName;}
     void setFleetState(FleetState _fleetState);
-    
-    bool addShipNoDatabase(Kantai* kantai);
-    
-    int size();
+    FleetState getFleetState() const {return fleetState;}
+
+    int KantaiSize();
+    ~Fleet(){}
 public:
     std::vector<Kantai*> ship;
-
     
 protected:
     Fleet();

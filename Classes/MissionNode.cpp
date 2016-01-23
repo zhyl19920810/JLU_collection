@@ -69,14 +69,14 @@ void MissionNode::setType(const std::string& type)
 
 Fleet* MissionNode::parseEnemyFleet(const std::string &name)
 {
-    std::vector<std::string> strings;
-    split(name, "#", strings); //split text in script by "#"
-    enemyFleet = new Fleet(-1);
-    for (int i = 0; i < strings.size(); i++)
-    {
-//        ValueVector temp=XMLBuilder::readKantaiXML(std::atoi(strings[i].c_str()));
-//        Kantai* _kantai=new Kantai(temp);
-//        enemyFleet->addShipNoDatabase(_kantai);
-    }
-    return enemyFleet;
+//    std::vector<std::string> strings;
+//    split(name, "#", strings); //split text in script by "#"
+//    enemyFleet = new Fleet(-1);
+//    for (int i = 0; i < strings.size(); i++)
+//    {
+////        ValueVector temp=XMLBuilder::readKantaiXML(std::atoi(strings[i].c_str()));
+////        Kantai* _kantai=new Kantai(temp);
+////        enemyFleet->addShipNoDatabase(_kantai);
+//    }
+//    return enemyFleet;
 }

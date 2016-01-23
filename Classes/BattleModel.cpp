@@ -14,12 +14,12 @@
 
 BattleModel::BattleModel(Fleet* allies,Fleet* enemy,FormationType alliesFormation,FormationType enemyFormation)
 {
-    for (int i=0; i<allies->size(); ++i)
+    for (int i=0; i<allies->KantaiSize(); ++i)
     {
         this->allies.push_back(allies->ship[i]);
     }
-    log("%d",enemy->size());
-    for (int i=0; i<enemy->size(); ++i)
+    log("%d",enemy->KantaiSize());
+    for (int i=0; i<enemy->KantaiSize(); ++i)
     {
         this->enemy.push_back(enemy->ship[i]);
     }

@@ -20,11 +20,7 @@ USING_NS_CC;
 #define INIT_FATIGUEVALUE 50
 
 
-typedef enum
-{
-    INIT_KANTAI,
-    READ_KANTAI_DATABASE
-}LoadState;
+
 
 typedef enum
 {

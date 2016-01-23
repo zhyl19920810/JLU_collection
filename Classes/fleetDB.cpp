@@ -18,11 +18,10 @@ FleetDB* FleetDB::getInstance()
 
 FleetDB::FleetDB(){}
 
-void FleetDB::getNewFleetByNumber(int fleetKey)
+void FleetDB::getNewFleetByNumber(int fleetKey,const std::string& name,int fleetState)
 {
     
     std::string qsql="INSERT OR REPLACE INTO player_got_fleet(fleetKey,fleetName,fleetState) Values(?,?,?)";
-    std::string name="FLEET";
     
     sqlite3_stmt* statement;
     
@@ -30,7 +29,7 @@ void FleetDB::getNewFleetByNumber(int fleetKey)
     {
         sqlite3_bind_int(statement, 1, fleetKey);
         sqlite3_bind_text(statement, 2,name.c_str(), -1, NULL);
-        sqlite3_bind_int(statement, 3, 120);
+        sqlite3_bind_int(statement, 3, fleetState);
         
         if (sqlite3_step(statement)!=SQLITE_DONE)
         {
@@ -39,10 +38,6 @@ void FleetDB::getNewFleetByNumber(int fleetKey)
     }
     
     sqlite3_finalize(statement);
-    
-    //fleet=new Fleet(fleetKey,name,KANTAI_UNUSE);
-    //return fleet;
-    
 }
 
 void FleetDB::deleteFleetByKey(int _fleetKey)

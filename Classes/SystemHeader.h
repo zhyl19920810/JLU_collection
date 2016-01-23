@@ -108,6 +108,13 @@ typedef enum
     Deep_Sea_Type=23            //深海装备类型
 }EquipType;
 
+typedef enum
+{
+    INIT_UNIT,
+    READ_KANTAI_DATABASE
+}LoadState;
+
+
 
 class NameResolution
 {
