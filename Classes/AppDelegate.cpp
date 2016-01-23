@@ -8,6 +8,7 @@
 #include "GameScene.h"
 #include "MissionNode.h"
 #include "TestScene.h"
+#include "GameManger.hpp"
 
 #define DEBUG_MODE true
 
@@ -39,11 +40,11 @@ void battleModel(Director* director)
     DBBase::init(filename);
     DBInit init;
     auto player=Player::getInstance();
-    player=init.initDB(1);
+    init.initDB(1);
     
     if (DEBUG_MODE)
     {
-        Fleet* allies=Player::getInstance()->fleetData[0];
+        Fleet* allies=sPlayer.fleetData[0];
         
         MissionNode node;
         Fleet* enemy=node.parseEnemyFleet("-2");
@@ -57,12 +58,16 @@ void battleModel(Director* director)
 
 void portModel(Director* director)
 {
+    GameManger::newInstance();
+    sGameManger.LoadConfig();
+    sGameManger.LoadResource();
+    Player::newInstance();
     std::string filename = FileUtils::getInstance()->fullPathForFilename("database/kancolle_2.sqlite3");
     DBBase::init(filename);
     DBInit init;
-    auto player=Player::getInstance();
-    player=init.initDB(1);
+    init.initDB(1);
     
+
     auto scene=PortScene::createScene();
     director->runWithScene(scene);
     

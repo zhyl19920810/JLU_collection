@@ -38,8 +38,8 @@ public:
         int updateLv;
         int fuel;
         int ammo;
-        int speed;
-        int range;
+        Move_Speed speed;
+        Shooting_Range range;
         int maxHp;
         int transformTimes;
         int maxLuck;
@@ -82,7 +82,15 @@ public:
     void initKantaiMap(const char* aStrArray[], int aArrayLen);
     
     const map<MAPID,stKantaiData>* GetKantaiMap (){return &kantaiMap;}
-    
+    stKantaiData* GetKantaiMap(int kantaiNumber)
+    {
+        auto it=kantaiMap.find(kantaiNumber);
+        if (it!=kantaiMap.end())
+        {
+            return &it->second;
+        }
+        CCASSERT(false,"can not find the kantai");
+    }
     
 private:
     map<MAPID,MAPDATA>	kantaiMap;

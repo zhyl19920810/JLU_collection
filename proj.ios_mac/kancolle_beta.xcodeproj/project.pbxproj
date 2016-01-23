@@ -265,6 +265,8 @@
 		F4FABB0A1C50D36C00F75BCE /* EquipMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB081C50D36B00F75BCE /* EquipMgr.cpp */; };
 		F4FABB0D1C50D3E400F75BCE /* ExpMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0B1C50D3E400F75BCE /* ExpMgr.cpp */; };
 		F4FABB101C50D42600F75BCE /* Singleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0E1C50D42600F75BCE /* Singleton.cpp */; };
+		F4FABB141C50D89000F75BCE /* GameManger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB121C50D89000F75BCE /* GameManger.cpp */; };
+		F4FABB301C51368200F75BCE /* csv in Resources */ = {isa = PBXBuildFile; fileRef = F4FABB2F1C51368200F75BCE /* csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -463,6 +465,9 @@
 		F4FABB0C1C50D3E400F75BCE /* ExpMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExpMgr.hpp; sourceTree = "<group>"; };
 		F4FABB0E1C50D42600F75BCE /* Singleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Singleton.cpp; sourceTree = "<group>"; };
 		F4FABB0F1C50D42600F75BCE /* Singleton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Singleton.hpp; sourceTree = "<group>"; };
+		F4FABB121C50D89000F75BCE /* GameManger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameManger.cpp; sourceTree = "<group>"; };
+		F4FABB131C50D89000F75BCE /* GameManger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameManger.hpp; sourceTree = "<group>"; };
+		F4FABB2F1C51368200F75BCE /* csv */ = {isa = PBXFileReference; lastKnownFileType = folder; path = csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -588,6 +593,7 @@
 			isa = PBXGroup;
 			children = (
 				F4D8028D1BE604EB0032C724 /* Mission.xml */,
+				F4FABB2F1C51368200F75BCE /* csv */,
 				F4014AF21BF0E8A000C9C5AE /* equip */,
 				F40CF9821BDB51B200DD897F /* map */,
 				F4036D281BDA1F39002788AA /* equipment */,
@@ -831,6 +837,8 @@
 		F4036DD31BDA2160002788AA /* backGround */ = {
 			isa = PBXGroup;
 			children = (
+				F4FABB121C50D89000F75BCE /* GameManger.cpp */,
+				F4FABB131C50D89000F75BCE /* GameManger.hpp */,
 				F4FABB0E1C50D42600F75BCE /* Singleton.cpp */,
 				F4FABB0F1C50D42600F75BCE /* Singleton.hpp */,
 				F4FABB011C50D2D200F75BCE /* CSV */,
@@ -1027,6 +1035,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4FABB301C51368200F75BCE /* csv in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				F4014AF31BF0E8A100C9C5AE /* equip in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
@@ -1156,6 +1165,7 @@
 				F4036D841BDA1FDD002788AA /* Equip.cpp in Sources */,
 				F4036D821BDA1FDD002788AA /* DatabaseScene.cpp in Sources */,
 				F4036D781BDA1FDD002788AA /* AppDelegate.cpp in Sources */,
+				F4FABB141C50D89000F75BCE /* GameManger.cpp in Sources */,
 				F4036DB41BDA1FDD002788AA /* portRepairLayer.cpp in Sources */,
 				F4036DB81BDA1FDD002788AA /* portSupplyLayer.cpp in Sources */,
 				F4036DBE1BDA1FDD002788AA /* SystemHeader.cpp in Sources */,

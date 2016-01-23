@@ -14,7 +14,7 @@ BattleEnemy* BattleEnemy::create(Kantai* info, cocos2d::Node *parent, int row)
 {
     BattleEnemy* hero=new BattleEnemy;
     hero->setInfo(info);
-    if (hero&&hero->init(info->getkantaiNumber(), parent, row))
+    if (hero&&hero->init(info->getKantaiNumber(), parent, row))
     {
         hero->autorelease();
         return hero;

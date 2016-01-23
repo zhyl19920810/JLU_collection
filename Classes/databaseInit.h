@@ -17,20 +17,20 @@
 class DBInit:public DBBase
 {
 public:
-    Player* initDB(int _playerKey);
+    void initDB(int _playerKey);
     
 private:
-    Player* initPlayer(int _playerKey);
+    void initPlayer(int _playerKey);
     
-    void initFleet(const Player* player,std::unordered_map<int,Fleet*>& _kantaiFleet);
+    void initFleet(std::unordered_map<int,Fleet*>& _kantaiFleet);
     
-    void initKantai(const Player* player,std::unordered_map<int,Kantai*>& _kantaiMap);
+    void initKantai(std::unordered_map<int,Kantai*>& _kantaiMap);
     
-    void initEquip(const Player* player,std::unordered_map<int,Equip*>& _kantaiEquip);
+    void initEquip(std::unordered_map<int,Equip*>& _kantaiEquip);
     
-    void initFleetKantai(const Player *player,std::unordered_map<int,std::pair<int, int>>& _fleetKantaiMap);
+    void initFleetKantai(std::unordered_map<int,std::pair<int, int>>& _fleetKantaiMap);
     
-    void initKantaiEquip(const Player *player,std::unordered_map<int,std::pair<int, int>>& _kantaiEquipMap);
+    void initKantaiEquip(std::unordered_map<int,std::pair<int, int>>& _kantaiEquipMap);
     
     std::vector<int> parsePlaneLoad(char* planeLoad);
     

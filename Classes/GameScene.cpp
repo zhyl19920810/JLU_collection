@@ -327,7 +327,7 @@ void GameScene::initCharacters()
         for (int i = 0; i < heros.size(); i++)
         {
             BattleHero *hero = BattleHero::create(heros[i], this, (i + 1));
-            hero->setMaxHp(heros[i]->getmaxHp());
+            hero->setMaxHp(heros[i]->getMaxHp());
             battleHeros.push_back(hero);
             hero->setPosition(-160, 0);
             FiniteTimeAction *actionMoveOut = CCMoveTo::create(0.3, Point(0, 0));
@@ -352,7 +352,7 @@ void GameScene::initEnemy()
         for (int i = 0; i <fleetSize; i++)
         {
             BattleEnemy *enemy = BattleEnemy::create(enemies[i], this, (i + 1));
-            enemy->setMaxHp(enemies[i]->getmaxHp());
+            enemy->setMaxHp(enemies[i]->getMaxHp());
             battleEnemies.push_back(enemy);
             enemy->apearAnimation();
         }

@@ -22,7 +22,7 @@ bool KantaiMgr::loadConf()
     do
     {
         kantaiMap.clear();
-        g_loadtxt("kantai.txt", KantaiMgr::kantaiMapTxtFile, ",", this);
+        g_loadtxt("csv/kantai.txt", KantaiMgr::kantaiMapTxtFile, ",", this);
         bRet=true;
     }while (0);
     
@@ -43,8 +43,8 @@ void KantaiMgr::initKantaiMap(const char **aStrArray, int aArrayLen)
     tmp.updateLv=atoi(aStrArray[index++]);
     tmp.fuel=atoi(aStrArray[index++]);
     tmp.ammo=atoi(aStrArray[index++]);
-    tmp.speed=atoi(aStrArray[index++]);
-    tmp.range=atoi(aStrArray[index++]);
+    tmp.speed=static_cast<Move_Speed>(atoi(aStrArray[index++]));
+    tmp.range=static_cast<Shooting_Range>(atoi(aStrArray[index++]));
     tmp.maxHp=atoi(aStrArray[index++]);
     tmp.transformTimes=atoi(aStrArray[index++]);
     tmp.maxLuck=atoi(aStrArray[index++]);

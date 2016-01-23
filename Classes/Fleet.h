@@ -24,12 +24,12 @@ enum FleetState
     KANTAI_EXPEDITION
 };
 
-//#define CC_GETVALUE(varType,varName)\
-//public: varType get##varName(void) const {return varName;}\
-//
-//#define CC_RWVALUE(varType,varName)\
-//public: varType get##varName(void) const {return varName;}\
-//public: void set##varName(varType var) {varName=var;}\
+#define CC_GETVALUE(varType,varName)\
+public: varType get##varName(void) const {return varName;}\
+
+#define CC_RWVALUE(varType,varName)\
+public: varType get##varName(void) const {return varName;}\
+public: void set##varName(varType var) {varName=var;}\
 
 
 class Fleet:public Ref

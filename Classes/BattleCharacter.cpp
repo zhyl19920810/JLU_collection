@@ -120,7 +120,7 @@ void BattleCharacter::showDamgeAnime(float delay, bool miss, bool critical, int 
 
 bool BattleCharacter::canAttack()
 {
-    if (info->getkantaiType()==KantaiType::Carrier||info->getkantaiType()==KantaiType::Light_Carrier)
+    if (info->getKantaiType()==KantaiType::Carrier||info->getKantaiType()==KantaiType::Light_Carrier)
     {
         float persentage=currentHp/maxHp;
         if (persentage<=0.5)

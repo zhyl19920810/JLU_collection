@@ -23,19 +23,19 @@ Scene* TestScene::createScene()
 
 TestScene::TestScene()
 {
-    Sprite* bg=Sprite::create("equip/btxt_flat/001.png");
-    addChild(bg);
-    Equip* zhang1;
-    for (int i=0; i<1000; ++i)
-    {
-        zhang1=Equip::create(i, 1);
-    }
-    
-    EquipPrint::PrintEquipInfo(zhang1);
-    
-    log("asdfasdf");
-    
-    EquipPoolManager::getInstance()->print();
+//    Sprite* bg=Sprite::create("equip/btxt_flat/001.png");
+//    addChild(bg);
+//    Equip* zhang1;
+//    for (int i=0; i<1000; ++i)
+//    {
+//        zhang1=Equip::create(i, 1);
+//    }
+//    
+//    EquipPrint::PrintEquipInfo(zhang1);
+//    
+//    log("asdfasdf");
+//    
+//    EquipPoolManager::getInstance()->print();
 }
 
 

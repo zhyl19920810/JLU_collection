@@ -36,7 +36,7 @@ SallyScene::SallyScene(Mission* mission)
     ship->setZOrder(1);
     ship->setVisible(false);
     
-    std::string flagShipName="kantai/"+std::to_string(Player::getInstance()->fleetData[0]->ship[0]->getkantaiNumber())+"/image 17.png";
+    std::string flagShipName="kantai/"+std::to_string(sPlayer.fleetData[0]->ship[0]->getKantaiNumber())+"/image 17.png";
     flagShip=Sprite::create(flagShipName.c_str());
     addChild(flagShip);
     flagShip->setPosition(-300,250);
@@ -295,7 +295,7 @@ void SallyScene::setFormationCallback(Ref* ref, FormationType formation)
         formation->setVisible(false);
     }
     nextStatus(1);
-    Fleet* allies=Player::getInstance()->fleetData[0];
+    Fleet* allies=sPlayer.fleetData[0];
     Fleet* enemy=currentMissionNode->enemyFleet;
     
     auto battleModel=new BattleModel(allies,enemy,formation,DanZong);

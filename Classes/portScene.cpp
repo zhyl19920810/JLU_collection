@@ -92,7 +92,6 @@ bool PortScene::init()
     titleBar->setOpacity(200);
     addChild(titleBar);
     
-    auto _player=Player::getInstance();
     //borders
     auto *border_bottom_1 = Sprite::create("interface/PortMain/image 236.png");
     border_bottom_1->setPosition(550, 5);
@@ -116,7 +115,7 @@ bool PortScene::init()
     
     
     playerName=Label::create();
-    std::string _playerName=_player->getplayerName();
+    std::string _playerName=sPlayer.getPlayerName();
     playerName->setString(_playerName.c_str());
     playerName->setAlignment(TextHAlignment::LEFT);
     playerName->setPosition(170, 465);
@@ -124,7 +123,7 @@ bool PortScene::init()
     
     
     playerLevel = Label::create();
-    int _playerLevel=_player->getcurrLV();
+    int _playerLevel=sPlayer.getCurrLV();
     playerLevel->setString(std::to_string(_playerLevel));
     playerLevel->setPosition(420, 462);
     this->addChild(playerLevel);
@@ -134,7 +133,7 @@ bool PortScene::init()
     this->addChild(fleetCountLabel);
     
     fleetCount = Label::create();
-    int _maxFleetSize=_player->getmaxFleetSize();
+    int _maxFleetSize=sPlayer.getMaxFleetSize();
     fleetCount->setString(std::to_string(_maxFleetSize));
     fleetCount->setPosition(560, 462);
     this->addChild(fleetCount);
@@ -144,7 +143,7 @@ bool PortScene::init()
     this->addChild(shipCountLabel);
     
     shipCount = Label::create();
-    int _maxKantaiSize=_player->getmaxKantaiSize();
+    int _maxKantaiSize=sPlayer.getMaxKantaiSize();
     shipCount->setString(std::to_string(_maxKantaiSize));
     shipCount->setPosition(640, 462);
     this->addChild(shipCount);
@@ -191,10 +190,10 @@ bool PortScene::init()
     labelSteel = Label::create();
     labelAmmo = Label::create();
     labelAluminium = Label::create();
-    labelFuel->setString(std::to_string(_player->getfuel()));
-    labelSteel->setString(std::to_string(_player->getsteel()));
-    labelAmmo->setString(std::to_string(_player->getammo()));
-    labelAluminium->setString(std::to_string(_player->getaluminium()));
+    labelFuel->setString(std::to_string(sPlayer.getFuel()));
+    labelSteel->setString(std::to_string(sPlayer.getSteel()));
+    labelAmmo->setString(std::to_string(sPlayer.getAmmo()));
+    labelAluminium->setString(std::to_string(sPlayer.getAluminium()));
     labelFuel->setAlignment(TextHAlignment::RIGHT);
     labelSteel->setAlignment(TextHAlignment::RIGHT);
     labelAmmo->setAlignment(TextHAlignment::RIGHT);

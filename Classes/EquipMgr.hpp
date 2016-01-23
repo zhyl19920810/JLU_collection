@@ -15,7 +15,7 @@
 #include "Singleton.hpp"
 #include "loadTxt.hpp"
 #include "SystemHeader.h"
-
+#include <string>
 
 class EquipMgr:public Singleton<EquipMgr>
 {
@@ -28,7 +28,7 @@ protected:
 public:
     struct stEquipData
     {
-        int equipNumber;
+        int equipKey;
         char equipName[MAX_NAME_STRING];
         EquipScope equipScope;
         EquipType equipType;
@@ -41,7 +41,7 @@ public:
         int searchEnemy;
         int hitRate;
         int dodge;
-        int range;
+        Shooting_Range range;
         int armor;
         KantaiType supKantaiType[MAX_SUPSHIP];
         
@@ -65,9 +65,17 @@ public:
     
     void initEquipMap(const char* aStrArray[], int aArrayLen);
     
-    const map<MAPID,stEquipData>* GetEquipMap () {return &equipMap;}
+    const map<MAPID,MAPDATA>* GetEquipMap () {return &equipMap;}
     
-    
+    MAPDATA* GetEquipMap(int equipKey)
+    {
+        auto it=equipMap.find(equipKey);
+        if (it!=equipMap.end())
+        {
+            return &it->second;
+        }
+        CCASSERT(false,"can not find the equip");
+    }
 private:
     map<MAPID,MAPDATA>	equipMap;
 };

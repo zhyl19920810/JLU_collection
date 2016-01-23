@@ -26,7 +26,7 @@ BattleHero* BattleHero::create(Kantai *info, cocos2d::Node *parent, int row)
     BattleHero* hero=new BattleHero;
     hero->setInfo(info);
     
-    if (hero&&hero->init(info->getkantaiNumber(),parent,row))
+    if (hero&&hero->init(info->getKantaiNumber(),parent,row))
     {
         hero->autorelease();
         return hero;
@@ -72,8 +72,8 @@ bool BattleHero::init(int kantaiNumber, cocos2d::Node *parent, int row)
     
     battleBar=new BattleBar(parent);
     
-    setMaxHp(info->getmaxHp());
-    setCurrentHp(info->getcurrHp());
+    setMaxHp(info->getMaxHp());
+    setCurrentHp(info->getCurrHp());
     
     return true;
 }
@@ -184,17 +184,17 @@ void BattleHero::updateInformationBoard()
         informationBoard->addChild(equipment4);
     }
     
-    firePowerLabel->setString(std::to_string(info->getfirePower()));
+    firePowerLabel->setString(std::to_string(info->getFirePower()));
     
-    torpedoLabel->setString(std::to_string(info->gettorpedo()));
+    torpedoLabel->setString(std::to_string(info->getTorpedo()));
     
-    antiaircraftLabel->setString(std::to_string(info->getantiAir()));
+    antiaircraftLabel->setString(std::to_string(info->getAntiAir()));
     
-    armourLabel->setString(std::to_string(info->getarmor()));
+    armourLabel->setString(std::to_string(info->getArmor()));
     
-    nameLabel->setString(info->getkantaiName());
+    nameLabel->setString(info->getKantaiName());
     
-    levelLabel->setString(std::to_string(info->getcurrLV()));
+    levelLabel->setString(std::to_string(info->getCurrLV()));
     
     if (info->equipGrid[0]!=nullptr)
     {

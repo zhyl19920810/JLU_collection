@@ -8,6 +8,7 @@
 
 #include "kantaiDB.h"
 #include "equipDB.h"
+#include "KantaiMgr.hpp"
 
 KantaiDB* KantaiDB::kantaiDB=new KantaiDB;
 
@@ -17,6 +18,90 @@ KantaiDB* KantaiDB::getInstance()
 }
 
 KantaiDB::KantaiDB(){}
+
+
+int KantaiDB::getNewKantaiByNumber(int kantaiNumber)
+{
+    auto tmp=sKantaiMgr.GetKantaiMap(kantaiNumber);
+
+    
+    int _fuel=tmp->fuel;
+    int _ammo=tmp->ammo;
+    int _range=tmp->range;
+    int _maxHp=tmp->maxHp;
+    int _lv=tmp->lv;
+    int _firePower=tmp->initFirePower;
+    int _armor=tmp->initArmor;
+    int _torpedo=tmp->initTorpedo;
+    int _dodge=tmp->initDodge;
+    int _antiAir=tmp->initAntiAir;
+    int _antiSubmarine=tmp->initAntiSubmarine;
+    int _searchEnemy=tmp->initSearchEnemy;
+    int _luck=tmp->initLuck;
+
+    
+    std::string sqlStr="INSERT OR REPLACE INTO player_got_kantai(kantaiKey,kantaiNumber,currLV,currFuel,currAmmo,currRange,currHP,currExp,updateExp,firePower,armor,torpedo,dodge,antiAir,antiSubmarine,searchEnemy,luck,fatigueValue,kantaiLock,kantaiStar,kantaiState) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    
+    
+    sqlite3_stmt* statement;
+    
+    if (sqlite3_prepare_v2(kancolleDB, sqlStr.c_str(), -1, &statement, NULL)==SQLITE_OK)
+    {
+        //sqlite3_bind_int(statement ,1, 1);
+        sqlite3_bind_int(statement ,2, kantaiNumber);
+        sqlite3_bind_int(statement ,3, _lv);
+        sqlite3_bind_int(statement ,4, _fuel);
+        sqlite3_bind_int(statement ,5, _ammo);
+        sqlite3_bind_int(statement ,6, _range);
+        sqlite3_bind_int(statement ,7, _maxHp);//currHP
+        sqlite3_bind_int(statement ,8, 0);//currExp
+        sqlite3_bind_int(statement ,9, 100);//updateExp?????????
+        sqlite3_bind_int(statement ,10, _firePower);//firePower
+        sqlite3_bind_int(statement ,11, _armor); //armor
+        sqlite3_bind_int(statement ,12, _torpedo); //torpedo
+        sqlite3_bind_int(statement ,13, _dodge); //dodge
+        sqlite3_bind_int(statement ,14, _antiAir); //antiAir
+        sqlite3_bind_int(statement ,15, _antiSubmarine); //antiSubmarine
+        sqlite3_bind_int(statement ,16, _searchEnemy); //searchEnemy
+        sqlite3_bind_int(statement ,17, _luck); //luck
+        sqlite3_bind_int(statement ,18, 50); //fatigueValue
+        sqlite3_bind_int(statement ,19, 0); //kantaiLock
+        sqlite3_bind_int(statement ,20, 0); //kantaiStar?????
+        sqlite3_bind_int(statement ,21, 1); //kantaiState?????
+        
+        if (sqlite3_step(statement)!=SQLITE_DONE)
+        {
+            CCASSERT(false, "Insert Data failure.");
+        }
+    }
+    sqlite3_finalize(statement);
+    int _kantaiKey=static_cast<int>(sqlite3_last_insert_rowid(kancolleDB));
+    
+    return _kantaiKey;
+}
+
+std::vector<std::pair<int,int>> KantaiDB::getNewKantaiEquip(int _kantaiKey, std::vector<int> equipVec)
+{
+    std::vector<int> returnVal(equipVec);
+    int size=static_cast<int>(equipVec.size());
+    
+    std::vector<std::pair<int,int>>  returnKey;
+    for (int i=0;i<size; ++i)
+    {
+        int _equipNumber=returnVal[i];
+        int _position=i+1;
+        
+        int _equipKey=EquipDB::getInstance()->getNewEquipByNumber(_equipNumber,_kantaiKey,_position);
+        returnKey.push_back(std::pair<int, int>(_equipKey,_equipNumber));
+    }
+    return returnKey;
+}
+
+
+
+
+
+
 
 
 int KantaiDB::getNewKantaiByNumber(ValueVector& _kantaiData)
@@ -88,18 +173,9 @@ int KantaiDB::getNewKantaiByNumber(ValueVector& _kantaiData)
     sqlite3_finalize(statement);
     _kantaiKey=static_cast<int>(sqlite3_last_insert_rowid(kancolleDB));
     
-
-//    //equip///////
-//    for (int i=0; i<_kantaiEquipInit.size(); ++i)
-//    {
-//        Equip* temp=DBImp::getNewEquipByNumber(_kantaiEquipInit[i].asInt(),_kantaiKey,i);
-//        returnKantai->setEquip(temp, i+1);
-//    }
-    
-
     return _kantaiKey;
-    
 }
+
 
 std::vector<std::pair<int,int>> KantaiDB::getNewKantaiEquip(int _kantaiKey, ValueVector &_kantaiData)
 {

@@ -62,7 +62,7 @@ void PortMainLayer::initLayer()
 
 void PortMainLayer::updateGirl()
 {
-    int num=Player::getInstance()->fleetData[0]->ship[0]->getkantaiNumber();
+    int num=sPlayer.fleetData[0]->ship[0]->getKantaiNumber();
     std::string resource="kantai/"+std::to_string(num)+"/image 17.png";
     
     if (girl==nullptr)

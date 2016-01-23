@@ -74,9 +74,9 @@ Fleet* MissionNode::parseEnemyFleet(const std::string &name)
     enemyFleet = new Fleet(-1);
     for (int i = 0; i < strings.size(); i++)
     {
-        ValueVector temp=XMLBuilder::readKantaiXML(std::atoi(strings[i].c_str()));
-        Kantai* _kantai=new Kantai(temp);
-        enemyFleet->addShipNoDatabase(_kantai);
+//        ValueVector temp=XMLBuilder::readKantaiXML(std::atoi(strings[i].c_str()));
+//        Kantai* _kantai=new Kantai(temp);
+//        enemyFleet->addShipNoDatabase(_kantai);
     }
     return enemyFleet;
 }

@@ -16,7 +16,8 @@
 #define plane_load int
 #define FONT_ADDRESS "/Volumes/opengl/kancolle_alpha/Resources/fonts/arial.ttf"
 #define DATEBASE_ADDRESS "/Volumes/opengl/kancolle_alpha/Resources/database/kancolle_2.sqlite3"
-
+#define MAX_PLAYER_LV 100
+#define MAX_PLAYER_LV_EXP -1
 
 
 
@@ -57,7 +58,7 @@ typedef enum
     low_speed=1,
     mid_speed=2,
     high_speed=3
-}Speed;
+}Move_Speed;
 
 typedef enum
 {
@@ -137,26 +138,19 @@ private:
 class InitPlayerProp
 {
 public:
-    int initPlayerUpdateExpByLV(int _currLV);
+    static int getMaxFuelByLV(int _currLV);
     
-    int initMaxFuelByLV(int _currLV);
+    static int getMaxAmmoByLV(int _currLV);
     
-    int initMaxAmmoByLV(int _currLV);
+    static int getMaxSteelByLV(int _currLV);
     
-    int initMaxSteelByLV(int _currLV);
+    static int getMaxAluminiumByLV(int _currLV);
     
-    int initMaxAluminiumByLV(int _currLV);
+    static int getMaxKantaiSize(int _currLV);
     
-    int initMaxKantaiSize(int _currLV);
-    
-    int initMaxEquipSize(int _currLV);
-    
-    
-private:
-    int _initMaxPropByLV(int _currLV);
-    
-    const std::vector<int> updateExpData={50,60,70,80,100,120};
-    
+    static int getMaxEquipSize(int _currLV);
+
+    static int _getMaxPropByLV(int _currLV);
     
 };
 

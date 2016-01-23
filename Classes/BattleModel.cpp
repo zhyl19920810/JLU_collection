@@ -121,7 +121,7 @@ void BattleModel::getFireDamage(bool alliesAttack, int alliesIndex, int enemyInd
     
     bool antiSubmarine=false;
     
-    if (attacked->getkantaiType()==KantaiType::Submarine||attacked->getkantaiType()==KantaiType::Diving_Carrier)
+    if (attacked->getKantaiType()==KantaiType::Submarine||attacked->getKantaiType()==KantaiType::Diving_Carrier)
     {
         antiSubmarine=true;
         attackType=Attack_Type::antiSubmarine;
@@ -130,7 +130,7 @@ void BattleModel::getFireDamage(bool alliesAttack, int alliesIndex, int enemyInd
     float hit=CCRANDOM_0_1();
     miss=false;
     
-    if (hit-0.2+(float)attacked->getdodge()/100>DEFAULT_HIT_RATE)
+    if (hit-0.2+(float)attacked->getDodge()/100>DEFAULT_HIT_RATE)
     {
         miss=true;
         return;
@@ -138,16 +138,16 @@ void BattleModel::getFireDamage(bool alliesAttack, int alliesIndex, int enemyInd
     
     float basicAttack=0;
     
-    int type=attacker->getkantaiType();
+    int type=attacker->getKantaiType();
     
     
     if (type==KantaiType::Carrier||type==KantaiType::Light_Carrier||type==KantaiType::Armor_Carrier)
     {
-        basicAttack=(attacker->getfirePower()+attacker->gettorpedo())*1.5+55;
+        basicAttack=(attacker->getFirePower()+attacker->getTorpedo())*1.5+55;
     }
     else
     {
-        basicAttack=attacker->getfirePower()+5;
+        basicAttack=attacker->getFirePower()+5;
     }
     float preCorrection=1;
     
@@ -175,18 +175,18 @@ void BattleModel::getFireDamage(bool alliesAttack, int alliesIndex, int enemyInd
     ci=false;
     
     
-    damage=getDamage(attackType, basicAttack, attacked->getarmor(), preCorrection, postCorrection, 1);
+    damage=getDamage(attackType, basicAttack, attacked->getArmor(), preCorrection, postCorrection, 1);
     
-    if (!alliesAttack&&damage>=attacked->getcurrHp())
+    if (!alliesAttack&&damage>=attacked->getCurrHp())
     {
         float random=CCRANDOM_0_1()*0.3+0.5;
-        damage=attacked->getcurrHp()*random;
+        damage=attacked->getCurrHp()*random;
     }
     
     if (!miss&&damage<0)
     {
         float random=CCRANDOM_0_1()*0.08+0.06;
-        damage=random*attacked->getcurrHp();
+        damage=random*attacked->getCurrHp();
     }
     
     if (0<damage<1)
@@ -310,7 +310,7 @@ int BattleModel::getTargetIndex(bool alliesAttack)
     
     for (int i=0; i<targets->size(); ++i)
     {
-        if (targets->at(i)->getcurrHp()!=0)
+        if (targets->at(i)->getCurrHp()!=0)
         {
             aliveTargets.push_back(i);
         }

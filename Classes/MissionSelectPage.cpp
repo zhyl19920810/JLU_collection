@@ -131,8 +131,8 @@ void MissionSelectPage::moveOut()
 void MissionSelectPage::startMission(cocos2d::Ref *pSender,int index)
 {
     
-    Scene* scene=new SallyScene(XMLParser::getInstance()->readMissionXml("1-1"));
-    Director::getInstance()->replaceScene(scene);
+//    Scene* scene=new SallyScene(XMLParser::getInstance()->readMissionXml("1-1"));
+//    Director::getInstance()->replaceScene(scene);
     
 }
 

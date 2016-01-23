@@ -44,7 +44,7 @@ CharacterCard::CharacterCard(Kantai* kantai)
 {
     initCard();
     this->isEnemy=false;
-    updateCharacter(kantai->getkantaiNumber(), BrokenType::normal);
+    updateCharacter(kantai->getKantaiNumber(), BrokenType::normal);
 }
 
 CharacterCard::CharacterCard(int kantaiNumber)

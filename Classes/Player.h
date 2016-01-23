@@ -16,7 +16,7 @@
 #include "playerDB.h"
 #include "XMLControl.h"
 #include "fleetDB.h"
-
+#include "Singleton.hpp"
 
 using namespace cocos2d;
 
@@ -40,90 +40,105 @@ private:
 };
 
 
-class Player
+
+class Player:public Singleton<Player>
 {
-    CC_RWVALUE(int, playerKey);
-    
-    CC_RWVALUE(std::string, playerName);
-    CC_RWVALUE(std::string, playerSign);
-    CC_RWVALUE(int, currLV);
-    CC_RWVALUE(int, playerCurrExp);
-    CC_RWVALUE(int, playerUpdateExp);
-    CC_RWVALUE(int, fuel);
-    CC_RWVALUE(int, ammo);
-    CC_RWVALUE(int, steel);
-    CC_RWVALUE(int, aluminium);
-    
-    CC_RWVALUE(int, maxFuel);
-    CC_RWVALUE(int, maxAmmo);
-    CC_RWVALUE(int, maxSteel);
-    CC_RWVALUE(int, maxAluminium);
-    
-    CC_RWVALUE(int, maxDockSize);
-    CC_RWVALUE(int, maxKantaiSize);
-    CC_RWVALUE(int, maxEquipSize);
-    CC_RWVALUE(int, maxFleetSize);
+    friend class Singleton<Player>;
+    friend class DBInit;
+public:
+
+    //exp
+    int getCurrLV() const {return currLV;}
+    int getPlayerCurrExp() const {return playerCurrExp;}
+    int getPlayerUpdateExp() const{return playerUpdateExp;}
+    void LVup();
+    void setUpdateExp();
+    void addPlayerCurrExp(int addExp);
     
     
+private:
+    int currLV;
+    int playerCurrExp;
+    int playerUpdateExp;
     
+public:
+    //和lv有关
+    void setMaxAttr();
+    int getMaxFuel() const{return maxFuel;}
+    void setMaxFuel();
+    int getMaxAmmo() const{return maxAmmo;}
+    void setMaxAmmo();
+    int getMaxSteel() const{return maxSteel;}
+    void setMaxSteel();
+    int getMaxAluminium() const{return maxAluminium;}
+    void setMaxAluminium();
+    int getMaxKantaiSize() const{return maxKantaiSize;}
+    void setMaxKantaiSize();
+    int getMaxEquipSize() const{return maxEquipSize;}
+    void setMaxEquipSize();
+
+private:
+    int maxFuel;
+    int maxAmmo;
+    int maxSteel;
+    int maxAluminium;
+    
+    int maxKantaiSize;
+    int maxEquipSize;
+    
+public:
+    //attr
+    int getPlayerKey() const {return playerKey;}
+    std::string getPlayerName() const{return playerName;}
+    void setPlayerName(const std::string& name);
+    std::string getPlayerSign() const{return playerSign;}
+    void setPlayerSign(const std::string& name);
+    
+    int getFuel() const{return fuel;}
+    int getAmmo() const{return ammo;}
+    int getSteel() const {return steel;}
+    int getAluminium() const{return aluminium;}
+    
+    void addFuel(int addFuel);
+    void addAmmo(int addAmmo);
+    void addAluminium(int addAluminium);
+    void addSteel(int addSteel);
+    
+    bool canMinusFuel(int miFuel);
+    bool canMinusAmmo(int miAmmo);
+    bool canMinusSteel(int miSteel);
+    bool canMinusAluminium(int miAluminium);
+    
+    void minusFuel(int miFuel);
+    void minusAmmo(int miAmmo);
+    void minusAluminium(int miAluminium);
+    void minusSteel(int miSteel);
+private:
+    int playerKey;
+    std::string playerName;
+    std::string playerSign;
+    
+    int fuel;
+    int ammo;
+    int steel;
+    int aluminium;
     
     
 public:
-    static Player* getInstance();
+    //db size
+    int getMaxDockSize() const{return maxDockSize;}
+    int getMaxFleetSize() const{return maxFleetSize;}
+    void setMaxDockSize(int maxDockSize);
+    void setMaxMissionSize(int missionSize);
+    int getMaxFlletSize() const {return maxFleetSize;}
+private:
+    int maxDockSize;
+    int maxFleetSize;
+    int maxMissionSize;
     
-    std::vector<Fleet*> getfleetData()
-    {return fleetData;}
-    
-    std::vector<Equip*> getequipData()
-    {return equipData;}
-    
-    std::vector<Kantai*> getkantaiData()
-    {return kantaiData;}
+public:
     
     void initDatabaseData(std::unordered_map<int,Fleet*>& _fleetData,std::unordered_map<int,Kantai*>& _kantaiData,std::unordered_map<int,Equip*>& _equipData);
-    
-    
-    //no database operation
-    void setMaxFuel(int maxFuel);
-    
-    void setMaxAmmo(int maxAmmo);
-    
-    void setMaxSteel(int maxSteel);
-    
-    void setMaxAluminium(int maxAluminium);
-    
-    void setMaxKantaiSize(int maxKantaiSize);
-    
-    void setMaxEquipSize(int maxEquipSize);
-    
-    void setMaxFleetSize(int maxFleetSize);
-    
-
-    
-    ////database operation
-    //player attr
-    void setPlayerName(const std::string& name);
-    
-    void setPlayerSign(const std::string& name);
-    
-    void setCurrLV(int currLV);
-    
-    void setPlayerCurrExp(int currExp);
-    
-    void setPlayerUpdateExp(int updateExp);
-    
-    void setFuel(int fuel);
-    
-    void setAmmo(int ammo);
-    
-    void setSteel(int steel);
-    
-    void setAluminium(int aluminium);
-    
-    void setMaxDockSize(int dockSize);
-    
-    void setMaxMissionSize(int missionSize);
-    
     
     //equip
     void buildNewEquip(int _equipNumber,int _kantaiKey=-1,int _position=0);
@@ -152,77 +167,33 @@ public:
     void buildNewFleet(int _fleetKey);
     
     void deleteFleet(int _fleetNumber); //只删除fleet，舰娘放回表中
-    
 public:
-    std::vector<KantaiDock*> kantaiDock;
+    
     std::vector<Kantai*> kantaiData;
     std::vector<Fleet*> fleetData;
     std::vector<Equip*> equipData;
     std::vector<int> planeLoad;
     
-    
-    
     //equip
     inline Equip* findEquipByEquipKey(int _equipKey);
     //kantai
     inline Kantai* findKantaiByKantaiKey(int _kantaiKey);
+    //equip
+    inline void deleteEquipByEquipKey(int _equipKey);
     //fleet
     Fleet* findFleetByFleetKey(int _fleetKey);
 protected:
     Player();
     
+//dock
 private:
-    //equip
-    inline void deleteEquipByEquipKey(int _equipKey);
-    
-
-    
-    
-    
-    int playerKey;
-    
-    std::string playerName;
-    
-    std::string playerSign;//??
-    
-    int currLV;
-    
-    int playerCurrExp;
-    
-    int playerUpdateExp;
-    
-    int fuel;
-    
-    int ammo;
-    
-    int steel;
-    
-    int aluminium;
-    
-    int maxFuel;
-    
-    int maxAmmo;
-    
-    int maxSteel;
-    
-    int maxAluminium;
-    
-    int maxDockSize;
-    
-    int maxKantaiSize;
-    
-    int maxEquipSize;
-    
-    int maxFleetSize;
-    
-    int equipSize;//加上这个
-    
-
-    
-    static Player* player;
+    std::vector<KantaiDock*> kantaiDock;
+   
     
 };
 
+
+#define sPlayer Player::getInstance()
 
 class LogPlayer
 {
@@ -239,13 +210,13 @@ public:
                 {
                     if ((*it)->ship[i])
                     {
-                        log("===>kantaiKey: %d position: %d",(*it)->ship[i]->getkantaiKey(),i+1);
+                        log("===>kantaiKey: %d position: %d",(*it)->ship[i]->getKantaiKey(),i+1);
                         for (int j=0; j<4; ++j)
                         {
                             auto equipTemp=(*it)->ship[i]->equipGrid[j];
                             if (equipTemp)
                             {
-                                log("====>equipKey: %d position: %d",equipTemp->getequipKey(),j+1);
+                                log("====>equipKey: %d position: %d",equipTemp->getEquipKey(),j+1);
                             }
                         }
                     }
@@ -257,13 +228,13 @@ public:
         log("=>kantai");
         for (auto it=player->kantaiData.begin(); it!=player->kantaiData.end(); ++it)
         {
-            log("==>kantaiKey: %d",(*it)->getkantaiKey());
+            log("==>kantaiKey: %d",(*it)->getKantaiKey());
             for (int j=0; j<4; ++j)
             {
                 auto equipTemp=(*it)->equipGrid[j];
                 if (equipTemp)
                 {
-                    log("====>equipKey: %d position: %d",equipTemp->getequipKey(),j+1);
+                    log("====>equipKey: %d position: %d",equipTemp->getEquipKey(),j+1);
                 }
             }
         }
@@ -271,7 +242,7 @@ public:
             log("=>equip");
             for (auto it=player->equipData.begin(); it!=player->equipData.end(); ++it)
             {
-                log("==>equipKey: %d",(*it)->getequipKey());
+                log("==>equipKey: %d",(*it)->getEquipKey());
             }
     }
     

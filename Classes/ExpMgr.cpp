@@ -41,8 +41,8 @@ bool ExpMgr::loadConf()
         playerExpMap.clear();
         kantaiExpMap.clear();
         
-        g_loadtxt("playerExp.txt", ExpMgr::playerExpMapTxtFile, ",", this);
-        g_loadtxt("kantaiExp.txt", ExpMgr::kantaiExpMapTxtFile, ",", this);
+        g_loadtxt("csv/playerExp.txt", ExpMgr::playerExpMapTxtFile, ",", this);
+        g_loadtxt("csv/kantaiExp.txt", ExpMgr::kantaiExpMapTxtFile, ",", this);
         bRet=true;
     }while (0);
     

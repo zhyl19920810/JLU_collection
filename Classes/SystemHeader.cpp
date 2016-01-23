@@ -247,14 +247,9 @@ std::string NameResolution::EquipTypeReso(int _equipType)
 
 
 
-int InitPlayerProp::initPlayerUpdateExpByLV(int _currLV)
-{
-    return updateExpData[_currLV];
-}
 
 
-
-int InitPlayerProp::_initMaxPropByLV(int _currLV)
+int InitPlayerProp::_getMaxPropByLV(int _currLV)
 {
     int multiplier=10000;
     if (_currLV<=0)
@@ -265,7 +260,7 @@ int InitPlayerProp::_initMaxPropByLV(int _currLV)
     {
         return multiplier;
     }
-    else if(_currLV<=100)
+    else if(_currLV<=MAX_PLAYER_LV)
     {
         return multiplier*(_currLV/10);
     }
@@ -273,32 +268,32 @@ int InitPlayerProp::_initMaxPropByLV(int _currLV)
         return -1;
 }
 
-int InitPlayerProp::initMaxFuelByLV(int _currLV)
+int InitPlayerProp::getMaxFuelByLV(int _currLV)
 {
-    return _initMaxPropByLV(_currLV);
+    return InitPlayerProp::_getMaxPropByLV(_currLV);
 }
 
-int InitPlayerProp::initMaxAmmoByLV(int _currLV)
+int InitPlayerProp::getMaxAmmoByLV(int _currLV)
 {
-    return _initMaxPropByLV(_currLV);
+    return InitPlayerProp::_getMaxPropByLV(_currLV);
 }
 
-int InitPlayerProp::initMaxSteelByLV(int _currLV)
+int InitPlayerProp::getMaxSteelByLV(int _currLV)
 {
-    return _initMaxPropByLV(_currLV);
+    return InitPlayerProp::_getMaxPropByLV(_currLV);
 }
 
-int InitPlayerProp::initMaxAluminiumByLV(int _currLV)
+int InitPlayerProp::getMaxAluminiumByLV(int _currLV)
 {
-    return _initMaxPropByLV(_currLV);
+    return InitPlayerProp::_getMaxPropByLV(_currLV);
 }
 
-int InitPlayerProp::initMaxKantaiSize(int _currLV)
+int InitPlayerProp::getMaxKantaiSize(int _currLV)
 {
     return 100;
 }
 
-int InitPlayerProp::initMaxEquipSize(int _currLV)
+int InitPlayerProp::getMaxEquipSize(int _currLV)
 {
     return 100;
     

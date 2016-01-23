@@ -27,7 +27,7 @@ bool EquipMgr::loadConf()
     do
     {
         equipMap.clear();
-        g_loadtxt("equip.txt", EquipMgr::equipMapTxtFile, ",", this);
+        g_loadtxt("csv/equip.txt", EquipMgr::equipMapTxtFile, ",", this);
         bRet=true;
     }
     while (0);
@@ -38,7 +38,7 @@ void EquipMgr::initEquipMap(const char **aStrArray, int aArrayLen)
 {
     stEquipData tmp;
     int index=0;
-    tmp.equipNumber=atoi(aStrArray[index++]);
+    tmp.equipKey=atoi(aStrArray[index++]);
     strncpy(tmp.equipName, aStrArray[index++], MAX_NAME_STRING);
     tmp.equipScope=static_cast<EquipScope>(atoi(aStrArray[index++]));
     tmp.equipType=static_cast<EquipType>(atoi(aStrArray[index++]));
@@ -51,7 +51,7 @@ void EquipMgr::initEquipMap(const char **aStrArray, int aArrayLen)
     tmp.searchEnemy=atoi(aStrArray[index++]);
     tmp.hitRate=atoi(aStrArray[index++]);
     tmp.dodge=atoi(aStrArray[index++]);
-    tmp.range=atoi(aStrArray[index++]);
+    tmp.range=static_cast<Shooting_Range>(atoi(aStrArray[index++]));
     tmp.armor=atoi(aStrArray[index++]);
     auto tempVec=splitText(aStrArray[index++],"#");
     for (int i=0; i<tempVec.size(); ++i)
@@ -59,7 +59,7 @@ void EquipMgr::initEquipMap(const char **aStrArray, int aArrayLen)
         tmp.supKantaiType[i]=(static_cast<KantaiType>(atoi(tempVec[i].c_str())));
     }
     
-    equipMap[tmp.equipNumber]=tmp;
+    equipMap[tmp.equipKey]=tmp;
 }
 
 

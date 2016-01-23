@@ -15,12 +15,12 @@ void logAllData(std::unordered_map<int,Kantai*> _kantaiMap,
 {
     for (auto it=_kantaiMap.begin(); it!=_kantaiMap.end(); ++it)
     {
-        log("kantaiKey: %d   kantaiNumber: %d",it->first,it->second->getkantaiNumber());
+        log("kantaiKey: %d   kantaiNumber: %d",it->first,it->second->getKantaiNumber());
     }
     
     for (auto it=_equipMap.begin(); it!=_equipMap.end(); ++it)
     {
-        log("equipKey: %d   equipNumber: %d",it->first,it->second->getequipNumber());
+        log("equipKey: %d   equipNumber: %d",it->first,it->second->getEquipNumber());
     }
     
     for (auto it=_fleetMap.begin(); it!=_fleetMap.end(); ++it)
@@ -95,7 +95,7 @@ std::string DBInit::convertToStr(std::vector<int> &planeLoadVec)
 
 
 ///////////init///////////////////////
-Player* DBInit::initDB(int _playerKey)
+void DBInit::initDB(int _playerKey)
 {
 
     std::unordered_map<int,Kantai*> _kantaiMap=std::unordered_map<int,Kantai*>();
@@ -108,19 +108,19 @@ Player* DBInit::initDB(int _playerKey)
 
     std::unordered_map<int,std::pair<int, int>> _kantaiEquipMap=std::unordered_map<int,std::pair<int, int>>();//equip
 
-    auto _player=initPlayer(_playerKey);
+    initPlayer(_playerKey);
+    
+    initFleet(_fleetMap);
 
-    initFleet(_player,_fleetMap);
+    initKantai(_kantaiMap);
 
-    initKantai(_player, _kantaiMap);
+    initEquip(_equipMap);
 
-    initEquip(_player, _equipMap);
+    initFleetKantai(_fleetKantaiMap);
 
-    initFleetKantai(_player, _fleetKantaiMap);
+    initKantaiEquip(_kantaiEquipMap);
 
-    initKantaiEquip(_player, _kantaiEquipMap);
-
-    //logAllData(_kantaiMap, _equipMap, _fleetMap, _fleetKantaiMap, _kantaiEquipMap);
+    logAllData(_kantaiMap, _equipMap, _fleetMap, _fleetKantaiMap, _kantaiEquipMap);
     Kantai* tempKantai;
     for (auto it=_kantaiEquipMap.begin(); it!=_kantaiEquipMap.end(); ++it)
     {
@@ -132,6 +132,7 @@ Player* DBInit::initDB(int _playerKey)
             {
                 tempKantai=kantaiIt->second;
                 tempKantai->equipGrid[it->second.second-1]=equipIt->second;
+                equipIt->second->setKantai(tempKantai);
                 //tempKantai->setEquip(equipIt->second, it->second.second);
                 //_equipMap.erase(equipIt);
             }
@@ -150,6 +151,7 @@ Player* DBInit::initDB(int _playerKey)
             if (fleetIt!=_fleetMap.end()) {
                 tempFleet=fleetIt->second;
                 tempFleet->ship[it->second.second-1]=kantaiIt->second;
+                kantaiIt->second->setFleet(tempFleet);
                 //tempFleet->setKantai(kantaiIt->second,it->second.second);
                 //_kantaiMap.erase(kantaiIt);
             }
@@ -158,18 +160,14 @@ Player* DBInit::initDB(int _playerKey)
             continue;
     }
 
-    _player->initDatabaseData(_fleetMap, _kantaiMap, _equipMap);
-    return _player;
+    sPlayer.initDatabaseData(_fleetMap, _kantaiMap, _equipMap);
 }
 
 
 
 
-Player* DBInit::initPlayer(int _playerKey)
+void DBInit::initPlayer(int _playerKey)
 {
-    Player* returnPlayer;
-    
-    
     std::string qsql="SELECT * FROM PLAYER WHERE PLAYERKEY=";
     qsql+=std::to_string(_playerKey);
     
@@ -193,43 +191,37 @@ Player* DBInit::initPlayer(int _playerKey)
             int _maxDockSize=sqlite3_column_int(statement, 9);
             int _maxFleetSize=sqlite3_column_int(statement, 10);
             
-            InitPlayerProp initPlayerProp;
+            auto& player=Player::getInstance();
             
-            returnPlayer=Player::getInstance();
+            player.playerKey=_playerKey;
+            player.playerName=_playerName;//////?
+            player.playerSign=_playerSign;////////?
+            player.currLV=_currLV;
+            player.playerCurrExp=_currExp;
+            player.playerUpdateExp=sExpMgr.getPlayerUpdateExp(player.currLV);
             
-            returnPlayer->setplayerKey(_playerKey);
-            returnPlayer->setplayerName(_playerName);
-            returnPlayer->setplayerSign(_playerSign);
-            returnPlayer->setcurrLV(_currLV);
-            returnPlayer->setplayerCurrExp(_currExp);
-            returnPlayer->setplayerUpdateExp(initPlayerProp.initPlayerUpdateExpByLV(_currLV));
-            
-            returnPlayer->setfuel(_fuel);
-            returnPlayer->setammo(_ammo);
-            returnPlayer->setsteel(_steel);
-            returnPlayer->setaluminium(_aluminium);
-            
-            returnPlayer->setmaxFuel(initPlayerProp.initMaxFuelByLV(_currLV));
-            returnPlayer->setmaxAmmo(initPlayerProp.initMaxAmmoByLV(_currLV));
-            returnPlayer->setmaxSteel(initPlayerProp.initMaxSteelByLV(_currLV));
-            returnPlayer->setmaxAluminium(initPlayerProp.initMaxAluminiumByLV(_currLV));
-            
-            returnPlayer->setmaxDockSize(_maxDockSize);
-            returnPlayer->setmaxKantaiSize(initPlayerProp.initMaxKantaiSize(_currLV));
-            returnPlayer->setmaxEquipSize(initPlayerProp.initMaxEquipSize(_currLV));
-            returnPlayer->setmaxFleetSize(_maxFleetSize);
+            player.fuel=_fuel;
+            player.ammo=_ammo;
+            player.steel=_steel;
+            player.aluminium=_aluminium;
+            player.maxFuel=InitPlayerProp::getMaxFuelByLV(_currLV);
+            player.maxAmmo=InitPlayerProp::getMaxAmmoByLV(_currLV);
+            player.maxSteel=InitPlayerProp::getMaxSteelByLV(_currLV);
+            player.maxAluminium=InitPlayerProp::getMaxAluminiumByLV(_currLV);
+            player.maxDockSize=_maxDockSize;
+            player.maxKantaiSize=InitPlayerProp::getMaxKantaiSize(_currLV);
+            player.maxEquipSize=InitPlayerProp::getMaxEquipSize(_currLV);
+            player.maxFleetSize=_maxFleetSize;
+    
         }
     }
     
     sqlite3_finalize(statement);
-    
-    
-    return returnPlayer;
-    
+
 }
 
 
-void DBInit::initFleet(const Player *player,std::unordered_map<int,Fleet*>& _kantaiFleet)
+void DBInit::initFleet(std::unordered_map<int,Fleet*>& _kantaiFleet)
 {
     std::string qsql="SELECT * FROM player_got_fleet";
     
@@ -248,9 +240,8 @@ void DBInit::initFleet(const Player *player,std::unordered_map<int,Fleet*>& _kan
     }
 }
 
-void DBInit::initKantai(const Player* player,std::unordered_map<int,Kantai*>& _kantaiMap)
+void DBInit::initKantai(std::unordered_map<int,Kantai*>& _kantaiMap)
 {
-    XMLControl* xmlControl=new XMLBaseControl;
     std::string qsql="SELECT * FROM player_got_kantai";
     
     sqlite3_stmt* statement;
@@ -260,7 +251,7 @@ void DBInit::initKantai(const Player* player,std::unordered_map<int,Kantai*>& _k
         while (sqlite3_step(statement)==SQLITE_ROW)
         {
             
-            int keytaiKey=sqlite3_column_int(statement, 0);
+            int kantaiKey=sqlite3_column_int(statement, 0);
             
             int kantaiNumber=sqlite3_column_int(statement, 1);
             int currLV=sqlite3_column_int(statement, 2);
@@ -286,86 +277,38 @@ void DBInit::initKantai(const Player* player,std::unordered_map<int,Kantai*>& _k
             int kantaiState=sqlite3_column_int(statement, 20);
             char* planeLoadPr=(char *)sqlite3_column_text(statement, 21);
             std::vector<int> _planeLoadPr=parsePlaneLoad(planeLoadPr);
-            
-            
-            auto kantai=new Kantai(keytaiKey,READ_KANTAI_DATABASE);
-            kantai->setkantaiNumber(kantaiNumber);
-            kantai->setcurrLV(currLV);
-            kantai->setcurrFuel(currFuel);
-            kantai->setcurrAmmo(currAmmo);
-            kantai->setrange(currRange);
-            kantai->setcurrHp(currHP);
-            kantai->setcurrExp(currExp);
-            kantai->setupdateExp(updateExp);
-            
-            kantai->setfirePower(firePower);
-            kantai->setarmor(armor);
-            kantai->settorpedo(torpedo);
-            kantai->setdodge(dodge);
-            kantai->setantiAir(antiAir);
-            kantai->setAntiSubMarine(antiSubmarine);
-            kantai->setsearchEnemy(searchEnemy);
-            kantai->setluck(luck);
-            kantai->setfatigueValue(fatigueValue);
-            kantai->setkantaiLock(kantaiLock);
-            kantai->setkantaiStar(kantaiStar);
-            kantai->setkantaiState(static_cast<KantaiState>(kantaiState));
-            
-            
-            //插入kantai具体数据通过xml方式
-            
-            ValueVector _kantaiData=xmlControl->ReadKantaiXML(kantaiNumber);
-            
-            ValueMap _name=_kantaiData[0].asValueMap();
-            kantai->setkantaiName(_name["kantaiName"].asString());
-            kantai->setkantaiFullName(_name["kantaiFullName"].asString());
-            
-            ValueMap _kantaiBaseAtrr=_kantaiData[1].asValueMap();
-            kantai->setmaxAmmo(_kantaiBaseAtrr["ammo"].asInt());
-            kantai->setmaxFuel(_kantaiBaseAtrr["fuel"].asInt());
-            kantai->setkantaiType(static_cast<KantaiType>(_kantaiBaseAtrr["kantaiType"].asInt()));
-            kantai->setspeed(_kantaiBaseAtrr["speed"].asInt());
-            kantai->setrange(_kantaiBaseAtrr["range"].asInt());
-            kantai->setmaxHp(_kantaiBaseAtrr["maxHp"].asInt());
-            kantai->setbuildTime(_kantaiBaseAtrr["buildTime"].asInt());
-            kantai->settransformTimes(_kantaiBaseAtrr["transformTimes"].asInt());
-            
-            
-            ValueMap _kantaiMaxAttr=_kantaiData[2].asValueMap();
-            kantai->setmaxLuck(_kantaiMaxAttr["maxLuck"].asInt());
-            kantai->setmaxAntiSubmarine(_kantaiMaxAttr["maxAntiSubmarine"].asInt());
-            kantai->setmaxDodge(_kantaiMaxAttr["maxDodge"].asInt());
-            kantai->setmaxAntiAir(_kantaiMaxAttr["maxAntiAir"].asInt());
-            kantai->setmaxTorpedo(_kantaiMaxAttr["maxArmor"].asInt());
-            kantai->setmaxSearchEnemy(_kantaiMaxAttr["maxSearchEnemy"].asInt());
-            kantai->setmaxFirePower(_kantaiMaxAttr["maxFirePower"].asInt());
-            kantai->setmaxArmor(_kantaiMaxAttr["maxArmor"].asInt());
-            
-            int equipSize=_kantaiData[4].asInt();
-            kantai->equipGrid.resize(equipSize);
-            //kantai->planeLoadPr.resize(equipSize);
-            kantai->maxPlaneLoad.resize(equipSize);
-            
-
-            
-            kantai->planeLoadPr=_planeLoadPr;
-            ValueVector _maxPlaneLoad=_kantaiData[6].asValueVector();
-            for (int i=0;i<equipSize;++i)
-            {
-                kantai->maxPlaneLoad[i]=_maxPlaneLoad[i].asInt();
-            }
+            auto kantai=Kantai::create(kantaiKey, kantaiNumber, READ_KANTAI_DATABASE);
+            kantai->currLV=currLV;
+            kantai->setUpdateExp();
+            kantai->currFuel=currFuel;
+            kantai->currAmmo=currAmmo;
+            kantai->currHp=currHP;
+            kantai->currExp=currExp;
+            kantai->firePower=firePower;
+            kantai->armor=armor;
+            kantai->torpedo=torpedo;
+            kantai->dodge=dodge;
+            kantai->antiAir=antiAir;
+            kantai->AntiSubMarine=antiSubmarine;
+            kantai->searchEnemy=searchEnemy;
+            kantai->luck=luck;
+            kantai->fatigueValue=fatigueValue;
+            kantai->kantaiLock=kantaiLock;
+            kantai->kantaiStar=kantaiStar;
+            kantai->kantaiState=static_cast<KantaiState>(kantaiState);
             kantai->setBrokenType();
-            
-            _kantaiMap.insert(std::pair<int,Kantai*>(keytaiKey,kantai));
+            kantai->equipGrid.resize(kantai->getKantaiEquipSize());
+            kantai->currPlaneLoad=_planeLoadPr;
+
+            _kantaiMap.insert(std::pair<int,Kantai*>(kantaiKey,kantai));
         }
     }
-    delete xmlControl;
     
     sqlite3_finalize(statement);
 }
 
 
-void DBInit::initEquip(const Player* player,std::unordered_map<int,Equip*>& _kantaiEquip)
+void DBInit::initEquip(std::unordered_map<int,Equip*>& _kantaiEquip)
 {
     std::string qsql="SELECT * FROM player_got_equip";
     
@@ -384,7 +327,7 @@ void DBInit::initEquip(const Player* player,std::unordered_map<int,Equip*>& _kan
     sqlite3_finalize(statement);
 }
 
-void DBInit::initFleetKantai(const Player *player, std::unordered_map<int, std::pair<int, int> >& _fleetKantaiMap)
+void DBInit::initFleetKantai(std::unordered_map<int, std::pair<int, int> >& _fleetKantaiMap)
 {
     std::string qsql="SELECT * FROM player_got_kantai_player_got_fleet";
     
@@ -403,7 +346,7 @@ void DBInit::initFleetKantai(const Player *player, std::unordered_map<int, std::
     sqlite3_finalize(statement);
 }
 
-void DBInit::initKantaiEquip(const Player *player, std::unordered_map<int, std::pair<int, int> >& _kantaiEquipMap)
+void DBInit::initKantaiEquip(std::unordered_map<int, std::pair<int, int> >& _kantaiEquipMap)
 {
     std::string qsql="SELECT * FROM player_got_kantai_player_got_equip";
     

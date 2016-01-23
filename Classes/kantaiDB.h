@@ -18,11 +18,15 @@ using namespace cocos2d;
 class KantaiDB:public DBBase
 {
 public:
+    int getNewKantaiByNumber(int kantaiNumber);
+    
     int getNewKantaiByNumber(ValueVector& _kantaiData); //返回kantaikey
     
     static KantaiDB* getInstance();
     
     std::vector<std::pair<int,int>>  getNewKantaiEquip(int _kantaiKey,ValueVector& _kantaiData);
+    
+    std::vector<std::pair<int,int>>  getNewKantaiEquip(int _kantaiKey,std::vector<int> equipVec);
     
     void deleteKantaiKey(int kantaiKey,bool InFleet);
     
