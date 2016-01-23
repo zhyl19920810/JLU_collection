@@ -143,13 +143,23 @@ public:
     //equip
     void buildNewEquip(int _equipNumber,int _kantaiKey=-1,int _position=0);
     
-    void deleteEquip(Kantai& _kantai,int _position);
+    void deleteEquip(Equip* _equip);
     
     void deleteEquip(int _equipKey);
     
-    void removeEquip(Kantai& _kantai,int _position);
+    void removeEquip(Kantai* _kantai,int _position);
+    
+    int _deleteEquipNodb(Equip* _equip);//No db
+    
+    inline int deleteEquipByEquipKey(int _equipKey);//No db
+    
+    
+
     
     void changeEquipPosition(int _equipKey,int _kantaiKey,int _position);
+    
+    
+    inline Equip* findEquipByEquipKey(int _equipKey);
     
     
     //kantai
@@ -174,12 +184,10 @@ public:
     std::vector<Equip*> equipData;
     std::vector<int> planeLoad;
     
-    //equip
-    inline Equip* findEquipByEquipKey(int _equipKey);
+
     //kantai
     inline Kantai* findKantaiByKantaiKey(int _kantaiKey);
-    //equip
-    inline void deleteEquipByEquipKey(int _equipKey);
+
     //fleet
     Fleet* findFleetByFleetKey(int _fleetKey);
 protected:

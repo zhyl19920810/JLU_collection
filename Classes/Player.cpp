@@ -298,10 +298,10 @@ void Player::buildNewEquip(int _equipNumber,int _kantaiKey,int _position)
     }
 }
 
-void Player::deleteEquipByEquipKey(int _equipKey)
+int Player::deleteEquipByEquipKey(int _equipKey)
 {
     Equip* equip;
-    
+    int retKantaiKey=-1;
     auto it=equipData.begin();
     
     while (it!=equipData.end())
@@ -318,6 +318,7 @@ void Player::deleteEquipByEquipKey(int _equipKey)
                     {
                         if (_equip->getEquipKey()==_equipKey)
                         {
+                            retKantaiKey=kantai->getKantaiKey();
                             _equip=NULL;
                             break;
                         }
@@ -327,7 +328,7 @@ void Player::deleteEquipByEquipKey(int _equipKey)
             equipData.erase(it);
             delete equip;
             equip=NULL;
-            return;
+            return retKantaiKey;
         }
         ++it;
     }
@@ -335,25 +336,71 @@ void Player::deleteEquipByEquipKey(int _equipKey)
 }
 
 
+int Player::_deleteEquipNodb(Equip *equip)
+{
+    int retKantaiKey=-1;
+    auto kantai=dynamic_cast<Kantai*>(equip->getKantai());
+    if (kantai)
+    {
+        for (int i=0;i<kantai->getKantaiEquipSize();++i)
+        {
+            auto _equip=kantai->equipGrid[i];
+            if (_equip)
+            {
+                if (_equip==equip)
+                {
+                    retKantaiKey=kantai->getKantaiKey();
+                    _equip=NULL;
+                    break;
+                }
+            }
+        }
+    }
+    auto it=equipData.begin();
+    while (it!=equipData.end())
+    {
+        if (equip==*it) {
+            equipData.erase(it);
+            delete equip;
+            equip=NULL;
+            return retKantaiKey;
+        }
+        ++it;
+    }
+    CCASSERT(false,"can not find the equip in deleteEquipByEquipKey");
+}
+
+void Player::deleteEquip(Equip *_equip)
+{
+    if (_deleteEquipNodb(_equip))
+    {
+        EquipDB::getInstance()->deleteEquipKey(_equip->getEquipKey(), 1);
+    }
+    else
+    {
+        EquipDB::getInstance()->deleteEquipKey(_equip->getEquipKey(), 0);
+    }
+    
+}
+
 void Player::deleteEquip(int _equipKey)
 {
-      deleteEquipByEquipKey(_equipKey);
-      EquipDB::getInstance()->deleteEquipKey(_equipKey, 0);
-}
-
-void Player::deleteEquip(Kantai& kantai,int _position)
-{
-    int _equipKey=kantai.equipGrid[_position-1]->getEquipKey();
-    kantai.equipGrid[_position-1]=NULL;
     
-    deleteEquipByEquipKey(_equipKey);
-    EquipDB::getInstance()->deleteEquipKey(_equipKey, 1);
+    if (deleteEquipByEquipKey(_equipKey))
+    {
+        EquipDB::getInstance()->deleteEquipKey(_equipKey, 1);
+    }
+    else
+    {
+        EquipDB::getInstance()->deleteEquipKey(_equipKey, 0);
+    }
 }
 
-void Player::removeEquip(Kantai& kantai,int _position)
+
+void Player::removeEquip(Kantai* kantai,int _position)
 {
-    int _equipKey=kantai.equipGrid[_position-1]->getEquipKey();
-    kantai.equipGrid[_position-1]=NULL;
+    int _equipKey=kantai->equipGrid[_position-1]->getEquipKey();
+    kantai->equipGrid[_position-1]=NULL;
     EquipDB::getInstance()->deleteEquipRelation(_equipKey);
 }
 
