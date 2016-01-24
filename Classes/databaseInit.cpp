@@ -13,26 +13,27 @@ void logAllData(std::unordered_map<int,Kantai*> _kantaiMap,
                 std::unordered_map<int,std::pair<int, int>> _fleetKantaiMap,
                 std::unordered_map<int,std::pair<int, int>> _kantaiEquipMap)
 {
+    log("-------------------------kantai in the map:-------------------------------");
     for (auto it=_kantaiMap.begin(); it!=_kantaiMap.end(); ++it)
     {
         log("kantaiKey: %d   kantaiNumber: %d",it->first,it->second->getKantaiNumber());
     }
-    
+    log("-------------------------equip in the map:-------------------------------");
     for (auto it=_equipMap.begin(); it!=_equipMap.end(); ++it)
     {
         log("equipKey: %d   equipNumber: %d",it->first,it->second->getEquipNumber());
     }
-    
+    log("-------------------------fleet in the map:-------------------------------");
     for (auto it=_fleetMap.begin(); it!=_fleetMap.end(); ++it)
     {
         log("fleetKey: %d   fleetKey: %d",it->first,it->second->getFleetKey());
     }
-    
+    log("-------------------------fleet and kantai relation in the map:-------------------------------");
     for (auto it=_fleetKantaiMap.begin(); it!=_fleetKantaiMap.end(); ++it)
     {
         log("kantaiKey: %d  fleetKey: %d  position: %d",it->first,it->second.first,it->second.second);
     }
-    
+    log("-------------------------kantai and equip relation in the map:-------------------------------");
     for (auto it=_kantaiEquipMap.begin(); it!=_kantaiEquipMap.end(); ++it)
     {
         log("equipKey: %d  kantaiKey: %d  position: %d",it->first,it->second.first,it->second.second);
@@ -111,7 +112,7 @@ void DBInit::initDB(int _playerKey)
     initPlayer(_playerKey);
     
     initFleet(_fleetMap);
-    sPlayer.changeKantaiPosition(sPlayer.buildNewKantai(23), _fleetMap.begin()->second, 1);
+    
     initKantai(_kantaiMap);
 
     initEquip(_equipMap);
@@ -120,7 +121,7 @@ void DBInit::initDB(int _playerKey)
 
     initKantaiEquip(_kantaiEquipMap);
 
-    logAllData(_kantaiMap, _equipMap, _fleetMap, _fleetKantaiMap, _kantaiEquipMap);
+    //logAllData(_kantaiMap, _equipMap, _fleetMap, _fleetKantaiMap, _kantaiEquipMap);
     Kantai* tempKantai;
     for (auto it=_kantaiEquipMap.begin(); it!=_kantaiEquipMap.end(); ++it)
     {
@@ -204,14 +205,15 @@ void DBInit::initPlayer(int _playerKey)
             player.ammo=_ammo;
             player.steel=_steel;
             player.aluminium=_aluminium;
-            player.maxFuel=InitPlayerProp::getMaxFuelByLV(_currLV);
-            player.maxAmmo=InitPlayerProp::getMaxAmmoByLV(_currLV);
-            player.maxSteel=InitPlayerProp::getMaxSteelByLV(_currLV);
-            player.maxAluminium=InitPlayerProp::getMaxAluminiumByLV(_currLV);
+//            player.maxFuel=InitPlayerProp::getMaxFuelByLV(_currLV);
+//            player.maxAmmo=InitPlayerProp::getMaxAmmoByLV(_currLV);
+//            player.maxSteel=InitPlayerProp::getMaxSteelByLV(_currLV);
+//            player.maxAluminium=InitPlayerProp::getMaxAluminiumByLV(_currLV);
             player.maxDockSize=_maxDockSize;
-            player.maxKantaiSize=InitPlayerProp::getMaxKantaiSize(_currLV);
-            player.maxEquipSize=InitPlayerProp::getMaxEquipSize(_currLV);
+//            player.maxKantaiSize=InitPlayerProp::getMaxKantaiSize(_currLV);
+//            player.maxEquipSize=InitPlayerProp::getMaxEquipSize(_currLV);
             player.maxFleetSize=_maxFleetSize;
+            player.setMaxAttr();
     
         }
     }

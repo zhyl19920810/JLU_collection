@@ -66,12 +66,14 @@ int Fleet::KantaiSize()
 
 void Fleet::setFleetName(const std::string &_fleetName)
 {
+    CCASSERT(_fleetName.size()<=30, "fleetName is too big");
     fleetName=_fleetName;
     FleetDB::getInstance()->setFleetName(fleetKey,_fleetName);
 }
 
 void Fleet::setFleetState(FleetState _fleetState)
 {
+    
     fleetState=_fleetState;
     FleetDB::getInstance()->setFleetState(fleetKey,_fleetState);
 }

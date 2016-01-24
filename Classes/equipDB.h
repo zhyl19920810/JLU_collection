@@ -14,6 +14,7 @@
 
 using namespace cocos2d;
 
+#define sEquipDB EquipDB::getInstance()
 
 class EquipDB:public DBBase
 {

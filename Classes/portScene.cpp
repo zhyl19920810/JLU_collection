@@ -17,7 +17,7 @@
 #include "portFactoryLayer.h"
 #include "portBattleLayer.h"
 #include "portRepairLayer.h"
-
+#include "Player.h"
 
 PortScene* PortScene::createScene()
 {
@@ -408,7 +408,17 @@ void PortScene::SetCurrLayer(LayerType type)
             currentLayerType = LayerType::battle;
             break;
         }
-
+        case organize:
+        {
+            auto size=sPlayer.kantaiData.size();
+            int i=rand()%size;
+            if (sPlayer.canSwapKantai(sPlayer.getFlagShip(), sPlayer.kantaiData[i])) {
+                sPlayer.swapKantai(sPlayer.getFlagShip(), sPlayer.kantaiData[i]);
+            }
+            currentLayerType=LayerType::main;
+            currentLayer=mainlayer;
+            mainlayer->updateGirl();
+        }
 //        case organize:
 //            if (currentLayerType == LayerType::organize)
 //                return;

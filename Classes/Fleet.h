@@ -21,10 +21,10 @@ USING_NS_CC;
 
 typedef enum
 {
-    Fleet_Free,
-    Fleet_Battle,
-    Fleet_Expedition,
-    Fleet_Error,
+    Fleet_Free=1,
+    Fleet_Battle=2,
+    Fleet_Expedition=3,
+    Fleet_Error=4,
 }FleetState;
 
 
@@ -40,7 +40,11 @@ public:
     std::string getFleetName() const {return fleetName;}
     void setFleetState(FleetState _fleetState);
     FleetState getFleetState() const {return fleetState;}
-
+    Kantai* getShip(int position)
+    {
+        CCASSERT(position>=1||position<=6, "out of range in function getShip");
+        return ship[position-1];
+    }
     int KantaiSize();
     ~Fleet(){}
 public:

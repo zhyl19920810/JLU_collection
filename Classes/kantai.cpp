@@ -16,10 +16,6 @@ parent(NULL)
 
 Kantai::~Kantai()
 {
-    for (int i=0; equipGrid.size(); ++i)
-    {
-        equipGrid[i]=NULL;
-    }
     kantaiImp=NULL;
     parent=NULL;
 }

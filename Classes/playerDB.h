@@ -15,6 +15,8 @@
 using namespace cocos2d;
 
 
+#define sPlayerDB PlayerDB::getInstance()
+
 class PlayerDB:public DBBase
 {
 public:

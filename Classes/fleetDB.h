@@ -34,4 +34,5 @@ private:
     
 };
 
+#define sFleetDB FleetDB::getInstance()
 #endif /* defined(__kancolle_alpha__fleetDB__) */

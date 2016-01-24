@@ -35,8 +35,9 @@ public:
     */
     virtual void applicationWillEnterForeground();
     
+    std::string createDownLoadUrl();
     
-    
+    void portModel(cocos2d::Director* director);
 };
 
 #endif // _APP_DELEGATE_H_

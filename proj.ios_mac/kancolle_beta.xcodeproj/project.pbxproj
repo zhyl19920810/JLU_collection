@@ -26,7 +26,6 @@
 		503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FF17EB989F00D1A890 /* RootViewController.mm */; };
 		503AE11B17EB9C5A00D1A890 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503AE11A17EB9C5A00D1A890 /* IOKit.framework */; };
 		5087E76317EB910900C73F5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		5087E76717EB910900C73F5D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		5087E76817EB910900C73F5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		5087E76917EB910900C73F5D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		5087E76A17EB910900C73F5D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
@@ -175,7 +174,6 @@
 		F4036E3C1BDA2316002788AA /* portSupplyLayer.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D6B1BDA1FDD002788AA /* portSupplyLayer.h */; };
 		F4036E3D1BDA2316002788AA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10317EB98FF00D1A890 /* main.cpp */; };
 		F4036E3E1BDA2316002788AA /* Prefix.pch in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10417EB98FF00D1A890 /* Prefix.pch */; };
-		F4036E401BDA2369002788AA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4036E3F1BDA2369002788AA /* libsqlite3.dylib */; };
 		F40CF97F1BDB4D1E00DD897F /* XMLBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40CF97D1BDB4D1E00DD897F /* XMLBase.cpp */; };
 		F40CF9801BDB4D1E00DD897F /* XMLBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40CF97D1BDB4D1E00DD897F /* XMLBase.cpp */; };
 		F40CF9831BDB51B200DD897F /* map in Resources */ = {isa = PBXBuildFile; fileRef = F40CF9821BDB51B200DD897F /* map */; };
@@ -245,6 +243,23 @@
 		F467184C1BE88E6300320B0A /* BattleEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F467184A1BE88E6300320B0A /* BattleEnemy.cpp */; };
 		F467184D1BE893F700320B0A /* BattleEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F467184A1BE88E6300320B0A /* BattleEnemy.cpp */; };
 		F467184E1BE893F700320B0A /* BattleEnemy.h in Sources */ = {isa = PBXBuildFile; fileRef = F467184B1BE88E6300320B0A /* BattleEnemy.h */; };
+		F4B173F31C545F3800D2BC1C /* csv in Resources */ = {isa = PBXBuildFile; fileRef = F4FABB2F1C51368200F75BCE /* csv */; };
+		F4B173F41C545F4600D2BC1C /* GameManger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB121C50D89000F75BCE /* GameManger.cpp */; };
+		F4B173F51C545F4600D2BC1C /* GameManger.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB131C50D89000F75BCE /* GameManger.hpp */; };
+		F4B173F61C545F4600D2BC1C /* Singleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0E1C50D42600F75BCE /* Singleton.cpp */; };
+		F4B173F71C545F4600D2BC1C /* Singleton.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0F1C50D42600F75BCE /* Singleton.hpp */; };
+		F4B173F81C545F4600D2BC1C /* KantaiMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB021C50D30600F75BCE /* KantaiMgr.cpp */; };
+		F4B173F91C545F4600D2BC1C /* KantaiMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB031C50D30600F75BCE /* KantaiMgr.hpp */; };
+		F4B173FA1C545F4600D2BC1C /* loadTxt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB051C50D34000F75BCE /* loadTxt.cpp */; };
+		F4B173FB1C545F4600D2BC1C /* loadTxt.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB061C50D34000F75BCE /* loadTxt.hpp */; };
+		F4B173FC1C545F4600D2BC1C /* EquipMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB081C50D36B00F75BCE /* EquipMgr.cpp */; };
+		F4B173FD1C545F4600D2BC1C /* EquipMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB091C50D36B00F75BCE /* EquipMgr.hpp */; };
+		F4B173FE1C545F4600D2BC1C /* ExpMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0B1C50D3E400F75BCE /* ExpMgr.cpp */; };
+		F4B173FF1C545F4600D2BC1C /* ExpMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0C1C50D3E400F75BCE /* ExpMgr.hpp */; };
+		F4B174081C54621A00D2BC1C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B174061C54621A00D2BC1C /* libsqlite3.dylib */; };
+		F4B174091C54621A00D2BC1C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B174071C54621A00D2BC1C /* libsqlite3.dylib */; };
+		F4B1740E1C54656F00D2BC1C /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B1740D1C54656F00D2BC1C /* libz.1.dylib */; };
+		F4B174101C54657E00D2BC1C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B1740F1C54657D00D2BC1C /* libz.tbd */; };
 		F4B191DB1BE74B56000A41C3 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42865DF1BDBC33700045E66 /* GameScene.cpp */; };
 		F4B191DC1BE74B56000A41C3 /* GameScene.h in Sources */ = {isa = PBXBuildFile; fileRef = F42865E01BDBC33700045E66 /* GameScene.h */; };
 		F4B191DD1BE74B56000A41C3 /* BattleBar.h in Sources */ = {isa = PBXBuildFile; fileRef = F42865E31BDBC52B00045E66 /* BattleBar.h */; };
@@ -252,7 +267,6 @@
 		F4B191DF1BE74B56000A41C3 /* AnimationMaker.h in Sources */ = {isa = PBXBuildFile; fileRef = F42865EB1BDBD18100045E66 /* AnimationMaker.h */; };
 		F4B191E01BE74B56000A41C3 /* CharacterCard.h in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F371BDCB2E100180F6B /* CharacterCard.h */; };
 		F4B191E11BE74B56000A41C3 /* BattleHero.h in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F401BDCD9B900180F6B /* BattleHero.h */; };
-		F4CA47EC1C53D160000945DE /* SqlitePath.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CA47EB1C53D160000945DE /* SqlitePath.m */; };
 		F4D6CBE91BF380210078C5C0 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE71BF380210078C5C0 /* TestScene.cpp */; };
 		F4D6CBEA1BF380210078C5C0 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE71BF380210078C5C0 /* TestScene.cpp */; };
 		F4D8028E1BE604EB0032C724 /* Mission.xml in Resources */ = {isa = PBXBuildFile; fileRef = F4D8028D1BE604EB0032C724 /* Mission.xml */; };
@@ -428,8 +442,6 @@
 		F4036D751BDA1FDD002788AA /* XMLControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLControl.h; sourceTree = "<group>"; };
 		F4036D761BDA1FDD002788AA /* XMLParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XMLParser.cpp; sourceTree = "<group>"; };
 		F4036D771BDA1FDD002788AA /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParser.h; sourceTree = "<group>"; };
-		F4036DD81BDA2270002788AA /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		F4036E3F1BDA2369002788AA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		F40CF97D1BDB4D1E00DD897F /* XMLBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XMLBase.cpp; sourceTree = "<group>"; };
 		F40CF97E1BDB4D1E00DD897F /* XMLBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLBase.h; sourceTree = "<group>"; };
 		F40CF9821BDB51B200DD897F /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = map; path = "../../kancolle_alpha/Resources/2.150228BGM&音效&UI素材/map"; sourceTree = "<group>"; };
@@ -449,7 +461,14 @@
 		F44D26ED1C4D19A700438F3C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
 		F467184A1BE88E6300320B0A /* BattleEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleEnemy.cpp; sourceTree = "<group>"; };
 		F467184B1BE88E6300320B0A /* BattleEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleEnemy.h; sourceTree = "<group>"; };
-		F4CA47EB1C53D160000945DE /* SqlitePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqlitePath.m; sourceTree = "<group>"; };
+		F4B174001C54608500D2BC1C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		F4B174011C54608500D2BC1C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		F4B174041C5461FC00D2BC1C /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; name = lib; path = ../../../../usr/lib; sourceTree = "<group>"; };
+		F4B174061C54621A00D2BC1C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
+		F4B174071C54621A00D2BC1C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
+		F4B1740A1C54633500D2BC1C /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		F4B1740D1C54656F00D2BC1C /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
+		F4B1740F1C54657D00D2BC1C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		F4D6CBE71BF380210078C5C0 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
 		F4D6CBE81BF380210078C5C0 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
 		F4D8028D1BE604EB0032C724 /* Mission.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Mission.xml; sourceTree = "<group>"; };
@@ -498,9 +517,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4036E401BDA2369002788AA /* libsqlite3.dylib in Frameworks */,
+				F4B174101C54657E00D2BC1C /* libz.tbd in Frameworks */,
+				F4B1740E1C54656F00D2BC1C /* libz.1.dylib in Frameworks */,
+				F4B174081C54621A00D2BC1C /* libsqlite3.dylib in Frameworks */,
+				F4B174091C54621A00D2BC1C /* libsqlite3.dylib in Frameworks */,
 				1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */,
-				5087E76717EB910900C73F5D /* libz.dylib in Frameworks */,
 				8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */,
 				503AE11B17EB9C5A00D1A890 /* IOKit.framework in Frameworks */,
 				5087E78B17EB975400C73F5D /* OpenGL.framework in Frameworks */,
@@ -566,10 +587,16 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4B1740F1C54657D00D2BC1C /* libz.tbd */,
+				F4B1740D1C54656F00D2BC1C /* libz.1.dylib */,
+				F4B1740A1C54633500D2BC1C /* libbz2.tbd */,
+				F4B174061C54621A00D2BC1C /* libsqlite3.dylib */,
+				F4B174071C54621A00D2BC1C /* libsqlite3.dylib */,
+				F4B174041C5461FC00D2BC1C /* lib */,
+				F4B174001C54608500D2BC1C /* libsqlite3.0.tbd */,
+				F4B174011C54608500D2BC1C /* libsqlite3.tbd */,
 				F44D26EC1C4D19A700438F3C /* libsqlite3.0.tbd */,
 				F44D26ED1C4D19A700438F3C /* libsqlite3.tbd */,
-				F4036E3F1BDA2369002788AA /* libsqlite3.dylib */,
-				F4036DD81BDA2270002788AA /* libsqlite3.0.dylib */,
 				8262943D1AAF051F00CB7CF7 /* Security.framework */,
 				52B47A461A53D09B004E4C60 /* Security.framework */,
 				D6B0611A1803AB670077942B /* CoreMotion.framework */,
@@ -832,7 +859,6 @@
 				F4036D2C1BDA1FDD002788AA /* AppDelegate.h */,
 				F4036D431BDA1FDD002788AA /* HelloWorldScene.cpp */,
 				F4036D441BDA1FDD002788AA /* HelloWorldScene.h */,
-				F4CA47EB1C53D160000945DE /* SqlitePath.m */,
 			);
 			name = init;
 			sourceTree = "<group>";
@@ -988,6 +1014,9 @@
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = ULTMCZG472;
 					};
+					5087E73D17EB910900C73F5D = {
+						DevelopmentTeam = ULTMCZG472;
+					};
 				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "kancolle_beta" */;
@@ -1077,6 +1106,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B173F31C545F3800D2BC1C /* csv in Resources */,
 				F40CF9841BDB51B200DD897F /* map in Resources */,
 				F4014AF41BF0E8A100C9C5AE /* equip in Resources */,
 				46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */,
@@ -1126,7 +1156,6 @@
 				F44D26D41C4D198400438F3C /* MissionNode.h in Sources */,
 				F44D26D51C4D198400438F3C /* SallyScene.h in Sources */,
 				F44D26D61C4D198400438F3C /* Compass.h in Sources */,
-				F4CA47EC1C53D160000945DE /* SqlitePath.m in Sources */,
 				F44D26D71C4D198400438F3C /* BattleModel.h in Sources */,
 				F44D26D81C4D198400438F3C /* GameScene.h in Sources */,
 				F44D26D91C4D198400438F3C /* BattleBar.h in Sources */,
@@ -1207,6 +1236,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B173F41C545F4600D2BC1C /* GameManger.cpp in Sources */,
+				F4B173F51C545F4600D2BC1C /* GameManger.hpp in Sources */,
+				F4B173F61C545F4600D2BC1C /* Singleton.cpp in Sources */,
+				F4B173F71C545F4600D2BC1C /* Singleton.hpp in Sources */,
+				F4B173F81C545F4600D2BC1C /* KantaiMgr.cpp in Sources */,
+				F4B173F91C545F4600D2BC1C /* KantaiMgr.hpp in Sources */,
+				F4B173FA1C545F4600D2BC1C /* loadTxt.cpp in Sources */,
+				F4B173FB1C545F4600D2BC1C /* loadTxt.hpp in Sources */,
+				F4B173FC1C545F4600D2BC1C /* EquipMgr.cpp in Sources */,
+				F4B173FD1C545F4600D2BC1C /* EquipMgr.hpp in Sources */,
+				F4B173FE1C545F4600D2BC1C /* ExpMgr.cpp in Sources */,
+				F4B173FF1C545F4600D2BC1C /* ExpMgr.hpp in Sources */,
 				F45F91221BF4BCA600327120 /* TestScene.h in Sources */,
 				F467184D1BE893F700320B0A /* BattleEnemy.cpp in Sources */,
 				F467184E1BE893F700320B0A /* BattleEnemy.h in Sources */,
@@ -1402,6 +1443,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1423,7 +1465,9 @@
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_MAC_BEGIN)",
 					"$(_COCOS_LIB_MAC_END)",
+					"-lsqlite3",
 				);
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_MAC_BEGIN) $(_COCOS_HEADER_MAC_END)";
 			};
 			name = Debug;
@@ -1436,6 +1480,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;
@@ -1455,7 +1500,9 @@
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_MAC_BEGIN)",
 					"$(_COCOS_LIB_MAC_END)",
+					"-lsqlite3",
 				);
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_MAC_BEGIN) $(_COCOS_HEADER_MAC_END)";
 			};
 			name = Release;

@@ -30,8 +30,6 @@ protected:
 class DateUtils
 {
 public:
-    
-    
     // 格式化时间返回
     static std::string getCurrentTime(const char* format);
     // 获取系统毫秒时间

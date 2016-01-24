@@ -44,8 +44,8 @@ public:
 
     //exp
     int getCurrLV() const {return currLV;}
-    int getPlayerCurrExp() const {return playerCurrExp;}
-    int getPlayerUpdateExp() const{return playerUpdateExp;}
+    int getCurrExp() const {return playerCurrExp;}
+    int getUpdateExp() const{return playerUpdateExp;}
     void LVup();
     void setUpdateExp();
     void addPlayerCurrExp(int addExp);
@@ -142,7 +142,7 @@ public:
     void removeEquip(Kantai* _kantai,int _position);//从装备上撤出但不删除
     void changeEquipPosition(int _equipKey,int _kantaiKey,int _position);
     void changeEquipPosition(Equip* equip,Kantai* kantai,int _position);
-    inline Equip* findEquipByEquipKey(int _equipKey);
+    inline Equip* getEquipByEquipKey(int _equipKey);
     
     
 private:
@@ -152,24 +152,38 @@ private:
     
     
 public:
-    
     //kantai
+    bool canBuildNewKantai(int _kantaiNumber);
     Kantai* buildNewKantai(int _kantaiNumber);
-    void deleteKantai(int _kantaiKey); //装备也删除
-    void deleteKantai(Kantai* kantai);
-    void removeKantai(Fleet* _fleet,int _position);
-    void changeKantaiPosition(int _kantaiKey,int _fleetNumber,int _position);
-    void changeKantaiPosition(Kantai* kantai,Fleet* fleet,int position);
-    inline Kantai* findKantaiByKantaiKey(int _kantaiKey);
     
+    bool canDeleteKantai(Kantai* kantai);
+    void deleteKantai(Kantai* kantai);
+    bool canRemoveAllKantai(Fleet* fleet);
+    void removeAllKantai(Fleet* fleet);//移除除了第一艘以外的所有的船
+    bool canModifyKantaiPosition(Fleet* fleet,int position,Kantai* kantai);
+    void modifyKantaiPosition(Fleet* fleet,int position,Kantai* kantai);
+    inline Kantai* getKantaiByKantaiKey(int _kantaiKey);
+    Kantai* getFlagShip(){return fleetData[0]->ship[0];}
+    
+    bool canSwapKantai(Kantai* lKantai,Kantai* rKantai);
+    void swapKantai(Kantai* lKantai,Kantai* rKantai);
+    bool canChangeKantaiPosition(Fleet *fleet, int position,Kantai *kantai);
+    void changeKantaiPosition(Fleet *fleet, int position,Kantai *kantai);
+
+    
+//    bool canDeleteKantai(int _kantaiKey);
+//    void deleteKantai(int _kantaiKey); //装备也删除
+//    void changeKantaiPosition(int _kantaiKey,int _fleetNumber,int _position);
 private:
+    void removeKantai(Fleet* _fleet,int _position);
     void _changeKantaiPosition(Kantai* kantai,Fleet* fleet,int position);
 public:
     //fleet
+    bool canBuildNewFleet();
     Fleet* buildNewFleet();
-    void buildNewFleet(int _fleetKey);
-    void deleteFleet(int _fleetKey); //只删除fleet，舰娘放回表中
-    Fleet* findFleetByFleetKey(int _fleetKey);
+    bool canDeleteFleet(int _fleetKey);
+    void deleteFleet(int _fleetKey); //只删除fleet，舰娘放回表中,第一舰队不能删除
+    Fleet* getFleetByFleetKey(int _fleetKey);
     
 public:
     std::vector<Kantai*> kantaiData;
@@ -177,8 +191,6 @@ public:
     std::vector<Equip*> equipData;
     std::vector<int> planeLoad;
     
-
-
 protected:
     Player();
     
@@ -200,18 +212,20 @@ public:
         {
             if (*it)
             {
-                log("==>fleet %d",(*it)->getFleetKey());
+                log("==>fleet %d  %s",(*it)->getFleetKey(),(*it)->getFleetName().c_str());
+                auto fleet=*it;
                 for (int i=0; i<6; ++i)
                 {
-                    if ((*it)->ship[i])
+                    auto kantai=fleet->ship[i];
+                    if (kantai)
                     {
-                        log("===>kantaiKey: %d position: %d",(*it)->ship[i]->getKantaiKey(),i+1);
-                        for (int j=0; j<4; ++j)
+                        log("===>kantaiKey: %d  kantaiNumber: %d  position: %d",kantai->getKantaiKey(),kantai->getKantaiNumber(),i+1);
+                        for (int j=0; j<kantai->getKantaiEquipSize(); ++j)
                         {
-                            auto equipTemp=(*it)->ship[i]->equipGrid[j];
+                            auto equipTemp=kantai->equipGrid[j];
                             if (equipTemp)
                             {
-                                log("====>equipKey: %d position: %d",equipTemp->getEquipKey(),j+1);
+                                log("====>equipKey: %d equipNumber: %d position: %d",equipTemp->getEquipKey(),equipTemp->getEquipNumber(),j+1);
                             }
                         }
                     }
@@ -223,22 +237,22 @@ public:
         log("=>kantai");
         for (auto it=player->kantaiData.begin(); it!=player->kantaiData.end(); ++it)
         {
-            log("==>kantaiKey: %d",(*it)->getKantaiKey());
-            for (int j=0; j<4; ++j)
+            log("==>kantaiKey: %d  kantaiNumber: %d",(*it)->getKantaiKey(),(*it)->getKantaiNumber());
+            for (int j=0; j<(*it)->getKantaiEquipSize(); ++j)
             {
                 auto equipTemp=(*it)->equipGrid[j];
                 if (equipTemp)
                 {
-                    log("====>equipKey: %d position: %d",equipTemp->getEquipKey(),j+1);
+                    log("====>equipKey: %d equipNumber: %d position: %d",equipTemp->getEquipKey(),equipTemp->getEquipNumber(),j+1);
                 }
             }
         }
         
-            log("=>equip");
-            for (auto it=player->equipData.begin(); it!=player->equipData.end(); ++it)
-            {
-                log("==>equipKey: %d",(*it)->getEquipKey());
-            }
+        log("=>equip");
+        for (auto it=player->equipData.begin(); it!=player->equipData.end(); ++it)
+        {
+            log("====>equipKey: %d equipNumber: %d",(*it)->getEquipKey(),(*it)->getEquipNumber());
+        }
     }
     
 };

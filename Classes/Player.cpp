@@ -24,13 +24,11 @@ void Player::initDatabaseData(std::unordered_map<int,Fleet*>& _fleetData,std::un
                  kantaiData.push_back(temp.second);
              });
     
-    for (int i=0; i<_fleetData.size(); ++i)
+    for (auto it=_fleetData.begin(); it!=_fleetData.end(); ++it)
     {
-        auto it=_fleetData.find(i+1);
-        fleetData[i]=it->second;
+        fleetData[it->first-1]=it->second;
     }
-
-    
+ 
     
     for_each(_equipData.begin(),_equipData.end(),[&](const std::pair<int,Equip*>& temp)
              {
@@ -56,16 +54,16 @@ void Player::addPlayerCurrExp(int addExp)
         return;
     }
     this->playerCurrExp+=addExp;
-    while (playerCurrExp>=getPlayerUpdateExp())
+    while (playerCurrExp>=getUpdateExp())
     {
-        this->playerCurrExp-=getPlayerUpdateExp();
+        this->playerCurrExp-=getUpdateExp();
         LVup();
         setUpdateExp();
         if (getCurrLV()==MAX_PLAYER_LV)
         {
             this->playerCurrExp=MAX_PLAYER_LV_EXP;
             PlayerDB::getInstance()->modifyCurrLV(playerKey,getCurrLV());
-            PlayerDB::getInstance()->modifyPlayerCurrExp(playerKey,getPlayerCurrExp());
+            PlayerDB::getInstance()->modifyPlayerCurrExp(playerKey,getCurrExp());
             setMaxAttr();
             ///updateExp 用不用加？
             return;
@@ -73,7 +71,7 @@ void Player::addPlayerCurrExp(int addExp)
     }
     setMaxAttr();
     PlayerDB::getInstance()->modifyCurrLV(playerKey,getCurrLV());
-    PlayerDB::getInstance()->modifyPlayerCurrExp(playerKey,getPlayerCurrExp());
+    PlayerDB::getInstance()->modifyPlayerCurrExp(playerKey,getCurrExp());
     //updateExp 用不用加？
 }
 
@@ -233,10 +231,10 @@ void Player::minusFuel(int miFuel)
     fuel-=miFuel;
     PlayerDB::getInstance()->modifyFuel(playerKey, fuel);
 }
-void Player::minusAmmo(int miSteel)
+void Player::minusAmmo(int miAmmo)
 {
-    steel-=miSteel;
-    PlayerDB::getInstance()->modifySteel(playerKey, steel);
+    ammo-=miAmmo;
+    PlayerDB::getInstance()->modifyAmmo(playerKey, ammo);
 }
 void Player::minusAluminium(int miAluminium)
 {
@@ -385,28 +383,18 @@ void Player::deleteEquip(Equip *_equip)
     
 }
 
-void Player::deleteEquip(int _equipKey)
-{
-    
-    if (_deleteEquipByEquipKey(_equipKey))
-    {
-        EquipDB::getInstance()->deleteEquipKey(_equipKey, 1);
-    }
-    else
-    {
-        EquipDB::getInstance()->deleteEquipKey(_equipKey, 0);
-    }
-}
 
 
 void Player::removeEquip(Kantai* kantai,int _position)
 {
     int _equipKey=kantai->equipGrid[_position-1]->getEquipKey();
+    auto equip=kantai->equipGrid[_position-1];
+    equip->setKantai(NULL);
     kantai->equipGrid[_position-1]=NULL;
     EquipDB::getInstance()->deleteEquipRelation(_equipKey);
 }
 
-Equip* Player::findEquipByEquipKey(int _equipKey)
+Equip* Player::getEquipByEquipKey(int _equipKey)
 {
     Equip* equip;
     
@@ -427,9 +415,9 @@ Equip* Player::findEquipByEquipKey(int _equipKey)
 }
 
 
-Kantai* Player::findKantaiByKantaiKey(int _kantaiKey)
+Kantai* Player::getKantaiByKantaiKey(int _kantaiKey)
 {
-    Kantai* _kantai;
+    Kantai* _kantai=NULL;
     
     auto it=kantaiData.begin();
     
@@ -442,15 +430,29 @@ Kantai* Player::findKantaiByKantaiKey(int _kantaiKey)
         }
         ++it;
     }
-    
-    CCASSERT(false, "can not find the equip in the findKantaiByKantaiKey");
+    log("can not find kantai ,the key is %d",_kantaiKey);
     return _kantai;
+}
+
+
+
+void Player::deleteEquip(int _equipKey)
+{
+    
+    if (_deleteEquipByEquipKey(_equipKey))
+    {
+        EquipDB::getInstance()->deleteEquipKey(_equipKey, 1);
+    }
+    else
+    {
+        EquipDB::getInstance()->deleteEquipKey(_equipKey, 0);
+    }
 }
 
 void Player::changeEquipPosition(int _equipKey, int _kantaiKey, int _position)
 {
-    auto _equip=findEquipByEquipKey(_equipKey);
-    auto _kantai=findKantaiByKantaiKey(_kantaiKey);
+    auto _equip=getEquipByEquipKey(_equipKey);
+    auto _kantai=getKantaiByKantaiKey(_kantaiKey);
     changeEquipPosition(_equip, _kantai, _position);
 }
 
@@ -485,6 +487,21 @@ void Player::_changeEquipPosition(Equip* _equip, Kantai* _kantai, int _position)
 }
 
 
+//kantai
+bool Player::canBuildNewKantai(int _kantaiNumber)
+{
+    CCASSERT(_kantaiNumber<=sKantaiMgr.GetKantaiMap()->size(), "kantai number is out of range.int function \"canBuildNewKantai\"");
+    if (kantaiData.size()>=maxKantaiSize) {
+        return false;
+    }
+    auto equipSize=sKantaiMgr.GetKantaiMap(_kantaiNumber)->kantaiEquipSize;
+    if ((equipData.size()+equipSize)>maxEquipSize)
+    {
+        return false;
+    }
+    return true;
+}
+
 Kantai* Player::buildNewKantai(int _kantaiNumber)
 {
     Kantai* kantai=Kantai::create(-1, _kantaiNumber, LoadState::INIT_UNIT);
@@ -510,6 +527,32 @@ Kantai* Player::buildNewKantai(int _kantaiNumber)
         equipData.push_back(equip);
     }
     return kantai;
+}
+
+bool Player::canDeleteKantai(Kantai *kantai)
+{
+    if (!kantai) {
+        return false;
+    }
+    //判断锁没锁
+    if (kantai->getKantaiLock()) {
+        return false;
+    }
+    
+    //判断是不是第一舰队旗舰
+    Fleet* fleet=dynamic_cast<Fleet*>(kantai->getFleet());
+    if (fleet)
+    {
+        if (fleet->getFleetKey()==1)
+        {
+            if (fleet->ship[0]==kantai)
+            {
+                return false;
+            }
+        }
+    }
+
+    return true;
 }
 
 void Player::deleteKantai(Kantai *kantai)
@@ -557,72 +600,141 @@ void Player::deleteKantai(Kantai *kantai)
         }
     }
     kantaiData.erase(kantaiIt);
+    KantaiDB::getInstance()->deleteKantaiKey(kantai->getKantaiKey(), false);
     delete kantai;
     kantai=NULL;
-    KantaiDB::getInstance()->deleteKantaiKey(kantai->getKantaiKey(), false);
+    
 }
 
-void Player::deleteKantai(int _kantaiKey)
+
+bool Player::canSwapKantai(Kantai *lKantai, Kantai *rKantai)
 {
-    Kantai* kantai=NULL;
-    auto kantaiIt=kantaiData.begin();
-    while (kantaiIt!=kantaiData.end())
-    {
-        if ((*kantaiIt)->getKantaiKey()==_kantaiKey)
-        {
-            kantai=*kantaiIt;
-            break;
-        }
-        ++kantaiIt;
+    if (!rKantai) {
+        return false;
     }
-    if (kantaiIt==kantaiData.end())
-    {
-        CCASSERT(false, "have no kantai in deleteKantai");
+    //判断变换舰娘的状态
+    auto state=rKantai->getKantaiState();
+    if (!(state==KantaiState::Repairing||state==KantaiState::Free)) {
+        return false;
     }
-    if (kantai->getFleet())
+    return true;
+}
+
+bool Player::canModifyKantaiPosition(Fleet *fleet, int position, Kantai *kantai)
+{
+    if (fleet->getShip(position))
     {
-        Fleet* fleet=dynamic_cast<Fleet*>(kantai->getFleet());
-        
-        for (int i=0; i<6; ++i)
-        {
-            if (fleet->ship[i]) {
-                if (fleet->ship[i]==kantai)
-                {
-                    fleet->ship[i]=NULL;
-                    KantaiDB::getInstance()->deleteKantaiFleet(kantai->getKantaiKey());
-                }
+        return canSwapKantai(fleet->getShip(position), kantai);
+    }
+    else
+    {
+        return canChangeKantaiPosition(fleet, position, kantai);
+    }
+}
+
+void Player::modifyKantaiPosition(Fleet *fleet, int position, Kantai *kantai)
+{
+    if (fleet->getShip(position))
+    {
+        swapKantai(fleet->getShip(position), kantai);
+    }
+    else
+    {
+        changeKantaiPosition(fleet, position, kantai);
+    }
+}
+
+
+void Player::swapKantai(Kantai *lKantai, Kantai *rKantai)
+{
+    if (lKantai==rKantai) {
+        return;
+    }
+    Fleet* lFleet=dynamic_cast<Fleet*>(lKantai->getFleet());
+    int lPosition=0;
+    for (int i=0; i<6; ++i)
+    {
+        if (lFleet->ship[i]) {
+            if (lFleet->ship[i]==lKantai)
+            {
+                lPosition=i+1;
             }
         }
     }
-    for (auto it=kantai->equipGrid.begin(); it!=kantai->equipGrid.end(); ++it)
-    {
-        Equip* equipTemp=*it;
-        if (equipTemp)
-        {
-            int _equipKey=equipTemp->getEquipKey();
-            auto equipIt=find(equipData.begin(),equipData.end(),equipTemp);
-            equipData.erase(equipIt);
-            delete equipTemp;
-            *it=NULL;
-            EquipDB::getInstance()->deleteEquipKey(_equipKey, true);
-        }
-    }
-    kantaiData.erase(kantaiIt);
-    delete kantai;
-    kantai=NULL;
-    KantaiDB::getInstance()->deleteKantaiKey(kantai->getKantaiKey(), false);}
-
-void Player::removeKantai(Fleet *_fleet, int _position)
-{
-    Kantai* kantaiTemp=_fleet->ship[_position-1];
-    _fleet->ship[_position]=NULL;
+    removeKantai(lFleet, lPosition);
     
-    int _kantaiKey=kantaiTemp->getKantaiKey();
-    KantaiDB::getInstance()->deleteKantaiFleet(_kantaiKey);
+    Fleet* rFleet=dynamic_cast<Fleet*>(rKantai->getFleet());
+    int rPosition=0;
+    if (rFleet)
+    {
+        for (int i=0; i<6; ++i)
+        {
+            if (rFleet->ship[i]) {
+                if (rFleet->ship[i]==rKantai)
+                {
+                    rPosition=i+1;
+                }
+            }
+        }
+    removeKantai(rFleet, rPosition);
+    }
+    
+    if (rFleet) {
+        changeKantaiPosition(rFleet, rPosition,lKantai);
+    }
+    changeKantaiPosition(lFleet, lPosition,rKantai);
 }
 
 
-void Player::changeKantaiPosition(Kantai *kantai, Fleet *fleet, int position)
+bool Player::canRemoveAllKantai(Fleet *fleet)
+{
+    if (!fleet) {
+        return false;
+    }
+    //判断从第二个格子开始有没有船
+    int i=0;
+    for (auto it=fleet->ship.begin(); it!=fleet->ship.end(); ++it)
+    {
+        if (*it)
+        {
+            ++i;
+        }
+        if (i>1)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+void Player::removeAllKantai(Fleet *fleet)
+{
+    for (int i=1;i<fleet->ship.size();++i)
+    {
+        if (fleet->ship[i])
+        {
+            removeKantai(fleet, i+1);
+        }
+    }
+}
+
+
+bool Player::canChangeKantaiPosition(Fleet *fleet, int position,Kantai *kantai)
+{
+    if (!kantai) {
+        return false;
+    }
+    //判断变换舰娘的状态
+    auto state=kantai->getKantaiState();
+    if (!(state==KantaiState::Repairing||state==KantaiState::Free)) {
+        return false;
+    }
+    return true;
+}
+
+
+
+void Player::changeKantaiPosition(Fleet *fleet, int position,Kantai *kantai)
 {
     auto _fleet=dynamic_cast<Fleet*>(kantai->getFleet());
     if (_fleet)
@@ -643,11 +755,15 @@ void Player::changeKantaiPosition(Kantai *kantai, Fleet *fleet, int position)
     _changeKantaiPosition(kantai,fleet,position);
 }
 
-void Player::changeKantaiPosition(int _kantaiKey, int _fleetNumber, int _position)
+
+void Player::removeKantai(Fleet *_fleet, int _position)
 {
-    auto _fleet=findFleetByFleetKey(_fleetNumber);
-    auto _kantai=findKantaiByKantaiKey(_kantaiKey);
-    changeKantaiPosition(_kantai,_fleet,_position);
+    Kantai* kantaiTemp=_fleet->ship[_position-1];
+    _fleet->ship[_position-1]=NULL;
+    kantaiTemp->setFleet(NULL);
+    
+    int _kantaiKey=kantaiTemp->getKantaiKey();
+    KantaiDB::getInstance()->deleteKantaiFleet(_kantaiKey);
 }
 
 void Player::_changeKantaiPosition(Kantai *kantai, Fleet *fleet, int position)
@@ -659,6 +775,86 @@ void Player::_changeKantaiPosition(Kantai *kantai, Fleet *fleet, int position)
 
 
 
+//
+//
+//
+//void Player::deleteKantai(int _kantaiKey)
+//{
+//    Kantai* kantai=NULL;
+//    auto kantaiIt=kantaiData.begin();
+//    while (kantaiIt!=kantaiData.end())
+//    {
+//        if ((*kantaiIt)->getKantaiKey()==_kantaiKey)
+//        {
+//            kantai=*kantaiIt;
+//            break;
+//        }
+//        ++kantaiIt;
+//    }
+//    if (kantaiIt==kantaiData.end())
+//    {
+//        CCASSERT(false, "have no kantai in deleteKantai");
+//    }
+//    if (kantai->getFleet())
+//    {
+//        Fleet* fleet=dynamic_cast<Fleet*>(kantai->getFleet());
+//        
+//        for (int i=0; i<6; ++i)
+//        {
+//            if (fleet->ship[i]) {
+//                if (fleet->ship[i]==kantai)
+//                {
+//                    fleet->ship[i]=NULL;
+//                    KantaiDB::getInstance()->deleteKantaiFleet(kantai->getKantaiKey());
+//                }
+//            }
+//        }
+//    }
+//    for (auto it=kantai->equipGrid.begin(); it!=kantai->equipGrid.end(); ++it)
+//    {
+//        Equip* equipTemp=*it;
+//        if (equipTemp)
+//        {
+//            int _equipKey=equipTemp->getEquipKey();
+//            auto equipIt=find(equipData.begin(),equipData.end(),equipTemp);
+//            equipData.erase(equipIt);
+//            delete equipTemp;
+//            *it=NULL;
+//            EquipDB::getInstance()->deleteEquipKey(_equipKey, true);
+//        }
+//    }
+//    kantaiData.erase(kantaiIt);
+//    delete kantai;
+//    kantai=NULL;
+//    KantaiDB::getInstance()->deleteKantaiKey(kantai->getKantaiKey(), false);
+//}
+//
+//
+//
+//
+//void Player::changeKantaiPosition(int _kantaiKey, int _fleetNumber, int _position)
+//{
+//    auto _fleet=getFleetByFleetKey(_fleetNumber);
+//    auto _kantai=findKantaiByKantaiKey(_kantaiKey);
+//    changeKantaiPosition(_kantai,_fleet,_position);
+//}
+
+
+
+
+//fleet
+
+bool Player::canBuildNewFleet()
+{
+    for (int i=0; i<fleetData.size(); ++i)
+    {
+        if (!fleetData[i]) {
+            return true;
+        }
+    }
+    return false;
+}
+
 Fleet* Player::buildNewFleet()
 {
     for (int i=0; i<fleetData.size();++i) {
@@ -667,14 +863,27 @@ Fleet* Player::buildNewFleet()
             Fleet* fleet=Fleet::create(i+1, INIT_UNIT);
             fleetData[i]=fleet;
             FleetDB::getInstance()->getNewFleetByNumber(i+1,fleet->getFleetName(),fleet->getFleetState());
+            return fleet;
         }
     }
+    CCASSERT(false, "can not build new fleet: in the function \"buildNewFleet\"");
+}
+
+bool Player::canDeleteFleet(int _fleetKey)
+{
+    if (_fleetKey<=1) {
+        return false;
+    }
+    return !(!getFleetByFleetKey(_fleetKey));
 }
 
 
 void Player::deleteFleet(int _fleetKey)
 {
+
+    CCASSERT(_fleetKey>0, "error fleetKey in the function \"deleteFleet\"");
     Fleet* _fleet=fleetData[_fleetKey-1];
+    CCASSERT(_fleet, "can not delete the fleet,in the function \"deleteFleet\"");
     
     for (auto it=_fleet->ship.begin(); it!=_fleet->ship.end(); ++it)
     {
@@ -686,20 +895,15 @@ void Player::deleteFleet(int _fleetKey)
     }
     fleetData[_fleetKey-1]=NULL;
     delete _fleet;
+    _fleet=NULL;
     FleetDB::getInstance()->deleteFleetByKey(_fleetKey);
-    
 }
 
-Fleet* Player::findFleetByFleetKey(int _fleetKey)
+Fleet* Player::getFleetByFleetKey(int _fleetKey)
 {
-//    for (int i=0; i<fleetData.size(); ++i)
-//    {
-//        if (fleetData[i]->getFleetKey()==_fleetKey) {
-//            return fleetData[i];
-//        }
-//    }
+    CCASSERT(_fleetKey>=1, "error fleetKey in the function \"getFleetByFleetKey\"");
     return fleetData[_fleetKey-1];
-    CCASSERT(false, "can not find the fleet");
+    
 }
 
 

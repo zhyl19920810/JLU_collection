@@ -54,7 +54,7 @@ int KantaiDB::getNewKantaiByNumber(int kantaiNumber)
     
     if (sqlite3_prepare_v2(kancolleDB, sqlStr.c_str(), -1, &statement, NULL)==SQLITE_OK)
     {
-        sqlite3_bind_int(statement ,1, 20);
+        //sqlite3_bind_int(statement ,1, 20);
         sqlite3_bind_int(statement ,2, kantaiNumber);
         sqlite3_bind_int(statement ,3, _lv);
         sqlite3_bind_int(statement ,4, _fuel);

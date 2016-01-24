@@ -82,7 +82,10 @@ void PortMainLayer::updateGirl()
     {
         girl->setAnchorPoint(Vec2(0.5, 0.25));
     }
-    addChild(girl);
+    if (!girl->getParent()) {
+        addChild(girl);
+    }
+    
     girl->setPosition(600,0);
     girl->setZOrder(-1);
     girl->runAction(RepeatForever::create((ActionInterval*)Sequence::create(ScaleTo::create(4,1.02),ScaleTo::create(4, 1), NULL)));
