@@ -38,9 +38,19 @@ class PortScene:public Scene
 public:
     static PortScene* createScene();
     
+    PortScene();
+    ~PortScene();
     void SetCurrLayer(LayerType type);
     
-    bool init();
+    bool init() override;
+    
+    void startCircle();
+    void endCircle();
+    void addAttr(float dt);
+    
+    void onEnter() override;
+    
+    void onExit() override;
     
     void menuSettingCallback(Ref* pSender);
     
@@ -48,9 +58,10 @@ public:
     
     void changeFurnitureCallback(Ref* psSender);
     
+    CREATE_FUNC(PortScene);
 private:
-    PortScene();
     
+    SEL_SCHEDULE ts;
     
     
     Sprite *black;

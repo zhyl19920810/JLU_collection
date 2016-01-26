@@ -15,7 +15,7 @@
 #include "SallyScene.h"
 #include "GameScene.h"
 #include "Singleton.hpp"
-
+#include "portScene.h"
 
 class GameManger:public Singleton<GameManger>
 {
@@ -30,27 +30,34 @@ public:
     void ClearResource();
     void LoadConfig();
 public:
-    void SetSallyScene(SallyScene* scene)
+    void setSallyScene(SallyScene* scene)
     {
         pSallyScene=scene;
     }
-    SallyScene* GetSallyScene()
+    SallyScene* getSallyScene()
     {
         return pSallyScene;
     }
-    void SetGameScene(GameScene* scene)
+    void setGameScene(GameScene* scene)
     {
         pGameScene=scene;
     }
-    GameScene* GetGameScene()
+    GameScene* getGameScene()
     {
         return pGameScene;
     }
-    
-    
+    void setPortScene(PortScene* scene)
+    {
+        pPortScene=scene;
+    }
+    PortScene* getPortScene()
+    {
+        return pPortScene;
+    }
 private:
     SallyScene* pSallyScene;
     GameScene* pGameScene;
+    PortScene* pPortScene;
 };
 
 #define sGameManger GameManger::getInstance()

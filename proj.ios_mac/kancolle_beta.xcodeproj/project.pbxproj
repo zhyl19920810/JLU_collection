@@ -66,7 +66,6 @@
 		F4036D1D1BDA1F0A002788AA /* kantai in Resources */ = {isa = PBXBuildFile; fileRef = F4036D1C1BDA1F0A002788AA /* kantai */; };
 		F4036D1E1BDA1F0A002788AA /* kantai in Resources */ = {isa = PBXBuildFile; fileRef = F4036D1C1BDA1F0A002788AA /* kantai */; };
 		F4036D201BDA1F16002788AA /* interface in Resources */ = {isa = PBXBuildFile; fileRef = F4036D1F1BDA1F16002788AA /* interface */; };
-		F4036D211BDA1F16002788AA /* interface in Resources */ = {isa = PBXBuildFile; fileRef = F4036D1F1BDA1F16002788AA /* interface */; };
 		F4036D231BDA1F1A002788AA /* furniture in Resources */ = {isa = PBXBuildFile; fileRef = F4036D221BDA1F1A002788AA /* furniture */; };
 		F4036D241BDA1F1A002788AA /* furniture in Resources */ = {isa = PBXBuildFile; fileRef = F4036D221BDA1F1A002788AA /* furniture */; };
 		F4036D261BDA1F31002788AA /* database in Resources */ = {isa = PBXBuildFile; fileRef = F4036D251BDA1F31002788AA /* database */; };
@@ -267,6 +266,8 @@
 		F4B191DF1BE74B56000A41C3 /* AnimationMaker.h in Sources */ = {isa = PBXBuildFile; fileRef = F42865EB1BDBD18100045E66 /* AnimationMaker.h */; };
 		F4B191E01BE74B56000A41C3 /* CharacterCard.h in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F371BDCB2E100180F6B /* CharacterCard.h */; };
 		F4B191E11BE74B56000A41C3 /* BattleHero.h in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F401BDCD9B900180F6B /* BattleHero.h */; };
+		F4B926CE1C55FA74005DB127 /* PortMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CC1C55FA74005DB127 /* PortMain */; };
+		F4B926CF1C55FA74005DB127 /* SupplyMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CD1C55FA74005DB127 /* SupplyMain */; };
 		F4D6CBE91BF380210078C5C0 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE71BF380210078C5C0 /* TestScene.cpp */; };
 		F4D6CBEA1BF380210078C5C0 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE71BF380210078C5C0 /* TestScene.cpp */; };
 		F4D8028E1BE604EB0032C724 /* Mission.xml in Resources */ = {isa = PBXBuildFile; fileRef = F4D8028D1BE604EB0032C724 /* Mission.xml */; };
@@ -275,6 +276,11 @@
 		F4E62F391BDCB2E100180F6B /* CharacterCard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F361BDCB2E100180F6B /* CharacterCard.cpp */; };
 		F4E62F411BDCD9B900180F6B /* BattleHero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F3F1BDCD9B900180F6B /* BattleHero.cpp */; };
 		F4E62F421BDCD9B900180F6B /* BattleHero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F3F1BDCD9B900180F6B /* BattleHero.cpp */; };
+		F4EAC7691C54FEC000BF8E36 /* interface in Resources */ = {isa = PBXBuildFile; fileRef = F4036D1F1BDA1F16002788AA /* interface */; };
+		F4EFACC01C574DD4000FFF74 /* CommonAssets in Resources */ = {isa = PBXBuildFile; fileRef = F4EFACBF1C574DD4000FFF74 /* CommonAssets */; };
+		F4EFACC21C577D12000FFF74 /* CommonAssets in Resources */ = {isa = PBXBuildFile; fileRef = F4EFACBF1C574DD4000FFF74 /* CommonAssets */; };
+		F4EFACC31C577D12000FFF74 /* PortMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CC1C55FA74005DB127 /* PortMain */; };
+		F4EFACC41C577D12000FFF74 /* SupplyMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CD1C55FA74005DB127 /* SupplyMain */; };
 		F4FABB041C50D30600F75BCE /* KantaiMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB021C50D30600F75BCE /* KantaiMgr.cpp */; };
 		F4FABB071C50D34000F75BCE /* loadTxt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB051C50D34000F75BCE /* loadTxt.cpp */; };
 		F4FABB0A1C50D36C00F75BCE /* EquipMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB081C50D36B00F75BCE /* EquipMgr.cpp */; };
@@ -469,6 +475,8 @@
 		F4B1740A1C54633500D2BC1C /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		F4B1740D1C54656F00D2BC1C /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
 		F4B1740F1C54657D00D2BC1C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		F4B926CC1C55FA74005DB127 /* PortMain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PortMain; sourceTree = "<group>"; };
+		F4B926CD1C55FA74005DB127 /* SupplyMain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SupplyMain; sourceTree = "<group>"; };
 		F4D6CBE71BF380210078C5C0 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
 		F4D6CBE81BF380210078C5C0 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
 		F4D8028D1BE604EB0032C724 /* Mission.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Mission.xml; sourceTree = "<group>"; };
@@ -476,6 +484,7 @@
 		F4E62F371BDCB2E100180F6B /* CharacterCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterCard.h; sourceTree = "<group>"; };
 		F4E62F3F1BDCD9B900180F6B /* BattleHero.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleHero.cpp; sourceTree = "<group>"; };
 		F4E62F401BDCD9B900180F6B /* BattleHero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleHero.h; sourceTree = "<group>"; };
+		F4EFACBF1C574DD4000FFF74 /* CommonAssets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CommonAssets; sourceTree = "<group>"; };
 		F4FABB021C50D30600F75BCE /* KantaiMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KantaiMgr.cpp; sourceTree = "<group>"; };
 		F4FABB031C50D30600F75BCE /* KantaiMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KantaiMgr.hpp; sourceTree = "<group>"; };
 		F4FABB051C50D34000F75BCE /* loadTxt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = loadTxt.cpp; sourceTree = "<group>"; };
@@ -622,6 +631,9 @@
 			isa = PBXGroup;
 			children = (
 				F4D8028D1BE604EB0032C724 /* Mission.xml */,
+				F4EFACBF1C574DD4000FFF74 /* CommonAssets */,
+				F4B926CC1C55FA74005DB127 /* PortMain */,
+				F4B926CD1C55FA74005DB127 /* SupplyMain */,
 				F4FABB2F1C51368200F75BCE /* csv */,
 				F4014AF21BF0E8A000C9C5AE /* equip */,
 				F40CF9821BDB51B200DD897F /* map */,
@@ -1067,6 +1079,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4EFACC01C574DD4000FFF74 /* CommonAssets in Resources */,
+				F4B926CE1C55FA74005DB127 /* PortMain in Resources */,
+				F4B926CF1C55FA74005DB127 /* SupplyMain in Resources */,
 				F4FABB301C51368200F75BCE /* csv in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				F4014AF31BF0E8A100C9C5AE /* equip in Resources */,
@@ -1106,13 +1121,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4EFACC21C577D12000FFF74 /* CommonAssets in Resources */,
+				F4EFACC31C577D12000FFF74 /* PortMain in Resources */,
+				F4EFACC41C577D12000FFF74 /* SupplyMain in Resources */,
+				F4EAC7691C54FEC000BF8E36 /* interface in Resources */,
 				F4B173F31C545F3800D2BC1C /* csv in Resources */,
 				F40CF9841BDB51B200DD897F /* map in Resources */,
 				F4014AF41BF0E8A100C9C5AE /* equip in Resources */,
 				46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */,
 				F4036D1E1BDA1F0A002788AA /* kantai in Resources */,
 				F4036D2A1BDA1F39002788AA /* equipment in Resources */,
-				F4036D211BDA1F16002788AA /* interface in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				F4036D241BDA1F1A002788AA /* furniture in Resources */,

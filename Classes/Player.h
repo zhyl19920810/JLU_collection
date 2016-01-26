@@ -36,10 +36,13 @@ private:
 
 
 
-class Player:public Singleton<Player>
+
+
+class Player:public Singleton<Player>,public Ref
 {
     friend class Singleton<Player>;
     friend class DBInit;
+
 public:
 
     //exp
@@ -185,6 +188,7 @@ public:
     void deleteFleet(int _fleetKey); //只删除fleet，舰娘放回表中,第一舰队不能删除
     Fleet* getFleetByFleetKey(int _fleetKey);
     
+    
 public:
     std::vector<Kantai*> kantaiData;
     std::vector<Fleet*> fleetData;
@@ -197,6 +201,11 @@ protected:
 //dock
 private:
     std::vector<KantaiDock*> kantaiDock;
+    
+    
+
+    
+    
 };
 
 

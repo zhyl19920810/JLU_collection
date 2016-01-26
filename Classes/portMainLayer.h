@@ -13,18 +13,33 @@
 #include "portScene.h"
 USING_NS_CC;
 
+
+typedef enum
+{
+    organizeBu,
+    supplyBu,
+    remodeBu,
+    repairBu,
+    factoryBu,
+    battleBu
+}ButtonType;
+
+
+
 class PortMainLayer:public cocos2d::Layer
 {
 public:
-    PortMainLayer(PortScene* parent);
+    PortMainLayer();
     
     ~PortMainLayer();
     
     void updateGirl();
     
+    CREATE_FUNC(PortMainLayer);
+    virtual bool init();
+    
 private:
     int girlflag;
-    PortScene * parent;
     Sprite * floor;
     Sprite * desk;
     Sprite * wall;
@@ -33,7 +48,31 @@ private:
     Sprite* chest;
     Sprite *girl;
     
+    Sprite* organizeButton;
+    Sprite* supplyButton;
+    Sprite* remodeButton;
+    Sprite* repairButton;
+    Sprite* factoryButton;
     
+    
+    Sprite* battleButtonShip;
+    Sprite* battleButtonGo;
+    Sprite* battleButton;
+    Sprite* battleLeft;
+    Sprite* battleRight;
+    Action* battleShipRotate;
+    Action* battleLeftMove;
+    Action* battleRightMove;
+private:
+    void stopButtonAction();
+    void startButtonAction(const Vec2& point);
+    Action* wave;
+    Action* rotate;
+    Sprite* rotateButton;
+    Sprite* waveButton;
+    
+
+    bool stopEvent;
 private:
     void initLayer();
     
@@ -45,8 +84,13 @@ private:
     
     void layerSelectCallback(Ref * pSender, LayerType type);
     
+    bool organizeBegin(Touch* touch,Event* event);
+    void organizeMove(Touch* touch,Event* event);
+    void organizeEnd(Touch* touch,Event* event);
     
-    
+    bool battleBegin(Touch* touch,Event* event);
+    void battleMove(Touch* touch,Event* event);
+    void battleEnd(Touch* touch,Event* event);
 };
 
 #endif /* defined(__kancolle_alpha__portMainLayer__) */

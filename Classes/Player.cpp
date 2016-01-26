@@ -622,6 +622,7 @@ bool Player::canSwapKantai(Kantai *lKantai, Kantai *rKantai)
 
 bool Player::canModifyKantaiPosition(Fleet *fleet, int position, Kantai *kantai)
 {
+
     if (fleet->getShip(position))
     {
         return canSwapKantai(fleet->getShip(position), kantai);
@@ -724,6 +725,9 @@ bool Player::canChangeKantaiPosition(Fleet *fleet, int position,Kantai *kantai)
     if (!kantai) {
         return false;
     }
+    if (kantai==getFlagShip()) {
+        return false;
+    }
     //判断变换舰娘的状态
     auto state=kantai->getKantaiState();
     if (!(state==KantaiState::Repairing||state==KantaiState::Free)) {
@@ -749,6 +753,9 @@ void Player::changeKantaiPosition(Fleet *fleet, int position,Kantai *kantai)
                     break;
                 }
             }
+        }
+        if ((_fleet==fleet)&&(prePosition==position)) {
+            return;
         }
         removeKantai(_fleet, prePosition);
     }
@@ -905,6 +912,8 @@ Fleet* Player::getFleetByFleetKey(int _fleetKey)
     return fleetData[_fleetKey-1];
     
 }
+
+
 
 
 

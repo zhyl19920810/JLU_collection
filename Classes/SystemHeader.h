@@ -45,13 +45,24 @@ typedef enum
     Diving_Mothership=19,//潜水母舰
 }KantaiType;
 
-enum Shooting_Range{
+typedef enum
+{
     range_short=1,
     range_mid=2,
     range_long=3,
     range_exlong=4,
     range_no=5
-};
+}Shooting_Range;
+
+
+typedef enum
+{
+    Free,
+    Repairing,
+    Expedition,
+    Error,
+}KantaiState;
+
 
 typedef enum
 {

@@ -13,7 +13,7 @@
 #include <dirent.h>
 #include <sys/stat.h>
 
-//#define DB_IN_COMPUTER
+#define DB_IN_COMPUTER 1
 #define DEBUG_MODE true
 
 USING_NS_CC;
@@ -97,7 +97,7 @@ void AppDelegate::portModel(Director* director)
     Player::newInstance();
 
 #if DB_IN_COMPUTER
-    std::string writablePath = FileUtils::getInstance()->fullPathForFilename("database/kancolle_2.sqlite3");
+    std::string writablePath = FileUtils::getInstance()->fullPathForFilename("/Volumes/opengl/kancolle_beta/Resources/database/kancolle_2.sqlite3");
     
 #else
     std::string dbFilePath = FileUtils::getInstance()->fullPathForFilename("database/kancolle_2.sqlite3");
@@ -111,10 +111,9 @@ void AppDelegate::portModel(Director* director)
         fsCoper << fsCopee.rdbuf();
     }
 #endif
-    DBBase::init("/Volumes/opengl/kancolle_beta/Resources/database/kancolle_2.sqlite3");
+    DBBase::init(writablePath);
     DBInit init;
     init.initDB(1);
-    
     
     auto scene=PortScene::createScene();
     director->runWithScene(scene);
@@ -147,6 +146,15 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
+    auto visibleSize=Director::getInstance()->getVisibleSize();
+    log("visibleSize: %f %f",visibleSize.width,visibleSize.height);
+    
+    auto visibleOrgin=Director::getInstance()->getVisibleOrigin();
+    log("visibleOrgin: %f  %f",visibleOrgin.x,visibleOrgin.y);
+    
+    auto winSize=Director::getInstance()->getWinSize();
+    log("winSize:  %f %f",winSize.width,winSize.height);
+    
     register_all_packages();
     
     //battleModel(director);
@@ -172,6 +180,8 @@ void AppDelegate::applicationWillEnterForeground() {
 
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+    
+    
 }
 
 

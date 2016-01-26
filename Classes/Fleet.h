@@ -42,7 +42,7 @@ public:
     FleetState getFleetState() const {return fleetState;}
     Kantai* getShip(int position)
     {
-        CCASSERT(position>=1||position<=6, "out of range in function getShip");
+        CCASSERT(position>=1&&position<=6, "out of range in function getShip");
         return ship[position-1];
     }
     int KantaiSize();

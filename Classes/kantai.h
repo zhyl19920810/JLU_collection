@@ -22,13 +22,6 @@ USING_NS_CC;
 
 
 
-typedef enum
-{
-    Free,
-    Repairing,
-    Expedition,
-    Error,
-}KantaiState;
 
 
 class Kantai:public Ref
@@ -43,8 +36,8 @@ public:
     
     
 public:
-    int getKantaiKey(){return kantaiKey;}
-    int getKantaiNumber(){return kantaiNumber;}
+    int getKantaiKey() const {return kantaiKey;}
+    int getKantaiNumber()const {return kantaiNumber;}
     char* getKantaiName() const {return kantaiImp->kantaiName;}
     char* getKantaiFullName() const {return kantaiImp->kantaiFullName;}
     KantaiType getKantaiType() const{return kantaiImp->kantaiType;}

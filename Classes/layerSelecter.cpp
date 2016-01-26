@@ -17,25 +17,25 @@ LayerSelecter::LayerSelecter(PortScene *parent,Point position)
     parent->addChild(this);
     this->setZOrder(2);
     
-    mainbody = Sprite::create("interface/PortMain/image 243.png");
+    mainbody =Sprite::createWithSpriteFrameName("lsmb.png");
     mainbody->setPosition(-10, 0);
-    backgroud = Sprite::create("interface/PortMain/image 242.png");
+    backgroud = Sprite::createWithSpriteFrameName("lsbg.png");
     backgroud->setPosition(0, 0);
     
     this->addChild(backgroud);
     this->addChild(mainbody);
     
-    portItem = MenuItemImage::create("interface/PortMain/image 275.png", "interface/PortMain/image 277.png", CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, LayerType::main));
+    portItem = MenuItemSprite::create(Sprite::createWithSpriteFrameName("portItem1.png"),Sprite::createWithSpriteFrameName("portItem2.png"),CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, LayerType::main));
     portItem->setPosition(22, 0);
-    organizeItem = MenuItemImage::create("interface/PortMain/image 270.png", "interface/PortMain/image 272.png", CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, LayerType::organize));
+    organizeItem = MenuItemSprite::create(Sprite::createWithSpriteFrameName("organizeItem1.png"),Sprite::createWithSpriteFrameName("organizeItem2.png"), CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, LayerType::organize));
     organizeItem->setPosition(-30, 100);
-    supplyItem = MenuItemImage::create("interface/PortMain/image 250.png", "interface/PortMain/image 252.png", CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, LayerType::supply));
+    supplyItem = MenuItemSprite::create(Sprite::createWithSpriteFrameName("supplyItem1.png"),Sprite::createWithSpriteFrameName("supplyItem2.png"), CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, LayerType::supply));
     supplyItem->setPosition(-30, 50);
-    remodeItem = MenuItemImage::create("interface/PortMain/image 255.png", "interface/PortMain/image 257.png", CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, LayerType::remode));
+    remodeItem = MenuItemSprite::create(Sprite::createWithSpriteFrameName("remodeItem1.png"),Sprite::createWithSpriteFrameName("remodeItem2.png"), CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, LayerType::remode));
     remodeItem->setPosition(-30, 0);
-    repairItem = MenuItemImage::create("interface/PortMain/image 260.png", "interface/PortMain/image 262.png", CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, LayerType::repair));
+    repairItem = MenuItemSprite::create(Sprite::createWithSpriteFrameName("repairItem1.png"),Sprite::createWithSpriteFrameName("repairItem2.png"), CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, LayerType::repair));
     repairItem->setPosition(-30, -50);
-    factoryItem = MenuItemImage::create("interface/PortMain/image 265.png", "interface/PortMain/image 267.png", CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, LayerType::factory));
+    factoryItem = MenuItemSprite::create(Sprite::createWithSpriteFrameName("factoryItem1.png"),Sprite::createWithSpriteFrameName("factoryItem2.png"), CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, LayerType::factory));
     factoryItem->setPosition(-30, -100);
     
     menu = Menu::create(portItem,organizeItem, supplyItem, remodeItem, repairItem, factoryItem, NULL);
@@ -51,7 +51,7 @@ void LayerSelecter::moveOut()
 
 void LayerSelecter::moveIn()
 {
-    runAction(MoveTo::create(0.3, ccp(initialPosition.x+100,initialPosition.y)));
+    runAction(MoveTo::create(0.3, Vec2(initialPosition.x+100,initialPosition.y)));
 }
 
 

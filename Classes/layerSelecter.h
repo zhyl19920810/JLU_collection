@@ -32,12 +32,12 @@ private:
     Sprite *backgroud;
     
     Menu *menu;
-    MenuItemImage *portItem;
-    MenuItemImage *organizeItem;
-    MenuItemImage *supplyItem;
-    MenuItemImage *remodeItem;
-    MenuItemImage *repairItem;
-    MenuItemImage *factoryItem;
+    MenuItemSprite *portItem;
+    MenuItemSprite *organizeItem;
+    MenuItemSprite *supplyItem;
+    MenuItemSprite *remodeItem;
+    MenuItemSprite *repairItem;
+    MenuItemSprite *factoryItem;
     
     void layerSelectCallback(Ref * pSender, LayerType type);
 };

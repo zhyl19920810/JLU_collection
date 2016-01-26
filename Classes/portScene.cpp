@@ -18,47 +18,110 @@
 #include "portBattleLayer.h"
 #include "portRepairLayer.h"
 #include "Player.h"
+#include "GameManger.hpp"
+
+
 
 PortScene* PortScene::createScene()
 {
-    PortScene* scene=new PortScene();
+    PortScene* scene=PortScene::create();
+    sGameManger.setPortScene(scene);
     return scene;
 }
 
-PortScene::PortScene()
+void PortScene::startCircle()
 {
-    currentLayerType=LayerType::empty;
-    mainlayer=nullptr;
-    layerSelecter=nullptr;
-    supplylayer=nullptr;
-    remodelayer=nullptr;
-    factroylayer=nullptr;
-    repairlayer=nullptr;
-    battlelayer=nullptr;
-    title=nullptr;
+    ts=schedule_selector(PortScene::addAttr);
+    schedule(ts,5);
+}
+
+void PortScene::endCircle()
+{
+    unschedule(ts);
+}
+
+///time
+void PortScene::addAttr(float dt)
+{
+    char number[20];
+    bzero(number, sizeof(number));
+    sPlayer.addAluminium(1);
+    sPlayer.addAmmo(1);
+    sPlayer.addFuel(1);
+    sPlayer.addSteel(1);
+    sprintf(number, "%d",sPlayer.getFuel());
+    labelFuel->setString(number);
+    sprintf(number, "%d",sPlayer.getSteel());
+    labelSteel->setString(number);
+    sprintf(number, "%d",sPlayer.getAmmo());
+    labelAmmo->setString(number);
+    sprintf(number, "%d",sPlayer.getAluminium());
+    labelAluminium->setString(number);
+}
+
+
+PortScene::PortScene():
+mainlayer(NULL),
+layerSelecter(NULL),
+supplylayer(NULL),
+remodelayer(NULL),
+factroylayer(NULL),
+repairlayer(NULL),
+battlelayer(NULL),
+title(NULL),
+currentLayerType(LayerType::empty)
+{
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PortMain/portmain.plist", "PortMain/portmain.pvr.ccz");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PortMain/layerSelect.plist", "PortMain/layerSelect.pvr.ccz");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PortMain/portMainLayer.plist", "PortMain/portMainLayer.pvr.ccz");
     layerSelecter=new LayerSelecter(this,Vec2(-50,220));
-    
-    
+    startCircle();
     SetCurrLayer(main);
-    init();
+}
+
+PortScene::~PortScene()
+{
+    SpriteFrameCache::getInstance()->removeSpriteFrameByName("PortMain/portmain.plist");
+    Director::getInstance()->getTextureCache()->removeTextureForKey("PortMain/portmain.pvr.ccz");
+    SpriteFrameCache::getInstance()->removeSpriteFrameByName("PortMain/layerSelect.plist");
+    Director::getInstance()->getTextureCache()->removeTextureForKey("PortMain/layerSelect.pvr.ccz");
+    SpriteFrameCache::getInstance()->removeSpriteFrameByName("PortMain/portMainLayer.plist");
+    Director::getInstance()->getTextureCache()->removeTextureForKey("PortMain/portMainLayer.pvr.ccz");
+    unschedule(ts);
+}
+
+
+void PortScene::onEnter()
+{
+    Scene::onEnter();
+}
+
+void PortScene::onExit()
+{
+    Scene::onExit();
     
 }
 
+
+
+
+
 bool PortScene::init()
 {
+    if (!Scene::init()) {
+        return false;
+    }
     
+//    Size visibleSize=Director::getInstance()->getVisibleSize();
+//    Vec2 origin=Director::getInstance()->getVisibleOrigin();
     
-    
-    bgImage=Sprite::create("interface/PortMain/image 345.jpg");
+    bgImage=Sprite::create("PortMain/image 345.jpg");
     bgImage->setPosition(800,210);
-    bgImage->setZOrder(-3);
+    bgImage->setGlobalZOrder(-3);
     addChild(bgImage);
     
-    
-    Size visibleSize=Director::getInstance()->getVisibleSize();
-    Vec2 origin=Director::getInstance()->getVisibleOrigin();
-    
-    auto borderTopLeft=Sprite::create("interface/PortMain/image 157.png");
+  
+    auto borderTopLeft=Sprite::createWithSpriteFrameName("borderTopLeft.png");
     borderTopLeft->setPosition(48,439);
     RotateBy* circleAction=RotateBy::create(0.01, 6);
     Sequence* sequence=Sequence::create(circleAction, DelayTime::create(0.99),NULL);
@@ -66,12 +129,12 @@ bool PortScene::init()
     borderTopLeft->runAction(repeat);
     addChild(borderTopLeft);
     
-    auto borderCircle=Sprite::create("interface/PortMain/image 281.png");
+    auto borderCircle=Sprite::createWithSpriteFrameName("borderCircle.png");
     borderCircle->setPosition(62,423);
     borderCircle->setZOrder(1);
     addChild(borderCircle);
     
-    title=Sprite::create("interface/PortMain/image 283.png");
+    title=Sprite::createWithSpriteFrameName("porttitle.png");
     title->setPosition(49,438);
     RotateBy* circleAction2=RotateBy::create(1, 13);
     RepeatForever* repeat2=RepeatForever::create((ActionInterval*)circleAction2);
@@ -79,37 +142,37 @@ bool PortScene::init()
     title->setZOrder(1);
     addChild(title);
     
-    Sprite* shader=Sprite::create("interface/PortMain/image 300.png");
+    Sprite* shader=Sprite::createWithSpriteFrameName("shader.png");
     shader->setPosition(49,438);
     shader->setZOrder(1);
     shader->setOpacity(10);
     shader->runAction(RepeatForever::create((ActionInterval*)Sequence::create(FadeTo::create(1.5, 170),FadeTo::create(1.5, 10), NULL)));
     addChild(shader);
     
-    
-    Sprite* titleBar=Sprite::create("interface/PortMain/image 160.png");
+
+    Sprite* titleBar=Sprite::createWithSpriteFrameName("titleBar.png");
     titleBar->setPosition(400,447);
     titleBar->setOpacity(200);
     addChild(titleBar);
     
     //borders
-    auto *border_bottom_1 = Sprite::create("interface/PortMain/image 236.png");
+    auto *border_bottom_1 = Sprite::createWithSpriteFrameName("border_bottom_1.png");
     border_bottom_1->setPosition(550, 5);
     this->addChild(border_bottom_1);
     
-    auto *border_bottom_2 = Sprite::create("interface/PortMain/image 235.png");
+    auto *border_bottom_2 = Sprite::createWithSpriteFrameName("border_bottom_2.png");
     border_bottom_2->setPosition(150, -2);
     this->addChild(border_bottom_2);
     
-    auto *border_left = Sprite::create("interface/PortMain/image 232.png");
+    auto *border_left = Sprite::createWithSpriteFrameName("border_left.png");
     border_left->setPosition(8, 232);
     this->addChild(border_left);
     
-    auto *border_top = Sprite::create("interface/PortMain/image 168.png");
+    auto *border_top = Sprite::createWithSpriteFrameName("border_top.png");
     border_top->setPosition(550, 475);
     this->addChild(border_top);
     //clock
-    auto *clockBg = Sprite::create("interface/PortMain/image 233.png");
+    auto *clockBg = Sprite::createWithSpriteFrameName("left_circle.png");
     clockBg->setPosition(52, 40);
     this->addChild(clockBg);
     
@@ -128,7 +191,7 @@ bool PortScene::init()
     playerLevel->setPosition(420, 462);
     this->addChild(playerLevel);
     
-    auto *fleetCountLabel = Sprite::create("interface/PortMain/image 223.png");
+    auto *fleetCountLabel = Sprite::createWithSpriteFrameName("fleetCountLabel.png");
     fleetCountLabel->setPosition(520, 462);
     this->addChild(fleetCountLabel);
     
@@ -138,7 +201,7 @@ bool PortScene::init()
     fleetCount->setPosition(560, 462);
     this->addChild(fleetCount);
     
-    auto *shipCountLabel = Sprite::create("interface/PortMain/image 222.png");
+    auto *shipCountLabel = Sprite::createWithSpriteFrameName("shipCountLabel.png");
     shipCountLabel->setPosition(601, 462);
     this->addChild(shipCountLabel);
     
@@ -150,9 +213,7 @@ bool PortScene::init()
     
     //resources
     
-    
-    
-    Sprite *iconfr = Sprite::create("interface/PortMain/image 161.png");
+    Sprite *iconfr = Sprite::createWithSpriteFrameName("iconfr.png");
     iconfr->setPosition(670,462);
     this->addChild(iconfr);
     
@@ -161,7 +222,7 @@ bool PortScene::init()
     quickRepairCount->setPosition(710, 462);
     this->addChild(quickRepairCount);
     
-    Sprite *icondt = Sprite::create("interface/PortMain/image 171.png");
+    Sprite *icondt = Sprite::createWithSpriteFrameName("icondt.png");
     icondt->setPosition(740, 462);
     this->addChild(icondt);
     
@@ -172,16 +233,16 @@ bool PortScene::init()
     
     int x = 660;
     int y = 441;
-    Sprite *icon1 = Sprite::create("interface/PortMain/image 141.png");
+    Sprite *icon1 = Sprite::createWithSpriteFrameName("icon1.png");
     icon1->setPosition(x, y);
     this->addChild(icon1);
-    Sprite *icon2 = Sprite::create("interface/PortMain/image 139.png");
+    Sprite *icon2 = Sprite::createWithSpriteFrameName("icon2.png");
     icon2->setPosition(x + 75, y);
     this->addChild(icon2);
-    Sprite *icon3 = Sprite::create("interface/PortMain/image 165.png");
+    Sprite *icon3 = Sprite::createWithSpriteFrameName("icon3.png");
     icon3->setPosition(x, y - 19);
     this->addChild(icon3);
-    Sprite *icon4 = Sprite::create("interface/PortMain/image 138.png");
+    Sprite *icon4 = Sprite::createWithSpriteFrameName("icon4.png");
     icon4->setPosition(x + 75, y - 19);
     this->addChild(icon4);
                             
@@ -217,31 +278,31 @@ bool PortScene::init()
     Layer *layer = Layer::create();
     this->addChild(layer);
     
-    auto recordButton = MenuItemImage::create("interface/PortMain/image 180.png", "interface/PortMain/image 182.png", CC_CALLBACK_1(PortScene::menuHandlingCallback, this));
+    auto recordButton = MenuItemSprite::create(Sprite::createWithSpriteFrameName("record1.png"), Sprite::createWithSpriteFrameName("record2.png"), CC_CALLBACK_1(PortScene::menuHandlingCallback, this));
     recordButton->setPosition(166, 432);
     
-    auto allieButton = MenuItemImage::create("interface/PortMain/image 186.png", "interface/PortMain/image 186.png", CC_CALLBACK_1(PortScene::menuHandlingCallback, this));
+    auto allieButton = MenuItemSprite::create(Sprite::createWithSpriteFrameName("allie.png"), Sprite::createWithSpriteFrameName("allie.png"), CC_CALLBACK_1(PortScene::menuHandlingCallback, this));
     allieButton->setPosition(240, 432);
     
-    auto collectionButton = MenuItemImage::create("interface/PortMain/image 202.png", "interface/PortMain/image 204.png", CC_CALLBACK_1(PortScene::menuHandlingCallback, this));
+    auto collectionButton = MenuItemSprite::create(Sprite::createWithSpriteFrameName("collection1.png"), Sprite::createWithSpriteFrameName("collection2.png"), CC_CALLBACK_1(PortScene::menuHandlingCallback, this));
     collectionButton->setPosition(320, 432);
     
-    auto buyButton = MenuItemImage::create("interface/PortMain/image 207.png", "interface/PortMain/image 209.png", CC_CALLBACK_1(PortScene::menuHandlingCallback, this));
+    auto buyButton = MenuItemSprite::create(Sprite::createWithSpriteFrameName("buy1.png"), Sprite::createWithSpriteFrameName("buy2.png"), CC_CALLBACK_1(PortScene::menuHandlingCallback, this));
     buyButton->setPosition(400, 432);
     
-    auto furnitureButton = MenuItemImage::create("interface/PortMain/image 212.png", "interface/PortMain/image 214.png", CC_CALLBACK_1(PortScene::changeFurnitureCallback, this));
+    auto furnitureButton = MenuItemSprite::create(Sprite::createWithSpriteFrameName("furniture1.png"), Sprite::createWithSpriteFrameName("furniture2.png"), CC_CALLBACK_1(PortScene::changeFurnitureCallback, this));
     furnitureButton->setPosition(480, 432);
     
-    auto missionButton = MenuItemImage::create("interface/PortMain/image 194.png", "interface/PortMain/image 199.png", CC_CALLBACK_1(PortScene::menuHandlingCallback, this));
+    auto missionButton = MenuItemSprite::create(Sprite::createWithSpriteFrameName("mission1.png"), Sprite::createWithSpriteFrameName("mission2.png"), CC_CALLBACK_1(PortScene::menuHandlingCallback, this));
     missionButton->setPosition(560, 432);
     
-    auto missionShader = Sprite::create("interface/PortMain/image 196.png");
+    auto missionShader = Sprite::createWithSpriteFrameName("mission3.png");
     missionShader->setPosition(missionButton->getPosition());
     layer->addChild(missionShader);
     missionShader->setZOrder(1);
     missionShader->runAction(RepeatForever::create((ActionInterval*)Sequence::create(FadeOut::create(2), FadeIn::create(2), NULL)));
     
-    auto buyHouseButton = MenuItemImage::create("interface/PortMain/image 217.png", "interface/PortMain/image 219.png", CC_CALLBACK_1(PortScene::menuHandlingCallback, this));
+    auto buyHouseButton = MenuItemSprite::create(Sprite::createWithSpriteFrameName("buyhhouse1.png"), Sprite::createWithSpriteFrameName("buyhouse2.png"), CC_CALLBACK_1(PortScene::menuHandlingCallback, this));
     buyHouseButton->setPosition(620, 432);
     
     
@@ -249,7 +310,6 @@ bool PortScene::init()
     auto menu = Menu::create(recordButton, allieButton, collectionButton, buyButton, furnitureButton, missionButton, buyHouseButton, NULL);
     menu->setPosition(0, 0);
     layer->addChild(menu);
-    
     
     return true;
     
@@ -282,10 +342,12 @@ void PortScene::SetCurrLayer(LayerType type)
                 return;
             }
             if(title!=nullptr)
-                title->setTexture("interface/PortMain/image 283.png");
+            {
+                title->setSpriteFrame("porttitle.png");
+            }
             if (!mainlayer)
             {
-                mainlayer=new PortMainLayer(this);
+                mainlayer=PortMainLayer::create();
                 this->addChild(mainlayer);
             }
             layerSelecter->moveOut();
@@ -305,11 +367,11 @@ void PortScene::SetCurrLayer(LayerType type)
             {
                 return;
             }
-            title->setTexture("interface/PortMain/image 285.png");
+            title->setSpriteFrame("supplytitle.png");
             bgImage->runAction(MoveTo::create(0.3, ccp(1600, 210)));
             if (!supplylayer)
             {
-                supplylayer=new PortSupplyLayer(this);
+                supplylayer=PortSupplyLayer::create();
                 addChild(supplylayer);
             }
             layerSelecter->moveIn();
@@ -328,7 +390,7 @@ void PortScene::SetCurrLayer(LayerType type)
             {
                 return;
             }
-            title->setTexture("interface/PortMain/image 291.png");
+            title->setSpriteFrame("repairtitle.png");
             bgImage->runAction(MoveTo::create(0.3, ccp(0,210)));
             layerSelecter->moveIn();
             if (!repairlayer) {
@@ -350,7 +412,7 @@ void PortScene::SetCurrLayer(LayerType type)
             {
                 return;
             }
-            title->setTexture("interface/PortMain/image 293.png");
+            title->setSpriteFrame("factorytitle.png");
             bgImage->runAction(MoveTo::create(0.3, ccp(-490,210)));
             layerSelecter->moveIn();
             if (!factroylayer)
@@ -372,7 +434,7 @@ void PortScene::SetCurrLayer(LayerType type)
             if (currentLayerType == LayerType::remode)
                 return;
             //layerSwithEffect();
-            title->setTexture("interface/PortMain/image 287.png");
+            title->setSpriteFrame("remodeltitle.png");
             bgImage->runAction(MoveTo::create(0.3, ccp(-780, 210)));
             layerSelecter->moveIn();
             if (remodelayer == nullptr)
@@ -392,7 +454,7 @@ void PortScene::SetCurrLayer(LayerType type)
             if (currentLayerType == LayerType::battle)
                 return;
             //layerSwithEffect();
-            title->setTexture("interface/PortMain/image 295.png");
+            title->setSpriteFrame("battletitle.png");
             bgImage->runAction(MoveTo::create(0.3, ccp(800, 210)));
             layerSelecter->moveIn();
             if (battlelayer == nullptr)
@@ -410,11 +472,28 @@ void PortScene::SetCurrLayer(LayerType type)
         }
         case organize:
         {
+            auto player=sPlayer;
             auto size=sPlayer.kantaiData.size();
             int i=rand()%size;
-            if (sPlayer.canSwapKantai(sPlayer.getFlagShip(), sPlayer.kantaiData[i])) {
-                sPlayer.swapKantai(sPlayer.getFlagShip(), sPlayer.kantaiData[i]);
-            }
+//            if (sPlayer.canModifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 2, sPlayer.kantaiData[i])) {
+//                sPlayer.modifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 2, sPlayer.kantaiData[i]);
+//            }
+//            i=rand()%size;
+//            if (sPlayer.canModifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 3, sPlayer.kantaiData[i])) {
+//                sPlayer.modifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 3, sPlayer.kantaiData[i]);
+//            }
+//            i=rand()%size;
+//            if (sPlayer.canModifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 4, sPlayer.kantaiData[i])) {
+//                sPlayer.modifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 4, sPlayer.kantaiData[i]);
+//            }
+//            i=rand()%size;
+//            if (sPlayer.canModifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 5, sPlayer.kantaiData[i])) {
+//                sPlayer.modifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 5, sPlayer.kantaiData[i]);
+//            }
+//            i=rand()%size;
+//            if (sPlayer.canModifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 6, sPlayer.kantaiData[i])) {
+//                sPlayer.modifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 6, sPlayer.kantaiData[i]);
+//            }
             currentLayerType=LayerType::main;
             currentLayer=mainlayer;
             mainlayer->updateGirl();
