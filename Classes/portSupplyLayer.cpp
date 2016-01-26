@@ -8,7 +8,7 @@
 
 #include "portSupplyLayer.h"
 #include "portScene.h"
-
+#include "GameManger.hpp"
 
 void  ValueBar::setVisible(bool visible)
 {
@@ -35,7 +35,8 @@ void ValueBar::setValue(int value)
 
 void ShipUnit::setNoKantai()
 {
-    kantaiBg->setSpriteFrame("supplyNoShip.png");
+    select=Sprite::createWithSpriteFrameName("supplyPush1.png");
+    kantaiBg=Sprite::createWithSpriteFrameName("supplyNoShip.png");
     star->setVisible(false);
     kantaiName->setVisible(false);
     kantaiState->setVisible(false);
@@ -140,7 +141,7 @@ void PortSupplyLayer::initLayer()
     auto rightTitle=Sprite::createWithSpriteFrameName("rightTitle.png");
     addChild(rightTitle);
     rightTitle->setPosition(Vec2(size.width-130, size.height*5/6));
-        auto midButton = MenuItemSprite::create(Sprite::createWithSpriteFrameName("AFButton2.png"),Sprite::createWithSpriteFrameName("AFButton3.png"), CC_CALLBACK_1(PortSupplyLayer::callBack, this));
+    midButton = MenuItemSprite::create(Sprite::createWithSpriteFrameName("AFButton2.png"),Sprite::createWithSpriteFrameName("AFButton3.png"), CC_CALLBACK_1(PortSupplyLayer::callMidButton, this));
     midButton->setPosition(700, 50);
     midButtonUp=Sprite::createWithSpriteFrameName("AFButton1.png");
     addChild(midButtonUp,3);
@@ -148,14 +149,14 @@ void PortSupplyLayer::initLayer()
     
     
     
-    auto fuelButton = MenuItemSprite::create(Sprite::createWithSpriteFrameName("fuelButton2.png"),Sprite::createWithSpriteFrameName("fuelButton3.png"), CC_CALLBACK_1(PortSupplyLayer::callBack, this));
+    fuelButton = MenuItemSprite::create(Sprite::createWithSpriteFrameName("fuelButton2.png"),Sprite::createWithSpriteFrameName("fuelButton3.png"), CC_CALLBACK_1(PortSupplyLayer::callFuelButton, this));
     fuelButton->setPosition(midButton->getPosition().x-midButton->getContentSize().width/2-fuelButton->getContentSize().width/2, 50);
     fuelButtonUp=Sprite::createWithSpriteFrameName("fuelButton1.png");
     addChild(fuelButtonUp,3);
     fuelButtonUp->setPosition(fuelButton->getPosition());
     
     
-    auto ammoButton = MenuItemSprite::create(Sprite::createWithSpriteFrameName("ammoButton2.png"),Sprite::createWithSpriteFrameName("ammoButton3.png"), CC_CALLBACK_1(PortSupplyLayer::callBack, this));
+    ammoButton = MenuItemSprite::create(Sprite::createWithSpriteFrameName("ammoButton2.png"),Sprite::createWithSpriteFrameName("ammoButton3.png"), CC_CALLBACK_1(PortSupplyLayer::callAmmoButton, this));
     ammoButton->setPosition(midButton->getPosition().x+midButton->getContentSize().width/2+fuelButton->getContentSize().width/2, 50);
     ammoButtonUp=Sprite::createWithSpriteFrameName("ammoButton1.png");
     addChild(ammoButtonUp,3);
@@ -194,22 +195,38 @@ void PortSupplyLayer::initLayer()
     auto rSupplyLight=Sprite::createWithSpriteFrameName("supplyLight.png");
     addChild(rSupplyLight,3);
     rSupplyLight->setPosition(ammoBg->getPosition()-Vec2(0,15));
+    
+    consumeAmmoLabel=Label::create();
+    consumeAmmoLabel->setString(to_string(consumeAmmo));
+    consumeAmmoLabel->setPosition(ammoBox->getPosition()-Vec2(0, ammoBox->getContentSize().height/4));
+    consumeAmmoLabel->setColor(Color3B::BLACK);
+    consumeAmmoLabel->setSystemFontSize(30);
+    addChild(consumeAmmoLabel, 3);
+    
+    consumeFuelLabel=Label::create();
+    consumeFuelLabel->setString(to_string(consumeFuel));
+    consumeFuelLabel->setPosition(fuelBox->getPosition()-Vec2(0, fuelBox->getContentSize().height/4));
+    consumeFuelLabel->setColor(Color3B::BLACK);
+    consumeFuelLabel->setSystemFontSize(30);
+    addChild(consumeFuelLabel, 3);
 }
 
 void PortSupplyLayer::addConsumeAmmo(int position,int ammo)
 {
     if (ammoButtonUp->isVisible())
     {
-        ammoButtonUp->setVisible(false);
+        setAmmoButtonVisible(true);
     }
     if (midButtonUp->isVisible())
     {
-        midButtonUp->setVisible(false);
+        setMidButtonVisible(true);
     }
     consumeAmmo+=ammo;
     ammoST.insert(std::pair<int, int>(position,ammo));
-    
-
+    char tmp[20];
+    bzero(tmp, sizeof(tmp));
+    sprintf(tmp, "%d",consumeAmmo);
+    consumeAmmoLabel->setString(tmp);
     
     ///Action
 }
@@ -218,10 +235,10 @@ void PortSupplyLayer::addConsumeFuel(int position, int fuel)
 {
     if (fuelButtonUp->isVisible())
     {
-        fuelButtonUp->setVisible(false);
+        setFuelButtonVisible(true);
     }
     if (midButtonUp->isVisible()) {
-        midButtonUp->setVisible(false);
+        setMidButtonVisible(true);
     }
     consumeFuel+=fuel;
     fuelST.insert(std::pair<int, int>(position,fuel));
@@ -229,7 +246,6 @@ void PortSupplyLayer::addConsumeFuel(int position, int fuel)
     bzero(tmp, sizeof(tmp));
     sprintf(tmp, "%d",consumeFuel);
     consumeFuelLabel->setString(tmp);
-    
     //action
 }
 
@@ -246,13 +262,14 @@ int PortSupplyLayer::minusConsumeAmmo(int position)
     consumeAmmoLabel->setString(tmp);
     
     if (!consumeAmmo) {
-        ammoButtonUp->setVisible(true);
+        setAmmoButtonVisible(false);
         if (!consumeFuel) {
-            midButtonUp->setVisible(true);
+            setMidButtonVisible(false);
         }
     }
     return minusAmmo;
 }
+
 
 int PortSupplyLayer::minusConsumeFuel(int position)
 {
@@ -267,21 +284,19 @@ int PortSupplyLayer::minusConsumeFuel(int position)
     consumeFuelLabel->setString(tmp);
     
     if (!consumeFuel) {
-        fuelButtonUp->setVisible(true);
+        setFuelButtonVisible(false);
         if (!consumeAmmo) {
-            midButtonUp->setVisible(true);
+            setMidButtonVisible(false);
         }
     }
     return minusFuel;
 }
 
-void ShipUnit::callback(Ref* pSender)
-{
-    log("dfgsdflgkjsdkfgsdf");
-}
+
 
 ShipUnit::ShipUnit(int position,Node* parent)
 {
+    condition=SupplyFree;
     kantaiBg=Sprite::create();
     kantaiBg->setPosition(371,366-52*position);
     kantaiBg->setSpriteFrame("supplyNoShip.png");
@@ -316,9 +331,8 @@ ShipUnit::ShipUnit(int position,Node* parent)
     ammoBar=new ValueBar(Vec2(426,size.height/2), kantaiBg);
     this->position=position;
     this->parent=parent;
-    
-
-    
+    haveAddFuel=false;
+    haveAddAmmo=false;
 }
 
 
@@ -336,16 +350,6 @@ bool ShipUnit::init(Kantai *kantai)
         mn->setPosition(Vec2::ZERO);
         parent->addChild(mn);
         
-        char name[50];
-        bzero(name, sizeof(name));
-        sprintf(name, "kantai/%d/image 27.png",kantai->getKantaiNumber());
-        kantaiBg->setTexture(name);
-        
-        
-        sprintf(name, "star%d.png",position);
-        star->setSpriteFrame(name);
-        kantaiName->setString(kantai->getKantaiName());
-        
         
         double percentage=0;
         int maxHp=kantai->getMaxHp();
@@ -354,6 +358,25 @@ bool ShipUnit::init(Kantai *kantai)
         {
             percentage=(float)currHp/(float)maxHp;
         }
+        
+        
+        
+        char name[50];
+        bzero(name, sizeof(name));
+        if (percentage>0.5) {
+            sprintf(name, "kantai/%d/image 27.png",kantai->getKantaiNumber());
+        }else
+        {
+            sprintf(name, "kantai/%d/image 29.png",kantai->getKantaiNumber());
+        }
+        kantaiBg->setTexture(name);
+        
+        sprintf(name, "star%d.png",position);
+        star->setSpriteFrame(name);
+        kantaiName->setString(kantai->getKantaiName());
+        
+        
+
         if (percentage>0.75)
         {
             kantaiState->setVisible(false);
@@ -381,25 +404,43 @@ bool ShipUnit::init(Kantai *kantai)
             kantaiState->setSpriteFrame("yuanzhengState.png");
         }
 
-        
-        
         supplyBg1->setSpriteFrame("supplyShipBg1.png");
         supplyBg2->setSpriteFrame("supplyShipBg2.png");
-        double ammoNo=kantai->getCurrAmmo()*10/kantai->getMaxAmmo();
-        double fuelNo=kantai->getCurrFuel()*10/kantai->getMaxFuel();
         
-        if (ammoNo<0.0001&&ammoNo>-0.0001) {
-            ammoNo=0;
-        }
-        if (fuelNo<0.0001&&fuelNo>-0.0001) {
-            fuelNo=0;
-        }
-        ammoBar->setValue(ceil(ammoNo));
-        fuelBar->setValue(ceil(fuelNo));
-        
+        freshShipCondition();
+        freshShipAttr();
         bRet=true;
     }while(0);
     return bRet;
+}
+
+
+void ShipUnit::freshShipCondition()
+{
+    auto layer=dynamic_cast<PortSupplyLayer*>(parent);
+    if (layer->canFillUpAmmo(position, kantai)||layer->canFillUpFuel(position, kantai))
+    {
+        condition=SupplyToggle;
+    }
+    else
+    {
+        condition=SupplySprite;
+    }
+    
+}
+
+void ShipUnit::freshShipAttr()
+{
+    double ammoNo=kantai->getCurrAmmo()*10/kantai->getMaxAmmo();
+    double fuelNo=kantai->getCurrFuel()*10/kantai->getMaxFuel();
+    if (ammoNo<0.0001&&ammoNo>-0.0001) {
+        ammoNo=0;
+    }
+    if (fuelNo<0.0001&&fuelNo>-0.0001) {
+        fuelNo=0;
+    }
+    ammoBar->setValue(ceil(ammoNo));
+    fuelBar->setValue(ceil(fuelNo));
 }
 
 
@@ -414,17 +455,18 @@ void PortSupplyLayer::initKantaiTable()
         shipUnit[i]=new ShipUnit(i+1,this);
     }
 
-    auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
+    fleet=sPlayer.getFleetByFleetKey(fleetNumber);
 
     if (!fleet)
     {
         for (int i=0; i<6; ++i)
         {
             shipUnit[i]->setNoKantai();
-            
         }
         return;
     }
+    
+    
     for (int i=0; i<6; ++i)
     {
         auto kantai=fleet->getShip(i+1);
@@ -437,49 +479,284 @@ void PortSupplyLayer::initKantaiTable()
             shipUnit[i]->init(kantai);
         }
     }
-    
-
-//    
-//    for (int i=1; i<=6; ++i) {
-//        if (!isKantaiExist(i))
-//        {
-//            kantaiBg[i]->setSpriteFrame("supplyNoShip.png");
-//            kantaiName[i]->setVisible(false);
-//            kantaiAF[i]->setVisible(false);
-//        }
-//        else
-//        {
-//            if (canFillUpAmmo(i)||canFillUpFuel(i))
-//            {
-//
-//            }
-//        }
-//    }
 }
 
-bool PortSupplyLayer::isKantaiExist(int position)
+
+bool PortSupplyLayer::canFillUpAmmo(int position,Kantai* kantai)
 {
-    Kantai* kantai=fleet->getShip(position);
-    if (!kantai) {
+    int ammo=kantai->getMaxAmmo()-kantai->getCurrAmmo();
+    if (!ammo) {
+        return false;
+    }
+    int haveAmmo=sPlayer.getAmmo();
+    if (haveAmmo<(consumeAmmo+ammo))
+    {
         return false;
     }
     return true;
 }
 
-bool PortSupplyLayer::canFillUpAmmo(int position)
+bool PortSupplyLayer::canFillUpFuel(int position,Kantai* kantai)
 {
-    Kantai* kantai=fleet->getShip(position);
+    int fuel=kantai->getMaxFuel()-kantai->getCurrFuel();
+    if (!fuel) {
+        return false;
+    }
+    int haveFuel=sPlayer.getFuel();
+    if (haveFuel<(consumeFuel+fuel))
+    {
+        return false;
+    }
+    return true;
 }
 
 
-bool PortSupplyLayer::canFillUpFuel(int position)
+void PortSupplyLayer::setAmmoButtonVisible(bool bVisible)
 {
+    if (bVisible) {
+        ammoButtonUp->setVisible(false);
+        ammoButton->setVisible(true);
+    }
+    else
+    {
+        ammoButtonUp->setVisible(true);
+        ammoButton->setVisible(false);
+    }
+}
+
+void PortSupplyLayer::setFuelButtonVisible(bool bVisible)
+{
+    if (bVisible) {
+        fuelButtonUp->setVisible(false);
+        fuelButton->setVisible(true);
+    }
+    else
+    {
+        fuelButtonUp->setVisible(true);
+        fuelButton->setVisible(false);
+    }
+}
+
+void PortSupplyLayer::setMidButtonVisible(bool bVisible)
+{
+    if (bVisible) {
+        midButtonUp->setVisible(false);
+        midButton->setVisible(true);
+    }
+    else
+    {
+        midButtonUp->setVisible(true);
+        midButton->setVisible(false);
+    }
+}
+
+
+void PortSupplyLayer::callFuelButton(Ref* pSender)
+{
+    vector<int> positionST(6);
+    for (auto it=fuelST.begin(); it!=fuelST.end(); ++it)
+    {
+        ++positionST[it->first-1];
+    }
+    for (auto it=ammoST.begin(); it!=ammoST.end(); ++it)
+    {
+        ++positionST[it->first-1];
+    }
     
-}
-
-
-void PortSupplyLayer::callBack(Ref* pSender)
-{
+    int sum=0;
+    for (auto it=fuelST.begin(); it!=fuelST.end(); ++it)
+    {
+        int postion=it->first;
+        auto kantai=fleet->getShip(postion);
+        int fuelValue=it->second;
+        --positionST[postion-1];
+        if (!positionST[postion-1])
+        {
+            auto tmp=dynamic_cast<MenuItemToggle*>(shipUnit[postion-1]->select);
+            tmp->setSelectedIndex(0);
+        }
+        kantai->setCurrFuel(kantai->getMaxFuel());
+        sum+=fuelValue;
+    }
+    fuelST.clear();
+    sPlayer.minusFuel(sum);
+    freshShipAllCondition();
+    freshShipAllAttr();
     
+    fuelNumber->setString(to_string(sPlayer.getFuel()));
+    sGameManger.getPortScene()->changeLabelFuel(sPlayer.getFuel());
+    consumeFuel=0;
+    consumeFuelLabel->setString(to_string(0));
+    
+    setFuelButtonVisible(false);
+    if (!consumeAmmo)
+    {
+        setMidButtonVisible(false);
+    }
+
 }
 
+void PortSupplyLayer::callAmmoButton(cocos2d::Ref *pSender)
+{
+    vector<int> positionST(6);
+    for (auto it=fuelST.begin(); it!=fuelST.end(); ++it)
+    {
+        ++positionST[it->first-1];
+    }
+    for (auto it=ammoST.begin(); it!=ammoST.end(); ++it)
+    {
+        ++positionST[it->first-1];
+    }
+    
+    int sum=0;
+    for (auto it=ammoST.begin(); it!=ammoST.end(); ++it)
+    {
+        int postion=it->first;
+        auto kantai=fleet->getShip(postion);
+        int ammoValue=it->second;
+        --positionST[postion-1];
+        if (!positionST[postion-1])
+        {
+            auto tmp=dynamic_cast<MenuItemToggle*>(shipUnit[postion-1]->select);
+            tmp->setSelectedIndex(0);
+        }
+        kantai->setCurrAmmo(kantai->getMaxAmmo());
+        sum+=ammoValue;
+    }
+    ammoST.clear();
+    sPlayer.minusAmmo(sum);
+    freshShipAllCondition();
+    freshShipAllAttr();
+
+    ammoNumber->setString(to_string(sPlayer.getAmmo()));
+    sGameManger.getPortScene()->changeLabelAmmo(sPlayer.getAmmo());
+    fuelNumber->setString(to_string(sPlayer.getFuel()));
+    sGameManger.getPortScene()->changeLabelFuel(sPlayer.getFuel());
+    consumeAmmo=0;
+    consumeAmmoLabel->setString(to_string(0));
+    
+    setAmmoButtonVisible(false);
+    if (!consumeFuel) {
+        setMidButtonVisible(false);
+    }
+}
+
+void PortSupplyLayer::callMidButton(cocos2d::Ref *pSender)
+{
+    int fuelSum=0;
+    for (auto it=fuelST.begin(); it!=fuelST.end(); ++it)
+    {
+        int postion=it->first;
+        auto kantai=fleet->getShip(postion);
+        int fuelValue=it->second;
+        auto tmp=dynamic_cast<MenuItemToggle*>(shipUnit[postion-1]->select);
+        tmp->setSelectedIndex(0);
+        kantai->setCurrFuel(kantai->getMaxFuel());
+        fuelSum+=fuelValue;
+    }
+    fuelST.clear();
+    
+    int ammoSum=0;
+    for (auto it=ammoST.begin(); it!=ammoST.end(); ++it)
+    {
+        int postion=it->first;
+        auto kantai=fleet->getShip(postion);
+        int ammoValue=it->second;
+        auto tmp=dynamic_cast<MenuItemToggle*>(shipUnit[postion-1]->select);
+        tmp->setSelectedIndex(0);
+        kantai->setCurrAmmo(kantai->getMaxAmmo());
+        ammoSum+=ammoValue;
+    }
+    ammoST.clear();
+    
+    sPlayer.minusFuel(fuelSum);
+    sPlayer.minusAmmo(ammoSum);
+    freshShipAllCondition();
+    freshShipAllAttr();
+    
+    ammoNumber->setString(to_string(sPlayer.getAmmo()));
+    sGameManger.getPortScene()->changeLabelAmmo(sPlayer.getAmmo());
+    consumeAmmo=0;
+    consumeAmmoLabel->setString(to_string(0));
+    consumeFuel=0;
+    consumeFuelLabel->setString(to_string(0));
+    
+    setAmmoButtonVisible(false);
+    setFuelButtonVisible(false);
+    setMidButtonVisible(false);
+}
+
+
+void ShipUnit::callback(cocos2d::Ref *pSender)
+{
+    MenuItemToggle* toggle=dynamic_cast<MenuItemToggle*>(select);
+    if (toggle->getSelectedIndex()&&(condition==SupplySprite))
+    {
+        toggle->setSelectedIndex(0);
+        return;
+    }
+    auto layer=dynamic_cast<PortSupplyLayer*>(parent);
+    if (toggle->getSelectedIndex()) //由关到开
+    {
+            if (layer->canFillUpFuel(position,kantai))
+            {
+                int fuel=kantai->getMaxFuel()-kantai->getCurrFuel();
+                layer->addConsumeFuel(position,fuel);
+                haveAddFuel=true;
+            }
+            if (layer->canFillUpAmmo(position,kantai))
+            {
+                int ammo=kantai->getMaxAmmo()-kantai->getCurrAmmo();
+                layer->addConsumeAmmo(position,ammo);
+                haveAddAmmo=true;
+            }
+        layer->freshShipAllCondition();
+        condition=SupplyToggle;
+    }
+    else//由开到关
+    {
+        if (haveAddFuel)
+        {
+            layer->minusConsumeFuel(position);
+            haveAddFuel=false;
+        }
+        if (haveAddAmmo)
+        {
+            layer->minusConsumeAmmo(position);
+            haveAddAmmo=false;
+        }
+        layer->freshShipAllCondition();
+    }
+}
+
+
+void PortSupplyLayer::freshShipAllCondition()
+{
+    if (!fleet)
+    {
+        return;
+    }
+    for (int i=0; i<6; ++i)
+    {
+        auto kantai=fleet->getShip(i+1);
+        if (kantai)
+        {
+            shipUnit[i]->freshShipCondition();
+        }
+    }
+}
+
+void PortSupplyLayer::freshShipAllAttr()
+{
+    if (!fleet) {
+        return;
+    }
+    for (int i=0; i<6; ++i)
+    {
+        auto kantai=fleet->getShip(i+1);
+        if (kantai)
+        {
+            shipUnit[i]->freshShipAttr();
+        }
+    }
+}

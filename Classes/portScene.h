@@ -35,6 +35,7 @@ enum LayerType{
 
 class PortScene:public Scene
 {
+    friend class GameManger;
 public:
     static PortScene* createScene();
     
@@ -59,6 +60,36 @@ public:
     void changeFurnitureCallback(Ref* psSender);
     
     CREATE_FUNC(PortScene);
+    
+    void changeLabelFuel(int fuel)
+    {
+        char name[20];
+        bzero(name, sizeof(name));
+        sprintf(name, "%d",fuel);
+        labelFuel->setString(name);
+    }
+    void changeLabelSteel(int steel)
+    {
+        char name[20];
+        bzero(name, sizeof(name));
+        sprintf(name, "%d",steel);
+        labelSteel->setString(name);
+    }
+    void changeLabelAmmo(int ammo)
+    {
+        char name[20];
+        bzero(name, sizeof(name));
+        sprintf(name, "%d",ammo);
+        labelAmmo->setString(name);
+    }
+    void changeLabelAluminium(int aluminium)
+    {
+        char name[20];
+        bzero(name, sizeof(name));
+        sprintf(name, "%d",aluminium);
+        labelAluminium->setString(name);
+    }
+    
 private:
     
     SEL_SCHEDULE ts;

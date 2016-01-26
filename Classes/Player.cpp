@@ -228,11 +228,17 @@ bool Player::canMinusSteel(int miSteel)
 
 void Player::minusFuel(int miFuel)
 {
+    if (!miFuel) {
+        return;
+    }
     fuel-=miFuel;
     PlayerDB::getInstance()->modifyFuel(playerKey, fuel);
 }
 void Player::minusAmmo(int miAmmo)
 {
+    if (!miAmmo) {
+        return;
+    }
     ammo-=miAmmo;
     PlayerDB::getInstance()->modifyAmmo(playerKey, ammo);
 }

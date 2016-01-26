@@ -32,7 +32,7 @@ PortScene* PortScene::createScene()
 void PortScene::startCircle()
 {
     ts=schedule_selector(PortScene::addAttr);
-    schedule(ts,5);
+    schedule(ts,20);
 }
 
 void PortScene::endCircle()

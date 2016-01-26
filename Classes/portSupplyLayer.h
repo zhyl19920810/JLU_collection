@@ -45,9 +45,18 @@ private:
 
 class ShipUnit
 {
+    typedef enum
+    {
+        SupplyFree,
+        SupplyToggle,
+        SupplySprite,
+    }UnitCondition;
+    friend class PortSupplyLayer;
 public:
     ShipUnit(int position,Node* parent);
     bool init(Kantai* kantai);
+    void freshShipCondition();
+    void freshShipAttr();
     void addAmmo(int ammo);
     void addFuel(int fuel);
     void setNoKantai();
@@ -64,10 +73,15 @@ private:
     Sprite* lvIcon;//
     Label* kantaiLV;//
     HpBar* hpBar;//
+    
+    
     Node* select;
     int position;
     Kantai* kantai;
     Node* parent;
+    UnitCondition condition;
+    bool haveAddFuel;
+    bool haveAddAmmo;
 };
 
 
@@ -82,7 +96,7 @@ public:
 
 class PortSupplyLayer:public Layer
 {
-    friend class ShipUnit;
+   // friend class ShipUnit;
 public:
     PortSupplyLayer();
     
@@ -92,27 +106,6 @@ public:
     CREATE_FUNC(PortSupplyLayer);
     
     
-    
-    
-    
-private:
-    Sprite* fuelButtonUp;
-    Sprite* ammoButtonUp;
-    Sprite* midButtonUp;
-    Label* fuelNumber;
-    Label* ammoNumber;
-    Label* consumeAmmoLabel;
-    Label* consumeFuelLabel;
-    
-    
-private:
-
-private:
-    void initLayer();
-    void initKantaiTable();
-    
-    void callBack(Ref* pSender);
-    
     void addConsumeAmmo(int position,int ammo);
     void addConsumeFuel(int position,int fuel);
     
@@ -120,9 +113,39 @@ private:
     int minusConsumeFuel(int position);
     
     bool isKantaiExist(int position);
-    bool canFillUpAmmo(int position);
-    bool canFillUpFuel(int position);
+    bool canFillUpAmmo(int position,Kantai* kantai);
+    bool canFillUpFuel(int position,Kantai* kantai);
+    void freshShipAllCondition();
+    void freshShipAllAttr();
     
+    void setAmmoButtonVisible(bool bVisible);
+    void setFuelButtonVisible(bool bVisible);
+    void setMidButtonVisible(bool bVisible);
+private:
+    Sprite* ammoButtonUp;
+    Sprite* fuelButtonUp;
+    Sprite* midButtonUp;
+    
+    MenuItemSprite* ammoButton;
+    MenuItemSprite* fuelButton;
+    MenuItemSprite* midButton;
+    
+    
+    Label* fuelNumber;
+    Label* ammoNumber;
+    Label* consumeAmmoLabel;
+    Label* consumeFuelLabel;
+
+private:
+
+private:
+    void initLayer();
+    void initKantaiTable();
+    
+    void callFuelButton(Ref* pSender);
+    void callAmmoButton(Ref* pSender);
+    void callMidButton(Ref* pSender);
+
     
 private:
     std::vector<ShipUnit*> shipUnit;
