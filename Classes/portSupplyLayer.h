@@ -75,7 +75,7 @@ private:
     HpBar* hpBar;//
     
     
-    Node* select;
+    MenuItemToggle* select;
     int position;
     Kantai* kantai;
     Node* parent;
@@ -121,6 +121,8 @@ public:
     void setAmmoButtonVisible(bool bVisible);
     void setFuelButtonVisible(bool bVisible);
     void setMidButtonVisible(bool bVisible);
+    
+    void SetFleetButtonVisible(int fleetNumber,bool bVisible);
 private:
     Sprite* ammoButtonUp;
     Sprite* fuelButtonUp;
@@ -135,18 +137,26 @@ private:
     Label* ammoNumber;
     Label* consumeAmmoLabel;
     Label* consumeFuelLabel;
-
+    
+    Sprite* bgimg;
 private:
+    std::vector<Sprite*> fleetSprite;
+    std::vector<MenuItemToggle*> fleetToggle;
 
 private:
     void initLayer();
     void initKantaiTable();
+    void initFleetButton();
     
     void callFuelButton(Ref* pSender);
     void callAmmoButton(Ref* pSender);
     void callMidButton(Ref* pSender);
-
+    void fleetCallback(Ref* pSender,int layNumber);
+    void changeFleet(int fleetNumber);
     
+    
+    void refreshLayer();
+    void refreshKantaiTable();
 private:
     std::vector<ShipUnit*> shipUnit;
 private:
