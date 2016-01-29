@@ -8,11 +8,109 @@
 
 #include "dock.hpp"
 #include "dockDB.hpp"
+#include "RepairFactorMgr.hpp"
+
 
 void Dock::initDock(int playerKey)
 {
+    this->playerKey=playerKey;
     this->maxDockSize=sPlayer.getMaxDockSize();
     std::vector<DockDBData>  data;
     DockDB::getInstance()->initDockDB(playerKey,data);
     
+    dock.resize(maxDockSize);
+    for (auto it=data.begin(); it!=data.end(); ++it)
+    {
+
+        if (it->completeTime<=0)
+        {
+            sDockDB->deleteKantai(playerKey, it->kantaiKey);
+            Kantai* kantai=sPlayer.getKantaiByKantaiKey(it->kantaiKey);
+            kantai->setKantaiState(KantaiState::Free);
+        }
+        else
+        {
+            DockData* tmp=new DockData;
+            tmp->kantai=sPlayer.getKantaiByKantaiKey(it->kantaiKey);
+            tmp->remainTime=it->completeTime;
+            dock[it->position-1]=tmp;
+        }
+    }
+}
+
+void Dock::buildNewDock()
+{
+    dock.push_back(NULL);
+}
+
+void Dock::repairKantai(Kantai *kantai, int position)
+{
+    CCASSERT(position>=1&&position<=maxDockSize, "position is out of range");
+    CCASSERT(!dock[position-1], "there is a ship in the position");
+    
+    float lostHp=static_cast<float>(kantai->getMaxHp()-kantai->getCurrHp());
+    
+    float steelFactor=sRepairFactorMgr.getSteelFactor(kantai->getKantaiNumber());
+    int consumeSteel=static_cast<int>(steelFactor*lostHp);
+    sPlayer.minusSteel(consumeSteel);
+
+    
+    float ammoFactor=sRepairFactorMgr.getAmmoFactor(kantai->getKantaiNumber());
+    int consumeAmmo=static_cast<int>(ammoFactor*lostHp);
+    sPlayer.minusAmmo(consumeAmmo);
+    
+    int repairTime=calRepairTime(kantai,lostHp);
+    sDockDB->insertKantai(playerKey, kantai->getKantaiKey(), position, repairTime);
+    DockData* tmp=new DockData;
+    tmp->kantai=kantai;
+    tmp->remainTime=repairTime;
+    dock[position-1]=tmp;
+}
+
+int Dock::calAugValue(int currLV)
+{
+    return sqrt(currLV)*10+50;
+}
+
+
+int Dock::calRepairTime(Kantai *kantai,int lostHp)
+{
+    float ratio=0;
+    switch (kantai->getKantaiType())
+    {
+        case KantaiType::Submarine:
+            ratio=0.5;
+            break;
+        case KantaiType::Destroyer:
+        case KantaiType::Light_Cruiser:
+        case KantaiType::Torpedo_Cruiser:
+        case KantaiType::Training_Cruiser:
+        case KantaiType::Seaplane_Carrier:
+        case KantaiType::Diving_Carrier:
+        case KantaiType::Landing_craft:
+            ratio=1;
+            break;
+        case KantaiType::Heavy_Cruiser:
+        case KantaiType::Air_Cruiser:
+        case KantaiType::Battle_Cruiser:
+        case KantaiType::Light_Carrier:
+        case KantaiType::Diving_Mothership:
+            ratio=1.5;
+            break;
+        case KantaiType::Battleship:
+        case KantaiType::Battle_Carrier:
+        case KantaiType::Carrier:
+        case KantaiType::Armor_Carrier:
+        case KantaiType::Workboat:
+            ratio=2.0;
+            break;
+        default:
+            break;
+    }
+    if (kantai->getCurrLV()<=11)
+    {
+        return kantai->getCurrLV()*10*ratio*lostHp+30;
+    }
+    int augmentValue=calAugValue(kantai->getCurrLV());
+    return (kantai->getCurrLV()*5+augmentValue)*ratio*lostHp+30;
 }

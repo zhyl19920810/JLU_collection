@@ -23,15 +23,19 @@ public:
     };
     
     void initDock(int playerKey);
-    
-    int buildNewDock();
+    void buildNewDock();
     void update();
+    
+    
+    void repairKantai(Kantai* kantai,int position);
+    int calRepairTime(Kantai* kantai,int lostHp);
+    int calAugValue(int currLV);
 private:
     Scheduler ts;
     void kantaiComplete(int position);
     int maxDockSize;
+    int playerKey;
     std::vector<DockData*> dock;
-    
 };
 
 

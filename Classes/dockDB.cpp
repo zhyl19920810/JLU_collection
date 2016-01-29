@@ -66,11 +66,11 @@ void DockDB::initDockDB(int playerKey, std::vector<DockDBData>& data)
 
 
 
-void DockDB::insertKantai(int playerKey,int kantaiKey, int position, int buildingTime)
+void DockDB::insertKantai(int playerKey,int kantaiKey, int position, int repairTime)
 {
     char name[100];
     bzero(name, sizeof(name));
-    std::string sqlStr="INSERT OR REPLACE INTO kantai_in_repair(playerKey,kantaiKey,position,completeTime) Values(?,?,?,strftime('%s','now','+"+std::to_string(buildingTime);
+    std::string sqlStr="INSERT OR REPLACE INTO kantai_in_repair(playerKey,kantaiKey,position,completeTime) Values(?,?,?,strftime('%s','now','+"+std::to_string(repairTime);
     sqlStr+=" second'))";
     sqlite3_stmt* statement;
     

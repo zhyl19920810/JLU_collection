@@ -173,6 +173,12 @@
 		F4036E3C1BDA2316002788AA /* portSupplyLayer.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D6B1BDA1FDD002788AA /* portSupplyLayer.h */; };
 		F4036E3D1BDA2316002788AA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10317EB98FF00D1A890 /* main.cpp */; };
 		F4036E3E1BDA2316002788AA /* Prefix.pch in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10417EB98FF00D1A890 /* Prefix.pch */; };
+		F40C4FC31C5BCF89000FAA89 /* RepairFactorMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C4FC11C5BCF89000FAA89 /* RepairFactorMgr.cpp */; };
+		F40C4FC41C5BCF89000FAA89 /* RepairFactorMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C4FC11C5BCF89000FAA89 /* RepairFactorMgr.cpp */; };
+		F40C4FC91C5BDA6A000FAA89 /* RepairContainer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956C51C5B538E001AA1B3 /* RepairContainer.hpp */; };
+		F40C4FCA1C5BDA6A000FAA89 /* RepairTimer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956CB1C5B5E49001AA1B3 /* RepairTimer.hpp */; };
+		F40C4FCD1C5BDA78000FAA89 /* EquipPicMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C4FCB1C5BDA78000FAA89 /* EquipPicMgr.cpp */; };
+		F40C4FCE1C5BDA78000FAA89 /* EquipPicMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C4FCB1C5BDA78000FAA89 /* EquipPicMgr.cpp */; };
 		F40CF97F1BDB4D1E00DD897F /* XMLBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40CF97D1BDB4D1E00DD897F /* XMLBase.cpp */; };
 		F40CF9801BDB4D1E00DD897F /* XMLBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40CF97D1BDB4D1E00DD897F /* XMLBase.cpp */; };
 		F40CF9831BDB51B200DD897F /* map in Resources */ = {isa = PBXBuildFile; fileRef = F40CF9821BDB51B200DD897F /* map */; };
@@ -193,8 +199,6 @@
 		F42865ED1BDBD18100045E66 /* AnimationMaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42865EA1BDBD18100045E66 /* AnimationMaker.cpp */; };
 		F42DB8E61C599DCA00CBE2C7 /* EquipmentContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8E41C599DCA00CBE2C7 /* EquipmentContainer.cpp */; };
 		F42DB8E71C599DCA00CBE2C7 /* EquipmentContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8E41C599DCA00CBE2C7 /* EquipmentContainer.cpp */; };
-		F42DB8EB1C59A73100CBE2C7 /* EquipPicMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8E91C59A73100CBE2C7 /* EquipPicMgr.cpp */; };
-		F42DB8EC1C59A73100CBE2C7 /* EquipPicMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8E91C59A73100CBE2C7 /* EquipPicMgr.cpp */; };
 		F42DB8EE1C59B10100CBE2C7 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = F42DB8ED1C59B10100CBE2C7 /* icons */; };
 		F42DB8EF1C59B10800CBE2C7 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = F42DB8ED1C59B10100CBE2C7 /* icons */; };
 		F42DB8F21C59DBF600CBE2C7 /* KantaiListEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8F01C59DBF600CBE2C7 /* KantaiListEntity.cpp */; };
@@ -304,7 +308,6 @@
 		F4EFACC21C577D12000FFF74 /* CommonAssets in Resources */ = {isa = PBXBuildFile; fileRef = F4EFACBF1C574DD4000FFF74 /* CommonAssets */; };
 		F4EFACC31C577D12000FFF74 /* PortMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CC1C55FA74005DB127 /* PortMain */; };
 		F4EFACC41C577D12000FFF74 /* SupplyMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CD1C55FA74005DB127 /* SupplyMain */; };
-		F4F956B21C5B49AD001AA1B3 /* EquipPicMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8EA1C59A73100CBE2C7 /* EquipPicMgr.hpp */; };
 		F4F956B31C5B49AD001AA1B3 /* Star.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8FD1C5A33B500CBE2C7 /* Star.hpp */; };
 		F4F956B41C5B49AD001AA1B3 /* HpBar.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8F81C5A30EB00CBE2C7 /* HpBar.hpp */; };
 		F4F956B51C5B49AD001AA1B3 /* kantaiCard.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F481897F1C5926F900A0D0F5 /* kantaiCard.hpp */; };
@@ -488,6 +491,10 @@
 		F4036D751BDA1FDD002788AA /* XMLControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLControl.h; sourceTree = "<group>"; };
 		F4036D761BDA1FDD002788AA /* XMLParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XMLParser.cpp; sourceTree = "<group>"; };
 		F4036D771BDA1FDD002788AA /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParser.h; sourceTree = "<group>"; };
+		F40C4FC11C5BCF89000FAA89 /* RepairFactorMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RepairFactorMgr.cpp; sourceTree = "<group>"; };
+		F40C4FC21C5BCF89000FAA89 /* RepairFactorMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RepairFactorMgr.hpp; sourceTree = "<group>"; };
+		F40C4FCB1C5BDA78000FAA89 /* EquipPicMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EquipPicMgr.cpp; sourceTree = "<group>"; };
+		F40C4FCC1C5BDA78000FAA89 /* EquipPicMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EquipPicMgr.hpp; sourceTree = "<group>"; };
 		F40CF97D1BDB4D1E00DD897F /* XMLBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XMLBase.cpp; sourceTree = "<group>"; };
 		F40CF97E1BDB4D1E00DD897F /* XMLBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLBase.h; sourceTree = "<group>"; };
 		F40CF9821BDB51B200DD897F /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = map; path = "../../kancolle_alpha/Resources/2.150228BGM&音效&UI素材/map"; sourceTree = "<group>"; };
@@ -505,8 +512,6 @@
 		F42865EB1BDBD18100045E66 /* AnimationMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationMaker.h; sourceTree = "<group>"; };
 		F42DB8E41C599DCA00CBE2C7 /* EquipmentContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EquipmentContainer.cpp; sourceTree = "<group>"; };
 		F42DB8E51C599DCA00CBE2C7 /* EquipmentContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EquipmentContainer.hpp; sourceTree = "<group>"; };
-		F42DB8E91C59A73100CBE2C7 /* EquipPicMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EquipPicMgr.cpp; sourceTree = "<group>"; };
-		F42DB8EA1C59A73100CBE2C7 /* EquipPicMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EquipPicMgr.hpp; sourceTree = "<group>"; };
 		F42DB8ED1C59B10100CBE2C7 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = icons; sourceTree = "<group>"; };
 		F42DB8F01C59DBF600CBE2C7 /* KantaiListEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KantaiListEntity.cpp; sourceTree = "<group>"; };
 		F42DB8F11C59DBF600CBE2C7 /* KantaiListEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KantaiListEntity.hpp; sourceTree = "<group>"; };
@@ -1116,8 +1121,10 @@
 				F4FABB091C50D36B00F75BCE /* EquipMgr.hpp */,
 				F4FABB0B1C50D3E400F75BCE /* ExpMgr.cpp */,
 				F4FABB0C1C50D3E400F75BCE /* ExpMgr.hpp */,
-				F42DB8E91C59A73100CBE2C7 /* EquipPicMgr.cpp */,
-				F42DB8EA1C59A73100CBE2C7 /* EquipPicMgr.hpp */,
+				F40C4FC11C5BCF89000FAA89 /* RepairFactorMgr.cpp */,
+				F40C4FC21C5BCF89000FAA89 /* RepairFactorMgr.hpp */,
+				F40C4FCB1C5BDA78000FAA89 /* EquipPicMgr.cpp */,
+				F40C4FCC1C5BDA78000FAA89 /* EquipPicMgr.hpp */,
 			);
 			name = CSV;
 			sourceTree = "<group>";
@@ -1321,7 +1328,6 @@
 				F44D26D01C4D198400438F3C /* Fleet.h in Sources */,
 				F44D26D11C4D198400438F3C /* equipGrid.h in Sources */,
 				F44D26D21C4D198400438F3C /* SystemHeader.h in Sources */,
-				F42DB8EB1C59A73100CBE2C7 /* EquipPicMgr.cpp in Sources */,
 				F44D26D31C4D198400438F3C /* Formation.h in Sources */,
 				F44D26D41C4D198400438F3C /* MissionNode.h in Sources */,
 				F44D26D51C4D198400438F3C /* SallyScene.h in Sources */,
@@ -1377,6 +1383,7 @@
 				F4036D781BDA1FDD002788AA /* AppDelegate.cpp in Sources */,
 				F42DB8F91C5A30EB00CBE2C7 /* HpBar.cpp in Sources */,
 				F4FABB141C50D89000F75BCE /* GameManger.cpp in Sources */,
+				F40C4FC31C5BCF89000FAA89 /* RepairFactorMgr.cpp in Sources */,
 				F4036DB41BDA1FDD002788AA /* portRepairLayer.cpp in Sources */,
 				F4036DB81BDA1FDD002788AA /* portSupplyLayer.cpp in Sources */,
 				F4036DBE1BDA1FDD002788AA /* SystemHeader.cpp in Sources */,
@@ -1392,6 +1399,7 @@
 				F4FABB0A1C50D36C00F75BCE /* EquipMgr.cpp in Sources */,
 				F4FABB0D1C50D3E400F75BCE /* ExpMgr.cpp in Sources */,
 				F4036D8C1BDA1FDD002788AA /* Fleet.cpp in Sources */,
+				F40C4FCD1C5BDA78000FAA89 /* EquipPicMgr.cpp in Sources */,
 				F4036D981BDA1FDD002788AA /* kantai.cpp in Sources */,
 				F40CF97F1BDB4D1E00DD897F /* XMLBase.cpp in Sources */,
 				F4036DAC1BDA1FDD002788AA /* portFactoryLayer.cpp in Sources */,
@@ -1418,7 +1426,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4F956B21C5B49AD001AA1B3 /* EquipPicMgr.hpp in Sources */,
+				F40C4FC91C5BDA6A000FAA89 /* RepairContainer.hpp in Sources */,
+				F40C4FCA1C5BDA6A000FAA89 /* RepairTimer.hpp in Sources */,
 				F4F956B31C5B49AD001AA1B3 /* Star.hpp in Sources */,
 				F4F956B41C5B49AD001AA1B3 /* HpBar.hpp in Sources */,
 				F4F956B51C5B49AD001AA1B3 /* kantaiCard.hpp in Sources */,
@@ -1471,6 +1480,7 @@
 				F4036E041BDA2316002788AA /* XMLControl.h in Sources */,
 				F48189811C5926F900A0D0F5 /* kantaiCard.cpp in Sources */,
 				F481896D1C58AFC500A0D0F5 /* OrganizeContainer.cpp in Sources */,
+				F40C4FCE1C5BDA78000FAA89 /* EquipPicMgr.cpp in Sources */,
 				F4036E051BDA2316002788AA /* databaseBase.cpp in Sources */,
 				F4036E061BDA2316002788AA /* databaseBase.h in Sources */,
 				F4036E071BDA2316002788AA /* databaseInit.cpp in Sources */,
@@ -1510,6 +1520,7 @@
 				F4036E211BDA2316002788AA /* SallyScene.cpp in Sources */,
 				F4036E221BDA2316002788AA /* SallyScene.h in Sources */,
 				F4036E231BDA2316002788AA /* Compass.cpp in Sources */,
+				F40C4FC41C5BCF89000FAA89 /* RepairFactorMgr.cpp in Sources */,
 				F42865ED1BDBD18100045E66 /* AnimationMaker.cpp in Sources */,
 				F4036E241BDA2316002788AA /* Compass.h in Sources */,
 				F4036E251BDA2316002788AA /* Mission.cpp in Sources */,
@@ -1533,7 +1544,6 @@
 				F4036E351BDA2316002788AA /* portRemodeLayer.cpp in Sources */,
 				F4036E361BDA2316002788AA /* portRemodeLayer.h in Sources */,
 				F4036E371BDA2316002788AA /* portRepairLayer.cpp in Sources */,
-				F42DB8EC1C59A73100CBE2C7 /* EquipPicMgr.cpp in Sources */,
 				F4036E381BDA2316002788AA /* portRepairLayer.h in Sources */,
 				F4036E391BDA2316002788AA /* portScene.cpp in Sources */,
 				F4036E3A1BDA2316002788AA /* portScene.h in Sources */,

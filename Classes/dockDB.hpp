@@ -29,7 +29,7 @@ class DockDB:public DBBase
 public:
     void initDockDB(int playerKey,std::vector<DockDBData>&  data);
     
-    void insertKantai(int playerKey,int kantaiKey,int position,int buildingTime);
+    void insertKantai(int playerKey,int kantaiKey,int position,int repairTime);
     
     void deleteKantai(int playerKey,int kantaiKey);
     
