@@ -267,41 +267,6 @@ bool KantaiListEntity::init()
         initPageSwitch();
         addChild(menu);
         updateRows();
-        //list
-//        list = Node::create();
-//        this->addChild(list);
-//        
-//        listMenu = Menu::create(NULL);
-//        listMenu->setPosition(Point::ZERO);
-//        this->addChild(listMenu);
-//        firstRow = makeRow(nullptr);
-//        firstRow->setPosition(540, 345);
-//        this->addChild(firstRow);
-//        for (int i = 0; i < SHIPS_PER_PAGE; i++)
-//        {
-//            auto node = Node::create();
-//            rows.push_back(node);
-//            
-//            auto item = Sprite::create("OrganizeMain/image 182.png");
-//            item->setOpacity(0);
-//            auto menuitem = MenuItemSprite::create(item, Sprite::create("OrganizeMain/image 182.png"), item, CC_CALLBACK_1(KantaiListEntity::exchangeCallback, this, i));
-//            menuitem->setPosition(550, 347 - (i + 1) * 28);
-//            menuitem->setScaleY(0.85);
-//            listMenu->addChild(menuitem);
-//        }
-//        currentPage = 0;
-//        updateList(currentPage);
-//        
-//        //bottom button
-//
-//
-//
-//        menu->addChild(Page1);
-//        menu->addChild(Page2);
-//        menu->addChild(Page3);
-//        menu->addChild(Page4);
-//        menu->addChild(Page5);
-//        
         
         bRet=true;
     }while(0);
@@ -352,28 +317,3 @@ void KantaiListEntity::updateRows()
         ++j;
     }
 }
-
-//void KantaiListEntity::updateList(int page)
-//{
-//    std::vector<Kantai*> ships  = sPlayer.kantaiData;
-//    //sortByCategory(ships);
-//    displayKantai.clear();
-//    list->removeAllChildren();
-//    for (int i = 0; i < SHIPS_PER_PAGE; i++)
-//    {
-//        if ((SHIPS_PER_PAGE*page + i) == ships.size() )
-//            return;
-//        auto row = makeRow(ships[SHIPS_PER_PAGE*page + i]);
-//        displayKantai.push_back(ships[SHIPS_PER_PAGE*page + i]);
-//        
-//        rows[i] = row;
-//        list->addChild(row);
-//        row->setPosition(540, 345 - (i + 1) * 28);
-//    }
-//
-//}
-
-//void CharacterListPage::setPageCallback(Ref* PSendr, int page)
-//{
-//    this->updateList(page);
-//}

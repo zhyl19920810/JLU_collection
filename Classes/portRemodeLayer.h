@@ -14,12 +14,13 @@ using namespace cocos2d;
 class PortRemodeLayer : public Layer
 {
 public:
-    PortRemodeLayer(Node *parent);
+    PortRemodeLayer();
+    CREATE_FUNC(PortRemodeLayer);
+    bool init();
     void callBack(Ref* pSender);
     
     
 private:
-    Node * parent;
     
     
 private:

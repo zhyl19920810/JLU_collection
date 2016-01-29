@@ -9,9 +9,26 @@
 #include "portRemodeLayer.h"
 
 
-PortRemodeLayer::PortRemodeLayer(Node* parent)
+bool PortRemodeLayer::init()
 {
-    this->parent = parent;
+    bool bRet=false;
+    do
+    {
+        
+        if (Layer::init())
+        {
+            break;
+        }
+        
+        
+        bRet=true;
+    }while(0);
+    return bRet;
+}
+
+
+PortRemodeLayer::PortRemodeLayer()
+{
     initLayer();
 }
 

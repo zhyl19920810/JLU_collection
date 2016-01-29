@@ -10,20 +10,30 @@
 #define __kancolle_alpha__portRepairLayer__
 
 #include "cocos2d.h"
+#include "RepairContainer.hpp"
+
+
 using namespace cocos2d;
 class PortRepairLayer : public Layer
 {
 public:
-    PortRepairLayer(Node *parent);
+    PortRepairLayer();
+    CREATE_FUNC(PortRepairLayer);
+    bool init();
+    void update();
+private:
     
     
 private:
-    Node * parent;
-    
-    
-private:
+    //bg
     void initLayer();
+    std::vector<RepairContainerParent*> container;
     
+    int containerSize;
+    
+    
+    //container
+    void initContainer();
 };
 
 

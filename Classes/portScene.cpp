@@ -396,7 +396,7 @@ void PortScene::SetCurrLayer(LayerType type)
             bgImage->runAction(MoveTo::create(0.3, ccp(0,210)));
             layerSelecter->moveIn();
             if (!repairlayer) {
-                repairlayer=new PortRepairLayer(this);
+                repairlayer=PortRepairLayer::create();
                 addChild(repairlayer);
             }
             if (currentLayerType!=LayerType::empty) {
@@ -441,7 +441,7 @@ void PortScene::SetCurrLayer(LayerType type)
             layerSelecter->moveIn();
             if (remodelayer == nullptr)
             {
-                remodelayer = new PortRemodeLayer(this);
+                remodelayer = PortRemodeLayer::create();
                 this->addChild(remodelayer);
             }
             if (currentLayerType != LayerType::empty)

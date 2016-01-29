@@ -7,33 +7,57 @@
 //
 
 #include "portRepairLayer.h"
+#include "Player.h"
 
-PortRepairLayer::PortRepairLayer(Node* parent)
+PortRepairLayer::PortRepairLayer()
 {
-    this->parent = parent;
-    this->setZOrder(-1);
-    initLayer();
+    //this->setZOrder(-1);
+    containerSize=sPlayer.getMaxDockSize();
+    container.resize(4);
 }
+
+
+bool PortRepairLayer::init()
+{
+    bool bRet=false;
+    do
+    {
+        if (!Layer::init()) {
+            break;
+        }
+        initLayer();
+        
+        
+        bRet=true;
+    }while(0);
+    return bRet;
+
+}
+
+void PortRepairLayer::initContainer()
+{
+    int i=0;
+    for (; i<containerSize; ++i)
+    {
+        container[i]=RepairContainer::create(i+1);
+        addChild(container[i]);
+        container[i]->setPosition(465,320-i*80);
+    }
+}
+
 
 void PortRepairLayer::initLayer()
 {
-    auto bgimg = Sprite::create("interface/RepairMain/image 5.png");
+    auto bgimg = Sprite::create("RepairMain/repairBg.png");
     this->addChild(bgimg);
     bgimg->setOpacity(200);
     bgimg->setPosition(450, 200);
     
-    auto p1 = Sprite::create("interface/RepairMain/image 70.png");
-    auto p2 = Sprite::create("interface/RepairMain/image 70.png");
-    auto p3 = Sprite::create("interface/RepairMain/image 70.png");
-    auto p4 = Sprite::create("interface/RepairMain/image 70.png");
+    auto repairBar = Sprite::create("RepairMain/repairBar.png");
+    addChild(repairBar);
+    repairBar->setPosition(bgimg->getPosition()+Vec2(0, 197));
     
-    p1->setPosition(480, 320);
-    p2-> setPosition(480, 240);
-    p3->setPosition(480,160);
-    p4->setPosition(480, 80);
-    
-    this->addChild(p1);
-    this->addChild(p2);
-    this->addChild(p3);
-    this->addChild(p4);
+    auto repairTitle = Sprite::create("RepairMain/repairTitle.png");
+    addChild(repairTitle);
+    repairTitle->setPosition(repairBar->getPosition()+Vec2(-290, 4));
 }

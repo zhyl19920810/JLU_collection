@@ -38,7 +38,7 @@ public:
     
     void update(Kantai* kantai);
 private:
-    void exchangeCallback(cocos2d::Ref *pSender);
+    virtual void exchangeCallback(cocos2d::Ref *pSender);
     void lockCallback(Ref* pSender);
     int position;
     Sprite* line;
