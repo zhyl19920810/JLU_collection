@@ -81,7 +81,7 @@ void Kantai::init(int kantaiKey, int kantaiNumber, LoadState state,Ref* parent)
             equipGrid.resize(equipSize);
             currPlaneLoad.resize(equipSize);
             for (int i=0; i<equipSize; ++i) {
-                currPlaneLoad[i]=getInitPlaneLoad(i);
+                currPlaneLoad[i]=getInitPlaneLoad(i+1);
             }
             break;
         }
@@ -323,9 +323,10 @@ void Kantai::setKantaiState(KantaiState _kantaiState)
 }
 void Kantai::setBrokenType()
 {
-    float persentage=0;
-    if (getMaxHp()) {
-        persentage=getCurrHp()/getMaxHp();
+    double persentage=0;
+    if (getMaxHp())
+    {
+        persentage=static_cast<double>(getCurrHp())/static_cast<double>(getMaxHp());
     }
     else
     {

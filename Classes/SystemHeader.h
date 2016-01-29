@@ -45,13 +45,69 @@ typedef enum
     Diving_Mothership=19,//潜水母舰
 }KantaiType;
 
+class Help
+{
+public:
+    static std::string getKantaiType(KantaiType type)
+    {
+        switch (type)
+        {
+            case Destroyer:
+                return "驱逐舰";
+            case Light_Cruiser:
+                return "轻巡洋舰";
+            case Torpedo_Cruiser:
+                return "重雷装巡洋舰";
+            case Heavy_Cruiser:
+                return "重巡洋舰";
+            case Training_Cruiser:
+                return "练习巡洋舰";
+            case Air_Cruiser:
+                return "航空巡洋舰";
+            case Supply_Ship:
+                return "补给舰";
+            case Landing_craft:
+                return "扬陆舰";
+            case Battleship:
+                return "低速战舰";
+            case Battle_Cruiser:
+                return "高速战舰";
+            case Battle_Carrier:
+                return "航空战舰";
+            case Workboat:
+                return "工作舰";
+            case Light_Carrier:
+                return "轻空母";
+            case Carrier:
+                return "正规航母";
+            case Armor_Carrier:
+                return "装甲空母";
+            case Seaplane_Carrier:
+                return "水上机母舰";
+            case Submarine:
+                return "潜水舰";
+            case Diving_Carrier:
+                return "潜水空母";
+            case Diving_Mothership:
+                return "潜水母舰";
+            default:
+                return "";
+        }
+    }
+ 
+};
+
+
+
+
 typedef enum
 {
+    range_non=0,
     range_short=1,
     range_mid=2,
     range_long=3,
     range_exlong=4,
-    range_no=5
+    //range_no=5
 }Shooting_Range;
 
 
@@ -94,6 +150,7 @@ typedef enum
 //装备种类
 typedef enum
 {
+    no_equipment=0,
     Small_Caliber=1,            //小口径主炮
     Medium_Caliber=2,            //中口径主炮
     Large_Caliber=3,            //大口径主炮

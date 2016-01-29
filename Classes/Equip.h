@@ -45,7 +45,6 @@ public:
     Shooting_Range getRange() const {return equipImp->range;}
     int getArmor() const {return equipImp->armor;}
     bool isSupKantaiType(KantaiType type);
-    
     ~Equip();
 protected:
     Equip();

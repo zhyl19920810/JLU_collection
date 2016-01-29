@@ -18,6 +18,7 @@ class PortFactoryLayer;
 class PortRepairLayer;
 class PortRemodeLayer;
 class PortBattleLayer;
+class PortOrganizeLayer;
 
 USING_NS_CC;
 
@@ -102,7 +103,7 @@ private:
     Layer* currentLayer;
     PortMainLayer *mainlayer;
     PortFactoryLayer *factroylayer;
-    //PortOrganizeLayer *organizelayer;
+    PortOrganizeLayer *organizelayer;
     PortRemodeLayer *remodelayer;
     PortRepairLayer *repairlayer;
     PortSupplyLayer *supplylayer;

@@ -16,6 +16,7 @@
 #include "GameScene.h"
 #include "Singleton.hpp"
 #include "portScene.h"
+#include "EquipPicMgr.hpp"
 
 class GameManger:public Singleton<GameManger>
 {

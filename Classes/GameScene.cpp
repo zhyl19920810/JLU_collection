@@ -97,8 +97,8 @@ void GameScene::dayEnd()
     showLeftCornerBar(lituopanding);
     startBorderUp->setZOrder(1);
     startBorderDown->setZOrder(1);
-    startBorderUp->setTexture("interface/commonAssets/image 473.png");
-    startBorderDown->setTexture("interface/commonAssets/image 471.png");
+    startBorderUp->setTexture("interface/CommonAssets/image 473.png");
+    startBorderDown->setTexture("interface/CommonAssets/image 471.png");
     startBorderUp->runAction(MoveTo::create(1, ccp(400,352)));
     startBorderDown->runAction(MoveTo::create(1, ccp(400,130)));
     startBorderDown->setScaleY(1.05);
@@ -284,8 +284,8 @@ void GameScene::showCloseUpBorder()
 void GameScene::BattleStart()
 {
     hideLeftCornerBar();
-    startBorderUp = Sprite::create("interface/commonAssets/image 472.png");
-    startBorderDown = Sprite::create("interface/commonAssets/image 470.png");
+    startBorderUp = Sprite::create("interface/CommonAssets/image 472.png");
+    startBorderDown = Sprite::create("interface/CommonAssets/image 470.png");
     startBorderDown->setPosition(400, 130);
     startBorderUp->setPosition(400, 330);
     this->addChild(startBorderDown);

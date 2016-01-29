@@ -13,7 +13,7 @@
 #include <dirent.h>
 #include <sys/stat.h>
 
-#define DB_IN_COMPUTER 1
+//#define DB_IN_COMPUTER 1
 #define DEBUG_MODE true
 
 USING_NS_CC;
@@ -105,7 +105,7 @@ void AppDelegate::portModel(Director* director)
     writablePath+= GAME_DB_NAME;
     ssize_t dbSize=0;
     FileUtils::getInstance()->getFileData(writablePath.c_str(), "r", &dbSize);
-    if(!dbSize){
+    if(dbSize){
         fstream fsCopee( dbFilePath.c_str(), ios::binary | ios::in ) ;
         fstream fsCoper( writablePath.c_str(), ios::binary | ios::out ) ;
         fsCoper << fsCopee.rdbuf();
@@ -115,6 +115,18 @@ void AppDelegate::portModel(Director* director)
     DBInit init;
     init.initDB(1);
     
+    
+//    for (int j=0; j<2; ++j)
+//    {
+//        for (int i=1; i<25; ++i)
+//        {
+//            if (sPlayer.canBuildNewKantai(i)) {
+//                sPlayer.buildNewKantai(i);
+//            }
+//        }
+//    }
+
+
     auto scene=PortScene::createScene();
     director->runWithScene(scene);
     
@@ -146,14 +158,15 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
-    auto visibleSize=Director::getInstance()->getVisibleSize();
-    log("visibleSize: %f %f",visibleSize.width,visibleSize.height);
     
-    auto visibleOrgin=Director::getInstance()->getVisibleOrigin();
-    log("visibleOrgin: %f  %f",visibleOrgin.x,visibleOrgin.y);
-    
-    auto winSize=Director::getInstance()->getWinSize();
-    log("winSize:  %f %f",winSize.width,winSize.height);
+//    auto visibleSize=Director::getInstance()->getVisibleSize();
+//    log("visibleSize: %f %f",visibleSize.width,visibleSize.height);
+//    
+//    auto visibleOrgin=Director::getInstance()->getVisibleOrigin();
+//    log("visibleOrgin: %f  %f",visibleOrgin.x,visibleOrgin.y);
+//    
+//    auto winSize=Director::getInstance()->getWinSize();
+//    log("winSize:  %f %f",winSize.width,winSize.height);
     
     register_all_packages();
     

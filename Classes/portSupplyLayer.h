@@ -34,15 +34,6 @@ private:
 
 
 
-class HpBar
-{
-public:
-    
-private:
-    int maxHp;
-    int currHp;
-};
-
 class ShipUnit
 {
     typedef enum
@@ -72,7 +63,7 @@ private:
     ValueBar* fuelBar;
     Sprite* lvIcon;//
     Label* kantaiLV;//
-    HpBar* hpBar;//
+    //HpBar* hpBar;//
     
     
     MenuItemToggle* select;
@@ -112,7 +103,6 @@ public:
     int minusConsumeAmmo(int position);
     int minusConsumeFuel(int position);
     
-    bool isKantaiExist(int position);
     bool canFillUpAmmo(int position,Kantai* kantai);
     bool canFillUpFuel(int position,Kantai* kantai);
     void freshShipAllCondition();
@@ -142,7 +132,9 @@ private:
 private:
     std::vector<Sprite*> fleetSprite;
     std::vector<MenuItemToggle*> fleetToggle;
-
+    void fleetCallback(Ref* pSender,int layNumber);
+    void changeFleet(int fleetNumber);
+    
 private:
     void initLayer();
     void initKantaiTable();
@@ -151,8 +143,7 @@ private:
     void callFuelButton(Ref* pSender);
     void callAmmoButton(Ref* pSender);
     void callMidButton(Ref* pSender);
-    void fleetCallback(Ref* pSender,int layNumber);
-    void changeFleet(int fleetNumber);
+
     
     
     void refreshLayer();

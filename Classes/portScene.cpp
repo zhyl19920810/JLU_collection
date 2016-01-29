@@ -17,6 +17,7 @@
 #include "portFactoryLayer.h"
 #include "portBattleLayer.h"
 #include "portRepairLayer.h"
+#include "portOrganizeLayer.h"
 #include "Player.h"
 #include "GameManger.hpp"
 
@@ -69,6 +70,7 @@ factroylayer(NULL),
 repairlayer(NULL),
 battlelayer(NULL),
 title(NULL),
+organizelayer(NULL),
 currentLayerType(LayerType::empty)
 {
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PortMain/portmain.plist", "PortMain/portmain.pvr.ccz");
@@ -471,51 +473,23 @@ void PortScene::SetCurrLayer(LayerType type)
             break;
         }
         case organize:
-        {
-            auto player=sPlayer;
-            auto size=sPlayer.kantaiData.size();
-            int i=rand()%size;
-//            if (sPlayer.canModifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 2, sPlayer.kantaiData[i])) {
-//                sPlayer.modifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 2, sPlayer.kantaiData[i]);
-//            }
-//            i=rand()%size;
-//            if (sPlayer.canModifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 3, sPlayer.kantaiData[i])) {
-//                sPlayer.modifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 3, sPlayer.kantaiData[i]);
-//            }
-//            i=rand()%size;
-//            if (sPlayer.canModifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 4, sPlayer.kantaiData[i])) {
-//                sPlayer.modifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 4, sPlayer.kantaiData[i]);
-//            }
-//            i=rand()%size;
-//            if (sPlayer.canModifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 5, sPlayer.kantaiData[i])) {
-//                sPlayer.modifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 5, sPlayer.kantaiData[i]);
-//            }
-//            i=rand()%size;
-//            if (sPlayer.canModifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 6, sPlayer.kantaiData[i])) {
-//                sPlayer.modifyKantaiPosition(sPlayer.getFleetByFleetKey(1), 6, sPlayer.kantaiData[i]);
-//            }
-            currentLayerType=LayerType::main;
-            currentLayer=mainlayer;
-            mainlayer->updateGirl();
-        }
-//        case organize:
-//            if (currentLayerType == LayerType::organize)
-//                return;
-//            //layerSwithEffect();
-//            title->setTexture("PortMain/image 289.png");
-//            bgImage->runAction(MoveTo::create(0.3,ccp(800, 210)));
-//            layerSelecter->moveIn();
-//            if (organizelayer == nullptr)
-//            {
-//                organizelayer = new PortOrganizeLayer(this);
-//                this->addChild(organizelayer);
-//            }
-//            if (currentLayerType != LayerType::empty)
-//                currentLayer->setVisible(false);
-//            currentLayer = organizelayer;
-//            organizelayer->setVisible(true);
-//            currentLayerType = LayerType::organize;
-//            break;
+            if (currentLayerType == LayerType::organize)
+                return;
+            //layerSwithEffect();
+            title->setSpriteFrame("organizetitle.png");
+            bgImage->runAction(MoveTo::create(0.3,Point(800, 210)));
+            layerSelecter->moveIn();
+            if (organizelayer == nullptr)
+            {
+                organizelayer = PortOrganizeLayer::create();
+                this->addChild(organizelayer);
+            }
+            if (currentLayerType != LayerType::empty)
+                currentLayer->setVisible(false);
+            currentLayer = organizelayer;
+            organizelayer->setVisible(true);
+            currentLayerType = LayerType::organize;
+            break;
 
         default:
             break;

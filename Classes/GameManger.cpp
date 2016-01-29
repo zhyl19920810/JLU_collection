@@ -25,9 +25,11 @@ void GameManger::LoadConfig()
     KantaiMgr::newInstance();
     EquipMgr::newInstance();
     ExpMgr::newInstance();
+    EquipPicMgr::newInstance();
     sKantaiMgr.loadConf();
     sEquipMgr.loadConf();
     sExpMgr.loadConf();
+    sEquipPicMgr.loadConf();
 }
 
 void GameManger::LoadResource()

@@ -103,22 +103,22 @@ void CharacterCard::setBrokenMark(BrokenType brokenType)
         }
         case BrokenType::tiny:
         {
-            brokenMark->setTexture("commonAssets/image 344.png");
-            shader->setTexture("commonAssets/image 367.png");
+            brokenMark->setTexture("CommonAssets/image 344.png");
+            shader->setTexture("CommonAssets/image 367.png");
             break;
         }
         case BrokenType::mid:
-            brokenMark->setTexture("commonAssets/image 346.png");
-            shader->setTexture("commonAssets/image 369.png");
+            brokenMark->setTexture("CommonAssets/image 346.png");
+            shader->setTexture("CommonAssets/image 369.png");
             break;
         case BrokenType::large:
-            brokenMark->setTexture("commonAssets/image 348.png");
-            shader->setTexture("commonAssets/image 371.png");
+            brokenMark->setTexture("CommonAssets/image 348.png");
+            shader->setTexture("CommonAssets/image 371.png");
             break;
         case BrokenType::drown:
-            brokenMark->setTexture("commonAssets/image 350.png");
+            brokenMark->setTexture("CommonAssets/image 350.png");
             mainImage->setColor(Color3B(192, 192, 192));//GRAY
-            shader->setTexture("commonAssets/image 371.png");
+            shader->setTexture("CommonAssets/image 371.png");
             break;
         default:
             break;

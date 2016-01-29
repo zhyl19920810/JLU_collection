@@ -295,7 +295,7 @@ int InitPlayerProp::getMaxKantaiSize(int _currLV)
 
 int InitPlayerProp::getMaxEquipSize(int _currLV)
 {
-    return 100;
+    return 1000;
     
 }
 

@@ -83,10 +83,8 @@ public:
     }
     int getInitPlaneLoad(int number)
     {
-        if (number<0&&number>=getKantaiEquipSize()) {
-            CCASSERT(false, "getInitPlaneLoad error");
-        }
-        return kantaiImp->planeLoad[number];
+        CCASSERT(number>=1&&number<=getKantaiEquipSize(), "getInitPlaneLoad error");
+        return kantaiImp->planeLoad[number-1];
     }
     int getSearchEnemy() const{return searchEnemy;}
     int getArmor() const{return armor;}
@@ -181,6 +179,11 @@ private:
     BrokenType brokenType;
 public:
     std::vector<Equip*> equipGrid;
+    Equip* getEquip(int position)
+    {
+        CCASSERT(position>=1&&position<=getKantaiEquipSize(),"there isn't a equip");
+        return equipGrid[position-1];
+    }
     
     std::vector<int> currPlaneLoad;
     
