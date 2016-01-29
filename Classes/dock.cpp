@@ -7,10 +7,12 @@
 //
 
 #include "dock.hpp"
+#include "dockDB.hpp"
 
-
-void Dock::initDock()
+void Dock::initDock(int playerKey)
 {
     this->maxDockSize=sPlayer.getMaxDockSize();
+    std::vector<DockDBData>  data;
+    DockDB::getInstance()->initDockDB(playerKey,data);
     
 }

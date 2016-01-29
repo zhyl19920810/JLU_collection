@@ -22,7 +22,7 @@ public:
         float remainTime;
     };
     
-    void initDock();
+    void initDock(int playerKey);
     
     int buildNewDock();
     void update();

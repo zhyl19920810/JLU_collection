@@ -12,8 +12,10 @@
 #include <fstream>
 #include <dirent.h>
 #include <sys/stat.h>
+#include "dock.hpp"
 
-//#define DB_IN_COMPUTER 1
+
+#define DB_IN_COMPUTER 1
 #define DEBUG_MODE true
 
 USING_NS_CC;
@@ -126,7 +128,9 @@ void AppDelegate::portModel(Director* director)
 //        }
 //    }
 
-
+    
+    
+    
     auto scene=PortScene::createScene();
     director->runWithScene(scene);
     
