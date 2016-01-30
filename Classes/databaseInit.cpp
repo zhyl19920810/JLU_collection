@@ -162,6 +162,7 @@ void DBInit::initDB(int _playerKey)
     }
 
     sPlayer.initDatabaseData(_fleetMap, _kantaiMap, _equipMap);
+    
 }
 
 

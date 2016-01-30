@@ -6,10 +6,6 @@
 //
 //
 
-//#include "OrganizeContainer.hpp"
-//#include "CharacterDetailPage.h"
-//#include "CharacterListPage.h"
-//#include "GameModel.h"
 #ifndef _PORT_ORGANIZE_LAYER_
 #define _PORT_ORGANIZE_LAYER_
 

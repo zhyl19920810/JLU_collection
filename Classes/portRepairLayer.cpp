@@ -26,13 +26,13 @@ bool PortRepairLayer::init()
             break;
         }
         initLayer();
-        
+        initContainer();
         
         bRet=true;
     }while(0);
     return bRet;
-
 }
+
 
 void PortRepairLayer::initContainer()
 {
@@ -40,6 +40,12 @@ void PortRepairLayer::initContainer()
     for (; i<containerSize; ++i)
     {
         container[i]=RepairContainer::create(i+1);
+        addChild(container[i]);
+        container[i]->setPosition(465,320-i*80);
+    }
+    for (; i<4; ++i)
+    {
+        container[i]=NoReapirContainer::create(i+1);
         addChild(container[i]);
         container[i]->setPosition(465,320-i*80);
     }
@@ -60,4 +66,13 @@ void PortRepairLayer::initLayer()
     auto repairTitle = Sprite::create("RepairMain/repairTitle.png");
     addChild(repairTitle);
     repairTitle->setPosition(repairBar->getPosition()+Vec2(-290, 4));
+    
+}
+
+void PortRepairLayer::updateContainer()
+{
+    for (int i=0; i<containerSize; ++i)
+    {
+        container[i]->updateUnit();
+    }
 }

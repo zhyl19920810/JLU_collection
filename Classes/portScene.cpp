@@ -32,24 +32,20 @@ PortScene* PortScene::createScene()
 
 void PortScene::startCircle()
 {
-    ts=schedule_selector(PortScene::addAttr);
-    schedule(ts,20);
+    updateLabel=schedule_selector(PortScene::changeLabel);
+    schedule(updateLabel,5);
 }
 
 void PortScene::endCircle()
 {
-    unschedule(ts);
+    unschedule(updateLabel);
 }
 
 ///time
-void PortScene::addAttr(float dt)
+void PortScene::changeLabel(float dt)
 {
     char number[20];
     bzero(number, sizeof(number));
-    sPlayer.addAluminium(1);
-    sPlayer.addAmmo(1);
-    sPlayer.addFuel(1);
-    sPlayer.addSteel(1);
     sprintf(number, "%d",sPlayer.getFuel());
     labelFuel->setString(number);
     sprintf(number, "%d",sPlayer.getSteel());
@@ -89,7 +85,7 @@ PortScene::~PortScene()
     Director::getInstance()->getTextureCache()->removeTextureForKey("PortMain/layerSelect.pvr.ccz");
     SpriteFrameCache::getInstance()->removeSpriteFrameByName("PortMain/portMainLayer.plist");
     Director::getInstance()->getTextureCache()->removeTextureForKey("PortMain/portMainLayer.pvr.ccz");
-    unschedule(ts);
+    unschedule(updateLabel);
 }
 
 
@@ -394,11 +390,11 @@ void PortScene::SetCurrLayer(LayerType type)
             }
             title->setSpriteFrame("repairtitle.png");
             bgImage->runAction(MoveTo::create(0.3, ccp(0,210)));
-            layerSelecter->moveIn();
             if (!repairlayer) {
                 repairlayer=PortRepairLayer::create();
                 addChild(repairlayer);
             }
+            layerSelecter->moveIn();
             if (currentLayerType!=LayerType::empty) {
                 currentLayer->setVisible(false);
             }

@@ -15,12 +15,13 @@ bool PortRemodeLayer::init()
     do
     {
         
-        if (Layer::init())
+        if (!Layer::init())
         {
+            
             break;
         }
         
-        
+        initLayer();
         bRet=true;
     }while(0);
     return bRet;
@@ -29,7 +30,7 @@ bool PortRemodeLayer::init()
 
 PortRemodeLayer::PortRemodeLayer()
 {
-    initLayer();
+    
 }
 
 void PortRemodeLayer::initLayer()

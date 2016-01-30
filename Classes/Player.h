@@ -201,11 +201,9 @@ protected:
 //dock
 private:
     std::vector<KantaiDock*> kantaiDock;
-    
-    
-
-    
-    
+    void addAttr(float dt);
+    void startCircle();
+    void endCircle();
 };
 
 

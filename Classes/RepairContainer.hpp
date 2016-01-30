@@ -21,7 +21,7 @@ class RepairContainerParent:public Node
 {
 public:
     virtual bool init(int position)=0;
-    virtual void update(Kantai* kantai)=0;
+    virtual void updateUnit()=0;
     
 protected:
     Sprite* kantaiBg;
@@ -34,7 +34,7 @@ protected:
     HpBar* hpBar;
     Stars* stars;
     KantaiCard * kantaiCard;
-    Sprite* selectDocks;
+    MenuItemSprite* selectDocks;
 };
 
 class RepairContainer:public RepairContainerParent
@@ -43,25 +43,27 @@ public:
     RepairContainer();
     static RepairContainer* create(int position);
     void setFastRepairVisible(bool visible);
-    
+    void haveKantaiInReparing(bool visible);
     bool init(int position);
-    void update(Kantai* kantai);
+    void updateUnit();
 private:
+    void selectKantai(Ref* pSender);
     void fastRepairCallback(Ref* pSender);
-    
+    void initBg();
+    void initKantai();
+    bool haveKantai;
 };
 
-//class NoReapirContainer:public RepairContainerParent
-//{
-//public:
-//    static NoReapirContainer* create(int position);
-//    
-//    bool init(int position);
-//    void update();
-//    
-//private:
-//    
-//};
+class NoReapirContainer:public RepairContainerParent
+{
+public:
+    static NoReapirContainer* create(int position);
+    
+    bool init(int position);
+    void updateUnit(){}
+    
+private:
+};
 
 
 

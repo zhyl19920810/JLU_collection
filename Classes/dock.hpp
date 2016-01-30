@@ -20,22 +20,28 @@ public:
     {
         Kantai* kantai;
         float remainTime;
+        DockData(){bzero(this, sizeof(this));}
     };
     
     void initDock(int playerKey);
     void buildNewDock();
-    void update();
     
-    
+    void finishRepairKantai(Kantai* kantai,int position);
+    void cancelRepairKantai(Kantai* kantai,int position);
     void repairKantai(Kantai* kantai,int position);
     int calRepairTime(Kantai* kantai,int lostHp);
     int calAugValue(int currLV);
+    void repairTimeCircle(float dt);
+    const DockData& getDockData(int position);
+    bool haveDock(int position);
 private:
     Scheduler ts;
     void kantaiComplete(int position);
     int maxDockSize;
     int playerKey;
-    std::vector<DockData*> dock;
+    std::vector<DockData> dock;
+    void startCircle();
+    void endCircle();
 };
 
 

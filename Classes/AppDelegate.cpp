@@ -97,6 +97,7 @@ void AppDelegate::portModel(Director* director)
     sGameManger.LoadConfig();
     sGameManger.LoadResource();
     Player::newInstance();
+    Dock::newInstance();
 
 #if DB_IN_COMPUTER
     std::string writablePath = FileUtils::getInstance()->fullPathForFilename("/Volumes/opengl/kancolle_beta/Resources/database/kancolle_2.sqlite3");
@@ -116,7 +117,7 @@ void AppDelegate::portModel(Director* director)
     DBBase::init(writablePath);
     DBInit init;
     init.initDB(1);
-    
+    sDock.initDock(1);
     
 //    for (int j=0; j<2; ++j)
 //    {

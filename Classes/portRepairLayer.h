@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 #include "RepairContainer.hpp"
-
+#include "dock.hpp"
 
 using namespace cocos2d;
 class PortRepairLayer : public Layer
@@ -20,7 +20,6 @@ public:
     PortRepairLayer();
     CREATE_FUNC(PortRepairLayer);
     bool init();
-    void update();
 private:
     
     
@@ -34,6 +33,7 @@ private:
     
     //container
     void initContainer();
+    void updateContainer();
 };
 
 

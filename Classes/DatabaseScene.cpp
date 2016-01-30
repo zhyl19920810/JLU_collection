@@ -61,8 +61,6 @@ void DatabaseLayer::InitButton()
     Menu* mn=Menu::create(menuItem1,menuItem2,menuItem3, NULL);
     mn->alignItemsVertically();
     addChild(mn);
-    
-    
 }
 
 

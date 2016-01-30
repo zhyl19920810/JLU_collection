@@ -48,7 +48,7 @@ public:
     
     void startCircle();
     void endCircle();
-    void addAttr(float dt);
+    void changeLabel(float dt);
     
     void onEnter() override;
     
@@ -92,9 +92,7 @@ public:
     }
     
 private:
-    
-    SEL_SCHEDULE ts;
-    
+    SEL_SCHEDULE updateLabel;
     
     Sprite *black;
     

@@ -24,30 +24,32 @@ void Dock::initDock(int playerKey)
 
         if (it->completeTime<=0)
         {
-            sDockDB->deleteKantai(playerKey, it->kantaiKey);
             Kantai* kantai=sPlayer.getKantaiByKantaiKey(it->kantaiKey);
-            kantai->setKantaiState(KantaiState::Free);
+            finishRepairKantai(kantai, it->position);
         }
         else
         {
-            DockData* tmp=new DockData;
-            tmp->kantai=sPlayer.getKantaiByKantaiKey(it->kantaiKey);
-            tmp->remainTime=it->completeTime;
+            DockData tmp;
+            tmp.kantai=sPlayer.getKantaiByKantaiKey(it->kantaiKey);
+            tmp.remainTime=it->completeTime;
             dock[it->position-1]=tmp;
         }
     }
+    startCircle();
 }
 
 void Dock::buildNewDock()
 {
-    dock.push_back(NULL);
+    DockData tmp;
+    dock.push_back(tmp);
 }
 
 void Dock::repairKantai(Kantai *kantai, int position)
 {
     CCASSERT(position>=1&&position<=maxDockSize, "position is out of range");
-    CCASSERT(!dock[position-1], "there is a ship in the position");
+    CCASSERT(dock[position-1].kantai!=NULL, "there is a ship in the position");
     
+    kantai->setKantaiState(KantaiState::Repairing);
     float lostHp=static_cast<float>(kantai->getMaxHp()-kantai->getCurrHp());
     
     float steelFactor=sRepairFactorMgr.getSteelFactor(kantai->getKantaiNumber());
@@ -61,15 +63,80 @@ void Dock::repairKantai(Kantai *kantai, int position)
     
     int repairTime=calRepairTime(kantai,lostHp);
     sDockDB->insertKantai(playerKey, kantai->getKantaiKey(), position, repairTime);
-    DockData* tmp=new DockData;
-    tmp->kantai=kantai;
-    tmp->remainTime=repairTime;
+    DockData tmp;
+    tmp.kantai=kantai;
+    tmp.remainTime=repairTime;
     dock[position-1]=tmp;
 }
 
 int Dock::calAugValue(int currLV)
 {
     return sqrt(currLV)*10+50;
+}
+
+
+const Dock::DockData&  Dock::getDockData(int position)
+{
+    CCASSERT(position>=1&&position<=maxDockSize,"can not get the dock");
+    return dock[position-1];
+}
+
+bool Dock::haveDock(int position)
+{
+    if (position<=0||position>maxDockSize)
+    {
+        log("position is not exist");
+        return false;
+    }
+    return dock[position-1].kantai?true:false;
+}
+
+
+void Dock::startCircle()
+{
+    std::function<void(float)> f1=std::bind(&Dock::repairTimeCircle, this,std::placeholders::_1);
+    Director::getInstance()->getScheduler()->schedule(f1, this, 1, false, "dockRemainTime");
+}
+
+void Dock::endCircle()
+{
+    Director::getInstance()->getScheduler()->unschedule("dockRemainTime", this);
+}
+
+void Dock::repairTimeCircle(float dt)
+{
+    for (int i=0;i<dock.size();++i)
+    {
+        auto unit=dock[i];
+        if (unit.kantai)
+        {
+            --unit.remainTime;
+            if (unit.remainTime<=0)
+            {
+                finishRepairKantai(unit.kantai, i+1);
+            }
+        }
+    }
+}
+
+void Dock::cancelRepairKantai(Kantai *kantai, int position)
+{
+    CCASSERT(kantai, "can not cancel the repaired kantai");
+    sDockDB->deleteKantai(playerKey, kantai->getKantaiKey());
+    kantai->setKantaiState(KantaiState::Free);
+    dock[position-1].kantai=NULL;
+    dock[position-1].remainTime=0;
+}
+
+
+void Dock::finishRepairKantai(Kantai *kantai, int position)
+{
+    CCASSERT(kantai, "can not finish the repaired kantai");
+    sDockDB->deleteKantai(playerKey, kantai->getKantaiKey());
+    kantai->setKantaiState(KantaiState::Free);
+    kantai->setCurrHp(kantai->getMaxHp());
+    dock[position-1].kantai=NULL;
+    dock[position-1].remainTime=0;
 }
 
 
