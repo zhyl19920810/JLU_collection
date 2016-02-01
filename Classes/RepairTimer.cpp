@@ -9,15 +9,15 @@
 #include "RepairTimer.hpp"
 
 
-ReapirTimer::~ReapirTimer()
+RepairTimer::~RepairTimer()
 {
 
 }
 
-ReapirTimer* ReapirTimer::create(float time)
+RepairTimer* RepairTimer::create()
 {
-    ReapirTimer* pRet=new ReapirTimer;
-    if (pRet&&pRet->init(time))
+    RepairTimer* pRet=new RepairTimer;
+    if (pRet&&pRet->init())
     {
         pRet->autorelease();
         return pRet;
@@ -28,24 +28,87 @@ ReapirTimer* ReapirTimer::create(float time)
 }
 
 
-bool ReapirTimer::init(float time)
+bool RepairTimer::init()
 {
-    pTime = time;
-    
-    label = Label::create();
+    pTime=0;
+    label = Label::create("","fonts/DengXian.ttf",20);
     label->setPosition(0,0);
-    addChild(label);
-    
-    schedule(schedule_selector(ReapirTimer::update));
-    
+    label->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    label->setColor(Color3B::BLACK);
+    addChild(label);    
     return true;
 }
-void ReapirTimer::update(float delta)
+
+
+void RepairTimer::setTime(float time)
 {
-    pTime -= delta;
-    char* mtime = new char[10];
-    //此处只是显示分钟数和秒数  自己可以定义输出时间格式
-    sprintf(mtime,"%d : %d",(int)pTime/60,(int)pTime%60);
-    label->setString(mtime);
+    if (pTime)
+    {
+        return;
+    }
+    pTime = time;
+    schedule(schedule_selector(RepairTimer::update));
 }
 
+void RepairTimer::update(float delta)
+{
+    pTime -= delta;
+    char l_time[30];
+    bzero(l_time, sizeof(l_time));
+    convertTimeToChar(pTime, l_time);
+    label->setString(l_time);
+}
+
+void RepairTimer::convertTimeToChar(int time,char *name)
+{
+    char tmp[10];
+    bzero(name, sizeof(name));
+    int hour,minutes,second;
+    hour=time/3600;
+    if (!hour)
+    {
+        sprintf(name, "00:");
+    }
+    else if(hour<10)
+    {
+        sprintf(name, "0%d:",hour);
+    }
+    else
+    {
+        sprintf(name, "%d:",hour);
+    }
+    
+    time=time%3600;
+    minutes=time/60;
+    if (!minutes)
+    {
+        strcat(name, "00:");
+    }
+    else if (minutes<10)
+    {
+        sprintf(tmp, "0%d:",minutes);
+        strcat(name, tmp);
+    }
+    else
+    {
+        sprintf(tmp, "%d:",minutes);
+        strcat(name, tmp);
+    }
+    
+    time=time%60;
+    second=time;
+    if (!second)
+    {
+        strcat(name, "00");
+    }
+    else if (second<10)
+    {
+        sprintf(tmp, "0%d",second);
+        strcat(name, tmp);
+    }
+    else
+    {
+        sprintf(tmp, "%d",second);
+        strcat(name, tmp);
+    }
+}

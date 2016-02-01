@@ -106,17 +106,17 @@ typedef enum
     range_short=1,
     range_mid=2,
     range_long=3,
-    range_exlong=4,
+    range_exlong=4
     //range_no=5
 }Shooting_Range;
 
 
 typedef enum
 {
-    Free,
-    Repairing,
-    Expedition,
-    Error,
+    Free=1,
+    Repairing=2,
+    Expedition=3,
+    Error=4
 }KantaiState;
 
 

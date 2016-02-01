@@ -11,9 +11,9 @@
 
 #include "cocos2d.h"
 #include "RepairTimer.hpp"
-#include "HpBar.hpp"
 #include "Star.hpp"
 #include "kantaiCard.hpp"
+#include "RepairHpBar.hpp"
 
 USING_NS_CC;
 
@@ -31,10 +31,13 @@ protected:
     MenuItemSprite* fastRepair;
     Sprite* fastRepairUp;
     int position;
-    HpBar* hpBar;
+    RepairHpBar* repairHpBar;
     Stars* stars;
     KantaiCard * kantaiCard;
     MenuItemSprite* selectDocks;
+    Sprite* LVIcon;
+    Menu* mn;
+    RepairTimer* timer;
 };
 
 class RepairContainer:public RepairContainerParent

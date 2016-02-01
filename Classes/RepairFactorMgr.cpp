@@ -37,6 +37,6 @@ void RepairFactorMgr::initRepairFactorMap(const char **aStrArray, int aArrayLen)
     int index=0;
     int kantaiNumber=atoi(aStrArray[index++]);
     tmp.steelFactor=atof(aStrArray[index++]);
-    tmp.ammoFactor=atof(aStrArray[index++]);
+    tmp.fuelFactor=atof(aStrArray[index++]);
     repairFactorMap[kantaiNumber]=tmp;
 }

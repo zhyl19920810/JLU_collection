@@ -44,24 +44,15 @@ void Dock::buildNewDock()
     dock.push_back(tmp);
 }
 
-void Dock::repairKantai(Kantai *kantai, int position)
+void Dock::repairKantai(Kantai *kantai, int position,int repairSteel,int repairAmmo,int repairTime)
 {
     CCASSERT(position>=1&&position<=maxDockSize, "position is out of range");
-    CCASSERT(dock[position-1].kantai!=NULL, "there is a ship in the position");
+    CCASSERT(dock[position-1].kantai==NULL, "there is a ship in the position");
     
     kantai->setKantaiState(KantaiState::Repairing);
-    float lostHp=static_cast<float>(kantai->getMaxHp()-kantai->getCurrHp());
+    sPlayer.minusSteel(repairSteel);
+    sPlayer.minusAmmo(repairAmmo);
     
-    float steelFactor=sRepairFactorMgr.getSteelFactor(kantai->getKantaiNumber());
-    int consumeSteel=static_cast<int>(steelFactor*lostHp);
-    sPlayer.minusSteel(consumeSteel);
-
-    
-    float ammoFactor=sRepairFactorMgr.getAmmoFactor(kantai->getKantaiNumber());
-    int consumeAmmo=static_cast<int>(ammoFactor*lostHp);
-    sPlayer.minusAmmo(consumeAmmo);
-    
-    int repairTime=calRepairTime(kantai,lostHp);
     sDockDB->insertKantai(playerKey, kantai->getKantaiKey(), position, repairTime);
     DockData tmp;
     tmp.kantai=kantai;
@@ -72,6 +63,19 @@ void Dock::repairKantai(Kantai *kantai, int position)
 int Dock::calAugValue(int currLV)
 {
     return sqrt(currLV)*10+50;
+}
+
+
+int Dock::calRepairFuel(Kantai *kantai, int lostHp)
+{
+    float fuelFactor=sRepairFactorMgr.getFuelFactor(kantai->getKantaiNumber());
+    return static_cast<int>(fuelFactor*lostHp);
+}
+
+int Dock::calRepairSteel(Kantai *kantai, int lostHp)
+{
+    float steelFactor=sRepairFactorMgr.getSteelFactor(kantai->getKantaiNumber());
+    return static_cast<int>(steelFactor*lostHp);
 }
 
 
@@ -181,3 +185,32 @@ int Dock::calRepairTime(Kantai *kantai,int lostHp)
     int augmentValue=calAugValue(kantai->getCurrLV());
     return (kantai->getCurrLV()*5+augmentValue)*ratio*lostHp+30;
 }
+
+
+
+
+bool Dock::canRepairKantai(Kantai *kantai,int& repairSteel,int& repairFuel,int& repairTime)
+{
+    if (kantai->getKantaiState()!=Free) {
+        return false;
+    }
+    int lostHp=kantai->getMaxHp()-kantai->getCurrHp();
+    if (!lostHp) {
+        return false;
+    }
+    repairSteel=calRepairSteel(kantai, lostHp);
+    repairFuel=calRepairFuel(kantai, lostHp);
+    repairTime=calRepairTime(kantai, lostHp);
+    if (((sPlayer.getFuel()-repairFuel)<=0)||((sPlayer.getSteel()-repairSteel)<=0))
+    {
+        return false;
+    }
+    return true;
+}
+
+
+
+
+
+
+

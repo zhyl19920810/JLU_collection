@@ -11,11 +11,13 @@
 
 HpBar::HpBar(int maxHp, int currentHp)
 {
-    auto bgBar = Sprite::create("CommonAssets/HpBarBg.png");
-    this->addChild(bgBar);
+
     bar = Sprite::create("CommonAssets/hpBar.png");
     bar->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     this->addChild(bar);
+    auto bgBar = Sprite::create("CommonAssets/HpBarBg.png");
+    this->addChild(bgBar);
+    bgBar->setPosition(0,0);
     bar->setPosition(-30, 0);
     setHp(maxHp, currentHp);
     

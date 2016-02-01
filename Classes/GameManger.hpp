@@ -17,7 +17,7 @@
 #include "Singleton.hpp"
 #include "portScene.h"
 #include "EquipPicMgr.hpp"
-
+#include "RepairFactorMgr.hpp"
 class GameManger:public Singleton<GameManger>
 {
     friend class Singleton<GameManger>;

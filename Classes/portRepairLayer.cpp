@@ -54,6 +54,7 @@ void PortRepairLayer::initContainer()
 
 void PortRepairLayer::initLayer()
 {
+    auto size=Director::getInstance()->getVisibleSize();
     auto bgimg = Sprite::create("RepairMain/repairBg.png");
     this->addChild(bgimg);
     bgimg->setOpacity(200);
@@ -67,6 +68,22 @@ void PortRepairLayer::initLayer()
     addChild(repairTitle);
     repairTitle->setPosition(repairBar->getPosition()+Vec2(-290, 4));
     
+
+    menu=Menu::create();
+    menu->setPosition(Vec2::ZERO);
+    auto closeItem2 = Sprite::create("CommonAssets/image 451.png");
+    closeItem2->setGlobalZOrder(10);
+    closeItem2->setOpacity(0);
+    hideListItem = MenuItemSprite::create(closeItem2, closeItem2, CC_CALLBACK_1(PortRepairLayer::hideList, this));
+    hideListItem->setPosition(-52, 240);
+    hideListItem->setEnabled(false);
+    menu->addChild(hideListItem);
+    addChild(menu);
+    
+    listEntity=RepairListEntity::create();
+    addChild(listEntity,2);
+    listEntity->setPosition(size.width,0);
+    addChild(listEntity->selectEntity,4);
 }
 
 void PortRepairLayer::updateContainer()
@@ -76,3 +93,24 @@ void PortRepairLayer::updateContainer()
         container[i]->updateUnit();
     }
 }
+
+void PortRepairLayer::showList(int index)
+{
+    if (listEntity->isHidden()) {
+        listEntity->moveIn();
+    }
+    hideListItem->setEnabled(true);
+    listEntity->updateRows();
+    
+}
+
+void PortRepairLayer::hideList(cocos2d::Ref *pSender)
+{
+    listEntity->moveOut();
+    hideListItem->setEnabled(false);
+}
+
+
+
+
+

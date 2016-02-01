@@ -18,8 +18,6 @@
 		46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7619C43A67006E1F66 /* CloseNormal.png */; };
 		46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7719C43A67006E1F66 /* CloseSelected.png */; };
 		46880B7E19C43A67006E1F66 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7719C43A67006E1F66 /* CloseSelected.png */; };
-		46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7A19C43A67006E1F66 /* HelloWorld.png */; };
-		46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7A19C43A67006E1F66 /* HelloWorld.png */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
 		503AE10117EB989F00D1A890 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
@@ -207,6 +205,12 @@
 		F42DB8FA1C5A30EB00CBE2C7 /* HpBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8F71C5A30EB00CBE2C7 /* HpBar.cpp */; };
 		F42DB8FE1C5A33B500CBE2C7 /* Star.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8FC1C5A33B500CBE2C7 /* Star.cpp */; };
 		F42DB8FF1C5A33B500CBE2C7 /* Star.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8FC1C5A33B500CBE2C7 /* Star.cpp */; };
+		F43FFC7D1C5CD6CB00C98BED /* RepairHpBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43FFC7B1C5CD6CB00C98BED /* RepairHpBar.cpp */; };
+		F43FFC7E1C5CD6CB00C98BED /* RepairHpBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43FFC7B1C5CD6CB00C98BED /* RepairHpBar.cpp */; };
+		F43FFC821C5CE8E500C98BED /* RepairListRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43FFC801C5CE8E500C98BED /* RepairListRow.cpp */; };
+		F43FFC831C5CE8E500C98BED /* RepairListRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43FFC801C5CE8E500C98BED /* RepairListRow.cpp */; };
+		F43FFC861C5CE8F600C98BED /* RepairListEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43FFC841C5CE8F600C98BED /* RepairListEntity.cpp */; };
+		F43FFC871C5CE8F600C98BED /* RepairListEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43FFC841C5CE8F600C98BED /* RepairListEntity.cpp */; };
 		F44D26C01C4D198400438F3C /* XMLBuilder.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D731BDA1FDD002788AA /* XMLBuilder.h */; };
 		F44D26C11C4D198400438F3C /* XMLParser.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D771BDA1FDD002788AA /* XMLParser.h */; };
 		F44D26C21C4D198400438F3C /* XMLBase.h in Sources */ = {isa = PBXBuildFile; fileRef = F40CF97E1BDB4D1E00DD897F /* XMLBase.h */; };
@@ -269,6 +273,8 @@
 		F48189811C5926F900A0D0F5 /* kantaiCard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F481897E1C5926F900A0D0F5 /* kantaiCard.cpp */; };
 		F48189861C592F5F00A0D0F5 /* KantaiDetailEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48189841C592F5F00A0D0F5 /* KantaiDetailEntity.cpp */; };
 		F48189871C592F5F00A0D0F5 /* KantaiDetailEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48189841C592F5F00A0D0F5 /* KantaiDetailEntity.cpp */; };
+		F4AAFA041C5D0EEF006981BB /* RepairSelectEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4AAFA021C5D0EEF006981BB /* RepairSelectEntity.cpp */; };
+		F4AAFA051C5D0EEF006981BB /* RepairSelectEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4AAFA021C5D0EEF006981BB /* RepairSelectEntity.cpp */; };
 		F4B173F31C545F3800D2BC1C /* csv in Resources */ = {isa = PBXBuildFile; fileRef = F4FABB2F1C51368200F75BCE /* csv */; };
 		F4B173F41C545F4600D2BC1C /* GameManger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB121C50D89000F75BCE /* GameManger.cpp */; };
 		F4B173F51C545F4600D2BC1C /* GameManger.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB131C50D89000F75BCE /* GameManger.hpp */; };
@@ -295,6 +301,14 @@
 		F4B191E11BE74B56000A41C3 /* BattleHero.h in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F401BDCD9B900180F6B /* BattleHero.h */; };
 		F4B926CE1C55FA74005DB127 /* PortMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CC1C55FA74005DB127 /* PortMain */; };
 		F4B926CF1C55FA74005DB127 /* SupplyMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CD1C55FA74005DB127 /* SupplyMain */; };
+		F4D5D0891C5FAFDF001441C3 /* portFactoryContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0871C5FAFDF001441C3 /* portFactoryContainer.cpp */; };
+		F4D5D08A1C5FAFDF001441C3 /* portFactoryContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0871C5FAFDF001441C3 /* portFactoryContainer.cpp */; };
+		F4D5D08D1C5FB006001441C3 /* buildKantaiEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D08B1C5FB006001441C3 /* buildKantaiEntity.cpp */; };
+		F4D5D08E1C5FB006001441C3 /* buildKantaiEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D08B1C5FB006001441C3 /* buildKantaiEntity.cpp */; };
+		F4D5D0921C5FB073001441C3 /* arsenal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0901C5FB073001441C3 /* arsenal.cpp */; };
+		F4D5D0931C5FB073001441C3 /* arsenal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0901C5FB073001441C3 /* arsenal.cpp */; };
+		F4D5D0961C5FB08C001441C3 /* arsenalDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0941C5FB08C001441C3 /* arsenalDB.cpp */; };
+		F4D5D0971C5FB08C001441C3 /* arsenalDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0941C5FB08C001441C3 /* arsenalDB.cpp */; };
 		F4D6CBE91BF380210078C5C0 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE71BF380210078C5C0 /* TestScene.cpp */; };
 		F4D6CBEA1BF380210078C5C0 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE71BF380210078C5C0 /* TestScene.cpp */; };
 		F4D8028E1BE604EB0032C724 /* Mission.xml in Resources */ = {isa = PBXBuildFile; fileRef = F4D8028D1BE604EB0032C724 /* Mission.xml */; };
@@ -374,7 +388,6 @@
 		3EACC98E19EE6D4300EB3C5E /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		46880B7619C43A67006E1F66 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		46880B7719C43A67006E1F66 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
-		46880B7A19C43A67006E1F66 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AE0FA17EB989F00D1A890 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = SOURCE_ROOT; };
@@ -519,6 +532,12 @@
 		F42DB8F81C5A30EB00CBE2C7 /* HpBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HpBar.hpp; sourceTree = "<group>"; };
 		F42DB8FC1C5A33B500CBE2C7 /* Star.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Star.cpp; sourceTree = "<group>"; };
 		F42DB8FD1C5A33B500CBE2C7 /* Star.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Star.hpp; sourceTree = "<group>"; };
+		F43FFC7B1C5CD6CB00C98BED /* RepairHpBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RepairHpBar.cpp; sourceTree = "<group>"; };
+		F43FFC7C1C5CD6CB00C98BED /* RepairHpBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RepairHpBar.hpp; sourceTree = "<group>"; };
+		F43FFC801C5CE8E500C98BED /* RepairListRow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RepairListRow.cpp; sourceTree = "<group>"; };
+		F43FFC811C5CE8E500C98BED /* RepairListRow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RepairListRow.hpp; sourceTree = "<group>"; };
+		F43FFC841C5CE8F600C98BED /* RepairListEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RepairListEntity.cpp; sourceTree = "<group>"; };
+		F43FFC851C5CE8F600C98BED /* RepairListEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RepairListEntity.hpp; sourceTree = "<group>"; };
 		F44D26EC1C4D19A700438F3C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
 		F44D26ED1C4D19A700438F3C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
 		F467184A1BE88E6300320B0A /* BattleEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleEnemy.cpp; sourceTree = "<group>"; };
@@ -532,6 +551,8 @@
 		F481897F1C5926F900A0D0F5 /* kantaiCard.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = kantaiCard.hpp; sourceTree = "<group>"; };
 		F48189841C592F5F00A0D0F5 /* KantaiDetailEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KantaiDetailEntity.cpp; sourceTree = "<group>"; };
 		F48189851C592F5F00A0D0F5 /* KantaiDetailEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KantaiDetailEntity.hpp; sourceTree = "<group>"; };
+		F4AAFA021C5D0EEF006981BB /* RepairSelectEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RepairSelectEntity.cpp; sourceTree = "<group>"; };
+		F4AAFA031C5D0EEF006981BB /* RepairSelectEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RepairSelectEntity.hpp; sourceTree = "<group>"; };
 		F4B174001C54608500D2BC1C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		F4B174011C54608500D2BC1C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		F4B174041C5461FC00D2BC1C /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; name = lib; path = ../../../../usr/lib; sourceTree = "<group>"; };
@@ -542,6 +563,14 @@
 		F4B1740F1C54657D00D2BC1C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		F4B926CC1C55FA74005DB127 /* PortMain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PortMain; sourceTree = "<group>"; };
 		F4B926CD1C55FA74005DB127 /* SupplyMain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SupplyMain; sourceTree = "<group>"; };
+		F4D5D0871C5FAFDF001441C3 /* portFactoryContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = portFactoryContainer.cpp; sourceTree = "<group>"; };
+		F4D5D0881C5FAFDF001441C3 /* portFactoryContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = portFactoryContainer.hpp; sourceTree = "<group>"; };
+		F4D5D08B1C5FB006001441C3 /* buildKantaiEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildKantaiEntity.cpp; sourceTree = "<group>"; };
+		F4D5D08C1C5FB006001441C3 /* buildKantaiEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = buildKantaiEntity.hpp; sourceTree = "<group>"; };
+		F4D5D0901C5FB073001441C3 /* arsenal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = arsenal.cpp; sourceTree = "<group>"; };
+		F4D5D0911C5FB073001441C3 /* arsenal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = arsenal.hpp; sourceTree = "<group>"; };
+		F4D5D0941C5FB08C001441C3 /* arsenalDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = arsenalDB.cpp; sourceTree = "<group>"; };
+		F4D5D0951C5FB08C001441C3 /* arsenalDB.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = arsenalDB.hpp; sourceTree = "<group>"; };
 		F4D6CBE71BF380210078C5C0 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
 		F4D6CBE81BF380210078C5C0 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
 		F4D8028D1BE604EB0032C724 /* Mission.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Mission.xml; sourceTree = "<group>"; };
@@ -723,7 +752,6 @@
 				3EACC98E19EE6D4300EB3C5E /* res */,
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
 				46880B7719C43A67006E1F66 /* CloseSelected.png */,
-				46880B7A19C43A67006E1F66 /* HelloWorld.png */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -732,6 +760,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F4D5D08F1C5FB05D001441C3 /* arsenal */,
 				F4F956E21C5B9D41001AA1B3 /* dock */,
 				F4036DD31BDA2160002788AA /* backGround */,
 				F4036DD21BDA2142002788AA /* init */,
@@ -866,12 +895,11 @@
 		F4036DCB1BDA202F002788AA /* port */ = {
 			isa = PBXGroup;
 			children = (
+				F4D5D0861C5FAF1D001441C3 /* factory */,
 				F4F956C91C5B5B12001AA1B3 /* organize */,
 				F4F956C81C5B59C0001AA1B3 /* repair */,
 				F4036D5C1BDA1FDD002788AA /* portBattleLayer.cpp */,
 				F4036D5D1BDA1FDD002788AA /* portBattleLayer.h */,
-				F4036D5E1BDA1FDD002788AA /* portFactoryLayer.cpp */,
-				F4036D5F1BDA1FDD002788AA /* portFactoryLayer.h */,
 				F4036D601BDA1FDD002788AA /* portMainLayer.cpp */,
 				F4036D611BDA1FDD002788AA /* portMainLayer.h */,
 				F4036D641BDA1FDD002788AA /* portRemodeLayer.cpp */,
@@ -896,6 +924,7 @@
 		F4036DCD1BDA20DE002788AA /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				F4D5D0851C5FACD7001441C3 /* Clock */,
 				F42DB8FB1C5A33A800CBE2C7 /* Star */,
 				F42DB8F51C5A30D800CBE2C7 /* HpBar */,
 				F4036DD11BDA210A002788AA /* kantai */,
@@ -987,6 +1016,8 @@
 				F4036D591BDA1FDD002788AA /* playerDB.h */,
 				F4F956E71C5B9D7F001AA1B3 /* dockDB.cpp */,
 				F4F956E81C5B9D7F001AA1B3 /* dockDB.hpp */,
+				F4D5D0941C5FB08C001441C3 /* arsenalDB.cpp */,
+				F4D5D0951C5FB08C001441C3 /* arsenalDB.hpp */,
 			);
 			name = database;
 			sourceTree = "<group>";
@@ -1065,23 +1096,60 @@
 			children = (
 				F481897E1C5926F900A0D0F5 /* kantaiCard.cpp */,
 				F481897F1C5926F900A0D0F5 /* kantaiCard.hpp */,
+				F42DB8E51C599DCA00CBE2C7 /* EquipmentContainer.hpp */,
 				F48189841C592F5F00A0D0F5 /* KantaiDetailEntity.cpp */,
 				F48189851C592F5F00A0D0F5 /* KantaiDetailEntity.hpp */,
 				F42DB8E41C599DCA00CBE2C7 /* EquipmentContainer.cpp */,
-				F42DB8E51C599DCA00CBE2C7 /* EquipmentContainer.hpp */,
 			);
 			name = card;
+			sourceTree = "<group>";
+		};
+		F4D5D0851C5FACD7001441C3 /* Clock */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Clock;
+			sourceTree = "<group>";
+		};
+		F4D5D0861C5FAF1D001441C3 /* factory */ = {
+			isa = PBXGroup;
+			children = (
+				F4036D5E1BDA1FDD002788AA /* portFactoryLayer.cpp */,
+				F4036D5F1BDA1FDD002788AA /* portFactoryLayer.h */,
+				F4D5D0871C5FAFDF001441C3 /* portFactoryContainer.cpp */,
+				F4D5D0881C5FAFDF001441C3 /* portFactoryContainer.hpp */,
+				F4D5D08B1C5FB006001441C3 /* buildKantaiEntity.cpp */,
+				F4D5D08C1C5FB006001441C3 /* buildKantaiEntity.hpp */,
+			);
+			name = factory;
+			sourceTree = "<group>";
+		};
+		F4D5D08F1C5FB05D001441C3 /* arsenal */ = {
+			isa = PBXGroup;
+			children = (
+				F4D5D0901C5FB073001441C3 /* arsenal.cpp */,
+				F4D5D0911C5FB073001441C3 /* arsenal.hpp */,
+			);
+			name = arsenal;
 			sourceTree = "<group>";
 		};
 		F4F956C81C5B59C0001AA1B3 /* repair */ = {
 			isa = PBXGroup;
 			children = (
+				F43FFC841C5CE8F600C98BED /* RepairListEntity.cpp */,
+				F43FFC851C5CE8F600C98BED /* RepairListEntity.hpp */,
 				F4036D661BDA1FDD002788AA /* portRepairLayer.cpp */,
 				F4036D671BDA1FDD002788AA /* portRepairLayer.h */,
 				F4F956C41C5B538E001AA1B3 /* RepairContainer.cpp */,
 				F4F956C51C5B538E001AA1B3 /* RepairContainer.hpp */,
 				F4F956CA1C5B5E49001AA1B3 /* RepairTimer.cpp */,
 				F4F956CB1C5B5E49001AA1B3 /* RepairTimer.hpp */,
+				F43FFC7B1C5CD6CB00C98BED /* RepairHpBar.cpp */,
+				F43FFC7C1C5CD6CB00C98BED /* RepairHpBar.hpp */,
+				F43FFC801C5CE8E500C98BED /* RepairListRow.cpp */,
+				F43FFC811C5CE8E500C98BED /* RepairListRow.hpp */,
+				F4AAFA021C5D0EEF006981BB /* RepairSelectEntity.cpp */,
+				F4AAFA031C5D0EEF006981BB /* RepairSelectEntity.hpp */,
 			);
 			name = repair;
 			sourceTree = "<group>";
@@ -1246,7 +1314,6 @@
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				F4036D201BDA1F16002788AA /* interface in Resources */,
-				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
 				F4036D261BDA1F31002788AA /* database in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
@@ -1286,7 +1353,6 @@
 				F4B173F31C545F3800D2BC1C /* csv in Resources */,
 				F40CF9841BDB51B200DD897F /* map in Resources */,
 				F4014AF41BF0E8A100C9C5AE /* equip in Resources */,
-				46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */,
 				F4036D1E1BDA1F0A002788AA /* kantai in Resources */,
 				F4036D2A1BDA1F39002788AA /* equipment in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
@@ -1312,11 +1378,13 @@
 				F44D26C11C4D198400438F3C /* XMLParser.h in Sources */,
 				F44D26C21C4D198400438F3C /* XMLBase.h in Sources */,
 				F44D26C31C4D198400438F3C /* Player.h in Sources */,
+				F4D5D0891C5FAFDF001441C3 /* portFactoryContainer.cpp in Sources */,
 				F44D26C41C4D198400438F3C /* DatabaseScene.h in Sources */,
 				F44D26C51C4D198400438F3C /* XMLControl.h in Sources */,
 				F44D26C61C4D198400438F3C /* databaseBase.h in Sources */,
 				F44D26C71C4D198400438F3C /* databaseInit.h in Sources */,
 				F44D26C81C4D198400438F3C /* equipDB.h in Sources */,
+				F43FFC861C5CE8F600C98BED /* RepairListEntity.cpp in Sources */,
 				F44D26C91C4D198400438F3C /* fleetDB.h in Sources */,
 				F44D26CA1C4D198400438F3C /* kantaiDB.h in Sources */,
 				F44D26CB1C4D198400438F3C /* playerDB.h in Sources */,
@@ -1346,6 +1414,7 @@
 				F44D26E11C4D198400438F3C /* MissionSelectPage.h in Sources */,
 				F44D26E21C4D198400438F3C /* layerSelecter.h in Sources */,
 				F4F956C61C5B538E001AA1B3 /* RepairContainer.cpp in Sources */,
+				F43FFC821C5CE8E500C98BED /* RepairListRow.cpp in Sources */,
 				F44D26E31C4D198400438F3C /* portBattleLayer.h in Sources */,
 				F44D26E41C4D198400438F3C /* portFactoryLayer.h in Sources */,
 				F42DB8E61C599DCA00CBE2C7 /* EquipmentContainer.cpp in Sources */,
@@ -1357,6 +1426,7 @@
 				F44D26E91C4D198400438F3C /* portScene.h in Sources */,
 				F44D26EA1C4D198400438F3C /* portSupplyLayer.h in Sources */,
 				F44D26EB1C4D198400438F3C /* TestScene.h in Sources */,
+				F4D5D08D1C5FB006001441C3 /* buildKantaiEntity.cpp in Sources */,
 				F40CF98E1BDB6A5A00DD897F /* BattleModel.cpp in Sources */,
 				F4036DA61BDA1FDD002788AA /* playerDB.cpp in Sources */,
 				F4D6CBE91BF380210078C5C0 /* TestScene.cpp in Sources */,
@@ -1368,6 +1438,8 @@
 				F42865E81BDBD12C00045E66 /* BattleCharacter.cpp in Sources */,
 				F4036DC41BDA1FDD002788AA /* XMLParser.cpp in Sources */,
 				F4036DB61BDA1FDD002788AA /* portScene.cpp in Sources */,
+				F4AAFA041C5D0EEF006981BB /* RepairSelectEntity.cpp in Sources */,
+				F4D5D0961C5FB08C001441C3 /* arsenalDB.cpp in Sources */,
 				F4E62F411BDCD9B900180F6B /* BattleHero.cpp in Sources */,
 				F4036DC01BDA1FDD002788AA /* XMLBuilder.cpp in Sources */,
 				F42865EC1BDBD18100045E66 /* AnimationMaker.cpp in Sources */,
@@ -1377,11 +1449,13 @@
 				F4F956CC1C5B5E49001AA1B3 /* RepairTimer.cpp in Sources */,
 				F4F956E51C5B9D4C001AA1B3 /* dock.cpp in Sources */,
 				F4036DA01BDA1FDD002788AA /* MissionNode.cpp in Sources */,
+				F4D5D0921C5FB073001441C3 /* arsenal.cpp in Sources */,
 				F4E62F381BDCB2E100180F6B /* CharacterCard.cpp in Sources */,
 				F4036D841BDA1FDD002788AA /* Equip.cpp in Sources */,
 				F4036D821BDA1FDD002788AA /* DatabaseScene.cpp in Sources */,
 				F4036D781BDA1FDD002788AA /* AppDelegate.cpp in Sources */,
 				F42DB8F91C5A30EB00CBE2C7 /* HpBar.cpp in Sources */,
+				F43FFC7D1C5CD6CB00C98BED /* RepairHpBar.cpp in Sources */,
 				F4FABB141C50D89000F75BCE /* GameManger.cpp in Sources */,
 				F40C4FC31C5BCF89000FAA89 /* RepairFactorMgr.cpp in Sources */,
 				F4036DB41BDA1FDD002788AA /* portRepairLayer.cpp in Sources */,
@@ -1466,7 +1540,9 @@
 				F40CF9911BDB7FDF00DD897F /* Formation.h in Sources */,
 				F40CF9921BDB7FDF00DD897F /* BattleModel.h in Sources */,
 				F4036DFB1BDA2316002788AA /* XMLBuilder.cpp in Sources */,
+				F4D5D0931C5FB073001441C3 /* arsenal.cpp in Sources */,
 				F4036DFC1BDA2316002788AA /* XMLBuilder.h in Sources */,
+				F43FFC871C5CE8F600C98BED /* RepairListEntity.cpp in Sources */,
 				F4036DFD1BDA2316002788AA /* XMLParser.cpp in Sources */,
 				F47FC2F71C5A527100484126 /* KantaiListRow.cpp in Sources */,
 				F40CF9801BDB4D1E00DD897F /* XMLBase.cpp in Sources */,
@@ -1483,6 +1559,7 @@
 				F40C4FCE1C5BDA78000FAA89 /* EquipPicMgr.cpp in Sources */,
 				F4036E051BDA2316002788AA /* databaseBase.cpp in Sources */,
 				F4036E061BDA2316002788AA /* databaseBase.h in Sources */,
+				F43FFC831C5CE8E500C98BED /* RepairListRow.cpp in Sources */,
 				F4036E071BDA2316002788AA /* databaseInit.cpp in Sources */,
 				F4D6CBEA1BF380210078C5C0 /* TestScene.cpp in Sources */,
 				F4F956C71C5B538E001AA1B3 /* RepairContainer.cpp in Sources */,
@@ -1491,6 +1568,7 @@
 				F4036E091BDA2316002788AA /* equipDB.cpp in Sources */,
 				F4036E0A1BDA2316002788AA /* equipDB.h in Sources */,
 				F4036E0B1BDA2316002788AA /* fleetDB.cpp in Sources */,
+				F4D5D08A1C5FAFDF001441C3 /* portFactoryContainer.cpp in Sources */,
 				F4036E0C1BDA2316002788AA /* fleetDB.h in Sources */,
 				F4036E0D1BDA2316002788AA /* kantaiDB.cpp in Sources */,
 				F4036E0E1BDA2316002788AA /* kantaiDB.h in Sources */,
@@ -1499,6 +1577,7 @@
 				F40CF98F1BDB6A5A00DD897F /* BattleModel.cpp in Sources */,
 				F4036E101BDA2316002788AA /* playerDB.h in Sources */,
 				F4036E111BDA2316002788AA /* AppDelegate.cpp in Sources */,
+				F4AAFA051C5D0EEF006981BB /* RepairSelectEntity.cpp in Sources */,
 				F4036E121BDA2316002788AA /* AppDelegate.h in Sources */,
 				F4036E131BDA2316002788AA /* HelloWorldScene.cpp in Sources */,
 				F4036E141BDA2316002788AA /* HelloWorldScene.h in Sources */,
@@ -1517,6 +1596,7 @@
 				F4036E1F1BDA2316002788AA /* MissionNode.cpp in Sources */,
 				F42865E51BDBC52B00045E66 /* BattleBar.cpp in Sources */,
 				F4036E201BDA2316002788AA /* MissionNode.h in Sources */,
+				F4D5D08E1C5FB006001441C3 /* buildKantaiEntity.cpp in Sources */,
 				F4036E211BDA2316002788AA /* SallyScene.cpp in Sources */,
 				F4036E221BDA2316002788AA /* SallyScene.h in Sources */,
 				F4036E231BDA2316002788AA /* Compass.cpp in Sources */,
@@ -1530,6 +1610,7 @@
 				F4036E291BDA2316002788AA /* MissionSelectPage.cpp in Sources */,
 				F4036E2A1BDA2316002788AA /* MissionSelectPage.h in Sources */,
 				F40CF98A1BDB69A300DD897F /* Formation.cpp in Sources */,
+				F4D5D0971C5FB08C001441C3 /* arsenalDB.cpp in Sources */,
 				F4036E2B1BDA2316002788AA /* layerSelecter.cpp in Sources */,
 				F48189871C592F5F00A0D0F5 /* KantaiDetailEntity.cpp in Sources */,
 				F4036E2C1BDA2316002788AA /* layerSelecter.h in Sources */,
@@ -1548,6 +1629,7 @@
 				F4036E391BDA2316002788AA /* portScene.cpp in Sources */,
 				F4036E3A1BDA2316002788AA /* portScene.h in Sources */,
 				F4036E3B1BDA2316002788AA /* portSupplyLayer.cpp in Sources */,
+				F43FFC7E1C5CD6CB00C98BED /* RepairHpBar.cpp in Sources */,
 				F4036E3C1BDA2316002788AA /* portSupplyLayer.h in Sources */,
 				F4036E3D1BDA2316002788AA /* main.cpp in Sources */,
 				F42DB8F31C59DBF600CBE2C7 /* KantaiListEntity.cpp in Sources */,

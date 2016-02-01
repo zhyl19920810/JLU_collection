@@ -26,10 +26,13 @@ void GameManger::LoadConfig()
     EquipMgr::newInstance();
     ExpMgr::newInstance();
     EquipPicMgr::newInstance();
+    RepairFactorMgr::newInstance();
+    
     sKantaiMgr.loadConf();
     sEquipMgr.loadConf();
     sExpMgr.loadConf();
     sEquipPicMgr.loadConf();
+    sRepairFactorMgr.loadConf();
 }
 
 void GameManger::LoadResource()

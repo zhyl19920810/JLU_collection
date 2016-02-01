@@ -11,7 +11,9 @@
 
 #include "cocos2d.h"
 #include "RepairContainer.hpp"
+#include "RepairListEntity.hpp"
 #include "dock.hpp"
+#include "RepairSelectEntity.hpp"
 
 using namespace cocos2d;
 class PortRepairLayer : public Layer
@@ -20,6 +22,12 @@ public:
     PortRepairLayer();
     CREATE_FUNC(PortRepairLayer);
     bool init();
+    
+    //list
+    void showList(int index);
+    void hideList(Ref* pSender);
+    
+    void updateContainer();
 private:
     
     
@@ -33,7 +41,12 @@ private:
     
     //container
     void initContainer();
-    void updateContainer();
+   
+    
+private:
+    RepairListEntity* listEntity;
+    MenuItemSprite* hideListItem;
+    Menu* menu;
 };
 
 

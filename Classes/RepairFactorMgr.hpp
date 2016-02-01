@@ -30,7 +30,7 @@ public:
     struct stRepairFactorData
     {
         float steelFactor;
-        float ammoFactor;
+        float fuelFactor;
         
         stRepairFactorData()
         {
@@ -60,12 +60,12 @@ public:
         CCASSERT(false,"can not find the kantai");
     }
     
-    float getAmmoFactor(int kantaiNumber)
+    float getFuelFactor(int kantaiNumber)
     {
         auto it=repairFactorMap.find(kantaiNumber);
         if (it!=repairFactorMap.end())
         {
-            return it->second.ammoFactor;
+            return it->second.fuelFactor;
         }
         CCASSERT(false,"can not find the kantai");
     }

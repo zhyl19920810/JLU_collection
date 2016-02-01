@@ -16,17 +16,18 @@ USING_NS_CC;
 
 
 
-class ReapirTimer : public cocos2d::Node
+class RepairTimer : public cocos2d::Node
 {
 public:
-    static ReapirTimer* create(float time);
-    bool init(float time);
-    virtual ~ReapirTimer();
+    static RepairTimer* create();
+    bool init();
+    virtual ~RepairTimer();
+    void setTime(float time);
     void update(float delta);
-    
+    void convertTimeToChar(int time,char *name);
 private:
     Label* label;
-    double pTime;
+    float pTime;
 };
 
 

@@ -8,6 +8,7 @@
 
 #include "RepairContainer.hpp"
 #include "dock.hpp"
+#include "portRepairLayer.h"
 
 RepairContainer::RepairContainer()
 {
@@ -36,13 +37,14 @@ void RepairContainer::updateUnit()
         bzero(name, sizeof(name));
         haveKantaiInReparing(true);
         kantaiName->setString(kantai->getKantaiName());
-        sprintf(name, "%d/%d",kantai->getCurrHp(),kantai->getMaxHp());
-        kantaiLv->setString(name);
+        sprintf(name, "%d//%d",kantai->getCurrHp(),kantai->getMaxHp());
+        kantaiHp->setString(name);
         sprintf(name, "%d",kantai->getCurrLV());
         kantaiLv->setString(name);
         stars->setNumber(3);
-        hpBar->setHp(kantai->getMaxHp(), kantai->getCurrHp());
+        repairHpBar->setHp(kantai->getMaxHp(), kantai->getCurrHp());
         kantaiCard->updateCard(kantai);
+        timer->setTime(data.remainTime);
     }
     else
     {
@@ -84,15 +86,20 @@ void RepairContainer::initBg()
     selectPic->setOpacity(0);
     selectDocks=MenuItemSprite::create(selectPic, Sprite::create("RepairMain/selectDock.png"), CC_CALLBACK_1(RepairContainer::selectKantai, this));
     selectDocks->setPosition(125,37);
-    auto mn=Menu::create();
+    mn=Menu::create();
     mn->setPosition(Vec2::ZERO);
     mn->addChild(selectDocks);
     kantaiBg->addChild(mn);
+    LVIcon=Sprite::create("CommonAssets/LVIcon.png");
+    LVIcon->setPosition(355,60);
+    kantaiBg->addChild(LVIcon);
 }
 
 void RepairContainer::selectKantai(cocos2d::Ref *pSender)
 {
-    log("sdfsdf");
+    UserDefault::getInstance()->setIntegerForKey("repairPosition", position);
+    auto parent=dynamic_cast<PortRepairLayer*>(this->getParent());
+    parent->showList(position);
 }
 
 
@@ -102,12 +109,14 @@ void RepairContainer::haveKantaiInReparing(bool visible)
     selectDocks->setVisible(!visible);
     selectDocks->setEnabled(!visible);
     kantaiName->setVisible(visible);
-    hpBar->setVisible(visible);
+    repairHpBar->setVisible(visible);
     setFastRepairVisible(visible);
     kantaiLv->setVisible(visible);
     kantaiHp->setVisible(visible);
     kantaiCard->setVisible(visible);
     stars->setVisible(visible);
+    LVIcon->setVisible(visible);
+    timer->setVisible(visible);
 }
 
 
@@ -117,24 +126,25 @@ void RepairContainer::initKantai()
     kantaiName->setPosition(Vec2(288, kantaiBg->getContentSize().height/2));
     kantaiName->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     kantaiBg->addChild(kantaiName);
-    hpBar=new HpBar(100, 100);
-    hpBar->setPosition(288,kantaiBg->getContentSize().height/2-17);
-    kantaiBg->addChild(hpBar);
+    repairHpBar=new RepairHpBar(0, 0);
+    repairHpBar->setPosition(368,kantaiBg->getContentSize().height/2-17);
+    kantaiBg->addChild(repairHpBar);
     
     fastRepair=MenuItemSprite::create(Sprite::create("RepairMain/fastRepair1.png"), Sprite::create("RepairMain/fastRepair2.png"), CC_CALLBACK_1(RepairContainer::fastRepairCallback, this));
     fastRepair->setPosition(Vec2(625, kantaiBg->getContentSize().height/2));
-    kantaiBg->addChild(fastRepair);
+    mn->addChild(fastRepair);
+    
     fastRepairUp=Sprite::create("RepairMain/fastRepair3.png");
     fastRepairUp->setPosition(fastRepair->getPosition());
     kantaiBg->addChild(fastRepairUp);
     
-    kantaiLv=Label::create("","fonts/DengXian.ttf",15);
-    kantaiLv->setPosition(365,62);
+    kantaiLv=Label::create("","fonts/DengXian.ttf",17);
+    kantaiLv->setPosition(365,57);
     kantaiLv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     kantaiBg->addChild(kantaiLv);
     
-    kantaiHp=Label::create();
-    kantaiHp->setPosition(420,-37);
+    kantaiHp=Label::create("","fonts/DengXian.ttf",10);
+    kantaiHp->setPosition(420,kantaiBg->getContentSize().height/2-3);
     kantaiHp->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     kantaiBg->addChild(kantaiHp);
     
@@ -145,6 +155,10 @@ void RepairContainer::initKantai()
     kantaiCard=KantaiCard::create();
     kantaiCard->setPosition(125,37);
     kantaiBg->addChild(kantaiCard,0);
+    
+    timer=RepairTimer::create();
+    timer->setPosition(480,kantaiBg->getContentSize().height/2-10);
+    kantaiBg->addChild(timer);
 }
 
 bool RepairContainer::init(int position)

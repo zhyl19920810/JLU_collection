@@ -55,10 +55,15 @@ void KantaiCard::updateCard(Kantai* kantai,bool isEnemy)
         mainImage->setTexture(name);
     }
     setBrokenMark(type);
+    if (kantai->getKantaiState()==KantaiState::Repairing)
+    {
+        brokenMark->setTexture("CommonAssets/xiufuState.png");
+    }
 }
 
 void KantaiCard::setBrokenMark(BrokenType brokenType)
 {
+
     switch (brokenType)
     {
         case BrokenType::normal:
@@ -74,7 +79,7 @@ void KantaiCard::setBrokenMark(BrokenType brokenType)
             shader->setTexture("CommonAssets/zhongpoShader.png");
             break;
         case BrokenType::large:
-            brokenMark->setTexture("CommonAssets/dapaoState.png");
+            brokenMark->setTexture("CommonAssets/dapoState.png");
             shader->setTexture("CommonAssets/dapoShader.png");
             break;
         case BrokenType::drown:
@@ -85,5 +90,6 @@ void KantaiCard::setBrokenMark(BrokenType brokenType)
         default:
             break;
     }
+
 }
 
