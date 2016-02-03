@@ -99,12 +99,12 @@ bool Dock::haveDock(int position)
 void Dock::startCircle()
 {
     std::function<void(float)> f1=std::bind(&Dock::repairTimeCircle, this,std::placeholders::_1);
-    Director::getInstance()->getScheduler()->schedule(f1, this, 1, false, "dockRemainTime");
+    Director::getInstance()->getScheduler()->schedule(f1, this, 1, false, "DockRepairTime");
 }
 
 void Dock::endCircle()
 {
-    Director::getInstance()->getScheduler()->unschedule("dockRemainTime", this);
+    Director::getInstance()->getScheduler()->unschedule("DockRepairTime", this);
 }
 
 void Dock::repairTimeCircle(float dt)

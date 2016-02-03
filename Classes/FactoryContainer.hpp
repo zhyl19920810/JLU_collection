@@ -9,6 +9,20 @@
 #ifndef portFactoryContainer_hpp
 #define portFactoryContainer_hpp
 
-#include <stdio.h>
+
+class FactoryContainer
+{
+public:
+    
+    
+    
+    
+    
+    
+private:
+    
+    
+};
+
 
 #endif /* portFactoryContainer_hpp */

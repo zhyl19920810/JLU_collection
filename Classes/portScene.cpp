@@ -415,7 +415,7 @@ void PortScene::SetCurrLayer(LayerType type)
             layerSelecter->moveIn();
             if (!factroylayer)
             {
-                factroylayer=new PortFactoryLayer(this);
+                factroylayer=PortFactoryLayer::create();
                 addChild(factroylayer);
             }
             if (currentLayerType!=LayerType::empty)

@@ -10,19 +10,39 @@
 #define __kancolle_alpha__portFactoryLayer__
 
 #include "cocos2d.h"
+#include "FactoryContainer.hpp"
+#include "arsenal.hpp"
+#include "Player.h"
+
 using namespace cocos2d;
+
+
 class PortFactoryLayer : public Layer
 {
 public:
-    PortFactoryLayer(Node *parent);
+    PortFactoryLayer();
+    CREATE_FUNC(PortFactoryLayer);
     
-    
-    
-private:
-    Node * parent;
+    bool init();
     
 private:
+    
+private:
+    //bg
     void initLayer();
+    Sprite* bgimg;
+    Sprite* arsenalBg;
+    Menu* menu;
+    
+    
+    //build
+public:
+    FactoryContainer* getContainer(int position);
+private:
+    void initContainer();
+    std::vector<FactoryContainer*> container;
+    void buildCallback(Ref* pSender);
+    
     void callBack(Ref* pSender);
     
 };

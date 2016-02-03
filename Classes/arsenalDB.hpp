@@ -9,6 +9,36 @@
 #ifndef arsenalDB_hpp
 #define arsenalDB_hpp
 
-#include <stdio.h>
+#include "cocos2d.h"
+#include "databaseBase.h"
+
+USING_NS_CC;
+
+
+typedef struct
+{
+    int kantaiNumber;
+    int position;
+    int completeTime;
+}ArsenalDBData;
+
+
+class ArsenalDB:public DBBase
+{
+public:
+    void initArsenalDB(int playerKey,std::vector<ArsenalDBData>& data);
+    
+    void insertKantai(int playerKey,int kantaiNumber,int position,int buildTime);
+    
+    void deleteKantai(int playerKey,int kantaiNumber);
+    
+    static ArsenalDB* getInstance();
+protected:
+    ArsenalDB();
+private:
+    static ArsenalDB* arsenalDB;
+};
+
+#define sArsenalDB ArsenalDB::getInstance()
 
 #endif /* arsenalDB_hpp */

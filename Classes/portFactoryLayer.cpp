@@ -8,36 +8,86 @@
 
 #include "portFactoryLayer.h"
 
-PortFactoryLayer::PortFactoryLayer(Node* parent)
+PortFactoryLayer::PortFactoryLayer()
 {
-    this->parent = parent;
-    initLayer();
+    container.resize(sPlayer.getMaxDockSize());
 }
+
+
+bool PortFactoryLayer::init()
+{
+    bool bRet=false;
+    do
+    {
+        if (!Layer::init())
+        {
+            break;
+        }
+        initLayer();
+        initLayer();
+        
+        bRet=true;
+    }while(0);
+    
+    
+    return bRet;
+}
+
 
 void PortFactoryLayer::initLayer()
 {
-    auto bgimg = Sprite::create("interface/ArsenalMain/image 249.png");
+    
+    auto factoryBar=Sprite::create("ArsenalMain/titleBar.png");
+    this->addChild(factoryBar);
+    factoryBar->setPosition(400,395);
+    
+    auto factorTitle=Sprite::create("ArsenalMain/factoryTitle.png");
+    this->addChild(factorTitle);
+    factorTitle->setPosition(175,400);
+    
+    bgimg = Sprite::create("ArsenalMain/factoryBg.png");
     this->addChild(bgimg);
     bgimg->setOpacity(200);
-    bgimg->setPosition(450, 200);
+    bgimg->setPosition(450, 195);
     
-    auto mainBody = Sprite::create("interface/ArsenalMain/image 3.png");
-    this->addChild(mainBody);
-    mainBody->setPosition(580, 200);
+    auto tmp=bgimg->getContentSize()/2;
+    arsenalBg = Sprite::create("ArsenalMain/arsenalBg.png");
+    bgimg->addChild(arsenalBg);
+    arsenalBg->setPosition(Vec2(tmp.width+125, tmp.height-10));
     
-    auto buildButton = MenuItemImage::create("interface/ArsenalMain/image 180.png", "interface/ArsenalMain/image 178.png", CC_CALLBACK_1(PortFactoryLayer::callBack, this));
-    buildButton->setPosition(230, 320);
-    auto destroyButton = MenuItemImage::create("interface/ArsenalMain/image 184.png", "interface/ArsenalMain/image 186.png", CC_CALLBACK_1(PortFactoryLayer::callBack, this));
-    destroyButton->setPosition(230, 245);
-    auto developButton = MenuItemImage::create("interface/ArsenalMain/image 190.png", "interface/ArsenalMain/image 192.png", CC_CALLBACK_1(PortFactoryLayer::callBack, this));
-    developButton->setPosition(230, 160);
-    auto throwButton = MenuItemImage::create("interface/ArsenalMain/image 196.png", "interface/ArsenalMain/image 198.png", CC_CALLBACK_1(PortFactoryLayer::callBack, this));
-    throwButton->setPosition(230, 80);
+    log("%f %f",arsenalBg->getPosition().x-arsenalBg->getContentSize().width/2,arsenalBg->getPosition().y-arsenalBg->getContentSize().height/2);//arsenal左下角为253，2.5
+    auto arsenalLB=arsenalBg->getPosition()-arsenalBg->getContentSize()/2;
+    auto arsenalUpright1=Sprite::create("ArsenalMain/arsenalUpright.png");
+    arsenalBg->addChild(arsenalUpright1);
+    arsenalUpright1->setPosition(Vec2(30, 180));
     
-    auto menu = Menu::create(buildButton, destroyButton, developButton, throwButton, NULL);
-    menu->setPosition(0, 0);
-    this->addChild(menu);
+    auto arsenalUpright2=Sprite::create("ArsenalMain/arsenalUpright.png");
+    arsenalBg->addChild(arsenalUpright2);
+    arsenalUpright2->setPosition(Vec2(150, 180));
+    
+    
+    
+    auto buildButton = MenuItemImage::create("ArsenalMain/buildBotton1.png", "ArsenalMain/buildBotton2.png", CC_CALLBACK_1(PortFactoryLayer::callBack, this));
+    buildButton->setPosition(-225,115);
+    auto disassembleButton = MenuItemImage::create("ArsenalMain/disassembleButton1.png", "ArsenalMain/disassembleButton2.png", CC_CALLBACK_1(PortFactoryLayer::callBack, this));
+    disassembleButton->setPosition(-225, 40);
+    auto developButton = MenuItemImage::create("ArsenalMain/developButton1.png", "ArsenalMain/developButton2.png", CC_CALLBACK_1(PortFactoryLayer::callBack, this));
+    developButton->setPosition(-225, -45);
+    auto discardButton = MenuItemImage::create("ArsenalMain/discardButton1.png", "ArsenalMain/discardButton2.png", CC_CALLBACK_1(PortFactoryLayer::callBack, this));
+    discardButton->setPosition(-225, -125);
+    
+    menu = Menu::create(buildButton, disassembleButton, developButton, discardButton, NULL);
+    menu->setPosition(tmp);
+    bgimg->addChild(menu);
 }
+
+
+void PortFactoryLayer::initContainer()
+{
+    
+}
+
+
 
 void PortFactoryLayer::callBack(Ref* pSender)
 {}

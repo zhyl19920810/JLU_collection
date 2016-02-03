@@ -128,7 +128,6 @@ public:
     int getMaxFleetSize() const{return maxFleetSize;}
     void setMaxDockSize(int maxDockSize);
     void setMaxMissionSize(int missionSize);
-    int getMaxFlletSize() const {return maxFleetSize;}
 private:
     int maxDockSize;
     int maxFleetSize;

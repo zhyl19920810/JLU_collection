@@ -13,7 +13,7 @@
 #include <dirent.h>
 #include <sys/stat.h>
 #include "dock.hpp"
-
+#include "arsenal.hpp"
 
 #define DB_IN_COMPUTER 1
 #define DEBUG_MODE true
@@ -98,7 +98,9 @@ void AppDelegate::portModel(Director* director)
     sGameManger.LoadResource();
     Player::newInstance();
     Dock::newInstance();
-
+    Arsenal::newInstance();
+    
+    
 #if DB_IN_COMPUTER
     std::string writablePath = FileUtils::getInstance()->fullPathForFilename("/Volumes/opengl/kancolle_beta/Resources/database/kancolle_2.sqlite3");
     
