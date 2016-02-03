@@ -79,6 +79,14 @@ void PortFactoryLayer::initLayer()
     menu = Menu::create(buildButton, disassembleButton, developButton, discardButton, NULL);
     menu->setPosition(tmp);
     bgimg->addChild(menu);
+    
+    BuildKantaiEntity* entity=BuildKantaiEntity::create(kantaiBuilding);
+    entity->setPosition(tmp);
+    bgimg->addChild(entity);
+    
+//    unit=FuelBuildUnit::create(factoryBuildingMode::kantaiBuilding);
+//    unit->setPosition(tmp);
+//    bgimg->addChild(unit);
 }
 
 

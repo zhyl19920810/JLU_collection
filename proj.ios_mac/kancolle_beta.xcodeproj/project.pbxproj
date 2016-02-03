@@ -172,6 +172,10 @@
 		F4036E3D1BDA2316002788AA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10317EB98FF00D1A890 /* main.cpp */; };
 		F4036E3E1BDA2316002788AA /* Prefix.pch in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10417EB98FF00D1A890 /* Prefix.pch */; };
 		F40C1BAD1C6185F90093774E /* ArsenalMain in Resources */ = {isa = PBXBuildFile; fileRef = F40C1BAC1C6185F90093774E /* ArsenalMain */; };
+		F40C1BB31C619A8F0093774E /* buildKantaiUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C1BB11C619A8F0093774E /* buildKantaiUnit.cpp */; };
+		F40C1BB41C619A8F0093774E /* buildKantaiUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C1BB11C619A8F0093774E /* buildKantaiUnit.cpp */; };
+		F40C1BB81C61E5490093774E /* MenuItemTouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C1BB61C61E5490093774E /* MenuItemTouch.cpp */; };
+		F40C1BB91C61E5490093774E /* MenuItemTouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C1BB61C61E5490093774E /* MenuItemTouch.cpp */; };
 		F40C4FC31C5BCF89000FAA89 /* RepairFactorMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C4FC11C5BCF89000FAA89 /* RepairFactorMgr.cpp */; };
 		F40C4FC41C5BCF89000FAA89 /* RepairFactorMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C4FC11C5BCF89000FAA89 /* RepairFactorMgr.cpp */; };
 		F40C4FC91C5BDA6A000FAA89 /* RepairContainer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956C51C5B538E001AA1B3 /* RepairContainer.hpp */; };
@@ -508,6 +512,10 @@
 		F4036D761BDA1FDD002788AA /* XMLParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XMLParser.cpp; sourceTree = "<group>"; };
 		F4036D771BDA1FDD002788AA /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParser.h; sourceTree = "<group>"; };
 		F40C1BAC1C6185F90093774E /* ArsenalMain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ArsenalMain; sourceTree = "<group>"; };
+		F40C1BB11C619A8F0093774E /* buildKantaiUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildKantaiUnit.cpp; sourceTree = "<group>"; };
+		F40C1BB21C619A8F0093774E /* buildKantaiUnit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = buildKantaiUnit.hpp; sourceTree = "<group>"; };
+		F40C1BB61C61E5490093774E /* MenuItemTouch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuItemTouch.cpp; sourceTree = "<group>"; };
+		F40C1BB71C61E5490093774E /* MenuItemTouch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MenuItemTouch.hpp; sourceTree = "<group>"; };
 		F40C4FC11C5BCF89000FAA89 /* RepairFactorMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RepairFactorMgr.cpp; sourceTree = "<group>"; };
 		F40C4FC21C5BCF89000FAA89 /* RepairFactorMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RepairFactorMgr.hpp; sourceTree = "<group>"; };
 		F40C4FCB1C5BDA78000FAA89 /* EquipPicMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EquipPicMgr.cpp; sourceTree = "<group>"; };
@@ -932,6 +940,7 @@
 		F4036DCD1BDA20DE002788AA /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				F40C1BB51C61E4EF0093774E /* MenuItem */,
 				F4D5D0851C5FACD7001441C3 /* Clock */,
 				F42DB8FB1C5A33A800CBE2C7 /* Star */,
 				F42DB8F51C5A30D800CBE2C7 /* HpBar */,
@@ -1063,6 +1072,15 @@
 			name = XML;
 			sourceTree = "<group>";
 		};
+		F40C1BB51C61E4EF0093774E /* MenuItem */ = {
+			isa = PBXGroup;
+			children = (
+				F40C1BB61C61E5490093774E /* MenuItemTouch.cpp */,
+				F40C1BB71C61E5490093774E /* MenuItemTouch.hpp */,
+			);
+			name = MenuItem;
+			sourceTree = "<group>";
+		};
 		F40CF9861BDB699700DD897F /* formation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1137,6 +1155,8 @@
 				F4D5D0881C5FAFDF001441C3 /* FactoryContainer.hpp */,
 				F4D5D08B1C5FB006001441C3 /* buildKantaiEntity.cpp */,
 				F4D5D08C1C5FB006001441C3 /* buildKantaiEntity.hpp */,
+				F40C1BB11C619A8F0093774E /* buildKantaiUnit.cpp */,
+				F40C1BB21C619A8F0093774E /* buildKantaiUnit.hpp */,
 			);
 			name = factory;
 			sourceTree = "<group>";
@@ -1399,6 +1419,7 @@
 				F4D5D0891C5FAFDF001441C3 /* FactoryContainer.cpp in Sources */,
 				F44D26C41C4D198400438F3C /* DatabaseScene.h in Sources */,
 				F44D26C51C4D198400438F3C /* XMLControl.h in Sources */,
+				F40C1BB31C619A8F0093774E /* buildKantaiUnit.cpp in Sources */,
 				F44D26C61C4D198400438F3C /* databaseBase.h in Sources */,
 				F44D26C71C4D198400438F3C /* databaseInit.h in Sources */,
 				F44D26C81C4D198400438F3C /* equipDB.h in Sources */,
@@ -1451,6 +1472,7 @@
 				F48189861C592F5F00A0D0F5 /* KantaiDetailEntity.cpp in Sources */,
 				F48189801C5926F900A0D0F5 /* kantaiCard.cpp in Sources */,
 				F4036DAE1BDA1FDD002788AA /* portMainLayer.cpp in Sources */,
+				F40C1BB81C61E5490093774E /* MenuItemTouch.cpp in Sources */,
 				F4036DB21BDA1FDD002788AA /* portRemodeLayer.cpp in Sources */,
 				F40CF9891BDB69A300DD897F /* Formation.cpp in Sources */,
 				F42865E81BDBD12C00045E66 /* BattleCharacter.cpp in Sources */,
@@ -1556,6 +1578,7 @@
 				F4B191DF1BE74B56000A41C3 /* AnimationMaker.h in Sources */,
 				F4B191E01BE74B56000A41C3 /* CharacterCard.h in Sources */,
 				F4B191E11BE74B56000A41C3 /* BattleHero.h in Sources */,
+				F40C1BB91C61E5490093774E /* MenuItemTouch.cpp in Sources */,
 				F40CF9901BDB7FDF00DD897F /* XMLBase.h in Sources */,
 				F40CF9911BDB7FDF00DD897F /* Formation.h in Sources */,
 				F40CF9921BDB7FDF00DD897F /* BattleModel.h in Sources */,
@@ -1587,6 +1610,7 @@
 				F4036E081BDA2316002788AA /* databaseInit.h in Sources */,
 				F4036E091BDA2316002788AA /* equipDB.cpp in Sources */,
 				F4036E0A1BDA2316002788AA /* equipDB.h in Sources */,
+				F40C1BB41C619A8F0093774E /* buildKantaiUnit.cpp in Sources */,
 				F4036E0B1BDA2316002788AA /* fleetDB.cpp in Sources */,
 				F4D5D08A1C5FAFDF001441C3 /* FactoryContainer.cpp in Sources */,
 				F4036E0C1BDA2316002788AA /* fleetDB.h in Sources */,

@@ -13,7 +13,7 @@
 #include "FactoryContainer.hpp"
 #include "arsenal.hpp"
 #include "Player.h"
-
+#include "buildKantaiEntity.hpp"
 using namespace cocos2d;
 
 
@@ -39,6 +39,7 @@ private:
 public:
     FactoryContainer* getContainer(int position);
 private:
+    BuildKantaiUnit* unit;
     void initContainer();
     std::vector<FactoryContainer*> container;
     void buildCallback(Ref* pSender);
