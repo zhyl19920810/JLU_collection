@@ -7,10 +7,6 @@
 //
 
 #include "KantaiDetailEntity.hpp"
-
-
-
-
 #include "PortRemodeLayer.h"
 
 
@@ -147,12 +143,11 @@ void KantaiDetailEntity::initPage()
     addChild(speed);
     addChild(range);
     
-    
-    hpBar = new HpBar(1, 1);
+    hpBar=HpBar::create();
     this->addChild(hpBar);
     hpBar->setPosition(370, 340);
     
-    stars = new Stars();
+    stars =Stars::create();
     stars->setPosition(470, 340);
     addChild(stars);
 }
@@ -274,6 +269,6 @@ void KantaiDetailEntity::setKantai(Kantai *kantai)
     else kantaiName->setScaleX(1);
     
     hpBar->setHp(kantai->getMaxHp(), kantai->getCurrHp());
-    stars->setNumber(3); ///这里也得改
+    stars->setNumber(kantai->getStars());
 }
 

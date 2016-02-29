@@ -267,6 +267,8 @@
 		F467184C1BE88E6300320B0A /* BattleEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F467184A1BE88E6300320B0A /* BattleEnemy.cpp */; };
 		F467184D1BE893F700320B0A /* BattleEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F467184A1BE88E6300320B0A /* BattleEnemy.cpp */; };
 		F467184E1BE893F700320B0A /* BattleEnemy.h in Sources */ = {isa = PBXBuildFile; fileRef = F467184B1BE88E6300320B0A /* BattleEnemy.h */; };
+		F47CEB121C63402B008600E7 /* ArsenalMain in Resources */ = {isa = PBXBuildFile; fileRef = F40C1BAC1C6185F90093774E /* ArsenalMain */; };
+		F47CEB131C63402B008600E7 /* RepairMain in Resources */ = {isa = PBXBuildFile; fileRef = F4F956C21C5B5359001AA1B3 /* RepairMain */; };
 		F47FC2F61C5A527100484126 /* KantaiListRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F47FC2F41C5A527100484126 /* KantaiListRow.cpp */; };
 		F47FC2F71C5A527100484126 /* KantaiListRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F47FC2F41C5A527100484126 /* KantaiListRow.cpp */; };
 		F481896C1C58AFC500A0D0F5 /* OrganizeContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F481896A1C58AFC500A0D0F5 /* OrganizeContainer.cpp */; };
@@ -280,6 +282,8 @@
 		F48189871C592F5F00A0D0F5 /* KantaiDetailEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48189841C592F5F00A0D0F5 /* KantaiDetailEntity.cpp */; };
 		F4938B681C60999100AB1286 /* metaphysics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4938B661C60999100AB1286 /* metaphysics.cpp */; };
 		F4938B691C60999100AB1286 /* metaphysics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4938B661C60999100AB1286 /* metaphysics.cpp */; };
+		F4A328421C847CA70048F939 /* SupplyShipUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A328401C847CA70048F939 /* SupplyShipUnit.cpp */; };
+		F4A328431C847CA70048F939 /* SupplyShipUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A328401C847CA70048F939 /* SupplyShipUnit.cpp */; };
 		F4AAFA041C5D0EEF006981BB /* RepairSelectEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4AAFA021C5D0EEF006981BB /* RepairSelectEntity.cpp */; };
 		F4AAFA051C5D0EEF006981BB /* RepairSelectEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4AAFA021C5D0EEF006981BB /* RepairSelectEntity.cpp */; };
 		F4B173F31C545F3800D2BC1C /* csv in Resources */ = {isa = PBXBuildFile; fileRef = F4FABB2F1C51368200F75BCE /* csv */; };
@@ -565,6 +569,8 @@
 		F48189851C592F5F00A0D0F5 /* KantaiDetailEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KantaiDetailEntity.hpp; sourceTree = "<group>"; };
 		F4938B661C60999100AB1286 /* metaphysics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metaphysics.cpp; sourceTree = "<group>"; };
 		F4938B671C60999100AB1286 /* metaphysics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = metaphysics.hpp; sourceTree = "<group>"; };
+		F4A328401C847CA70048F939 /* SupplyShipUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SupplyShipUnit.cpp; sourceTree = "<group>"; };
+		F4A328411C847CA70048F939 /* SupplyShipUnit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SupplyShipUnit.hpp; sourceTree = "<group>"; };
 		F4AAFA021C5D0EEF006981BB /* RepairSelectEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RepairSelectEntity.cpp; sourceTree = "<group>"; };
 		F4AAFA031C5D0EEF006981BB /* RepairSelectEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RepairSelectEntity.hpp; sourceTree = "<group>"; };
 		F4B174001C54608500D2BC1C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -911,6 +917,8 @@
 		F4036DCB1BDA202F002788AA /* port */ = {
 			isa = PBXGroup;
 			children = (
+				F40C1BBC1C624F930093774E /* supply */,
+				F40C1BBB1C624F820093774E /* remode */,
 				F4D5D0861C5FAF1D001441C3 /* factory */,
 				F4F956C91C5B5B12001AA1B3 /* organize */,
 				F4F956C81C5B59C0001AA1B3 /* repair */,
@@ -918,12 +926,8 @@
 				F4036D5D1BDA1FDD002788AA /* portBattleLayer.h */,
 				F4036D601BDA1FDD002788AA /* portMainLayer.cpp */,
 				F4036D611BDA1FDD002788AA /* portMainLayer.h */,
-				F4036D641BDA1FDD002788AA /* portRemodeLayer.cpp */,
-				F4036D651BDA1FDD002788AA /* portRemodeLayer.h */,
 				F4036D681BDA1FDD002788AA /* portScene.cpp */,
 				F4036D691BDA1FDD002788AA /* portScene.h */,
-				F4036D6A1BDA1FDD002788AA /* portSupplyLayer.cpp */,
-				F4036D6B1BDA1FDD002788AA /* portSupplyLayer.h */,
 			);
 			name = port;
 			sourceTree = "<group>";
@@ -1079,6 +1083,26 @@
 				F40C1BB71C61E5490093774E /* MenuItemTouch.hpp */,
 			);
 			name = MenuItem;
+			sourceTree = "<group>";
+		};
+		F40C1BBB1C624F820093774E /* remode */ = {
+			isa = PBXGroup;
+			children = (
+				F4036D641BDA1FDD002788AA /* portRemodeLayer.cpp */,
+				F4036D651BDA1FDD002788AA /* portRemodeLayer.h */,
+			);
+			name = remode;
+			sourceTree = "<group>";
+		};
+		F40C1BBC1C624F930093774E /* supply */ = {
+			isa = PBXGroup;
+			children = (
+				F4036D6A1BDA1FDD002788AA /* portSupplyLayer.cpp */,
+				F4036D6B1BDA1FDD002788AA /* portSupplyLayer.h */,
+				F4A328401C847CA70048F939 /* SupplyShipUnit.cpp */,
+				F4A328411C847CA70048F939 /* SupplyShipUnit.hpp */,
+			);
+			name = supply;
 			sourceTree = "<group>";
 		};
 		F40CF9861BDB699700DD897F /* formation */ = {
@@ -1337,6 +1361,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F47CEB121C63402B008600E7 /* ArsenalMain in Resources */,
+				F47CEB131C63402B008600E7 /* RepairMain in Resources */,
 				F4EFACC01C574DD4000FFF74 /* CommonAssets in Resources */,
 				F481897B1C5912F700A0D0F5 /* OrganizeMain in Resources */,
 				F42DB8EE1C59B10100CBE2C7 /* icons in Resources */,
@@ -1483,6 +1509,7 @@
 				F4E62F411BDCD9B900180F6B /* BattleHero.cpp in Sources */,
 				F4036DC01BDA1FDD002788AA /* XMLBuilder.cpp in Sources */,
 				F42865EC1BDBD18100045E66 /* AnimationMaker.cpp in Sources */,
+				F4A328421C847CA70048F939 /* SupplyShipUnit.cpp in Sources */,
 				F4036D8A1BDA1FDD002788AA /* fleetDB.cpp in Sources */,
 				F4FABB041C50D30600F75BCE /* KantaiMgr.cpp in Sources */,
 				F4036D881BDA1FDD002788AA /* equipGrid.cpp in Sources */,
@@ -1651,6 +1678,7 @@
 				F4036E261BDA2316002788AA /* Mission.h in Sources */,
 				F4036E271BDA2316002788AA /* MissionContainer.cpp in Sources */,
 				F4036E281BDA2316002788AA /* MissionContainer.h in Sources */,
+				F4A328431C847CA70048F939 /* SupplyShipUnit.cpp in Sources */,
 				F4036E291BDA2316002788AA /* MissionSelectPage.cpp in Sources */,
 				F4036E2A1BDA2316002788AA /* MissionSelectPage.h in Sources */,
 				F40CF98A1BDB69A300DD897F /* Formation.cpp in Sources */,

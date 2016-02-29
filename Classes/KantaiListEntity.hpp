@@ -70,10 +70,6 @@ private:
     MenuItemToggle* sortButton;
     void sortButtonCallback	(Ref* pSender);
     std::vector<Kantai*> displayKantai;
-
-
-    
-    //void updateList(int page);
     
 };
 

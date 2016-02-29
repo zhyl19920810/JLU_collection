@@ -24,7 +24,7 @@ bool PortFactoryLayer::init()
             break;
         }
         initLayer();
-        initLayer();
+        initContainer();
         
         bRet=true;
     }while(0);
@@ -36,7 +36,6 @@ bool PortFactoryLayer::init()
 
 void PortFactoryLayer::initLayer()
 {
-    
     auto factoryBar=Sprite::create("ArsenalMain/titleBar.png");
     this->addChild(factoryBar);
     factoryBar->setPosition(400,395);
@@ -66,7 +65,6 @@ void PortFactoryLayer::initLayer()
     arsenalUpright2->setPosition(Vec2(150, 180));
     
     
-    
     auto buildButton = MenuItemImage::create("ArsenalMain/buildBotton1.png", "ArsenalMain/buildBotton2.png", CC_CALLBACK_1(PortFactoryLayer::callBack, this));
     buildButton->setPosition(-225,115);
     auto disassembleButton = MenuItemImage::create("ArsenalMain/disassembleButton1.png", "ArsenalMain/disassembleButton2.png", CC_CALLBACK_1(PortFactoryLayer::callBack, this));
@@ -80,15 +78,26 @@ void PortFactoryLayer::initLayer()
     menu->setPosition(tmp);
     bgimg->addChild(menu);
     
-    BuildKantaiEntity* entity=BuildKantaiEntity::create(kantaiBuilding);
-    entity->setPosition(tmp);
-    bgimg->addChild(entity);
+    entity=BuildKantaiEntity::create(kantaiBuilding);
+    entity->setPosition(1150,tmp.height);
+    addChild(entity);
     
-//    unit=FuelBuildUnit::create(factoryBuildingMode::kantaiBuilding);
-//    unit->setPosition(tmp);
-//    bgimg->addChild(unit);
+    auto closeItem2 = Sprite::create("CommonAssets/image 451.png");
+    closeItem2->setGlobalZOrder(10);
+    closeItem2->setOpacity(0);
+    hideListItem = MenuItemSprite::create(closeItem2, closeItem2, CC_CALLBACK_1(PortFactoryLayer::hideCallback, this));
+    hideListItem->setPosition(Vec2(-600,0));
+    hideListItem->setEnabled(false);
+    menu->addChild(hideListItem);
+    hideListItem->setGlobalZOrder(10);
+    
 }
 
+void PortFactoryLayer::hideCallback(cocos2d::Ref *pSender)
+{
+    hideListItem->setEnabled(false);
+    entity->hideEntity();
+}
 
 void PortFactoryLayer::initContainer()
 {
@@ -98,7 +107,10 @@ void PortFactoryLayer::initContainer()
 
 
 void PortFactoryLayer::callBack(Ref* pSender)
-{}
+{
+    entity->showEntity();
+    hideListItem->setEnabled(true);
+}
 
 
 

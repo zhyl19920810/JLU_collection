@@ -47,4 +47,6 @@ private:
     MetaPhysics* metaPhysics;
 };
 
+#define sArsenal Arsenal::getInstance()
+
 #endif /* arsenal_hpp */

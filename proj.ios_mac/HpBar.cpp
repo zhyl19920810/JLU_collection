@@ -9,18 +9,32 @@
 #include "HpBar.hpp"
 
 
-HpBar::HpBar(int maxHp, int currentHp)
+bool HpBar::init()
 {
+    bool bRet=false;
+    do
+    {
+        if (!Node::init())
+        {
+            break;
+        }
+        bar = Sprite::create("CommonAssets/hpBar.png");
+        bar->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        this->addChild(bar);
+        auto bgBar = Sprite::create("CommonAssets/HpBarBg.png");
+        this->addChild(bgBar);
+        bgBar->setPosition(0,0);
+        bar->setPosition(-30, 0);
+        
+        bRet=true;
+    }while(0);
+    return bRet;
+}
 
-    bar = Sprite::create("CommonAssets/hpBar.png");
-    bar->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    this->addChild(bar);
-    auto bgBar = Sprite::create("CommonAssets/HpBarBg.png");
-    this->addChild(bgBar);
-    bgBar->setPosition(0,0);
-    bar->setPosition(-30, 0);
-    setHp(maxHp, currentHp);
-    
+
+
+HpBar::HpBar()
+{
 }
 
 void HpBar::setCurrentHp(int currentHp)

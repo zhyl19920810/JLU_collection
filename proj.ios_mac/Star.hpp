@@ -15,6 +15,19 @@ using namespace cocos2d;
 
 class Stars:public Node{
 public:
+    static Stars* create()
+    {
+        Stars* tmp=new(std::nothrow) Stars;
+        if (tmp&&tmp->init())
+        {
+            tmp->autorelease();
+            return tmp;
+        }
+        delete tmp;
+        tmp=NULL;
+        return NULL;
+    }
+    bool init();
     Stars();
     void setNumber(int number);
 private:

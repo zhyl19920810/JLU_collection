@@ -355,7 +355,24 @@ void Kantai::setBrokenType()
     }
 }
 
-
+int Kantai::getStars()
+{
+    int i_ret=0;
+    double num=0;
+    double sum2=getMaxAntiAir()+getMaxAntiSubmarine()+getMaxDodge()+getMaxFirePower()+getMaxLuck()+getMaxSearchEnemy()+getMaxTorpedo()+getMaxArmor();
+    double sum1=getAntiAir()+getAntiSubMarine()+getDodge()+getFirePower()+getLuck()+getSearchEnemy()+getTorpedo()+getArmor();
+    if (!sum2) {
+        sum2=1;
+    }
+    num=sum1/sum2;
+    if (num>0.9)  i_ret=5;
+    else if(num>0.7) i_ret=4;
+    else if(num>0.5) i_ret=3;
+    else if(num>0.3) i_ret=2;
+    else if(num>0.1) i_ret=1;
+    else i_ret=0;
+    return i_ret;
+}
 
 
 

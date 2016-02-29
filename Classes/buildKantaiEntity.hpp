@@ -19,17 +19,18 @@ public:
     static BuildKantaiEntity* create(factoryBuildingMode mode);
     bool init(factoryBuildingMode mode);
     
-    
+    void showEntity();
+    void hideEntity();
 private:
     void initBg();
-    
+    bool hidden;
     Sprite* imgbg;
     Menu* mn;
     
     FuelBuildUnit* fuelUnit;
     SteelBuildUnit* steelUnit;
     AmmoBuildUnit* ammoUnit;
-    AlBuildUnit* AlUnit;    
+    AlBuildUnit* AlUnit;
     factoryBuildingMode mode;
     
     MenuItemSprite* startBuild;
@@ -39,6 +40,7 @@ private:
     void startBuildCallback(Ref* pSender);
     void callback(Ref* pSender);
     void updateButton();
+
 };
 
 

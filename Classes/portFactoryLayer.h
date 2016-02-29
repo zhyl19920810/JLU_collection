@@ -39,13 +39,16 @@ private:
 public:
     FactoryContainer* getContainer(int position);
 private:
-    BuildKantaiUnit* unit;
+    BuildKantaiEntity* entity;
     void initContainer();
     std::vector<FactoryContainer*> container;
     void buildCallback(Ref* pSender);
-    
     void callBack(Ref* pSender);
     
+    
+    
+    void hideCallback(Ref* pSender);
+    MenuItemSprite* hideListItem;
 };
 
 

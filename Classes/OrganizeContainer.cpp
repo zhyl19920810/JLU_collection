@@ -107,10 +107,10 @@ bool OrganizeContainer::init()
         addChild(armour);
         
         
-        hpBar = new HpBar(1, 1);
+        hpBar =HpBar::create();
         hpBar->setPosition(-45, 13);
         addChild(hpBar);
-        stars = new Stars();
+        stars = Stars::create();
         stars->setPosition(-145, 5);
         addChild(stars);
         
@@ -143,7 +143,7 @@ void OrganizeContainer::updateCharacterInfo(Kantai* kantai)
     else kantaiName->setScaleX(1);
     kantaiCard->updateCard(kantai);
     hpBar->setHp(kantai->getMaxHp(), kantai->getCurrHp());
-    stars->setNumber(3);//这里得改
+    stars->setNumber(kantai->getStars());//这里得改
     
 }
 

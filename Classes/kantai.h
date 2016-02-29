@@ -116,7 +116,7 @@ public:
     BrokenType getBrokenType() const {return brokenType;}
     Ref* getFleet()const {return parent;}
     void setFleet(Ref* fleet){parent=fleet;}
-    
+    int getStars();
     
     
 public://后期一定要修改的函数

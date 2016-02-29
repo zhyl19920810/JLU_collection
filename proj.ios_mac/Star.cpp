@@ -8,17 +8,35 @@
 
 #include "Star.hpp"
 
+bool Stars::init()
+{
+    bool bRet=false;
+    do
+    {
+        if (!Node::init())
+        {
+            break;
+        }
+        for (int i = 0; i < MAX_STARS_NUMBER; i++)
+        {
+            stars.push_back(Sprite::create("CommonAssets/starUnit.png"));
+            stars[i]->setVisible(false);
+            stars[i]->setPosition(i * 15, 0);
+            this->addChild(stars[i]);
+        }
+        bRet=true;
+    }while(0);
+    
+    
+    return bRet;
+}
+
+
 
 Stars::Stars()
 {
-    for (int i = 0; i < MAX_STARS_NUMBER; i++)
-    {
-        stars.push_back(Sprite::create("CommonAssets/starUnit.png"));
-        stars[i]->setVisible(false);
-        stars[i]->setPosition(i * 15, 0);
-        this->addChild(stars[i]);
-    }
 }
+
 void Stars::setNumber(int number)
 {
     if (number>5 || number < 0)

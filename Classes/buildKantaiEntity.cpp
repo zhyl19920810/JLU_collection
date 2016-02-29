@@ -7,7 +7,7 @@
 //
 
 #include "buildKantaiEntity.hpp"
-
+#include "arsenal.hpp"
 
 
 BuildKantaiEntity* BuildKantaiEntity::create(factoryBuildingMode mode)
@@ -26,6 +26,8 @@ BuildKantaiEntity* BuildKantaiEntity::create(factoryBuildingMode mode)
 
 bool BuildKantaiEntity::init(factoryBuildingMode mode)
 {
+    this->hidden=true;
+    this->mode=mode;
     bool bRet=false;
     do
     {
@@ -34,7 +36,7 @@ bool BuildKantaiEntity::init(factoryBuildingMode mode)
             break;
         }
         initBg();
-        
+        updateButton();
         bRet=true;
     }while(0);
     
@@ -57,14 +59,15 @@ void BuildKantaiEntity::initBg()
     mn->setPosition(Vec2::ZERO);
     imgbg->addChild(mn);
     
-//    auto entityTitle=Sprite::create("ArsenalMain/imgbg2.png");
-//    entityTitle->setPosition(Vec2::ZERO);
-//    imgbg->addChild(entityTitle);
-//    
-//    auto entityBar=Sprite::create("ArsenalMain/imgbg2.png");
-//    entityTitle->setPosition(Vec2::ZERO);
-//    imgbg->addChild(entityBar);
+    auto entityBar=Sprite::create("ArsenalMain/titleBar.png");
+    entityBar->setPosition(390,395);
+    imgbg->addChild(entityBar);
     
+    auto entityTitle=Sprite::create("ArsenalMain/buildEntityTitle.png");
+    entityTitle->setPosition(55,400);
+    imgbg->addChild(entityTitle);
+    
+
     fuelUnit=FuelBuildUnit::create(mode);
     fuelUnit->setPosition(145,303);
     imgbg->addChild(fuelUnit);
@@ -83,7 +86,7 @@ void BuildKantaiEntity::initBg()
     
     startBuild=MenuItemSprite::create(Sprite::create("ArsenalMain/startBuild1.png"), Sprite::create("ArsenalMain/startBuild2.png"),CC_CALLBACK_1(BuildKantaiEntity::startBuildCallback, this));
     startBuild->setPosition(441,37);
-    imgbg->addChild(startBuild);
+    mn->addChild(startBuild);
     
     startBuildUp=Sprite::create("ArsenalMain/startBuild3.png");
     startBuildUp->setPosition(startBuild->getPosition());
@@ -109,11 +112,19 @@ void BuildKantaiEntity::initBg()
     MenuItemSprite* shop=MenuItemSprite::create(Sprite::create("ArsenalMain/shopIcon1.png"), Sprite::create("ArsenalMain/shopIcon2.png"), CC_CALLBACK_1(BuildKantaiEntity::callback, this));
     shop->setPosition(335,37);
     imgbg->addChild(shop);
+    
+
 }
+
+
+
 
 void BuildKantaiEntity::startBuildCallback(cocos2d::Ref *pSender)
 {
-    
+    int postion=1;//UserDefault::getInstance()->getIntegerForKey("buildPosition");
+    sArsenal.buildNewKantai(postion, fuelUnit->getResouce(), steelUnit->getResouce(), ammoUnit->getResouce(), AlUnit->getResouce(), 10);
+    //update
+    hideEntity();
 }
 
 void BuildKantaiEntity::callback(cocos2d::Ref *pSender)
@@ -125,7 +136,7 @@ void BuildKantaiEntity::setStartBuildVisible(bool bVisible)
 {
     startBuild->setVisible(bVisible);
     startBuild->setEnabled(bVisible);
-    startBuildUp->setVisible(bVisible);
+    startBuildUp->setVisible(!bVisible);
 }
 
 bool BuildKantaiEntity::canStartBuild()
@@ -146,4 +157,27 @@ void BuildKantaiEntity::updateButton()
         setStartBuildVisible(false);
     }
 }
+
+void BuildKantaiEntity::showEntity()
+{
+    if (hidden)
+    {
+        runAction(MoveBy::create(0.6f, Vec2(-550, 0)));
+        hidden=false;
+    }
+}
+
+
+
+void BuildKantaiEntity::hideEntity()
+{
+    if (!hidden)
+    {
+        runAction(MoveBy::create(0.6f, Vec2(550, 0)));
+        hidden=true;
+    }
+}
+
+
+
 

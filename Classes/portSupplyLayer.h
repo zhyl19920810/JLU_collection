@@ -11,69 +11,12 @@
 
 #include "cocos2d.h"
 #include "Player.h"
-
+#include "SupplyShipUnit.hpp"
 USING_NS_CC;
 
 
 class PortScene;
 class PortSupplyLayer;
-
-
-class ValueBar
-{
-public:
-    ValueBar(const Vec2& location,Node* parent);
-    void setValue(int value);
-    void setVisible(bool visible);
-private:
-    Node* parent;
-    Sprite* barPic;
-    int value;
-};
-
-
-
-
-class ShipUnit
-{
-    typedef enum
-    {
-        SupplyFree,
-        SupplyToggle,
-        SupplySprite,
-    }UnitCondition;
-    friend class PortSupplyLayer;
-public:
-    ShipUnit(int position,Node* parent);
-    bool init(Kantai* kantai);
-    void freshShipCondition();
-    void freshShipAttr();
-    void addAmmo(int ammo);
-    void addFuel(int fuel);
-    void setNoKantai();
-    void callback(Ref* pSender);
-private:
-    Sprite* kantaiBg;
-    Sprite* star;
-    Label* kantaiName;
-    Sprite* kantaiState;
-    Sprite* supplyBg2;
-    Sprite* supplyBg1;
-    ValueBar* ammoBar;
-    ValueBar* fuelBar;
-    Sprite* lvIcon;//
-    Label* kantaiLV;//
-    //HpBar* hpBar;//
-    
-    
-    MenuItemToggle* select;
-    int position;
-    Kantai* kantai;
-    Node* parent;
-    UnitCondition condition;
-    bool haveAddFuel;
-    bool haveAddAmmo;
-};
 
 
 
@@ -148,9 +91,14 @@ private:
     
     void refreshLayer();
     void refreshKantaiTable();
+    
+    void startCircle();
+    void endCircle();
+    void changeLabel(float dt);
 private:
     std::vector<ShipUnit*> shipUnit;
 private:
+    SEL_SCHEDULE updateLabel;
     int fleetNumber;
     Fleet* fleet;
     int consumeAmmo;

@@ -41,7 +41,7 @@ void RepairContainer::updateUnit()
         kantaiHp->setString(name);
         sprintf(name, "%d",kantai->getCurrLV());
         kantaiLv->setString(name);
-        stars->setNumber(3);
+        stars->setNumber(kantai->getStars());
         repairHpBar->setHp(kantai->getMaxHp(), kantai->getCurrHp());
         kantaiCard->updateCard(kantai);
         timer->setTime(data.remainTime);
@@ -148,7 +148,7 @@ void RepairContainer::initKantai()
     kantaiHp->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     kantaiBg->addChild(kantaiHp);
     
-    stars=new Stars;
+    stars=Stars::create();
     stars->setPosition(395,57);
     kantaiBg->addChild(stars);
     

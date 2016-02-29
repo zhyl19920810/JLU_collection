@@ -10,30 +10,6 @@
 #include "portScene.h"
 #include "GameManger.hpp"
 
-void  ValueBar::setVisible(bool visible)
-{
-    barPic->setVisible(visible);
-}
-
-
-ValueBar::ValueBar(const cocos2d::Vec2 &location,Node* parent)
-{
-    barPic=Sprite::create();
-    barPic->setPosition(location);
-    this->parent=parent;
-    parent->addChild(barPic);
-}
-
-void ValueBar::setValue(int value)
-{
-    char name[30];
-    bzero(name, sizeof(name));
-    sprintf(name, "value%d.png",value);
-    barPic->setSpriteFrame(name);
-}
-
-
-
 
 PortSupplyLayer::PortSupplyLayer()
 {
@@ -47,6 +23,7 @@ PortSupplyLayer::PortSupplyLayer()
     shipUnit.resize(6);
     fleetToggle.resize(4);
     fleetSprite.resize(4);
+    startCircle();
 }
 
 PortSupplyLayer::~PortSupplyLayer()
@@ -55,6 +32,7 @@ PortSupplyLayer::~PortSupplyLayer()
     Director::getInstance()->getTextureCache()->removeTextureForKey("SupplyMain/supplyLayer.pvr.ccz");
     SpriteFrameCache::getInstance()->removeSpriteFrameByName("CommonAssets/commonAssets.plist");
     Director::getInstance()->getTextureCache()->removeTextureForKey("CommonAssets/commonAssets.pvr.ccz");
+    endCircle();
 }
 
 void PortSupplyLayer::initFleetButton()
@@ -163,31 +141,6 @@ void PortSupplyLayer::SetFleetButtonVisible(int fleetNumber, bool bVisible)
     }
 }
 
-void PortSupplyLayer::refreshKantaiTable()
-{
-    if (!fleet)
-    {
-        for (int i=0; i<6; ++i)
-        {
-            shipUnit[i]->setNoKantai();
-        }
-        return;
-    }
-    
-    
-    for (int i=0; i<6; ++i)
-    {
-        auto kantai=fleet->getShip(i+1);
-        if (!kantai)
-        {
-            shipUnit[i]->setNoKantai();
-        }
-        else
-        {
-            shipUnit[i]->init(kantai);
-        }
-    }
-}
 
 
 
@@ -291,8 +244,6 @@ void PortSupplyLayer::initLayer()
     auto menu = Menu::create(fuelButton, midButton, ammoButton, NULL);
     this->addChild(menu,2);
     menu->setPosition(0, 0);
-    
-
     
     
     auto fuelBox =Sprite::createWithSpriteFrameName("fuelBox.png");
@@ -420,39 +371,31 @@ int PortSupplyLayer::minusConsumeFuel(int position)
 
 void PortSupplyLayer::initKantaiTable()
 {
-//    auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
-//    shipUnit[0]=new ShipUnit(1,this);
-//    shipUnit[0]->init(fleet->getShip(1));
-//    
     for (int i=0; i<6; ++i)
     {
-        shipUnit[i]=new ShipUnit(i+1,this);
-    }
-
-    
-    if (!fleet)
-    {
-        for (int i=0; i<6; ++i)
+        shipUnit[i]=ShipUnit::create(i+1);
+        addChild(shipUnit[i]);
+        if (!fleet||!fleet->getShip(i+1))
         {
-            shipUnit[i]->setNoKantai();
+            shipUnit[i]->update(NULL);
         }
-        return;
-    }
-    
-    
-    for (int i=0; i<6; ++i)
-    {
-        auto kantai=fleet->getShip(i+1);
-        if (!kantai)
-        {
-            shipUnit[i]->setNoKantai();
-        }
-        else
-        {
-            shipUnit[i]->init(kantai);
-        }
+        else shipUnit[i]->update(fleet->getShip(i+1));
+        shipUnit[i]->setPosition(371,366-52*(i+1));
     }
 }
+
+void PortSupplyLayer::refreshKantaiTable()
+{
+    for (int i=0; i<6; ++i)
+    {
+        if (!fleet||!fleet->getShip(i+1))
+        {
+            shipUnit[i]->update(NULL);
+        }
+        else shipUnit[i]->update(fleet->getShip(i+1));
+    }
+}
+
 
 
 bool PortSupplyLayer::canFillUpAmmo(int position,Kantai* kantai)
@@ -693,227 +636,24 @@ void PortSupplyLayer::freshShipAllAttr()
 }
 
 
-
-
-ShipUnit::ShipUnit(int position,Node* parent)
+void PortSupplyLayer::startCircle()
 {
-    condition=SupplyFree;
-    kantaiBg=Sprite::create();
-    kantaiBg->setPosition(371,366-52*position);
-    kantaiBg->setSpriteFrame("supplyNoShip.png");
-    parent->addChild(kantaiBg);
-    
-    select=MenuItemToggle::createWithCallback(CC_CALLBACK_1(ShipUnit::callback,this), MenuItemSprite::create(Sprite::create("SupplyMain/SupplyPush1.png"), Sprite::create("SupplyMain/SupplyPush1.png")), MenuItemSprite::create(Sprite::create("SupplyMain/SupplyPush2.png"), Sprite::create("SupplyMain/SupplyPush2.png")),
-                                              NULL);
-    select->setPosition(kantaiBg->getPosition()-Vec2(17, 0));
-    Menu* mn=Menu::create();
-    mn->addChild(select);
-    mn->setPosition(Vec2::ZERO);
-    parent->addChild(mn);
-    
-    Size size=kantaiBg->getContentSize();
-    
-    star=Sprite::create();
-    star->setPosition(22,size.height/2-2);
-    kantaiBg->addChild(star);
-    
-    kantaiName=Label::create();
-    kantaiName->setPosition(200,size.height/2+5);
-    kantaiName->setSystemFontSize(20);
-    kantaiName->setColor(Color3B::WHITE);
-    kantaiName->setAlignment(TextHAlignment::RIGHT);
-    kantaiBg->addChild(kantaiName);
-    
-    kantaiState=Sprite::create();
-    kantaiState->setPosition(88,size.height/2-3);
-    kantaiBg->addChild(kantaiState);
-    
-    supplyBg1=Sprite::create();
-    supplyBg1->setPosition(241,size.height/2);
-    kantaiBg->addChild(supplyBg1);
-    
-    supplyBg2=Sprite::create();
-    supplyBg2->setPosition(390,size.height/2);
-    kantaiBg->addChild(supplyBg2);
-    
-    fuelBar=new ValueBar(Vec2(356, size.height/2), kantaiBg);
-    ammoBar=new ValueBar(Vec2(426,size.height/2), kantaiBg);
-    this->position=position;
-    this->parent=parent;
-    haveAddFuel=false;
-    haveAddAmmo=false;
+    updateLabel=schedule_selector(PortSupplyLayer::changeLabel);
+    schedule(updateLabel,1);
 }
 
-
-bool ShipUnit::init(Kantai *kantai)
+void PortSupplyLayer::endCircle()
 {
-    select->setEnabled(true);
-    select->setVisible(true);
-    star->setVisible(true);
-    kantaiName->setVisible(true);
-    kantaiState->setVisible(true);
-    supplyBg1->setVisible(true);
-    supplyBg2->setVisible(true);
-    ammoBar->setVisible(true);
-    fuelBar->setVisible(true);
-    
-    bool bRet=false;
-    do
-    {
-        this->kantai=kantai;
-
-        
-        double percentage=0;
-        int maxHp=kantai->getMaxHp();
-        int currHp=kantai->getCurrHp();
-        if (maxHp!=0)
-        {
-            percentage=(float)currHp/(float)maxHp;
-        }
-        
-        
-        
-        char name[50];
-        bzero(name, sizeof(name));
-        if (percentage>0.5) {
-            sprintf(name, "kantai/%d/image 27.png",kantai->getKantaiNumber());
-        }else
-        {
-            sprintf(name, "kantai/%d/image 29.png",kantai->getKantaiNumber());
-        }
-        kantaiBg->setTexture(name);
-        
-        sprintf(name, "star%d.png",position);
-        star->setSpriteFrame(name);
-        kantaiName->setString(kantai->getKantaiName());
-        
-        
-        
-        if (percentage>0.75)
-        {
-            kantaiState->setVisible(false);
-        }
-        else if (percentage>0.5)
-        {
-            kantaiState->setSpriteFrame("xiaopoState.png");
-        }
-        else if (percentage>0.25)
-        {
-            kantaiState->setSpriteFrame("zhongpoState.png");
-        }
-        else if(percentage>0)
-        {
-            kantaiState->setSpriteFrame("dapoState.png");
-        }
-        else
-        {
-            kantaiState->setSpriteFrame("sunhuaiState.png");
-        }
-        
-        if (kantai->getKantaiState()==KantaiState::Expedition)
-        {
-            kantaiState->setVisible(true);
-            kantaiState->setSpriteFrame("yuanzhengState.png");
-        }
-        
-        supplyBg1->setSpriteFrame("supplyShipBg1.png");
-        supplyBg2->setSpriteFrame("supplyShipBg2.png");
-        
-        freshShipCondition();
-        freshShipAttr();
-        bRet=true;
-    }while(0);
-    return bRet;
+    unschedule(updateLabel);
 }
 
-
-void ShipUnit::freshShipCondition()
+void PortSupplyLayer::changeLabel(float dt)
 {
-    auto layer=dynamic_cast<PortSupplyLayer*>(parent);
-    if (layer->canFillUpAmmo(position, kantai)||layer->canFillUpFuel(position, kantai))
-    {
-        condition=SupplyToggle;
-    }
-    else
-    {
-        condition=SupplySprite;
-    }
-    
+    char name[50];
+    sprintf(name, "%d",sPlayer.getFuel());
+    fuelNumber->setString(name);
+    sprintf(name, "%d",sPlayer.getAmmo());
+    ammoNumber->setString(name);
 }
-
-void ShipUnit::freshShipAttr()
-{
-    double ammoNo=kantai->getCurrAmmo()*10/kantai->getMaxAmmo();
-    double fuelNo=kantai->getCurrFuel()*10/kantai->getMaxFuel();
-    if (ammoNo<0.0001&&ammoNo>-0.0001) {
-        ammoNo=0;
-    }
-    if (fuelNo<0.0001&&fuelNo>-0.0001) {
-        fuelNo=0;
-    }
-    ammoBar->setValue(ceil(ammoNo));
-    fuelBar->setValue(ceil(fuelNo));
-}
-
-
-
-void ShipUnit::callback(cocos2d::Ref *pSender)
-{
-    MenuItemToggle* toggle=select;
-    if (toggle->getSelectedIndex()&&(condition==SupplySprite))
-    {
-        toggle->setSelectedIndex(0);
-        return;
-    }
-    auto layer=dynamic_cast<PortSupplyLayer*>(parent);
-    if (toggle->getSelectedIndex()) //由关到开
-    {
-        if (layer->canFillUpFuel(position,kantai))
-        {
-            int fuel=kantai->getMaxFuel()-kantai->getCurrFuel();
-            layer->addConsumeFuel(position,fuel);
-            haveAddFuel=true;
-        }
-        if (layer->canFillUpAmmo(position,kantai))
-        {
-            int ammo=kantai->getMaxAmmo()-kantai->getCurrAmmo();
-            layer->addConsumeAmmo(position,ammo);
-            haveAddAmmo=true;
-        }
-        layer->freshShipAllCondition();
-        condition=SupplyToggle;
-    }
-    else//由开到关
-    {
-        if (haveAddFuel)
-        {
-            layer->minusConsumeFuel(position);
-            haveAddFuel=false;
-        }
-        if (haveAddAmmo)
-        {
-            layer->minusConsumeAmmo(position);
-            haveAddAmmo=false;
-        }
-        layer->freshShipAllCondition();
-    }
-}
-
-
-void ShipUnit::setNoKantai()
-{
-    //select=Sprite::createWithSpriteFrameName("supplyPush1.png");
-    kantaiBg->setSpriteFrame("supplyNoShip.png");
-    select->setEnabled(false);
-    select->setVisible(false);
-    star->setVisible(false);
-    kantaiName->setVisible(false);
-    kantaiState->setVisible(false);
-    supplyBg1->setVisible(false);
-    supplyBg2->setVisible(false);
-    ammoBar->setVisible(false);
-    fuelBar->setVisible(false);
-}
-
 
 

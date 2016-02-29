@@ -14,7 +14,20 @@ using namespace cocos2d;
 
 class HpBar :public Node{
 public:
-    HpBar(int maxHp, int currentHp);
+    static HpBar* create()
+    {
+        HpBar* tmp=new(std::nothrow) HpBar;
+        if (tmp&&tmp->init())
+        {
+            tmp->autorelease();
+            return tmp;
+        }
+        delete tmp;
+        tmp=NULL;
+        return NULL;
+    }
+    bool init();
+    HpBar();
     void setCurrentHp(int currentHp);
     void setHp(int maxHp, int currentHp);
 private:

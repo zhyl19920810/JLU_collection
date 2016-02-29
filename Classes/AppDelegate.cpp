@@ -120,7 +120,7 @@ void AppDelegate::portModel(Director* director)
     DBInit init;
     init.initDB(1);
     sDock.initDock(1);
-    
+    sArsenal.initArsenal(1);
 //    for (int j=0; j<2; ++j)
 //    {
 //        for (int i=1; i<25; ++i)
