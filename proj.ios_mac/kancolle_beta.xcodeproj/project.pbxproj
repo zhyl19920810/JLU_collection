@@ -284,6 +284,8 @@
 		F4938B691C60999100AB1286 /* metaphysics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4938B661C60999100AB1286 /* metaphysics.cpp */; };
 		F4A328421C847CA70048F939 /* SupplyShipUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A328401C847CA70048F939 /* SupplyShipUnit.cpp */; };
 		F4A328431C847CA70048F939 /* SupplyShipUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A328401C847CA70048F939 /* SupplyShipUnit.cpp */; };
+		F4A328471C84AA790048F939 /* FleetButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A328451C84AA790048F939 /* FleetButton.cpp */; };
+		F4A328481C84AA790048F939 /* FleetButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A328451C84AA790048F939 /* FleetButton.cpp */; };
 		F4AAFA041C5D0EEF006981BB /* RepairSelectEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4AAFA021C5D0EEF006981BB /* RepairSelectEntity.cpp */; };
 		F4AAFA051C5D0EEF006981BB /* RepairSelectEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4AAFA021C5D0EEF006981BB /* RepairSelectEntity.cpp */; };
 		F4B173F31C545F3800D2BC1C /* csv in Resources */ = {isa = PBXBuildFile; fileRef = F4FABB2F1C51368200F75BCE /* csv */; };
@@ -571,6 +573,8 @@
 		F4938B671C60999100AB1286 /* metaphysics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = metaphysics.hpp; sourceTree = "<group>"; };
 		F4A328401C847CA70048F939 /* SupplyShipUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SupplyShipUnit.cpp; sourceTree = "<group>"; };
 		F4A328411C847CA70048F939 /* SupplyShipUnit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SupplyShipUnit.hpp; sourceTree = "<group>"; };
+		F4A328451C84AA790048F939 /* FleetButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FleetButton.cpp; sourceTree = "<group>"; };
+		F4A328461C84AA790048F939 /* FleetButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FleetButton.hpp; sourceTree = "<group>"; };
 		F4AAFA021C5D0EEF006981BB /* RepairSelectEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RepairSelectEntity.cpp; sourceTree = "<group>"; };
 		F4AAFA031C5D0EEF006981BB /* RepairSelectEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RepairSelectEntity.hpp; sourceTree = "<group>"; };
 		F4B174001C54608500D2BC1C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -944,6 +948,7 @@
 		F4036DCD1BDA20DE002788AA /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				F4A328491C84AA810048F939 /* FleetButton */,
 				F40C1BB51C61E4EF0093774E /* MenuItem */,
 				F4D5D0851C5FACD7001441C3 /* Clock */,
 				F42DB8FB1C5A33A800CBE2C7 /* Star */,
@@ -1161,6 +1166,15 @@
 				F4938B671C60999100AB1286 /* metaphysics.hpp */,
 			);
 			name = metaphysics;
+			sourceTree = "<group>";
+		};
+		F4A328491C84AA810048F939 /* FleetButton */ = {
+			isa = PBXGroup;
+			children = (
+				F4A328451C84AA790048F939 /* FleetButton.cpp */,
+				F4A328461C84AA790048F939 /* FleetButton.hpp */,
+			);
+			name = FleetButton;
 			sourceTree = "<group>";
 		};
 		F4D5D0851C5FACD7001441C3 /* Clock */ = {
@@ -1540,6 +1554,7 @@
 				F4036D9A1BDA1FDD002788AA /* layerSelecter.cpp in Sources */,
 				F4FABB0A1C50D36C00F75BCE /* EquipMgr.cpp in Sources */,
 				F4FABB0D1C50D3E400F75BCE /* ExpMgr.cpp in Sources */,
+				F4A328471C84AA790048F939 /* FleetButton.cpp in Sources */,
 				F4036D8C1BDA1FDD002788AA /* Fleet.cpp in Sources */,
 				F40C4FCD1C5BDA78000FAA89 /* EquipPicMgr.cpp in Sources */,
 				F4036D981BDA1FDD002788AA /* kantai.cpp in Sources */,
@@ -1650,6 +1665,7 @@
 				F4036E111BDA2316002788AA /* AppDelegate.cpp in Sources */,
 				F4AAFA051C5D0EEF006981BB /* RepairSelectEntity.cpp in Sources */,
 				F4036E121BDA2316002788AA /* AppDelegate.h in Sources */,
+				F4A328481C84AA790048F939 /* FleetButton.cpp in Sources */,
 				F4036E131BDA2316002788AA /* HelloWorldScene.cpp in Sources */,
 				F4036E141BDA2316002788AA /* HelloWorldScene.h in Sources */,
 				F4036E151BDA2316002788AA /* kantai.cpp in Sources */,

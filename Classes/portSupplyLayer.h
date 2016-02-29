@@ -12,12 +12,12 @@
 #include "cocos2d.h"
 #include "Player.h"
 #include "SupplyShipUnit.hpp"
+#include "FleetButton.hpp"
 USING_NS_CC;
 
 
 class PortScene;
 class PortSupplyLayer;
-
 
 
 
@@ -30,7 +30,6 @@ public:
 
 class PortSupplyLayer:public Layer
 {
-   // friend class ShipUnit;
 public:
     PortSupplyLayer();
     
@@ -54,8 +53,7 @@ public:
     void setAmmoButtonVisible(bool bVisible);
     void setFuelButtonVisible(bool bVisible);
     void setMidButtonVisible(bool bVisible);
-    
-    void SetFleetButtonVisible(int fleetNumber,bool bVisible);
+
 private:
     Sprite* ammoButtonUp;
     Sprite* fuelButtonUp;
@@ -72,16 +70,11 @@ private:
     Label* consumeFuelLabel;
     
     Sprite* bgimg;
-private:
-    std::vector<Sprite*> fleetSprite;
-    std::vector<MenuItemToggle*> fleetToggle;
-    void fleetCallback(Ref* pSender,int layNumber);
-    void changeFleet(int fleetNumber);
+
     
 private:
     void initLayer();
     void initKantaiTable();
-    void initFleetButton();
     
     void callFuelButton(Ref* pSender);
     void callAmmoButton(Ref* pSender);
@@ -91,6 +84,7 @@ private:
     
     void refreshLayer();
     void refreshKantaiTable();
+    void refreshFleet(int fleetNumber);
     
     void startCircle();
     void endCircle();
@@ -105,6 +99,10 @@ private:
     int consumeFuel;
     std::map<int,int> ammoST;
     std::map<int,int> fuelST;
+    
+    FleetButton* fleetButton;
 };
+
+
 
 #endif /* defined(__kancolle_alpha__portSupplyLayer__) */
