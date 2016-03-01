@@ -13,6 +13,7 @@
 #include "Player.h"
 #include "SupplyShipUnit.hpp"
 #include "FleetButton.hpp"
+#include "SupplyAmmoEntity.hpp"
 USING_NS_CC;
 
 
@@ -20,12 +21,6 @@ class PortScene;
 class PortSupplyLayer;
 
 
-
-class SupplyLayerAction
-{
-public:
-    static void action1();
-};
 
 
 class PortSupplyLayer:public Layer
@@ -101,6 +96,7 @@ private:
     std::map<int,int> fuelST;
     
     FleetButton* fleetButton;
+    AmmoEntity* ammoEntity;
 };
 
 

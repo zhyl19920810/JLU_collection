@@ -65,6 +65,7 @@ bool PortSupplyLayer::init()
     fleetButton->setPosition(47, bgimg->getContentSize().height-27);
     bgimg->addChild(fleetButton);
     
+
     return true;
 }
 
@@ -165,35 +166,33 @@ void PortSupplyLayer::initLayer()
     this->addChild(menu,2);
     menu->setPosition(0, 0);
     
+    ammoEntity=AmmoEntity::create();
+    addChild(ammoEntity,2);
+    ammoEntity->setPosition(Vec2(700, 190));
+    
     
     auto fuelBox =Sprite::createWithSpriteFrameName("fuelBox.png");
     this->addChild(fuelBox,2);
     fuelBox->setPosition(650, 295);
     
-    auto ammoBox =Sprite::createWithSpriteFrameName("ammoBox.png");
-    this->addChild(ammoBox,2);
-    ammoBox->setPosition(750, 295);
+
     
     auto fuelBg =Sprite::createWithSpriteFrameName("fuelBg.png");
     this->addChild(fuelBg,2);
     fuelBg->setPosition(650, 190);
     
-    auto ammoBg =Sprite::createWithSpriteFrameName("ammoBg.png");
-    this->addChild(ammoBg,2);
-    ammoBg->setPosition(750, 190);
+
     
+
     
     auto lSupplyLight=Sprite::createWithSpriteFrameName("supplyLight.png");
     addChild(lSupplyLight,3);
     lSupplyLight->setPosition(fuelBg->getPosition()-Vec2(0,15));
     
-    auto rSupplyLight=Sprite::createWithSpriteFrameName("supplyLight.png");
-    addChild(rSupplyLight,3);
-    rSupplyLight->setPosition(ammoBg->getPosition()-Vec2(0,15));
-    
+
     consumeAmmoLabel=Label::create();
     consumeAmmoLabel->setString(to_string(consumeAmmo));
-    consumeAmmoLabel->setPosition(ammoBox->getPosition()-Vec2(0, ammoBox->getContentSize().height/4));
+    consumeAmmoLabel->setPosition(750,270);
     consumeAmmoLabel->setColor(Color3B::BLACK);
     consumeAmmoLabel->setSystemFontSize(30);
     addChild(consumeAmmoLabel, 3);
@@ -217,6 +216,7 @@ void PortSupplyLayer::addConsumeAmmo(int position,int ammo)
         setMidButtonVisible(true);
     }
     consumeAmmo+=ammo;
+    ammoEntity->addConsumeAmmo(ammo);
     ammoST.insert(std::pair<int, int>(position,ammo));
     char tmp[20];
     bzero(tmp, sizeof(tmp));
@@ -250,6 +250,8 @@ int PortSupplyLayer::minusConsumeAmmo(int position)
     CCASSERT(it!=ammoST.end(), "the position do not exist in \"function minusConsumeAmmo\"");
     int minusAmmo=it->second;
     consumeAmmo-=minusAmmo;
+    ammoEntity->minusConsumeAmmo(minusAmmo);
+    
     ammoST.erase(it);
     char tmp[20];
     bzero(tmp, sizeof(tmp));
@@ -469,6 +471,7 @@ void PortSupplyLayer::callAmmoButton(cocos2d::Ref *pSender)
     fuelNumber->setString(to_string(sPlayer.getFuel()));
     sGameManger.getPortScene()->changeLabelFuel(sPlayer.getFuel());
     consumeAmmo=0;
+    ammoEntity->supplyAll();
     consumeAmmoLabel->setString(to_string(0));
     
     setAmmoButtonVisible(false);
@@ -517,6 +520,7 @@ void PortSupplyLayer::callMidButton(cocos2d::Ref *pSender)
     consumeFuel=0;
     consumeFuelLabel->setString(to_string(0));
     
+    ammoEntity->supplyAll();
     setAmmoButtonVisible(false);
     setFuelButtonVisible(false);
     setMidButtonVisible(false);
@@ -575,5 +579,9 @@ void PortSupplyLayer::changeLabel(float dt)
     sprintf(name, "%d",sPlayer.getAmmo());
     ammoNumber->setString(name);
 }
+
+
+
+
 
 
