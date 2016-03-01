@@ -100,6 +100,8 @@ public:
     
 private:
     std::vector<AmmoTank*> ammoTank;
+    Sprite* leftBottom;
+    Sprite* rightBottom;
     int consumeAmmo;
 };
 

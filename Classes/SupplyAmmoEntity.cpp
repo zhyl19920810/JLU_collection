@@ -27,7 +27,7 @@ bool AmmoEntity::init()
         
         auto ammoBg =Sprite::createWithSpriteFrameName("ammoBg.png");
         this->addChild(ammoBg);
-        ammoBg->setPosition(50, 0);
+        ammoBg->setPosition(50, 1);
         
         auto ammoBox =Sprite::createWithSpriteFrameName("ammoBox.png");
         this->addChild(ammoBox,2);
@@ -36,6 +36,20 @@ bool AmmoEntity::init()
         auto rSupplyLight=Sprite::createWithSpriteFrameName("supplyLight.png");
         addChild(rSupplyLight,3);
         rSupplyLight->setPosition(ammoBg->getPosition()-Vec2(0,15));
+        
+        leftBottom=Sprite::create("SupplyMain/image 8.png");
+        addChild(leftBottom,2);
+        leftBottom->setPosition(27-leftBottom->getContentSize().width/2,-73);
+        leftBottom->setAnchorPoint(Vec2(0.0, 0.5));
+        leftBottom->setOpacity(200);
+        leftBottom->setFlippedX(true);
+        
+        rightBottom=Sprite::create("SupplyMain/image 8.png");
+        addChild(rightBottom,2);
+        rightBottom->setOpacity(200);
+        rightBottom->setPosition(72+rightBottom->getContentSize().width/2,-73);
+        rightBottom->setAnchorPoint(Vec2(1.0, 0.5));
+        
         
         
         bRet=true;
@@ -102,7 +116,12 @@ void AmmoEntity::minusConsumeAmmo(int val)
 
 void AmmoEntity::supplyAll()
 {
-    _supplyAll(ammoTank.size());
+    FiniteTimeAction* left=ScaleBy::create(0.25, 0.0001, 1);
+    FiniteTimeAction* right=ScaleBy::create(0.25, 0.0001,1);
+    leftBottom->runAction(Sequence::create(left,left->reverse(), NULL));
+    rightBottom->runAction(Sequence::create(right,right->reverse(), NULL));
+    CallFunc* call=CallFunc::create(CC_CALLBACK_0(AmmoEntity::_supplyAll, this,ammoTank.size()));
+    runAction(Sequence::create(DelayTime::create(0.2),call, NULL));
 }
 
 void AmmoEntity::_supplyAll(int number)
