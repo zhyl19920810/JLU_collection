@@ -14,6 +14,8 @@
 #include "SupplyShipUnit.hpp"
 #include "FleetButton.hpp"
 #include "SupplyAmmoEntity.hpp"
+#include "SupplyFuelEntity.hpp"
+
 USING_NS_CC;
 
 
@@ -97,6 +99,7 @@ private:
     
     FleetButton* fleetButton;
     AmmoEntity* ammoEntity;
+    FuelEntity* fuelEntity;
 };
 
 

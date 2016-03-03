@@ -31,12 +31,7 @@ public:
     void update();
     void updateRows();
 private:
-    
-    //    Menu *listMenu;
-    //    Node *firstRow;
-    //    Node *list;
-    
-    
+
     
     //bg
     bool hidden;

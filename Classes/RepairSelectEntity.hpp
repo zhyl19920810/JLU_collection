@@ -15,7 +15,7 @@
 #include "RepairHpBar.hpp"
 USING_NS_CC;
 
-class RepairSelectEntity:public Node
+class RepairSelectEntity:public Layer
 {
 public:
     RepairSelectEntity():kantai(NULL){hidden=true;}

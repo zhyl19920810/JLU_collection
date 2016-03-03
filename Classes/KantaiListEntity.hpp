@@ -13,13 +13,14 @@
 #include "cocos2d.h"
 #include "kantai.h"
 #include "KantaiListRow.hpp"
+#include "OrganizeSelectEntity.hpp"
 using namespace cocos2d;
 class PortOrganizeLayer;
 
 
 
 
-class KantaiListEntity:public Node
+class KantaiListEntity:public Layer
 {
 public:
     KantaiListEntity();
@@ -65,11 +66,20 @@ private:
     void pageNumberCallback(Ref* pSender,int index);
     void updatePage();
     
+    
+    OrganSelectEntity* organSelectEntity;
+    
+    void hideSelect(cocos2d::Ref *pSender);
+    MenuItemSprite* hideListItem;
 //sort
     void initSortButton();
     MenuItemToggle* sortButton;
     void sortButtonCallback	(Ref* pSender);
     std::vector<Kantai*> displayKantai;
+    
+    
+public:
+    void showSelect(Kantai* kantai);
     
 };
 

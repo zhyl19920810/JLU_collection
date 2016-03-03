@@ -158,16 +158,19 @@ KantaiListRow::KantaiListRow():kantai(NULL)
 
 void KantaiListRow::exchangeCallback(cocos2d::Ref *pSender)
 {
-    int fleetNumber=UserDefault::getInstance()->getIntegerForKey("fleetNumber");
-    int possiton=UserDefault::getInstance()->getIntegerForKey("possiton");
-    auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
-    sPlayer.modifyKantaiPosition(fleet, possiton, kantai);
+    auto parent=dynamic_cast<KantaiListEntity*>(this->getParent());
+    parent->showSelect(kantai);
     
-    auto kantaiList=dynamic_cast<KantaiListEntity*>(this->getParent());
-    kantaiList->updateRows();
-    kantaiList->moveOut();
-    auto organizeList=dynamic_cast<PortOrganizeLayer*>(kantaiList->getParent());
-    organizeList->updateContainers();
+//    int fleetNumber=UserDefault::getInstance()->getIntegerForKey("fleetNumber");
+//    int possiton=UserDefault::getInstance()->getIntegerForKey("possiton");
+//    auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
+//    sPlayer.modifyKantaiPosition(fleet, possiton, kantai);
+//    
+//    auto kantaiList=dynamic_cast<KantaiListEntity*>(this->getParent());
+//    kantaiList->updateRows();
+//    kantaiList->moveOut();
+//    auto organizeList=dynamic_cast<PortOrganizeLayer*>(kantaiList->getParent());
+//    organizeList->updateContainers();
 }
 
 void KantaiListRow::setEnable(bool bVisible)

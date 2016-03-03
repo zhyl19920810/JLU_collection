@@ -14,34 +14,9 @@
 #include "Player.h"
 #include "Star.hpp"
 #include "HpBar.hpp"
-
+#include "ValueBar.hpp"
 
 USING_NS_CC;
-
-class ValueBar:public Node
-{
-public:
-    static ValueBar* create()
-    {
-        ValueBar* tmp=new(std::nothrow) ValueBar;
-        if (tmp&&tmp->init())
-        {
-            tmp->autorelease();
-            return tmp;
-        }
-        delete tmp;
-        tmp=NULL;
-        return NULL;
-    }
-    bool init();
-    void update(int value);
-    
-    ValueBar();
-    void setVisible(bool visible);
-private:
-    Sprite* barPic;
-    int value;
-};
 
 
 class ShipUnit:public Node

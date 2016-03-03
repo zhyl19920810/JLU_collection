@@ -30,11 +30,7 @@ bool EquipContainer::init()
 }
 
 
-//EquipmentContainer::EquipmentContainer(Equipment* equipment)
-//{
-//    initContainer();
-//    updateEquipment(equipment);
-//}
+
 void EquipContainer::updateEquip(Equip* equip)
 {
     if (equip == nullptr )

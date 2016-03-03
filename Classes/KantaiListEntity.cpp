@@ -25,7 +25,7 @@ void KantaiListEntity::moveOut()
 {
     if (!hidden)
     {
-        this->runAction(MoveBy::create(0.2, Point(800, 0)));
+        this->runAction(MoveBy::create(0.4, Point(800, 0)));
         hidden = true;
     }
     
@@ -34,7 +34,7 @@ void KantaiListEntity::moveIn()
 {
     if (hidden)
     {
-        this->runAction(MoveBy::create(0.2, Point(-800, 0)));
+        this->runAction(MoveBy::create(0.4, Point(-800, 0)));
         hidden = false;
     }
 }
@@ -70,6 +70,20 @@ void KantaiListEntity::initBg()
     auto category = Sprite::create("OrganizeMain/kantaiListCate.png");
     this->addChild(category);
     category->setPosition(595, 370);
+    
+    organSelectEntity=OrganSelectEntity::create();
+    organSelectEntity->setPosition(238,0);
+    addChild(organSelectEntity,2);
+    
+    auto closeItem2 = Sprite::create("CommonAssets/image 451.png");
+    closeItem2->setGlobalZOrder(10);
+    closeItem2->setOpacity(0);
+    hideListItem = MenuItemSprite::create(closeItem2, closeItem2, CC_CALLBACK_1(KantaiListEntity::hideSelect, this));
+    hideListItem->setPosition(170, 240);
+    hideListItem->setEnabled(false);
+    menu->addChild(hideListItem);
+    hideListItem->setGlobalZOrder(10);
+    
 }
 
 
@@ -256,7 +270,7 @@ bool KantaiListEntity::init()
     do
     {
         
-        if (!Node::init())
+        if (!Layer::init())
         {
             break;
         }
@@ -317,3 +331,18 @@ void KantaiListEntity::updateRows()
         ++j;
     }
 }
+
+void KantaiListEntity::hideSelect(cocos2d::Ref *pSender)
+{
+    organSelectEntity->moveOut();
+    hideListItem->setEnabled(false);
+    
+}
+
+void KantaiListEntity::showSelect(Kantai* kantai)
+{
+    organSelectEntity->moveIn();
+    organSelectEntity->updateKantai(kantai);
+    hideListItem->setEnabled(true);
+}
+

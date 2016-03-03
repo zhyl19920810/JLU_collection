@@ -345,3 +345,9 @@ void PortOrganizeLayer::SetFleetButtonVisible(int fleetNumber, bool bVisible)
         fleetSprite[fleetNumber-1]->setVisible(true);
     }
 }
+
+
+bool PortOrganizeLayer::hasSameKantai(int kantaiNumber)
+{
+    
+}

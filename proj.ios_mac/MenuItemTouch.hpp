@@ -13,6 +13,23 @@
 
 USING_NS_CC;
 
+class MenuItemButton:public Node
+{
+public:
+    static MenuItemButton* create(Node* normalSprite, Node* selectedSprite,Node* coverSprite, const ccMenuCallback& callback);
+    
+    bool init(Node* normalSprite, Node* selectedSprite,Node* coverSprite, const ccMenuCallback& callback);
+    void setButtonVisible(bool bVisible);
+    
+private:
+    MenuItem* button;
+    Node* buttonUp;
+};
+
+
+
+USING_NS_CC;
+
 
 
 #endif /* MenuItemTouch_hpp */

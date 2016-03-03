@@ -170,24 +170,9 @@ void PortSupplyLayer::initLayer()
     addChild(ammoEntity,2);
     ammoEntity->setPosition(Vec2(700, 190));
     
-    
-    auto fuelBox =Sprite::createWithSpriteFrameName("fuelBox.png");
-    this->addChild(fuelBox,2);
-    fuelBox->setPosition(650, 295);
-    
-
-    
-    auto fuelBg =Sprite::createWithSpriteFrameName("fuelBg.png");
-    this->addChild(fuelBg,2);
-    fuelBg->setPosition(650, 190);
-    
-
-    
-
-    
-    auto lSupplyLight=Sprite::createWithSpriteFrameName("supplyLight.png");
-    addChild(lSupplyLight,3);
-    lSupplyLight->setPosition(fuelBg->getPosition()-Vec2(0,15));
+    fuelEntity=FuelEntity::create();
+    addChild(fuelEntity,2);
+    fuelEntity->setPosition(Vec2(700, 190));
     
 
     consumeAmmoLabel=Label::create();
@@ -199,7 +184,7 @@ void PortSupplyLayer::initLayer()
     
     consumeFuelLabel=Label::create();
     consumeFuelLabel->setString(to_string(consumeFuel));
-    consumeFuelLabel->setPosition(fuelBox->getPosition()-Vec2(0, fuelBox->getContentSize().height/4));
+    consumeFuelLabel->setPosition(650,270);
     consumeFuelLabel->setColor(Color3B::BLACK);
     consumeFuelLabel->setSystemFontSize(30);
     addChild(consumeFuelLabel, 3);
@@ -236,6 +221,7 @@ void PortSupplyLayer::addConsumeFuel(int position, int fuel)
         setMidButtonVisible(true);
     }
     consumeFuel+=fuel;
+    fuelEntity->addConsumeFuel(fuel);
     fuelST.insert(std::pair<int, int>(position,fuel));
     char tmp[20];
     bzero(tmp, sizeof(tmp));
@@ -274,6 +260,8 @@ int PortSupplyLayer::minusConsumeFuel(int position)
     CCASSERT(it!=fuelST.end(), "the position do not exist in \"function minusConsumeFuel\"");
     int minusFuel=it->second;
     consumeFuel-=minusFuel;
+    fuelEntity->minusConsumeFuel(minusFuel);
+    
     fuelST.erase(it);
     char tmp[20];
     bzero(tmp, sizeof(tmp));
@@ -424,6 +412,8 @@ void PortSupplyLayer::callFuelButton(Ref* pSender)
     fuelNumber->setString(to_string(sPlayer.getFuel()));
     sGameManger.getPortScene()->changeLabelFuel(sPlayer.getFuel());
     consumeFuel=0;
+    
+    fuelEntity->supplyAll();
     consumeFuelLabel->setString(to_string(0));
     
     setFuelButtonVisible(false);
@@ -521,6 +511,7 @@ void PortSupplyLayer::callMidButton(cocos2d::Ref *pSender)
     consumeFuelLabel->setString(to_string(0));
     
     ammoEntity->supplyAll();
+    fuelEntity->supplyAll();
     setAmmoButtonVisible(false);
     setFuelButtonVisible(false);
     setMidButtonVisible(false);

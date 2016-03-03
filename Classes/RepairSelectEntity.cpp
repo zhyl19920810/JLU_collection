@@ -81,7 +81,7 @@ bool RepairSelectEntity::init()
     bool bRet=false;
     do
     {
-        if (!Node::init())
+        if (!Layer::init())
         {
             break;
         }

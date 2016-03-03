@@ -1,0 +1,314 @@
+//
+//  OrganizeSelectEntity.cpp
+//  kancolle_beta
+//
+//  Created by 岩林张 on 3/2/16.
+//
+//
+
+#include "OrganizeSelectEntity.hpp"
+#include "portOrganizeLayer.h"
+#include "KantaiListEntity.hpp"
+
+
+OrganSelectEntity::OrganSelectEntity()
+{
+    kantai=NULL;
+    hidden = true;
+    equipContainer.resize(4);
+    equipEmpty.resize(4);
+}
+
+
+OrganSelectEntity* OrganSelectEntity::create()
+{
+    OrganSelectEntity* pRet=new OrganSelectEntity;
+    if (pRet&&pRet->init())
+    {
+        pRet->autorelease();
+        return pRet;
+    }
+    delete pRet;
+    pRet=NULL;
+    return NULL;
+}
+
+
+void OrganSelectEntity::initBg()
+{
+    bgImg=Sprite::create("RepairMain/repairSelectBg1.png");
+    bgImg->setPosition(695,200);
+    addChild(bgImg);
+    auto tmp=bgImg->getContentSize()/2;
+    
+    auto organSelectBar=Sprite::create("RepairMain/repairBar.png");
+    organSelectBar->setPosition(tmp.width+288,tmp.height+197);
+    bgImg->addChild(organSelectBar);
+    
+    
+    
+    auto organSelectTitle=Sprite::create("RepairMain/repairSelectTitle.png");
+    organSelectTitle->setPosition(tmp.width-47,tmp.height+200);
+    bgImg->addChild(organSelectTitle);
+    
+    
+    changeShipButton=MenuItemButton::create(Sprite::create("OrganizeMain/changeShipButton2.png"), Sprite::create("OrganizeMain/changeShipButton2.png"), Sprite::create("OrganizeMain/changeShipButton2.png"), CC_CALLBACK_1(OrganSelectEntity::changeShipCallback, this));
+    changeShipButton->setPosition(tmp.width-10,tmp.height-165);
+    bgImg->addChild(changeShipButton);
+    
+}
+
+
+bool OrganSelectEntity::init()
+{
+    bool bRet=false;
+    do
+    {
+        if (!Layer::init())
+        {
+            break;
+        }
+        
+        initBg();
+        initKantai();
+        
+        bRet=true;
+    }while(0);
+    
+    
+    return bRet;
+}
+
+void OrganSelectEntity::moveOut()
+{
+    if (!hidden)
+    {
+        this->runAction(MoveBy::create(0.15, Point(238, 0)));
+        hidden = true;
+    }
+    
+}
+void OrganSelectEntity::moveIn()
+{
+    if (hidden)
+    {
+        this->runAction(MoveBy::create(0.15, Point(-238, 0)));
+        hidden = false;
+    }
+}
+
+
+void OrganSelectEntity::changeShipCallback(cocos2d::Ref *pSender)
+{
+    int fleetNumber=UserDefault::getInstance()->getIntegerForKey("fleetNumber");
+    int possiton=UserDefault::getInstance()->getIntegerForKey("possiton");
+    auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
+    sPlayer.modifyKantaiPosition(fleet, possiton, kantai);
+    
+    auto kantaiList=dynamic_cast<KantaiListEntity*>(this->getParent());
+    auto organizeList=dynamic_cast<PortOrganizeLayer*>(kantaiList->getParent());
+    
+    CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganSelectEntity::moveOut, this));
+    CallFunc* f2=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::moveOut, kantaiList));
+    CallFunc* f3=CallFunc::create(CC_CALLBACK_0(PortOrganizeLayer::updateContainers, organizeList));
+    CallFunc* f4=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, kantaiList));
+    runAction(Sequence::create(f1,DelayTime::create(0.15),f2,DelayTime::create(0.1),f3,f4, NULL));
+}
+
+
+
+
+void OrganSelectEntity::initKantai()
+{
+    auto tmp=bgImg->getContentSize()/2;
+    kantaiName=Label::create("","fonts/DengXian.ttf",20);
+    kantaiName->setPosition(tmp.width-85,tmp.height+160);
+    kantaiName->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    kantaiName->setColor(Color3B::BLACK);
+    bgImg->addChild(kantaiName);
+    
+    lvIcon=Sprite::create("CommonAssets/image 111.png");
+    lvIcon->setPosition(tmp.width+30,tmp.height+160);
+    bgImg->addChild(lvIcon);
+    
+    kantaiLv=Label::create("","fonts/DengXian.ttf",20);
+    kantaiLv->setPosition(lvIcon->getPosition().x+lvIcon->getContentSize().width,tmp.height+160);
+    kantaiLv->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    kantaiLv->setColor(Color3B::BLACK);
+    bgImg->addChild(kantaiLv);
+    
+    kantaiHp=Label::create("","fonts/DengXian.ttf",10);
+    kantaiHp->setPosition(tmp.width-20,tmp.height+140);
+    kantaiHp->setColor(Color3B::BLACK);
+    kantaiHp->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    bgImg->addChild(kantaiHp);
+    
+    hpBar=HpBar::create();
+    hpBar->setPosition(tmp.width-55,tmp.height+140);
+    hpBar->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    bgImg->addChild(hpBar);
+    
+    stars=Stars::create();
+    stars->setPosition(tmp.width+40,tmp.height+140);
+    stars->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    bgImg->addChild(stars);
+    
+    kancaiCard=KantaiCard::create();
+    kancaiCard->setPosition(tmp.width-5,tmp.height+110);
+    bgImg->addChild(kancaiCard);
+    
+    for (int i=0; i<4; ++i)
+    {
+        equipEmpty[i]=Sprite::create("CommonAssets/noEquipBg.png");
+        equipEmpty[i]->setPosition(tmp.width-5,tmp.height+65-i*30);
+        bgImg->addChild(equipEmpty[i]);
+    }
+    
+    for (int i=0; i<4; ++i)
+    {
+        equipContainer[i]=EquipContainer::create();
+        equipContainer[i]->setPosition(tmp.width-5,tmp.height+65-i*30);
+        bgImg->addChild(equipContainer[i]);
+    }
+    
+    firePower = Label::create("", "fonts/DengXian.ttf", 15);
+    firePower->setColor(Color3B::BLACK);
+    firePower->setPosition(tmp.width-35, tmp.height-60);
+    firePower->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    bgImg->addChild(firePower);
+    
+    armour = Label::create("", "fonts/DengXian.ttf", 15);
+    armour->setColor(Color3B::BLACK);
+    armour->setPosition(tmp.width-35, tmp.height-85);
+    armour->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    bgImg->addChild(armour);
+    
+    torpedo = Label::create("", "fonts/DengXian.ttf", 15);
+    torpedo->setColor(Color3B::BLACK);
+    torpedo->setPosition(tmp.width-35, tmp.height-110);
+    torpedo->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    bgImg->addChild(torpedo);
+    
+    antiAir = Label::create("", "fonts/DengXian.ttf", 15);
+    antiAir->setColor(Color3B::BLACK);
+    antiAir->setPosition(tmp.width-35, tmp.height-135);
+    antiAir->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    bgImg->addChild(antiAir);
+    
+    
+    firePowerIcon=Sprite::create("OrganizeMain/firePowerIcon.png");
+    firePowerIcon->setPosition(tmp.width-70, tmp.height-60);
+    bgImg->addChild(firePowerIcon);
+    torpedoIcon=Sprite::create("OrganizeMain/torpedoIcon.png");
+    torpedoIcon->setPosition(tmp.width-70, tmp.height-85);
+    bgImg->addChild(torpedoIcon);
+    antiAirIcon=Sprite::create("OrganizeMain/antiAirIcon.png");
+    antiAirIcon->setPosition(tmp.width-70, tmp.height-110);
+    bgImg->addChild(antiAirIcon);
+    armourIcon=Sprite::create("OrganizeMain/armourIcon.png");
+    armourIcon->setPosition(tmp.width-70, tmp.height-135);
+    bgImg->addChild(armourIcon);
+    
+    ammoBar=ValueBar::create();
+    ammoBar->setPosition(67+tmp.width,tmp.height-80);
+    bgImg->addChild(ammoBar);
+    
+    fuelBar=ValueBar::create();
+    fuelBar->setPosition(ammoBar->getPosition()-Vec2(0, 45));
+    bgImg->addChild(fuelBar);
+    
+    auto fuelIcon=Sprite::create("OrganizeMain/image 323.png");
+    bgImg->addChild(fuelIcon);
+    fuelIcon->setPosition(tmp.width+47, tmp.height-70);
+    
+    auto ammoIcon =Sprite::create("OrganizeMain/image 324.png");
+    bgImg->addChild(ammoIcon);
+    ammoIcon->setPosition(fuelIcon->getPosition()-Vec2(0, 50));
+    
+
+}
+
+
+
+
+void OrganSelectEntity::setEquipContainerVisible(int equipNumber, bool bVisible)
+{
+    CCASSERT(equipNumber>=1&&equipNumber<=4, "equipNumber is empty");
+    if (bVisible)
+    {
+        equipContainer[equipNumber-1]->setVisible(true);
+        equipEmpty[equipNumber-1]->setVisible(false);
+    }
+    else
+    {
+        equipContainer[equipNumber-1]->setVisible(false);
+        equipEmpty[equipNumber-1]->setVisible(true);
+    }
+}
+
+bool OrganSelectEntity::canChangeKantai(Kantai *kantai)
+{
+    return true;
+}
+
+
+void OrganSelectEntity::updateKantai(Kantai *kantai)
+{
+    this->kantai=kantai;
+    if (canChangeKantai(kantai))
+    {
+        changeShipButton->setButtonVisible(true);
+    }
+    else
+    {
+        changeShipButton->setButtonVisible(false);
+    }
+    char name[30];
+    bzero(name, sizeof(name));
+    sprintf(name, "%s",kantai->getKantaiName());
+    kantaiName->setString(name);
+    
+    sprintf(name, "%d",kantai->getCurrLV());
+    kantaiLv->setString(name);
+    
+    kancaiCard->updateCard(kantai);
+    
+    sprintf(name, "%d//%d",kantai->getCurrHp(),kantai->getMaxHp());
+    kantaiHp->setString(name);
+    hpBar->setHp(kantai->getMaxHp(), kantai->getCurrHp());
+    stars->setNumber(kantai->getStars());
+    
+    equipSize=kantai->getKantaiEquipSize();
+    int i=0;
+    for (; i<equipSize; ++i)
+    {
+        setEquipContainerVisible(i+1, true);
+        equipContainer[i]->updateEquip(kantai->getEquip(i+1));
+    }
+    for (; i<4; ++i)
+    {
+        setEquipContainerVisible(i+1, false);
+        equipContainer[i]->updateEquip(NULL);
+    }
+    
+    sprintf(name, "%d",kantai->getFirePower());
+    firePower->setString(name);
+    sprintf(name, "%d",kantai->getTorpedo());
+    torpedo->setString(name);
+    sprintf(name, "%d",kantai->getAntiAir());
+    antiAir->setString(name);
+    sprintf(name, "%d",kantai->getArmor());
+    armour->setString(name);
+    
+    double ammoNo=kantai->getCurrAmmo()*10/kantai->getMaxAmmo();
+    double fuelNo=kantai->getCurrFuel()*10/kantai->getMaxFuel();
+    if (ammoNo<0.0001&&ammoNo>-0.0001) {
+        ammoNo=0;
+    }
+    if (fuelNo<0.0001&&fuelNo>-0.0001) {
+        fuelNo=0;
+    }
+    ammoBar->update(ceil(ammoNo));
+    fuelBar->update(ceil(fuelNo));
+}
+

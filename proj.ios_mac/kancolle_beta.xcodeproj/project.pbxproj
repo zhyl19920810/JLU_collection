@@ -314,6 +314,12 @@
 		F4B191E11BE74B56000A41C3 /* BattleHero.h in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F401BDCD9B900180F6B /* BattleHero.h */; };
 		F4B926CE1C55FA74005DB127 /* PortMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CC1C55FA74005DB127 /* PortMain */; };
 		F4B926CF1C55FA74005DB127 /* SupplyMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CD1C55FA74005DB127 /* SupplyMain */; };
+		F4D38E1B1C871AB9009BE55C /* SupplyFuelEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */; };
+		F4D38E1C1C871AB9009BE55C /* SupplyFuelEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */; };
+		F4D38E1F1C8731EF009BE55C /* OrganizeSelectEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E1D1C8731EF009BE55C /* OrganizeSelectEntity.cpp */; };
+		F4D38E201C8731EF009BE55C /* OrganizeSelectEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E1D1C8731EF009BE55C /* OrganizeSelectEntity.cpp */; };
+		F4D38E241C8746CB009BE55C /* ValueBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E221C8746CB009BE55C /* ValueBar.cpp */; };
+		F4D38E251C8746CB009BE55C /* ValueBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E221C8746CB009BE55C /* ValueBar.cpp */; };
 		F4D5D0891C5FAFDF001441C3 /* FactoryContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0871C5FAFDF001441C3 /* FactoryContainer.cpp */; };
 		F4D5D08A1C5FAFDF001441C3 /* FactoryContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0871C5FAFDF001441C3 /* FactoryContainer.cpp */; };
 		F4D5D08D1C5FB006001441C3 /* buildKantaiEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D08B1C5FB006001441C3 /* buildKantaiEntity.cpp */; };
@@ -589,6 +595,12 @@
 		F4B1740F1C54657D00D2BC1C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		F4B926CC1C55FA74005DB127 /* PortMain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PortMain; sourceTree = "<group>"; };
 		F4B926CD1C55FA74005DB127 /* SupplyMain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SupplyMain; sourceTree = "<group>"; };
+		F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SupplyFuelEntity.cpp; sourceTree = "<group>"; };
+		F4D38E1A1C871AB9009BE55C /* SupplyFuelEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SupplyFuelEntity.hpp; sourceTree = "<group>"; };
+		F4D38E1D1C8731EF009BE55C /* OrganizeSelectEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OrganizeSelectEntity.cpp; sourceTree = "<group>"; };
+		F4D38E1E1C8731EF009BE55C /* OrganizeSelectEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OrganizeSelectEntity.hpp; sourceTree = "<group>"; };
+		F4D38E221C8746CB009BE55C /* ValueBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ValueBar.cpp; sourceTree = "<group>"; };
+		F4D38E231C8746CB009BE55C /* ValueBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ValueBar.hpp; sourceTree = "<group>"; };
 		F4D5D0871C5FAFDF001441C3 /* FactoryContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FactoryContainer.cpp; sourceTree = "<group>"; };
 		F4D5D0881C5FAFDF001441C3 /* FactoryContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FactoryContainer.hpp; sourceTree = "<group>"; };
 		F4D5D08B1C5FB006001441C3 /* buildKantaiEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildKantaiEntity.cpp; sourceTree = "<group>"; };
@@ -952,6 +964,7 @@
 		F4036DCD1BDA20DE002788AA /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				F4D38E211C8746B5009BE55C /* ValueBar */,
 				F4A328491C84AA810048F939 /* FleetButton */,
 				F40C1BB51C61E4EF0093774E /* MenuItem */,
 				F4D5D0851C5FACD7001441C3 /* Clock */,
@@ -1112,6 +1125,8 @@
 				F4A328411C847CA70048F939 /* SupplyShipUnit.hpp */,
 				F4D9C3641C860096002A93EC /* SupplyAmmoEntity.cpp */,
 				F4D9C3651C860096002A93EC /* SupplyAmmoEntity.hpp */,
+				F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */,
+				F4D38E1A1C871AB9009BE55C /* SupplyFuelEntity.hpp */,
 			);
 			name = supply;
 			sourceTree = "<group>";
@@ -1183,6 +1198,15 @@
 			name = FleetButton;
 			sourceTree = "<group>";
 		};
+		F4D38E211C8746B5009BE55C /* ValueBar */ = {
+			isa = PBXGroup;
+			children = (
+				F4D38E221C8746CB009BE55C /* ValueBar.cpp */,
+				F4D38E231C8746CB009BE55C /* ValueBar.hpp */,
+			);
+			name = ValueBar;
+			sourceTree = "<group>";
+		};
 		F4D5D0851C5FACD7001441C3 /* Clock */ = {
 			isa = PBXGroup;
 			children = (
@@ -1246,6 +1270,8 @@
 				F4036D631BDA1FDD002788AA /* portOrganizeLayer.h */,
 				F481896A1C58AFC500A0D0F5 /* OrganizeContainer.cpp */,
 				F481896B1C58AFC500A0D0F5 /* OrganizeContainer.hpp */,
+				F4D38E1D1C8731EF009BE55C /* OrganizeSelectEntity.cpp */,
+				F4D38E1E1C8731EF009BE55C /* OrganizeSelectEntity.hpp */,
 			);
 			name = organize;
 			sourceTree = "<group>";
@@ -1494,6 +1520,7 @@
 				F44D26DC1C4D198400438F3C /* CharacterCard.h in Sources */,
 				F44D26DD1C4D198400438F3C /* BattleHero.h in Sources */,
 				F44D26DE1C4D198400438F3C /* BattleEnemy.h in Sources */,
+				F4D38E1F1C8731EF009BE55C /* OrganizeSelectEntity.cpp in Sources */,
 				F44D26DF1C4D198400438F3C /* Mission.h in Sources */,
 				F44D26E01C4D198400438F3C /* MissionContainer.h in Sources */,
 				F44D26E11C4D198400438F3C /* MissionSelectPage.h in Sources */,
@@ -1533,11 +1560,13 @@
 				F4A328421C847CA70048F939 /* SupplyShipUnit.cpp in Sources */,
 				F4036D8A1BDA1FDD002788AA /* fleetDB.cpp in Sources */,
 				F4FABB041C50D30600F75BCE /* KantaiMgr.cpp in Sources */,
+				F4D38E241C8746CB009BE55C /* ValueBar.cpp in Sources */,
 				F4036D881BDA1FDD002788AA /* equipGrid.cpp in Sources */,
 				F4F956CC1C5B5E49001AA1B3 /* RepairTimer.cpp in Sources */,
 				F4F956E51C5B9D4C001AA1B3 /* dock.cpp in Sources */,
 				F4036DA01BDA1FDD002788AA /* MissionNode.cpp in Sources */,
 				F4D5D0921C5FB073001441C3 /* arsenal.cpp in Sources */,
+				F4D38E1B1C871AB9009BE55C /* SupplyFuelEntity.cpp in Sources */,
 				F4E62F381BDCB2E100180F6B /* CharacterCard.cpp in Sources */,
 				F4036D841BDA1FDD002788AA /* Equip.cpp in Sources */,
 				F4036D821BDA1FDD002788AA /* DatabaseScene.cpp in Sources */,
@@ -1651,6 +1680,7 @@
 				F40C4FCE1C5BDA78000FAA89 /* EquipPicMgr.cpp in Sources */,
 				F4036E051BDA2316002788AA /* databaseBase.cpp in Sources */,
 				F4036E061BDA2316002788AA /* databaseBase.h in Sources */,
+				F4D38E1C1C871AB9009BE55C /* SupplyFuelEntity.cpp in Sources */,
 				F43FFC831C5CE8E500C98BED /* RepairListRow.cpp in Sources */,
 				F4036E071BDA2316002788AA /* databaseInit.cpp in Sources */,
 				F4D6CBEA1BF380210078C5C0 /* TestScene.cpp in Sources */,
@@ -1668,6 +1698,7 @@
 				F4036E0F1BDA2316002788AA /* playerDB.cpp in Sources */,
 				F4E62F421BDCD9B900180F6B /* BattleHero.cpp in Sources */,
 				F40CF98F1BDB6A5A00DD897F /* BattleModel.cpp in Sources */,
+				F4D38E201C8731EF009BE55C /* OrganizeSelectEntity.cpp in Sources */,
 				F4036E101BDA2316002788AA /* playerDB.h in Sources */,
 				F4036E111BDA2316002788AA /* AppDelegate.cpp in Sources */,
 				F4AAFA051C5D0EEF006981BB /* RepairSelectEntity.cpp in Sources */,
@@ -1699,6 +1730,7 @@
 				F4036E241BDA2316002788AA /* Compass.h in Sources */,
 				F4036E251BDA2316002788AA /* Mission.cpp in Sources */,
 				F4036E261BDA2316002788AA /* Mission.h in Sources */,
+				F4D38E251C8746CB009BE55C /* ValueBar.cpp in Sources */,
 				F4D9C3671C860096002A93EC /* SupplyAmmoEntity.cpp in Sources */,
 				F4036E271BDA2316002788AA /* MissionContainer.cpp in Sources */,
 				F4036E281BDA2316002788AA /* MissionContainer.h in Sources */,

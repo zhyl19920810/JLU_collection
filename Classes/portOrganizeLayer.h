@@ -39,6 +39,7 @@ public:
     Fleet* getPanelFleet(){return fleet;}
     void setChangeButtonEnble(bool bEnble);
     void setDetailButtonEnble(bool bEnble);
+    bool hasSameKantai(int kantaiNumber);
 private:
     KantaiDetailEntity* detailEntity;
     KantaiListEntity* listEntity;
@@ -55,9 +56,7 @@ private:
     void initContainers();
     
     
-    
-    
-    
+
 private:
     Sprite* bgimg;
     Fleet* fleet;

@@ -76,7 +76,7 @@ void KantaiDetailEntity::initPage()
     for (int i=0; i<4; ++i)
     {
         equipContainer[i]=EquipContainer::create();
-        equipContainer[i]->setPosition(equipEmpty[i]->getPosition());
+        equipContainer[i]->setPosition(450,310-i*35);
         addChild(equipContainer[i]);
     }
     
@@ -209,6 +209,7 @@ void KantaiDetailEntity::setKantai(Kantai *kantai)
     for (; i<4; ++i)
     {
         setEquipContainerVisible(i+1, false);
+        equipContainer[i]->updateEquip(NULL);
     }
     
     
