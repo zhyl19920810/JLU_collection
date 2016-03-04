@@ -162,9 +162,9 @@ void KantaiListRow::exchangeCallback(cocos2d::Ref *pSender)
     parent->showSelect(kantai);
     
 //    int fleetNumber=UserDefault::getInstance()->getIntegerForKey("fleetNumber");
-//    int possiton=UserDefault::getInstance()->getIntegerForKey("possiton");
+//    int position=UserDefault::getInstance()->getIntegerForKey("position");
 //    auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
-//    sPlayer.modifyKantaiPosition(fleet, possiton, kantai);
+//    sPlayer.modifyKantaiPosition(fleet, position, kantai);
 //    
 //    auto kantaiList=dynamic_cast<KantaiListEntity*>(this->getParent());
 //    kantaiList->updateRows();

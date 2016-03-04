@@ -52,7 +52,7 @@ void OrganSelectEntity::initBg()
     bgImg->addChild(organSelectTitle);
     
     
-    changeShipButton=MenuItemButton::create(Sprite::create("OrganizeMain/changeShipButton2.png"), Sprite::create("OrganizeMain/changeShipButton2.png"), Sprite::create("OrganizeMain/changeShipButton2.png"), CC_CALLBACK_1(OrganSelectEntity::changeShipCallback, this));
+    changeShipButton=MenuItemButton::create(Sprite::create("OrganizeMain/changeShipButton2.png"), Sprite::create("OrganizeMain/changeShipButton3.png"), Sprite::create("OrganizeMain/changeShipButton1.png"), CC_CALLBACK_1(OrganSelectEntity::changeShipCallback, this));
     changeShipButton->setPosition(tmp.width-10,tmp.height-165);
     bgImg->addChild(changeShipButton);
     
@@ -100,19 +100,11 @@ void OrganSelectEntity::moveIn()
 
 void OrganSelectEntity::changeShipCallback(cocos2d::Ref *pSender)
 {
-    int fleetNumber=UserDefault::getInstance()->getIntegerForKey("fleetNumber");
-    int possiton=UserDefault::getInstance()->getIntegerForKey("possiton");
-    auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
-    sPlayer.modifyKantaiPosition(fleet, possiton, kantai);
+    auto kantaiList=static_cast<KantaiListEntity*>(this->getParent());
+    auto organizeList=static_cast<PortOrganizeLayer*>(kantaiList->getParent());
+    organizeList->changeContainer( kantai);
     
-    auto kantaiList=dynamic_cast<KantaiListEntity*>(this->getParent());
-    auto organizeList=dynamic_cast<PortOrganizeLayer*>(kantaiList->getParent());
-    
-    CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganSelectEntity::moveOut, this));
-    CallFunc* f2=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::moveOut, kantaiList));
-    CallFunc* f3=CallFunc::create(CC_CALLBACK_0(PortOrganizeLayer::updateContainers, organizeList));
-    CallFunc* f4=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, kantaiList));
-    runAction(Sequence::create(f1,DelayTime::create(0.15),f2,DelayTime::create(0.1),f3,f4, NULL));
+
 }
 
 
@@ -224,8 +216,6 @@ void OrganSelectEntity::initKantai()
     auto ammoIcon =Sprite::create("OrganizeMain/image 324.png");
     bgImg->addChild(ammoIcon);
     ammoIcon->setPosition(fuelIcon->getPosition()-Vec2(0, 50));
-    
-
 }
 
 
@@ -248,7 +238,9 @@ void OrganSelectEntity::setEquipContainerVisible(int equipNumber, bool bVisible)
 
 bool OrganSelectEntity::canChangeKantai(Kantai *kantai)
 {
-    return true;
+    auto kantaiList=static_cast<KantaiListEntity*>(this->getParent());
+    auto organizeList=static_cast<PortOrganizeLayer*>(kantaiList->getParent());
+    return !organizeList->hasSameKantai(kantai->getKantaiNumber());
 }
 
 

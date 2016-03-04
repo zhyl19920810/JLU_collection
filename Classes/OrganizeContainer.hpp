@@ -19,6 +19,15 @@
 using namespace cocos2d;
 class PortOrganizeLayer;
 
+class OrganizeContainerAction
+{
+public:
+    static void setPankOpen(Node* left,Node* right,Node* clippingNode);
+    static void setPankClose(Node* left,Node* right,Node* clippingNode);
+    static void setPankChange(Node* left,Node* right,Node* clippingNode);
+};
+
+
 class OrganizeContainer:public Node{
     
 public:
@@ -32,6 +41,14 @@ public:
     void changeCallback(Ref* pSender);
     void setDetailButtonEnble(bool bEnble);
     void setChangeButtonEnble(bool bEnble);
+    void setKantaiVisible( bool bVisible);
+    bool haveKantai() const;
+    int getContainerKantaiNumber() const;
+    void setClippingNode();
+    
+    void setChangeButtonVisible(bool bVisible);
+    void changeContainer(Kantai* kantai);
+    void removeContainer();
 private:
     int position;
     Sprite* bg;
@@ -40,9 +57,8 @@ private:
     
     MenuItemImage * detailButton;
     MenuItemImage * changeButton;
-    
+    bool kantaiExist;
     KantaiCard * kantaiCard;
-    Sprite * characterImage;
     Label * kantaiName;
     Label * currLV;
     Label * currHp;
@@ -52,7 +68,17 @@ private:
     Label * armour;
     HpBar* hpBar;
     Stars * stars;
+    Sprite* expBar;
+    Menu* menu;
+    Menu* changeMn;
     
+    Kantai* kantai;
+    Sprite* lKantaiDoor;
+    Sprite* rKantaiDoor;
+    
+private:
+    ClippingNode* clippingNode;
+    Node* node;
 };
 
 #endif

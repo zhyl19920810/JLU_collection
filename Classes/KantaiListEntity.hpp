@@ -67,7 +67,7 @@ private:
     void updatePage();
     
     
-    OrganSelectEntity* organSelectEntity;
+    
     
     void hideSelect(cocos2d::Ref *pSender);
     MenuItemSprite* hideListItem;
@@ -80,7 +80,7 @@ private:
     
 public:
     void showSelect(Kantai* kantai);
-    
+    OrganSelectEntity* organSelectEntity;
 };
 
 

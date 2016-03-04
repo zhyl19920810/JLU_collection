@@ -29,13 +29,15 @@ public:
     void showDetail(int index);
     void hideList(Ref* pSender);
     void showList(int index);
-    void updateContainers();
+    void updateContainer();
+    void updateContainer(int position);
+    void changeContainer(Kantai* kantai);
+    void removeContainer();
     inline int getSelectedShipIndex(){ return selectedShipIndex; }
     inline void setSelectedShipIndex(int index)
     {
         this->selectedShipIndex = index;
     }
-    void setKantaiVisible(int position,bool bVisible);
     Fleet* getPanelFleet(){return fleet;}
     void setChangeButtonEnble(bool bEnble);
     void setDetailButtonEnble(bool bEnble);
@@ -47,8 +49,7 @@ private:
     MenuItemSprite * hideListItem;
     int selectedShipIndex;
     std::vector<OrganizeContainer *> containers;
-    std::vector<Sprite*> lKantaiDoor;
-    std::vector<Sprite*> rKantaiDoor;
+    
     
 private:
     void initLayer();
@@ -68,7 +69,8 @@ private:
 public:
     ~PortOrganizeLayer();
     void SetFleetButtonVisible(int fleetNumber,bool bVisible);
-    
+    int findFirstPosNoKantai();
+    bool hasKantai(int position);
     
 };
 

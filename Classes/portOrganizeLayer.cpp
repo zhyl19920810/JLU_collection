@@ -20,8 +20,8 @@ PortOrganizeLayer::PortOrganizeLayer()
     fleetToggle.resize(4);
     fleetSprite.resize(4);
     containers.resize(6);
-    lKantaiDoor.resize(6);
-    rKantaiDoor.resize(6);
+//    lKantaiDoor.resize(6);
+//    rKantaiDoor.resize(6);
 }
 
 PortOrganizeLayer::~PortOrganizeLayer()
@@ -51,20 +51,15 @@ bool PortOrganizeLayer::init()
     return bRet;
 }
 
-void PortOrganizeLayer::setKantaiVisible(int position, bool bVisible)
+bool PortOrganizeLayer::hasSameKantai(int kantaiNumber)
 {
-    if (bVisible)
+    for (int i=0; i<containers.size(); ++i)
     {
-        lKantaiDoor[position-1]->setVisible(false);
-        rKantaiDoor[position-1]->setVisible(false);
-        containers[position-1]->setVisible(true);
+        if (containers[i]->haveKantai()&&(containers[i]->getContainerKantaiNumber()==kantaiNumber)) {
+            return true;
+        }
     }
-    else
-    {
-        lKantaiDoor[position-1]->setVisible(true);
-        rKantaiDoor[position-1]->setVisible(true);
-        containers[position-1]->setVisible(false);
-    }
+    return false;
 }
 
 void PortOrganizeLayer::initLayer()
@@ -150,19 +145,7 @@ void PortOrganizeLayer::initContainers()
             containers[i]->setPosition(628, 80);
         addChild(containers[i]);
     }
-    
-    for (int i=0; i<6; ++i)
-    {
-        lKantaiDoor[i]=Sprite::create("OrganizeMain/lKantaiDoor.png");
-        lKantaiDoor[i]->setPosition(containers[i]->getPosition());
-        lKantaiDoor[i]->setAnchorPoint(Vec2(1.0,0.5));
-        addChild(lKantaiDoor[i]);
-        rKantaiDoor[i]=Sprite::create("OrganizeMain/rKantaiDoor.png");
-        rKantaiDoor[i]->setPosition(containers[i]->getPosition());
-        rKantaiDoor[i]->setAnchorPoint(Vec2(0, 0.5));
-        addChild(rKantaiDoor[i]);
-    }
-    updateContainers();
+    updateContainer();
 }
 
 void PortOrganizeLayer::hideList(Ref* pSender)
@@ -181,26 +164,27 @@ void PortOrganizeLayer::showList(int index)
     hideListItem->setEnabled(true);
     setDetailButtonEnble(false);
     UserDefault::getInstance()->setIntegerForKey("fleetNumber", fleet->getFleetKey());
-    UserDefault::getInstance()->setIntegerForKey("possiton", index);
+    UserDefault::getInstance()->setIntegerForKey("position", index);
 }
 
-void PortOrganizeLayer::updateContainers()
+
+void PortOrganizeLayer::updateContainer()
 {
-    for (int i = 0; i < 6; i++)
+    for (int i = 1; i <=6; i++)
     {
-        auto kantai=fleet->getShip(i+1);
-        if (kantai)
-        {
-            containers[i]->updateCharacterInfo(kantai);
-            setKantaiVisible(i+1, true);
-        }
-        else
-        {
-            setKantaiVisible(i+1, false);
-        }
+        updateContainer(i);
     }
-    //parent->updateAssistantGirl();
 }
+
+void PortOrganizeLayer::updateContainer(int position)
+{
+    CCASSERT(position>=1&&position<=6, "position is not exist");
+    auto kantai=fleet->getShip(position);
+    containers[position-1]->updateCharacterInfo(kantai);
+}
+
+
+
 void PortOrganizeLayer::showDetail(int index)
 {
     if (detailEntity->isHidden())
@@ -329,7 +313,7 @@ void PortOrganizeLayer::changeFleet(int fleetNumber)
 {
     this->fleetNumber=fleetNumber;
     fleet=sPlayer.getFleetByFleetKey(fleetNumber);
-    updateContainers();
+    updateContainer();
 }
 
 void PortOrganizeLayer::SetFleetButtonVisible(int fleetNumber, bool bVisible)
@@ -346,8 +330,70 @@ void PortOrganizeLayer::SetFleetButtonVisible(int fleetNumber, bool bVisible)
     }
 }
 
-
-bool PortOrganizeLayer::hasSameKantai(int kantaiNumber)
+void PortOrganizeLayer::changeContainer(Kantai* kantai)
 {
     
+    int fleetNumber=UserDefault::getInstance()->getIntegerForKey("fleetNumber");
+    int position=UserDefault::getInstance()->getIntegerForKey("position");
+    auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
+    sPlayer.modifyKantaiPosition(fleet, position, kantai);
+    
+    CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganSelectEntity::moveOut, listEntity->organSelectEntity));
+    CallFunc* f2=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::moveOut, listEntity));
+    CallFunc* f3=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::changeContainer, containers[position-1],kantai));
+    CallFunc* f4=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, listEntity));
+    runAction(Sequence::create(f1,DelayTime::create(0.15),f2,DelayTime::create(0.1),f3,f4, NULL));
+    
+    
+    //containers[position-1]->changeContainer(kantai);
 }
+
+void PortOrganizeLayer::removeContainer()
+{
+    int fleetNumber=UserDefault::getInstance()->getIntegerForKey("fleetNumber");
+    int position=UserDefault::getInstance()->getIntegerForKey("position");
+    auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
+    sPlayer.removeKantai(fleet, position);
+    
+    for (int i=position+1; i<=6; ++i)
+    {
+        if (hasKantai(i))
+        {
+            sPlayer.modifyKantaiPosition(fleet, i-1, fleet->getShip(i));
+        }
+    }
+    for (int i=1; i<=6/*这里循环到最大值*/; ++i)
+    {
+        //设定一个最大值，更新到最大值
+        //最大值一下的不更新
+        //依据上个循环的最大hasKantai的值来设定
+        containers[i]->changeContainer(fleet->getShip(i));
+    }
+    
+}
+
+int PortOrganizeLayer::findFirstPosNoKantai()
+{
+    for (int i=1; i<=6; ++i)
+    {
+        if (!hasKantai(i))
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+bool PortOrganizeLayer::hasKantai(int position)
+{
+    if (position<=0&&position>6)
+    {
+        return false;
+    }
+    if (containers[position-1]->haveKantai())
+    {
+        return true;
+    }
+    return false;
+}
+//void PortOrganizeLayer::removeContainer(int position)

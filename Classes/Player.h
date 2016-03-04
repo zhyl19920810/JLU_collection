@@ -171,13 +171,13 @@ public:
     void swapKantai(Kantai* lKantai,Kantai* rKantai);
     bool canChangeKantaiPosition(Fleet *fleet, int position,Kantai *kantai);
     void changeKantaiPosition(Fleet *fleet, int position,Kantai *kantai);
-
+    void removeKantai(Fleet* _fleet,int _position);
     
 //    bool canDeleteKantai(int _kantaiKey);
 //    void deleteKantai(int _kantaiKey); //装备也删除
 //    void changeKantaiPosition(int _kantaiKey,int _fleetNumber,int _position);
 private:
-    void removeKantai(Fleet* _fleet,int _position);
+    
     void _changeKantaiPosition(Kantai* kantai,Fleet* fleet,int position);
 public:
     //fleet
