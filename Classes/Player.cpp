@@ -921,9 +921,10 @@ void Player::deleteFleet(int _fleetKey)
 
 Fleet* Player::getFleetByFleetKey(int _fleetKey)
 {
-    CCASSERT(_fleetKey>=1, "error fleetKey in the function \"getFleetByFleetKey\"");
-    return fleetData[_fleetKey-1];
-    
+    if (_fleetKey>=1) {
+        return fleetData[_fleetKey-1];
+    }
+    return NULL;
 }
 
 void Player::startCircle()

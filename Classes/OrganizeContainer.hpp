@@ -49,7 +49,7 @@ public:
     
     void changeContainer(Kantai* kantai);
     void openNewContainer(Kantai* kantai);
-    void removeContainer();
+    //void removeContainer();
 private:
     int position;
     Sprite* bg;
@@ -71,7 +71,6 @@ private:
     Stars * stars;
     Sprite* expBar;
     Menu* menu;
-    //Menu* changeMn;
     
     Kantai* kantai;
     Sprite* lKantaiDoor;

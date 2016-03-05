@@ -37,7 +37,6 @@ bool PortOrganizeLayer::init()
             break;
         }
         
-        //this->setZOrder(-1);
         initLayer();
         initFleetButton();
         initContainers();
@@ -143,14 +142,7 @@ void PortOrganizeLayer::initContainers()
         addChild(containers[i]);
     }
     updateContainer();
-    for (int i=1; i<=6; ++i)
-    {
-        if (!hasKantai(i))
-        {
-            containers[i-1]->setChangeButtonVisible(true);
-            return;
-        }
-    }
+
     ///找到第一个没有船的位置，然后设其changeButton为visible
 }
 
@@ -180,6 +172,14 @@ void PortOrganizeLayer::updateContainer()
     {
         updateContainer(i);
     }
+    for (int i=1; i<=6; ++i)
+    {
+        if (!hasKantai(i))
+        {
+            containers[i-1]->setChangeButtonVisible(true);
+            return;
+        }
+    }
 }
 
 void PortOrganizeLayer::updateContainer(int position)
@@ -190,20 +190,19 @@ void PortOrganizeLayer::updateContainer(int position)
 }
 
 
-
 void PortOrganizeLayer::showDetail(int index)
 {
-    UserDefault::getInstance()->setIntegerForKey("fleetNumber", fleet->getFleetKey());
-    UserDefault::getInstance()->setIntegerForKey("position", index);
-    removeContainer();
+//    UserDefault::getInstance()->setIntegerForKey("fleetNumber", fleet->getFleetKey());
+//    UserDefault::getInstance()->setIntegerForKey("position", index);
+//    removeContainer();
     
-//    if (detailEntity->isHidden())
-//    {
-//        detailEntity->moveIn();
-//    }
-//    detailEntity->setKantai(fleet->getShip(index));
-//    hideDetailItem->setEnabled(true);
-//    setChangeButtonEnble(false);
+    if (detailEntity->isHidden())
+    {
+        detailEntity->moveIn();
+    }
+    detailEntity->setKantai(fleet->getShip(index));
+    hideDetailItem->setEnabled(true);
+    setChangeButtonEnble(false);
 }
 void PortOrganizeLayer::hideDetail(Ref* pSender)
 {
@@ -233,117 +232,60 @@ void PortOrganizeLayer::setChangeButtonEnble(bool bEnble)
 }
 
 
-void PortOrganizeLayer::selectFleet(Ref* pSender, int fleetIndex)
-{
-    //setCurrentFleet(fleetIndex);
-}
-
-void PortOrganizeLayer::clearFleet(Ref* pSender)
-{
-    
-}
-
-
-
-void PortOrganizeLayer::initFleetButton()
-{
-    fleetNumber=1;
-    fleet=sPlayer.getFleetByFleetKey(fleetNumber);
-    fleetSprite[0]=Sprite::createWithSpriteFrameName("one1.png");
-    bgimg->addChild(fleetSprite[0]);
-    fleetSprite[0]->setPosition(Vec2(47, bgimg->getContentSize().height-27));
-    
-    fleetToggle[0]=MenuItemToggle::createWithCallback(CC_CALLBACK_1(PortOrganizeLayer::fleetCallback, this,1), MenuItemSprite::create(Sprite::createWithSpriteFrameName("one2.png"), Sprite::createWithSpriteFrameName("one2.png")),
-                                                      MenuItemSprite::create(Sprite::createWithSpriteFrameName("one3.png"), Sprite::createWithSpriteFrameName("one3.png")), NULL);
-    fleetToggle[0]->setPosition(fleetSprite[0]->getPosition());
-    
-    
-    fleetSprite[1]=Sprite::createWithSpriteFrameName("two1.png");
-    bgimg->addChild(fleetSprite[1]);
-    fleetSprite[1]->setPosition(fleetSprite[0]->getPosition()+Vec2(30, 0));
-    
-    fleetToggle[1]=MenuItemToggle::createWithCallback(CC_CALLBACK_1(PortOrganizeLayer::fleetCallback, this,2), MenuItemSprite::create(Sprite::createWithSpriteFrameName("two2.png"), Sprite::createWithSpriteFrameName("two2.png")),
-                                                      MenuItemSprite::create(Sprite::createWithSpriteFrameName("two3.png"), Sprite::createWithSpriteFrameName("two3.png")), NULL);
-    fleetToggle[1]->setPosition(fleetSprite[1]->getPosition());
-    
-    
-    
-    fleetSprite[2]=Sprite::createWithSpriteFrameName("three1.png");
-    bgimg->addChild(fleetSprite[2]);
-    fleetSprite[2]->setPosition(fleetSprite[1]->getPosition()+Vec2(30, 0));
-    
-    fleetToggle[2]=MenuItemToggle::createWithCallback(CC_CALLBACK_1(PortOrganizeLayer::fleetCallback, this,3), MenuItemSprite::create(Sprite::createWithSpriteFrameName("three2.png"), Sprite::createWithSpriteFrameName("three2.png")),
-                                                      MenuItemSprite::create(Sprite::createWithSpriteFrameName("three3.png"), Sprite::createWithSpriteFrameName("three3.png")), NULL);
-    fleetToggle[2]->setPosition(fleetSprite[2]->getPosition());
-    
-    
-    
-    fleetSprite[3]=Sprite::createWithSpriteFrameName("four1.png");
-    bgimg->addChild(fleetSprite[3]);
-    fleetSprite[3]->setPosition(fleetSprite[2]->getPosition()+Vec2(30, 0));
-    
-    fleetToggle[3]=MenuItemToggle::createWithCallback(CC_CALLBACK_1(PortOrganizeLayer::fleetCallback, this,4), MenuItemSprite::create(Sprite::createWithSpriteFrameName("four2.png"), Sprite::createWithSpriteFrameName("four2.png")),
-                                                      MenuItemSprite::create(Sprite::createWithSpriteFrameName("four3.png"), Sprite::createWithSpriteFrameName("four3.png")), NULL);
-    fleetToggle[3]->setPosition(fleetSprite[3]->getPosition());
-    
-    auto mn=Menu::create(fleetToggle[0],fleetToggle[1],fleetToggle[2],fleetToggle[3], NULL);
-    mn->setPosition(Vec2::ZERO);
-    bgimg->addChild(mn);
-    
-    fleetToggle[0]->setSelectedIndex(1);
-    for (int i=1; i<=4; ++i)
-    {
-        SetFleetButtonVisible(i, sPlayer.getFleetByFleetKey(i));
-    }
-}
-
-void PortOrganizeLayer::fleetCallback(cocos2d::Ref *pSender, int layNumber)
-{
-    auto toggle=dynamic_cast<MenuItemToggle*>(pSender);
-    if (toggle->getSelectedIndex())  //关到开
-    {
-        if (layNumber==fleetNumber)
-        {
-            toggle->setSelectedIndex(0);
-            return;
-        }
-        fleetToggle[fleetNumber-1]->setSelectedIndex(0);
-        
-        changeFleet(layNumber);
-    }
-    else  //开到关
-    {
-        toggle->setSelectedIndex(1);
-    }
-}
-
-void PortOrganizeLayer::changeFleet(int fleetNumber)
+void PortOrganizeLayer::updateFleet(int fleetNumber)
 {
     this->fleetNumber=fleetNumber;
     fleet=sPlayer.getFleetByFleetKey(fleetNumber);
     updateContainer();
 }
 
-void PortOrganizeLayer::SetFleetButtonVisible(int fleetNumber, bool bVisible)
+void PortOrganizeLayer::clearFleet(cocos2d::Ref *pSender)
 {
-    if (bVisible)
+    int maxIndex=1;
+    for (int i=2; i<=6; ++i)
     {
-        fleetToggle[fleetNumber-1]->setVisible(true);
-        fleetSprite[fleetNumber-1]->setVisible(false);
+        if (fleet->getShip(i))
+        {
+            if (i>maxIndex) {
+                maxIndex=i;
+            }
+            sPlayer.removeKantai(fleet, i);
+        }
     }
-    else
-    {
-        fleetToggle[fleetNumber-1]->setVisible(false);
-        fleetSprite[fleetNumber-1]->setVisible(true);
-    }
+    containers[maxIndex]->setChangeButtonVisible(false);
+    CallFunc* f1=CallFunc::create([=]()
+                                  {
+                                      for (int i=2; i<=maxIndex; ++i)
+                                      {
+                                          containers[i-1]->changeContainer(fleet->getShip(i));
+                                      }
+                                  });
+    CallFunc* f2=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, listEntity));
+    CallFunc* f3=CallFunc::create([=]()
+                                  {
+                                      containers[1]->setChangeButtonVisible(true);
+                                  });
+    runAction(Sequence::create(f1,f2,DelayTime::create(1),f3, NULL));
 }
+
+void PortOrganizeLayer::initFleetButton()
+{
+    fleetNumber=1;
+    fleet=sPlayer.getFleetByFleetKey(fleetNumber);
+    fleetButton=FleetButton::create(std::bind(&PortOrganizeLayer::updateFleet, this,std::placeholders::_1));
+    fleetButton->setPosition(47, bgimg->getContentSize().height-27);
+    bgimg->addChild(fleetButton);
+}
+
 
 void PortOrganizeLayer::changeContainer(Kantai* kantai)
 {
     int fleetNumber=UserDefault::getInstance()->getIntegerForKey("fleetNumber");
     int position=UserDefault::getInstance()->getIntegerForKey("position");
+    UserDefault::getInstance()->setIntegerForKey("fleetNumber", 0);
+    UserDefault::getInstance()->setIntegerForKey("position", 0);
     auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
-    if (fleet->getShip(position))
+    if (fleet&&fleet->getShip(position))
     {
         sPlayer.modifyKantaiPosition(fleet, position, kantai);
         CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganSelectEntity::moveOut, listEntity->organSelectEntity));
@@ -354,13 +296,34 @@ void PortOrganizeLayer::changeContainer(Kantai* kantai)
     }
     else
     {
+        auto preFleet=dynamic_cast<Fleet*>(kantai->getFleet());
+        int prePosition=1;
+        if (preFleet)
+        {
+            for (; prePosition<=6; ++prePosition)
+            {
+                if (kantai==preFleet->getShip(prePosition)) {
+                    break;
+                }
+            }
+        }
         sPlayer.modifyKantaiPosition(fleet, position, kantai);
+        if (preFleet)
+        {
+            for (int i=prePosition+1; i<=6; ++i)
+            {
+                if (preFleet->getShip(i))
+                {
+                    sPlayer.modifyKantaiPosition(preFleet, i-1, preFleet->getShip(i));
+                }
+            }
+        }
+
         CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganSelectEntity::moveOut, listEntity->organSelectEntity));
         CallFunc* f2=CallFunc::create(CC_CALLBACK_0(PortOrganizeLayer::hideList,this,this));
         CallFunc* f3=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::openNewContainer, containers[position-1],kantai));
         CallFunc* f4=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, listEntity));
         runAction(Sequence::create(f1,DelayTime::create(0.15),f2,DelayTime::create(0.1),f3,f4, NULL));
-        //把maxIndex位置的changeButton设为Visible
         if (position<6)
         {
             containers[position]->setChangeButtonVisible(true);
@@ -374,8 +337,11 @@ void PortOrganizeLayer::removeContainer()
 {
     int fleetNumber=UserDefault::getInstance()->getIntegerForKey("fleetNumber");
     int position=UserDefault::getInstance()->getIntegerForKey("position");
+    UserDefault::getInstance()->setIntegerForKey("fleetNumber", 0);
+    UserDefault::getInstance()->setIntegerForKey("position", 0);
+    
     auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
-    if (fleetNumber==1&&!fleet->getShip(2))    //判断是否改舰队是第一舰队，而且只有一个旗舰
+    if (fleetNumber==1&&!fleet->getShip(2))
     {
         return;
     }
@@ -400,18 +366,22 @@ void PortOrganizeLayer::removeContainer()
         containers[maxIndex]->setChangeButtonVisible(false);
     }
     
-    CallFunc* f1=CallFunc::create([=]()
+    
+    CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganSelectEntity::moveOut, listEntity->organSelectEntity));
+    CallFunc* f2=CallFunc::create(CC_CALLBACK_0(PortOrganizeLayer::hideList,this,this));
+    CallFunc* f3=CallFunc::create([=]()
       {
          for (int i=1; i<=maxIndex; ++i)
            {
               containers[i-1]->changeContainer(fleet->getShip(i));
            }
       });
-    CallFunc* f2=CallFunc::create([=]()
+    CallFunc* f4=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, listEntity));
+    CallFunc* f5=CallFunc::create([=]()
       {
         containers[maxIndex-1]->setChangeButtonVisible(true);
       });
-    runAction(Sequence::create(f1,DelayTime::create(0.65),f2, NULL));
+    runAction(Sequence::create(f1,DelayTime::create(0.15),f2,DelayTime::create(0.1),f3,f4,DelayTime::create(0.65),f5, NULL));
     //把maxIndex位置的changeButton设为Visible
 }
 
@@ -439,4 +409,4 @@ bool PortOrganizeLayer::hasKantai(int position)
     }
     return false;
 }
-//void PortOrganizeLayer::removeContainer(int position)
+

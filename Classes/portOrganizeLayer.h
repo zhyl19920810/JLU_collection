@@ -14,6 +14,7 @@
 #include "OrganizeContainer.hpp"
 #include "KantaiDetailEntity.hpp"
 #include "KantaiListEntity.hpp"
+#include "FleetButton.hpp"
 using namespace cocos2d;
 class PortScene;
 
@@ -23,12 +24,12 @@ public:
     bool init();
     CREATE_FUNC(PortOrganizeLayer);
     PortOrganizeLayer();
-    void selectFleet(Ref* pSender, int fleetIndex);
-    void clearFleet(Ref* pSender);
+    
     void hideDetail(Ref* pSender);
     void showDetail(int index);
     void hideList(Ref* pSender);
     void showList(int index);
+    
     void updateContainer();
     void updateContainer(int position);
     void changeContainer(Kantai* kantai);
@@ -42,6 +43,8 @@ public:
     void setChangeButtonEnble(bool bEnble);
     void setDetailButtonEnble(bool bEnble);
     bool hasSameKantai(int kantaiNumber);
+    
+    void clearFleet(Ref* pSender);
 private:
     KantaiDetailEntity* detailEntity;
     KantaiListEntity* listEntity;
@@ -64,11 +67,11 @@ private:
     int fleetNumber;
     std::vector<Sprite*> fleetSprite;
     std::vector<MenuItemToggle*> fleetToggle;
-    void fleetCallback(Ref* pSender,int layNumber);
-    void changeFleet(int fleetNumber);
+
+    FleetButton* fleetButton;
 public:
     ~PortOrganizeLayer();
-    void SetFleetButtonVisible(int fleetNumber,bool bVisible);
+    void updateFleet(int fleetNumber);
     int findFirstPosNoKantai();
     bool hasKantai(int position);
     

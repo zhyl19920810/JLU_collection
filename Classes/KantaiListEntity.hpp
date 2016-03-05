@@ -31,6 +31,7 @@ public:
     bool init() override;
     void update();
     void updateRows();
+    void removeCallback(Ref* ref);
 private:
 
     //    Menu *listMenu;

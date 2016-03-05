@@ -53,7 +53,6 @@ void KantaiListEntity::initBg()
     hidden = true;
     menu = Menu::create(NULL);
     menu->setPosition(Vec2::ZERO);
-    //addChild(menu);
     //bg
     auto bgimg = Sprite::create("OrganizeMain/kantaiListBg1.png");
     this->addChild(bgimg);
@@ -110,12 +109,30 @@ void KantaiListEntity::initSortButton()
 
 void KantaiListEntity::initRows()
 {
+    Sprite* line = Sprite::create("CommonAssets/Line.png");
+    addChild(line);
+    line->setPosition(540+35, 345-12);
+    
+    Label *removeLabel = Label::create("remove", "fonts/DengXian.ttf", 13);
+    removeLabel->setPosition(Vec2::ZERO);
+    removeLabel->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+    removeLabel->setColor(Color3B::BLACK);
+    MenuItemLabel* removeButton=MenuItemLabel::create(removeLabel, CC_CALLBACK_1(KantaiListEntity::removeCallback, this));
+    removeButton->setPosition(430,345);
+    menu->addChild(removeButton);
+    
     for (int i=0; i<10; ++i)
     {
         rows[i]=KantaiListRow::create(i+1);
         rows[i]->setPosition(540, 345 - (i + 1) * 28);
         addChild(rows[i]);
     }
+}
+
+void KantaiListEntity::removeCallback(cocos2d::Ref *ref)
+{
+    PortOrganizeLayer* parent=static_cast<PortOrganizeLayer*>(_parent);
+    parent->removeContainer();
 }
 
 void KantaiListEntity::initPageSwitch()

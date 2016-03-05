@@ -94,9 +94,6 @@ bool OrganizeContainer::init()
         menu->setPosition(Vec2::ZERO);
         addChild(menu,2);
         
-//        changeMn=Menu::create(changeButton, NULL);
-//        changeMn->setPosition(Vec2::ZERO);
-//        addChild(changeMn,2);
         
         kantaiCard=KantaiCard::create();
         kantaiCard->setPosition(78, 20);
@@ -329,31 +326,26 @@ void OrganizeContainer::changeContainer(Kantai* kantai)
     {
         OrganizeContainerAction::setPankClose(lKantaiDoor, rKantaiDoor,clippingNode,templateNode);
         CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::updateCharacterInfo, this,kantai));
-        runAction(Sequence::create(DelayTime::create(0.35),f1, NULL));
+        runAction(Sequence::create(DelayTime::create(0.36),f1, NULL));
         //这里进行判断，如果kantai为空的话，执行close,然后到时间0.35秒过后执行updateCharacterInfo刷新一下，把kantai关闭
     }
 }
 
 void OrganizeContainer::openNewContainer(Kantai *kantai)
 {
-    OrganizeContainerAction::setPankOpen(lKantaiDoor, rKantaiDoor,clippingNode,templateNode);
     CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::updateCharacterInfo, this,kantai));
-    CallFunc* f2=CallFunc::create([this](){
-        clippingNode->setVisible(true);
-        templateNode->setVisible(true);
-        clippingNode->setLocalZOrder(100);
-    });
+    CallFunc* f2=CallFunc::create(CC_CALLBACK_0(OrganizeContainerAction::setPankOpen, lKantaiDoor,rKantaiDoor,clippingNode,templateNode));
     runAction(Sequence::create(f1,f2,DelayTime::create(0.35), NULL));
 }
 
 
-void OrganizeContainer::removeContainer()
-{
-    lKantaiDoor->setVisible(true);
-    rKantaiDoor->setVisible(true);
-    OrganizeContainerAction::setPankClose(lKantaiDoor, rKantaiDoor,clippingNode,templateNode);
-    CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::updateCharacterInfo, this,kantai));
-    CallFunc* f2=CallFunc::create([this](){setKantaiVisible(false);});
-    runAction(Sequence::create(DelayTime::create(0.3),f1,DelayTime::create(0.3),f2, NULL));
-    
-}
+//void OrganizeContainer::removeContainer()
+//{
+//    lKantaiDoor->setVisible(true);
+//    rKantaiDoor->setVisible(true);
+//    OrganizeContainerAction::setPankClose(lKantaiDoor, rKantaiDoor,clippingNode,templateNode);
+//    CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::updateCharacterInfo, this,kantai));
+//    CallFunc* f2=CallFunc::create([this](){setKantaiVisible(false);});
+//    runAction(Sequence::create(DelayTime::create(0.3),f1,DelayTime::create(0.3),f2, NULL));
+//    
+//}
