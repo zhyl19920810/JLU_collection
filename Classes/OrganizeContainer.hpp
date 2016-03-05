@@ -22,9 +22,9 @@ class PortOrganizeLayer;
 class OrganizeContainerAction
 {
 public:
-    static void setPankOpen(Node* left,Node* right,Node* clippingNode);
-    static void setPankClose(Node* left,Node* right,Node* clippingNode);
-    static void setPankChange(Node* left,Node* right,Node* clippingNode);
+    static void setPankOpen(Node* left,Node* right,Node* clippingNode,Node* templateNode);
+    static void setPankClose(Node* left,Node* right,Node* clippingNode,Node* templateNode);
+    static void setPankChange(Node* left,Node* right,Node* clippingNode,Node* templateNode);
 };
 
 
@@ -41,13 +41,14 @@ public:
     void changeCallback(Ref* pSender);
     void setDetailButtonEnble(bool bEnble);
     void setChangeButtonEnble(bool bEnble);
+    void setChangeButtonVisible(bool bVisible);
     void setKantaiVisible( bool bVisible);
     bool haveKantai() const;
     int getContainerKantaiNumber() const;
     void setClippingNode();
     
-    void setChangeButtonVisible(bool bVisible);
     void changeContainer(Kantai* kantai);
+    void openNewContainer(Kantai* kantai);
     void removeContainer();
 private:
     int position;
@@ -70,13 +71,14 @@ private:
     Stars * stars;
     Sprite* expBar;
     Menu* menu;
-    Menu* changeMn;
+    //Menu* changeMn;
     
     Kantai* kantai;
     Sprite* lKantaiDoor;
     Sprite* rKantaiDoor;
     
 private:
+    Node* templateNode;
     ClippingNode* clippingNode;
     Node* node;
 };

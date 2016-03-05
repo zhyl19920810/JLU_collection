@@ -16,12 +16,9 @@ PortOrganizeLayer::PortOrganizeLayer()
 {
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("CommonAssets/commonAssets.plist", "CommonAssets/commonAssets.pvr.ccz");
     
-    
     fleetToggle.resize(4);
     fleetSprite.resize(4);
     containers.resize(6);
-//    lKantaiDoor.resize(6);
-//    rKantaiDoor.resize(6);
 }
 
 PortOrganizeLayer::~PortOrganizeLayer()
@@ -146,6 +143,15 @@ void PortOrganizeLayer::initContainers()
         addChild(containers[i]);
     }
     updateContainer();
+    for (int i=1; i<=6; ++i)
+    {
+        if (!hasKantai(i))
+        {
+            containers[i-1]->setChangeButtonVisible(true);
+            return;
+        }
+    }
+    ///找到第一个没有船的位置，然后设其changeButton为visible
 }
 
 void PortOrganizeLayer::hideList(Ref* pSender)
@@ -187,13 +193,17 @@ void PortOrganizeLayer::updateContainer(int position)
 
 void PortOrganizeLayer::showDetail(int index)
 {
-    if (detailEntity->isHidden())
-    {
-        detailEntity->moveIn();
-    }
-    detailEntity->setKantai(fleet->getShip(index));
-    hideDetailItem->setEnabled(true);
-    setChangeButtonEnble(false);
+    UserDefault::getInstance()->setIntegerForKey("fleetNumber", fleet->getFleetKey());
+    UserDefault::getInstance()->setIntegerForKey("position", index);
+    removeContainer();
+    
+//    if (detailEntity->isHidden())
+//    {
+//        detailEntity->moveIn();
+//    }
+//    detailEntity->setKantai(fleet->getShip(index));
+//    hideDetailItem->setEnabled(true);
+//    setChangeButtonEnble(false);
 }
 void PortOrganizeLayer::hideDetail(Ref* pSender)
 {
@@ -232,8 +242,6 @@ void PortOrganizeLayer::clearFleet(Ref* pSender)
 {
     
 }
-
-
 
 
 
@@ -332,19 +340,33 @@ void PortOrganizeLayer::SetFleetButtonVisible(int fleetNumber, bool bVisible)
 
 void PortOrganizeLayer::changeContainer(Kantai* kantai)
 {
-    
     int fleetNumber=UserDefault::getInstance()->getIntegerForKey("fleetNumber");
     int position=UserDefault::getInstance()->getIntegerForKey("position");
     auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
-    sPlayer.modifyKantaiPosition(fleet, position, kantai);
-    
-    CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganSelectEntity::moveOut, listEntity->organSelectEntity));
-    CallFunc* f2=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::moveOut, listEntity));
-    CallFunc* f3=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::changeContainer, containers[position-1],kantai));
-    CallFunc* f4=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, listEntity));
-    runAction(Sequence::create(f1,DelayTime::create(0.15),f2,DelayTime::create(0.1),f3,f4, NULL));
-    
-    
+    if (fleet->getShip(position))
+    {
+        sPlayer.modifyKantaiPosition(fleet, position, kantai);
+        CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganSelectEntity::moveOut, listEntity->organSelectEntity));
+        CallFunc* f2=CallFunc::create(CC_CALLBACK_0(PortOrganizeLayer::hideList,this,this));
+        CallFunc* f3=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::changeContainer, containers[position-1],kantai));
+        CallFunc* f4=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, listEntity));
+        runAction(Sequence::create(f1,DelayTime::create(0.15),f2,DelayTime::create(0.1),f3,f4, NULL));
+    }
+    else
+    {
+        sPlayer.modifyKantaiPosition(fleet, position, kantai);
+        CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganSelectEntity::moveOut, listEntity->organSelectEntity));
+        CallFunc* f2=CallFunc::create(CC_CALLBACK_0(PortOrganizeLayer::hideList,this,this));
+        CallFunc* f3=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::openNewContainer, containers[position-1],kantai));
+        CallFunc* f4=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, listEntity));
+        runAction(Sequence::create(f1,DelayTime::create(0.15),f2,DelayTime::create(0.1),f3,f4, NULL));
+        //把maxIndex位置的changeButton设为Visible
+        if (position<6)
+        {
+            containers[position]->setChangeButtonVisible(true);
+        }
+    }
+
     //containers[position-1]->changeContainer(kantai);
 }
 
@@ -353,23 +375,44 @@ void PortOrganizeLayer::removeContainer()
     int fleetNumber=UserDefault::getInstance()->getIntegerForKey("fleetNumber");
     int position=UserDefault::getInstance()->getIntegerForKey("position");
     auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
+    if (fleetNumber==1&&!fleet->getShip(2))    //判断是否改舰队是第一舰队，而且只有一个旗舰
+    {
+        return;
+    }
     sPlayer.removeKantai(fleet, position);
     
+    int maxIndex=0;
     for (int i=position+1; i<=6; ++i)
     {
         if (hasKantai(i))
         {
+            if (i>maxIndex) {
+                maxIndex=i;
+            }
             sPlayer.modifyKantaiPosition(fleet, i-1, fleet->getShip(i));
         }
     }
-    for (int i=1; i<=6/*这里循环到最大值*/; ++i)
+    if (!maxIndex) {
+        maxIndex=position;
+    }
+    if (maxIndex<6)
     {
-        //设定一个最大值，更新到最大值
-        //最大值一下的不更新
-        //依据上个循环的最大hasKantai的值来设定
-        containers[i]->changeContainer(fleet->getShip(i));
+        containers[maxIndex]->setChangeButtonVisible(false);
     }
     
+    CallFunc* f1=CallFunc::create([=]()
+      {
+         for (int i=1; i<=maxIndex; ++i)
+           {
+              containers[i-1]->changeContainer(fleet->getShip(i));
+           }
+      });
+    CallFunc* f2=CallFunc::create([=]()
+      {
+        containers[maxIndex-1]->setChangeButtonVisible(true);
+      });
+    runAction(Sequence::create(f1,DelayTime::create(0.65),f2, NULL));
+    //把maxIndex位置的changeButton设为Visible
 }
 
 int PortOrganizeLayer::findFirstPosNoKantai()
