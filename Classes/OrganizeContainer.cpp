@@ -22,9 +22,6 @@ OrganizeContainer* OrganizeContainer::create(int position)
     return nullptr;
 }
 
-
-
-
 OrganizeContainer::OrganizeContainer(int position)
 {
     this->position=position;
@@ -60,6 +57,7 @@ bool OrganizeContainer::init()
         templateNode->setPosition(Vec2::ZERO);
         addChild(templateNode,-1);
         
+        
         bg = Sprite::create("OrganizeMain/organKantaiBg.png");
         bg->setPosition(Vec2::ZERO);
         addChild(bg);
@@ -92,7 +90,7 @@ bool OrganizeContainer::init()
         changeButton->setPosition(118, -30);
         menu = Menu::create(detailButton,changeButton, NULL);
         menu->setPosition(Vec2::ZERO);
-        addChild(menu,2);
+        addChild(menu,1);
         
         
         kantaiCard=KantaiCard::create();
@@ -159,6 +157,16 @@ void OrganizeContainer::setClippingNode()
 
 void OrganizeContainer::setKantaiVisible( bool bVisible)
 {
+    if (bVisible)
+    {
+        lKantaiDoor->setPosition(-lKantaiDoor->getContentSize().width,0);
+        rKantaiDoor->setPosition(rKantaiDoor->getContentSize().width, 0);
+    }
+    else
+    {
+        lKantaiDoor->setPosition(0,0);
+        rKantaiDoor->setPosition(0, 0);
+    }
     templateNode->setVisible(!bVisible);
     clippingNode->setVisible(!bVisible);
     kantaiExist=bVisible;
@@ -259,26 +267,6 @@ void OrganizeContainerAction::setPankOpen(cocos2d::Node *left, cocos2d::Node *ri
     left->runAction(Sequence::create(f1,DelayTime::create(0.35),f2, NULL));
 }
 
-void OrganizeContainerAction::setPankClose(cocos2d::Node *left, cocos2d::Node *right,Node* clippingNode,Node* templateNode)
-{
-    templateNode->setVisible(true);
-    clippingNode->setVisible(true);
-    clippingNode->setLocalZOrder(100);
-    CallFunc* f1=CallFunc::create([=]()
-                                  {
-                                      left->setPosition(-left->getContentSize().width,0);
-                                      right->setPosition(right->getContentSize().width, 0);
-                                      left->runAction(MoveBy::create(0.3, Vec2(left->getContentSize().width, 0)));
-                                      right->runAction(MoveBy::create(0.3, Vec2(-right->getContentSize().width, 0)));
-                                  });
-    CallFunc* f2=CallFunc::create([=]()
-                                  {
-                                      templateNode->setVisible(false);
-                                      clippingNode->setVisible(false);
-                                      clippingNode->setLocalZOrder(0);
-                                  });
-    left->runAction(Sequence::create(f1,DelayTime::create(0.35),f2, NULL));
-}
 
 
 void OrganizeContainerAction::setPankChange(cocos2d::Node *left, cocos2d::Node *right,Node* clippingNode,Node* templateNode)
@@ -313,23 +301,41 @@ void OrganizeContainer::changeContainer(Kantai* kantai)
 {
     if (kantai)
     {
-        OrganizeContainerAction::setPankChange(lKantaiDoor, rKantaiDoor,clippingNode,templateNode);
-        CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::updateCharacterInfo, this,kantai));
-        CallFunc* f2=CallFunc::create([this](){
-            clippingNode->setVisible(true);
-            templateNode->setVisible(true);
-            clippingNode->setLocalZOrder(100);
-        });
-        runAction(Sequence::create(DelayTime::create(0.35),f1,f2,DelayTime::create(0.3), NULL));
+        CallFunc* f2=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::updateCharacterInfo, this,kantai));
+        CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganizeContainerAction::setPankClose,lKantaiDoor,rKantaiDoor,clippingNode,templateNode));
+        CallFunc* f3=CallFunc::create(CC_CALLBACK_0(OrganizeContainerAction::setPankOpen,lKantaiDoor,rKantaiDoor,clippingNode,templateNode));
+        runAction(Sequence::create(f1,DelayTime::create(0.35),f2,f3,DelayTime::create(0.3), NULL));
     }
     else
     {
         OrganizeContainerAction::setPankClose(lKantaiDoor, rKantaiDoor,clippingNode,templateNode);
         CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::updateCharacterInfo, this,kantai));
-        runAction(Sequence::create(DelayTime::create(0.36),f1, NULL));
-        //这里进行判断，如果kantai为空的话，执行close,然后到时间0.35秒过后执行updateCharacterInfo刷新一下，把kantai关闭
+        runAction(Sequence::create(DelayTime::create(0.35),f1, NULL));
     }
 }
+
+void OrganizeContainerAction::setPankClose(cocos2d::Node *left, cocos2d::Node *right,Node* clippingNode,Node* templateNode)
+{
+    templateNode->setVisible(true);
+    clippingNode->setVisible(true);
+    clippingNode->setLocalZOrder(100);
+    CallFunc* f1=CallFunc::create([=]()
+                                  {
+                                      left->setPosition(-left->getContentSize().width,0);
+                                      right->setPosition(right->getContentSize().width, 0);
+                                      left->runAction(MoveBy::create(0.3, Vec2(left->getContentSize().width, 0)));
+                                      right->runAction(MoveBy::create(0.3, Vec2(-right->getContentSize().width, 0)));
+                                  });
+    CallFunc* f2=CallFunc::create([=]()
+                                  {
+                                      clippingNode->setLocalZOrder(0);
+                                  });
+    left->runAction(Sequence::create(f1,DelayTime::create(0.35),f2, NULL));
+}
+
+
+
+
 
 void OrganizeContainer::openNewContainer(Kantai *kantai)
 {

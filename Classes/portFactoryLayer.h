@@ -38,6 +38,8 @@ private:
     //build
 public:
     FactoryContainer* getContainer(int position);
+    void showEntity(int position);
+    void startBuild(int fuel,int steel,int ammo,int al);
 private:
     BuildKantaiEntity* entity;
     void initContainer();
@@ -45,7 +47,7 @@ private:
     void buildCallback(Ref* pSender);
     void callBack(Ref* pSender);
     
-    
+
     
     void hideCallback(Ref* pSender);
     MenuItemSprite* hideListItem;

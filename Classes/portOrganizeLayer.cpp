@@ -252,7 +252,11 @@ void PortOrganizeLayer::clearFleet(cocos2d::Ref *pSender)
             sPlayer.removeKantai(fleet, i);
         }
     }
-    containers[maxIndex]->setChangeButtonVisible(false);
+    if (maxIndex<6)
+    {
+        containers[maxIndex]->setChangeButtonVisible(false);
+    }
+    
     CallFunc* f1=CallFunc::create([=]()
                                   {
                                       for (int i=2; i<=maxIndex; ++i)
@@ -265,7 +269,7 @@ void PortOrganizeLayer::clearFleet(cocos2d::Ref *pSender)
                                   {
                                       containers[1]->setChangeButtonVisible(true);
                                   });
-    runAction(Sequence::create(f1,f2,DelayTime::create(1),f3, NULL));
+    runAction(Sequence::create(f1,f2,DelayTime::create(0.7),f3, NULL));
 }
 
 void PortOrganizeLayer::initFleetButton()
@@ -341,7 +345,7 @@ void PortOrganizeLayer::removeContainer()
     UserDefault::getInstance()->setIntegerForKey("position", 0);
     
     auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
-    if (fleetNumber==1&&!fleet->getShip(2))
+    if ((fleetNumber==1&&!fleet->getShip(2))||(!fleet->getShip(position)))
     {
         return;
     }
@@ -371,7 +375,7 @@ void PortOrganizeLayer::removeContainer()
     CallFunc* f2=CallFunc::create(CC_CALLBACK_0(PortOrganizeLayer::hideList,this,this));
     CallFunc* f3=CallFunc::create([=]()
       {
-         for (int i=1; i<=maxIndex; ++i)
+         for (int i=position; i<=maxIndex; ++i)
            {
               containers[i-1]->changeContainer(fleet->getShip(i));
            }

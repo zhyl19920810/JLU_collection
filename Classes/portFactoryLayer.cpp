@@ -10,7 +10,8 @@
 
 PortFactoryLayer::PortFactoryLayer()
 {
-    container.resize(sPlayer.getMaxDockSize());
+    //container.resize(sPlayer.getMaxDockSize());
+    container.resize(4);
 }
 
 
@@ -80,7 +81,7 @@ void PortFactoryLayer::initLayer()
     
     entity=BuildKantaiEntity::create(kantaiBuilding);
     entity->setPosition(1150,tmp.height);
-    addChild(entity);
+    addChild(entity,2);
     
     auto closeItem2 = Sprite::create("CommonAssets/image 451.png");
     closeItem2->setGlobalZOrder(10);
@@ -101,10 +102,20 @@ void PortFactoryLayer::hideCallback(cocos2d::Ref *pSender)
 
 void PortFactoryLayer::initContainer()
 {
-    
+    for (int i=0; i<4; ++i)
+    {
+        container[i]=FactoryContainer::create(i+1);
+        container[i]->setPosition(390,275-i*78);
+        addChild(container[i]);
+    }
 }
 
-
+void PortFactoryLayer::showEntity(int position)
+{
+    UserDefault::getInstance()->setIntegerForKey("arsenalPosition", position);
+    entity->showEntity();
+    hideListItem->setEnabled(true);
+}
 
 void PortFactoryLayer::callBack(Ref* pSender)
 {
@@ -112,5 +123,16 @@ void PortFactoryLayer::callBack(Ref* pSender)
     hideListItem->setEnabled(true);
 }
 
+void PortFactoryLayer::startBuild(int fuel, int steel, int ammo, int al)
+{
+    int position=UserDefault::getInstance()->getIntegerForKey("arsenalPosition");
+    UserDefault::getInstance()->setIntegerForKey("arsenalPosition",0);
+    if (position==0) {
+        return;
+    }
+    sArsenal.buildNewKantai(position, fuel,steel,ammo,al, 10);
+    container[position-1]->update();
+    hideCallback(this);
+}
 
 

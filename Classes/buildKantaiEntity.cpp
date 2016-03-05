@@ -8,6 +8,7 @@
 
 #include "buildKantaiEntity.hpp"
 #include "arsenal.hpp"
+#include "portFactoryLayer.h"
 
 
 BuildKantaiEntity* BuildKantaiEntity::create(factoryBuildingMode mode)
@@ -118,13 +119,10 @@ void BuildKantaiEntity::initBg()
 
 
 
-
 void BuildKantaiEntity::startBuildCallback(cocos2d::Ref *pSender)
 {
-    int postion=1;//UserDefault::getInstance()->getIntegerForKey("buildPosition");
-    sArsenal.buildNewKantai(postion, fuelUnit->getResouce(), steelUnit->getResouce(), ammoUnit->getResouce(), AlUnit->getResouce(), 10);
-    //update
-    hideEntity();
+    auto parent=static_cast<PortFactoryLayer*>(_parent);
+    parent->startBuild(fuelUnit->getResouce(), steelUnit->getResouce(), ammoUnit->getResouce(), AlUnit->getResouce());
 }
 
 void BuildKantaiEntity::callback(cocos2d::Ref *pSender)

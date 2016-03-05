@@ -36,6 +36,8 @@ public:
     
     int calNewKantai(int fuel,int steel,int ammo,int aluminium,int developMaterial);
     void buildTimeCircle(float dt);
+    ArsenalData getArsenal(int position) const {return arsenal[position-1];}
+    bool haveShip(int position);
 private:
     Scheduler ts;
     int maxArsenalSize;
