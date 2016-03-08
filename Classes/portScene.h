@@ -48,7 +48,6 @@ public:
     
     void startCircle();
     void endCircle();
-    void changeLabel(float dt);
     
     void onEnter() override;
     
@@ -91,8 +90,8 @@ public:
         labelAluminium->setString(name);
     }
     
+    void update(float dt) override;
 private:
-    SEL_SCHEDULE updateLabel;
     
     Sprite *black;
     

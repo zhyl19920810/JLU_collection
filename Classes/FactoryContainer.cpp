@@ -107,6 +107,10 @@ void FactoryContainer::initArsenal()
     addChild(title);
     title->setPosition(50,65);
     
+    timer=RepairTimer::create();
+    timer->setPosition(10,15);
+    addChild(timer);
+    
 }
 
 void FactoryContainer::update()
@@ -124,12 +128,14 @@ void FactoryContainer::update()
         }
         else
         {
+            auto data=sArsenal.getArsenal(position);
             buildButton->setVisible(false);
             getButton->setVisible(false);
             shipFinish->setVisible(false);
             fastBuild->setButtonVisible(true);
             state=building;
             title->setTexture("ArsenalMain/image 118.png");
+            timer->setTime(data.remainTime);
         }
     }else
     {

@@ -13,6 +13,7 @@
 #include "cocos2d.h"
 #include "MenuItemTouch.hpp"
 #include "arsenal.hpp"
+#include "RepairTimer.hpp"
 
 USING_NS_CC;
 
@@ -49,6 +50,7 @@ private:
     Menu* mn;
     Sprite* title;
     
+    RepairTimer* timer;
     Sprite* slipway;
 };
 

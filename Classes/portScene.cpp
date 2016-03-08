@@ -32,17 +32,18 @@ PortScene* PortScene::createScene()
 
 void PortScene::startCircle()
 {
-    updateLabel=schedule_selector(PortScene::changeLabel);
-    schedule(updateLabel,5);
+    Director::getInstance()->getScheduler()->scheduleUpdate(this, 1, false);
 }
 
 void PortScene::endCircle()
 {
-    unschedule(updateLabel);
+    Director::getInstance()->getInstance()->getScheduler()->unscheduleUpdate(this);
 }
 
+
+
 ///time
-void PortScene::changeLabel(float dt)
+void PortScene::update(float dt)
 {
     char number[20];
     bzero(number, sizeof(number));
@@ -85,7 +86,7 @@ PortScene::~PortScene()
     Director::getInstance()->getTextureCache()->removeTextureForKey("PortMain/layerSelect.pvr.ccz");
     SpriteFrameCache::getInstance()->removeSpriteFrameByName("PortMain/portMainLayer.plist");
     Director::getInstance()->getTextureCache()->removeTextureForKey("PortMain/portMainLayer.pvr.ccz");
-    unschedule(updateLabel);
+    Director::getInstance()->getInstance()->getScheduler()->unscheduleUpdate(this);
 }
 
 
@@ -110,9 +111,7 @@ bool PortScene::init()
         return false;
     }
     
-//    Size visibleSize=Director::getInstance()->getVisibleSize();
-//    Vec2 origin=Director::getInstance()->getVisibleOrigin();
-    
+
     bgImage=Sprite::create("PortMain/image 345.jpg");
     bgImage->setPosition(800,210);
     bgImage->setGlobalZOrder(-3);
@@ -343,20 +342,21 @@ void PortScene::SetCurrLayer(LayerType type)
             {
                 title->setSpriteFrame("porttitle.png");
             }
+            if (currentLayerType!=LayerType::empty)
+            {
+                removeChild(currentLayer);
+            }
+            currentLayerType=LayerType::main;
             if (!mainlayer)
             {
                 mainlayer=PortMainLayer::create();
                 this->addChild(mainlayer);
+            }else
+            {
+                mainlayer->setVisible(true);
+                mainlayer->resumeDispatcher();
             }
             layerSelecter->moveOut();
-            if (currentLayerType!=LayerType::empty)
-            {
-                currentLayer->setVisible(false);
-            }
-            currentLayer=mainlayer;
-            mainlayer->setVisible(true);
-
-            currentLayerType=type;
             break;
         }
         case supply:
@@ -367,18 +367,14 @@ void PortScene::SetCurrLayer(LayerType type)
             }
             title->setSpriteFrame("supplytitle.png");
             bgImage->runAction(MoveTo::create(0.3, ccp(1600, 210)));
-            if (!supplylayer)
+            if (currentLayer)
             {
-                supplylayer=PortSupplyLayer::create();
-                addChild(supplylayer);
+                removeChild(currentLayer);
             }
+            mainlayer->setVisible(false);
+            currentLayer=PortSupplyLayer::create();
+            addChild(currentLayer);
             layerSelecter->moveIn();
-            if (currentLayerType!=LayerType::empty)
-            {
-                currentLayer->setVisible(false);
-            }
-            currentLayer=supplylayer;
-            supplylayer->setVisible(true);
             currentLayerType=type;
             break;
         }
@@ -390,18 +386,15 @@ void PortScene::SetCurrLayer(LayerType type)
             }
             title->setSpriteFrame("repairtitle.png");
             bgImage->runAction(MoveTo::create(0.3, ccp(0,210)));
-            if (!repairlayer) {
-                repairlayer=PortRepairLayer::create();
-                addChild(repairlayer);
+            if (currentLayer)
+            {
+                removeChild(currentLayer);
             }
+            mainlayer->setVisible(false);
+            currentLayer=PortRepairLayer::create();
+            addChild(currentLayer);
             layerSelecter->moveIn();
-            if (currentLayerType!=LayerType::empty) {
-                currentLayer->setVisible(false);
-            }
-            currentLayer=repairlayer;
-            currentLayerType=LayerType::repair;
-            repairlayer->setVisible(true);
-            
+            currentLayerType=type;
             break;
         }
         case factory:
@@ -413,38 +406,31 @@ void PortScene::SetCurrLayer(LayerType type)
             title->setSpriteFrame("factorytitle.png");
             bgImage->runAction(MoveTo::create(0.3, ccp(-490,210)));
             layerSelecter->moveIn();
-            if (!factroylayer)
+            if (currentLayer)
             {
-                factroylayer=PortFactoryLayer::create();
-                addChild(factroylayer);
+                removeChild(currentLayer);
             }
-            if (currentLayerType!=LayerType::empty)
-            {
-                currentLayer->setVisible(false);
-            }
-            currentLayer=factroylayer;
-            factroylayer->setVisible(true);
-            currentLayerType=LayerType::factory;
+            mainlayer->setVisible(false);
+            currentLayer=PortFactoryLayer::create();
+            addChild(currentLayer);
+            currentLayerType=type;
             break;
         }
         case remode:
         {
             if (currentLayerType == LayerType::remode)
                 return;
-            //layerSwithEffect();
             title->setSpriteFrame("remodeltitle.png");
             bgImage->runAction(MoveTo::create(0.3, ccp(-780, 210)));
             layerSelecter->moveIn();
-            if (remodelayer == nullptr)
+            if (currentLayer)
             {
-                remodelayer = PortRemodeLayer::create();
-                this->addChild(remodelayer);
+                removeChild(currentLayer);
             }
-            if (currentLayerType != LayerType::empty)
-                currentLayer->setVisible(false);
-            currentLayer = remodelayer;
-            remodelayer->setVisible(true);
-            currentLayerType = LayerType::remode;
+            mainlayer->setVisible(false);
+            currentLayer=PortRemodeLayer::create();
+            addChild(currentLayer);
+            currentLayerType=type;
             break;
         }
         case battle:
@@ -455,17 +441,15 @@ void PortScene::SetCurrLayer(LayerType type)
             title->setSpriteFrame("battletitle.png");
             bgImage->runAction(MoveTo::create(0.3, ccp(800, 210)));
             layerSelecter->moveIn();
-            if (battlelayer == nullptr)
+            if (currentLayer)
             {
-                battlelayer = new PortBattleLayer(this);
-                this->addChild(battlelayer);
+                removeChild(currentLayer);
             }
-            if (currentLayerType != LayerType::empty)
-                currentLayer->setVisible(false);
-            currentLayer = battlelayer;
-            battlelayer->setZOrder(-1);
-            battlelayer->setVisible(true);
-            currentLayerType = LayerType::battle;
+            mainlayer->setVisible(false);
+            currentLayer=PortBattleLayer::create();
+            currentLayer->setZOrder(-1);
+            addChild(currentLayer);
+            currentLayerType=type;
             break;
         }
         case organize:
@@ -475,21 +459,179 @@ void PortScene::SetCurrLayer(LayerType type)
             title->setSpriteFrame("organizetitle.png");
             bgImage->runAction(MoveTo::create(0.3,Point(800, 210)));
             layerSelecter->moveIn();
-            if (organizelayer == nullptr)
+            if (currentLayer)
             {
-                organizelayer = PortOrganizeLayer::create();
-                this->addChild(organizelayer);
+                removeChild(currentLayer);
             }
-            if (currentLayerType != LayerType::empty)
-                currentLayer->setVisible(false);
-            currentLayer = organizelayer;
-            organizelayer->setVisible(true);
-            currentLayerType = LayerType::organize;
+            mainlayer->setVisible(false);
+            currentLayer=PortOrganizeLayer::create();
+            addChild(currentLayer);
+            currentLayerType=type;
             break;
-
+            
         default:
             break;
     }
+    
+//
+//    switch (type) {
+//        case main:
+//        {
+//            if (currentLayerType==LayerType::main)
+//            {
+//                return;
+//            }
+//            if(title!=nullptr)
+//            {
+//                title->setSpriteFrame("porttitle.png");
+//            }
+//            if (!mainlayer)
+//            {
+//                mainlayer=PortMainLayer::create();
+//                this->addChild(mainlayer);
+//            }
+//            layerSelecter->moveOut();
+//            if (currentLayerType!=LayerType::empty)
+//            {
+//                currentLayer->setVisible(false);
+//            }
+//            currentLayer=mainlayer;
+//            mainlayer->setVisible(true);
+//
+//            currentLayerType=type;
+//            break;
+//        }
+//        case supply:
+//        {
+//            if (currentLayerType==LayerType::supply)
+//            {
+//                return;
+//            }
+//            title->setSpriteFrame("supplytitle.png");
+//            bgImage->runAction(MoveTo::create(0.3, ccp(1600, 210)));
+//            if (!supplylayer)
+//            {
+//                supplylayer=PortSupplyLayer::create();
+//                addChild(supplylayer);
+//            }
+//            layerSelecter->moveIn();
+//            if (currentLayerType!=LayerType::empty)
+//            {
+//                currentLayer->setVisible(false);
+//            }
+//            currentLayer=supplylayer;
+//            supplylayer->setVisible(true);
+//            currentLayerType=type;
+//            break;
+//        }
+//        case repair:
+//        {
+//            if (currentLayerType==LayerType::repair)
+//            {
+//                return;
+//            }
+//            title->setSpriteFrame("repairtitle.png");
+//            bgImage->runAction(MoveTo::create(0.3, ccp(0,210)));
+//            if (!repairlayer) {
+//                repairlayer=PortRepairLayer::create();
+//                addChild(repairlayer);
+//            }
+//            layerSelecter->moveIn();
+//            if (currentLayerType!=LayerType::empty) {
+//                currentLayer->setVisible(false);
+//            }
+//            currentLayer=repairlayer;
+//            currentLayerType=LayerType::repair;
+//            repairlayer->setVisible(true);
+//            
+//            break;
+//        }
+//        case factory:
+//        {
+//            if (currentLayerType==LayerType::factory)
+//            {
+//                return;
+//            }
+//            title->setSpriteFrame("factorytitle.png");
+//            bgImage->runAction(MoveTo::create(0.3, ccp(-490,210)));
+//            layerSelecter->moveIn();
+//            if (!factroylayer)
+//            {
+//                factroylayer=PortFactoryLayer::create();
+//                addChild(factroylayer);
+//            }
+//            if (currentLayerType!=LayerType::empty)
+//            {
+//                currentLayer->setVisible(false);
+//            }
+//            currentLayer=factroylayer;
+//            factroylayer->setVisible(true);
+//            currentLayerType=LayerType::factory;
+//            break;
+//        }
+//        case remode:
+//        {
+//            if (currentLayerType == LayerType::remode)
+//                return;
+//            //layerSwithEffect();
+//            title->setSpriteFrame("remodeltitle.png");
+//            bgImage->runAction(MoveTo::create(0.3, ccp(-780, 210)));
+//            layerSelecter->moveIn();
+//            if (remodelayer == nullptr)
+//            {
+//                remodelayer = PortRemodeLayer::create();
+//                this->addChild(remodelayer);
+//            }
+//            if (currentLayerType != LayerType::empty)
+//                currentLayer->setVisible(false);
+//            currentLayer = remodelayer;
+//            remodelayer->setVisible(true);
+//            currentLayerType = LayerType::remode;
+//            break;
+//        }
+//        case battle:
+//        {
+//            if (currentLayerType == LayerType::battle)
+//                return;
+//            //layerSwithEffect();
+//            title->setSpriteFrame("battletitle.png");
+//            bgImage->runAction(MoveTo::create(0.3, ccp(800, 210)));
+//            layerSelecter->moveIn();
+//            if (battlelayer == nullptr)
+//            {
+//                battlelayer = new PortBattleLayer(this);
+//                this->addChild(battlelayer);
+//            }
+//            if (currentLayerType != LayerType::empty)
+//                currentLayer->setVisible(false);
+//            currentLayer = battlelayer;
+//            battlelayer->setZOrder(-1);
+//            battlelayer->setVisible(true);
+//            currentLayerType = LayerType::battle;
+//            break;
+//        }
+//        case organize:
+//            if (currentLayerType == LayerType::organize)
+//                return;
+//            //layerSwithEffect();
+//            title->setSpriteFrame("organizetitle.png");
+//            bgImage->runAction(MoveTo::create(0.3,Point(800, 210)));
+//            layerSelecter->moveIn();
+//            if (organizelayer == nullptr)
+//            {
+//                organizelayer = PortOrganizeLayer::create();
+//                this->addChild(organizelayer);
+//            }
+//            if (currentLayerType != LayerType::empty)
+//                currentLayer->setVisible(false);
+//            currentLayer = organizelayer;
+//            organizelayer->setVisible(true);
+//            currentLayerType = LayerType::organize;
+//            break;
+//
+//        default:
+//            break;
+//    }
     
     
     

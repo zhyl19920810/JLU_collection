@@ -122,7 +122,6 @@ void PortMainLayer::startButtonAction(const Vec2& point)
 }
 
 
-
 bool PortMainLayer::organizeBegin(cocos2d::Touch *touch, cocos2d::Event *event)
 {
     auto target=static_cast<Sprite*>(event->getCurrentTarget());
@@ -350,7 +349,16 @@ void PortMainLayer::battleEnd(Touch* touch,Event* event)
     }
 }
 
-
+void PortMainLayer::resumeDispatcher()
+{
+    EventDispatcher* eventDispatcher=Director::getInstance()->getEventDispatcher();
+    eventDispatcher->resumeEventListenersForTarget(organizeButton);
+    eventDispatcher->resumeEventListenersForTarget(supplyButton);
+    eventDispatcher->resumeEventListenersForTarget(remodeButton);
+    eventDispatcher->resumeEventListenersForTarget(repairButton);
+    eventDispatcher->resumeEventListenersForTarget(factoryButton);
+    eventDispatcher->resumeEventListenersForTarget(battleButton);
+}
 
 void PortMainLayer::initMenu()
 {
@@ -431,33 +439,7 @@ void PortMainLayer::initMenu()
     eventDispatcher->addEventListenerWithSceneGraphPriority(listener2,battleButton);
 
    
-//    auto battleButton = MenuItemImage::create("interface/PortMain/image 407.png", "interface/PortMain/image 407.png", CC_CALLBACK_1(PortMainLayer::layerSelectCallback, this,LayerType::battle));
-//    battleButton->setPosition((145+(300-145)/2), 210);
-//    Sprite* battleButtonShip = Sprite::create("interface/PortMain/image 408.png");
-//    Sprite* battleButtonGo = Sprite::create("interface/PortMain/image 409.png");
-//    battleButtonShip->setPosition(67, 100);
-//    battleButtonGo->setPosition(67, 50);
-//    battleButton->addChild(battleButtonShip);
-//    battleButton->addChild(battleButtonGo);
-//    
-//    auto organizeButton = MenuItemImage::create("interface/PortMain/image 434.png", "interface/PortMain/image 441.png", CC_CALLBACK_1(PortMainLayer::layerSelectCallback, this,LayerType::organize));
-//    organizeButton->setPosition(battleButton->getPosition().x, 340);
-//    auto supplyButton = MenuItemImage::create("interface/PortMain/image 454.png", "interface/PortMain/image 461.png", CC_CALLBACK_1(PortMainLayer::layerSelectCallback, this, LayerType::supply));
-//    supplyButton->setPosition(100, 260);
-//    auto remodeButton = MenuItemImage::create("interface/PortMain/image 385.png", "interface/PortMain/image 392.png", CC_CALLBACK_1(PortMainLayer::layerSelectCallback, this, LayerType::remode));
-//    remodeButton->setPosition(345, 260);
-//    auto repairButton = MenuItemImage::create("interface/PortMain/image 444.png", "interface/PortMain/image 451.png", CC_CALLBACK_1(PortMainLayer::layerSelectCallback, this, LayerType::repair));
-//    repairButton->setPosition(145, 110);
-//    auto factoryButton = MenuItemImage::create("interface/PortMain/image 395.png", "interface/PortMain/image 402.png", CC_CALLBACK_1(PortMainLayer::layerSelectCallback, this, LayerType::factory));
-//    factoryButton->setPosition(300, 110);
-//    
-//    MenuItemSprite* settingButton = MenuItemImage::create("interface/PortMain/image 81.png", "interface/PortMain/image 81.png", CC_CALLBACK_1(PortScene::menuSettingCallback, parent));
-//    settingButton->setPosition(776, 28);
-//    
-//    
-//    auto menu = Menu::create(organizeButton, repairButton, factoryButton, battleButton, supplyButton, remodeButton,settingButton, NULL);
-//    menu->setPosition(0, 0);
-//    this->addChild(menu);
+
 
 }
 

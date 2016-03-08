@@ -84,6 +84,7 @@ void OrganSelectEntity::moveOut()
     if (!hidden)
     {
         this->runAction(MoveBy::create(0.15, Point(238, 0)));
+        kantai=NULL;
         hidden = true;
     }
     
@@ -145,9 +146,9 @@ void OrganSelectEntity::initKantai()
     stars->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     bgImg->addChild(stars);
     
-    kancaiCard=KantaiCard::create();
-    kancaiCard->setPosition(tmp.width-5,tmp.height+110);
-    bgImg->addChild(kancaiCard);
+    kantaiCard=KantaiCard::create();
+    kantaiCard->setPosition(tmp.width-5,tmp.height+110);
+    bgImg->addChild(kantaiCard);
     
     for (int i=0; i<4; ++i)
     {
@@ -263,7 +264,7 @@ void OrganSelectEntity::updateKantai(Kantai *kantai)
     sprintf(name, "%d",kantai->getCurrLV());
     kantaiLv->setString(name);
     
-    kancaiCard->updateCard(kantai);
+    kantaiCard->updateCard(kantai);
     
     sprintf(name, "%d//%d",kantai->getCurrHp(),kantai->getMaxHp());
     kantaiHp->setString(name);

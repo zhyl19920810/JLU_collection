@@ -50,7 +50,8 @@ public:
     void setAmmoButtonVisible(bool bVisible);
     void setFuelButtonVisible(bool bVisible);
     void setMidButtonVisible(bool bVisible);
-
+    
+    void update(float dt) override;
 private:
     Sprite* ammoButtonUp;
     Sprite* fuelButtonUp;
@@ -85,11 +86,11 @@ private:
     
     void startCircle();
     void endCircle();
-    void changeLabel(float dt);
+    
 private:
     std::vector<ShipUnit*> shipUnit;
 private:
-    SEL_SCHEDULE updateLabel;
+    //SEL_SCHEDULE updateLabel;
     int fleetNumber;
     Fleet* fleet;
     int consumeAmmo;

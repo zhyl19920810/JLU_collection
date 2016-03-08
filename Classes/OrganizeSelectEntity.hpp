@@ -50,7 +50,7 @@ private:
     HpBar* hpBar;
     Label* kantaiHp;
     Stars* stars;
-    KantaiCard* kancaiCard;
+    KantaiCard* kantaiCard;
     
     
     std::vector<EquipContainer*> equipContainer;

@@ -35,6 +35,7 @@ bool PortFactoryLayer::init()
 }
 
 
+
 void PortFactoryLayer::initLayer()
 {
     auto factoryBar=Sprite::create("ArsenalMain/titleBar.png");
@@ -68,11 +69,11 @@ void PortFactoryLayer::initLayer()
     
     auto buildButton = MenuItemImage::create("ArsenalMain/buildBotton1.png", "ArsenalMain/buildBotton2.png", CC_CALLBACK_1(PortFactoryLayer::callBack, this));
     buildButton->setPosition(-225,115);
-    auto disassembleButton = MenuItemImage::create("ArsenalMain/disassembleButton1.png", "ArsenalMain/disassembleButton2.png", CC_CALLBACK_1(PortFactoryLayer::callBack, this));
+    auto disassembleButton = MenuItemImage::create("ArsenalMain/disassembleButton1.png", "ArsenalMain/disassembleButton2.png", CC_CALLBACK_1(PortFactoryLayer::destroyCallback, this));
     disassembleButton->setPosition(-225, 40);
-    auto developButton = MenuItemImage::create("ArsenalMain/developButton1.png", "ArsenalMain/developButton2.png", CC_CALLBACK_1(PortFactoryLayer::callBack, this));
+    auto developButton = MenuItemImage::create("ArsenalMain/developButton1.png", "ArsenalMain/developButton2.png", CC_CALLBACK_1(PortFactoryLayer::NullCallback, this));
     developButton->setPosition(-225, -45);
-    auto discardButton = MenuItemImage::create("ArsenalMain/discardButton1.png", "ArsenalMain/discardButton2.png", CC_CALLBACK_1(PortFactoryLayer::callBack, this));
+    auto discardButton = MenuItemImage::create("ArsenalMain/discardButton1.png", "ArsenalMain/discardButton2.png", CC_CALLBACK_1(PortFactoryLayer::NullCallback, this));
     discardButton->setPosition(-225, -125);
     
     menu = Menu::create(buildButton, disassembleButton, developButton, discardButton, NULL);
@@ -92,6 +93,28 @@ void PortFactoryLayer::initLayer()
     menu->addChild(hideListItem);
     hideListItem->setGlobalZOrder(10);
     
+    
+    auto closeItem3 = Sprite::create("CommonAssets/image 451.png");
+    closeItem3->setGlobalZOrder(10);
+    closeItem3->setOpacity(0);
+    destoryHideItem=MenuItemSprite::create(closeItem3, closeItem3,CC_CALLBACK_1(PortFactoryLayer::destroyHideCallback, this));
+    destoryHideItem->setPosition(Vec2(-600, 0));
+    destoryHideItem->setEnabled(false);
+    menu->addChild(destoryHideItem);
+    destoryHideItem->setGlobalZOrder(10);
+
+    
+    auto visible=Director::getInstance()->getVisibleSize();
+    destoryList=FactoryListEntity::create();
+    addChild(destoryList,2);
+    destoryList->setPosition(visible.width,0);
+    
+}
+
+void PortFactoryLayer::destroyHideCallback(Ref* pSender)
+{
+    destoryList->moveOut();
+    destoryHideItem->setEnabled(false);
 }
 
 void PortFactoryLayer::hideCallback(cocos2d::Ref *pSender)
@@ -136,3 +159,23 @@ void PortFactoryLayer::startBuild(int fuel, int steel, int ammo, int al)
 }
 
 
+void PortFactoryLayer::destroyCallback(Ref* pSender)
+{
+    destoryList->moveIn();
+    destoryHideItem->setEnabled(true);
+}
+
+void PortFactoryLayer::destroyKantai(Kantai *kantai, int fuel, int steel, int ammo, int al)
+{
+    sPlayer.deleteKantai(kantai);
+    sPlayer.addAluminium(al);
+    sPlayer.addFuel(fuel);
+    sPlayer.addSteel(steel);
+    sPlayer.addAmmo(ammo);
+}
+
+
+void PortFactoryLayer::NullCallback(cocos2d::Ref *pSender)
+{
+    
+}

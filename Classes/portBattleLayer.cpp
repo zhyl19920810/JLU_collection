@@ -8,10 +8,23 @@
 
 #include "portBattleLayer.h"
 #include "MissionSelectPage.h"
-PortBattleLayer::PortBattleLayer(Node* parent)
+
+
+
+bool PortBattleLayer::init()
 {
-    this->parent=parent;
-    initLayer();
+    bool bRet=false;
+    do
+    {
+        if (!Layer::init()) {
+            break;
+        }
+        initLayer();
+        
+        
+        bRet=true;
+    }while(0);
+    return bRet;
 }
 
 

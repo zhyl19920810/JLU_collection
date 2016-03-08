@@ -14,6 +14,9 @@
 #include "arsenal.hpp"
 #include "Player.h"
 #include "buildKantaiEntity.hpp"
+#include "FactoryListEntity.hpp"
+
+
 using namespace cocos2d;
 
 
@@ -40,17 +43,24 @@ public:
     FactoryContainer* getContainer(int position);
     void showEntity(int position);
     void startBuild(int fuel,int steel,int ammo,int al);
+    void destroyKantai(Kantai* kantai,int fuel,int steel,int ammo,int al);
+    void destroyHideCallback(Ref* pSender);
+    void hideCallback(Ref* pSender);
 private:
     BuildKantaiEntity* entity;
+    FactoryListEntity* destoryList;
     void initContainer();
     std::vector<FactoryContainer*> container;
     void buildCallback(Ref* pSender);
     void callBack(Ref* pSender);
     
-
+    void destroyCallback(Ref* pSender);
     
-    void hideCallback(Ref* pSender);
+    void NullCallback(Ref* pSender);
+    
     MenuItemSprite* hideListItem;
+    MenuItemSprite* destoryHideItem;
+    
 };
 
 

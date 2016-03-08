@@ -553,16 +553,15 @@ void PortSupplyLayer::freshShipAllAttr()
 
 void PortSupplyLayer::startCircle()
 {
-    updateLabel=schedule_selector(PortSupplyLayer::changeLabel);
-    schedule(updateLabel,1);
+    Director::getInstance()->getScheduler()->scheduleUpdate(this, 1, false);
 }
 
 void PortSupplyLayer::endCircle()
 {
-    unschedule(updateLabel);
+    Director::getInstance()->getScheduler()->unscheduleUpdate(this);
 }
 
-void PortSupplyLayer::changeLabel(float dt)
+void PortSupplyLayer::update(float dt)
 {
     char name[50];
     sprintf(name, "%d",sPlayer.getFuel());

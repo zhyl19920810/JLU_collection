@@ -15,6 +15,8 @@
 #include "KantaiDetailEntity.hpp"
 #include "KantaiListEntity.hpp"
 #include "FleetButton.hpp"
+
+
 using namespace cocos2d;
 class PortScene;
 

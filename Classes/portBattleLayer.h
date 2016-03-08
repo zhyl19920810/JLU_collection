@@ -19,7 +19,9 @@ class MissionSelectPage;
 class PortBattleLayer:public Layer
 {
 public:
-    PortBattleLayer(Node* parent);
+    CREATE_FUNC(PortBattleLayer);
+    
+    bool init();
     
     void callBack1(Ref* pSender);
     

@@ -69,7 +69,7 @@ void Arsenal::buildTimeCircle(float dt)
     for (int i=0; i<arsenal.size(); ++i)
     {
         auto unit=arsenal[i];
-        if ((!unit.kantaiNumber)&&(!unit.finished))
+        if ((unit.kantaiNumber)&&(!unit.finished))
         {
             if (unit.remainTime<=0)
             {
@@ -80,6 +80,7 @@ void Arsenal::buildTimeCircle(float dt)
         }
     }
 }
+
 void Arsenal::finishBuildingKantai(int position)
 {
     CCASSERT(position>=1&&position<=maxArsenalSize, "position is out of range");

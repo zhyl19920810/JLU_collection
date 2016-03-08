@@ -38,6 +38,7 @@ public:
     CREATE_FUNC(PortMainLayer);
     virtual bool init();
     
+    void resumeDispatcher();
 private:
     int girlflag;
     Sprite * floor;
