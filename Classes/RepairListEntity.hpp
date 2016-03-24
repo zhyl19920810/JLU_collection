@@ -14,6 +14,7 @@
 #include "kantai.h"
 #include "RepairListRow.hpp"
 #include "RepairSelectEntity.hpp"
+#include "LayerCover.hpp"
 using namespace cocos2d;
 
 
@@ -66,13 +67,13 @@ private:
     void sortButtonCallback	(Ref* pSender);
     std::vector<Kantai*> displayKantai;
     
-    
-    //select
-    MenuItemSprite* hideListItem;
+    LayerCover* selectCover;
+public:
     void hideSelect(Ref* pSender);
+    void showSelect(Kantai* kantai);
     
 public:
-    void showSelect(Kantai* kantai);
+    
     RepairSelectEntity* selectEntity;
 };
 

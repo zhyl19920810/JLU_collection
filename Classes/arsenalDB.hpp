@@ -30,7 +30,7 @@ public:
     
     void insertKantai(int playerKey,int kantaiNumber,int position,int buildTime);
     
-    void deleteKantai(int playerKey,int kantaiNumber);
+    void deleteKantai(int playerKey,int position);
     
     static ArsenalDB* getInstance();
 protected:

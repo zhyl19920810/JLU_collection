@@ -13,15 +13,14 @@
 void KantaiListEntity::hideSelect(cocos2d::Ref *pSender)
 {
     organSelectEntity->moveOut();
-    hideListItem->setEnabled(false);
-    
+    selectCover->setCoverEnable(false);
 }
 
 void KantaiListEntity::showSelect(Kantai* kantai)
 {
     organSelectEntity->moveIn();
     organSelectEntity->updateKantai(kantai);
-    hideListItem->setEnabled(true);
+    selectCover->setCoverEnable(true);
 }
 
 void KantaiListEntity::removeCallback(cocos2d::Ref *ref)
@@ -52,10 +51,10 @@ bool KantaiListEntity::init()
         removeButton->setPosition(430,345);
         menu->addChild(removeButton);
         
-        
+ 
         organSelectEntity=OrganSelectEntity::create();
         organSelectEntity->setPosition(238,0);
-        addChild(organSelectEntity,2);
+        addChild(organSelectEntity,3);
         
         
         bRet=true;

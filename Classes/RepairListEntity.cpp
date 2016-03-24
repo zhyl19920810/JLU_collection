@@ -60,10 +60,6 @@ void RepairListEntity::initBg()
     this->addChild(bgimg);
     bgimg->setPosition(644, 195);
     
-    auto titleBar = Sprite::create("RepairMain/repairBar.png");
-    this->addChild(titleBar);
-    titleBar->setPosition(743, 397);
-    
     auto top_label = Sprite::create("RepairMain/repairListTitle.png");
     this->addChild(top_label);
     top_label->setPosition(388, 399);
@@ -78,15 +74,14 @@ void RepairListEntity::initBg()
 void RepairListEntity::hideSelect(cocos2d::Ref *pSender)
 {
     selectEntity->moveOut();
-    hideListItem->setEnabled(false);
-    
+    selectCover->setCoverEnable(false);
 }
 
 void RepairListEntity::showSelect(Kantai* kantai)
 {
     selectEntity->moveIn();
     selectEntity->updateKantai(kantai);
-    hideListItem->setEnabled(true);
+    selectCover->setCoverEnable(true);
 }
 
 void RepairListEntity::initSortButton()
@@ -282,18 +277,14 @@ bool RepairListEntity::init()
         addChild(menu);
         updateRows();
         
-        auto closeItem2 = Sprite::create("CommonAssets/image 451.png");
-        closeItem2->setGlobalZOrder(10);
-        closeItem2->setOpacity(0);
-        hideListItem = MenuItemSprite::create(closeItem2, closeItem2, CC_CALLBACK_1(RepairListEntity::hideSelect, this));
-        hideListItem->setPosition(170, 240);
-        hideListItem->setEnabled(false);
-        menu->addChild(hideListItem);
-        hideListItem->setGlobalZOrder(10);
+        
+        selectCover=LayerCover::create(CC_CALLBACK_1(RepairListEntity::hideSelect, this));
+        selectCover->setPosition(0,0);
+        addChild(selectCover,2);
         
         selectEntity=RepairSelectEntity::create();
         selectEntity->setPosition(238,0);
-        
+        //addChild(selectEntity,3);
         
         bRet=true;
     }while(0);

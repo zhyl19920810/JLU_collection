@@ -91,6 +91,8 @@ public:
     }
     
     void update(float dt) override;
+    void pauseLayerSelecterButton();
+    void resumeLayerSelecterButton();
 private:
     
     Sprite *black;

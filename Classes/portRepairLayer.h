@@ -45,8 +45,7 @@ private:
     
 private:
     RepairListEntity* listEntity;
-    MenuItemSprite* hideListItem;
-    Menu* menu;
+    LayerCover* listCover;
 };
 
 

@@ -38,10 +38,6 @@ bool PortFactoryLayer::init()
 
 void PortFactoryLayer::initLayer()
 {
-    auto factoryBar=Sprite::create("ArsenalMain/titleBar.png");
-    this->addChild(factoryBar);
-    factoryBar->setPosition(400,395);
-    
     auto factorTitle=Sprite::create("ArsenalMain/factoryTitle.png");
     this->addChild(factorTitle);
     factorTitle->setPosition(175,400);
@@ -67,9 +63,9 @@ void PortFactoryLayer::initLayer()
     arsenalUpright2->setPosition(Vec2(150, 180));
     
     
-    auto buildButton = MenuItemImage::create("ArsenalMain/buildBotton1.png", "ArsenalMain/buildBotton2.png", CC_CALLBACK_1(PortFactoryLayer::callBack, this));
+    auto buildButton = MenuItemImage::create("ArsenalMain/buildBotton1.png", "ArsenalMain/buildBotton1.png");
     buildButton->setPosition(-225,115);
-    auto disassembleButton = MenuItemImage::create("ArsenalMain/disassembleButton1.png", "ArsenalMain/disassembleButton2.png", CC_CALLBACK_1(PortFactoryLayer::destroyCallback, this));
+    auto disassembleButton = MenuItemImage::create("ArsenalMain/disassembleButton1.png", "ArsenalMain/disassembleButton2.png", CC_CALLBACK_1(PortFactoryLayer::showDestroy, this));
     disassembleButton->setPosition(-225, 40);
     auto developButton = MenuItemImage::create("ArsenalMain/developButton1.png", "ArsenalMain/developButton2.png", CC_CALLBACK_1(PortFactoryLayer::NullCallback, this));
     developButton->setPosition(-225, -45);
@@ -80,46 +76,39 @@ void PortFactoryLayer::initLayer()
     menu->setPosition(tmp);
     bgimg->addChild(menu);
     
+    
+    destoryCover=LayerCover::create(CC_CALLBACK_1(PortFactoryLayer::hideDestroy, this));
+    destoryCover->setPosition(0,0);
+    addChild(destoryCover,2);
+    
+    listCover=LayerCover::create(CC_CALLBACK_1(PortFactoryLayer::hideList, this));
+    listCover->setPosition(0,0);
+    addChild(listCover,2);
+    
+    
     entity=BuildKantaiEntity::create(kantaiBuilding);
     entity->setPosition(1150,tmp.height);
-    addChild(entity,2);
+    addChild(entity,3);
     
-    auto closeItem2 = Sprite::create("CommonAssets/image 451.png");
-    closeItem2->setGlobalZOrder(10);
-    closeItem2->setOpacity(0);
-    hideListItem = MenuItemSprite::create(closeItem2, closeItem2, CC_CALLBACK_1(PortFactoryLayer::hideCallback, this));
-    hideListItem->setPosition(Vec2(-600,0));
-    hideListItem->setEnabled(false);
-    menu->addChild(hideListItem);
-    hideListItem->setGlobalZOrder(10);
-    
-    
-    auto closeItem3 = Sprite::create("CommonAssets/image 451.png");
-    closeItem3->setGlobalZOrder(10);
-    closeItem3->setOpacity(0);
-    destoryHideItem=MenuItemSprite::create(closeItem3, closeItem3,CC_CALLBACK_1(PortFactoryLayer::destroyHideCallback, this));
-    destoryHideItem->setPosition(Vec2(-600, 0));
-    destoryHideItem->setEnabled(false);
-    menu->addChild(destoryHideItem);
-    destoryHideItem->setGlobalZOrder(10);
-
     
     auto visible=Director::getInstance()->getVisibleSize();
     destoryList=FactoryListEntity::create();
-    addChild(destoryList,2);
+    addChild(destoryList,3);
     destoryList->setPosition(visible.width,0);
     
 }
 
-void PortFactoryLayer::destroyHideCallback(Ref* pSender)
+void PortFactoryLayer::hideDestroy(Ref* pSender)
 {
     destoryList->moveOut();
-    destoryHideItem->setEnabled(false);
+    destoryCover->setCoverEnable(false);
+    //destoryHideItem->setEnabled(false);
 }
 
-void PortFactoryLayer::hideCallback(cocos2d::Ref *pSender)
+void PortFactoryLayer::hideList(cocos2d::Ref *pSender)
 {
-    hideListItem->setEnabled(false);
+    //hideListItem->setEnabled(false);
+    listCover->setCoverEnable(false);
     entity->hideEntity();
 }
 
@@ -133,18 +122,26 @@ void PortFactoryLayer::initContainer()
     }
 }
 
-void PortFactoryLayer::showEntity(int position)
+void PortFactoryLayer::showList(int position)
 {
     UserDefault::getInstance()->setIntegerForKey("arsenalPosition", position);
     entity->showEntity();
-    hideListItem->setEnabled(true);
+    listCover->setCoverEnable(true);
 }
 
-void PortFactoryLayer::callBack(Ref* pSender)
+void PortFactoryLayer::showDestroy(Ref* pSender)
 {
-    entity->showEntity();
-    hideListItem->setEnabled(true);
+    destoryList->moveIn();
+    destoryCover->setCoverEnable(true);
 }
+
+
+
+//void PortFactoryLayer::callBack(Ref* pSender)
+//{
+//    entity->showEntity();
+//    listCover->setCoverEnable(true);
+//}
 
 void PortFactoryLayer::startBuild(int fuel, int steel, int ammo, int al)
 {
@@ -155,15 +152,9 @@ void PortFactoryLayer::startBuild(int fuel, int steel, int ammo, int al)
     }
     sArsenal.buildNewKantai(position, fuel,steel,ammo,al, 10);
     container[position-1]->update();
-    hideCallback(this);
+    hideList(this);
 }
 
-
-void PortFactoryLayer::destroyCallback(Ref* pSender)
-{
-    destoryList->moveIn();
-    destoryHideItem->setEnabled(true);
-}
 
 void PortFactoryLayer::destroyKantai(Kantai *kantai, int fuel, int steel, int ammo, int al)
 {

@@ -14,6 +14,7 @@
 #include "kantai.h"
 #include "ListRow.hpp"
 #include "OrganizeSelectEntity.hpp"
+#include "LayerCover.hpp"
 using namespace cocos2d;
 
 
@@ -74,8 +75,13 @@ public:
     
 protected:
     std::vector<Kantai*> displayKantai;
-    MenuItemSprite* hideListItem;
     Menu *menu;
+    LayerCover* selectCover;
+    EventListenerTouchOneByOne* listener;
+    Sprite* bgimg;
+private:
+    
+    void hideFunc(Ref* pSender){hideSelect(pSender);}
 };
 
 

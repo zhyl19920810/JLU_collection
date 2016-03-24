@@ -16,7 +16,7 @@
 void FactoryListEntity::hideSelect(cocos2d::Ref *pSender)
 {
     kantaiDestroyEntity->moveOut();
-    hideListItem->setEnabled(false);
+    selectCover->setCoverEnable(false);
     
 }
 
@@ -24,7 +24,7 @@ void FactoryListEntity::showSelect(Kantai* kantai)
 {
     kantaiDestroyEntity->moveIn();
     kantaiDestroyEntity->update(kantai);
-    hideListItem->setEnabled(true);
+    selectCover->setCoverEnable(true);
 }
 
 void FactoryListEntity::removeCallback(cocos2d::Ref *ref)

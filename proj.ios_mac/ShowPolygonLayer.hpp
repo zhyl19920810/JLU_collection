@@ -13,14 +13,6 @@
 //
 //USING_NS_CC;
 //
-//class ShowPolygonLayer:public Node
-//{
-//public:
-//    static ShowPolygonLayer* create(const Color4B& color,Rect& rect);
-//    
-//    void setRectangle(Rect& rect);
-//private:
-//};
 //
 //class TriangleCommand:public CustomCommand
 //{
@@ -40,6 +32,33 @@
 //    Mat4 _mv;
 //    GLProgram* _shader;
 //};
+//
+//
+//
+//class ShowPolygonLayer:public Node
+//{
+//public:
+//    static ShowPolygonLayer* create(const Color4B& color,Rect& rect);
+//    
+//    bool init(const Color4B& color,Rect& rect);
+//    
+//    void setRectangle(Rect& rect);
+//    
+//    void draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags) override;
+//private:
+//    TriangleCommand customCommand;
+//    Vec2* _squareVertices;
+//    Vec3* _noMVPVertices;
+//    GLuint* indices;
+//    Color4F* colors;
+//    
+//    
+//    Color4B color;
+//    Rect rect;
+//    
+//    
+//};
+//
 //
 //
 //#endif /* ShowPolygonLayer_hpp */

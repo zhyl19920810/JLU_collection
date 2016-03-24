@@ -28,6 +28,7 @@ void ListEntity::moveOut()
 {
     if (!hidden)
     {
+        listener->setEnabled(false);
         this->runAction(MoveBy::create(0.4, Point(800, 0)));
         hidden = true;
     }
@@ -37,6 +38,7 @@ void ListEntity::moveIn()
 {
     if (hidden)
     {
+        listener->setEnabled(true);
         this->runAction(MoveBy::create(0.4, Point(-800, 0)));
         hidden = false;
     }
@@ -57,7 +59,7 @@ void ListEntity::initBg()
     menu = Menu::create(NULL);
     menu->setPosition(Vec2::ZERO);
     //bg
-    auto bgimg = Sprite::create("OrganizeMain/kantaiListBg1.png");
+    bgimg = Sprite::create("OrganizeMain/kantaiListBg1.png");
     this->addChild(bgimg);
     bgimg->setPosition(654, 195);
     
@@ -73,17 +75,28 @@ void ListEntity::initBg()
     this->addChild(category);
     category->setPosition(595, 370);
     
-
+    selectCover=LayerCover::create(CC_CALLBACK_1(ListEntity::hideFunc, this));
+    selectCover->setPosition(0,0);
+    addChild(selectCover,2);
     
-    auto closeItem2 = Sprite::create("CommonAssets/image 451.png");
-    closeItem2->setGlobalZOrder(10);
-    closeItem2->setOpacity(0);
-    hideListItem = MenuItemSprite::create(closeItem2, closeItem2, CC_CALLBACK_1(ListEntity::hideSelect, this));
-    hideListItem->setPosition(170, 240);
-    hideListItem->setEnabled(false);
-    menu->addChild(hideListItem);
-    hideListItem->setGlobalZOrder(10);
-    
+    listener = EventListenerTouchOneByOne::create();
+    listener->onTouchBegan = [=](Touch *touch, Event *event)
+    {
+        auto target=static_cast<Sprite*>(event->getCurrentTarget());
+        Vec2 location=target->convertToNodeSpace(touch->getLocation());
+        Size s=target->getContentSize();
+        Rect rect=Rect(126,0,s.width,s.height);
+        
+        if (rect.containsPoint(location))
+        {
+            listener->setSwallowTouches(true);
+            return true;
+        }
+        return false;
+    };
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener,bgimg);
+    listener->setEnabled(false);
+ 
 }
 
 
@@ -279,6 +292,8 @@ bool ListEntity::init()
             break;
         }
         
+        
+
         initBg();
         initSortButton();
         initRows();

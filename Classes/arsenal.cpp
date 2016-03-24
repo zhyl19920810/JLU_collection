@@ -86,11 +86,11 @@ void Arsenal::finishBuildingKantai(int position)
     CCASSERT(position>=1&&position<=maxArsenalSize, "position is out of range");
     int kantaiNumber=arsenal[position-1].kantaiNumber;
     CCASSERT(kantaiNumber, "there is not a ship in the position");
-    sArsenalDB->deleteKantai(playerKey, kantaiNumber);
+    sArsenalDB->deleteKantai(playerKey, position);
     arsenal[position-1].kantaiNumber=0;
     arsenal[position-1].remainTime=0;
     arsenal[position-1].finished=false;
-    //sPlayer.buildNewKantai(kantaiNumber);
+    sPlayer.buildNewKantai(kantaiNumber);
 }
 
 bool Arsenal::isBuildingFinished(int position)

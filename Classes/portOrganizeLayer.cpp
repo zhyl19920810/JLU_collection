@@ -8,7 +8,7 @@
 
 #include "portOrganizeLayer.h"
 #include "PortScene.h"
-
+#include "GameManger.hpp"
 
 
 
@@ -47,6 +47,9 @@ bool PortOrganizeLayer::init()
     return bRet;
 }
 
+
+
+
 bool PortOrganizeLayer::hasSameKantai(int kantaiNumber)
 {
     for (int i=0; i<containers.size(); ++i)
@@ -71,17 +74,15 @@ void PortOrganizeLayer::initLayer()
     bgimg->setOpacity(250);
     bgimg->setPosition(450, 200);
     
-    auto top_bar = Sprite::create("OrganizeMain/topBar.png");
-    addChild(top_bar);
-    top_bar->setPosition(bgimg->getPosition()+Vec2(0, 197));
     
     auto top_label = Sprite::create("OrganizeMain/topLabel.png");
     addChild(top_label);
-    top_label->setPosition(top_bar->getPosition()+Vec2(-290, 4));
+    top_label->setPosition(bgimg->getPosition()+Vec2(0, 197)+Vec2(-290, 4));
     
     auto clearFleetButton = MenuItemImage::create("OrganizeMain/closeFleet1.png", "OrganizeMain/closeFleet2.png", CC_CALLBACK_1(PortOrganizeLayer::clearFleet, this));
     clearFleetButton->setPosition(415, 365);
     menu->addChild(clearFleetButton);
+    addChild(menu);
     
     auto fleet_name_text_box = Sprite::create("OrganizeMain/inputFleetName.png");
     fleet_name_text_box->setPosition(clearFleetButton->getPosition()+Vec2(185, 5));
@@ -92,34 +93,23 @@ void PortOrganizeLayer::initLayer()
     editFleetNameButton->setAnchorPoint(Vec2(0, 0.5));
     editFleetNameButton->setPosition(fleet_name_text_box->getPosition()+Vec2(fleet_name_text_box->getContentSize().width/2, 0));
     
+    detailCover=LayerCover::create(CC_CALLBACK_1(PortOrganizeLayer::hideDetail, this));
+    detailCover->setPosition(0,0);
+    addChild(detailCover,2);
 
-    auto closeItem = Sprite::create("CommonAssets/image 451.png");
-    closeItem->setGlobalZOrder(10);
-    closeItem->setOpacity(0);
-    hideDetailItem = MenuItemSprite::create(closeItem, closeItem, CC_CALLBACK_1(PortOrganizeLayer::hideDetail, this));
-    hideDetailItem->setPosition(visibleSize/2);
-    hideDetailItem->setEnabled(false);
-    menu->addChild(hideDetailItem);
-    
-    auto closeItem2 = Sprite::create("CommonAssets/image 451.png");
-    closeItem2->setGlobalZOrder(10);
-    closeItem2->setOpacity(0);
-    hideListItem = MenuItemSprite::create(closeItem2, closeItem2, CC_CALLBACK_1(PortOrganizeLayer::hideList, this));
-    hideListItem->setPosition(-42, 240);
-    hideListItem->setEnabled(false);
-    menu->addChild(hideListItem);
-    addChild(menu);
-
-
+    listCover=LayerCover::create(CC_CALLBACK_1(PortOrganizeLayer::hideList, this));
+    listCover->setPosition(0,0);
+    addChild(listCover,2);
     
     detailEntity=KantaiDetailEntity::create();
-    addChild(detailEntity,2);
+    addChild(detailEntity,3);
     detailEntity->setPosition(visibleSize.width,0);
     detailEntity->setKantai(fleet->getShip(1));
     
     listEntity=KantaiListEntity::create();
-    addChild(listEntity,2);
+    addChild(listEntity,3);
     listEntity->setPosition(visibleSize.width,0);
+    
 }
 
 void PortOrganizeLayer::initContainers()
@@ -149,8 +139,8 @@ void PortOrganizeLayer::initContainers()
 void PortOrganizeLayer::hideList(Ref* pSender)
 {
     listEntity->moveOut();
-    hideListItem->setEnabled(false);
-    setDetailButtonEnble(true);
+    listCover->setCoverEnable(false);
+
 }
 
 void PortOrganizeLayer::showList(int index)
@@ -159,10 +149,9 @@ void PortOrganizeLayer::showList(int index)
     {
         listEntity->moveIn();
     }
-    hideListItem->setEnabled(true);
-    setDetailButtonEnble(false);
     UserDefault::getInstance()->setIntegerForKey("fleetNumber", fleet->getFleetKey());
     UserDefault::getInstance()->setIntegerForKey("position", index);
+    listCover->setCoverEnable(true);
 }
 
 
@@ -192,45 +181,19 @@ void PortOrganizeLayer::updateContainer(int position)
 
 void PortOrganizeLayer::showDetail(int index)
 {
-//    UserDefault::getInstance()->setIntegerForKey("fleetNumber", fleet->getFleetKey());
-//    UserDefault::getInstance()->setIntegerForKey("position", index);
-//    removeContainer();
     
     if (detailEntity->isHidden())
     {
         detailEntity->moveIn();
     }
     detailEntity->setKantai(fleet->getShip(index));
-    hideDetailItem->setEnabled(true);
-    setChangeButtonEnble(false);
+    detailCover->setCoverEnable(true);
 }
 void PortOrganizeLayer::hideDetail(Ref* pSender)
 {
     detailEntity->moveOut();
-    hideDetailItem->setEnabled(false);
-    setChangeButtonEnble(true);
+    detailCover->setCoverEnable(false);
 }
-
-
-
-
-
-void PortOrganizeLayer::setDetailButtonEnble(bool bEnble)
-{
-    for (int i=0;i<6; ++i)
-    {
-        containers[i]->setDetailButtonEnble(bEnble);
-    }
-}
-
-void PortOrganizeLayer::setChangeButtonEnble(bool bEnble)
-{
-    for (int i=0; i<6; ++i)
-    {
-        containers[i]->setChangeButtonEnble(bEnble);
-    }
-}
-
 
 void PortOrganizeLayer::updateFleet(int fleetNumber)
 {
@@ -292,7 +255,7 @@ void PortOrganizeLayer::changeContainer(Kantai* kantai)
     if (fleet&&fleet->getShip(position))
     {
         sPlayer.modifyKantaiPosition(fleet, position, kantai);
-        CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganSelectEntity::moveOut, listEntity->organSelectEntity));
+        CallFunc* f1=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::hideSelect, listEntity,this));
         CallFunc* f2=CallFunc::create(CC_CALLBACK_0(PortOrganizeLayer::hideList,this,this));
         CallFunc* f3=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::changeContainer, containers[position-1],kantai));
         CallFunc* f4=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, listEntity));
@@ -323,7 +286,7 @@ void PortOrganizeLayer::changeContainer(Kantai* kantai)
             }
         }
 
-        CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganSelectEntity::moveOut, listEntity->organSelectEntity));
+        CallFunc* f1=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::hideSelect, listEntity,this));
         CallFunc* f2=CallFunc::create(CC_CALLBACK_0(PortOrganizeLayer::hideList,this,this));
         CallFunc* f3=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::openNewContainer, containers[position-1],kantai));
         CallFunc* f4=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, listEntity));

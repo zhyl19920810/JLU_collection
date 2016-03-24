@@ -126,6 +126,11 @@ bool PortScene::init()
     borderTopLeft->runAction(repeat);
     addChild(borderTopLeft);
     
+    auto top_bar = Sprite::create("OrganizeMain/topBar.png");
+    addChild(top_bar);
+    top_bar->setPosition(bgImage->getPosition()+Vec2(-370, 188));
+    
+    
     auto borderCircle=Sprite::createWithSpriteFrameName("borderCircle.png");
     borderCircle->setPosition(62,423);
     borderCircle->setZOrder(1);
@@ -328,6 +333,16 @@ void PortScene::changeFurnitureCallback(Ref* psSender)
     
 }
 
+void PortScene::pauseLayerSelecterButton()
+{
+    layerSelecter->pauseButton();
+}
+
+void PortScene::resumeLayerSelecterButton()
+{
+    layerSelecter->resumeButton();
+}
+
 
 void PortScene::SetCurrLayer(LayerType type)
 {
@@ -373,7 +388,7 @@ void PortScene::SetCurrLayer(LayerType type)
             }
             mainlayer->setVisible(false);
             currentLayer=PortSupplyLayer::create();
-            addChild(currentLayer);
+            addChild(currentLayer,2);
             layerSelecter->moveIn();
             currentLayerType=type;
             break;
@@ -392,7 +407,7 @@ void PortScene::SetCurrLayer(LayerType type)
             }
             mainlayer->setVisible(false);
             currentLayer=PortRepairLayer::create();
-            addChild(currentLayer);
+            addChild(currentLayer,2);
             layerSelecter->moveIn();
             currentLayerType=type;
             break;
@@ -412,7 +427,7 @@ void PortScene::SetCurrLayer(LayerType type)
             }
             mainlayer->setVisible(false);
             currentLayer=PortFactoryLayer::create();
-            addChild(currentLayer);
+            addChild(currentLayer,2);
             currentLayerType=type;
             break;
         }
@@ -429,7 +444,7 @@ void PortScene::SetCurrLayer(LayerType type)
             }
             mainlayer->setVisible(false);
             currentLayer=PortRemodeLayer::create();
-            addChild(currentLayer);
+            addChild(currentLayer,2);
             currentLayerType=type;
             break;
         }
@@ -465,7 +480,7 @@ void PortScene::SetCurrLayer(LayerType type)
             }
             mainlayer->setVisible(false);
             currentLayer=PortOrganizeLayer::create();
-            addChild(currentLayer);
+            addChild(currentLayer,2);
             currentLayerType=type;
             break;
             

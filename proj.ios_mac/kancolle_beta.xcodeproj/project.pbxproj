@@ -171,6 +171,8 @@
 		F4036E3C1BDA2316002788AA /* portSupplyLayer.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D6B1BDA1FDD002788AA /* portSupplyLayer.h */; };
 		F4036E3D1BDA2316002788AA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10317EB98FF00D1A890 /* main.cpp */; };
 		F4036E3E1BDA2316002788AA /* Prefix.pch in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10417EB98FF00D1A890 /* Prefix.pch */; };
+		F409531C1C99B0C100E9B958 /* LayerCover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F409531A1C99B0C100E9B958 /* LayerCover.cpp */; };
+		F409531D1C99B0C100E9B958 /* LayerCover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F409531A1C99B0C100E9B958 /* LayerCover.cpp */; };
 		F40C1BAD1C6185F90093774E /* ArsenalMain in Resources */ = {isa = PBXBuildFile; fileRef = F40C1BAC1C6185F90093774E /* ArsenalMain */; };
 		F40C1BB31C619A8F0093774E /* buildKantaiUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C1BB11C619A8F0093774E /* buildKantaiUnit.cpp */; };
 		F40C1BB41C619A8F0093774E /* buildKantaiUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C1BB11C619A8F0093774E /* buildKantaiUnit.cpp */; };
@@ -532,6 +534,8 @@
 		F4036D751BDA1FDD002788AA /* XMLControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLControl.h; sourceTree = "<group>"; };
 		F4036D761BDA1FDD002788AA /* XMLParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XMLParser.cpp; sourceTree = "<group>"; };
 		F4036D771BDA1FDD002788AA /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParser.h; sourceTree = "<group>"; };
+		F409531A1C99B0C100E9B958 /* LayerCover.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayerCover.cpp; sourceTree = "<group>"; };
+		F409531B1C99B0C100E9B958 /* LayerCover.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LayerCover.hpp; sourceTree = "<group>"; };
 		F40C1BAC1C6185F90093774E /* ArsenalMain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ArsenalMain; sourceTree = "<group>"; };
 		F40C1BB11C619A8F0093774E /* buildKantaiUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildKantaiUnit.cpp; sourceTree = "<group>"; };
 		F40C1BB21C619A8F0093774E /* buildKantaiUnit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = buildKantaiUnit.hpp; sourceTree = "<group>"; };
@@ -979,6 +983,7 @@
 		F4036DCD1BDA20DE002788AA /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				F40953181C99B06500E9B958 /* LayerCover */,
 				F476D34C1C8DE5A800A1B8EB /* ShowPolygonLayer */,
 				F43907A11C8B3D86004B5B2D /* ListEntity */,
 				F4D38E211C8746B5009BE55C /* ValueBar */,
@@ -1113,6 +1118,15 @@
 				F40CF97E1BDB4D1E00DD897F /* XMLBase.h */,
 			);
 			name = XML;
+			sourceTree = "<group>";
+		};
+		F40953181C99B06500E9B958 /* LayerCover */ = {
+			isa = PBXGroup;
+			children = (
+				F409531A1C99B0C100E9B958 /* LayerCover.cpp */,
+				F409531B1C99B0C100E9B958 /* LayerCover.hpp */,
+			);
+			name = LayerCover;
 			sourceTree = "<group>";
 		};
 		F40C1BB51C61E4EF0093774E /* MenuItem */ = {
@@ -1526,6 +1540,7 @@
 				F44D26F11C4D1D2300438F3C /* database in Sources */,
 				F44D26C01C4D198400438F3C /* XMLBuilder.h in Sources */,
 				F44D26C11C4D198400438F3C /* XMLParser.h in Sources */,
+				F409531C1C99B0C100E9B958 /* LayerCover.cpp in Sources */,
 				F44D26C21C4D198400438F3C /* XMLBase.h in Sources */,
 				F44D26C31C4D198400438F3C /* Player.h in Sources */,
 				F4D5D0891C5FAFDF001441C3 /* FactoryContainer.cpp in Sources */,
@@ -1809,6 +1824,7 @@
 				F4036E3D1BDA2316002788AA /* main.cpp in Sources */,
 				F42DB8F31C59DBF600CBE2C7 /* KantaiListEntity.cpp in Sources */,
 				F4036E3E1BDA2316002788AA /* Prefix.pch in Sources */,
+				F409531D1C99B0C100E9B958 /* LayerCover.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

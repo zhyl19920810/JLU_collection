@@ -36,9 +36,9 @@ void PortBattleLayer::initLayer()
     bgimg->setZOrder(-4);
     bgimg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
     
-    auto top_bar = Sprite::create("interface/SallyMain/SallyMain_235.png");
-    this->addChild(top_bar);
-    top_bar->setPosition(450, 397);
+//    auto top_bar = Sprite::create("interface/SallyMain/SallyMain_235.png");
+//    this->addChild(top_bar);
+//    top_bar->setPosition(450, 397);
     
     auto top_label = Sprite::create("interface/SallyMain/SallyMain_359.png");
     this->addChild(top_label);

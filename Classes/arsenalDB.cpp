@@ -88,15 +88,15 @@ void ArsenalDB::insertKantai(int playerKey,int kantaiNumber, int position, int b
     return;
 }
 
-void ArsenalDB::deleteKantai(int playerKey,int kantaiNumber)
+void ArsenalDB::deleteKantai(int playerKey,int position)
 {
-    std::string qsql2="delete from kantai_in_building where playerKey=? and kantaiNumber=?";
+    std::string qsql2="delete from kantai_in_building where playerKey=? and position=?";
     sqlite3_stmt* statement;
     
     if (sqlite3_prepare_v2(kancolleDB, qsql2.c_str(), -1, &statement, NULL)==SQLITE_OK)
     {
         sqlite3_bind_int(statement, 1, playerKey);
-        sqlite3_bind_int(statement, 2, kantaiNumber);
+        sqlite3_bind_int(statement, 3, position);
         
         if (sqlite3_step(statement)!=SQLITE_DONE)
         {

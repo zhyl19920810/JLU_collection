@@ -80,13 +80,14 @@ void FactoryContainer::initButton()
 void FactoryContainer::buildCallback(Ref* pSender)
 {
     auto parent=static_cast<PortFactoryLayer*>(_parent);
-    parent->showEntity(position);
+    parent->showList(position);
     
 }
 
 void FactoryContainer::getCallback(cocos2d::Ref *pSender)
 {
     sArsenal.finishBuildingKantai(position);
+    update();
     //还有引出新的界面
 }
 

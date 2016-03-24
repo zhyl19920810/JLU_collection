@@ -132,7 +132,7 @@ void KantaiDestroyEntity::destroyCallback(cocos2d::Ref *pSender)
                                   });
     CallFunc* f4=CallFunc::create([=]()
                                   {
-                                      factoryLayer->destroyHideCallback(this);
+                                      factoryLayer->hideDestroy(this);
                                   });
     this->runAction(Sequence::create(f1,f3,f2,DelayTime::create(0.5),f4,DelayTime::create(1.5), NULL));
 

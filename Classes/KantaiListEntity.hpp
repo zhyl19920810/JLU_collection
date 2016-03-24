@@ -12,6 +12,7 @@
 
 #include "OrganizeContainer.hpp"
 #include "ListEntity.hpp"
+#include "LayerCover.hpp"
 
 class KantaiListEntity:public ListEntity
 {
@@ -24,6 +25,7 @@ public:
     OrganSelectEntity* organSelectEntity;
 
 private:
+
 };
 
 

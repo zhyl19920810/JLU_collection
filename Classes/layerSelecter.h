@@ -23,7 +23,8 @@ public:
     
     void moveIn();
     
-    
+    void pauseButton(){menu->pause();}
+    void resumeButton(){menu->resume();}
 private:
     PortScene *parent;
     
