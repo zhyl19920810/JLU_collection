@@ -195,6 +195,8 @@
 		F40CF9901BDB7FDF00DD897F /* XMLBase.h in Sources */ = {isa = PBXBuildFile; fileRef = F40CF97E1BDB4D1E00DD897F /* XMLBase.h */; };
 		F40CF9911BDB7FDF00DD897F /* Formation.h in Sources */ = {isa = PBXBuildFile; fileRef = F40CF9881BDB69A300DD897F /* Formation.h */; };
 		F40CF9921BDB7FDF00DD897F /* BattleModel.h in Sources */ = {isa = PBXBuildFile; fileRef = F40CF98D1BDB6A5A00DD897F /* BattleModel.h */; };
+		F41D54971D2A915B0094CAAD /* Sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F41D54951D2A915B0094CAAD /* Sound.cpp */; };
+		F41D54981D2A915B0094CAAD /* Sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F41D54951D2A915B0094CAAD /* Sound.cpp */; };
 		F42865E11BDBC33700045E66 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42865DF1BDBC33700045E66 /* GameScene.cpp */; };
 		F42865E41BDBC52B00045E66 /* BattleBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42865E21BDBC52B00045E66 /* BattleBar.cpp */; };
 		F42865E51BDBC52B00045E66 /* BattleBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42865E21BDBC52B00045E66 /* BattleBar.cpp */; };
@@ -552,6 +554,8 @@
 		F40CF9881BDB69A300DD897F /* Formation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Formation.h; sourceTree = "<group>"; };
 		F40CF98C1BDB6A5A00DD897F /* BattleModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleModel.cpp; sourceTree = "<group>"; };
 		F40CF98D1BDB6A5A00DD897F /* BattleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleModel.h; sourceTree = "<group>"; };
+		F41D54951D2A915B0094CAAD /* Sound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sound.cpp; sourceTree = "<group>"; };
+		F41D54961D2A915B0094CAAD /* Sound.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Sound.hpp; sourceTree = "<group>"; };
 		F42865DF1BDBC33700045E66 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
 		F42865E01BDBC33700045E66 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		F42865E21BDBC52B00045E66 /* BattleBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleBar.cpp; sourceTree = "<group>"; };
@@ -1051,6 +1055,7 @@
 		F4036DD31BDA2160002788AA /* backGround */ = {
 			isa = PBXGroup;
 			children = (
+				F41D548E1D2A903D0094CAAD /* Sound */,
 				F4FABB121C50D89000F75BCE /* GameManger.cpp */,
 				F4FABB131C50D89000F75BCE /* GameManger.hpp */,
 				F4FABB0E1C50D42600F75BCE /* Singleton.cpp */,
@@ -1178,6 +1183,15 @@
 				F40CF98D1BDB6A5A00DD897F /* BattleModel.h */,
 			);
 			name = battleModel;
+			sourceTree = "<group>";
+		};
+		F41D548E1D2A903D0094CAAD /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				F41D54951D2A915B0094CAAD /* Sound.cpp */,
+				F41D54961D2A915B0094CAAD /* Sound.hpp */,
+			);
+			name = Sound;
 			sourceTree = "<group>";
 		};
 		F42DB8F51C5A30D800CBE2C7 /* HpBar */ = {
@@ -1626,6 +1640,7 @@
 				F4D38E1B1C871AB9009BE55C /* SupplyFuelEntity.cpp in Sources */,
 				F4E62F381BDCB2E100180F6B /* CharacterCard.cpp in Sources */,
 				F4036D841BDA1FDD002788AA /* Equip.cpp in Sources */,
+				F41D54971D2A915B0094CAAD /* Sound.cpp in Sources */,
 				F4036D821BDA1FDD002788AA /* DatabaseScene.cpp in Sources */,
 				F4036D781BDA1FDD002788AA /* AppDelegate.cpp in Sources */,
 				F42DB8F91C5A30EB00CBE2C7 /* HpBar.cpp in Sources */,
@@ -1821,6 +1836,7 @@
 				F4036E3B1BDA2316002788AA /* portSupplyLayer.cpp in Sources */,
 				F43FFC7E1C5CD6CB00C98BED /* RepairHpBar.cpp in Sources */,
 				F4036E3C1BDA2316002788AA /* portSupplyLayer.h in Sources */,
+				F41D54981D2A915B0094CAAD /* Sound.cpp in Sources */,
 				F4036E3D1BDA2316002788AA /* main.cpp in Sources */,
 				F42DB8F31C59DBF600CBE2C7 /* KantaiListEntity.cpp in Sources */,
 				F4036E3E1BDA2316002788AA /* Prefix.pch in Sources */,
