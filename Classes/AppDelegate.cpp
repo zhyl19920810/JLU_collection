@@ -15,7 +15,7 @@
 #include "dock.hpp"
 #include "arsenal.hpp"
 
-#define DB_IN_COMPUTER 1
+//#define DB_IN_COMPUTER 1
 #define DEBUG_MODE true
 
 USING_NS_CC;
