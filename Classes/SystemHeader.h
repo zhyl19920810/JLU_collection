@@ -9,8 +9,20 @@
 #ifndef __kancolle_alpha__SystemHeader__
 #define __kancolle_alpha__SystemHeader__
 
+
+
 #include "cocos2d.h"
 #include <vector>
+
+
+#define NS_KCL_BEGIN namespace kancolle{
+#define NS_KCL_END   }
+#define USING_NS_KCL using namespace kancolle
+
+
+
+
+
 #define equilp_type int
 #define equilp_iter int
 #define plane_load int

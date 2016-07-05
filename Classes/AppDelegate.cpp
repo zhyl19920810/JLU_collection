@@ -15,6 +15,9 @@
 #include "dock.hpp"
 #include "arsenal.hpp"
 
+
+#include "BundleMgr.hpp"
+#include "SimpleAudioEngine.h"
 //#define DB_IN_COMPUTER 1
 #define DEBUG_MODE true
 
@@ -26,6 +29,7 @@ AppDelegate::AppDelegate() {
 
 AppDelegate::~AppDelegate() 
 {
+    BUNDLE_MGR->onDestroy();
 }
 
 //if you want a different context,just modify the value of glContextAttrs
@@ -64,80 +68,6 @@ void battleModel(Director* director)
 
 
 
-std::string AppDelegate::createDownLoadUrl()
-{
-     std::string pathToSave;
-    pathToSave = FileUtils::getInstance()->getWritablePath();
-    //pathToSave += DOWNLOAD_PATH;
-    
-    // Create the folder if it doesn't exist
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
-    DIR *pDir = NULL;
-    pDir = opendir (pathToSave.c_str());
-    if (!pDir)
-    {
-        mkdir(pathToSave.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
-    }
-#else
-    if ((GetFileAttributesA(pathToSave.c_str())) == INVALID_FILE_ATTRIBUTES)
-    {
-        CreateDirectoryA(pathToSave.c_str(), 0);
-    }
-#endif
-    return pathToSave;
-}
-
-#define GAME_DB_NAME "kancolle_2.sqlite3"
-
-
-
-void AppDelegate::portModel(Director* director)
-{
-    GameManger::newInstance();
-    sGameManger.LoadConfig();
-    sGameManger.LoadResource();
-    Player::newInstance();
-    Dock::newInstance();
-    Arsenal::newInstance();
-    
-    
-#if DB_IN_COMPUTER
-    std::string writablePath = FileUtils::getInstance()->fullPathForFilename("/Volumes/opengl/kancolle_beta/Resources/database/kancolle_2.sqlite3");
-    
-#else
-    std::string dbFilePath = FileUtils::getInstance()->fullPathForFilename("database/kancolle_2.sqlite3");
-    std::string writablePath =createDownLoadUrl();
-    writablePath+= GAME_DB_NAME;
-    ssize_t dbSize=0;
-    FileUtils::getInstance()->getFileData(writablePath.c_str(), "r", &dbSize);
-    if(dbSize){
-        fstream fsCopee( dbFilePath.c_str(), ios::binary | ios::in ) ;
-        fstream fsCoper( writablePath.c_str(), ios::binary | ios::out ) ;
-        fsCoper << fsCopee.rdbuf();
-    }
-#endif
-    DBBase::init(writablePath);
-    DBInit init;
-    init.initDB(1);
-    sDock.initDock(1);
-    sArsenal.initArsenal(1);
-//    for (int j=0; j<2; ++j)
-//    {
-//        for (int i=1; i<25; ++i)
-//        {
-//            if (sPlayer.canBuildNewKantai(i)) {
-//                sPlayer.buildNewKantai(i);
-//            }
-//        }
-//    }
-
-    
-    
-    
-    auto scene=PortScene::createScene();
-    director->runWithScene(scene);
-    
-}
 
 // If you want to use packages manager to install more packages,
 // don't modify or remove this function
@@ -177,8 +107,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     register_all_packages();
     
+    BUNDLE_MGR->onLaunchApp();
     //battleModel(director);
-    portModel(director);
     
     return true;
 }
@@ -189,19 +119,17 @@ bool AppDelegate::applicationDidFinishLaunching() {
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
-
+    BUNDLE_MGR->onEnterBackground();
     // if you use SimpleAudioEngine, it must be pause
-    // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+    CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 }
 
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
-
+    BUNDLE_MGR->onEnterForeground();
     // if you use SimpleAudioEngine, it must resume here
-    // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
-    
-    
+    CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }
 
 
