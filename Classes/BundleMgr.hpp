@@ -77,7 +77,7 @@ private:
     bool			m_needBackToSdkScene = false;
     
     
-private:
+public:
     bool            bgMusicSwitch = true;
     bool            effMusicSwitch = true;
 };

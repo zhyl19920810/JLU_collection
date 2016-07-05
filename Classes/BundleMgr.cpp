@@ -84,7 +84,7 @@ void BundleMgr::onEnterForeground()
 void BundleMgr::onDestroy()
 {
     tina::TinaMgr::destroy();
-//    ViewMgr::destroy();
+    //ViewMgr::destroy();
 //    Lang::destroy();
 //    DataMgr::destroy();
 //    SocketComm::destroy();

@@ -20,7 +20,7 @@
 #include "portOrganizeLayer.h"
 #include "Player.h"
 #include "GameManger.hpp"
-
+#include "Sound.hpp"
 
 
 PortScene* PortScene::createScene()
@@ -111,7 +111,7 @@ bool PortScene::init()
         return false;
     }
     
-
+    SND->playMusic("sound_bgm/sound 2.mp3");
     bgImage=Sprite::create("PortMain/image 345.jpg");
     bgImage->setPosition(800,210);
     bgImage->setGlobalZOrder(-3);
