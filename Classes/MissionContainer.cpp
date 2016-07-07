@@ -8,7 +8,7 @@
 
 #include "MissionContainer.h"
 
-
+NS_KCL_BEGIN
 
 MissionContainer::MissionContainer(int areaId,int index)
 {
@@ -87,7 +87,8 @@ void MissionContainer::updateContainer(int areaId, int index)
     }
 
     
-    
-    
+
     
 }
+
+NS_KCL_END
