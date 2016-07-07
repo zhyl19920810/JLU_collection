@@ -9,6 +9,8 @@
 #include "LayerCover.hpp"
 
 
+NS_CC_BEGIN
+
 LayerCover* LayerCover::create(FUNC callback)
 {
     LayerCover* pRet=new LayerCover;
@@ -66,3 +68,6 @@ void LayerCover::setCoverEnable(bool bEnble)
     listener->setEnabled(bEnble);
     bgCover->setVisible(bEnble);
 }
+
+NS_CC_END
+

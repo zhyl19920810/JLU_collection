@@ -10,6 +10,8 @@
 #include "SystemHeader.h"
 #include "EquipPicMgr.hpp"
 
+NS_KCL_BEGIN
+
 EquipContainer::EquipContainer()
 {
     
@@ -70,3 +72,5 @@ void EquipContainer::initContainer()
     label->setVisible(false);
     icon->setVisible(false);
 }
+
+NS_KCL_END

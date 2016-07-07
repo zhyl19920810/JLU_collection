@@ -10,6 +10,7 @@
 #define __kancolle_alpha__portBattleLayer__
 
 #include "cocos2d.h"
+#include "SystemHeader.h"
 
 USING_NS_CC;
 

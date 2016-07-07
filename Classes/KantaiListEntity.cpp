@@ -10,6 +10,8 @@
 #include "KantaiListEntity.hpp"
 #include "portOrganizeLayer.h"
 
+NS_KCL_BEGIN
+
 void KantaiListEntity::hideSelect(cocos2d::Ref *pSender)
 {
     organSelectEntity->moveOut();
@@ -64,4 +66,4 @@ bool KantaiListEntity::init()
 }
 
 
-
+NS_KCL_END

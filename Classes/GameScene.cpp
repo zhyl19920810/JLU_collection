@@ -9,6 +9,8 @@
 #include "GameScene.h"
 
 
+NS_KCL_BEGIN
+
 GameScene::GameScene(BattleModel *model)
 {
     
@@ -530,4 +532,6 @@ void GameScene::scoutResult()
     
 }
 
+
+NS_KCL_END
 

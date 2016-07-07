@@ -9,6 +9,8 @@
 #include "MenuItemTouch.hpp"
 
 
+NS_KCL_BEGIN
+
 MenuItemButton* MenuItemButton::create(cocos2d::Node *normalSprite, cocos2d::Node *selectedSprite, cocos2d::Node *coverSprite, const ccMenuCallback &callback)
 {
     MenuItemButton* tmp=new(std::nothrow) MenuItemButton;
@@ -46,3 +48,5 @@ void MenuItemButton::setButtonVisible(bool bVisible)
     button->setVisible(bVisible);
     buttonUp->setVisible(!bVisible);
 }
+
+NS_KCL_END

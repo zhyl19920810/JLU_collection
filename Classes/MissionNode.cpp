@@ -9,6 +9,7 @@
 #include "MissionNode.h"
 #include "XMLBuilder.h"
 
+NS_KCL_BEGIN
 
 void split(const std::string& src, const std::string& separator, std::vector<std::string>& dest)
 {
@@ -80,3 +81,6 @@ Fleet* MissionNode::parseEnemyFleet(const std::string &name)
 //    }
 //    return enemyFleet;
 }
+
+NS_KCL_END
+

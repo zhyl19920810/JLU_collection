@@ -8,6 +8,7 @@
 
 #include "Fleet.h"
 
+NS_KCL_BEGIN
 
 Fleet* Fleet::create(int fleetKey,LoadState state)
 {
@@ -77,3 +78,5 @@ void Fleet::setFleetState(FleetState _fleetState)
     fleetState=_fleetState;
     FleetDB::getInstance()->setFleetState(fleetKey,_fleetState);
 }
+
+NS_KCL_END

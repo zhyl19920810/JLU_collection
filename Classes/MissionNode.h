@@ -15,6 +15,9 @@
 
 USING_NS_CC;
 
+NS_KCL_BEGIN
+
+
 enum MissionNodeType
 {
     node_enemy,
@@ -48,7 +51,7 @@ public:
     std::vector<MissionNode*> children;
 };
 
-
+NS_KCL_END
 
 
 #endif /* defined(__kancolle_alpha__MissionNode__) */

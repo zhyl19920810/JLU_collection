@@ -14,6 +14,8 @@
 #include "kantai.h"
 using namespace cocos2d;
 
+NS_KCL_BEGIN
+
 
 class KantaiCard :public Node{
 public:
@@ -30,6 +32,8 @@ private:
     Sprite* shader;
     Sprite* brokenMark;
 };
+
+NS_KCL_END
 
 
 #endif /* kantaiCard_hpp */

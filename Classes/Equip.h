@@ -15,6 +15,7 @@
 
 USING_NS_CC;
 
+NS_KCL_BEGIN
 
 class Equip:public Ref
 {
@@ -54,9 +55,6 @@ private:
     Ref* parent;
     EquipMgr::stEquipData* equipImp;
 };
-
-
-
 
 
 
@@ -272,6 +270,8 @@ private:
 //    
 //    static void PrintEquipInfo(Equip *_equip);
 //};
+
+NS_KCL_END
 
 
 #endif /* defined(__kancolle_alpha__Equip__) */

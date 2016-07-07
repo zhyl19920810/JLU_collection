@@ -10,9 +10,13 @@
 #define __kancolle_beta__AnimationMaker__
 
 #include "cocos2d.h"
+#include "SystemHeader.h"
+
 
 USING_NS_CC;
 
+
+NS_KCL_BEGIN
 
 class AnimationMaker
 {
@@ -40,5 +44,7 @@ public:
 private:
     static bool damageNumberInitialized;
 };
+
+NS_KCL_END
 
 #endif /* defined(__kancolle_beta__AnimationMaker__) */

@@ -12,6 +12,8 @@
 #include "cocos2d.h"
 #include "MissionNode.h"
 
+NS_KCL_BEGIN
+
 class Mission
 {
 public:
@@ -31,5 +33,7 @@ public:
     
     std::vector<MissionNode*> nodes;
 };
+
+NS_KCL_END
 
 #endif /* defined(__kancolle_alpha__Mission__) */

@@ -8,16 +8,15 @@
 
 #include "ListEntity.hpp"
 #include "portOrganizeLayer.h"
-
-
-
 #include <algorithm>
+
+
 
 
 #define SHIPS_PER_PAGE 10
 #define FONT_COLOR Color3B::BLACK
 
-
+NS_KCL_BEGIN
 
 ListEntity::ListEntity()
 {
@@ -352,7 +351,7 @@ void ListEntity::updateRows()
 }
 
 
-
+NS_KCL_END
 
 
 

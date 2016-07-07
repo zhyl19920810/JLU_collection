@@ -7,6 +7,8 @@
 //
 #include "kantai.h"
 
+NS_KCL_BEGIN
+
 Kantai::Kantai():
 kantaiImp(NULL),
 parent(NULL)
@@ -516,4 +518,4 @@ bool Kantai::canAttack()
 //
 //
 
-
+NS_KCL_END

@@ -13,6 +13,8 @@
 #include "Equip.h"
 using namespace cocos2d;
 
+NS_KCL_BEGIN
+
 class EquipContainer :public Node{
 public:
     EquipContainer();
@@ -27,5 +29,7 @@ private:
     Sprite* cross;
     Label* label;
 };
+
+NS_KCL_END
 
 #endif /* EquipmentContainer_hpp */

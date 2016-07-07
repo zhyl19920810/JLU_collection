@@ -14,6 +14,8 @@
 #include "ListEntity.hpp"
 #include "LayerCover.hpp"
 
+NS_KCL_BEGIN
+
 class KantaiListEntity:public ListEntity
 {
 public:
@@ -28,7 +30,7 @@ private:
 
 };
 
-
+NS_KCL_END
 
 
 

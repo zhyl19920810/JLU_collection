@@ -11,6 +11,8 @@
 #include "GameManger.hpp"
 #include "ListEntity.hpp"
 
+NS_KCL_BEGIN
+
 bool ListRow::init(int position)
 {
     bool bRet=false;
@@ -173,3 +175,5 @@ void ListRow::lockCallback(cocos2d::Ref *pSender)
     bool lock=kantai->getKantaiLock();
     kantai->setKantaiLock(!lock);
 }
+
+NS_KCL_END

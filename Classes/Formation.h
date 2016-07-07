@@ -12,6 +12,8 @@
 #include "cocos2d.h"
 #include "BattleModel.h"
 
+NS_KCL_BEGIN
+
 class SallyScene;
 USING_NS_CC;
 
@@ -56,6 +58,9 @@ private:
     
     
 };
+
+NS_KCL_END
+
 
 
 #endif /* defined(__kancolle_beta__Formation__) */

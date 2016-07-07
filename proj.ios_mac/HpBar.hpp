@@ -10,7 +10,11 @@
 #define HpBar_hpp
 
 #include "cocos2d.h"
+#include "SystemHeader.h"
+
 using namespace cocos2d;
+
+NS_KCL_BEGIN
 
 class HpBar :public Node{
 public:
@@ -35,5 +39,7 @@ private:
     int currentHp;
     Sprite * bar;
 };
+
+NS_KCL_END
 
 #endif /* HpBar_hpp */

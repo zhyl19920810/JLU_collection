@@ -18,6 +18,7 @@
 #include "BattleHero.h"
 #include "BattleEnemy.h"
 
+NS_KCL_BEGIN
 
 using namespace cocos2d;
 
@@ -104,6 +105,6 @@ private:
     std::vector<BattleEnemy*> battleEnemies;
 };
 
-
+NS_KCL_END
 
 #endif /* defined(__kancolle_beta__GameScene__) */

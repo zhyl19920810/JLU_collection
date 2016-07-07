@@ -19,7 +19,7 @@
 
 USING_NS_CC;
 
-
+NS_KCL_BEGIN
 
 class KantaiDetailEntity:public Node
 {
@@ -60,6 +60,8 @@ private:
 private:
     void initPage();
 };
+
+NS_KCL_END
 
 
 #endif /* KantaiDetailEntity_hpp */

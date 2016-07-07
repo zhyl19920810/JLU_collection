@@ -10,8 +10,11 @@
 #define __kancolle_alpha__MissionContainer__
 
 #include "cocos2d.h"
+#include "SystemHeader.h"
 
 USING_NS_CC;
+
+NS_KCL_BEGIN
 
 class MissionContainer:public Node
 {
@@ -25,5 +28,6 @@ private:
     bool locked;
 };
 
+NS_KCL_END
 
 #endif /* defined(__kancolle_alpha__MissionContainer__) */

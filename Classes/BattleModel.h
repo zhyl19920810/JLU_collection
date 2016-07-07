@@ -14,6 +14,8 @@
 
 USING_NS_CC;
 
+NS_KCL_BEGIN
+
 enum FormationType
 {
     DanZong=1,
@@ -105,7 +107,7 @@ private:
 };
 
 
-
+NS_KCL_END
 
 
 

@@ -14,6 +14,8 @@
 
 USING_NS_CC;
 
+NS_KCL_BEGIN
+
 class CharacterCard:public Node
 {
 public:
@@ -43,6 +45,6 @@ private:
     
 };
 
-
+NS_KCL_END
 
 #endif /* defined(__kancolle_beta__CharacterCard__) */

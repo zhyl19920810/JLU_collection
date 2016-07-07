@@ -10,8 +10,11 @@
 #define __kancolle_alpha__Compass__
 
 #include "cocos2d.h"
+#include "SystemHeader.h"
 
 USING_NS_CC;
+
+NS_KCL_BEGIN
 
 enum Compass_Direction
 {
@@ -39,5 +42,7 @@ private:
     
     Sprite* body;
 };
+
+NS_KCL_END
 
 #endif /* defined(__kancolle_alpha__Compass__) */

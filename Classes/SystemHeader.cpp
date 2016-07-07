@@ -8,7 +8,7 @@
 
 #include "SystemHeader.h"
 
-
+NS_KCL_BEGIN
 
 std::string NameResolution::EquipScopeReso(int _equipScope)
 {
@@ -299,5 +299,5 @@ int InitPlayerProp::getMaxEquipSize(int _currLV)
     
 }
 
-
+NS_KCL_END
 

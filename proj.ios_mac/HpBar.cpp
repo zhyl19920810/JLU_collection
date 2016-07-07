@@ -8,6 +8,7 @@
 
 #include "HpBar.hpp"
 
+NS_KCL_BEGIN
 
 bool HpBar::init()
 {
@@ -57,3 +58,5 @@ void HpBar::setHp(int maxHp, int currentHp)
     this->maxHp = maxHp;
     setCurrentHp(currentHp);
 }
+
+NS_KCL_END

@@ -14,6 +14,8 @@
 
 USING_NS_CC;
 
+NS_CC_BEGIN
+
 class LayerCover:public Layer
 {
     typedef std::function<void(Ref*)>  FUNC;
@@ -30,6 +32,6 @@ private:
     FUNC callback;
 };
 
-
+NS_CC_END
 
 #endif /* LayerCover_hpp */

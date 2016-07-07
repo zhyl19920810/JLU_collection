@@ -17,6 +17,8 @@
 #include "ExpMgr.hpp"
 USING_NS_CC;
 
+NS_KCL_BEGIN
+
 #define INIT_FATIGUEVALUE 50
 
 
@@ -201,5 +203,6 @@ private:
 //};
 //
 
+NS_KCL_END
 
 #endif /* defined(__kancolle_alpha__KantaiPlayerGot__) */

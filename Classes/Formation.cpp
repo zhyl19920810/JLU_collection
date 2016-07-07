@@ -10,6 +10,8 @@
 #include "SallyScene.h"
 
 
+NS_KCL_BEGIN
+
 Formation::Formation(int shipCount,FormationType type,bool enemy)
 {
     this->type=type;
@@ -274,4 +276,8 @@ void Formation::rotatePoints()
         points[i]->setPosition(y,x);
     }
 }
+
+NS_KCL_END
+
+
 

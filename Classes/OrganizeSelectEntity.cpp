@@ -10,6 +10,7 @@
 #include "portOrganizeLayer.h"
 #include "KantaiListEntity.hpp"
 
+NS_KCL_BEGIN
 
 OrganSelectEntity::OrganSelectEntity()
 {
@@ -305,3 +306,4 @@ void OrganSelectEntity::updateKantai(Kantai *kantai)
     fuelBar->update(ceil(fuelNo));
 }
 
+NS_KCL_END

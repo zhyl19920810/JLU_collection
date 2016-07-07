@@ -8,6 +8,8 @@
 
 #include "kantaiCard.hpp"
 
+NS_KCL_BEGIN
+
 
 KantaiCard::KantaiCard()
 {
@@ -93,3 +95,4 @@ void KantaiCard::setBrokenMark(BrokenType brokenType)
 
 }
 
+NS_KCL_END

@@ -15,6 +15,9 @@
 
 
 USING_NS_CC;
+
+NS_KCL_BEGIN
+
 #define FONT_COLOR Color3B::BLACK
 
 class ListRow:public Node
@@ -55,5 +58,6 @@ private:
     Kantai* kantai;
 };
 
+NS_KCL_END
 
 #endif /* ListRow_hpp */

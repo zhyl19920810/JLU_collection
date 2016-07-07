@@ -20,7 +20,7 @@
 #define USING_NS_KCL using namespace kancolle
 
 
-
+NS_KCL_BEGIN
 
 
 #define equilp_type int
@@ -241,5 +241,6 @@ public:
     
 };
 
+NS_KCL_END
 
 #endif /* defined(__kancolle_alpha__SystemHeader__) */

@@ -10,7 +10,7 @@
 #include "PortRemodeLayer.h"
 
 
-
+NS_KCL_BEGIN
 
 KantaiDetailEntity::KantaiDetailEntity()
 {
@@ -273,3 +273,5 @@ void KantaiDetailEntity::setKantai(Kantai *kantai)
     stars->setNumber(kantai->getStars());
 }
 
+
+NS_KCL_END

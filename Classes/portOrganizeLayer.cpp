@@ -10,7 +10,7 @@
 #include "PortScene.h"
 #include "GameManger.hpp"
 
-
+NS_KCL_BEGIN
 
 PortOrganizeLayer::PortOrganizeLayer()
 {
@@ -377,3 +377,4 @@ bool PortOrganizeLayer::hasKantai(int position)
     return false;
 }
 
+NS_KCL_END

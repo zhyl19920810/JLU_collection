@@ -14,9 +14,10 @@
 #include "Compass.h"
 #include "Formation.h"
 
-
-
 USING_NS_CC;
+
+NS_KCL_BEGIN
+
 
 enum SallyStatus{
     sally_start,
@@ -70,6 +71,7 @@ private://Bottom Panel
     void hideBottomPanel();
     void showBottomPanel();
 };
+NS_KCL_END
 
 
 #endif /* defined(__kancolle_alpha__SallyScene__) */

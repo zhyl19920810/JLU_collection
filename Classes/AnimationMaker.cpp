@@ -8,6 +8,7 @@
 
 #include "AnimationMaker.h"
 
+NS_KCL_BEGIN
 
 void DamageAnimation(Sprite* sprite,float delay);
 
@@ -305,5 +306,5 @@ void DamageAnimation(Sprite* sprite,float delay)
     
 }
 
-
+NS_KCL_END
 

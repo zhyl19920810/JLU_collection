@@ -12,7 +12,7 @@
 #include "cocos2d.h"
 #include "Equip.h"
 
-
+NS_KCL_BEGIN
 
 #define CC_GETVALUE(varType,varName)\
 public: varType get##varName(void) const {return varName;}\
@@ -62,7 +62,7 @@ private:
     
 };
 
-
+NS_KCL_END
 
 
 

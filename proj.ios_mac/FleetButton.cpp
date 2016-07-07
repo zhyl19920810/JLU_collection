@@ -8,6 +8,9 @@
 
 #include "FleetButton.hpp"
 
+
+NS_KCL_BEGIN
+
 FleetButton::FleetButton()
 {
     fleetToggle.resize(4);
@@ -126,4 +129,4 @@ void FleetButton::SetFleetButtonVisible(int fleetNumber, bool bVisible)
     }
 }
 
-
+NS_KCL_END

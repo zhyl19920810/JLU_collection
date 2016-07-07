@@ -15,7 +15,7 @@
 
 USING_NS_CC;
 
-
+NS_KCL_BEGIN
 
 class BattleEnemy:public BattleCharacter
 {
@@ -46,6 +46,6 @@ private:
     virtual void updateInformationBoard();
 };
 
-
+NS_KCL_END
 
 #endif /* defined(__kancolle_beta__BattleEnemy__) */

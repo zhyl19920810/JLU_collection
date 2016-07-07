@@ -10,6 +10,7 @@
 #define Singleton_hpp
 
 #include "cocos2d.h"
+#include "SystemHeader.h"
 
 NS_KCL_BEGIN
 

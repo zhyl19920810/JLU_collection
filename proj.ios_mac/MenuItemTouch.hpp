@@ -10,6 +10,9 @@
 #define MenuItemTouch_hpp
 
 #include "cocos2d.h"
+#include "SystemHeader.h"
+
+NS_KCL_BEGIN
 
 USING_NS_CC;
 
@@ -28,7 +31,7 @@ private:
 
 
 
-USING_NS_CC;
+NS_KCL_END
 
 
 

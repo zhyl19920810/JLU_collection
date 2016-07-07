@@ -8,6 +8,7 @@
 
 #include "BattleCharacter.h"
 
+NS_KCL_BEGIN
 
 BattleCharacter::BattleCharacter()
 {
@@ -153,3 +154,4 @@ void BattleCharacter::setBroken(BrokenType type)
     card->updateCharacter(this->kantaiNumber, type);
 }
 
+NS_KCL_END

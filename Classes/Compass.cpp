@@ -8,6 +8,8 @@
 
 #include "Compass.h"
 
+NS_KCL_BEGIN
+
 Compass::Compass()
 {
     body=Sprite::create("interface/SallyMain/SallyMain_830.png");
@@ -59,3 +61,5 @@ Compass_Direction Compass::parseDirection(std::string direction)
         return compass_SW;
     }
 }
+
+NS_KCL_END

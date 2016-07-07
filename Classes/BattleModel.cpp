@@ -8,6 +8,7 @@
 
 #include "BattleModel.h"
 
+NS_KCL_BEGIN
 
 #define DEFAULT_HIT_RATE 0.95
 #define MAX_SHIPS_PER_FLEET 6
@@ -409,3 +410,5 @@ float BattleModel::brokenCorrection(BrokenType type)
             break;
     }
 }
+
+NS_KCL_END

@@ -10,6 +10,9 @@
 #include "Player.h"
 #include "portScene.h"
 #include "GameScene.h"
+
+NS_KCL_BEGIN
+
 SallyScene::SallyScene(Mission* mission)
 {
    
@@ -305,3 +308,5 @@ void SallyScene::setFormationCallback(Ref* ref, FormationType formation)
     
 }
 
+
+NS_KCL_END

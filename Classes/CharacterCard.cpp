@@ -9,6 +9,8 @@
 #include "CharacterCard.h"
 
 
+NS_KCL_BEGIN
+
 void CharacterCard::initCard()
 {
     
@@ -128,4 +130,4 @@ void CharacterCard::setBrokenMark(BrokenType brokenType)
 }
 
 
-
+NS_KCL_END

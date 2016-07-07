@@ -8,6 +8,8 @@
 
 #include "Star.hpp"
 
+NS_KCL_BEGIN
+
 bool Stars::init()
 {
     bool bRet=false;
@@ -44,3 +46,6 @@ void Stars::setNumber(int number)
     for (int i = 0; i < number; i++)
         stars[i]->setVisible(true);
 }
+
+
+NS_KCL_END

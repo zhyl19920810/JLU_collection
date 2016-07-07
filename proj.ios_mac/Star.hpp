@@ -10,6 +10,10 @@
 #define Star_hpp
 
 #include "cocos2d.h"
+#include "SystemHeader.h"
+
+NS_KCL_BEGIN
+
 #define MAX_STARS_NUMBER 5
 using namespace cocos2d;
 
@@ -34,5 +38,6 @@ private:
     std::vector<Sprite*> stars;
 };
 
+NS_KCL_END
 
 #endif /* Star_hpp */

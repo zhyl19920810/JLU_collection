@@ -9,6 +9,7 @@
 #include "OrganizeContainer.hpp"
 #include "PortOrganizeLayer.h"
 
+NS_KCL_BEGIN
 
 OrganizeContainer* OrganizeContainer::create(int position)
 {
@@ -344,7 +345,6 @@ void OrganizeContainer::openNewContainer(Kantai *kantai)
     runAction(Sequence::create(f1,f2,DelayTime::create(0.35), NULL));
 }
 
-
 //void OrganizeContainer::removeContainer()
 //{
 //    lKantaiDoor->setVisible(true);
@@ -353,5 +353,11 @@ void OrganizeContainer::openNewContainer(Kantai *kantai)
 //    CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::updateCharacterInfo, this,kantai));
 //    CallFunc* f2=CallFunc::create([this](){setKantaiVisible(false);});
 //    runAction(Sequence::create(DelayTime::create(0.3),f1,DelayTime::create(0.3),f2, NULL));
-//    
+//
 //}
+
+
+
+NS_KCL_END
+
+

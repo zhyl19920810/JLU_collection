@@ -7,9 +7,11 @@
 //
 
 #include "BattleHero.h"
+
+
+NS_KCL_BEGIN
+
 #define LabelFont "fonts/STXINWEI.ttf"
-
-
 BattleHero* BattleHero::create(int kantaiNumber, cocos2d::Node *parent, int row)
 {
     BattleHero* hero=new BattleHero;
@@ -217,7 +219,7 @@ void BattleHero::updateInformationBoard()
 }
 
 
-
+NS_KCL_END
 
 
 

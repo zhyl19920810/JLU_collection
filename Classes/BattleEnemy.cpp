@@ -10,6 +10,8 @@
 #include "AnimationMaker.h"
 
 
+NS_KCL_BEGIN
+
 BattleEnemy* BattleEnemy::create(Kantai* info, cocos2d::Node *parent, int row)
 {
     BattleEnemy* hero=new BattleEnemy;
@@ -189,7 +191,7 @@ void BattleEnemy::showCloseUp()
     
 }
 
-
+NS_KCL_END
 
 
 

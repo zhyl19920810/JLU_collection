@@ -10,6 +10,9 @@
 #define __kancolle_beta__BattleBar__
 
 #include "cocos2d.h"
+#include "SystemHeader.h"
+
+NS_KCL_BEGIN
 
 enum GreenBarPosition
 {
@@ -62,6 +65,6 @@ private:
     Sprite* bottomGreenBar;
 };
 
-
+NS_KCL_END
 
 #endif /* defined(__kancolle_beta__BattleBar__) */

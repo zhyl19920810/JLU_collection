@@ -21,6 +21,8 @@
 
 USING_NS_CC;
 
+NS_KCL_BEGIN
+
 class OrganSelectEntity:public Layer
 {
 public:
@@ -72,6 +74,8 @@ private:
     //kantai
     Kantai* kantai;
 };
+
+NS_KCL_END
 
 
 #endif /* OrganizeSelectEntity_hpp */

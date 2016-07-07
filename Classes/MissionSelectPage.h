@@ -13,6 +13,8 @@
 #include "MissionContainer.h"
 USING_NS_CC;
 
+NS_KCL_BEGIN
+
 class MissionSelectPage :public Node
 {
 public:
@@ -36,6 +38,6 @@ private:
     
 };
 
-
+NS_KCL_END
 
 #endif /* defined(__kancolle_alpha__MissionSelectPage__) */

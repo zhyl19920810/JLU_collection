@@ -14,6 +14,8 @@
 
 USING_NS_CC;
 
+NS_KCL_BEGIN
+
 class FleetButton:public Node
 {
     typedef function<void(int)> ButtonUpdate;
@@ -45,5 +47,7 @@ private:
     int fleetNumber;
     Fleet* fleet;
 };
+
+NS_KCL_END
 
 #endif /* FleetButton_hpp */

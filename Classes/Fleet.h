@@ -16,7 +16,7 @@
 
 USING_NS_CC;
 
-
+NS_KCL_BEGIN
 
 
 typedef enum
@@ -62,7 +62,7 @@ private:
 
 };
 
-
+NS_KCL_END
 
 
 

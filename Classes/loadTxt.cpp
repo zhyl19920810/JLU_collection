@@ -14,7 +14,8 @@
 using namespace cocos2d;
 using namespace std;
 
-NS_CC_BEGIN
+
+NS_KCL_BEGIN
 
 typedef uint32_t uint32;
 
@@ -135,4 +136,4 @@ void g_loadtxt(const char* aFileName, fnParseLine pfnCallBack, string aSplitChar
     //	free(fileText);
 }
 
-NS_CC_END
+NS_KCL_END

@@ -18,6 +18,9 @@
 #include "LayerCover.hpp"
 
 using namespace cocos2d;
+
+NS_KCL_BEGIN
+
 class PortScene;
 
 class PortOrganizeLayer : public Layer
@@ -87,5 +90,7 @@ private:
     LayerCover* listCover;
 };
 
+
+NS_KCL_END
 
 #endif

@@ -18,6 +18,8 @@
 
 USING_NS_CC;
 
+NS_KCL_BEGIN
+
 class BattleCharacter:public Node
 {
 public:
@@ -94,7 +96,7 @@ protected:
 };
 
 
-
+NS_KCL_END
 
 
 

@@ -17,6 +17,10 @@
 #define NUMBER_OF_CONTAINERS 6
 
 using namespace cocos2d;
+
+
+NS_KCL_BEGIN
+
 class PortOrganizeLayer;
 
 class OrganizeContainerAction
@@ -81,5 +85,7 @@ private:
     ClippingNode* clippingNode;
     Node* node;
 };
+
+NS_KCL_END
 
 #endif

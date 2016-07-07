@@ -11,6 +11,9 @@
 #include "XMLParser.h"
 #include "SallyScene.h"
 
+NS_KCL_BEGIN
+
+
 MissionSelectPage::MissionSelectPage(Node *parent)
 {
     this->parent = parent;
@@ -136,4 +139,5 @@ void MissionSelectPage::startMission(cocos2d::Ref *pSender,int index)
     
 }
 
+NS_KCL_END
 

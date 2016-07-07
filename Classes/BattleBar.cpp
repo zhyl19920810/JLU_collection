@@ -9,6 +9,8 @@
 #include "BattleBar.h"
 
 
+NS_KCL_BEGIN
+
 BattleBar::BattleBar(Node* parent)
 {
     this->parent=parent;
@@ -190,3 +192,4 @@ void BattleBar::runAction(cocos2d::Action *action, GreenBarPosition position)
     }
 }
 
+NS_KCL_END

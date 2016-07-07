@@ -8,6 +8,8 @@
 
 #include "MissionContainer.h"
 
+
+
 MissionContainer::MissionContainer(int areaId,int index)
 {
     image=Sprite::create();

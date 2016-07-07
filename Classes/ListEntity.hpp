@@ -17,7 +17,7 @@
 #include "LayerCover.hpp"
 using namespace cocos2d;
 
-
+NS_KCL_BEGIN
 
 class ListEntity:public Layer
 {
@@ -84,7 +84,7 @@ private:
     void hideFunc(Ref* pSender){hideSelect(pSender);}
 };
 
-
+NS_KCL_END
 
 
 #endif /* ListEntity_hpp */

@@ -8,6 +8,7 @@
 
 #include "equipGrid.h"
 
+NS_KCL_BEGIN
 
 EquipGrid::EquipGrid(int _kantaiEquipSize,ValueMapIntKey _kantaiEquipInit,ValueVector _planeLoad)
 {
@@ -37,3 +38,5 @@ EquipGrid::~EquipGrid()
 //    }
 
 }
+
+NS_KCL_END

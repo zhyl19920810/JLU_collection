@@ -13,6 +13,7 @@
 #include "BattleCharacter.h"
 USING_NS_CC;
 
+NS_KCL_BEGIN
 
 class BattleHero:public BattleCharacter
 {
@@ -35,5 +36,6 @@ private:
     virtual void updateInformationBoard();
 };
 
+NS_KCL_END
 
 #endif /* defined(__kancolle_beta__BattleHero__) */

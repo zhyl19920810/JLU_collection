@@ -12,6 +12,9 @@
 #include "cocos2d.h"
 USING_NS_CC;
 
+NS_CC_BEGIN
+
+
 class ValueBar:public Node
 {
 public:
@@ -38,5 +41,6 @@ private:
 };
 
 
+NS_CC_END
 
 #endif /* ValueBar_hpp */
