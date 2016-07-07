@@ -1,23 +1,8 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
-#include "DatabaseScene.h"
-#include "XMLBuilder.h"
-#include "databaseInit.h"
-#include "databaseBase.h"
-#include "portScene.h"
-#include "GameScene.h"
-#include "MissionNode.h"
-#include "TestScene.h"
-#include "GameManger.hpp"
-#include <fstream>
-#include <dirent.h>
-#include <sys/stat.h>
-#include "dock.hpp"
-#include "arsenal.hpp"
-
-
 #include "BundleMgr.hpp"
 #include "SimpleAudioEngine.h"
+
+
 //#define DB_IN_COMPUTER 1
 #define DEBUG_MODE true
 
@@ -43,28 +28,28 @@ void AppDelegate::initGLContextAttrs()
     GLView::setGLContextAttrs(glContextAttrs);
 }
 
-void battleModel(Director* director)
-{
-    //init db
-    std::string filename = FileUtils::getInstance()->fullPathForFilename("database/kancolle_2.sqlite3");
-    DBBase::init(filename);
-    DBInit init;
-    auto player=Player::getInstance();
-    init.initDB(1);
-    
-    if (DEBUG_MODE)
-    {
-        Fleet* allies=sPlayer.fleetData[0];
-        
-        MissionNode node;
-        Fleet* enemy=node.parseEnemyFleet("-2");
-        
-        
-        auto battleModel=new BattleModel(allies,enemy,DanZong,DanZong);
-        GameScene* scene=new GameScene(battleModel);
-        director->runWithScene(scene);
-    }
-}
+//void battleModel(Director* director)
+//{
+//    //init db
+//    std::string filename = FileUtils::getInstance()->fullPathForFilename("database/kancolle_2.sqlite3");
+//    DBBase::init(filename);
+//    DBInit init;
+//    auto player=Player::getInstance();
+//    init.initDB(1);
+//    
+//    if (DEBUG_MODE)
+//    {
+//        Fleet* allies=sPlayer.fleetData[0];
+//        
+//        MissionNode node;
+//        Fleet* enemy=node.parseEnemyFleet("-2");
+//        
+//        
+//        auto battleModel=new BattleModel(allies,enemy,DanZong,DanZong);
+//        GameScene* scene=new GameScene(battleModel);
+//        director->runWithScene(scene);
+//    }
+//}
 
 
 
@@ -131,8 +116,6 @@ void AppDelegate::applicationWillEnterForeground() {
     // if you use SimpleAudioEngine, it must resume here
     CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }
-
-
 
 
 
