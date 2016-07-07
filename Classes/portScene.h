@@ -10,7 +10,26 @@
 #define __kancolle_alpha__portScene__
 
 #include "cocos2d.h"
+#include "SystemHeader.h"
+#include "ViewMgrMacro.hpp"
 
+
+
+
+USING_NS_CC;
+
+//enum LayerType{
+//    main,
+//    organize,
+//    supply,
+//    remode,
+//    factory,
+//    repair,
+//    battle,
+//    empty
+//};
+
+NS_KCL_BEGIN
 
 class LayerSelecter;
 class PortMainLayer;
@@ -22,19 +41,6 @@ class PortBattleLayer;
 class PortOrganizeLayer;
 class PortScene;
 
-
-USING_NS_CC;
-
-enum LayerType{
-    main,
-    organize,
-    supply,
-    remode,
-    factory,
-    repair,
-    battle,
-    empty
-};
 
 
 
@@ -218,6 +224,6 @@ public:
     PortBgLayer* portBgLayer;
 };
 
-
+NS_KCL_END
 
 #endif /* defined(__kancolle_alpha__portScene__) */

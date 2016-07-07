@@ -7,6 +7,7 @@
 #define DEBUG_MODE true
 
 USING_NS_CC;
+USING_NS_KCL;
 
 AppDelegate::AppDelegate() {
 

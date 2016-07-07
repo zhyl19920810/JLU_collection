@@ -25,6 +25,8 @@
 #include "arsenal.hpp"
 
 
+NS_KCL_BEGIN
+
 #define CACHE_BG_MUSIC_SWITCH ("cache_bg_music_switch")
 #define CACHE_EFF_MUSIC_SWITCH ("cache_eff_music_switch")
 #define CACHE_ENTER_BACKGROUND_TS ("cache_enter_background_ts")
@@ -378,3 +380,6 @@ void BundleMgr::init()
 {
 
 }
+
+
+NS_KCL_END

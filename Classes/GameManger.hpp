@@ -18,6 +18,12 @@
 #include "portScene.h"
 #include "EquipPicMgr.hpp"
 #include "RepairFactorMgr.hpp"
+
+NS_KCL_BEGIN
+
+#define sGameManger GameManger::getInstance()
+
+
 class GameManger:public Singleton<GameManger>
 {
     friend class Singleton<GameManger>;
@@ -61,7 +67,8 @@ private:
     PortScene* pPortScene;
 };
 
-#define sGameManger GameManger::getInstance()
 
+
+NS_KCL_END
 
 #endif /* GameManger_hpp */

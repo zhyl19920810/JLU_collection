@@ -9,6 +9,9 @@
 #include "portMainLayer.h"
 #include "Player.h"
 
+NS_KCL_BEGIN
+
+
 #define ANGLE_ROTATE 3
 
 
@@ -217,23 +220,23 @@ void PortMainLayer::organizeEnd(cocos2d::Touch *touch, cocos2d::Event *event)
                 
             case organizeBu:
                 target->setSpriteFrame("organizeButton1.png");
-                scene->SetCurrLayer(LayerType::organize);
+                scene->SetCurrLayer(LayerType::PORT_ORGANIZE);
                 break;
             case supplyBu:
                 target->setSpriteFrame("supplyButton1.png");
-                scene->SetCurrLayer(LayerType::supply);
+                scene->SetCurrLayer(LayerType::PORT_SUPPLY);
                 break;
             case remodeBu:
                 target->setSpriteFrame("remodeButton1.png");
-                scene->SetCurrLayer(LayerType::remode);
+                scene->SetCurrLayer(LayerType::PORT_REMODE);
                 break;
             case repairBu:
                 target->setSpriteFrame("repairButton1.png");
-                scene->SetCurrLayer(LayerType::repair);
+                scene->SetCurrLayer(LayerType::PORT_REPAIR);
                 break;
             case factoryBu:
                 target->setSpriteFrame("factoryButton1.png");
-                scene->SetCurrLayer(LayerType::factory);
+                scene->SetCurrLayer(LayerType::PORT_FACTORY);
                 break;
             default:
                 break;
@@ -345,7 +348,7 @@ void PortMainLayer::battleEnd(Touch* touch,Event* event)
         eventDispatcher->pauseEventListenersForTarget(battleButton);
         
         auto scene=dynamic_cast<PortScene*>(target->getParent()->getParent());
-        scene->SetCurrLayer(LayerType::battle);
+        scene->SetCurrLayer(LayerType::PORT_BATTLE);
     }
 }
 
@@ -464,6 +467,6 @@ void PortMainLayer::layerSelectCallback(cocos2d::Ref *pSender, LayerType type)
     scene->SetCurrLayer(type);
 }
 
-
+NS_KCL_END
 
 

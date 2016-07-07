@@ -13,7 +13,7 @@
 using namespace std;
 using namespace CocosDenshion;
 
-
+NS_KCL_BEGIN
 
 Sound* Sound::getInstance()
 {
@@ -142,3 +142,5 @@ void Sound::setBGVolume(float volume)
 {
     SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(volume);
 }
+
+NS_KCL_END

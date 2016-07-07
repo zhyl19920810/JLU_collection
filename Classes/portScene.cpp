@@ -23,7 +23,7 @@
 #include "Sound.hpp"
 
 
-
+NS_KCL_BEGIN
 
 PortScene* PortScene::createScene()
 {
@@ -42,7 +42,7 @@ repairlayer(NULL),
 battlelayer(NULL),
 title(NULL),
 organizelayer(NULL),
-currentLayerType(LayerType::empty)
+currentLayerType(LayerType::NONE)
 {
     
 }
@@ -55,7 +55,7 @@ portBgLayer(NULL)
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PortMain/portmain.plist", "PortMain/portmain.pvr.ccz");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PortMain/layerSelect.plist", "PortMain/layerSelect.pvr.ccz");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PortMain/portMainLayer.plist", "PortMain/portMainLayer.pvr.ccz");
-    SetCurrLayer(main);
+    SetCurrLayer(LayerType::PORT_MAINLAYER);
 }
 
 PortScene::~PortScene()
@@ -525,6 +525,6 @@ bool PortScene::init()
 
 
 
-
-
 ///------------------------------
+
+NS_KCL_END

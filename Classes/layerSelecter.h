@@ -14,6 +14,8 @@
 
 USING_NS_CC;
 
+NS_KCL_BEGIN
+
 class LayerSelecter:public Node
 {
 public:
@@ -57,5 +59,7 @@ private:
     void layerSelectCallback(Ref * pSender, LayerType type);
 };
 
+
+NS_KCL_END
 
 #endif /* defined(__kancolle_alpha__LayerSelecter__) */

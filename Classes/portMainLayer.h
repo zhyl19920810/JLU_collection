@@ -11,8 +11,11 @@
 
 #include "cocos2d.h"
 #include "portScene.h"
+
 USING_NS_CC;
 
+
+NS_KCL_BEGIN
 
 typedef enum
 {
@@ -93,5 +96,7 @@ private:
     void battleMove(Touch* touch,Event* event);
     void battleEnd(Touch* touch,Event* event);
 };
+
+NS_KCL_END
 
 #endif /* defined(__kancolle_alpha__portMainLayer__) */

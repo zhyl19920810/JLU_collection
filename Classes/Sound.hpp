@@ -10,8 +10,9 @@
 #define Sound_hpp
 
 #include "SimpleAudioEngine.h"
+#include "SystemHeader.h"
 
-
+NS_KCL_BEGIN
 
 #define SND Sound::getInstance()
 
@@ -75,7 +76,7 @@ private:
     
 };
 
-
+NS_KCL_END
 
 
 #endif /* Sound_hpp */

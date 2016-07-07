@@ -10,7 +10,7 @@
 #include "ViewMgr.hpp"
 #define CACHE (UserDefault::getInstance())
 
-
+NS_KCL_BEGIN
 
 void exeLaunch()
 {
@@ -29,3 +29,5 @@ void exeLaunch()
     //cocos2d::Director::getInstance()->runWithScene(LuaTest::scene());
 }
 
+
+NS_KCL_END

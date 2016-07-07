@@ -15,6 +15,7 @@
 #include "portRepairLayer.h"
 #include "portOrganizeLayer.h"
 #include "portBattleLayer.h"
+
 NS_KCL_BEGIN
 
 cocos2d::Scene* ViewMgrFactory::getScene(SceneType type,const cocos2d::Value& data)

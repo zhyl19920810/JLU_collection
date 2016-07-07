@@ -8,6 +8,8 @@
 
 #include "GameManger.hpp"
 
+NS_KCL_BEGIN
+
 GameManger::GameManger():
 pSallyScene(NULL),
 pGameScene(NULL)
@@ -44,3 +46,5 @@ void GameManger::ClearResource()
 {
     //释放需要全程加载的东西
 }
+
+NS_KCL_END

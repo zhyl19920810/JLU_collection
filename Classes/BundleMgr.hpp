@@ -19,6 +19,7 @@ namespace cocos2d
     class Event;
 };
 
+NS_KCL_BEGIN
 
 #define BUNDLE_MGR (BundleMgr::getInstance())
 
@@ -83,4 +84,8 @@ public:
 };
 
 extern void exeLaunch();
+
+NS_KCL_END
+
+
 #endif /* BundleMgr_hpp */
