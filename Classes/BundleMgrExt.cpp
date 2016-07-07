@@ -7,14 +7,15 @@
 //
 
 #include "portScene.h"
-
+#include "ViewMgr.hpp"
 #define CACHE (UserDefault::getInstance())
+
 
 
 void exeLaunch()
 {
-    Director::getInstance()->runWithScene(PortScene::createScene());
-    //VIEW_MGR->showScene(SceneType::LOGO);
+    kancolle::ViewMgr::getInstance()->showScene(kancolle::SceneType::HOME);
+    //Director::getInstance()->runWithScene(PortScene::createScene());
     //Director::getInstance()->runWithScene(RegexTest::create());
     //cocos2d::Director::getInstance()->runWithScene(AnimTest::create());
     //cocos2d::Director::getInstance()->runWithScene(UITest::create());
@@ -27,3 +28,4 @@ void exeLaunch()
     //cocos2d::Director::getInstance()->runWithScene(HomeRoleTest::scene());
     //cocos2d::Director::getInstance()->runWithScene(LuaTest::scene());
 }
+

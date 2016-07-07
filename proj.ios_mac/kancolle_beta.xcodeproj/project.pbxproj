@@ -339,6 +339,8 @@
 		F4B191E11BE74B56000A41C3 /* BattleHero.h in Sources */ = {isa = PBXBuildFile; fileRef = F4E62F401BDCD9B900180F6B /* BattleHero.h */; };
 		F4B926CE1C55FA74005DB127 /* PortMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CC1C55FA74005DB127 /* PortMain */; };
 		F4B926CF1C55FA74005DB127 /* SupplyMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CD1C55FA74005DB127 /* SupplyMain */; };
+		F4BC4CAB1D2D242300374317 /* ViewMgrFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4BC4CA91D2D242300374317 /* ViewMgrFactory.cpp */; };
+		F4BC4CAC1D2D242300374317 /* ViewMgrFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4BC4CA91D2D242300374317 /* ViewMgrFactory.cpp */; };
 		F4D38E1B1C871AB9009BE55C /* SupplyFuelEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */; };
 		F4D38E1C1C871AB9009BE55C /* SupplyFuelEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */; };
 		F4D38E1F1C8731EF009BE55C /* OrganizeSelectEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E1D1C8731EF009BE55C /* OrganizeSelectEntity.cpp */; };
@@ -645,6 +647,8 @@
 		F4B1740F1C54657D00D2BC1C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		F4B926CC1C55FA74005DB127 /* PortMain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PortMain; sourceTree = "<group>"; };
 		F4B926CD1C55FA74005DB127 /* SupplyMain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SupplyMain; sourceTree = "<group>"; };
+		F4BC4CA91D2D242300374317 /* ViewMgrFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ViewMgrFactory.cpp; sourceTree = "<group>"; };
+		F4BC4CAA1D2D242300374317 /* ViewMgrFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ViewMgrFactory.hpp; sourceTree = "<group>"; };
 		F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SupplyFuelEntity.cpp; sourceTree = "<group>"; };
 		F4D38E1A1C871AB9009BE55C /* SupplyFuelEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SupplyFuelEntity.hpp; sourceTree = "<group>"; };
 		F4D38E1D1C8731EF009BE55C /* OrganizeSelectEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OrganizeSelectEntity.cpp; sourceTree = "<group>"; };
@@ -853,6 +857,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F40E9CBC1D2DE582002593FA /* Socket */,
 				F43BD5FE1D2ABE8E00B572C9 /* Tina */,
 				F4938B651C60998500AB1286 /* metaphysics */,
 				F4D5D08F1C5FB05D001441C3 /* arsenal */,
@@ -1216,6 +1221,13 @@
 			name = battleModel;
 			sourceTree = "<group>";
 		};
+		F40E9CBC1D2DE582002593FA /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Socket;
+			sourceTree = "<group>";
+		};
 		F41D548E1D2A903D0094CAAD /* Sound */ = {
 			isa = PBXGroup;
 			children = (
@@ -1234,6 +1246,8 @@
 				F42303D71D2C049E00B06189 /* ViewMgr.cpp */,
 				F42303D81D2C049E00B06189 /* ViewMgr.hpp */,
 				F42303DD1D2C0B4500B06189 /* ViewMgrMacro.hpp */,
+				F4BC4CA91D2D242300374317 /* ViewMgrFactory.cpp */,
+				F4BC4CAA1D2D242300374317 /* ViewMgrFactory.hpp */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1723,6 +1737,7 @@
 				F42865EC1BDBD18100045E66 /* AnimationMaker.cpp in Sources */,
 				F4A328421C847CA70048F939 /* SupplyShipUnit.cpp in Sources */,
 				F4036D8A1BDA1FDD002788AA /* fleetDB.cpp in Sources */,
+				F4BC4CAB1D2D242300374317 /* ViewMgrFactory.cpp in Sources */,
 				F4FABB041C50D30600F75BCE /* KantaiMgr.cpp in Sources */,
 				F4D38E241C8746CB009BE55C /* ValueBar.cpp in Sources */,
 				F4036D881BDA1FDD002788AA /* equipGrid.cpp in Sources */,
@@ -1876,6 +1891,7 @@
 				F4036E111BDA2316002788AA /* AppDelegate.cpp in Sources */,
 				F4AAFA051C5D0EEF006981BB /* RepairSelectEntity.cpp in Sources */,
 				F4036E121BDA2316002788AA /* AppDelegate.h in Sources */,
+				F4BC4CAC1D2D242300374317 /* ViewMgrFactory.cpp in Sources */,
 				F4A328481C84AA790048F939 /* FleetButton.cpp in Sources */,
 				F4036E131BDA2316002788AA /* HelloWorldScene.cpp in Sources */,
 				F4036E141BDA2316002788AA /* HelloWorldScene.h in Sources */,

@@ -17,7 +17,20 @@ USING_NS_CC;
 class LayerSelecter:public Node
 {
 public:
-    LayerSelecter(PortScene *parent,Point position);
+    static LayerSelecter* create(PortScene *parent,Point position)
+    {
+        LayerSelecter* tmp=new (std::nothrow)LayerSelecter;
+        if (tmp&&tmp->init(parent, position))
+        {
+            tmp->autorelease();
+            return tmp;
+        }
+        delete tmp;
+        tmp=NULL;
+        return tmp;
+    }
+    
+    LayerSelecter();
     
     void moveOut();
     
@@ -26,8 +39,9 @@ public:
     void pauseButton(){menu->pause();}
     void resumeButton(){menu->resume();}
 private:
-    PortScene *parent;
+    bool init(PortScene *parent,Point position);
     
+    PortScene *parent;
     Point initialPosition;
     Sprite *mainbody;
     Sprite *backgroud;

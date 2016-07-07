@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 
+
 class LayerSelecter;
 class PortMainLayer;
 class PortSupplyLayer;
@@ -19,6 +20,8 @@ class PortRepairLayer;
 class PortRemodeLayer;
 class PortBattleLayer;
 class PortOrganizeLayer;
+class PortScene;
+
 
 USING_NS_CC;
 
@@ -34,32 +37,75 @@ enum LayerType{
 };
 
 
-class PortScene:public Scene
+
+template <class entity_type>
+class State
 {
-    friend class GameManger;
 public:
-    static PortScene* createScene();
+    virtual void Enter(entity_type*)=0;
+    virtual void Execute(entity_type*)=0;
+    virtual void Exit(entity_type*)=0;
+    virtual ~State(){}
+private:
+};
+
+class SoundLayerState:public State <PortScene>
+{
+public:
     
-    PortScene();
-    ~PortScene();
-    void SetCurrLayer(LayerType type);
+};
+
+class MainLayerState:public State<PortScene>
+{
+public:
     
-    bool init() override;
+};
+
+
+class SelecterLayerState:public State<PortScene>
+{
+public:
     
-    void startCircle();
-    void endCircle();
+};
+
+
+template<class entity_type>
+class StateMachine
+{
+public:
+    void setCurrentState(State<entity_type>* s){m_pCurrentState=s;}
+    void setPreviousState(State<entity_type>* s){m_pPreviousState=s;}
     
-    void onEnter() override;
+    void changeState(State<entity_type*> pNewState)
+    {
+        m_pPreviousState=m_pCurrentState;
+        m_pCurrentState->Exit();
+        m_pCurrentState=pNewState;
+        pNewState->Enter();
+    }
     
-    void onExit() override;
+    void revertToPreviousState()
+    {
+        changeState(m_pPreviousState);
+    }
     
-    void menuSettingCallback(Ref* pSender);
     
-    void menuHandlingCallback(Ref* pSender);
+private:
+    State<entity_type*> m_pPreviousState;
+    State<entity_type*> m_pCurrentState;
     
-    void changeFurnitureCallback(Ref* psSender);
+};
+
+
+
+
+class PortUILayer:public Layer
+{
+public:
+    PortUILayer();
     
-    CREATE_FUNC(PortScene);
+    
+    CREATE_FUNC(PortUILayer);
     
     void changeLabelFuel(int fuel)
     {
@@ -90,14 +136,20 @@ public:
         labelAluminium->setString(name);
     }
     
+    void menuHandlingCallback(Ref* pSender);
+    void changeFurnitureCallback(Ref* psSender);
+    void startCircle();
+    void endCircle();
     void update(float dt) override;
-    void pauseLayerSelecterButton();
-    void resumeLayerSelecterButton();
-private:
     
+private:
+    bool init() override;
+    
+    
+private:
     Sprite *black;
     
-    LayerSelecter *layerSelecter;
+    
     LayerType currentLayerType;
     Layer* currentLayer;
     PortMainLayer *mainlayer;
@@ -108,7 +160,7 @@ private:
     PortSupplyLayer *supplylayer;
     PortBattleLayer *battlelayer;
     
-    Sprite *bgImage;
+    
     
     Label *labelFuel;
     Label *labelSteel;
@@ -123,6 +175,47 @@ private:
     Label *shipCount;
     Label *quickRepairCount;
     Label *devToolCount;
+    
+    
+};
+
+
+class PortBgLayer:public Layer
+{
+public:
+    CREATE_FUNC(PortBgLayer);
+    
+    
+private:
+    bool init() override;
+    Sprite *bgImage;
+    
+};
+
+
+
+
+class PortScene:public Scene
+{
+    friend class GameManger;
+public:
+    static PortScene* createScene();
+    
+    PortScene();
+    ~PortScene();
+    void SetCurrLayer(LayerType type);
+    CREATE_FUNC(PortScene);
+    
+    
+    void pauseLayerSelecterButton();
+    void resumeLayerSelecterButton();
+private:
+    bool init() override;
+
+public:
+    LayerSelecter* layerSelecter;
+    PortUILayer* portUIlayer;
+    PortBgLayer* portBgLayer;
 };
 
 

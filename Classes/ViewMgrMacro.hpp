@@ -26,7 +26,7 @@ enum class SceneType
 };
 
 
-enum class PanelType
+enum class LayerType
 {
     NONE=0,
     PORT_SUPPLY=1001,
@@ -35,6 +35,8 @@ enum class PanelType
     PORT_ORGANIZE,
     PORT_REPAIR,
     PORT_MAINLAYER,
+    PORT_BATTLE,
+    
     SOUND=2001
 };
 
