@@ -10,12 +10,14 @@
 #define __kancolle_alpha__DatabaseScene__
 
 #include "cocos2d.h"
+#include "SystemHeader.h"
+
+
+NS_KCL_BEGIN
 
 #define FONT_ADDRESS "/Volumes/opengl/kancolle_alpha/Resources/fonts/arial.ttf"
 
 USING_NS_CC;
-
-NS_KCL_BEGIN
 
 
 class DatabaseLayer:public Layer

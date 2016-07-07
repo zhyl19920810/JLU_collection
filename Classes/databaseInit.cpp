@@ -6,9 +6,11 @@
 //
 //
 
+#include "databaseInit.h"
+
+
 NS_KCL_BEGIN
 
-#include "databaseInit.h"
 void logAllData(std::unordered_map<int,Kantai*> _kantaiMap,
                 std::unordered_map<int,Equip*> _equipMap,
                 std::unordered_map<int,Fleet*> _fleetMap,
