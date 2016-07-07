@@ -15,6 +15,8 @@
 
 using namespace cocos2d;
 
+NS_KCL_BEGIN
+
 class KantaiDB:public DBBase
 {
 public:
@@ -82,5 +84,7 @@ protected:
 private:
     static KantaiDB* kantaiDB;
 };
+
+NS_KCL_END
 
 #endif /* defined(__kancolle_alpha__kantaiDB__) */

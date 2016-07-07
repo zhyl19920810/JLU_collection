@@ -17,6 +17,8 @@
 
 USING_NS_CC;
 
+NS_KCL_BEGIN
+
 class RepairContainerParent:public Node
 {
 public:
@@ -68,6 +70,6 @@ public:
 private:
 };
 
-
+NS_KCL_END
 
 #endif /* RepairContainer_hpp */

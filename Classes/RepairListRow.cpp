@@ -10,7 +10,7 @@
 #include "RepairListEntity.hpp"
 #include "GameManger.hpp"
 
-
+NS_KCL_BEGIN
 
 bool RepairListRow::init(int position)
 {
@@ -170,4 +170,5 @@ void RepairListRow::setEnable(bool bVisible)
     menuItem->setEnabled(bVisible);
 }
 
+NS_KCL_END
 

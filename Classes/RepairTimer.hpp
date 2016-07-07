@@ -13,7 +13,7 @@
 #include "HpBar.hpp"
 USING_NS_CC;
 
-
+NS_CC_BEGIN
 
 
 class RepairTimer : public cocos2d::Node
@@ -30,5 +30,7 @@ private:
     float pTime;
 };
 
+
+NS_CC_END
 
 #endif /* RepairTimeCounter_hpp */

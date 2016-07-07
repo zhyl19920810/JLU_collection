@@ -9,7 +9,7 @@
 #include "Player.h"
 #include <algorithm>
 
-
+NS_KCL_BEGIN
 
 Player::Player()
 {
@@ -937,7 +937,7 @@ void Player::endCircle()
     Director::getInstance()->getScheduler()->unschedule("playerAddAttr", this);
 }
 
-
+NS_KCL_END
 
 
 

@@ -8,6 +8,9 @@
 
 #include "playerDB.h"
 
+NS_KCL_BEGIN
+
+
 PlayerDB* PlayerDB::playerDB=new PlayerDB;
 
 void PlayerDB::modifyPlayerName(int playerKey,const std::string &playerName)
@@ -219,3 +222,4 @@ PlayerDB* PlayerDB::getInstance()
     return playerDB;
 }
 
+NS_KCL_END

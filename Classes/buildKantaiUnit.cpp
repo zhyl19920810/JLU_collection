@@ -9,6 +9,7 @@
 #include "buildKantaiUnit.hpp"
 
 
+NS_KCL_BEGIN
 
 bool BuildKantaiUnit::init(factoryBuildingMode mode)
 {
@@ -449,5 +450,5 @@ void AlBuildUnit::minusPlayerRes(int res)
     ////////////////////////////////
 }
 
-
+NS_KCL_END
 

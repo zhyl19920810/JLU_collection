@@ -14,6 +14,7 @@
 
 using namespace cocos2d;
 
+NS_KCL_BEGIN
 
 #define sPlayerDB PlayerDB::getInstance()
 
@@ -49,5 +50,7 @@ protected:
 private:
     static PlayerDB* playerDB;
 };
+
+NS_KCL_END
 
 #endif /* defined(__kancolle_alpha__playerDB__) */

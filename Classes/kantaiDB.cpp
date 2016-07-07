@@ -10,6 +10,8 @@
 #include "equipDB.h"
 #include "KantaiMgr.hpp"
 
+NS_KCL_BEGIN
+
 KantaiDB* KantaiDB::kantaiDB=new KantaiDB;
 
 KantaiDB* KantaiDB::getInstance()
@@ -647,3 +649,4 @@ void KantaiDB::setKantaiState(int kantaiKey, int kantaiState)
     }
 }
 
+NS_KCL_END

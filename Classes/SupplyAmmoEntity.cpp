@@ -8,6 +8,8 @@
 
 #include "SupplyAmmoEntity.hpp"
 
+NS_KCL_BEGIN
+
 AmmoEntity::AmmoEntity()
 {
     consumeAmmo=0;
@@ -208,4 +210,4 @@ void AmmoTank::removeNode()
     parent->removeChild(this);
 }
 
-
+NS_KCL_END

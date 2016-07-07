@@ -19,6 +19,8 @@
 USING_NS_CC;
 
 
+NS_KCL_BEGIN
+
 class ShipUnit:public Node
 {
     typedef enum
@@ -76,5 +78,6 @@ private:
 };
 
 
+NS_KCL_END
 
 #endif /* SupplyShipUnit_hpp */

@@ -11,8 +11,11 @@
 
 
 #include "cocos2d.h"
-
+#include "SystemHeader.h"
 USING_NS_CC;
+
+
+NS_KCL_BEGIN
 
 static std::map<int,Vec2> fuelTankLoc=
 {   {1,Vec2(-25,-75)},
@@ -102,6 +105,6 @@ private:
     int consumeFuel;
 };
 
-
+NS_KCL_END
 
 #endif /* SupplyFuelEntity_hpp */

@@ -8,6 +8,9 @@
 
 #include "equipDB.h"
 
+
+NS_KCL_BEGIN
+
 EquipDB* EquipDB::equipDB=new EquipDB;
 
 int EquipDB::getNewEquipByNumber(int equipNumber,int kantaiKey,int position)
@@ -140,3 +143,5 @@ EquipDB* EquipDB::getInstance()
 {
     return equipDB;
 }
+
+NS_KCL_END

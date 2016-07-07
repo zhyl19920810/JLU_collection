@@ -15,7 +15,7 @@
 #include <string>
 
 
-
+NS_KCL_BEGIN
 
 
 class RepairFactorMgr:public Singleton<RepairFactorMgr>
@@ -78,5 +78,7 @@ private:
 
 
 #define sRepairFactorMgr RepairFactorMgr::getInstance()
+
+NS_KCL_END
 
 #endif /* RepairFactorMgr_hpp */

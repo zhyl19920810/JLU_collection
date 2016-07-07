@@ -8,6 +8,7 @@
 
 #include "databaseBase.h"
 
+NS_KCL_BEGIN
 sqlite3* DBBase::kancolleDB=0;
 
 
@@ -25,3 +26,5 @@ void DBBase::end()
 {
     sqlite3_close(kancolleDB);
 }
+
+NS_KCL_END

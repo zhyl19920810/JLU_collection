@@ -12,10 +12,14 @@
 
 #define MAX_NAME_STRING 33
 #define MAX_SUPSHIP 19
+
 #include "Singleton.hpp"
 #include "loadTxt.hpp"
 #include "SystemHeader.h"
 #include <string>
+
+
+NS_KCL_BEGIN
 
 class EquipMgr:public Singleton<EquipMgr>
 {
@@ -83,6 +87,8 @@ private:
 
 #define sEquipMgr EquipMgr::getInstance()
 
+
+NS_KCL_END
 
 #endif /* EquipMgr_hpp */
 

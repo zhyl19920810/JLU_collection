@@ -14,6 +14,8 @@
 
 USING_NS_CC;
 
+NS_KCL_BEGIN
+
 #define sDockDB DockDB::getInstance()
 
 typedef struct
@@ -42,6 +44,8 @@ private:
     static DockDB* dockDB;
     
 };
+
+NS_KCL_END
 
 #endif /* dockDB_hpp */
 

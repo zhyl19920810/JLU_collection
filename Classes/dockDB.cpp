@@ -8,6 +8,8 @@
 
 #include "dockDB.hpp"
 
+NS_KCL_BEGIN
+
 DockDB* DockDB::dockDB=new DockDB;
 
 
@@ -109,7 +111,7 @@ void DockDB::deleteKantai(int playerKey,int kantaiKey)
 //    sprintf(name, "insert into kantai_in_repair(playerKey,kantaiKey,position,completeTime) Values(?,?,?, strftime('%%s','now','+%d second'))",buildingTime);
 
 
-
+NS_KCL_END
 
 
 

@@ -13,6 +13,8 @@
 #include "Singleton.hpp"
 #include <map>
 
+NS_KCL_BEGIN
+
 #define MAX_PLAYER_LV 100
 #define MAX_KANTAI_LV 100
 
@@ -59,6 +61,8 @@ private:
 };
 
 #define sExpMgr ExpMgr::getInstance()
+
+NS_KCL_END
 
 
 #endif /* ExpMgr_hpp */

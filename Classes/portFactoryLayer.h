@@ -19,6 +19,7 @@
 
 using namespace cocos2d;
 
+NS_KCL_BEGIN
 
 class PortFactoryLayer : public Layer
 {
@@ -66,5 +67,7 @@ private:
     
 };
 
+
+NS_KCL_END
 
 #endif /* defined(__kancolle_alpha__portFactoryLayer__) */

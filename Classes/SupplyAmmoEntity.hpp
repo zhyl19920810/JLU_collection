@@ -10,6 +10,9 @@
 #define SupplyAmmoEntity_hpp
 
 #include "cocos2d.h"
+#include "SystemHeader.h"
+
+NS_KCL_BEGIN
 
 USING_NS_CC;
 
@@ -105,7 +108,7 @@ private:
     int consumeAmmo;
 };
 
-
+NS_KCL_END
 
 
 #endif /* SupplyAmmoEntity_hpp */

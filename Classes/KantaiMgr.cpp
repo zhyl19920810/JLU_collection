@@ -8,6 +8,8 @@
 
 #include "KantaiMgr.hpp"
 
+NS_KCL_BEGIN
+
 KantaiMgr::KantaiMgr()
 {}
 
@@ -78,3 +80,5 @@ void KantaiMgr::initKantaiMap(const char **aStrArray, int aArrayLen)
     }
     kantaiMap[tmp.kantaiNumber]=tmp;
 }
+
+NS_KCL_END

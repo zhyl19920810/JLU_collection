@@ -11,8 +11,11 @@
 
 #include "cocos2d.h"
 #include "sqlite3.h"
+#include "SystemHeader.h"
 
 using namespace cocos2d;
+
+NS_KCL_BEGIN
 
 class DBBase
 {
@@ -37,7 +40,7 @@ public:
     
 };
 
-
+NS_KCL_END
 
 
 #endif /* defined(__kancolle_alpha__databaseBase__) */

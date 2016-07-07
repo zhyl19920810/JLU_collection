@@ -10,6 +10,10 @@
 #include "dock.hpp"
 #include "portRepairLayer.h"
 
+
+NS_KCL_BEGIN
+
+
 RepairSelectEntity* RepairSelectEntity::create()
 {
     RepairSelectEntity* pRet=new RepairSelectEntity;
@@ -293,6 +297,6 @@ void RepairSelectEntity::updateKantai(Kantai *kantai)
 }
 
 
-
+NS_KCL_END
 
 

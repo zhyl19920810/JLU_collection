@@ -17,7 +17,7 @@
 
 USING_NS_CC;
 
-
+NS_KCL_BEGIN
 
 class FactoryContainer:public Node
 {
@@ -54,5 +54,6 @@ private:
     Sprite* slipway;
 };
 
+NS_KCL_END
 
 #endif /* portFactoryContainer_hpp */

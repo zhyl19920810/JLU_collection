@@ -16,6 +16,7 @@
 #include "Singleton.hpp"
 #include <map>
 
+NS_KCL_BEGIN
 
 #define MAX_EQUIP_NAME 50
 
@@ -60,5 +61,7 @@ private:
 
 
 #define sEquipPicMgr EquipPicMgr::getInstance()
+
+NS_KCL_END
 
 #endif /* EquipPicMgr_hpp */

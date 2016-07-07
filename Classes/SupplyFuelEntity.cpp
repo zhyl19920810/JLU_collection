@@ -8,7 +8,7 @@
 
 #include "SupplyFuelEntity.hpp"
 
-
+NS_KCL_BEGIN
 
 FuelEntity::FuelEntity()
 {
@@ -213,3 +213,4 @@ void FuelTank::removeNode()
 }
 
 
+NS_KCL_END

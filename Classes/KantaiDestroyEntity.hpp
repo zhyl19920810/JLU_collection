@@ -13,10 +13,11 @@
 #include "cocos2d.h"
 #include "kantaiCard.hpp"
 #include "MenuItemTouch.hpp"
-
-
-
 USING_NS_CC;
+
+NS_KCL_BEGIN
+
+
 
 class KantaiDestroyEntity:public Layer
 {
@@ -54,5 +55,7 @@ private:
     int alVal;
     
 };
+
+NS_KCL_END
 
 #endif /* KantaiDestroyEntity_hpp */

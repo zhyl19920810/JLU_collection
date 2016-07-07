@@ -10,6 +10,7 @@
 #include "dockDB.hpp"
 #include "RepairFactorMgr.hpp"
 
+NS_KCL_BEGIN
 
 void Dock::initDock(int playerKey)
 {
@@ -209,7 +210,7 @@ bool Dock::canRepairKantai(Kantai *kantai,int& repairSteel,int& repairFuel,int& 
 }
 
 
-
+NS_KCL_END
 
 
 

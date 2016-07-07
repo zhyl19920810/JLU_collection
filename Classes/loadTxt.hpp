@@ -10,8 +10,10 @@
 #define loadTxt_hpp
 
 
+#include "SystemHeader.h"
 using namespace std;
 
+NS_KCL_BEGIN
 
 #define MAX_LINE_CHAR 1024
 #define MAX_STRINLINE 200
@@ -22,5 +24,7 @@ void g_loadtxt(const char* aFileName, fnParseLine pfnCallBack, string aSplitChar
 std::vector<std::string> splitText(std::string str,std::string pattern);
 vector<string> readFileTxt(const char *aFileName);
 
+
+NS_KCL_END
 
 #endif /* loadTxt_hpp */

@@ -10,6 +10,9 @@
 #include "FactoryListEntity.hpp"
 #include "portFactoryLayer.h"
 
+
+NS_KCL_BEGIN
+
 void KantaiDestroyEntity::initBg()
 {
     bgImg=Sprite::create("RepairMain/repairSelectBg1.png");
@@ -182,5 +185,5 @@ bool KantaiDestroyEntity::init()
 }
 
 
-
+NS_KCL_END
 

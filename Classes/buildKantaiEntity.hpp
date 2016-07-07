@@ -13,6 +13,9 @@
 #include "buildKantaiUnit.hpp"
 USING_NS_CC;
 
+
+NS_KCL_BEGIN
+
 class BuildKantaiEntity:public Node
 {
 public:
@@ -43,6 +46,6 @@ private:
 
 };
 
-
+NS_KCL_END
 
 #endif /* buildKantaiEntity_hpp */

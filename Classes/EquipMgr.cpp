@@ -11,7 +11,7 @@
 #include "EquipMgr.hpp"
 
 
-
+NS_KCL_BEGIN
 
 EquipMgr::EquipMgr()
 {}
@@ -63,6 +63,6 @@ void EquipMgr::initEquipMap(const char **aStrArray, int aArrayLen)
 }
 
 
-
+NS_KCL_END
 
 

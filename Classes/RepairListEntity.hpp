@@ -18,7 +18,7 @@
 using namespace cocos2d;
 
 
-
+NS_KCL_BEGIN
 
 class RepairListEntity:public Node
 {
@@ -77,5 +77,5 @@ public:
     RepairSelectEntity* selectEntity;
 };
 
-
+NS_KCL_END
 #endif /* RepairListEntity_hpp */

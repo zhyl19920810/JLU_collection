@@ -11,6 +11,8 @@
 #include "portFactoryLayer.h"
 
 
+NS_KCL_BEGIN
+
 BuildKantaiEntity* BuildKantaiEntity::create(factoryBuildingMode mode)
 {
     BuildKantaiEntity* pRet=new BuildKantaiEntity;
@@ -177,5 +179,5 @@ void BuildKantaiEntity::hideEntity()
 }
 
 
-
+NS_KCL_END
 

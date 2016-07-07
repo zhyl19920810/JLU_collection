@@ -21,7 +21,7 @@
 using namespace cocos2d;
 
 
-
+NS_KCL_BEGIN
 
 class Player;
 
@@ -265,7 +265,7 @@ public:
 
 
 
-
+NS_KCL_END
 
 
 

@@ -13,6 +13,8 @@
 
 USING_NS_CC;
 
+NS_KCL_BEGIN
+
 class MissionSelectPage;
 
 
@@ -39,5 +41,6 @@ private:
 
 };
 
+NS_KCL_END
 
 #endif /* defined(__kancolle_alpha__portBattleLayer__) */

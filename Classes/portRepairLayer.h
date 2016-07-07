@@ -16,6 +16,9 @@
 #include "RepairSelectEntity.hpp"
 
 using namespace cocos2d;
+
+NS_KCL_BEGIN
+
 class PortRepairLayer : public Layer
 {
 public:
@@ -49,4 +52,5 @@ private:
 };
 
 
+NS_KCL_END
 #endif /* defined(__kancolle_alpha__portRepairLayer__) */

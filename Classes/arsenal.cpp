@@ -8,6 +8,7 @@
 
 #include "arsenal.hpp"
 
+NS_KCL_BEGIN
 
 void Arsenal::initArsenal(int playerKey)
 {
@@ -117,3 +118,4 @@ bool Arsenal::haveShip(int position)
     return arsenal[position-1].kantaiNumber!=0;
 }
 
+NS_KCL_END

@@ -15,6 +15,11 @@
 #include "arsenalDB.hpp"
 #include "metaphysics.hpp"
 
+
+NS_KCL_BEGIN
+
+#define sArsenal Arsenal::getInstance()
+
 class Arsenal:public Singleton<Arsenal>
 {
     friend class Singleton<Arsenal>;
@@ -49,6 +54,9 @@ private:
     MetaPhysics* metaPhysics;
 };
 
-#define sArsenal Arsenal::getInstance()
+
+
+NS_KCL_END
+
 
 #endif /* arsenal_hpp */

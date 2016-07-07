@@ -13,7 +13,7 @@
 #include "KantaiDestroyEntity.hpp"
 
 
-
+NS_KCL_BEGIN
 
 class FactoryListEntity:public ListEntity
 {
@@ -30,7 +30,7 @@ private:
 };
 
 
-
+NS_KCL_END
 
 
 

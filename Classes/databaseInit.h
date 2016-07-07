@@ -13,6 +13,7 @@
 #include "databaseBase.h"
 #include "Player.h"
 
+NS_KCL_BEGIN
 
 class DBInit:public DBBase
 {
@@ -37,6 +38,6 @@ private:
     std::string convertToStr(std::vector<int> &planeLoadVec);
 };
 
-
+NS_KCL_END
 
 #endif /* defined(__kancolle_alpha__databaseInit__) */

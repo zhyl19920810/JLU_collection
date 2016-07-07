@@ -10,6 +10,8 @@
 #include "dock.hpp"
 #include "portRepairLayer.h"
 
+NS_KCL_BEGIN
+
 RepairContainer::RepairContainer()
 {
 }
@@ -216,7 +218,7 @@ bool NoReapirContainer::init(int position)
     return bRet;
 }
 
-
+NS_KCL_END
 
 
 

@@ -12,6 +12,9 @@
 #include "databaseBase.h"
 #include "databaseInit.h"
 #include <time.h>
+
+NS_KCL_BEGIN
+
 Scene* DatabaseLayer::createScene()
 {
     Scene* scene=Scene::create();
@@ -134,3 +137,5 @@ void DatabaseLayer::DataToXML(Ref* pSender)
     
     
 }
+
+NS_KCL_END

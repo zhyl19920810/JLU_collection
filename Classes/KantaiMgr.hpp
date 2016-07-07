@@ -17,6 +17,8 @@
 #include "loadTxt.hpp"
 #include "SystemHeader.h"
 
+NS_KCL_BEGIN
+
 class KantaiMgr:public Singleton<KantaiMgr>
 {
     friend class Singleton<KantaiMgr>;
@@ -100,6 +102,6 @@ private:
 
 #define sKantaiMgr KantaiMgr::getInstance()
 
-
+NS_KCL_END
 
 #endif /* KantaiMgr_hpp */

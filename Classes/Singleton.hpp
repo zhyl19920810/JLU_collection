@@ -11,6 +11,8 @@
 
 #include "cocos2d.h"
 
+NS_KCL_BEGIN
+
 template <class T>
 class Singleton
 {
@@ -40,6 +42,6 @@ protected:
 };
 template <class T> T* Singleton<T>::instance = 0;
 
-
+NS_KCL_END
 
 #endif /* Singleton_hpp */

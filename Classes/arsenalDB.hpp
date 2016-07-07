@@ -14,6 +14,7 @@
 
 USING_NS_CC;
 
+NS_KCL_BEGIN
 
 typedef struct
 {
@@ -40,5 +41,7 @@ private:
 };
 
 #define sArsenalDB ArsenalDB::getInstance()
+
+NS_KCL_END
 
 #endif /* arsenalDB_hpp */

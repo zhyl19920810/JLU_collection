@@ -15,6 +15,9 @@
 
 USING_NS_CC;
 
+NS_KCL_BEGIN
+
+
 class DatabaseLayer:public Layer
 {
 public:
@@ -49,7 +52,7 @@ private:
 
 
 
-
+NS_KCL_END
 
 
 

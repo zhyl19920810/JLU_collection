@@ -71,5 +71,4 @@ cocos2d::Layer* ViewMgrFactory::getLayer(LayerType type,const cocos2d::Value& da
 
 
 
-
 NS_KCL_END

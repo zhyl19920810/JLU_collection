@@ -12,6 +12,10 @@
 #include "cocos2d.h"
 #include "Player.h"
 #include "Singleton.hpp"
+
+NS_KCL_BEGIN
+#define sDock Dock::getInstance() 
+
 class Dock:public Singleton<Dock>
 {
     friend class Singleton<Dock>;
@@ -49,6 +53,7 @@ private:
     void endCircle();
 };
 
+NS_KCL_END
 
-#define sDock Dock::getInstance() 
+
 #endif /* dock_hpp */

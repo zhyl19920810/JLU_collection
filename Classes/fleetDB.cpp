@@ -8,6 +8,8 @@
 
 #include "fleetDB.h"
 
+NS_KCL_BEGIN
+
 FleetDB* FleetDB::fleetDB=new FleetDB;
 
 
@@ -97,3 +99,4 @@ void FleetDB::setFleetState(int _fleetKey,int _fleetState)
     }
 }
 
+NS_KCL_END

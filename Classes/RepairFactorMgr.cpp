@@ -8,6 +8,9 @@
 
 #include "RepairFactorMgr.hpp"
 
+NS_KCL_BEGIN
+
+
 RepairFactorMgr::RepairFactorMgr()
 {
 }
@@ -40,3 +43,6 @@ void RepairFactorMgr::initRepairFactorMap(const char **aStrArray, int aArrayLen)
     tmp.fuelFactor=atof(aStrArray[index++]);
     repairFactorMap[kantaiNumber]=tmp;
 }
+
+
+NS_KCL_END

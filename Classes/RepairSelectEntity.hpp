@@ -15,6 +15,9 @@
 #include "RepairHpBar.hpp"
 USING_NS_CC;
 
+NS_KCL_BEGIN
+
+
 class RepairSelectEntity:public Layer
 {
 public:
@@ -61,4 +64,5 @@ private:
     int repairTime;
 };
 
+NS_KCL_END
 #endif /* RepairSelectEntity_hpp */

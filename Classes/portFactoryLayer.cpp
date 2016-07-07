@@ -8,6 +8,9 @@
 
 #include "portFactoryLayer.h"
 
+NS_KCL_BEGIN
+
+
 PortFactoryLayer::PortFactoryLayer()
 {
     //container.resize(sPlayer.getMaxDockSize());
@@ -170,3 +173,6 @@ void PortFactoryLayer::NullCallback(cocos2d::Ref *pSender)
 {
     
 }
+
+
+NS_KCL_END

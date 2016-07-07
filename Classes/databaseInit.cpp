@@ -6,6 +6,8 @@
 //
 //
 
+NS_KCL_BEGIN
+
 #include "databaseInit.h"
 void logAllData(std::unordered_map<int,Kantai*> _kantaiMap,
                 std::unordered_map<int,Equip*> _equipMap,
@@ -370,3 +372,4 @@ void DBInit::initKantaiEquip(std::unordered_map<int, std::pair<int, int> >& _kan
     sqlite3_finalize(statement);
 }
 
+NS_KCL_END

@@ -14,6 +14,8 @@
 
 using namespace cocos2d;
 
+NS_KCL_BEGIN
+
 #define sEquipDB EquipDB::getInstance()
 
 class EquipDB:public DBBase
@@ -36,6 +38,6 @@ private:
     static EquipDB* equipDB;
 };
 
-
+NS_KCL_END
 
 #endif /* defined(__kancolle_alpha__equipDB__) */

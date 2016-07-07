@@ -8,6 +8,8 @@
 
 #include "RepairTimer.hpp"
 
+NS_CC_BEGIN
+
 
 RepairTimer::~RepairTimer()
 {
@@ -112,3 +114,5 @@ void RepairTimer::convertTimeToChar(int time,char *name)
         strcat(name, tmp);
     }
 }
+
+NS_CC_END

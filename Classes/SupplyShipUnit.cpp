@@ -9,6 +9,7 @@
 #include "SupplyShipUnit.hpp"
 #include "portSupplyLayer.h"
 
+NS_KCL_BEGIN
 
 ShipUnit::ShipUnit()
 {
@@ -281,7 +282,7 @@ void ShipUnit::callback(cocos2d::Ref *pSender)
 
 
 
-
+NS_KCL_END
 
 
 //bool ShipUnit::init(Kantai *kantai)

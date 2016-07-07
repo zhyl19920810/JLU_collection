@@ -8,6 +8,7 @@
 
 #include "ExpMgr.hpp"
 
+NS_KCL_BEGIN
 
 void ExpMgr::initPlayerExpMap(const char* aStrArray[], int aArrayLen)
 {
@@ -69,3 +70,4 @@ int ExpMgr::getPlayerUpdateExp(int lv)
     return playerExpMap[lv];
 }
 
+NS_KCL_END

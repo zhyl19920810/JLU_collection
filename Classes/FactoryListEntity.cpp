@@ -10,7 +10,7 @@
 #include "portFactoryLayer.h"
 
 
-
+NS_KCL_BEGIN
 
 
 void FactoryListEntity::hideSelect(cocos2d::Ref *pSender)
@@ -70,3 +70,5 @@ void FactoryListEntity::destoryKantai(Kantai *kantai)
     }
     displayKantai.pop_back();
 }
+
+NS_KCL_END

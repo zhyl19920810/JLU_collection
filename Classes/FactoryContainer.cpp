@@ -9,6 +9,9 @@
 #include "FactoryContainer.hpp"
 #include "portFactoryLayer.h"
 
+NS_KCL_BEGIN
+
+
 FactoryContainer* FactoryContainer::create(int position)
 {
     FactoryContainer* tmp=new FactoryContainer;
@@ -152,7 +155,7 @@ void FactoryContainer::update()
 }
 
 
-
+NS_KCL_END
 
 
 

@@ -10,6 +10,7 @@
 #include "MissionSelectPage.h"
 
 
+NS_CC_BEGIN
 
 bool PortBattleLayer::init()
 {
@@ -93,4 +94,6 @@ void PortBattleLayer::hideMissionPage()
     //this->missionPage->moveOut();
 }
 
+
+NS_CC_END
 

@@ -10,9 +10,13 @@
 #define RepairHpBar_hpp
 
 #include "cocos2d.h"
+#include "SystemHeader.h"
+
 
 
 USING_NS_CC;
+
+NS_KCL_BEGIN
 
 class RepairHpBar:public Node
 {
@@ -27,5 +31,7 @@ private:
     Sprite* bar;
     Sprite* barBg;
 };
+
+NS_KCL_END
 
 #endif /* RepairHpBar_hpp */

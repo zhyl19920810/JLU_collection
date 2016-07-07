@@ -19,10 +19,10 @@
 USING_NS_CC;
 
 
+NS_KCL_BEGIN
+
 class PortScene;
 class PortSupplyLayer;
-
-
 
 
 class PortSupplyLayer:public Layer
@@ -104,5 +104,5 @@ private:
 };
 
 
-
+NS_KCL_END
 #endif /* defined(__kancolle_alpha__portSupplyLayer__) */

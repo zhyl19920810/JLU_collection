@@ -14,6 +14,8 @@
 
 using namespace cocos2d;
 
+NS_KCL_BEGIN
+
 class FleetDB:public DBBase
 {
 public:
@@ -35,4 +37,7 @@ private:
 };
 
 #define sFleetDB FleetDB::getInstance()
+
+NS_KCL_END
+
 #endif /* defined(__kancolle_alpha__fleetDB__) */

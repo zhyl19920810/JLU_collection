@@ -9,6 +9,8 @@
 #include "portRemodeLayer.h"
 
 
+NS_KCL_BEGIN
+
 bool PortRemodeLayer::init()
 {
     bool bRet=false;
@@ -49,3 +51,6 @@ void PortRemodeLayer::callBack(Ref* pSender)
 {
     
 }
+
+
+NS_KCL_END

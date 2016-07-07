@@ -9,6 +9,8 @@
 #include "portRepairLayer.h"
 #include "Player.h"
 
+NS_KCL_BEGIN
+
 PortRepairLayer::PortRepairLayer()
 {
     //this->setZOrder(-1);
@@ -102,7 +104,7 @@ void PortRepairLayer::hideList(cocos2d::Ref *pSender)
     listCover->setCoverEnable(false);
 }
 
-
+NS_KCL_END
 
 
 

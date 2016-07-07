@@ -14,6 +14,10 @@
 #include "Player.h"
 #include "RepairHpBar.hpp"
 USING_NS_CC;
+
+NS_KCL_BEGIN
+
+
 #define FONT_COLOR Color3B::BLACK
 
 class RepairListRow:public Node
@@ -49,6 +53,8 @@ private:
     MenuItemSprite* menuItem;
     Kantai* kantai;
 };
+
+NS_KCL_END
 
 
 #endif /* RepairListRow_hpp */

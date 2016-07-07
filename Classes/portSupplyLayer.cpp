@@ -11,6 +11,8 @@
 #include "GameManger.hpp"
 
 
+NS_KCL_BEGIN
+
 PortSupplyLayer::PortSupplyLayer()
 {
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("SupplyMain/supplyLayer.plist", "SupplyMain/supplyLayer.pvr.ccz");
@@ -570,7 +572,7 @@ void PortSupplyLayer::update(float dt)
     ammoNumber->setString(name);
 }
 
-
+NS_KCL_END
 
 
 

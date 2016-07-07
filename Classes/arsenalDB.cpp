@@ -9,6 +9,7 @@
 #include "arsenalDB.hpp"
 
 
+NS_KCL_BEGIN
 ArsenalDB* ArsenalDB::arsenalDB=new ArsenalDB;
 
 
@@ -106,7 +107,7 @@ void ArsenalDB::deleteKantai(int playerKey,int position)
     sqlite3_finalize(statement);
 }
 
-
+NS_KCL_END
 
 
 

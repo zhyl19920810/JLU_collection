@@ -8,6 +8,8 @@
 
 #include "RepairHpBar.hpp"
 
+NS_KCL_BEGIN
+
 RepairHpBar::RepairHpBar(int maxHp,int currentHp)
 {
     if (maxHp<=0)
@@ -58,3 +60,5 @@ void RepairHpBar::setHp(int maxHp, int currentHp)
     this->maxHp=maxHp;
     setCurrHp(currentHp);
 }
+
+NS_KCL_END

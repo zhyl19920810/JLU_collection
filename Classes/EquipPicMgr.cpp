@@ -8,6 +8,7 @@
 
 #include "EquipPicMgr.hpp"
 
+NS_KCL_BEGIN
 
 void EquipPicMgr::initEquipPic(const char* aStrArray[], int aArrayLen)
 {
@@ -51,3 +52,5 @@ EquipPicMgr::stEquipPicData* EquipPicMgr::getEquipPicMap(int equipNumber)
     CCASSERT(false,"can not find the kantai");
 }
 
+
+NS_KCL_END

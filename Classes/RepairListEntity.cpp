@@ -11,6 +11,7 @@
 #include "portRepairLayer.h"
 #include <algorithm>
 
+NS_KCL_BEGIN
 
 #define SHIPS_PER_PAGE 10
 #define FONT_COLOR Color3B::BLACK
@@ -344,3 +345,6 @@ void RepairListEntity::updateRows()
         ++j;
     }
 }
+
+
+NS_KCL_END

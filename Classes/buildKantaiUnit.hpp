@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include "Player.h"
 
+NS_KCL_BEGIN
 
 typedef enum
 {
@@ -130,7 +131,7 @@ public:
 
 
 
-
+NS_KCL_END
 
 
 
