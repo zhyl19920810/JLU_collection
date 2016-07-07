@@ -18,10 +18,9 @@
 #include "portBattleLayer.h"
 #include "portRepairLayer.h"
 #include "portOrganizeLayer.h"
-#include "Player.h"
 #include "GameManger.hpp"
 #include "Sound.hpp"
-
+#include "ViewMgr.hpp"
 
 NS_KCL_BEGIN
 
@@ -41,21 +40,21 @@ factroylayer(NULL),
 repairlayer(NULL),
 battlelayer(NULL),
 title(NULL),
-organizelayer(NULL),
-currentLayerType(LayerType::NONE)
+organizelayer(NULL)
 {
     
 }
 
 PortScene::PortScene():
+portStateMachine(this),
 layerSelecter(NULL),
 portUIlayer(NULL),
-portBgLayer(NULL)
+portBgLayer(NULL),
+currentLayerType(LayerType::NONE)
 {
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PortMain/portmain.plist", "PortMain/portmain.pvr.ccz");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PortMain/layerSelect.plist", "PortMain/layerSelect.pvr.ccz");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PortMain/portMainLayer.plist", "PortMain/portMainLayer.pvr.ccz");
-    SetCurrLayer(LayerType::PORT_MAINLAYER);
 }
 
 PortScene::~PortScene()
@@ -69,7 +68,10 @@ PortScene::~PortScene()
     Director::getInstance()->getInstance()->getScheduler()->unscheduleUpdate(this);
 }
 
-
+LayerType PortScene::getCurrLayerType() const
+{
+    return currentLayerType;
+}
 
 
 void PortScene::pauseLayerSelecterButton()
@@ -83,8 +85,166 @@ void PortScene::resumeLayerSelecterButton()
 }
 
 
+
+PortStateMachine::PortStateMachine(PortScene* _owner):
+owner(_owner),
+m_pPreviousState(&nullState),
+m_pCurrentState(&nullState)
+{}
+
+void PortStateMachine::changeState(LayerType newType)
+{
+    m_pPreviousState=m_pCurrentState;
+    m_pCurrentState->Exit(newType,owner);
+    m_pCurrentState=getState(newType);
+    m_pCurrentState->Enter(newType,owner);
+}
+
+
+PortState* PortStateMachine::getState(kancolle::LayerType newType)
+{
+    PortState* state=NULL;
+    switch (newType)
+    {
+        case kancolle::LayerType::PORT_MAINLAYER:
+            state=&mainLayerState;
+            break;
+        case kancolle::LayerType::PORT_BATTLE:
+        case kancolle::LayerType::PORT_FACTORY:
+        case kancolle::LayerType::PORT_ORGANIZE:
+        case kancolle::LayerType::PORT_REMODE:
+        case kancolle::LayerType::PORT_REPAIR:
+        case kancolle::LayerType::PORT_SUPPLY:
+            state=&portLayerState;
+            break;
+        case kancolle::LayerType::NONE:
+            state=&nullState;
+            break;
+        default:
+            break;
+    }
+    return state;
+}
+
+
+void MainLayerState::Enter(LayerType newType,kancolle::PortScene *portScene)
+{
+    switch (portScene->getCurrLayerType()) {
+        case kancolle::LayerType::PORT_MAINLAYER:
+            break;
+        case kancolle::LayerType::NONE:
+            VIEW_MGR->showLayer(LayerType::PORT_MAINLAYER);
+            portScene->portUIlayer->setVisible(true);
+            portScene->layerSelecter->setVisible(true);
+            portScene->portUIlayer->changeTitlePic(LayerType::PORT_MAINLAYER);
+        case kancolle::LayerType::PORT_BATTLE:
+        case kancolle::LayerType::PORT_FACTORY:
+        case kancolle::LayerType::PORT_ORGANIZE:
+        case kancolle::LayerType::PORT_REMODE:
+        case kancolle::LayerType::PORT_REPAIR:
+        case kancolle::LayerType::PORT_SUPPLY:
+            VIEW_MGR->showLayer(LayerType::PORT_MAINLAYER);
+            portScene->portUIlayer->changeTitlePic(LayerType::PORT_MAINLAYER);
+            portScene->layerSelecter->moveOut();
+            break;
+        default:
+            break;
+    }
+}
+
+void MainLayerState::Exit(LayerType newType,kancolle::PortScene *portScene)
+{
+    switch (newType)
+    {
+        case LayerType::PORT_MAINLAYER:
+            break;
+        default:
+            break;
+    }
+
+}
+
+void PortLayerState::Enter(LayerType newType,kancolle::PortScene *portScene)
+{
+    auto currType=portScene->getCurrLayerType();
+    if (newType==currType)
+    {
+        return;
+    }
+    switch (currType)
+    {
+        case kancolle::LayerType::PORT_MAINLAYER:
+            VIEW_MGR->showLayer(newType,false);
+            portScene->portUIlayer->changeTitlePic(newType);
+            portScene->layerSelecter->moveIn();
+            break;
+        case kancolle::LayerType::PORT_BATTLE:
+        case kancolle::LayerType::PORT_FACTORY:
+        case kancolle::LayerType::PORT_ORGANIZE:
+        case kancolle::LayerType::PORT_REMODE:
+        case kancolle::LayerType::PORT_REPAIR:
+        case kancolle::LayerType::PORT_SUPPLY:
+            VIEW_MGR->showLayer(newType,true);
+            portScene->portUIlayer->changeTitlePic(newType);
+            portScene->layerSelecter->moveIn();
+            break;
+        case kancolle::LayerType::NONE:
+            VIEW_MGR->showLayer(newType);
+            portScene->portUIlayer->setVisible(true);
+            portScene->layerSelecter->setVisible(true);
+            portScene->portUIlayer->changeTitlePic(newType);
+            break;
+        default:
+            break;
+    }
+}
+
+void PortLayerState::Exit(LayerType newType,kancolle::PortScene *portScene)
+{
+    
+}
+
+
+void PortUILayer::changeTitlePic(kancolle::LayerType type)
+{
+    title->setVisible(true);
+    std::string titleName;
+    switch (type) {
+        case LayerType::PORT_MAINLAYER:
+            titleName="porttitle.png";
+            break;
+        case LayerType::PORT_SUPPLY:
+            titleName="supplytitle.png";
+            break;
+        case LayerType::PORT_FACTORY:
+            titleName="factorytitle.png";
+            break;
+        case LayerType::PORT_ORGANIZE:
+            titleName="organizetitle.png";
+            break;
+        case LayerType::PORT_REMODE:
+            titleName="remodeltitle.png";
+            break;
+        case LayerType::PORT_REPAIR:
+            titleName="repairtitle.png";
+            break;
+        case LayerType::PORT_BATTLE:
+            titleName="battletitle.png";
+            break;
+        default:
+            title->setVisible(false);
+            break;
+    }
+    title->setSpriteFrame(titleName);
+}
+
+
+
+
 void PortScene::SetCurrLayer(LayerType type)
 {
+    portStateMachine.changeState(type);
+    currentLayerType=type;
 //    switch (type) {
 //        case main:
 //        {
@@ -490,7 +650,6 @@ bool PortBgLayer::init()
         
         bgImage=Sprite::create("PortMain/image 345.jpg");
         bgImage->setPosition(800,210);
-        bgImage->setGlobalZOrder(-3);
         addChild(bgImage);
         
         SND->playMusic("sound_bgm/sound 2.mp3");
@@ -509,12 +668,13 @@ bool PortScene::init()
     {
         CC_BREAK_IF(!Scene::init());
         
+        schedule([this](float dt){SetCurrLayer(LayerType::PORT_MAINLAYER);}, 0, 0, 0, "init_portScene");
         layerSelecter=LayerSelecter::create(this, Vec2(-50, 220));
-        addChild(layerSelecter);
+        addChild(layerSelecter,3);
         portBgLayer=PortBgLayer::create();
-        addChild(portBgLayer);
+        addChild(portBgLayer,-1);
         portUIlayer=PortUILayer::create();
-        addChild(portUIlayer);
+        addChild(portUIlayer,2);
         
         bRet=true;
     }while(0);

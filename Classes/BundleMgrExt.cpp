@@ -14,7 +14,8 @@ NS_KCL_BEGIN
 
 void exeLaunch()
 {
-    kancolle::ViewMgr::getInstance()->showScene(kancolle::SceneType::HOME);
+    VIEW_MGR->showScene(SceneType::HOME);
+    
     //Director::getInstance()->runWithScene(PortScene::createScene());
     //Director::getInstance()->runWithScene(RegexTest::create());
     //cocos2d::Director::getInstance()->runWithScene(AnimTest::create());

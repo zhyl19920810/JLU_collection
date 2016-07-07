@@ -40,7 +40,6 @@ bool LayerSelecter::init(PortScene *parent,Point position)
         initialPosition=position;
         this->parent=parent;
         this->setPosition(initialPosition);
-        this->setZOrder(2);
         
         mainbody =Sprite::createWithSpriteFrameName("lsmb.png");
         mainbody->setPosition(-10, 0);

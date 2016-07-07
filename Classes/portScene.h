@@ -18,16 +18,6 @@
 
 USING_NS_CC;
 
-//enum LayerType{
-//    main,
-//    organize,
-//    supply,
-//    remode,
-//    factory,
-//    repair,
-//    battle,
-//    empty
-//};
 
 NS_KCL_BEGIN
 
@@ -44,62 +34,68 @@ class PortScene;
 
 
 
-template <class entity_type>
-class State
+
+class PortState
 {
 public:
-    virtual void Enter(entity_type*)=0;
-    virtual void Execute(entity_type*)=0;
-    virtual void Exit(entity_type*)=0;
-    virtual ~State(){}
+    virtual void Enter(LayerType,PortScene*)=0;
+    virtual void Exit(LayerType,PortScene*)=0;
+    virtual ~PortState(){}
 private:
 };
 
-class SoundLayerState:public State <PortScene>
+class MainLayerState:public PortState
 {
 public:
-    
-};
-
-class MainLayerState:public State<PortScene>
-{
-public:
-    
+    void Enter(LayerType,PortScene*);
+    void Exit(LayerType,PortScene*);
 };
 
 
-class SelecterLayerState:public State<PortScene>
+class PortLayerState:public PortState
 {
 public:
-    
+    void Enter(LayerType,PortScene*);
+    void Exit(LayerType,PortScene*);
 };
 
-
-template<class entity_type>
-class StateMachine
+class NullState:public PortState
 {
 public:
-    void setCurrentState(State<entity_type>* s){m_pCurrentState=s;}
-    void setPreviousState(State<entity_type>* s){m_pPreviousState=s;}
+    void Enter(LayerType,PortScene*){}
+    void Exit(LayerType,PortScene*){}
+};
+//class SoundLayerState:public PortState
+//{
+//public:
+//
+//};
+
+
+class PortStateMachine
+{
+public:
+    PortStateMachine(PortScene* _owner);
     
-    void changeState(State<entity_type*> pNewState)
-    {
-        m_pPreviousState=m_pCurrentState;
-        m_pCurrentState->Exit();
-        m_pCurrentState=pNewState;
-        pNewState->Enter();
-    }
+    void setCurrentState(PortState* s){m_pCurrentState=s;}
+    void setPreviousState(PortState* s){m_pPreviousState=s;}
+    
+    void changeState(LayerType newType);
+    PortState* getState(LayerType newType);
     
     void revertToPreviousState()
     {
-        changeState(m_pPreviousState);
+        //changeState(m_pPreviousState);
     }
     
     
 private:
-    State<entity_type*> m_pPreviousState;
-    State<entity_type*> m_pCurrentState;
-    
+    PortScene* owner;
+    PortState* m_pPreviousState;
+    PortState* m_pCurrentState;
+    PortLayerState portLayerState;
+    PortLayerState mainLayerState;
+    NullState      nullState;
 };
 
 
@@ -148,6 +144,8 @@ public:
     void endCircle();
     void update(float dt) override;
     
+    
+    void changeTitlePic(kancolle::LayerType type);
 private:
     bool init() override;
     
@@ -156,7 +154,7 @@ private:
     Sprite *black;
     
     
-    LayerType currentLayerType;
+    
     Layer* currentLayer;
     PortMainLayer *mainlayer;
     PortFactoryLayer *factroylayer;
@@ -210,6 +208,8 @@ public:
     PortScene();
     ~PortScene();
     void SetCurrLayer(LayerType type);
+    LayerType getCurrLayerType() const;
+    
     CREATE_FUNC(PortScene);
     
     
@@ -219,9 +219,11 @@ private:
     bool init() override;
 
 public:
+    LayerType currentLayerType;
     LayerSelecter* layerSelecter;
     PortUILayer* portUIlayer;
     PortBgLayer* portBgLayer;
+    PortStateMachine portStateMachine;
 };
 
 NS_KCL_END
