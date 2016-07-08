@@ -36,6 +36,9 @@ NS_KCL_BEGIN
 #define CACHE (UserDefault::getInstance())
 #define FILE_UTIL FileUtils::getInstance()
 #define GAME_DB_NAME "kancolle_2.sqlite3"
+#define DB_IN_COMPUTER 1
+
+
 
 static BundleMgr* m_pInstance = NULL;
 

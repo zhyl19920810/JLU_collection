@@ -94,7 +94,7 @@ private:
     PortState* m_pPreviousState;
     PortState* m_pCurrentState;
     PortLayerState portLayerState;
-    PortLayerState mainLayerState;
+    MainLayerState mainLayerState;
     NullState      nullState;
 };
 
@@ -156,13 +156,6 @@ private:
     
     
     Layer* currentLayer;
-    PortMainLayer *mainlayer;
-    PortFactoryLayer *factroylayer;
-    PortOrganizeLayer *organizelayer;
-    PortRemodeLayer *remodelayer;
-    PortRepairLayer *repairlayer;
-    PortSupplyLayer *supplylayer;
-    PortBattleLayer *battlelayer;
     
     
     
@@ -180,6 +173,14 @@ private:
     Label *quickRepairCount;
     Label *devToolCount;
     
+private:
+    void initPortSceneBar();
+    void initSelectButton();
+    void initPlayerAttr();
+    void initTopLeftCircle();
+    void initClock();
+    
+    void updatePlayerAttr(float dt);
     
 };
 

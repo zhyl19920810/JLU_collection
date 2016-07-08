@@ -70,6 +70,7 @@ void PortMainLayer::updateGirl()
 {
     char resource[50];
     bzero(resource, sizeof(resource));
+    auto fleet1=sPlayer.fleetData;
     int num=sPlayer.fleetData[0]->ship[0]->getKantaiNumber();
     sprintf(resource, "kantai/%d/image 17.png",num);
     //std::string resource="kantai/"+std::to_string(num)+"/image 17.png";

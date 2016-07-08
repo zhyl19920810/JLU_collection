@@ -68,19 +68,9 @@ cocos2d::Scene* ViewMgr::showScene(SceneType sceneType,bool replaceScene,const c
 
 cocos2d::Layer* ViewMgr::showLayer(LayerType layerType,bool replaceScene,bool preLayerVisible,const cocos2d::Value& data)
 {
-    cocos2d::Layer* _layer=getLayer(layerType);
-    if (!_layer)
-    {
-        _layer=ViewMgrFactory::getLayer(layerType);
-        _layer->setTag(static_cast<int>(layerType));
-        LayerStruct layerStruct;
-        layerStruct.type=layerType;
-        layerStruct.data=data;
-        layerStruct.layer=_layer;
-        sceneStack.begin()->layerQueue.push_front(layerStruct);
-        sceneStack.begin()->scene->addChild(_layer);
+    if (layerType==currLayerType||layerType==LayerType::NONE) {
+        return getLayer(layerType);
     }
-    _layer->setVisible(true);
     
     cocos2d::Layer* preLayer=getLayer(currLayerType);
     if (replaceScene)
@@ -88,7 +78,7 @@ cocos2d::Layer* ViewMgr::showLayer(LayerType layerType,bool replaceScene,bool pr
         if (preLayer)
         {
             sceneStack.begin()->scene->removeChild(preLayer);
-            auto queue=sceneStack.begin()->layerQueue;
+            auto& queue=sceneStack.begin()->layerQueue;
             for (auto it=queue.begin(); it!=queue.end(); ++it)
             {
                 if (currLayerType==it->type)
@@ -103,7 +93,22 @@ cocos2d::Layer* ViewMgr::showLayer(LayerType layerType,bool replaceScene,bool pr
     {
         preLayer->setVisible(preLayerVisible);
     }
-
+    
+    
+    cocos2d::Layer* _layer=getLayer(layerType);
+    if (!_layer)
+    {
+        _layer=ViewMgrFactory::getLayer(layerType);
+        _layer->setTag(static_cast<int>(layerType));
+        LayerStruct layerStruct;
+        layerStruct.type=layerType;
+        layerStruct.data=data;
+        layerStruct.layer=_layer;
+        sceneStack.begin()->layerQueue.push_front(layerStruct);
+        sceneStack.begin()->scene->addChild(_layer);
+    }
+    _layer->setVisible(true);
+    
     currLayerType=layerType;
     
     return _layer;
