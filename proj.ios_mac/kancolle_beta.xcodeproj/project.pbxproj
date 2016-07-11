@@ -221,6 +221,8 @@
 		F42DB8FF1C5A33B500CBE2C7 /* Star.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8FC1C5A33B500CBE2C7 /* Star.cpp */; };
 		F42ECD9D1D2F1CA700E09EA0 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = F42ECD9C1D2F1CA700E09EA0 /* sound */; };
 		F42ECD9E1D2F1CA700E09EA0 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = F42ECD9C1D2F1CA700E09EA0 /* sound */; };
+		F42ECDA21D2FF75600E09EA0 /* signBoardGirl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42ECDA01D2FF75600E09EA0 /* signBoardGirl.cpp */; };
+		F42ECDA31D2FF75600E09EA0 /* signBoardGirl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42ECDA01D2FF75600E09EA0 /* signBoardGirl.cpp */; };
 		F439079B1C8B373B004B5B2D /* ListEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43907991C8B373B004B5B2D /* ListEntity.cpp */; };
 		F439079C1C8B373B004B5B2D /* ListEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43907991C8B373B004B5B2D /* ListEntity.cpp */; };
 		F439079F1C8B377E004B5B2D /* ListRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F439079D1C8B377E004B5B2D /* ListRow.cpp */; };
@@ -305,6 +307,8 @@
 		F48189811C5926F900A0D0F5 /* kantaiCard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F481897E1C5926F900A0D0F5 /* kantaiCard.cpp */; };
 		F48189861C592F5F00A0D0F5 /* KantaiDetailEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48189841C592F5F00A0D0F5 /* KantaiDetailEntity.cpp */; };
 		F48189871C592F5F00A0D0F5 /* KantaiDetailEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48189841C592F5F00A0D0F5 /* KantaiDetailEntity.cpp */; };
+		F48253AF1D33EA0900165D61 /* MainLayerButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48253AD1D33EA0900165D61 /* MainLayerButton.cpp */; };
+		F48253B01D33EA0900165D61 /* MainLayerButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48253AD1D33EA0900165D61 /* MainLayerButton.cpp */; };
 		F4938B681C60999100AB1286 /* metaphysics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4938B661C60999100AB1286 /* metaphysics.cpp */; };
 		F4938B691C60999100AB1286 /* metaphysics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4938B661C60999100AB1286 /* metaphysics.cpp */; };
 		F4A328421C847CA70048F939 /* SupplyShipUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A328401C847CA70048F939 /* SupplyShipUnit.cpp */; };
@@ -596,6 +600,8 @@
 		F42DB8FC1C5A33B500CBE2C7 /* Star.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Star.cpp; sourceTree = "<group>"; };
 		F42DB8FD1C5A33B500CBE2C7 /* Star.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Star.hpp; sourceTree = "<group>"; };
 		F42ECD9C1D2F1CA700E09EA0 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
+		F42ECDA01D2FF75600E09EA0 /* signBoardGirl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = signBoardGirl.cpp; sourceTree = "<group>"; };
+		F42ECDA11D2FF75600E09EA0 /* signBoardGirl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = signBoardGirl.hpp; sourceTree = "<group>"; };
 		F43907991C8B373B004B5B2D /* ListEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ListEntity.cpp; sourceTree = "<group>"; };
 		F439079A1C8B373B004B5B2D /* ListEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ListEntity.hpp; sourceTree = "<group>"; };
 		F439079D1C8B377E004B5B2D /* ListRow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ListRow.cpp; sourceTree = "<group>"; };
@@ -629,6 +635,8 @@
 		F481897F1C5926F900A0D0F5 /* kantaiCard.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = kantaiCard.hpp; sourceTree = "<group>"; };
 		F48189841C592F5F00A0D0F5 /* KantaiDetailEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KantaiDetailEntity.cpp; sourceTree = "<group>"; };
 		F48189851C592F5F00A0D0F5 /* KantaiDetailEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KantaiDetailEntity.hpp; sourceTree = "<group>"; };
+		F48253AD1D33EA0900165D61 /* MainLayerButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainLayerButton.cpp; sourceTree = "<group>"; };
+		F48253AE1D33EA0900165D61 /* MainLayerButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MainLayerButton.hpp; sourceTree = "<group>"; };
 		F4938B661C60999100AB1286 /* metaphysics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metaphysics.cpp; sourceTree = "<group>"; };
 		F4938B671C60999100AB1286 /* metaphysics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = metaphysics.hpp; sourceTree = "<group>"; };
 		F4A328401C847CA70048F939 /* SupplyShipUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SupplyShipUnit.cpp; sourceTree = "<group>"; };
@@ -995,6 +1003,7 @@
 		F4036DCB1BDA202F002788AA /* port */ = {
 			isa = PBXGroup;
 			children = (
+				F48253AC1D33E9EB00165D61 /* main */,
 				F40C1BBC1C624F930093774E /* supply */,
 				F40C1BBB1C624F820093774E /* remode */,
 				F4D5D0861C5FAF1D001441C3 /* factory */,
@@ -1002,8 +1011,6 @@
 				F4F956C81C5B59C0001AA1B3 /* repair */,
 				F4036D5C1BDA1FDD002788AA /* portBattleLayer.cpp */,
 				F4036D5D1BDA1FDD002788AA /* portBattleLayer.h */,
-				F4036D601BDA1FDD002788AA /* portMainLayer.cpp */,
-				F4036D611BDA1FDD002788AA /* portMainLayer.h */,
 				F4036D681BDA1FDD002788AA /* portScene.cpp */,
 				F4036D691BDA1FDD002788AA /* portScene.h */,
 			);
@@ -1349,6 +1356,19 @@
 			name = card;
 			sourceTree = "<group>";
 		};
+		F48253AC1D33E9EB00165D61 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				F4036D601BDA1FDD002788AA /* portMainLayer.cpp */,
+				F4036D611BDA1FDD002788AA /* portMainLayer.h */,
+				F42ECDA01D2FF75600E09EA0 /* signBoardGirl.cpp */,
+				F42ECDA11D2FF75600E09EA0 /* signBoardGirl.hpp */,
+				F48253AD1D33EA0900165D61 /* MainLayerButton.cpp */,
+				F48253AE1D33EA0900165D61 /* MainLayerButton.hpp */,
+			);
+			name = main;
+			sourceTree = "<group>";
+		};
 		F4938B651C60998500AB1286 /* metaphysics */ = {
 			isa = PBXGroup;
 			children = (
@@ -1680,6 +1700,7 @@
 				F44D26CE1C4D198400438F3C /* kantai.h in Sources */,
 				F4FABB071C50D34000F75BCE /* loadTxt.cpp in Sources */,
 				F44D26CF1C4D198400438F3C /* Equip.h in Sources */,
+				F42ECDA21D2FF75600E09EA0 /* signBoardGirl.cpp in Sources */,
 				F44D26D01C4D198400438F3C /* Fleet.h in Sources */,
 				F44D26D11C4D198400438F3C /* equipGrid.h in Sources */,
 				F44D26D21C4D198400438F3C /* SystemHeader.h in Sources */,
@@ -1736,6 +1757,7 @@
 				F4036DC01BDA1FDD002788AA /* XMLBuilder.cpp in Sources */,
 				F42865EC1BDBD18100045E66 /* AnimationMaker.cpp in Sources */,
 				F4A328421C847CA70048F939 /* SupplyShipUnit.cpp in Sources */,
+				F48253AF1D33EA0900165D61 /* MainLayerButton.cpp in Sources */,
 				F4036D8A1BDA1FDD002788AA /* fleetDB.cpp in Sources */,
 				F4BC4CAB1D2D242300374317 /* ViewMgrFactory.cpp in Sources */,
 				F4FABB041C50D30600F75BCE /* KantaiMgr.cpp in Sources */,
@@ -1881,6 +1903,7 @@
 				F4D5D08A1C5FAFDF001441C3 /* FactoryContainer.cpp in Sources */,
 				F4036E0C1BDA2316002788AA /* fleetDB.h in Sources */,
 				F43907A91C8B3E7A004B5B2D /* KantaiDestroyEntity.cpp in Sources */,
+				F42ECDA31D2FF75600E09EA0 /* signBoardGirl.cpp in Sources */,
 				F4036E0D1BDA2316002788AA /* kantaiDB.cpp in Sources */,
 				F4036E0E1BDA2316002788AA /* kantaiDB.h in Sources */,
 				F4036E0F1BDA2316002788AA /* playerDB.cpp in Sources */,
@@ -1931,6 +1954,7 @@
 				F4036E291BDA2316002788AA /* MissionSelectPage.cpp in Sources */,
 				F4036E2A1BDA2316002788AA /* MissionSelectPage.h in Sources */,
 				F40CF98A1BDB69A300DD897F /* Formation.cpp in Sources */,
+				F48253B01D33EA0900165D61 /* MainLayerButton.cpp in Sources */,
 				F4D5D0971C5FB08C001441C3 /* arsenalDB.cpp in Sources */,
 				F439079C1C8B373B004B5B2D /* ListEntity.cpp in Sources */,
 				F4036E2B1BDA2316002788AA /* layerSelecter.cpp in Sources */,

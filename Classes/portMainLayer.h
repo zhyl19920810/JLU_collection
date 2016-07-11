@@ -12,10 +12,15 @@
 #include "cocos2d.h"
 #include "portScene.h"
 
+
+
 USING_NS_CC;
 
 
 NS_KCL_BEGIN
+
+class SignBoardGirl;
+
 
 typedef enum
 {
@@ -50,7 +55,7 @@ private:
     Sprite *window;
     Sprite*object;
     Sprite* chest;
-    Sprite *girl;
+
     
     Sprite* organizeButton;
     Sprite* supplyButton;
@@ -79,8 +84,10 @@ private:
     bool stopEvent;
 private:
     void initLayer();
-    
     void initMenu();
+    void initSignBoardGirl();
+    
+    
     
     void menuCallback(Ref* pSender);
     
@@ -88,13 +95,10 @@ private:
     
     void layerSelectCallback(Ref * pSender, LayerType type);
     
-    bool organizeBegin(Touch* touch,Event* event);
-    void organizeMove(Touch* touch,Event* event);
-    void organizeEnd(Touch* touch,Event* event);
+
     
-    bool battleBegin(Touch* touch,Event* event);
-    void battleMove(Touch* touch,Event* event);
-    void battleEnd(Touch* touch,Event* event);
+private:
+    SignBoardGirl* signBoardGirl;
 };
 
 NS_KCL_END

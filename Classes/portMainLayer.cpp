@@ -8,6 +8,8 @@
 
 #include "portMainLayer.h"
 #include "Player.h"
+#include "signBoardGirl.hpp"
+
 
 NS_KCL_BEGIN
 
@@ -15,7 +17,7 @@ NS_KCL_BEGIN
 #define ANGLE_ROTATE 3
 
 
-PortMainLayer::PortMainLayer():girl(NULL)
+PortMainLayer::PortMainLayer():signBoardGirl(NULL)
 {
     girlflag=0;
 }
@@ -58,49 +60,26 @@ bool PortMainLayer::init()
         return false;
     }
     initLayer();
-    updateGirl();
+    initSignBoardGirl();
     initMenu();
     
     return true;
 }
 
 
+void PortMainLayer::initSignBoardGirl()
+{
+    signBoardGirl=SignBoardGirl::create();
+    signBoardGirl->setPosition(600,0);
+    addChild(signBoardGirl);
+}
 
 void PortMainLayer::updateGirl()
 {
-    char resource[50];
-    bzero(resource, sizeof(resource));
-    auto fleet1=sPlayer.fleetData;
-    int num=sPlayer.fleetData[0]->ship[0]->getKantaiNumber();
-    sprintf(resource, "kantai/%d/image 17.png",num);
-    //std::string resource="kantai/"+std::to_string(num)+"/image 17.png";
-    
-    if (girl==nullptr)
-    {
-        girl=Sprite::create(resource);
-    }
-    else
-    {
-        girl->setTexture(resource);
-    }
-    int height=girl->getContentSize().height;
-    if (height>799)
-    {
-        girl->setAnchorPoint(Vec2(0.5, 0.45));
-    }
-    else if(height>699)
-    {
-        girl->setAnchorPoint(Vec2(0.5, 0.25));
-    }
-    if (!girl->getParent()) {
-        addChild(girl);
-    }
-    
-    girl->setPosition(600,0);
-    girl->setZOrder(-1);
-    girl->runAction(RepeatForever::create((ActionInterval*)Sequence::create(ScaleTo::create(4,1.02),ScaleTo::create(4, 1), NULL)));
-    
+    signBoardGirl->updateGirl();
 }
+
+
 
 void PortMainLayer::stopButtonAction()
 {
@@ -123,234 +102,6 @@ void PortMainLayer::startButtonAction(const Vec2& point)
     wave=RepeatForever::create(Sequence::create(ScaleTo::create(0.01,0.7),ScaleBy::create(3.0, 1.7), NULL));
     waveButton->setVisible(true);
     waveButton->runAction(wave);
-}
-
-
-bool PortMainLayer::organizeBegin(cocos2d::Touch *touch, cocos2d::Event *event)
-{
-    auto target=static_cast<Sprite*>(event->getCurrentTarget());
-    Vec2 location=target->convertToNodeSpace(touch->getLocation());
-    Size s=target->getContentSize();
-    Rect rect=Rect(0, 0, s.width, s.height);
-    if (rect.containsPoint(location))
-    {
-        int type=target->getTag();
-        switch (type)
-        {
-            case organizeBu:
-                target->setSpriteFrame("organizeButton3.png");
-                break;
-            case supplyBu:
-                target->setSpriteFrame("supplyButton3.png");
-                break;
-            case remodeBu:
-                target->setSpriteFrame("remodeButton3.png");
-                break;
-            case repairBu:
-                target->setSpriteFrame("repairButton3.png");
-                break;
-            case factoryBu:
-                target->setSpriteFrame("factoryButton3.png");
-                break;
-            default:
-                break;
-        }
-        startButtonAction(target->getPosition());
-        return true;
-    }
-    return false;
-}
-
-void PortMainLayer::organizeMove(cocos2d::Touch *touch, cocos2d::Event *event)
-{
-    if (!stopEvent)
-    {
-        return;
-    }
-    auto target=static_cast<Sprite*>(event->getCurrentTarget());
-    Vec2 location=target->convertToNodeSpace(touch->getLocation());
-    Size s=target->getContentSize();
-    Rect rect=Rect(0, 0, s.width, s.height);
-    if (!rect.containsPoint(location))
-    {
-        int type=target->getTag();
-        switch (type)
-        {
-            case organizeBu:
-                target->setSpriteFrame("organizeButton1.png");
-                break;
-            case supplyBu:
-                target->setSpriteFrame("supplyButton1.png");
-                break;
-            case remodeBu:
-                target->setSpriteFrame("remodeButton1.png");
-                break;
-            case repairBu:
-                target->setSpriteFrame("repairButton1.png");
-                break;
-            case factoryBu:
-                target->setSpriteFrame("factoryButton1.png");
-                break;
-            default:
-                break;
-        }
-        stopButtonAction();
-        stopEvent=false;
-    }
-}
-
-
-
-void PortMainLayer::organizeEnd(cocos2d::Touch *touch, cocos2d::Event *event)
-{
-    if (stopEvent)
-    {
-        auto target=static_cast<Sprite*>(event->getCurrentTarget());
-        int type=target->getTag();
-        stopButtonAction();
-        auto scene=dynamic_cast<PortScene*>(getParent());
-        EventDispatcher* eventDispatcher=Director::getInstance()->getEventDispatcher();
-        eventDispatcher->pauseEventListenersForTarget(organizeButton);
-        eventDispatcher->pauseEventListenersForTarget(supplyButton);
-        eventDispatcher->pauseEventListenersForTarget(remodeButton);
-        eventDispatcher->pauseEventListenersForTarget(repairButton);
-        eventDispatcher->pauseEventListenersForTarget(factoryButton);
-        eventDispatcher->pauseEventListenersForTarget(battleButton);
-        switch (type)
-        {
-                
-            case organizeBu:
-                target->setSpriteFrame("organizeButton1.png");
-                scene->SetCurrLayer(LayerType::PORT_ORGANIZE);
-                break;
-            case supplyBu:
-                target->setSpriteFrame("supplyButton1.png");
-                scene->SetCurrLayer(LayerType::PORT_SUPPLY);
-                break;
-            case remodeBu:
-                target->setSpriteFrame("remodeButton1.png");
-                scene->SetCurrLayer(LayerType::PORT_REMODE);
-                break;
-            case repairBu:
-                target->setSpriteFrame("repairButton1.png");
-                scene->SetCurrLayer(LayerType::PORT_REPAIR);
-                break;
-            case factoryBu:
-                target->setSpriteFrame("factoryButton1.png");
-                scene->SetCurrLayer(LayerType::PORT_FACTORY);
-                break;
-            default:
-                break;
-        }
-        
-        
-        
-    }
-}
-
-
-bool PortMainLayer::battleBegin(cocos2d::Touch *touch, cocos2d::Event *event)
-{
-    auto target=static_cast<Sprite*>(event->getCurrentTarget());
-    Vec2 location=target->convertToNodeSpace(touch->getLocation());
-    Size s=target->getContentSize();
-    Rect rect=Rect(0, 0, s.width, s.height);
-    if (rect.containsPoint(location))
-    {
-        target->setSpriteFrame("battleButton8.png");
-        battleButtonGo->setSpriteFrame("battleButton10.png");
-        battleButtonShip->setSpriteFrame("battleButton9.png");
-        ActionInterval* tmp1=RotateBy::create(2.5, -6);
-        ActionInterval* tmp2=RotateBy::create(4.0, 15);
-        ActionInterval* tmp3=Sequence::create(tmp1,tmp2, NULL);
-        battleShipRotate=RepeatForever::create(Sequence::create(tmp3,tmp3->reverse(),NULL));
-        battleButtonShip->runAction(battleShipRotate);
-
-        battleLeft->setSpriteFrame("battleButton7.png");
-        
-        
-        battleRight->setSpriteFrame("battleButton6.png");
-        
-        stopEvent=true;
-        rotate=RepeatForever::create(RotateBy::create(0.1, ANGLE_ROTATE));
-        rotateButton->setSpriteFrame("battleButton1.png");
-        rotateButton->setPosition(target->getPosition());
-        rotateButton->setVisible(true);
-        rotateButton->runAction(rotate);
-        
-        waveButton->setPosition(target->getPosition());
-        wave=RepeatForever::create(Sequence::create(ScaleTo::create(0.01,1.0),ScaleBy::create(3.0, 2.0), NULL));
-        waveButton->setVisible(true);
-        waveButton->runAction(wave);
-        return true;
-    }
-    return false;
-}
-
-void PortMainLayer::battleMove(Touch* touch,Event* event)
-{
-    if (!stopEvent)
-    {
-        return;
-    }
-    auto target=static_cast<Sprite*>(event->getCurrentTarget());
-    Vec2 location=target->convertToNodeSpace(touch->getLocation());
-    Size s=target->getContentSize();
-    Rect rect=Rect(0, 0, s.width, s.height);
-    if (!rect.containsPoint(location))
-    {
-        target->setSpriteFrame("battleButton1.png");
-        battleButtonGo->setSpriteFrame("battleButtonGo.png");
-        battleButtonShip->setSpriteFrame("battleButtonShip.png");
-        battleButtonShip->setRotation(0);
-        battleButtonShip->stopAction(battleShipRotate);
-        battleLeft->setSpriteFrame("battleButton3.png");
-        battleRight->setSpriteFrame("battleButton2.png");
-        
-        rotateButton->setSpriteFrame("battleButton11.png");
-        rotateButton->stopAction(rotate);
-        rotateButton->setVisible(false);
-        waveButton->stopAction(wave);
-        waveButton->setScale(0.7);
-        waveButton->setVisible(false);
-        
-        stopEvent=false;
-    }
-}
-
-void PortMainLayer::battleEnd(Touch* touch,Event* event)
-{
-    
-    if (stopEvent)
-    {
-        auto target=static_cast<Sprite*>(event->getCurrentTarget());
-        target->setSpriteFrame("battleButton1.png");
-        battleButtonGo->setSpriteFrame("battleButtonGo.png");
-        battleButtonShip->setSpriteFrame("battleButtonShip.png");
-        battleButtonShip->setRotation(0);
-        battleButtonShip->stopAction(battleShipRotate);
-        battleLeft->setSpriteFrame("battleButton3.png");
-        battleRight->setSpriteFrame("battleButton2.png");
-        
-        rotateButton->setSpriteFrame("battleButton11.png");
-        rotateButton->stopAction(rotate);
-        rotateButton->setVisible(false);
-        waveButton->stopAction(wave);
-        waveButton->setScale(0.7);
-        waveButton->setVisible(false);
-        stopEvent=false;
-        
-        EventDispatcher* eventDispatcher=Director::getInstance()->getEventDispatcher();
-        eventDispatcher->pauseEventListenersForTarget(organizeButton);
-        eventDispatcher->pauseEventListenersForTarget(supplyButton);
-        eventDispatcher->pauseEventListenersForTarget(remodeButton);
-        eventDispatcher->pauseEventListenersForTarget(repairButton);
-        eventDispatcher->pauseEventListenersForTarget(factoryButton);
-        eventDispatcher->pauseEventListenersForTarget(battleButton);
-        
-        auto scene=dynamic_cast<PortScene*>(target->getParent()->getParent());
-        scene->SetCurrLayer(LayerType::PORT_BATTLE);
-    }
 }
 
 void PortMainLayer::resumeDispatcher()
