@@ -20,85 +20,36 @@ USING_NS_CC;
 NS_KCL_BEGIN
 
 class SignBoardGirl;
-
-
-typedef enum
-{
-    organizeBu,
-    supplyBu,
-    remodeBu,
-    repairBu,
-    factoryBu,
-    battleBu
-}ButtonType;
-
+class MainLayerButton;
+class FurnitureBG;
 
 
 class PortMainLayer:public cocos2d::Layer
 {
 public:
     PortMainLayer();
-    
     ~PortMainLayer();
+     CREATE_FUNC(PortMainLayer);
+    
     
     void updateGirl();
-    
-    CREATE_FUNC(PortMainLayer);
-    virtual bool init();
-    
     void resumeDispatcher();
 private:
-    int girlflag;
-    Sprite * floor;
-    Sprite * desk;
-    Sprite * wall;
-    Sprite *window;
-    Sprite*object;
-    Sprite* chest;
 
-    
-    Sprite* organizeButton;
-    Sprite* supplyButton;
-    Sprite* remodeButton;
-    Sprite* repairButton;
-    Sprite* factoryButton;
-    
-    
-    Sprite* battleButtonShip;
-    Sprite* battleButtonGo;
-    Sprite* battleButton;
-    Sprite* battleLeft;
-    Sprite* battleRight;
-    Action* battleShipRotate;
-    Action* battleLeftMove;
-    Action* battleRightMove;
-private:
-    void stopButtonAction();
-    void startButtonAction(const Vec2& point);
-    Action* wave;
-    Action* rotate;
-    Sprite* rotateButton;
-    Sprite* waveButton;
-    
-
-    bool stopEvent;
 private:
     void initLayer();
     void initMenu();
     void initSignBoardGirl();
-    
-    
-    
-    void menuCallback(Ref* pSender);
-    
-    void battleCallback(Ref* pSender);
-    
-    void layerSelectCallback(Ref * pSender, LayerType type);
-    
-
-    
+    virtual bool init();
 private:
     SignBoardGirl* signBoardGirl;
+    FurnitureBG* furnitureBG;
+    MainLayerButton* organizeButton;
+    MainLayerButton* supplyButton;
+    MainLayerButton* remodeButton;
+    MainLayerButton* repairButton;
+    MainLayerButton* factoryButton;
+    MainLayerButton* battleButton;
 };
 
 NS_KCL_END

@@ -25,38 +25,89 @@ enum MainLayerButtonType
 };
 
 
-typedef std::function<void(cocos2d::Ref*)> buttonCallBack;
 
+
+typedef std::function<void(cocos2d::Ref*)> buttonCallBack;
 
 
 class MainLayerButton:public cocos2d::Node
 {
 public:
-    static MainLayerButton* create(MainLayerButtonType buttonType,buttonCallBack);
+    virtual bool onTouchBegin(cocos2d::Touch* touch,cocos2d::Event* event)=0;
+    virtual void onTouchMoved(cocos2d::Touch* touch,cocos2d::Event* event)=0;
+    virtual void onTouchEnded(cocos2d::Touch* touch,cocos2d::Event* event)=0;
     
+    bool touchBegin(cocos2d::Touch* touch,cocos2d::Event* event);
+    void touchMoved(cocos2d::Touch* touch,cocos2d::Event* event);
+    void touchEnded(cocos2d::Touch* touch,cocos2d::Event* event);
+    
+    void setEndCallBack(buttonCallBack _callback){callback=_callback;}
 private:
-    
-    bool init(MainLayerButtonType buttonType,buttonCallBack);
-    buttonCallBack callback;
     cocos2d::EventListenerTouchOneByOne* eventListner;
-    
-    
-    
-    
-    
-private:
-    bool organizeBegin(Touch* touch,Event* event);
-    void organizeMove(Touch* touch,Event* event);
-    void organizeEnd(Touch* touch,Event* event);
-    
-    bool battleBegin(Touch* touch,Event* event);
-    void battleMove(Touch* touch,Event* event);
-    void battleEnd(Touch* touch,Event* event);
-    
-    
-    
+protected:
+    bool init(MainLayerButtonType buttonType,buttonCallBack _callback);
+    MainLayerButtonType buttonType;
+    buttonCallBack callback;
     
 };
+
+
+
+
+class NormalMainLayerButton:public MainLayerButton
+{
+public:
+    static NormalMainLayerButton* create(MainLayerButtonType buttonType,buttonCallBack _callback);
+    
+    
+    virtual bool onTouchBegin(cocos2d::Touch* touch,cocos2d::Event* event);
+    virtual void onTouchMoved(cocos2d::Touch* touch,cocos2d::Event* event);
+    virtual void onTouchEnded(cocos2d::Touch* touch,cocos2d::Event* event);
+    
+private:
+    bool init(MainLayerButtonType buttonType,buttonCallBack _callback);
+    
+private:
+    
+    void stopButtonAction();
+    void startButtonAction();
+    
+    bool stopEvent;
+    cocos2d::Sprite* rotateButton;
+    cocos2d::Sprite* waveButton;
+    cocos2d::Sprite* buttonImage;
+};
+
+
+
+
+
+
+class BattleMainLayerButton:public MainLayerButton
+{
+public:
+    static BattleMainLayerButton* create(MainLayerButtonType buttonType,buttonCallBack _callback);
+    
+    
+    virtual bool onTouchBegin(cocos2d::Touch* touch,cocos2d::Event* event);
+    virtual void onTouchMoved(cocos2d::Touch* touch,cocos2d::Event* event);
+    virtual void onTouchEnded(cocos2d::Touch* touch,cocos2d::Event* event);
+    
+private:
+    bool init(MainLayerButtonType buttonType,buttonCallBack _callback);
+    
+    cocos2d::Sprite* battleButtonShip;
+    cocos2d::Sprite* battleButtonGo;
+    cocos2d::Sprite* battleButton;
+    cocos2d::Sprite* battleLeft;
+    cocos2d::Sprite* battleRight;
+    cocos2d::Sprite* rotateButton;
+    cocos2d::Sprite* waveButton;
+    
+    
+    bool stopEvent=true;
+};
+
 
 
 
