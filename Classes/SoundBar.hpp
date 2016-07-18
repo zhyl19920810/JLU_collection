@@ -25,7 +25,7 @@ enum SoundBarType
 };
 
 
-
+class SoundMuteIcon;
 
 
 class SoundBar:public cocos2d::Node
@@ -45,6 +45,7 @@ private:
 private:
     bool init(kancolle::SoundBarType type);
     
+    void updateVolume();
     
     cocos2d::EventListenerTouchOneByOne* listener;
     SoundBarType type;
@@ -52,7 +53,25 @@ private:
     float soundPercent;
     cocos2d::Sprite* adjustButton;
     
+    bool isPress;
     
+private:
+    SoundMuteIcon* soundMuteIcon;
+};
+
+
+class SoundMuteIcon:public cocos2d::Node
+{
+public:
+    static SoundMuteIcon* create(float volume);
+    
+    void updateVolume(float volume);
+private:
+    bool isVolumeZero(float volume){return volume<0.001;}
+    bool init(float soundPercent);
+    
+private:
+    cocos2d::Sprite* icon;
 };
 
 NS_KCL_END

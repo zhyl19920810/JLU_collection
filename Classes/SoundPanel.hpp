@@ -16,14 +16,23 @@
 
 NS_KCL_BEGIN
 
+class SoundBar;
+
 
 class SoundPanel:public Panel
 {
 public:
     CREATE_FUNC(SoundPanel);
     
+    
 private:
+    void sceneCallback(Ref* ref);
     bool init();
+    
+    SoundBar* bgmSoundBar;
+    SoundBar* SESoundBar;
+    SoundBar* voiceSoundBar;
+    cocos2d::MenuItemSprite* sceneButton;
 };
 
 NS_KCL_END

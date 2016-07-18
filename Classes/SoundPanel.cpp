@@ -27,9 +27,21 @@ bool SoundPanel::init()
         SoundBg->setPosition(Vec2::ZERO);//改
         addChild(SoundBg);
         
-        bgmSoundBar=SoundBar::create();
+        bgmSoundBar=SoundBar::create(SoundBarType::BGM_SOUNDBAR);
+        bgmSoundBar->setPosition(Vec2::ZERO);//改
+        SoundBg->addChild(bgmSoundBar);
         
+        SESoundBar=SoundBar::create(SoundBarType::SE_SOUNDBAR);
+        SESoundBar->setPosition(Vec2::ZERO);//改
+        SoundBg->addChild(SESoundBar);
         
+        voiceSoundBar=SoundBar::create(SoundBarType::VOICE_SOUNDBAR);
+        voiceSoundBar->setPosition(Vec2::ZERO);//改
+        SoundBg->addChild(voiceSoundBar);
+        
+        sceneButton=MenuItemSprite::create(Sprite::create(), Sprite::create(), CC_CALLBACK_1(SoundPanel::sceneCallback, this));
+        sceneButton->setPosition(Vec2::ZERO);
+        addChild(sceneButton);
         
         bRet=true;
     }while(0);
@@ -40,6 +52,11 @@ bool SoundPanel::init()
     
 }
 
+
+void SoundPanel::sceneCallback(cocos2d::Ref *ref)
+{
+    
+}
 
 
 
