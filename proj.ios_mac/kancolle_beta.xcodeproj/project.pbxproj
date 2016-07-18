@@ -195,6 +195,12 @@
 		F40CF9921BDB7FDF00DD897F /* BattleModel.h in Sources */ = {isa = PBXBuildFile; fileRef = F40CF98D1BDB6A5A00DD897F /* BattleModel.h */; };
 		F41D54971D2A915B0094CAAD /* Sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F41D54951D2A915B0094CAAD /* Sound.cpp */; };
 		F41D54981D2A915B0094CAAD /* Sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F41D54951D2A915B0094CAAD /* Sound.cpp */; };
+		F41E32051D3A904D00B679E0 /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F41E32031D3A904D00B679E0 /* Panel.cpp */; };
+		F41E32061D3A904D00B679E0 /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F41E32031D3A904D00B679E0 /* Panel.cpp */; };
+		F41E32091D3A910900B679E0 /* SoundPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F41E32071D3A910900B679E0 /* SoundPanel.cpp */; };
+		F41E320A1D3A910900B679E0 /* SoundPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F41E32071D3A910900B679E0 /* SoundPanel.cpp */; };
+		F41E320D1D3A911600B679E0 /* SoundBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F41E320B1D3A911600B679E0 /* SoundBar.cpp */; };
+		F41E320E1D3A911600B679E0 /* SoundBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F41E320B1D3A911600B679E0 /* SoundBar.cpp */; };
 		F42303C41D2BC4B500B06189 /* BundleMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42303C21D2BC4B500B06189 /* BundleMgr.cpp */; };
 		F42303C51D2BC4B500B06189 /* BundleMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42303C21D2BC4B500B06189 /* BundleMgr.cpp */; };
 		F42303CA1D2BCDF200B06189 /* BundleMgrExt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42303C81D2BCDF200B06189 /* BundleMgrExt.cpp */; };
@@ -583,6 +589,12 @@
 		F40CF98D1BDB6A5A00DD897F /* BattleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleModel.h; sourceTree = "<group>"; };
 		F41D54951D2A915B0094CAAD /* Sound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sound.cpp; sourceTree = "<group>"; };
 		F41D54961D2A915B0094CAAD /* Sound.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Sound.hpp; sourceTree = "<group>"; };
+		F41E32031D3A904D00B679E0 /* Panel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Panel.cpp; sourceTree = "<group>"; };
+		F41E32041D3A904D00B679E0 /* Panel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Panel.hpp; sourceTree = "<group>"; };
+		F41E32071D3A910900B679E0 /* SoundPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundPanel.cpp; sourceTree = "<group>"; };
+		F41E32081D3A910900B679E0 /* SoundPanel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SoundPanel.hpp; sourceTree = "<group>"; };
+		F41E320B1D3A911600B679E0 /* SoundBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundBar.cpp; sourceTree = "<group>"; };
+		F41E320C1D3A911600B679E0 /* SoundBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SoundBar.hpp; sourceTree = "<group>"; };
 		F42303C21D2BC4B500B06189 /* BundleMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BundleMgr.cpp; sourceTree = "<group>"; };
 		F42303C31D2BC4B500B06189 /* BundleMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BundleMgr.hpp; sourceTree = "<group>"; };
 		F42303C81D2BCDF200B06189 /* BundleMgrExt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BundleMgrExt.cpp; sourceTree = "<group>"; };
@@ -1019,6 +1031,7 @@
 		F4036DCB1BDA202F002788AA /* port */ = {
 			isa = PBXGroup;
 			children = (
+				F41E32021D3A902A00B679E0 /* Sound */,
 				F432930C1D39962900B7167C /* frame */,
 				F48253AC1D33E9EB00165D61 /* main */,
 				F40C1BBC1C624F930093774E /* supply */,
@@ -1259,6 +1272,17 @@
 			name = Sound;
 			sourceTree = "<group>";
 		};
+		F41E32021D3A902A00B679E0 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				F41E32071D3A910900B679E0 /* SoundPanel.cpp */,
+				F41E32081D3A910900B679E0 /* SoundPanel.hpp */,
+				F41E320B1D3A911600B679E0 /* SoundBar.cpp */,
+				F41E320C1D3A911600B679E0 /* SoundBar.hpp */,
+			);
+			name = Sound;
+			sourceTree = "<group>";
+		};
 		F42303C61D2BC4BD00B06189 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1277,6 +1301,8 @@
 		F42303CC1D2BD52100B06189 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				F41E32031D3A904D00B679E0 /* Panel.cpp */,
+				F41E32041D3A904D00B679E0 /* Panel.hpp */,
 			);
 			name = Widget;
 			sourceTree = "<group>";
@@ -1835,13 +1861,16 @@
 				F4036D8C1BDA1FDD002788AA /* Fleet.cpp in Sources */,
 				F40C4FCD1C5BDA78000FAA89 /* EquipPicMgr.cpp in Sources */,
 				F4036D981BDA1FDD002788AA /* kantai.cpp in Sources */,
+				F41E32091D3A910900B679E0 /* SoundPanel.cpp in Sources */,
 				F40CF97F1BDB4D1E00DD897F /* XMLBase.cpp in Sources */,
+				F41E32051D3A904D00B679E0 /* Panel.cpp in Sources */,
 				F4036DAC1BDA1FDD002788AA /* portFactoryLayer.cpp in Sources */,
 				F4036DB01BDA1FDD002788AA /* portOrganizeLayer.cpp in Sources */,
 				F467184C1BE88E6300320B0A /* BattleEnemy.cpp in Sources */,
 				F42865E11BDBC33700045E66 /* GameScene.cpp in Sources */,
 				F42865E41BDBC52B00045E66 /* BattleBar.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				F41E320D1D3A911600B679E0 /* SoundBar.cpp in Sources */,
 				F4036D7A1BDA1FDD002788AA /* Compass.cpp in Sources */,
 				F43BD5FC1D2ABE5800B572C9 /* TinaConfig.cpp in Sources */,
 				F4036DC21BDA1FDD002788AA /* XMLControl.cpp in Sources */,
@@ -1874,6 +1903,7 @@
 				F4938B691C60999100AB1286 /* metaphysics.cpp in Sources */,
 				F48189771C59111500A0D0F5 /* OrganizeContainer.hpp in Sources */,
 				F43293101D39967800B7167C /* PortBgLayer.cpp in Sources */,
+				F41E32061D3A904D00B679E0 /* Panel.cpp in Sources */,
 				F4B173F41C545F4600D2BC1C /* GameManger.cpp in Sources */,
 				F4B173F51C545F4600D2BC1C /* GameManger.hpp in Sources */,
 				F4B173F61C545F4600D2BC1C /* Singleton.cpp in Sources */,
@@ -1900,6 +1930,7 @@
 				F4B191DD1BE74B56000A41C3 /* BattleBar.h in Sources */,
 				F4B191DE1BE74B56000A41C3 /* BattleCharacter.h in Sources */,
 				F4B191DF1BE74B56000A41C3 /* AnimationMaker.h in Sources */,
+				F41E320A1D3A910900B679E0 /* SoundPanel.cpp in Sources */,
 				F4B191E01BE74B56000A41C3 /* CharacterCard.h in Sources */,
 				F4B191E11BE74B56000A41C3 /* BattleHero.h in Sources */,
 				F40C1BB91C61E5490093774E /* MenuItemTouch.cpp in Sources */,
@@ -1991,6 +2022,7 @@
 				F4036E271BDA2316002788AA /* MissionContainer.cpp in Sources */,
 				F4036E281BDA2316002788AA /* MissionContainer.h in Sources */,
 				F4A328431C847CA70048F939 /* SupplyShipUnit.cpp in Sources */,
+				F41E320E1D3A911600B679E0 /* SoundBar.cpp in Sources */,
 				F4036E291BDA2316002788AA /* MissionSelectPage.cpp in Sources */,
 				F4036E2A1BDA2316002788AA /* MissionSelectPage.h in Sources */,
 				F40CF98A1BDB69A300DD897F /* Formation.cpp in Sources */,
