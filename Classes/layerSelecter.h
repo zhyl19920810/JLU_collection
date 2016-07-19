@@ -56,7 +56,7 @@ private:
     MenuItemSprite *repairItem;
     MenuItemSprite *factoryItem;
     
-    void layerSelectCallback(Ref * pSender, LayerType type);
+    void layerSelectCallback(Ref * pSender, PanelType type);
 };
 
 

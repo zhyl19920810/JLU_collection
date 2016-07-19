@@ -16,12 +16,13 @@
 #include "buildKantaiEntity.hpp"
 #include "FactoryListEntity.hpp"
 #include "LayerCover.hpp"
+#include "Panel.hpp"
 
 using namespace cocos2d;
 
 NS_KCL_BEGIN
 
-class PortFactoryLayer : public Layer
+class PortFactoryLayer : public Panel
 {
 public:
     PortFactoryLayer();

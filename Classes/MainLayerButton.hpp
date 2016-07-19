@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "SystemHeader.h"
+#include "ViewMgrMacro.hpp"
 
 NS_KCL_BEGIN
 
@@ -27,7 +28,7 @@ enum MainLayerButtonType
 
 
 
-typedef std::function<void(cocos2d::Ref*)> buttonCallBack;
+typedef std::function<void(PanelType)> buttonCallBack;
 
 
 class MainLayerButton:public cocos2d::Node

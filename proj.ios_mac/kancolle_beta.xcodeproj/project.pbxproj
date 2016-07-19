@@ -173,6 +173,10 @@
 		F4036E3E1BDA2316002788AA /* Prefix.pch in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10417EB98FF00D1A890 /* Prefix.pch */; };
 		F409531C1C99B0C100E9B958 /* LayerCover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F409531A1C99B0C100E9B958 /* LayerCover.cpp */; };
 		F409531D1C99B0C100E9B958 /* LayerCover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F409531A1C99B0C100E9B958 /* LayerCover.cpp */; };
+		F40B47A11D3E7B7D006F5375 /* SoundPanelButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40B479F1D3E7B7D006F5375 /* SoundPanelButton.cpp */; };
+		F40B47A21D3E7B7D006F5375 /* SoundPanelButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40B479F1D3E7B7D006F5375 /* SoundPanelButton.cpp */; };
+		F40B47A51D3E7DA8006F5375 /* PortState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40B47A31D3E7DA8006F5375 /* PortState.cpp */; };
+		F40B47A61D3E7DA8006F5375 /* PortState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40B47A31D3E7DA8006F5375 /* PortState.cpp */; };
 		F40C1BAD1C6185F90093774E /* ArsenalMain in Resources */ = {isa = PBXBuildFile; fileRef = F40C1BAC1C6185F90093774E /* ArsenalMain */; };
 		F40C1BB31C619A8F0093774E /* buildKantaiUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C1BB11C619A8F0093774E /* buildKantaiUnit.cpp */; };
 		F40C1BB41C619A8F0093774E /* buildKantaiUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C1BB11C619A8F0093774E /* buildKantaiUnit.cpp */; };
@@ -571,6 +575,10 @@
 		F4036D771BDA1FDD002788AA /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParser.h; sourceTree = "<group>"; };
 		F409531A1C99B0C100E9B958 /* LayerCover.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayerCover.cpp; sourceTree = "<group>"; };
 		F409531B1C99B0C100E9B958 /* LayerCover.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LayerCover.hpp; sourceTree = "<group>"; };
+		F40B479F1D3E7B7D006F5375 /* SoundPanelButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundPanelButton.cpp; sourceTree = "<group>"; };
+		F40B47A01D3E7B7D006F5375 /* SoundPanelButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SoundPanelButton.hpp; sourceTree = "<group>"; };
+		F40B47A31D3E7DA8006F5375 /* PortState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PortState.cpp; sourceTree = "<group>"; };
+		F40B47A41D3E7DA8006F5375 /* PortState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PortState.hpp; sourceTree = "<group>"; };
 		F40C1BAC1C6185F90093774E /* ArsenalMain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ArsenalMain; sourceTree = "<group>"; };
 		F40C1BB11C619A8F0093774E /* buildKantaiUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildKantaiUnit.cpp; sourceTree = "<group>"; };
 		F40C1BB21C619A8F0093774E /* buildKantaiUnit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = buildKantaiUnit.hpp; sourceTree = "<group>"; };
@@ -1343,6 +1351,8 @@
 				F432930E1D39967800B7167C /* PortBgLayer.hpp */,
 				F43293111D39974300B7167C /* IndicatorBar.cpp */,
 				F43293121D39974300B7167C /* IndicatorBar.hpp */,
+				F40B47A31D3E7DA8006F5375 /* PortState.cpp */,
+				F40B47A41D3E7DA8006F5375 /* PortState.hpp */,
 			);
 			name = frame;
 			sourceTree = "<group>";
@@ -1415,6 +1425,8 @@
 		F48253AC1D33E9EB00165D61 /* main */ = {
 			isa = PBXGroup;
 			children = (
+				F40B479F1D3E7B7D006F5375 /* SoundPanelButton.cpp */,
+				F40B47A01D3E7B7D006F5375 /* SoundPanelButton.hpp */,
 				F4036D601BDA1FDD002788AA /* portMainLayer.cpp */,
 				F4036D611BDA1FDD002788AA /* portMainLayer.h */,
 				F42ECDA01D2FF75600E09EA0 /* signBoardGirl.cpp */,
@@ -1743,6 +1755,7 @@
 				F432930F1D39967800B7167C /* PortBgLayer.cpp in Sources */,
 				F44D26C41C4D198400438F3C /* DatabaseScene.h in Sources */,
 				F43BD6031D2AC1B100B572C9 /* tinaMacros.cpp in Sources */,
+				F40B47A11D3E7B7D006F5375 /* SoundPanelButton.cpp in Sources */,
 				F44D26C51C4D198400438F3C /* XMLControl.h in Sources */,
 				F42303CA1D2BCDF200B06189 /* BundleMgrExt.cpp in Sources */,
 				F40C1BB31C619A8F0093774E /* buildKantaiUnit.cpp in Sources */,
@@ -1776,6 +1789,7 @@
 				F44D26DC1C4D198400438F3C /* CharacterCard.h in Sources */,
 				F44D26DD1C4D198400438F3C /* BattleHero.h in Sources */,
 				F44D26DE1C4D198400438F3C /* BattleEnemy.h in Sources */,
+				F40B47A51D3E7DA8006F5375 /* PortState.cpp in Sources */,
 				F4D38E1F1C8731EF009BE55C /* OrganizeSelectEntity.cpp in Sources */,
 				F44D26DF1C4D198400438F3C /* Mission.h in Sources */,
 				F44D26E01C4D198400438F3C /* MissionContainer.h in Sources */,
@@ -1939,6 +1953,7 @@
 				F40CF9921BDB7FDF00DD897F /* BattleModel.h in Sources */,
 				F43BD5FD1D2ABE5800B572C9 /* TinaConfig.cpp in Sources */,
 				F4036DFB1BDA2316002788AA /* XMLBuilder.cpp in Sources */,
+				F40B47A61D3E7DA8006F5375 /* PortState.cpp in Sources */,
 				F4D5D0931C5FB073001441C3 /* arsenal.cpp in Sources */,
 				F4036DFC1BDA2316002788AA /* XMLBuilder.h in Sources */,
 				F43BD6041D2AC1B100B572C9 /* tinaMacros.cpp in Sources */,
@@ -2002,6 +2017,7 @@
 				F42DB8E71C599DCA00CBE2C7 /* EquipmentContainer.cpp in Sources */,
 				F4036E1D1BDA2316002788AA /* SystemHeader.cpp in Sources */,
 				F4036E1E1BDA2316002788AA /* SystemHeader.h in Sources */,
+				F40B47A21D3E7B7D006F5375 /* SoundPanelButton.cpp in Sources */,
 				F4036E1F1BDA2316002788AA /* MissionNode.cpp in Sources */,
 				F42865E51BDBC52B00045E66 /* BattleBar.cpp in Sources */,
 				F476D3501C8DE5BA00A1B8EB /* ShowPolygonLayer.cpp in Sources */,

@@ -15,6 +15,8 @@
 #include "portRepairLayer.h"
 #include "portOrganizeLayer.h"
 #include "portBattleLayer.h"
+#include "SoundPanel.hpp"
+
 
 NS_KCL_BEGIN
 
@@ -35,38 +37,39 @@ cocos2d::Scene* ViewMgrFactory::getScene(SceneType type,const cocos2d::Value& da
 }
 
 
-cocos2d::Layer* ViewMgrFactory::getLayer(LayerType type,const cocos2d::Value& data)
+Panel* ViewMgrFactory::getPanel(PanelType type,const cocos2d::Value& data)
 {
-    cocos2d::Layer* _layer=nullptr;
+    Panel* _panel=nullptr;
     switch (type)
     {
-        case LayerType::PORT_SUPPLY:
-            _layer=PortSupplyLayer::create();
+        case PanelType::PORT_SUPPLY:
+            _panel=PortSupplyLayer::create();
             break;
-        case LayerType::PORT_FACTORY:
-            _layer=PortFactoryLayer::create();
+        case PanelType::PORT_FACTORY:
+            _panel=PortFactoryLayer::create();
             break;
-        case LayerType::PORT_ORGANIZE:
-            _layer=PortOrganizeLayer::create();
+        case PanelType::PORT_ORGANIZE:
+            _panel=PortOrganizeLayer::create();
             break;
-        case LayerType::PORT_MAINLAYER:
-            _layer=PortMainLayer::create();
+        case PanelType::PORT_MAINLAYER:
+            _panel=PortMainLayer::create();
             break;
-        case LayerType::PORT_REMODE:
-            _layer=PortRemodeLayer::create();
+        case PanelType::PORT_REMODE:
+            _panel=PortRemodeLayer::create();
             break;
-        case LayerType::PORT_BATTLE:
-            _layer=PortBattleLayer::create();
+        case PanelType::PORT_BATTLE:
+            _panel=PortBattleLayer::create();
             break;
-        case LayerType::PORT_REPAIR:
-            _layer=PortRepairLayer::create();
+        case PanelType::PORT_REPAIR:
+            _panel=PortRepairLayer::create();
             break;
-            
-            
+        case PanelType::SOUND:
+            _panel=SoundPanel::create();
+            break;
         default:
             break;
     }
-    return _layer;
+    return _panel;
 }
 
 

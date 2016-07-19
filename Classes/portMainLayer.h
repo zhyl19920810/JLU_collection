@@ -10,8 +10,8 @@
 #define __kancolle_alpha__portMainLayer__
 
 #include "cocos2d.h"
-#include "portScene.h"
-
+#include "ViewMgrMacro.hpp"
+#include "Panel.hpp"
 
 
 USING_NS_CC;
@@ -24,7 +24,7 @@ class MainLayerButton;
 class FurnitureBG;
 
 
-class PortMainLayer:public cocos2d::Layer
+class PortMainLayer:public Panel
 {
 public:
     PortMainLayer();
@@ -41,6 +41,8 @@ private:
     void initMenu();
     void initSignBoardGirl();
     virtual bool init();
+    
+    void changePanel(PanelType);
 private:
     SignBoardGirl* signBoardGirl;
     FurnitureBG* furnitureBG;

@@ -57,7 +57,7 @@ void PortSupplyLayer::refreshLayer()
 
 bool PortSupplyLayer::init()
 {
-    if (!Layer::init()) {
+    if (!Panel::init()) {
         return false;
     }
     initLayer();

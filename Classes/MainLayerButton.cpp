@@ -234,25 +234,22 @@ void NormalMainLayerButton::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *
     if (stopEvent)
     {
         stopButtonAction();
-        if (callback) {
-            callback(this);
-        }
         switch (buttonType)
         {
             case ORGANIZE_BUTTON:
-                VIEW_MGR->showLayer(LayerType::PORT_ORGANIZE);
+                callback(PanelType::PORT_ORGANIZE);
                 break;
             case SUPPLY_BUTTON:
-                VIEW_MGR->showLayer(LayerType::PORT_SUPPLY);
+                callback(PanelType::PORT_SUPPLY);
                 break;
             case REMODE_BUTTON:
-                VIEW_MGR->showLayer(LayerType::PORT_REMODE);
+                callback(PanelType::PORT_REMODE);
                 break;
             case REPAIR_BUTTON:
-                VIEW_MGR->showLayer(LayerType::PORT_REPAIR);
+                callback(PanelType::PORT_REPAIR);
                 break;
             case FACTORY_BUTTON:
-                VIEW_MGR->showLayer(LayerType::PORT_FACTORY);
+                callback(PanelType::PORT_FACTORY);
                 break;
             default:
                 break;
@@ -418,7 +415,7 @@ void BattleMainLayerButton::onTouchEnded(Touch* touch,Event* event)
         waveButton->setVisible(false);
         stopEvent=false;
         
-        VIEW_MGR->showLayer(LayerType::PORT_BATTLE);
+        callback(PanelType::PORT_BATTLE);
     }
 }
 

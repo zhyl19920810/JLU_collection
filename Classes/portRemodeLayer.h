@@ -11,13 +11,14 @@
 
 #include "cocos2d.h"
 #include "SystemHeader.h"
+#include "Panel.hpp"
 
 using namespace cocos2d;
 
 NS_KCL_BEGIN
 
 
-class PortRemodeLayer : public Layer
+class PortRemodeLayer : public Panel
 {
 public:
     PortRemodeLayer();

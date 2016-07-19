@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "ViewMgrMacro.hpp"
+#include "Panel.hpp"
 
 NS_KCL_BEGIN
 
@@ -19,7 +20,7 @@ class ViewMgrFactory
 public:
     static cocos2d::Scene* getScene(SceneType type,const cocos2d::Value& data=cocos2d::Value::Null);
     
-    static cocos2d::Layer* getLayer(LayerType type,const cocos2d::Value& data=cocos2d::Value::Null);
+    static Panel* getPanel(PanelType type,const cocos2d::Value& data=cocos2d::Value::Null);
 };
 
 

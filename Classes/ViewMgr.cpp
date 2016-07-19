@@ -15,7 +15,7 @@ NS_KCL_BEGIN
 ViewMgr::ViewMgr()
 {
     m_director=cocos2d::Director::getInstance();
-    currLayerType=LayerType::NONE;
+    currPanelType=PanelType::NONE;
 }
 
 
@@ -43,11 +43,11 @@ cocos2d::Scene* ViewMgr::showScene(SceneType sceneType,bool replaceScene,const c
     {
         if (replaceScene)
         {
-            auto queue=sceneStack.begin()->layerQueue;
+            auto queue=sceneStack.begin()->panelQueue;
             for (auto it=queue.begin(); it!=queue.end(); ++it)
             {
-                if (currLayerType==it->type) {
-                    currLayerType=LayerType::NONE;
+                if (currPanelType==it->type) {
+                    currPanelType=PanelType::NONE;
                 }
             }
             sceneStack.pop_front();
@@ -66,22 +66,22 @@ cocos2d::Scene* ViewMgr::showScene(SceneType sceneType,bool replaceScene,const c
     return _scene;
 }
 
-cocos2d::Layer* ViewMgr::showLayer(LayerType layerType,bool replaceScene,bool preLayerVisible,const cocos2d::Value& data)
+Panel* ViewMgr::showPanel(PanelType panelType,bool replaceScene,bool prePanelVisible,const cocos2d::Value& data)
 {
-    if (layerType==currLayerType||layerType==LayerType::NONE) {
-        return getLayer(layerType);
+    if (panelType==currPanelType||panelType==PanelType::NONE) {
+        return ViewMgrFactory::getPanel(panelType);
     }
     
-    cocos2d::Layer* preLayer=getLayer(currLayerType);
+    Panel* prePanel=getPanel(currPanelType);
     if (replaceScene)
     {
-        if (preLayer)
+        if (prePanel)
         {
-            sceneStack.begin()->scene->removeChild(preLayer);
-            auto& queue=sceneStack.begin()->layerQueue;
+            sceneStack.begin()->scene->removeChild(prePanel);
+            auto& queue=sceneStack.begin()->panelQueue;
             for (auto it=queue.begin(); it!=queue.end(); ++it)
             {
-                if (currLayerType==it->type)
+                if (currPanelType==it->type)
                 {
                     queue.erase(it);
                     break;
@@ -91,36 +91,36 @@ cocos2d::Layer* ViewMgr::showLayer(LayerType layerType,bool replaceScene,bool pr
     }
     else
     {
-        preLayer->setVisible(preLayerVisible);
+        prePanel->setVisible(prePanelVisible);
     }
     
     
-    cocos2d::Layer* _layer=getLayer(layerType);
-    if (!_layer)
+    Panel* _panel=getPanel(panelType);
+    if (!_panel)
     {
-        _layer=ViewMgrFactory::getLayer(layerType);
-        _layer->setTag(static_cast<int>(layerType));
-        LayerStruct layerStruct;
-        layerStruct.type=layerType;
+        _panel=ViewMgrFactory::getPanel(panelType);
+        _panel->setTag(static_cast<int>(panelType));
+        PanelStruct layerStruct;
+        layerStruct.type=panelType;
         layerStruct.data=data;
-        layerStruct.layer=_layer;
-        sceneStack.begin()->layerQueue.push_front(layerStruct);
-        sceneStack.begin()->scene->addChild(_layer);
+        layerStruct.panel=_panel;
+        sceneStack.begin()->panelQueue.push_front(layerStruct);
+        sceneStack.begin()->scene->addChild(_panel);
     }
-    _layer->setVisible(true);
+    _panel->setVisible(true);
     
-    currLayerType=layerType;
+    currPanelType=panelType;
     
-    return _layer;
+    return _panel;
 }
 
 cocos2d::Scene* ViewMgr::popScene()
 {
-    auto queue=sceneStack.begin()->layerQueue;
+    auto queue=sceneStack.begin()->panelQueue;
     for (auto it=queue.begin(); it!=queue.end(); ++it)
     {
-        if (currLayerType==it->type) {
-            currLayerType=LayerType::NONE;
+        if (currPanelType==it->type) {
+            currPanelType=PanelType::NONE;
         }
     }
     cocos2d::Director::getInstance()->popScene();
@@ -145,20 +145,20 @@ cocos2d::Scene* ViewMgr::getScene(kancolle::SceneType sceneType)
     return NULL;
 }
 
-cocos2d::Layer* ViewMgr::getLayer(kancolle::LayerType layerType)
+Panel* ViewMgr::getPanel(kancolle::PanelType panelType)
 {
-    if (layerType==LayerType::NONE)
+    if (panelType==PanelType::NONE)
     {
         return NULL;
     }
     for (auto it=sceneStack.begin(); it!=sceneStack.end(); ++it)
     {
-        auto layerQueue=it->layerQueue;
-        for (auto it2=layerQueue.begin(); it2!=layerQueue.end(); ++it2)
+        auto panelQueue=it->panelQueue;
+        for (auto it2=panelQueue.begin(); it2!=panelQueue.end(); ++it2)
         {
-            if (it2->type==layerType)
+            if (it2->type==panelType)
             {
-                return it2->layer;
+                return it2->panel;
             }
         }
     }

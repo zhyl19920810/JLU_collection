@@ -14,12 +14,13 @@
 #include "RepairListEntity.hpp"
 #include "dock.hpp"
 #include "RepairSelectEntity.hpp"
+#include "Panel.hpp"
 
 using namespace cocos2d;
 
 NS_KCL_BEGIN
 
-class PortRepairLayer : public Layer
+class PortRepairLayer : public Panel
 {
 public:
     PortRepairLayer();

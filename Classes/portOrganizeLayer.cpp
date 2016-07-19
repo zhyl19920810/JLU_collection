@@ -33,7 +33,7 @@ bool PortOrganizeLayer::init()
     
     do
     {
-        if (!Layer::init()) {
+        if (!Panel::init()) {
             break;
         }
         

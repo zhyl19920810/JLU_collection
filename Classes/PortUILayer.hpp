@@ -60,7 +60,7 @@ public:
     void update(float dt) override;
     
     
-    void changeTitlePic(kancolle::LayerType type);
+    void changeTitlePic(kancolle::PanelType type);
 private:
     bool init() override;
     

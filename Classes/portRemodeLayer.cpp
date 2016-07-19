@@ -17,7 +17,7 @@ bool PortRemodeLayer::init()
     do
     {
         
-        if (!Layer::init())
+        if (!Panel::init())
         {
             
             break;

@@ -16,6 +16,8 @@
 #include "KantaiListEntity.hpp"
 #include "FleetButton.hpp"
 #include "LayerCover.hpp"
+#include "Panel.hpp"
+
 
 using namespace cocos2d;
 
@@ -23,7 +25,7 @@ NS_KCL_BEGIN
 
 class PortScene;
 
-class PortOrganizeLayer : public Layer
+class PortOrganizeLayer : public Panel
 {
 public:
     bool init();

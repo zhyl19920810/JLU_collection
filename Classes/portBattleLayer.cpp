@@ -17,7 +17,7 @@ bool PortBattleLayer::init()
     bool bRet=false;
     do
     {
-        if (!Layer::init()) {
+        if (!Panel::init()) {
             break;
         }
         initLayer();

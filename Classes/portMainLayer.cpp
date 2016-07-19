@@ -11,6 +11,7 @@
 #include "signBoardGirl.hpp"
 #include "MainLayerButton.hpp"
 #include "furnitureBG.hpp"
+#include "portScene.h"
 
 NS_KCL_BEGIN
 
@@ -33,7 +34,7 @@ void PortMainLayer::initLayer()
 
 bool PortMainLayer::init()
 {
-    if (!Layer::init()) {
+    if (!Panel::init()) {
         return false;
     }
     initLayer();
@@ -57,7 +58,11 @@ void PortMainLayer::updateGirl()
 }
 
 
-
+void PortMainLayer::changePanel(PanelType type)
+{
+    auto parent=static_cast<PortScene*>(_parent);
+    parent->SetCurrPanel(type);
+}
 
 
 void PortMainLayer::resumeDispatcher()
@@ -73,27 +78,27 @@ void PortMainLayer::resumeDispatcher()
 
 void PortMainLayer::initMenu()
 {
-    organizeButton=NormalMainLayerButton::create(MainLayerButtonType::ORGANIZE_BUTTON, NULL);
+    organizeButton=NormalMainLayerButton::create(MainLayerButtonType::ORGANIZE_BUTTON, CC_CALLBACK_0(PortMainLayer::changePanel, this,PanelType::PORT_ORGANIZE));
     organizeButton->setPosition(Vec2(145+(300-145)/2, 340));
     addChild(organizeButton);
 
-    supplyButton=NormalMainLayerButton::create(MainLayerButtonType::SUPPLY_BUTTON, NULL);
+    supplyButton=NormalMainLayerButton::create(MainLayerButtonType::SUPPLY_BUTTON, CC_CALLBACK_0(PortMainLayer::changePanel, this,PanelType::PORT_SUPPLY));
     supplyButton->setPosition(100, 260);
     addChild(supplyButton);
 
-    remodeButton=NormalMainLayerButton::create(MainLayerButtonType::REMODE_BUTTON, NULL);
+    remodeButton=NormalMainLayerButton::create(MainLayerButtonType::REMODE_BUTTON, CC_CALLBACK_0(PortMainLayer::changePanel, this,PanelType::PORT_REMODE));
     remodeButton->setPosition(345, 260);
     addChild(remodeButton);
     
-    repairButton=NormalMainLayerButton::create(MainLayerButtonType::REPAIR_BUTTON, NULL);
+    repairButton=NormalMainLayerButton::create(MainLayerButtonType::REPAIR_BUTTON, CC_CALLBACK_0(PortMainLayer::changePanel, this,PanelType::PORT_REPAIR));
     repairButton->setPosition(145, 110);
     addChild(repairButton);
     
-    factoryButton=NormalMainLayerButton::create(MainLayerButtonType::FACTORY_BUTTON, NULL);
+    factoryButton=NormalMainLayerButton::create(MainLayerButtonType::FACTORY_BUTTON, CC_CALLBACK_0(PortMainLayer::changePanel, this,PanelType::PORT_FACTORY));
     factoryButton->setPosition(300, 110);
     addChild(factoryButton);
     
-    battleButton=BattleMainLayerButton::create(MainLayerButtonType::BATTLE_BUTTON, NULL);
+    battleButton=BattleMainLayerButton::create(MainLayerButtonType::BATTLE_BUTTON, CC_CALLBACK_0(PortMainLayer::changePanel, this,PanelType::PORT_BATTLE));
     battleButton->setPosition((145+(300-145)/2), 210);
     addChild(battleButton);
 }

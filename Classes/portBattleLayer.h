@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "SystemHeader.h"
+#include "Panel.hpp"
 
 USING_NS_CC;
 
@@ -19,7 +20,7 @@ NS_KCL_BEGIN
 class MissionSelectPage;
 
 
-class PortBattleLayer:public Layer
+class PortBattleLayer:public Panel
 {
 public:
     CREATE_FUNC(PortBattleLayer);

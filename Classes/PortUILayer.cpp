@@ -26,7 +26,6 @@ bool PortUILayer::init()
         
         
         
-
         
         initPortSceneBar();
         initClock();
@@ -294,30 +293,30 @@ void PortUILayer::updatePlayerAttr(float dt)
 
 
 
-void PortUILayer::changeTitlePic(kancolle::LayerType type)
+void PortUILayer::changeTitlePic(kancolle::PanelType type)
 {
     title->setVisible(true);
     std::string titleName;
     switch (type) {
-        case LayerType::PORT_MAINLAYER:
+        case PanelType::PORT_MAINLAYER:
             titleName="porttitle.png";
             break;
-        case LayerType::PORT_SUPPLY:
+        case PanelType::PORT_SUPPLY:
             titleName="supplytitle.png";
             break;
-        case LayerType::PORT_FACTORY:
+        case PanelType::PORT_FACTORY:
             titleName="factorytitle.png";
             break;
-        case LayerType::PORT_ORGANIZE:
+        case PanelType::PORT_ORGANIZE:
             titleName="organizetitle.png";
             break;
-        case LayerType::PORT_REMODE:
+        case PanelType::PORT_REMODE:
             titleName="remodeltitle.png";
             break;
-        case LayerType::PORT_REPAIR:
+        case PanelType::PORT_REPAIR:
             titleName="repairtitle.png";
             break;
-        case LayerType::PORT_BATTLE:
+        case PanelType::PORT_BATTLE:
             titleName="battletitle.png";
             break;
         default:

@@ -15,6 +15,8 @@
 #include "FleetButton.hpp"
 #include "SupplyAmmoEntity.hpp"
 #include "SupplyFuelEntity.hpp"
+#include "Panel.hpp"
+
 
 USING_NS_CC;
 
@@ -25,7 +27,7 @@ class PortScene;
 class PortSupplyLayer;
 
 
-class PortSupplyLayer:public Layer
+class PortSupplyLayer:public Panel
 {
 public:
     PortSupplyLayer();

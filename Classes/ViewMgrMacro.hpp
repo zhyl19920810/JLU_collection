@@ -26,7 +26,7 @@ enum class SceneType
 };
 
 
-enum class LayerType
+enum class PanelType
 {
     NONE=0,
     PORT_SUPPLY=1001,
