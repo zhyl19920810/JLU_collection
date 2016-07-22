@@ -16,6 +16,10 @@ NS_KCL_BEGIN
 
 #define SND Sound::getInstance()
 
+#define BGM_VOLUME     "bgm_volume"
+#define SE_VOLUME      "se_volume"
+#define VOICE_VOLUME   "voice_volume"
+
 class Sound
 {
 public:
@@ -32,6 +36,7 @@ public:
     void preloadEffect(const std::vector<std::string> &vecName);
     void unloadEffect(const std::string &name);
     
+    void initVolume();
     /*
      * 播放音效
      * 参数 1：音效文件名

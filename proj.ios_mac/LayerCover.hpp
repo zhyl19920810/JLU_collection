@@ -10,11 +10,11 @@
 #define LayerCover_hpp
 
 #include "cocos2d.h"
-
+#include "SystemHeader.h"
 
 USING_NS_CC;
 
-NS_CC_BEGIN
+NS_KCL_BEGIN
 
 class LayerCover:public Layer
 {
@@ -32,6 +32,6 @@ private:
     FUNC callback;
 };
 
-NS_CC_END
+NS_KCL_END
 
 #endif /* LayerCover_hpp */

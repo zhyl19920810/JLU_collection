@@ -147,21 +147,20 @@ cocos2d::Scene* ViewMgr::getScene(kancolle::SceneType sceneType)
 
 Panel* ViewMgr::getPanel(kancolle::PanelType panelType)
 {
-    if (panelType==PanelType::NONE)
+    if (sceneStack.empty()||panelType==PanelType::NONE)
     {
         return NULL;
     }
-    for (auto it=sceneStack.begin(); it!=sceneStack.end(); ++it)
+    
+    auto panelQueue=sceneStack.begin()->panelQueue;
+    for (auto it=panelQueue.begin(); it!=panelQueue.end(); ++it)
     {
-        auto panelQueue=it->panelQueue;
-        for (auto it2=panelQueue.begin(); it2!=panelQueue.end(); ++it2)
+        if (it->type==panelType)
         {
-            if (it2->type==panelType)
-            {
-                return it2->panel;
-            }
+            return it->panel;
         }
     }
+
     return NULL;
 }
 

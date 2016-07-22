@@ -23,6 +23,9 @@
 #include "Sound.hpp"
 #include "ViewMgr.hpp"
 #include "PortBgLayer.hpp"
+#include "SoundPanelButton.hpp"
+
+
 
 NS_KCL_BEGIN
 
@@ -108,6 +111,7 @@ bool PortScene::init()
         portUIlayer=PortUILayer::create();
         addChild(portUIlayer,2);
         SND->playMusic("sound_bgm/sound 2.mp3");
+        initSoundButton();
         
         bRet=true;
     }while(0);
@@ -115,6 +119,32 @@ bool PortScene::init()
     return bRet;
     
 }
+
+
+void PortScene::changeToSoundPanel()
+{
+    if (openSoundPanel)
+    {
+        SetCurrPanel(PanelType::PORT_MAINLAYER);
+        openSoundPanel=!openSoundPanel;
+    }
+    else
+    {
+        SetCurrPanel(PanelType::SOUND);
+        openSoundPanel=!openSoundPanel;
+    }
+}
+
+void PortScene::initSoundButton()
+{
+    openSoundPanel=false;
+    soundButton=SoundPanelButton::create(CC_CALLBACK_0(PortScene::changeToSoundPanel, this));
+    Vec2 pos=Vec2(Director::getInstance()->getWinSize().width-26, 26);
+    soundButton->setPosition(pos);
+    addChild(soundButton,5);
+    
+}
+
 
 
 

@@ -103,6 +103,8 @@ void PortMainLayer::initMenu()
     addChild(battleButton);
 }
 
+
+
 PortMainLayer::~PortMainLayer()
 {
 

@@ -363,6 +363,7 @@
 		F4B926CF1C55FA74005DB127 /* SupplyMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CD1C55FA74005DB127 /* SupplyMain */; };
 		F4BC4CAB1D2D242300374317 /* ViewMgrFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4BC4CA91D2D242300374317 /* ViewMgrFactory.cpp */; };
 		F4BC4CAC1D2D242300374317 /* ViewMgrFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4BC4CA91D2D242300374317 /* ViewMgrFactory.cpp */; };
+		F4C0E81F1D4267D100E345CB /* shader in Resources */ = {isa = PBXBuildFile; fileRef = F4C0E81E1D4267D100E345CB /* shader */; };
 		F4D38E1B1C871AB9009BE55C /* SupplyFuelEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */; };
 		F4D38E1C1C871AB9009BE55C /* SupplyFuelEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */; };
 		F4D38E1F1C8731EF009BE55C /* OrganizeSelectEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E1D1C8731EF009BE55C /* OrganizeSelectEntity.cpp */; };
@@ -693,6 +694,7 @@
 		F4B926CD1C55FA74005DB127 /* SupplyMain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SupplyMain; sourceTree = "<group>"; };
 		F4BC4CA91D2D242300374317 /* ViewMgrFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ViewMgrFactory.cpp; sourceTree = "<group>"; };
 		F4BC4CAA1D2D242300374317 /* ViewMgrFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ViewMgrFactory.hpp; sourceTree = "<group>"; };
+		F4C0E81E1D4267D100E345CB /* shader */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shader; path = ../Resources/shader; sourceTree = "<group>"; };
 		F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SupplyFuelEntity.cpp; sourceTree = "<group>"; };
 		F4D38E1A1C871AB9009BE55C /* SupplyFuelEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SupplyFuelEntity.hpp; sourceTree = "<group>"; };
 		F4D38E1D1C8731EF009BE55C /* OrganizeSelectEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OrganizeSelectEntity.cpp; sourceTree = "<group>"; };
@@ -823,6 +825,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				F4C0E81E1D4267D100E345CB /* shader */,
 				F42303CE1D2BEC0C00B06189 /* Resources */,
 				46880B8319C43A87006E1F66 /* Classes */,
 				46880B7519C43A67006E1F66 /* Resources */,
@@ -1353,6 +1356,8 @@
 				F43293121D39974300B7167C /* IndicatorBar.hpp */,
 				F40B47A31D3E7DA8006F5375 /* PortState.cpp */,
 				F40B47A41D3E7DA8006F5375 /* PortState.hpp */,
+				F40B479F1D3E7B7D006F5375 /* SoundPanelButton.cpp */,
+				F40B47A01D3E7B7D006F5375 /* SoundPanelButton.hpp */,
 			);
 			name = frame;
 			sourceTree = "<group>";
@@ -1425,8 +1430,6 @@
 		F48253AC1D33E9EB00165D61 /* main */ = {
 			isa = PBXGroup;
 			children = (
-				F40B479F1D3E7B7D006F5375 /* SoundPanelButton.cpp */,
-				F40B47A01D3E7B7D006F5375 /* SoundPanelButton.hpp */,
 				F4036D601BDA1FDD002788AA /* portMainLayer.cpp */,
 				F4036D611BDA1FDD002788AA /* portMainLayer.h */,
 				F42ECDA01D2FF75600E09EA0 /* signBoardGirl.cpp */,
@@ -1668,6 +1671,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4C0E81F1D4267D100E345CB /* shader in Resources */,
 				F47CEB121C63402B008600E7 /* ArsenalMain in Resources */,
 				F47CEB131C63402B008600E7 /* RepairMain in Resources */,
 				F4EFACC01C574DD4000FFF74 /* CommonAssets in Resources */,

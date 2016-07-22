@@ -13,9 +13,7 @@ NS_KCL_BEGIN
 
 USING_NS_CC;
 
-#define BGM_VOLUME     "bgm_volume"
-#define SE_VOLUME      "se_volume"
-#define VOICE_VOLUME   "voice_volume"
+
 
 
 bool SoundBar::init(kancolle::SoundBarType _type)
@@ -27,11 +25,16 @@ bool SoundBar::init(kancolle::SoundBarType _type)
         
         type=_type;
         
+        displayBg=Sprite::create("PortMain/image 59.png");
+        displayBg->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+        addChild(displayBg);
+        Node::setContentSize(displayBg->getContentSize());
+        
         displayBar=Sprite::create("PortMain/image 59.png");
-        displayBar->setPosition(Vec2::ZERO);
-        displayBar->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         displayBar->setColor(Color3B::GREEN);
+        displayBar->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
         addChild(displayBar);
+
         
         switch (_type)
         {
@@ -50,9 +53,9 @@ bool SoundBar::init(kancolle::SoundBarType _type)
         
         adjustButton=Sprite::create("PortMain/image 71.png");
         adjustButton->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-        Vec2 _adjustButtonVec=Vec2(displayBar->getPosition().x*soundPercent, displayBar->getPosition().y*0.5);
+        Vec2 _adjustButtonVec=Vec2(displayBar->getContentSize().width*(soundPercent), displayBar->getContentSize().height*0.5);
         adjustButton->setPosition(_adjustButtonVec);
-        displayBar->addChild(adjustButton);
+        addChild(adjustButton,2);
         
         
         listener=cocos2d::EventListenerTouchOneByOne::create();
@@ -62,8 +65,12 @@ bool SoundBar::init(kancolle::SoundBarType _type)
         auto dispatcher=Director::getInstance()->getEventDispatcher();
         dispatcher->addEventListenerWithSceneGraphPriority(listener, this);
         
+        
         soundMuteIcon=SoundMuteIcon::create(soundPercent);
+        soundMuteIcon->setPosition(Vec2(displayBar->getContentSize().width*(0)-10, displayBar->getContentSize().height/2));
+        addChild(soundMuteIcon);
         updateVolume();
+        
         
         
         bRet=true;
@@ -100,7 +107,7 @@ bool SoundBar::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 {
     auto location=touch->getLocation();
     auto loc=adjustButton->convertToNodeSpace(location);
-    auto rect=Rect(0,0,adjustButton->getContentSize().width,adjustButton->getContentSize().height);
+    auto rect=Rect(-20,-20,adjustButton->getContentSize().width+20,adjustButton->getContentSize().height+20);
     isPress=false;
     if (rect.containsPoint(loc))
     {
@@ -117,15 +124,21 @@ void SoundBar::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
     if(!isPress) return;
     auto location=touch->getLocation();
     auto loc=adjustButton->convertToNodeSpace(location);
-    auto rect=Rect(0,0,adjustButton->getContentSize().width,adjustButton->getContentSize().height);
+    auto rect=Rect(-20,-20,adjustButton->getContentSize().width+20,adjustButton->getContentSize().height+20);
     
     if (rect.containsPoint(loc))
     {
-        auto _displayBarLoc=displayBar->convertToNodeSpace(touch->getLocation());
-        auto _displayBarWidth=displayBar->getContentSize().width;
-        float modifyX=fmin(0.0,fmax(_displayBarLoc.x,_displayBarWidth));
+        auto _displayBarLoc=displayBg->convertToNodeSpace(location);
+        auto _displayBarWidth=displayBg->getContentSize().width;
+        float modifyX=fmax(0,fmin(_displayBarLoc.x,_displayBarWidth));
         adjustButton->setPositionX(modifyX);
-        soundPercent=modifyX/_displayBarWidth;
+        float newSoundPercent=modifyX/_displayBarWidth;
+        if (newSoundPercent-soundPercent<-0.001||newSoundPercent-soundPercent>0.001)
+        {
+            soundPercent=newSoundPercent;
+            displayBar->setScaleX(soundPercent);
+            soundMuteIcon->updateVolume(soundPercent);
+        }
     }
     else
     {
@@ -176,8 +189,8 @@ bool SoundMuteIcon::init(float volume)
     {
         CC_BREAK_IF(!Node::init());
         
-        icon=Sprite::create();
-        icon->setPosition(Vec2(-20, 0));
+        icon=Sprite::create("PortMain/image 68.png");
+        icon->setPosition(Vec2(-14, 0));
         addChild(icon);
         
         updateVolume(volume);

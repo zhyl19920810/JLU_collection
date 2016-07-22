@@ -24,6 +24,8 @@ private:
     bool init() override;
     cocos2d::Sprite *bgImage;
     
+    cocos2d::GLProgramState* m_blurGLProgramState;
+    void initBlurGLprogram();
 };
 
 NS_KCL_END

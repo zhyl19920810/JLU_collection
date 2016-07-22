@@ -31,12 +31,14 @@ class PortOrganizeLayer;
 class PortScene;
 class PortUILayer;
 class PortBgLayer;
+class SoundPanelButton;
 
 
 
 class PortScene:public Scene
 {
     friend class GameManger;
+    friend class MainPanelState;
 public:
     static PortScene* createScene();
     
@@ -50,8 +52,10 @@ public:
     
     void pauseLayerSelecterButton();
     void resumeLayerSelecterButton();
+    void changeToSoundPanel();
 private:
     bool init() override;
+    void initSoundButton();
 
 public:
     PanelType currentPanelType;
@@ -59,6 +63,14 @@ public:
     PortUILayer* portUIlayer;
     PortBgLayer* portBgLayer;
     PortStateMachine portStateMachine;
+    
+private:
+    bool openSoundPanel;
+    SoundPanelButton* soundButton;
+    
+private:
+    void initBlurGLprogram();
+    cocos2d::GLProgramState* blurGLProgramState=NULL;
 };
 
 NS_KCL_END

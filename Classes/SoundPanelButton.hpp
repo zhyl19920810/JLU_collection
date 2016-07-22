@@ -11,18 +11,24 @@
 
 #include "cocos2d.h"
 #include "SystemHeader.h"
+#include "ViewMgrMacro.hpp"
 
 NS_KCL_BEGIN
+
+
+typedef std::function<void()> soundButtonCallBack;
 
 class SoundPanelButton:public cocos2d::Node
 {
 public:
-    CREATE_FUNC(SoundPanelButton);
+    static SoundPanelButton* create(soundButtonCallBack);
     
     void intoCallback(Ref*);
-    bool init();
+    bool init(soundButtonCallBack);
 private:
+    bool SoundPanelOpen;
     cocos2d::MenuItem* button;
+    soundButtonCallBack callback;
 };
 
 

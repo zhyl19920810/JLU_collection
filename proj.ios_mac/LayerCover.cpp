@@ -9,7 +9,7 @@
 #include "LayerCover.hpp"
 
 
-NS_CC_BEGIN
+NS_KCL_BEGIN
 
 LayerCover* LayerCover::create(FUNC callback)
 {
@@ -69,5 +69,5 @@ void LayerCover::setCoverEnable(bool bEnble)
     bgCover->setVisible(bEnble);
 }
 
-NS_CC_END
+NS_KCL_END
 

@@ -23,7 +23,7 @@
 #include <sys/stat.h>
 #include "dock.hpp"
 #include "arsenal.hpp"
-
+#include "Sound.hpp"
 
 NS_KCL_BEGIN
 
@@ -36,7 +36,7 @@ NS_KCL_BEGIN
 #define CACHE (UserDefault::getInstance())
 #define FILE_UTIL FileUtils::getInstance()
 #define GAME_DB_NAME "kancolle_2.sqlite3"
-#define DB_IN_COMPUTER 1
+#define DB_IN_COMPUTER 0
 
 
 
@@ -127,7 +127,7 @@ void BundleMgr::initialization()
     writablePath+= GAME_DB_NAME;
     ssize_t dbSize=0;
     FileUtils::getInstance()->getFileData(writablePath.c_str(), "r", &dbSize);
-    if(dbSize){
+    if(!dbSize){
         fstream fsCopee( dbFilePath.c_str(), ios::binary | ios::in ) ;
         fstream fsCoper( writablePath.c_str(), ios::binary | ios::out ) ;
         fsCoper << fsCopee.rdbuf();
@@ -138,6 +138,8 @@ void BundleMgr::initialization()
     init.initDB(1);
     sDock.initDock(1);
     sArsenal.initArsenal(1);
+    Sound::getInstance()->initVolume();
+    
     //    if (VIEW_MGR->getRuningSceneType() != SceneType::SDK)
     //    {
     //        return;

@@ -12,7 +12,7 @@
 #include "portMainLayer.h"
 #include "PortUILayer.hpp"
 #include "layerSelecter.h"
-
+#include "SoundPanelButton.hpp"
 
 NS_KCL_BEGIN
 
@@ -49,6 +49,8 @@ PortState* PortStateMachine::getState(kancolle::PanelType newType)
             break;
         case kancolle::PanelType::NONE:
             state=&nullState;
+        case kancolle::PanelType::SOUND:
+            state=&soundPanelState;
             break;
         default:
             break;
@@ -67,6 +69,7 @@ void MainPanelState::Enter(PanelType newType,kancolle::PortScene *portScene)
             portScene->portUIlayer->setVisible(true);
             portScene->layerSelecter->setVisible(true);
             portScene->portUIlayer->changeTitlePic(PanelType::PORT_MAINLAYER);
+            break;
         case kancolle::PanelType::PORT_BATTLE:
         case kancolle::PanelType::PORT_FACTORY:
         case kancolle::PanelType::PORT_ORGANIZE:
@@ -74,8 +77,12 @@ void MainPanelState::Enter(PanelType newType,kancolle::PortScene *portScene)
         case kancolle::PanelType::PORT_REPAIR:
         case kancolle::PanelType::PORT_SUPPLY:
             VIEW_MGR->showPanel(PanelType::PORT_MAINLAYER);
+            portScene->soundButton->setVisible(true);
             portScene->portUIlayer->changeTitlePic(PanelType::PORT_MAINLAYER);
             portScene->layerSelecter->moveOut();
+            break;
+        case kancolle::PanelType::SOUND:
+            VIEW_MGR->showPanel(PanelType::PORT_MAINLAYER);
             break;
         default:
             break;
@@ -87,6 +94,17 @@ void MainPanelState::Exit(PanelType newType,kancolle::PortScene *portScene)
     switch (newType)
     {
         case PanelType::PORT_MAINLAYER:
+            break;
+        case PanelType::SOUND:
+            log("mainPanel exit(soundPanel will in");
+            break;
+        case kancolle::PanelType::PORT_BATTLE:
+        case kancolle::PanelType::PORT_FACTORY:
+        case kancolle::PanelType::PORT_ORGANIZE:
+        case kancolle::PanelType::PORT_REMODE:
+        case kancolle::PanelType::PORT_REPAIR:
+        case kancolle::PanelType::PORT_SUPPLY:
+            portScene->soundButton->setVisible(false);
             break;
         default:
             break;
@@ -124,12 +142,27 @@ void PortPanelState::Enter(PanelType newType,kancolle::PortScene *portScene)
             portScene->layerSelecter->setVisible(true);
             portScene->portUIlayer->changeTitlePic(newType);
             break;
+        case kancolle::PanelType::SOUND:
+            
+            break;
         default:
             break;
     }
 }
 
 void PortPanelState::Exit(PanelType newType,kancolle::PortScene *portScene)
+{
+    
+}
+
+
+void SoundPanelState::Enter(kancolle::PanelType newType, kancolle::PortScene * portScene)
+{
+    auto panel=VIEW_MGR->showPanel(PanelType::SOUND,false,true);
+    panel->setZOrder(4);
+}
+
+void SoundPanelState::Exit(kancolle::PanelType newType, kancolle::PortScene *portScene)
 {
     
 }

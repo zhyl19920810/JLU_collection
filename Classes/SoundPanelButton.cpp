@@ -13,16 +13,21 @@ NS_KCL_BEGIN
 
 USING_NS_CC;
 
-bool SoundPanelButton::init()
+bool SoundPanelButton::init(soundButtonCallBack _callback)
 {
     bool bRet=false;
     do
     {
         CC_BREAK_IF(!Node::init());
         
-        button=MenuItemSprite::create(Sprite::create(""), Sprite::create(""), CC_CALLBACK_1(SoundPanelButton::intoCallback, this));
+        callback=_callback;
+        button=MenuItemSprite::create(Sprite::create("PortMain/image 81.png"), Sprite::create("PortMain/image 81.png"), CC_CALLBACK_1(SoundPanelButton::intoCallback, this));
         button->setPosition(Vec2::ZERO);
-        addChild(button);
+        Menu* mn=Menu::create();
+        mn->setPosition(Vec2::ZERO);
+        mn->addChild(button);
+        addChild(mn);
+        
         
         bRet=true;
     }while(0);
@@ -31,10 +36,22 @@ bool SoundPanelButton::init()
 
 void SoundPanelButton::intoCallback(cocos2d::Ref *ref)
 {
-    
+    callback();
 }
 
 
+SoundPanelButton* SoundPanelButton::create(soundButtonCallBack _callback)
+{
+    static SoundPanelButton* pRet=new SoundPanelButton;
+    if (pRet&&pRet->init(_callback))
+    {
+        pRet->autorelease();
+        return pRet;
+    }
+    delete pRet;
+    pRet=NULL;
+    return pRet;
+}
 
 
 

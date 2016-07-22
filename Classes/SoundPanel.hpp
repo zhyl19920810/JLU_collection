@@ -17,7 +17,7 @@
 NS_KCL_BEGIN
 
 class SoundBar;
-
+class LayerCover;
 
 class SoundPanel:public Panel
 {
@@ -29,10 +29,13 @@ private:
     void sceneCallback(Ref* ref);
     bool init();
     
+    
     SoundBar* bgmSoundBar;
     SoundBar* SESoundBar;
     SoundBar* voiceSoundBar;
-    cocos2d::MenuItemSprite* sceneButton;
+    
+private:
+    LayerCover* listCover;
 };
 
 NS_KCL_END

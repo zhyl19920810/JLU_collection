@@ -47,11 +47,15 @@ public:
     void Enter(PanelType,PortScene*){}
     void Exit(PanelType,PortScene*){}
 };
-//class SoundLayerState:public PortState
-//{
-//public:
-//
-//};
+
+
+
+class SoundPanelState:public PortState
+{
+public:
+    void Enter(PanelType,PortScene*);
+    void Exit(PanelType,PortScene*);
+};
 
 
 class PortStateMachine
@@ -78,6 +82,7 @@ private:
     PortPanelState portPanelState;
     MainPanelState mainPanelState;
     NullState      nullState;
+    SoundPanelState soundPanelState;
 };
 
 

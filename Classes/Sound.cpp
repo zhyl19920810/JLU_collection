@@ -143,4 +143,13 @@ void Sound::setBGVolume(float volume)
     SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(volume);
 }
 
+void Sound::initVolume()
+{
+    float bgmVolume=cocos2d::UserDefault::getInstance()->getFloatForKey(BGM_VOLUME, 0.5);
+    float seVolume=cocos2d::UserDefault::getInstance()->getFloatForKey(SE_VOLUME, 0.5);
+    SND->setBGVolume(bgmVolume);
+    SND->setEffectVolume(seVolume);
+}
+
+
 NS_KCL_END

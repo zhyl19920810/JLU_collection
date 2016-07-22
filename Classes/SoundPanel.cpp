@@ -8,7 +8,7 @@
 
 #include "SoundPanel.hpp"
 #include "SoundBar.hpp"
-
+#include "LayerCover.hpp"
 
 
 NS_KCL_BEGIN
@@ -23,34 +23,42 @@ bool SoundPanel::init()
     {
         CC_BREAK_IF(!Panel::init());
         
+        listCover=LayerCover::create(CC_CALLBACK_1(SoundPanel::sceneCallback, this));
+        listCover->setPosition(0,0);
+        addChild(listCover);
+        listCover->setCoverEnable(true);
+        
         auto SoundBg=Sprite::create("PortMain/image 57.png");
-        SoundBg->setPosition(Vec2::ZERO);//改
+        auto winSize=Director::getInstance()->getWinSize();
+        SoundBg->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
+        SoundBg->setPosition(Vec2(winSize.width-20, 25));//改
         addChild(SoundBg);
         
         bgmSoundBar=SoundBar::create(SoundBarType::BGM_SOUNDBAR);
-        bgmSoundBar->setPosition(Vec2::ZERO);//改
+        bgmSoundBar->setPosition(Vec2(50, 205));
+        bgmSoundBar->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         SoundBg->addChild(bgmSoundBar);
         
         SESoundBar=SoundBar::create(SoundBarType::SE_SOUNDBAR);
-        SESoundBar->setPosition(Vec2::ZERO);//改
+        SESoundBar->setPosition(Vec2(50, 142));
+        SESoundBar->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         SoundBg->addChild(SESoundBar);
         
         voiceSoundBar=SoundBar::create(SoundBarType::VOICE_SOUNDBAR);
-        voiceSoundBar->setPosition(Vec2::ZERO);//改
+        voiceSoundBar->setPosition(Vec2(50, 78));
+        voiceSoundBar->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         SoundBg->addChild(voiceSoundBar);
         
-        sceneButton=MenuItemSprite::create(Sprite::create(), Sprite::create(), CC_CALLBACK_1(SoundPanel::sceneCallback, this));
-        sceneButton->setPosition(Vec2::ZERO);
-        addChild(sceneButton);
+        
+
         
         bRet=true;
     }while(0);
     
     
     return bRet;
-    
-    
 }
+
 
 
 void SoundPanel::sceneCallback(cocos2d::Ref *ref)

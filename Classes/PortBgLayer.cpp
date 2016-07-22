@@ -10,6 +10,8 @@
 
 NS_KCL_BEGIN
 
+USING_NS_CC;
+
 bool PortBgLayer::init()
 {
     bool bRet=false;
@@ -22,12 +24,13 @@ bool PortBgLayer::init()
         addChild(bgImage);
         
         
-        
         bRet=true;
     }while(0);
     
     return bRet;
 }
+
+
 
 
 NS_KCL_END

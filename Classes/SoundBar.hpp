@@ -50,6 +50,7 @@ private:
     cocos2d::EventListenerTouchOneByOne* listener;
     SoundBarType type;
     cocos2d::Sprite* displayBar;
+    cocos2d::Sprite* displayBg;
     float soundPercent;
     cocos2d::Sprite* adjustButton;
     

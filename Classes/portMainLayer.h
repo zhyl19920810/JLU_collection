@@ -22,6 +22,7 @@ NS_KCL_BEGIN
 class SignBoardGirl;
 class MainLayerButton;
 class FurnitureBG;
+class SoundPanelButton;
 
 
 class PortMainLayer:public Panel
@@ -44,6 +45,7 @@ private:
     
     void changePanel(PanelType);
 private:
+    
     SignBoardGirl* signBoardGirl;
     FurnitureBG* furnitureBG;
     MainLayerButton* organizeButton;
