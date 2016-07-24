@@ -37,36 +37,13 @@ public:
     void unloadEffect(const std::string &name);
     
     void initVolume();
-    /*
-     * 播放音效
-     * 参数 1：音效文件名
-     * 参数 2：是否循环
-     * 参数 3：音效音量（取值范围[0,1]：0最小，1最大）
-     */
+
     void playMusic(const std::string &name, bool bLoop = true, float volume = 1.f);
-    
-    /*
-     * 播放音效
-     * 参数 1：音效文件名
-     * 参数 2：音效音量（取值范围[0,1]：0最小，1最大）
-     * 参数 3：立体声效果（取值范围[-1,1]：-1为左声道，1为右声道）
-     
-     @note Full support is under development, now there are limitations:
-     - no pitch effect on Samsung Galaxy S2 with OpenSL backend enabled;
-     - no pitch/pan/gain on emscrippten, win32, marmalade.
-     */
     void playEffect(const std::string &name, float volume = 1.0f, float pan = 0.0f);
-    
-    /*
-     * 停止播放背景音乐
-     * 参数 1：是否释放数据
-     */
     void stopMusic(bool bReleaseData = false);
     void stopAllEffects();
     
-    /*
-     * 暂停、恢复音乐、音效
-     */
+
     void pauseMusic();
     void resumeMusic();
     void pauseAllEffects();

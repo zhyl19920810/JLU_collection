@@ -41,6 +41,7 @@ bool MainLayerButton::init(MainLayerButtonType _buttonType,buttonCallBack _callb
         auto eventDispatcher=Director::getInstance()->getEventDispatcher();
         eventDispatcher->addEventListenerWithSceneGraphPriority(eventListner, this);
         
+        _enable=true;
         callback=_callback;
         buttonType=_buttonType;
         b_ret=true;
@@ -64,6 +65,22 @@ void MainLayerButton::touchEnded(cocos2d::Touch* touch,cocos2d::Event* event)
 {
     onTouchEnded(touch,event);
 }
+
+
+void MainLayerButton::setEnable()
+{
+    if (_enable) return;
+    _enable=true;
+    eventListner->setEnabled(true);
+}
+
+void MainLayerButton::setDisable()
+{
+    if (!_enable) return;
+    _enable=false;
+    eventListner->setEnabled(false);
+}
+
 
 ////--------------------------------------------------------------------------------------------------------------------
 

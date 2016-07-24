@@ -61,6 +61,7 @@ PortState* PortStateMachine::getState(kancolle::PanelType newType)
 
 void MainPanelState::Enter(PanelType newType,kancolle::PortScene *portScene)
 {
+    
     switch (portScene->getCurrPanelType()) {
         case kancolle::PanelType::PORT_MAINLAYER:
             break;
@@ -80,6 +81,8 @@ void MainPanelState::Enter(PanelType newType,kancolle::PortScene *portScene)
             portScene->soundButton->setVisible(true);
             portScene->portUIlayer->changeTitlePic(PanelType::PORT_MAINLAYER);
             portScene->layerSelecter->moveOut();
+            dynamic_cast<PortMainLayer*>(VIEW_MGR->getPanel(PanelType::PORT_MAINLAYER))->buttonFlyIn();
+            dynamic_cast<PortMainLayer*>(VIEW_MGR->getPanel(PanelType::PORT_MAINLAYER))->updateGirl();
             break;
         case kancolle::PanelType::SOUND:
             VIEW_MGR->showPanel(PanelType::PORT_MAINLAYER);
@@ -105,6 +108,7 @@ void MainPanelState::Exit(PanelType newType,kancolle::PortScene *portScene)
         case kancolle::PanelType::PORT_REPAIR:
         case kancolle::PanelType::PORT_SUPPLY:
             portScene->soundButton->setVisible(false);
+            dynamic_cast<PortMainLayer*>(VIEW_MGR->getPanel(PanelType::PORT_MAINLAYER))->setButtonDisable();
             break;
         default:
             break;

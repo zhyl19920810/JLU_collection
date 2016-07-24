@@ -197,6 +197,8 @@
 		F40CF9901BDB7FDF00DD897F /* XMLBase.h in Sources */ = {isa = PBXBuildFile; fileRef = F40CF97E1BDB4D1E00DD897F /* XMLBase.h */; };
 		F40CF9911BDB7FDF00DD897F /* Formation.h in Sources */ = {isa = PBXBuildFile; fileRef = F40CF9881BDB69A300DD897F /* Formation.h */; };
 		F40CF9921BDB7FDF00DD897F /* BattleModel.h in Sources */ = {isa = PBXBuildFile; fileRef = F40CF98D1BDB6A5A00DD897F /* BattleModel.h */; };
+		F4198EF01D445FF800429926 /* SelecterUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4198EEE1D445FF800429926 /* SelecterUnit.cpp */; };
+		F4198EF11D445FF800429926 /* SelecterUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4198EEE1D445FF800429926 /* SelecterUnit.cpp */; };
 		F41D54971D2A915B0094CAAD /* Sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F41D54951D2A915B0094CAAD /* Sound.cpp */; };
 		F41D54981D2A915B0094CAAD /* Sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F41D54951D2A915B0094CAAD /* Sound.cpp */; };
 		F41E32051D3A904D00B679E0 /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F41E32031D3A904D00B679E0 /* Panel.cpp */; };
@@ -596,6 +598,8 @@
 		F40CF9881BDB69A300DD897F /* Formation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Formation.h; sourceTree = "<group>"; };
 		F40CF98C1BDB6A5A00DD897F /* BattleModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleModel.cpp; sourceTree = "<group>"; };
 		F40CF98D1BDB6A5A00DD897F /* BattleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleModel.h; sourceTree = "<group>"; };
+		F4198EEE1D445FF800429926 /* SelecterUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SelecterUnit.cpp; sourceTree = "<group>"; };
+		F4198EEF1D445FF800429926 /* SelecterUnit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SelecterUnit.hpp; sourceTree = "<group>"; };
 		F41D54951D2A915B0094CAAD /* Sound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sound.cpp; sourceTree = "<group>"; };
 		F41D54961D2A915B0094CAAD /* Sound.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Sound.hpp; sourceTree = "<group>"; };
 		F41E32031D3A904D00B679E0 /* Panel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Panel.cpp; sourceTree = "<group>"; };
@@ -1035,6 +1039,8 @@
 			children = (
 				F4036D4C1BDA1FDD002788AA /* layerSelecter.cpp */,
 				F4036D4D1BDA1FDD002788AA /* layerSelecter.h */,
+				F4198EEE1D445FF800429926 /* SelecterUnit.cpp */,
+				F4198EEF1D445FF800429926 /* SelecterUnit.hpp */,
 			);
 			name = layerSelecter;
 			sourceTree = "<group>";
@@ -1817,6 +1823,7 @@
 				F44D26EB1C4D198400438F3C /* TestScene.h in Sources */,
 				F4D5D08D1C5FB006001441C3 /* buildKantaiEntity.cpp in Sources */,
 				F40CF98E1BDB6A5A00DD897F /* BattleModel.cpp in Sources */,
+				F4198EF01D445FF800429926 /* SelecterUnit.cpp in Sources */,
 				F4036DA61BDA1FDD002788AA /* playerDB.cpp in Sources */,
 				F4D6CBE91BF380210078C5C0 /* TestScene.cpp in Sources */,
 				F48189861C592F5F00A0D0F5 /* KantaiDetailEntity.cpp in Sources */,
@@ -2069,6 +2076,7 @@
 				F4036E3A1BDA2316002788AA /* portScene.h in Sources */,
 				F4036E3B1BDA2316002788AA /* portSupplyLayer.cpp in Sources */,
 				F43FFC7E1C5CD6CB00C98BED /* RepairHpBar.cpp in Sources */,
+				F4198EF11D445FF800429926 /* SelecterUnit.cpp in Sources */,
 				F4036E3C1BDA2316002788AA /* portSupplyLayer.h in Sources */,
 				F41D54981D2A915B0094CAAD /* Sound.cpp in Sources */,
 				F4036E3D1BDA2316002788AA /* main.cpp in Sources */,

@@ -37,35 +37,34 @@ class SoundPanelButton;
 
 class PortScene:public Scene
 {
-    friend class GameManger;
     friend class MainPanelState;
+    friend class PortPanelState;
+    friend class SoundPanelState;
 public:
     static PortScene* createScene();
-    
+    CREATE_FUNC(PortScene);
     PortScene();
     ~PortScene();
+    
+    
+    
+public:
     void SetCurrPanel(PanelType type);
     PanelType getCurrPanelType() const;
-    
-    CREATE_FUNC(PortScene);
-    
-    
-    void pauseLayerSelecterButton();
-    void resumeLayerSelecterButton();
     void changeToSoundPanel();
+    void updateUILayerAttr();
+    
 private:
     bool init() override;
     void initSoundButton();
 
-public:
+private:
+    bool openSoundPanel;
     PanelType currentPanelType;
+    PortStateMachine portStateMachine;
     LayerSelecter* layerSelecter;
     PortUILayer* portUIlayer;
     PortBgLayer* portBgLayer;
-    PortStateMachine portStateMachine;
-    
-private:
-    bool openSoundPanel;
     SoundPanelButton* soundButton;
     
 private:

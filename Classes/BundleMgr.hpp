@@ -67,7 +67,7 @@ private:
 private:
     void init();
     std::string createDownLoadUrl();
-    
+    void LoadConfig();
     
 private:
     bool            m_relaunching = false;

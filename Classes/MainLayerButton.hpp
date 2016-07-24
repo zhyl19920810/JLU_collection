@@ -43,9 +43,13 @@ public:
     void touchEnded(cocos2d::Touch* touch,cocos2d::Event* event);
     
     void setEndCallBack(buttonCallBack _callback){callback=_callback;}
+    
+    void setEnable();
+    void setDisable();
 private:
     cocos2d::EventListenerTouchOneByOne* eventListner;
 protected:
+    bool _enable;
     bool init(MainLayerButtonType buttonType,buttonCallBack _callback);
     MainLayerButtonType buttonType;
     buttonCallBack callback;

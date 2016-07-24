@@ -19,17 +19,17 @@ NS_KCL_BEGIN
 class LayerSelecter:public Node
 {
 public:
-    static LayerSelecter* create(PortScene *parent,Point position)
+    static LayerSelecter* create()
     {
-        LayerSelecter* tmp=new (std::nothrow)LayerSelecter;
-        if (tmp&&tmp->init(parent, position))
+        LayerSelecter* pRet=new (std::nothrow)LayerSelecter;
+        if (pRet&&pRet->init())
         {
-            tmp->autorelease();
-            return tmp;
+            pRet->autorelease();
+            return pRet;
         }
-        delete tmp;
-        tmp=NULL;
-        return tmp;
+        delete pRet;
+        pRet=NULL;
+        return pRet;
     }
     
     LayerSelecter();
@@ -41,10 +41,8 @@ public:
     void pauseButton(){menu->pause();}
     void resumeButton(){menu->resume();}
 private:
-    bool init(PortScene *parent,Point position);
+    bool init();
     
-    PortScene *parent;
-    Point initialPosition;
     Sprite *mainbody;
     Sprite *backgroud;
     
@@ -57,6 +55,7 @@ private:
     MenuItemSprite *factoryItem;
     
     void layerSelectCallback(Ref * pSender, PanelType type);
+    
 };
 
 

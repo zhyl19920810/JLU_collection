@@ -32,7 +32,6 @@ NS_KCL_BEGIN
 PortScene* PortScene::createScene()
 {
     PortScene* scene=PortScene::create();
-    sGameManger.setPortScene(scene);
     return scene;
 }
 
@@ -72,18 +71,6 @@ PanelType PortScene::getCurrPanelType() const
 }
 
 
-void PortScene::pauseLayerSelecterButton()
-{
-    layerSelecter->pauseButton();
-}
-
-void PortScene::resumeLayerSelecterButton()
-{
-    layerSelecter->resumeButton();
-}
-
-
-
 
 
 void PortScene::SetCurrPanel(PanelType type)
@@ -121,6 +108,14 @@ bool PortScene::init()
 }
 
 
+void PortScene::updateUILayerAttr()
+{
+    portUIlayer->changeLabelAmmo(sPlayer.getAmmo());
+    portUIlayer->changeLabelFuel(sPlayer.getFuel());
+    portUIlayer->changeLabelSteel(sPlayer.getSteel());
+    portUIlayer->changeLabelAluminium(sPlayer.getAluminium());
+}
+
 void PortScene::changeToSoundPanel()
 {
     if (openSoundPanel)
@@ -142,7 +137,6 @@ void PortScene::initSoundButton()
     Vec2 pos=Vec2(Director::getInstance()->getWinSize().width-26, 26);
     soundButton->setPosition(pos);
     addChild(soundButton,5);
-    
 }
 
 

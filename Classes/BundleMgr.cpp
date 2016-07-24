@@ -17,13 +17,20 @@
 #include "GameScene.h"
 #include "MissionNode.h"
 #include "TestScene.h"
-#include "GameManger.hpp"
 #include <fstream>
 #include <dirent.h>
 #include <sys/stat.h>
 #include "dock.hpp"
 #include "arsenal.hpp"
 #include "Sound.hpp"
+#include "KantaiMgr.hpp"
+#include "EquipMgr.hpp"
+#include "ExpMgr.hpp"
+#include "SallyScene.h"
+#include "EquipPicMgr.hpp"
+#include "RepairFactorMgr.hpp"
+
+
 
 NS_KCL_BEGIN
 
@@ -108,11 +115,27 @@ void BundleMgr::onDestroy()
 //    LocalNotifyMgr::destroy();
 }
 
+void BundleMgr::LoadConfig()
+{
+    KantaiMgr::newInstance();
+    EquipMgr::newInstance();
+    ExpMgr::newInstance();
+    EquipPicMgr::newInstance();
+    RepairFactorMgr::newInstance();
+    
+    sKantaiMgr.loadConf();
+    sEquipMgr.loadConf();
+    sExpMgr.loadConf();
+    sEquipPicMgr.loadConf();
+    sRepairFactorMgr.loadConf();
+}
+
+
+
+
 void BundleMgr::initialization()
 {
-    GameManger::newInstance();
-    sGameManger.LoadConfig();
-    sGameManger.LoadResource();
+    LoadConfig();
     Player::newInstance();
     Dock::newInstance();
     Arsenal::newInstance();

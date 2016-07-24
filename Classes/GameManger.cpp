@@ -1,50 +1,50 @@
+////
+////  GameManger.cpp
+////  kancolle_beta
+////
+////  Created by 岩林张 on 1/21/16.
+////
+////
 //
-//  GameManger.cpp
-//  kancolle_beta
+//#include "GameManger.hpp"
 //
-//  Created by 岩林张 on 1/21/16.
+//NS_KCL_BEGIN
 //
+//GameManger::GameManger():
+//pSallyScene(NULL),
+//pGameScene(NULL)
+//{
+//    LoadResource();
+//}
 //
-
-#include "GameManger.hpp"
-
-NS_KCL_BEGIN
-
-GameManger::GameManger():
-pSallyScene(NULL),
-pGameScene(NULL)
-{
-    LoadResource();
-}
-
-GameManger::~GameManger()
-{
-    ClearResource();
-}
-
-void GameManger::LoadConfig()
-{
-    KantaiMgr::newInstance();
-    EquipMgr::newInstance();
-    ExpMgr::newInstance();
-    EquipPicMgr::newInstance();
-    RepairFactorMgr::newInstance();
-    
-    sKantaiMgr.loadConf();
-    sEquipMgr.loadConf();
-    sExpMgr.loadConf();
-    sEquipPicMgr.loadConf();
-    sRepairFactorMgr.loadConf();
-}
-
-void GameManger::LoadResource()
-{
-    ///需要全程加载的东西
-}
-
-void GameManger::ClearResource()
-{
-    //释放需要全程加载的东西
-}
-
-NS_KCL_END
+//GameManger::~GameManger()
+//{
+//    ClearResource();
+//}
+//
+//void GameManger::LoadConfig()
+//{
+//    KantaiMgr::newInstance();
+//    EquipMgr::newInstance();
+//    ExpMgr::newInstance();
+//    EquipPicMgr::newInstance();
+//    RepairFactorMgr::newInstance();
+//    
+//    sKantaiMgr.loadConf();
+//    sEquipMgr.loadConf();
+//    sExpMgr.loadConf();
+//    sEquipPicMgr.loadConf();
+//    sRepairFactorMgr.loadConf();
+//}
+//
+//void GameManger::LoadResource()
+//{
+//    ///需要全程加载的东西
+//}
+//
+//void GameManger::ClearResource()
+//{
+//    //释放需要全程加载的东西
+//}
+//
+//NS_KCL_END

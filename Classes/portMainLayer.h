@@ -35,6 +35,9 @@ public:
     
     void updateGirl();
     void resumeDispatcher();
+    void buttonFlyIn();
+    void setButtonEnable();
+    void setButtonDisable();
 private:
 
 private:
@@ -44,6 +47,8 @@ private:
     virtual bool init();
     
     void changePanel(PanelType);
+    
+    
 private:
     
     SignBoardGirl* signBoardGirl;
@@ -54,6 +59,7 @@ private:
     MainLayerButton* repairButton;
     MainLayerButton* factoryButton;
     MainLayerButton* battleButton;
+    cocos2d::Node* buttonParent;
 };
 
 NS_KCL_END

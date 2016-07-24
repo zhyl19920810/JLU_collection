@@ -32,14 +32,11 @@ void LayerSelecter::layerSelectCallback(cocos2d::Ref *pSender, PanelType type)
     
 }
 
-bool LayerSelecter::init(PortScene *parent,Point position)
+bool LayerSelecter::init()
 {
     bool bRet=false;
     do
     {
-        initialPosition=position;
-        this->parent=parent;
-        this->setPosition(initialPosition);
         
         mainbody =Sprite::createWithSpriteFrameName("lsmb.png");
         mainbody->setPosition(-10, 0);

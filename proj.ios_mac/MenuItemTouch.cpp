@@ -39,6 +39,7 @@ bool MenuItemButton::init(cocos2d::Node *normalSprite, cocos2d::Node *selectedSp
     
     buttonUp=coverSprite;
     buttonUp->setPosition(Vec2::ZERO);
+    buttonUp->setVisible(false);
     addChild(buttonUp);
     return true;
 }

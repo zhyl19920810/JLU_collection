@@ -131,10 +131,6 @@ cocos2d::Scene* ViewMgr::popScene()
 
 cocos2d::Scene* ViewMgr::getScene(kancolle::SceneType sceneType)
 {
-    if (sceneType==SceneType::HOME)
-    {
-        return NULL;
-    }
     for (auto it=sceneStack.begin(); it!=sceneStack.end(); ++it)
     {
         if (it->type==sceneType)

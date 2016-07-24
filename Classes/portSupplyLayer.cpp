@@ -9,7 +9,7 @@
 #include "portSupplyLayer.h"
 #include "portScene.h"
 #include "PortUILayer.hpp"
-#include "GameManger.hpp"
+#include "ViewMgr.hpp"
 
 
 NS_KCL_BEGIN
@@ -413,7 +413,7 @@ void PortSupplyLayer::callFuelButton(Ref* pSender)
     freshShipAllAttr();
     
     fuelNumber->setString(to_string(sPlayer.getFuel()));
-    sGameManger.getPortScene()->portUIlayer->changeLabelFuel(sPlayer.getFuel());
+    dynamic_cast<PortScene*>(VIEW_MGR->getScene(SceneType::HOME))->updateUILayerAttr();
     consumeFuel=0;
     
     fuelEntity->supplyAll();
@@ -460,9 +460,7 @@ void PortSupplyLayer::callAmmoButton(cocos2d::Ref *pSender)
     freshShipAllAttr();
 
     ammoNumber->setString(to_string(sPlayer.getAmmo()));
-    sGameManger.getPortScene()->portUIlayer->changeLabelAmmo(sPlayer.getAmmo());
-    fuelNumber->setString(to_string(sPlayer.getFuel()));
-    sGameManger.getPortScene()->portUIlayer->changeLabelFuel(sPlayer.getFuel());
+    dynamic_cast<PortScene*>(VIEW_MGR->getScene(SceneType::HOME))->updateUILayerAttr();
     consumeAmmo=0;
     ammoEntity->supplyAll();
     consumeAmmoLabel->setString(to_string(0));
@@ -507,7 +505,7 @@ void PortSupplyLayer::callMidButton(cocos2d::Ref *pSender)
     freshShipAllAttr();
     
     ammoNumber->setString(to_string(sPlayer.getAmmo()));
-    sGameManger.getPortScene()->portUIlayer->changeLabelAmmo(sPlayer.getAmmo());
+    dynamic_cast<PortScene*>(VIEW_MGR->getScene(SceneType::HOME))->updateUILayerAttr();
     consumeAmmo=0;
     consumeAmmoLabel->setString(to_string(0));
     consumeFuel=0;
