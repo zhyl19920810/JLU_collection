@@ -31,14 +31,18 @@ class SelecterUnit:public cocos2d::Node
 {
 public:
     static SelecterUnit* create(PanelType);
-    void setVisble(bool visible);
+    void setSelected(bool enable);
     
     std::string getFreeStatePath();
     std::string getSelectedStatePath();
     
 private:
     bool init(PanelType);
-    MenuItemButton* _button;
+    void layerSelectCallback(cocos2d::Ref *pSender, PanelType type);
+    
+    
+    bool _enable;
+    MenuItemSprite* _button;
     LayerSelecterState _selecterState;
     PanelType _panelType;
 };

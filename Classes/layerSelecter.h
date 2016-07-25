@@ -11,13 +11,18 @@
 
 #include "cocos2d.h"
 #include "portScene.h"
+#include "ViewMgrMacro.hpp"
+
 
 USING_NS_CC;
 
 NS_KCL_BEGIN
 
+class SelecterUnit;
+
 class LayerSelecter:public Node
 {
+    friend class PortPanelState;
 public:
     static LayerSelecter* create()
     {
@@ -34,27 +39,35 @@ public:
     
     LayerSelecter();
     
+    
     void moveOut();
-    
     void moveIn();
-    
-    void pauseButton(){menu->pause();}
-    void resumeButton(){menu->resume();}
+    void changeHookPos(PanelType type);
+    void setLayerType(PanelType type);
 private:
     bool init();
+    void loadLocData();
+    void initButton();
+    void initBg();
+    void initHook();
     
     Sprite *mainbody;
     Sprite *backgroud;
+    Sprite* hook;
     
-    Menu *menu;
-    MenuItemSprite *portItem;
-    MenuItemSprite *organizeItem;
-    MenuItemSprite *supplyItem;
-    MenuItemSprite *remodeItem;
-    MenuItemSprite *repairItem;
-    MenuItemSprite *factoryItem;
+    PanelType currType;
+    SelecterUnit *mainButton;
+    SelecterUnit *organizeButton;
+    SelecterUnit *supplyButton;
+    SelecterUnit *remodeButton;
+    SelecterUnit *repairButton;
+    SelecterUnit *factoryButton;
     
-    void layerSelectCallback(Ref * pSender, PanelType type);
+private:
+    SelecterUnit* getSelecterUnit(PanelType type) const;
+    std::string getPanelName(PanelType type) const;
+    bool isPortPanel(PanelType type) const;
+    
     
 };
 

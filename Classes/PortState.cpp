@@ -24,16 +24,19 @@ m_pCurrentState(&nullState)
 
 void PortStateMachine::changeState(PanelType newType)
 {
+    auto preType=owner->getCurrPanelType();
     m_pPreviousState=m_pCurrentState;
     m_pCurrentState->Exit(newType,owner);
     m_pCurrentState=getState(newType);
-    m_pCurrentState->Enter(newType,owner);
+    owner->currentPanelType=newType;
+    m_pCurrentState->Enter(preType,owner);
 }
 
 
 PortState* PortStateMachine::getState(kancolle::PanelType newType)
 {
     PortState* state=NULL;
+    
     switch (newType)
     {
         case kancolle::PanelType::PORT_MAINLAYER:
@@ -59,10 +62,10 @@ PortState* PortStateMachine::getState(kancolle::PanelType newType)
 }
 
 
-void MainPanelState::Enter(PanelType newType,kancolle::PortScene *portScene)
+void MainPanelState::Enter(PanelType preType,kancolle::PortScene *portScene)
 {
     
-    switch (portScene->getCurrPanelType()) {
+    switch (preType) {
         case kancolle::PanelType::PORT_MAINLAYER:
             break;
         case kancolle::PanelType::NONE:
@@ -116,18 +119,19 @@ void MainPanelState::Exit(PanelType newType,kancolle::PortScene *portScene)
     
 }
 
-void PortPanelState::Enter(PanelType newType,kancolle::PortScene *portScene)
+void PortPanelState::Enter(PanelType preType,kancolle::PortScene *portScene)
 {
-    auto currType=portScene->getCurrPanelType();
-    if (newType==currType)
+    auto newType=portScene->getCurrPanelType();
+    if (newType==preType)
     {
         return;
     }
-    switch (currType)
+    switch (preType)
     {
         case kancolle::PanelType::PORT_MAINLAYER:
             VIEW_MGR->showPanel(newType,false);
             portScene->portUIlayer->changeTitlePic(newType);
+            portScene->layerSelecter->setLayerType(newType);
             portScene->layerSelecter->moveIn();
             break;
         case kancolle::PanelType::PORT_BATTLE:
@@ -138,7 +142,8 @@ void PortPanelState::Enter(PanelType newType,kancolle::PortScene *portScene)
         case kancolle::PanelType::PORT_SUPPLY:
             VIEW_MGR->showPanel(newType,true);
             portScene->portUIlayer->changeTitlePic(newType);
-            portScene->layerSelecter->moveIn();
+            portScene->layerSelecter->changeHookPos(newType);
+            portScene->layerSelecter->currType=newType;
             break;
         case kancolle::PanelType::NONE:
             VIEW_MGR->showPanel(newType);
@@ -154,13 +159,13 @@ void PortPanelState::Enter(PanelType newType,kancolle::PortScene *portScene)
     }
 }
 
-void PortPanelState::Exit(PanelType newType,kancolle::PortScene *portScene)
+void PortPanelState::Exit(PanelType preType,kancolle::PortScene *portScene)
 {
     
 }
 
 
-void SoundPanelState::Enter(kancolle::PanelType newType, kancolle::PortScene * portScene)
+void SoundPanelState::Enter(kancolle::PanelType preType, kancolle::PortScene * portScene)
 {
     auto panel=VIEW_MGR->showPanel(PanelType::SOUND,false,true);
     panel->setZOrder(4);
@@ -170,6 +175,11 @@ void SoundPanelState::Exit(kancolle::PanelType newType, kancolle::PortScene *por
 {
     
 }
+
+
+
+
+
 
 NS_KCL_END
 

@@ -40,6 +40,7 @@ class PortScene:public Scene
     friend class MainPanelState;
     friend class PortPanelState;
     friend class SoundPanelState;
+    friend class PortStateMachine;
 public:
     static PortScene* createScene();
     CREATE_FUNC(PortScene);
@@ -57,7 +58,6 @@ public:
 private:
     bool init() override;
     void initSoundButton();
-
 private:
     bool openSoundPanel;
     PanelType currentPanelType;

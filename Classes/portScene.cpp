@@ -75,11 +75,7 @@ PanelType PortScene::getCurrPanelType() const
 
 void PortScene::SetCurrPanel(PanelType type)
 {
-    if (type==getCurrPanelType()) {
-        return;
-    }
     portStateMachine.changeState(type);
-    currentPanelType=type;
 }
 
 
@@ -91,12 +87,17 @@ bool PortScene::init()
         CC_BREAK_IF(!Scene::init());
         
         schedule([this](float dt){SetCurrPanel(PanelType::PORT_MAINLAYER);}, 0, 0, 0, "init_portScene");
-        layerSelecter=LayerSelecter::create(this, Vec2(-50, 220));
+        
+        layerSelecter=LayerSelecter::create();
+        layerSelecter->setPosition(-50,220);
         addChild(layerSelecter,3);
+        
         portBgLayer=PortBgLayer::create();
         addChild(portBgLayer,-1);
+        
         portUIlayer=PortUILayer::create();
         addChild(portUIlayer,2);
+        
         SND->playMusic("sound_bgm/sound 2.mp3");
         initSoundButton();
         
@@ -129,6 +130,7 @@ void PortScene::changeToSoundPanel()
         openSoundPanel=!openSoundPanel;
     }
 }
+
 
 void PortScene::initSoundButton()
 {
