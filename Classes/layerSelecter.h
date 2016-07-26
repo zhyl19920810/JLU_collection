@@ -18,6 +18,14 @@ USING_NS_CC;
 
 NS_KCL_BEGIN
 
+
+const static float StopTime=0.03;
+const static float DropTime=0.14;
+const static float LiftTime=0.34;
+const static float OrbitMoveTime=0.6;
+
+
+
 class SelecterUnit;
 
 class LayerSelecter:public Node
@@ -67,6 +75,8 @@ private:
     SelecterUnit* getSelecterUnit(PanelType type) const;
     std::string getPanelName(PanelType type) const;
     bool isPortPanel(PanelType type) const;
+    void stopButtonListner();
+    void resumeButtonListner();
     
     
 };

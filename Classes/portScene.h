@@ -70,6 +70,10 @@ private:
 private:
     void initBlurGLprogram();
     cocos2d::GLProgramState* blurGLProgramState=NULL;
+    
+private:
+    LayerColor* coverLayer;
+    void changePortPanelAction();
 };
 
 NS_KCL_END

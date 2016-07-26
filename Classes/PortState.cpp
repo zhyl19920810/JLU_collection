@@ -140,9 +140,8 @@ void PortPanelState::Enter(PanelType preType,kancolle::PortScene *portScene)
         case kancolle::PanelType::PORT_REMODE:
         case kancolle::PanelType::PORT_REPAIR:
         case kancolle::PanelType::PORT_SUPPLY:
-            VIEW_MGR->showPanel(newType,true);
-            portScene->portUIlayer->changeTitlePic(newType);
             portScene->layerSelecter->changeHookPos(newType);
+            portScene->changePortPanelAction();
             portScene->layerSelecter->currType=newType;
             break;
         case kancolle::PanelType::NONE:

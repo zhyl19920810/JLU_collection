@@ -56,6 +56,10 @@ private:
     std::string strRelDir;//声音目录
     std::string	m_crtBg;
     
+    float bgmVolume;
+    float effectVolume;
+    
+    
 };
 
 NS_KCL_END

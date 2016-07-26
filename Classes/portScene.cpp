@@ -101,11 +101,63 @@ bool PortScene::init()
         SND->playMusic("sound_bgm/sound 2.mp3");
         initSoundButton();
         
+        coverLayer=LayerColor::create();
+        coverLayer->setColor(Color3B::BLACK);
+        addChild(coverLayer,1);
+        coverLayer->setVisible(false);
+        
         bRet=true;
     }while(0);
     
     return bRet;
     
+}
+
+
+void PortScene::changePortPanelAction()
+{
+
+    ActionInterval* p1;
+    {
+        CallFunc* callfunc=CallFunc::create([=]()
+        {
+            coverLayer->setVisible(true);
+            coverLayer->setOpacity(0);
+            Action* layerColorChange=FadeIn::create(StopTime*2+DropTime+LiftTime);
+            coverLayer->runAction(layerColorChange);
+        });
+        p1=Sequence::create(callfunc,DelayTime::create(StopTime*2+DropTime+LiftTime), NULL);
+    }
+    
+    
+    ActionInterval* p2;
+    {
+        CallFunc* callfunc=CallFunc::create([=]()
+        {
+            VIEW_MGR->showPanel(getCurrPanelType(),true);
+            portUIlayer->changeTitlePic(getCurrPanelType());
+        });
+        p2=Sequence::create(callfunc,DelayTime::create(OrbitMoveTime), NULL);
+    }
+    
+    
+    ActionInterval* p3;
+    {
+        CallFunc* callfunc=CallFunc::create([=]()
+        {
+            Action* layerColorChange=FadeOut::create(StopTime*2+DropTime+LiftTime);
+            coverLayer->runAction(layerColorChange);
+        });
+        
+        CallFunc* callAfter=CallFunc::create([=]()
+        {
+            coverLayer->setVisible(false);
+            coverLayer->setOpacity(255);
+        });
+        p3=Sequence::create(callfunc,DelayTime::create(OrbitMoveTime),callAfter, NULL);
+    }
+    auto seqAction=Sequence::create(p1,p2,p3,DelayTime::create(DropTime*2+LiftTime*2+OrbitMoveTime+StopTime*4),NULL);
+    runAction(seqAction);
 }
 
 
