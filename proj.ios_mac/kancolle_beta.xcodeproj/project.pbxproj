@@ -231,7 +231,6 @@
 		F42DB8FA1C5A30EB00CBE2C7 /* HpBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8F71C5A30EB00CBE2C7 /* HpBar.cpp */; };
 		F42DB8FE1C5A33B500CBE2C7 /* Star.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8FC1C5A33B500CBE2C7 /* Star.cpp */; };
 		F42DB8FF1C5A33B500CBE2C7 /* Star.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8FC1C5A33B500CBE2C7 /* Star.cpp */; };
-		F42ECD9D1D2F1CA700E09EA0 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = F42ECD9C1D2F1CA700E09EA0 /* sound */; };
 		F42ECD9E1D2F1CA700E09EA0 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = F42ECD9C1D2F1CA700E09EA0 /* sound */; };
 		F42ECDA21D2FF75600E09EA0 /* signBoardGirl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42ECDA01D2FF75600E09EA0 /* signBoardGirl.cpp */; };
 		F42ECDA31D2FF75600E09EA0 /* signBoardGirl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42ECDA01D2FF75600E09EA0 /* signBoardGirl.cpp */; };
@@ -329,6 +328,7 @@
 		F48189871C592F5F00A0D0F5 /* KantaiDetailEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48189841C592F5F00A0D0F5 /* KantaiDetailEntity.cpp */; };
 		F48253AF1D33EA0900165D61 /* MainLayerButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48253AD1D33EA0900165D61 /* MainLayerButton.cpp */; };
 		F48253B01D33EA0900165D61 /* MainLayerButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48253AD1D33EA0900165D61 /* MainLayerButton.cpp */; };
+		F48B1B081D4806F50078E23E /* sound in Resources */ = {isa = PBXBuildFile; fileRef = F48B1B071D4806BF0078E23E /* sound */; };
 		F4938B681C60999100AB1286 /* metaphysics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4938B661C60999100AB1286 /* metaphysics.cpp */; };
 		F4938B691C60999100AB1286 /* metaphysics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4938B661C60999100AB1286 /* metaphysics.cpp */; };
 		F4A328421C847CA70048F939 /* SupplyShipUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A328401C847CA70048F939 /* SupplyShipUnit.cpp */; };
@@ -678,6 +678,7 @@
 		F48189851C592F5F00A0D0F5 /* KantaiDetailEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KantaiDetailEntity.hpp; sourceTree = "<group>"; };
 		F48253AD1D33EA0900165D61 /* MainLayerButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainLayerButton.cpp; sourceTree = "<group>"; };
 		F48253AE1D33EA0900165D61 /* MainLayerButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MainLayerButton.hpp; sourceTree = "<group>"; };
+		F48B1B071D4806BF0078E23E /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sound; path = ../Resources/sound; sourceTree = "<group>"; };
 		F4938B661C60999100AB1286 /* metaphysics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metaphysics.cpp; sourceTree = "<group>"; };
 		F4938B671C60999100AB1286 /* metaphysics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = metaphysics.hpp; sourceTree = "<group>"; };
 		F4A328401C847CA70048F939 /* SupplyShipUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SupplyShipUnit.cpp; sourceTree = "<group>"; };
@@ -829,6 +830,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				F48B1B071D4806BF0078E23E /* sound */,
 				F4C0E81E1D4267D100E345CB /* shader */,
 				F42303CE1D2BEC0C00B06189 /* Resources */,
 				46880B8319C43A87006E1F66 /* Classes */,
@@ -1677,6 +1679,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F48B1B081D4806F50078E23E /* sound in Resources */,
 				F4C0E81F1D4267D100E345CB /* shader in Resources */,
 				F47CEB121C63402B008600E7 /* ArsenalMain in Resources */,
 				F47CEB131C63402B008600E7 /* RepairMain in Resources */,
@@ -1700,7 +1703,6 @@
 				F4D8028E1BE604EB0032C724 /* Mission.xml in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
-				F42ECD9D1D2F1CA700E09EA0 /* sound in Resources */,
 				F4036D291BDA1F39002788AA /* equipment in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				F4036D231BDA1F1A002788AA /* furniture in Resources */,

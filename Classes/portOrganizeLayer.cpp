@@ -9,6 +9,8 @@
 #include "portOrganizeLayer.h"
 #include "PortScene.h"
 #include "GameManger.hpp"
+#include "Sound.hpp"
+#include <map>
 
 NS_KCL_BEGIN
 
@@ -52,8 +54,11 @@ bool PortOrganizeLayer::init()
 
 bool PortOrganizeLayer::hasSameKantai(int kantaiNumber)
 {
+    map<int,int> cache;
     for (int i=0; i<containers.size(); ++i)
     {
+        
+        
         if (containers[i]->haveKantai()&&(containers[i]->getContainerKantaiNumber()==kantaiNumber)) {
             return true;
         }
@@ -247,6 +252,8 @@ void PortOrganizeLayer::initFleetButton()
 
 void PortOrganizeLayer::changeContainer(Kantai* kantai)
 {
+    SND->playEffect("soundSE/changeShip.mp3");
+    
     int fleetNumber=UserDefault::getInstance()->getIntegerForKey("fleetNumber");
     int position=UserDefault::getInstance()->getIntegerForKey("position");
     UserDefault::getInstance()->setIntegerForKey("fleetNumber", 0);

@@ -39,13 +39,13 @@ bool SoundBar::init(kancolle::SoundBarType _type)
         switch (_type)
         {
             case BGM_SOUNDBAR:
-                soundPercent=UserDefault::getInstance()->getFloatForKey(BGM_VOLUME, 0.5);
+                soundPercent=SND->bgmVolume;
                 break;
             case SE_SOUNDBAR:
-                soundPercent=UserDefault::getInstance()->getFloatForKey(SE_VOLUME, 0.5);
+                soundPercent=SND->seVolume;
                 break;
             case VOICE_SOUNDBAR:
-                soundPercent=UserDefault::getInstance()->getFloatForKey(VOICE_VOLUME, 0.5);
+                soundPercent=SND->seVolume;
                 break;
             default:
                 break;
@@ -86,11 +86,9 @@ void SoundBar::updateVolume()
     {
         case BGM_SOUNDBAR:
             SND->setBGVolume(soundPercent);
-            UserDefault::getInstance()->setFloatForKey(BGM_VOLUME, soundPercent);
             break;
         case SE_SOUNDBAR:
             SND->setEffectVolume(soundPercent);
-            UserDefault::getInstance()->setFloatForKey(SE_VOLUME, soundPercent);
             break;
         default:
             break;

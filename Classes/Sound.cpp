@@ -79,6 +79,9 @@ void Sound::playMusic(const std::string &name, bool bLoop, float volume)
     if (!BUNDLE_MGR->bgMusicSwitch || m_crtBg == filePath)
         return;
     
+    if ((volume-1.0)<0.0001||(volume-1.0)>-0.0001)
+        volume=bgmVolume;
+    
     m_crtBg = filePath;
     SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(volume);
     SimpleAudioEngine::getInstance()->playBackgroundMusic(filePath.c_str(), bLoop);
@@ -89,6 +92,10 @@ void Sound::playEffect(const std::string &name, float volume, float pan)
     if (name.empty() || !BUNDLE_MGR->effMusicSwitch)
         return;
     string filePath(strRelDir + name);
+    
+    if ((volume-1.0)<0.0001||(volume-1.0)>-0.0001)
+         volume=seVolume;
+    
     SimpleAudioEngine::getInstance()->setEffectsVolume(volume);
     SimpleAudioEngine::getInstance()->playEffect(filePath.c_str(), false, 1.0f, pan, 1.0f);
 }
@@ -135,18 +142,24 @@ void Sound::rewindMusic()
 
 void Sound::setEffectVolume(float volume)
 {
-    SimpleAudioEngine::getInstance()->setEffectsVolume(volume);
+    if ((volume-seVolume)<0.0001&&(volume-seVolume)>-0.0001) return;
+    seVolume=volume;
+    SimpleAudioEngine::getInstance()->setEffectsVolume(seVolume);
+    cocos2d::UserDefault::getInstance()->setFloatForKey(SE_VOLUME, seVolume);
 }
 
 void Sound::setBGVolume(float volume)
 {
-    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(volume);
+    if ((volume-bgmVolume)<0.0001&&(volume-bgmVolume)>-0.0001) return;
+    bgmVolume=volume;
+    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(bgmVolume);
+    cocos2d::UserDefault::getInstance()->setFloatForKey(BGM_VOLUME, bgmVolume);
 }
 
 void Sound::initVolume()
 {
-    float bgmVolume=cocos2d::UserDefault::getInstance()->getFloatForKey(BGM_VOLUME, 0.5);
-    float seVolume=cocos2d::UserDefault::getInstance()->getFloatForKey(SE_VOLUME, 0.5);
+    bgmVolume=cocos2d::UserDefault::getInstance()->getFloatForKey(BGM_VOLUME, 0.5);
+    seVolume=cocos2d::UserDefault::getInstance()->getFloatForKey(SE_VOLUME, 0.5);
     SND->setBGVolume(bgmVolume);
     SND->setEffectVolume(seVolume);
 }

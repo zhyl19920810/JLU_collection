@@ -31,6 +31,7 @@ class SelecterUnit;
 class LayerSelecter:public Node
 {
     friend class PortPanelState;
+    friend class SelecterUnit;
 public:
     static LayerSelecter* create()
     {
@@ -78,7 +79,10 @@ private:
     void stopButtonListner();
     void resumeButtonListner();
     
-    
+private:
+    std::map<std::string,float> xLoc;
+    std::map<std::string,float> yLoc;
+    std::map<std::string,Vec2>  lsPos;
 };
 
 

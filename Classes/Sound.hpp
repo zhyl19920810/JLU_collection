@@ -22,6 +22,7 @@ NS_KCL_BEGIN
 
 class Sound
 {
+    friend class SoundBar;
 public:
     static Sound* getInstance();
     static void destory();
@@ -57,7 +58,7 @@ private:
     std::string	m_crtBg;
     
     float bgmVolume;
-    float effectVolume;
+    float seVolume;
     
     
 };

@@ -49,7 +49,7 @@ bool PortMainLayer::init()
 void PortMainLayer::initSignBoardGirl()
 {
     signBoardGirl=SignBoardGirl::create();
-    signBoardGirl->setPosition(600,0);
+    signBoardGirl->setPosition(600,100);
     addChild(signBoardGirl);
 }
 
@@ -92,6 +92,7 @@ void PortMainLayer::setButtonEnable()
     repairButton->setEnable();
     factoryButton->setEnable();
     battleButton->setEnable();
+    signBoardGirl->setEnable();
 }
 
 
@@ -103,6 +104,7 @@ void PortMainLayer::setButtonDisable()
     repairButton->setDisable();
     factoryButton->setDisable();
     battleButton->setDisable();
+    signBoardGirl->setDisable();
 }
 
 void PortMainLayer::resumeDispatcher()

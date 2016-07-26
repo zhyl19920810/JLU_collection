@@ -25,12 +25,18 @@ public:
     
     static SignBoardGirl* create();
     void updateGirl(cocos2d::Sprite* sprite=NULL);
+    void setEnable();
+    void setDisable();
     
     
+    bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
+    void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
+    void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
 private:
     bool init() override;
     
     cocos2d::Sprite* girl;
+    cocos2d::EventListenerTouchOneByOne* _eventListner;
 };
 
 NS_KCL_END

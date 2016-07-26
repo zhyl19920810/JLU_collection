@@ -39,7 +39,7 @@ public:
 private:
     bool init(PanelType);
     void layerSelectCallback(cocos2d::Ref *pSender, PanelType type);
-    
+    std::string getPanelName(PanelType type) const;
     
     bool _enable;
     MenuItemSprite* _button;

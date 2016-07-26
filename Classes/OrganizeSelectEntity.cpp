@@ -242,7 +242,7 @@ bool OrganSelectEntity::canChangeKantai(Kantai *kantai)
 {
     auto kantaiList=static_cast<KantaiListEntity*>(this->getParent());
     auto organizeList=static_cast<PortOrganizeLayer*>(kantaiList->getParent());
-    return !organizeList->hasSameKantai(kantai->getKantaiNumber());
+    return !organizeList->hasSameKantai(kantai->getKantaiNumber(),);
 }
 
 

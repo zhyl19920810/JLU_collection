@@ -12,10 +12,6 @@
 
 NS_KCL_BEGIN
 
-std::map<std::string,float> xLoc;
-std::map<std::string,float> yLoc;
-std::map<std::string,Vec2>  lsPos;
-
 
 //const static float DropTime=0.07;
 //const static float LiftTime=0.17;
@@ -33,11 +29,10 @@ LayerSelecter::LayerSelecter()
 
 void LayerSelecter::moveOut()
 {
-    organizeButton->setSelected(false);
-    supplyButton->setSelected(false);
-    remodeButton->setSelected(false);
-    repairButton->setSelected(false);
-    factoryButton->setSelected(false);
+    std::string currPos=getPanelName(currType);
+    auto currSelecter=getSelecterUnit(currType);
+    currSelecter->setPosition(Vec2(xLoc["buttonFree"], yLoc[currPos]));
+    currSelecter->setSelected(false);
     
     setPosition(lsPos["show"]);
     runAction(MoveTo::create(0.3, lsPos["hide"]));
@@ -138,6 +133,7 @@ void LayerSelecter::setLayerType(PanelType type)
     {
         std::string modifyPos=getPanelName(type);
         hook->setPosition(xLoc["hookSuspend"], yLoc[modifyPos]);
+        
         auto modifySelecter=getSelecterUnit(type);
         modifySelecter->setPosition(xLoc["buttonSelected"], yLoc[modifyPos]);
         modifySelecter->setSelected(true);
@@ -196,6 +192,7 @@ void LayerSelecter::changeHookPos(kancolle::PanelType type)
         CallFunc* callAfter=CallFunc::create([=]()
         {
             currSelecter->setSelected(false);
+            currSelecter->setPosition(xLoc["buttonFree"], yLoc[currPos]);
         });
         p1=Sequence::create(callfunc,DelayTime::create(DropTime+StopTime),callAfter, NULL);
     }
@@ -229,6 +226,7 @@ void LayerSelecter::changeHookPos(kancolle::PanelType type)
         CallFunc* callAfter=CallFunc::create([=]()
         {
             modifySelecter->setSelected(true);
+            modifySelecter->setPosition(xLoc["buttonSelected"], yLoc[modifyPos]);
         });
         p4=Sequence::create(callfunc,DelayTime::create(LiftTime+StopTime),callAfter, NULL);
     }

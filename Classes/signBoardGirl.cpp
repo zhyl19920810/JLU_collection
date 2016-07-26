@@ -8,8 +8,11 @@
 
 #include "signBoardGirl.hpp"
 #include "player.h"
+#include "Sound.hpp"
 
 NS_KCL_BEGIN
+
+
 
 
 SignBoardGirl::SignBoardGirl():
@@ -54,7 +57,7 @@ SignBoardGirl* SignBoardGirl::create()
     p_Ret=NULL;
     return p_Ret;
 }
-
+#define INITSIZE 0.75
 
 bool SignBoardGirl::init()
 {
@@ -62,11 +65,22 @@ bool SignBoardGirl::init()
     do
     {
         girl=Sprite::create();
-        girl->runAction(RepeatForever::create((ActionInterval*)Sequence::create(ScaleTo::create(4,1.02),ScaleTo::create(4, 1), NULL)));
+        girl->setScale(INITSIZE);
+        girl->runAction(RepeatForever::create((ActionInterval*)Sequence::create(ScaleTo::create(4,1.04*INITSIZE),ScaleTo::create(4, 1*INITSIZE), NULL)));
+        girl->runAction(RepeatForever::create((ActionInterval*)Sequence::create(MoveBy::create(4,Vec2(6, 10)),MoveBy::create(4,Vec2(-6, -10)), NULL)));
+        auto winSize=Director::getInstance()->getWinSize();
         girl->setPosition(Vec2::ZERO);
         addChild(girl);
+
         
         updateGirl();
+        
+        _eventListner=EventListenerTouchOneByOne::create();
+        _eventListner->onTouchBegan=CC_CALLBACK_2(SignBoardGirl::onTouchBegan, this);
+        _eventListner->onTouchMoved=CC_CALLBACK_2(SignBoardGirl::onTouchMoved, this);
+        _eventListner->onTouchEnded=CC_CALLBACK_2(SignBoardGirl::onTouchEnded, this);
+        Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(_eventListner, girl);
+        
         
         bRet=true;
     }while(0);
@@ -75,6 +89,44 @@ bool SignBoardGirl::init()
     return bRet;
 }
 
+bool SignBoardGirl::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
+{
+    return true;
+}
 
+void SignBoardGirl::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event)
+{
+    
+}
+
+
+void SignBoardGirl::onTouchEnded(Touch* touch, Event* event)
+{
+    auto pos=touch->getLocation();
+    auto rect=Rect(30, 30, girl->getContentSize().width-30, girl->getContentSize().height-30);
+    auto loc=girl->convertToNodeSpace(pos);
+    if (rect.containsPoint(loc))
+    {
+        int num=sPlayer.fleetData[0]->ship[0]->getKantaiNumber();
+        srand((unsigned)time(NULL));
+        
+        char resource[50];
+        bzero(resource, sizeof(resource));
+        sprintf(resource, "kantaiVoice/%d/%d.mp3",num,rand()%5);
+        SND->stopAllEffects();
+        SND->playEffect(resource);
+    }
+
+}
+
+void SignBoardGirl::setEnable()
+{
+    _eventListner->setEnabled(true);
+}
+
+void SignBoardGirl::setDisable()
+{
+    _eventListner->setEnabled(false);
+}
 
 NS_KCL_END

@@ -29,9 +29,6 @@ public:
     
     
 private:
-    SoundBar* bgmSoundBar;
-    SoundBar* SESoundBar;
-    SoundBar* VocSoundBar;
 };
 
 

@@ -8,6 +8,7 @@
 
 #include "MainLayerButton.hpp"
 #include "ViewMgr.hpp"
+#include "Sound.hpp"
 
 NS_KCL_BEGIN
 
@@ -250,6 +251,7 @@ void NormalMainLayerButton::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *
 {
     if (stopEvent)
     {
+        SND->playEffect("soundSE/portButton.mp3");
         stopButtonAction();
         switch (buttonType)
         {
@@ -416,6 +418,8 @@ void BattleMainLayerButton::onTouchEnded(Touch* touch,Event* event)
     
     if (stopEvent)
     {
+        SND->playEffect("soundSE/portButton.mp3");
+        
         battleButton->setSpriteFrame("battleButton1.png");
         battleButtonGo->setSpriteFrame("battleButtonGo.png");
         battleButtonShip->setSpriteFrame("battleButtonShip.png");

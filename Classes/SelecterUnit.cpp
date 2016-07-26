@@ -9,7 +9,8 @@
 #include "SelecterUnit.hpp"
 #include "ViewMgr.hpp"
 #include "portScene.h"
-
+#include "Sound.hpp"
+#include "layerSelecter.h"
 
 NS_KCL_BEGIN
 
@@ -28,9 +29,13 @@ SelecterUnit* SelecterUnit::create(PanelType panelType)
 
 bool SelecterUnit::init(PanelType panelType)
 {
+    
+    
     bool bRet=false;
     do
     {
+        CC_BREAK_IF(!Node::init());
+        
         _panelType=panelType;
         {
             std::string freeStatePath=getFreeStatePath();
@@ -56,19 +61,54 @@ bool SelecterUnit::init(PanelType panelType)
 void SelecterUnit::setSelected(bool enable)
 {
     if (enable==_enable) return;
+    std::string modifyPos=getPanelName(_panelType);
+    
     if (enable)
     {
+        //setPosition(xLoc["buttonSelected"], yLoc[modifyPos]);
         _selecterState=LayerSelecterState::SELECTED;
         _button->setEnabled(false);
         _enable=enable;
     }
     else
     {
+        //setPosition(xLoc["buttonFree"], yLoc[modifyPos]);
         _selecterState=LayerSelecterState::FREE;
         _button->setEnabled(true);
         _enable=enable;
     }
 }
+
+std::string SelecterUnit::getPanelName(PanelType type) const
+{
+    std::string str;
+    switch (type)
+    {
+        case PanelType::PORT_MAINLAYER:
+            str="main";
+            break;
+        case PanelType::PORT_ORGANIZE:
+            str="organize";
+            break;
+        case PanelType::PORT_SUPPLY:
+            str="supply";
+            break;
+        case PanelType::PORT_REMODE:
+            str="remode";
+            break;
+        case PanelType::PORT_REPAIR:
+            str="repair";
+            break;
+        case PanelType::PORT_FACTORY:
+            str="factory";
+            break;
+        default:
+            break;
+    }
+    return str;
+}
+
+
 
 
 
@@ -135,6 +175,11 @@ std::string SelecterUnit::getSelectedStatePath()
 
 void SelecterUnit::layerSelectCallback(cocos2d::Ref *pSender, PanelType type)
 {
+    if (type==PanelType::PORT_MAINLAYER)
+    SND->playEffect("soundSE/mainButton.mp3");
+    else
+    SND->playEffect("soundSE/portButton.mp3");
+    
     auto portScene=dynamic_cast<PortScene*>(VIEW_MGR->getScene(SceneType::HOME));
     if (!portScene)
     {
@@ -143,19 +188,6 @@ void SelecterUnit::layerSelectCallback(cocos2d::Ref *pSender, PanelType type)
     }
     portScene->SetCurrPanel(type);
 }
-
-//portItem = MenuItemSprite::create(Sprite::createWithSpriteFrameName("portItem1.png"),Sprite::createWithSpriteFrameName("portItem2.png"),CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, PanelType::PORT_MAINLAYER));
-//portItem->setPosition(22, 0);
-//organizeItem = MenuItemSprite::create(Sprite::createWithSpriteFrameName("organizeItem1.png"),Sprite::createWithSpriteFrameName("organizeItem2.png"), CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, PanelType::PORT_ORGANIZE));
-//organizeItem->setPosition(-30, 100);
-//supplyItem = MenuItemSprite::create(Sprite::createWithSpriteFrameName("supplyItem1.png"),Sprite::createWithSpriteFrameName("supplyItem2.png"), CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, PanelType::PORT_SUPPLY));
-//supplyItem->setPosition(-30, 50);
-//remodeItem = MenuItemSprite::create(Sprite::createWithSpriteFrameName("remodeItem1.png"),Sprite::createWithSpriteFrameName("remodeItem2.png"), CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, PanelType::PORT_REMODE));
-//remodeItem->setPosition(-30, 0);
-//repairItem = MenuItemSprite::create(Sprite::createWithSpriteFrameName("repairItem1.png"),Sprite::createWithSpriteFrameName("repairItem2.png"), CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, PanelType::PORT_REPAIR));
-//repairItem->setPosition(-30, -50);
-//factoryItem = MenuItemSprite::create(Sprite::createWithSpriteFrameName("factoryItem1.png"),Sprite::createWithSpriteFrameName("factoryItem2.png"), CC_CALLBACK_1(LayerSelecter::layerSelectCallback, this, PanelType::PORT_FACTORY));
-//factoryItem->setPosition(-30, -100);
 
 
 
