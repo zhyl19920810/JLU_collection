@@ -50,22 +50,6 @@ bool PortOrganizeLayer::init()
 }
 
 
-
-
-bool PortOrganizeLayer::hasSameKantai(int kantaiNumber)
-{
-    map<int,int> cache;
-    for (int i=0; i<containers.size(); ++i)
-    {
-        
-        
-        if (containers[i]->haveKantai()&&(containers[i]->getContainerKantaiNumber()==kantaiNumber)) {
-            return true;
-        }
-    }
-    return false;
-}
-
 void PortOrganizeLayer::initLayer()
 {
     auto visibleSize=Director::getInstance()->getVisibleSize();
@@ -141,6 +125,35 @@ void PortOrganizeLayer::initContainers()
     ///找到第一个没有船的位置，然后设其changeButton为visible
 }
 
+
+bool PortOrganizeLayer::canChangeKantai(Kantai* kantai)
+{
+    if (!kantai) return false;
+    auto _fleet=static_cast<Fleet*>(kantai->getFleet());
+    
+    if (_fleet&&_fleet->getShip(selectedShipIndex))
+    {
+        if (containers[selectedShipIndex-1]->getContainerKantaiNumber()==kantai->getKantaiNumber())
+        {
+            return false;
+        }
+        return true;
+    }
+    
+    for (int i=0; i<containers.size(); ++i)
+    {
+        if (containers[i]->haveKantai()&&(containers[i]->getContainerKantaiNumber()==kantai->getKantaiNumber()))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+
+
+
 void PortOrganizeLayer::hideList(Ref* pSender)
 {
     listEntity->moveOut();
@@ -171,9 +184,12 @@ void PortOrganizeLayer::updateContainer()
         if (!hasKantai(i))
         {
             containers[i-1]->setChangeButtonVisible(true);
+            containers[i-1]->setCoverVisble(true,false);
+            displayChangeButtonPos=i-1;
             return;
         }
     }
+    displayChangeButtonPos=-1;
 }
 
 void PortOrganizeLayer::updateContainer(int position)
@@ -194,17 +210,22 @@ void PortOrganizeLayer::showDetail(int index)
     detailEntity->setKantai(fleet->getShip(index));
     detailCover->setCoverEnable(true);
 }
+
 void PortOrganizeLayer::hideDetail(Ref* pSender)
 {
     detailEntity->moveOut();
     detailCover->setCoverEnable(false);
 }
 
-void PortOrganizeLayer::updateFleet(int fleetNumber)
+
+void PortOrganizeLayer::updateFleet(int _fleetNumber)
 {
-    this->fleetNumber=fleetNumber;
-    fleet=sPlayer.getFleetByFleetKey(fleetNumber);
-    updateContainer();
+    if (fleetNumber!=_fleetNumber)
+    {
+        this->fleetNumber=_fleetNumber;
+        fleet=sPlayer.getFleetByFleetKey(_fleetNumber);
+        updateContainer();
+    }
 }
 
 void PortOrganizeLayer::clearFleet(cocos2d::Ref *pSender)
@@ -214,16 +235,12 @@ void PortOrganizeLayer::clearFleet(cocos2d::Ref *pSender)
     {
         if (fleet->getShip(i))
         {
-            if (i>maxIndex) {
-                maxIndex=i;
-            }
+            if (i>maxIndex)     maxIndex=i;
             sPlayer.removeKantai(fleet, i);
         }
     }
-    if (maxIndex<6)
-    {
-        containers[maxIndex]->setChangeButtonVisible(false);
-    }
+    //if (displayChangeButtonPos!=-1) containers[displayChangeButtonPos]->setChangeButtonVisible(false);
+    if (maxIndex<6)      containers[maxIndex]->setChangeButtonVisible(false);
     
     CallFunc* f1=CallFunc::create([=]()
                                   {
@@ -332,9 +349,7 @@ void PortOrganizeLayer::removeContainer()
             sPlayer.modifyKantaiPosition(fleet, i-1, fleet->getShip(i));
         }
     }
-    if (!maxIndex) {
-        maxIndex=position;
-    }
+    if (!maxIndex) {     maxIndex=position;  }
     if (maxIndex<6)
     {
         containers[maxIndex]->setChangeButtonVisible(false);

@@ -47,9 +47,8 @@ public:
         this->selectedShipIndex = index;
     }
     Fleet* getPanelFleet(){return fleet;}
-    //void setChangeButtonEnble(bool bEnble);
-    //void setDetailButtonEnble(bool bEnble);
-    bool hasSameKantai(int kantaiNumber);
+    bool canChangeKantai(Kantai* kantai);
+    
     
     void clearFleet(Ref* pSender);
     
@@ -57,8 +56,6 @@ public:
 private:
     KantaiDetailEntity* detailEntity;
     KantaiListEntity* listEntity;
-    //MenuItemSprite * hideDetailItem;
-    //MenuItemSprite * hideListItem;
     int selectedShipIndex;
     std::vector<OrganizeContainer *> containers;
     
@@ -76,8 +73,6 @@ private:
     int fleetNumber;
     std::vector<Sprite*> fleetSprite;
     std::vector<MenuItemToggle*> fleetToggle;
-    //LayerColor* bgCover;
-    //EventListenerTouchOneByOne* listener;
     
     FleetButton* fleetButton;
 public:
@@ -90,6 +85,7 @@ public:
 private:
     LayerCover* detailCover;
     LayerCover* listCover;
+    int displayChangeButtonPos;
 };
 
 

@@ -31,10 +31,10 @@ bool SoundBar::init(kancolle::SoundBarType _type)
         Node::setContentSize(displayBg->getContentSize());
         
         displayBar=Sprite::create("PortMain/image 59.png");
-        displayBar->setColor(Color3B::GREEN);
+        displayBar->setColor(Color3B::WHITE);
         displayBar->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
         addChild(displayBar);
-
+        displayBar->setCascadeColorEnabled(false);
         
         switch (_type)
         {

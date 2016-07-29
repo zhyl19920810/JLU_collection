@@ -9,6 +9,11 @@
 #include "OrganizeContainer.hpp"
 #include "PortOrganizeLayer.h"
 
+#define COVER_SHOW 100
+#define COVER_NORMAL 0
+
+
+
 NS_KCL_BEGIN
 
 OrganizeContainer* OrganizeContainer::create(int position)
@@ -45,105 +50,126 @@ void OrganizeContainer::setDetailButtonEnble(bool bEnble)
     detailButton->setEnabled(bEnble);
 }
 
+void OrganizeContainer::setCoverVisble(bool bVisible,bool coverButton)
+{
+    templateNode->setVisible(bVisible);
+    clippingNode->setVisible(bVisible);
+    if (bVisible&&coverButton)
+        clippingNode->setLocalZOrder(COVER_SHOW);
+    else
+        clippingNode->setLocalZOrder(COVER_NORMAL);
+}
+
+
+
+
 bool OrganizeContainer::init()
 {
     bool bRet=false;
     
     do
     {
+        CC_BREAK_IF(!Node::create());
         kantaiExist=false;
         kantai=NULL;
         
-        templateNode=Sprite::create("OrganizeMain/organKantaiBg.png");
-        templateNode->setPosition(Vec2::ZERO);
-        addChild(templateNode,-1);
-        
-        
-        bg = Sprite::create("OrganizeMain/organKantaiBg.png");
-        bg->setPosition(Vec2::ZERO);
-        addChild(bg);
-        
-
-        if (position == 1)
-            indexIcon = Sprite::create("OrganizeMain/star1.png");
-        else if (position ==2)
-            indexIcon = Sprite::create("OrganizeMain/star2.png");
-        else if (position == 3)
-            indexIcon = Sprite::create("OrganizeMain/star3.png");
-        else if (position == 4)
-            indexIcon = Sprite::create("OrganizeMain/star4.png");
-        else if (position == 5)
-            indexIcon = Sprite::create("OrganizeMain/star5.png");
-        else if (position == 6)
-            indexIcon = Sprite::create("OrganizeMain/star6.png");
-        addChild(indexIcon);
-        indexIcon->setPosition(-160, 41);
-        
-        //exp
-        expBar = Sprite::create("OrganizeMain/expBar.png");
-        expBar->setPosition(78, -8);
-        this->addChild(expBar);
-        
-        
-        detailButton = MenuItemImage::create("OrganizeMain/detailButton1.png", "OrganizeMain/detailButton2.png", CC_CALLBACK_1(OrganizeContainer::detailCallback, this));
-        detailButton->setPosition(35, -30);
-        changeButton = MenuItemImage::create("OrganizeMain/changeButton1.png", "OrganizeMain/changeButton2.png", CC_CALLBACK_1(OrganizeContainer::changeCallback, this));
-        changeButton->setPosition(118, -30);
-        menu = Menu::create(detailButton,changeButton, NULL);
-        menu->setPosition(Vec2::ZERO);
-        addChild(menu,1);
-        
-        
-        kantaiCard=KantaiCard::create();
-        kantaiCard->setPosition(78, 20);
-        addChild(kantaiCard);
-
-        kantaiName = Label::create("", "fonts/DengXian.ttf", 25);
-        kantaiName->setPosition(-120, 22);
-        currLV = Label::create("", "fonts/DengXian.ttf", 18);
-        currLV->setPosition(-23, 30);
-        currHp = Label::create("", "fonts/DengXian.ttf", 10);
-        currHp->setPosition(-25, 0);
-        firePower = Label::create("", "fonts/DengXian.ttf", 15);
-        firePower->setPosition(-95, -15);
-        antiAir = Label::create("", "fonts/DengXian.ttf", 15);
-        antiAir->setPosition(-20, -15);
-        torpedo = Label::create("", "fonts/DengXian.ttf", 15);
-        torpedo->setPosition(-95, -35);
-        armour = Label::create("", "fonts/DengXian.ttf", 15);
-        armour->setPosition(-20, -35);
-        addChild(kantaiName);
-        addChild(currLV);
-        addChild(currHp);
-        addChild(firePower);
-        addChild(antiAir);
-        addChild(torpedo);
-        addChild(armour);
-        
-        lKantaiDoor=Sprite::create("OrganizeMain/lKantaiDoor.png");
-                    lKantaiDoor->setPosition(Vec2::ZERO);
-        lKantaiDoor->setAnchorPoint(Vec2(1.0,0.5));
-        rKantaiDoor=Sprite::create("OrganizeMain/rKantaiDoor.png");
-        rKantaiDoor->setPosition(Vec2::ZERO);
-        rKantaiDoor->setAnchorPoint(Vec2(0, 0.5));
-        
-        hpBar =HpBar::create();
-        hpBar->setPosition(-45, 13);
-        addChild(hpBar);
-        stars = Stars::create();
-        stars->setPosition(-145, 5);
-        addChild(stars);
-        
-        setClippingNode();
+        initBg();
+        initMainBody();
+        initCover();
         
         bRet=true;
     }while(0);
     return bRet;
 }
 
+void OrganizeContainer::initBg()
+{
+    templateNode=Sprite::create("OrganizeMain/organKantaiBg.png");
+    templateNode->setPosition(Vec2::ZERO);
+    addChild(templateNode,-1);
+    
+    
+    bg = Sprite::create("OrganizeMain/organKantaiBg.png");
+    bg->setPosition(Vec2::ZERO);
+    addChild(bg);
+}
+
+void OrganizeContainer::initMainBody()
+{
+    if (position == 1)
+        indexIcon = Sprite::create("OrganizeMain/star1.png");
+    else if (position ==2)
+        indexIcon = Sprite::create("OrganizeMain/star2.png");
+    else if (position == 3)
+        indexIcon = Sprite::create("OrganizeMain/star3.png");
+    else if (position == 4)
+        indexIcon = Sprite::create("OrganizeMain/star4.png");
+    else if (position == 5)
+        indexIcon = Sprite::create("OrganizeMain/star5.png");
+    else if (position == 6)
+        indexIcon = Sprite::create("OrganizeMain/star6.png");
+    addChild(indexIcon);
+    indexIcon->setPosition(-160, 41);
+    
+    //exp
+    expBar = Sprite::create("OrganizeMain/expBar.png");
+    expBar->setPosition(78, -8);
+    this->addChild(expBar);
+    
+    
+    detailButton = MenuItemImage::create("OrganizeMain/detailButton1.png", "OrganizeMain/detailButton2.png", CC_CALLBACK_1(OrganizeContainer::detailCallback, this));
+    detailButton->setPosition(35, -30);
+    changeButton = MenuItemImage::create("OrganizeMain/changeButton1.png", "OrganizeMain/changeButton2.png", CC_CALLBACK_1(OrganizeContainer::changeCallback, this));
+    changeButton->setPosition(118, -30);
+    menu = Menu::create(detailButton,changeButton, NULL);
+    menu->setPosition(Vec2::ZERO);
+    addChild(menu,1);
+    
+    
+    kantaiCard=KantaiCard::create();
+    kantaiCard->setPosition(78, 20);
+    addChild(kantaiCard);
+    
+    kantaiName = Label::create("", "fonts/DengXian.ttf", 25);
+    kantaiName->setPosition(-120, 22);
+    currLV = Label::create("", "fonts/DengXian.ttf", 18);
+    currLV->setPosition(-23, 30);
+    currHp = Label::create("", "fonts/DengXian.ttf", 10);
+    currHp->setPosition(-25, 0);
+    firePower = Label::create("", "fonts/DengXian.ttf", 15);
+    firePower->setPosition(-95, -15);
+    antiAir = Label::create("", "fonts/DengXian.ttf", 15);
+    antiAir->setPosition(-20, -15);
+    torpedo = Label::create("", "fonts/DengXian.ttf", 15);
+    torpedo->setPosition(-95, -35);
+    armour = Label::create("", "fonts/DengXian.ttf", 15);
+    armour->setPosition(-20, -35);
+    addChild(kantaiName);
+    addChild(currLV);
+    addChild(currHp);
+    addChild(firePower);
+    addChild(antiAir);
+    addChild(torpedo);
+    addChild(armour);
+    
+    lKantaiDoor=Sprite::create("OrganizeMain/lKantaiDoor.png");
+    lKantaiDoor->setPosition(Vec2::ZERO);
+    lKantaiDoor->setAnchorPoint(Vec2(1.0,0.5));
+    rKantaiDoor=Sprite::create("OrganizeMain/rKantaiDoor.png");
+    rKantaiDoor->setPosition(Vec2::ZERO);
+    rKantaiDoor->setAnchorPoint(Vec2(0, 0.5));
+    
+    hpBar =HpBar::create();
+    hpBar->setPosition(-45, 13);
+    addChild(hpBar);
+    stars = Stars::create();
+    stars->setPosition(-145, 5);
+    addChild(stars);
+}
 
 
-void OrganizeContainer::setClippingNode()
+
+void OrganizeContainer::initCover()
 {
     clippingNode = ClippingNode::create();
     clippingNode->setStencil(templateNode);
@@ -155,8 +181,7 @@ void OrganizeContainer::setClippingNode()
 }
 
 
-
-void OrganizeContainer::setKantaiVisible( bool bVisible)
+void OrganizeContainer::setKantaiVisible(bool bVisible)
 {
     if (bVisible)
     {
@@ -168,15 +193,13 @@ void OrganizeContainer::setKantaiVisible( bool bVisible)
         lKantaiDoor->setPosition(0,0);
         rKantaiDoor->setPosition(0, 0);
     }
-    templateNode->setVisible(!bVisible);
-    clippingNode->setVisible(!bVisible);
+    
     kantaiExist=bVisible;
     if (!kantaiExist) {
         kantai=NULL;
     }
     bg->setVisible(bVisible);
     indexIcon->setVisible(bVisible);
-    detailButton->setVisible(bVisible);
     kantaiCard->setVisible(bVisible);
     kantaiName->setVisible(bVisible);
     currLV->setVisible(bVisible);
@@ -188,8 +211,11 @@ void OrganizeContainer::setKantaiVisible( bool bVisible)
     hpBar->setVisible(bVisible);
     stars->setVisible(bVisible);
     expBar->setVisible(bVisible);
+    detailButton->setVisible(bVisible);
     changeButton->setVisible(bVisible);
 }
+
+
 
 bool OrganizeContainer::haveKantai() const
 {
@@ -206,6 +232,7 @@ void OrganizeContainer::updateCharacterInfo(Kantai* kantai)
     if (kantai)
     {
         setKantaiVisible(true);
+        setCoverVisble(false);
         this->kantai=kantai;
         char name[30];
         bzero(name, sizeof(name));
@@ -230,7 +257,11 @@ void OrganizeContainer::updateCharacterInfo(Kantai* kantai)
         stars->setNumber(kantai->getStars());
     }
     else
+    {
         setKantaiVisible(false);
+        setCoverVisble(true);
+    }
+    
 }
 
 
@@ -247,13 +278,15 @@ void OrganizeContainer::changeCallback(Ref* pSender)
     parent->showList(position);
 }
 
-void OrganizeContainerAction::setPankOpen(cocos2d::Node *left, cocos2d::Node *right,Node* clippingNode,Node* templateNode)
+
+
+void OrganizeContainerAction::setPankOpen(OrganizeContainer* container)
 {
-    templateNode->setVisible(true);
-    clippingNode->setVisible(true);
-    clippingNode->setLocalZOrder(100);
+    auto left=container->lKantaiDoor;
+    auto right=container->rKantaiDoor;
     CallFunc* f1=CallFunc::create([=]()
                                   {
+                                      container->setCoverVisble(true,true);
                                       left->setPosition(0,0);
                                       right->setPosition(0,0);
                                       left->runAction(MoveBy::create(0.3, Vec2(-left->getContentSize().width, 0)));
@@ -261,67 +294,18 @@ void OrganizeContainerAction::setPankOpen(cocos2d::Node *left, cocos2d::Node *ri
                                   });
     CallFunc* f2=CallFunc::create([=]()
                                   {
-                                      templateNode->setVisible(false);
-                                      clippingNode->setVisible(false);
-                                      clippingNode->setLocalZOrder(0);
+                                      container->setCoverVisble(false);
                                   });
     left->runAction(Sequence::create(f1,DelayTime::create(0.35),f2, NULL));
 }
 
-
-
-void OrganizeContainerAction::setPankChange(cocos2d::Node *left, cocos2d::Node *right,Node* clippingNode,Node* templateNode)
+void OrganizeContainerAction::setPankClose(OrganizeContainer* container)
 {
-    templateNode->setVisible(true);
-    clippingNode->setVisible(true);
-    clippingNode->setLocalZOrder(100);
+    auto left=container->lKantaiDoor;
+    auto right=container->rKantaiDoor;
     CallFunc* f1=CallFunc::create([=]()
                                   {
-                                    left->setPosition(-left->getContentSize().width,0);
-                                    right->setPosition(right->getContentSize().width, 0);
-                                    left->runAction(MoveBy::create(0.3, Vec2(left->getContentSize().width, 0)));
-                                    right->runAction(MoveBy::create(0.3, Vec2(-right->getContentSize().width, 0)));
-                                  });
-    CallFunc* f2=CallFunc::create([=]()
-                                  {
-                                    left->setPosition(0,0);
-                                    right->setPosition(0,0);
-                                    left->runAction(MoveBy::create(0.3, Vec2(-left->getContentSize().width, 0)));
-                                    right->runAction(MoveBy::create(0.3, Vec2(right->getContentSize().width, 0)));
-                                  });
-    CallFunc* f3=CallFunc::create([=]()
-                                  {
-                                      templateNode->setVisible(false);
-                                      clippingNode->setVisible(false);
-                                      clippingNode->setLocalZOrder(0);
-                                  });
-    left->runAction(Sequence::create(f1,DelayTime::create(0.35),f2,DelayTime::create(0.3),f3, NULL));
-}
-
-void OrganizeContainer::changeContainer(Kantai* kantai)
-{
-    if (kantai)
-    {
-        CallFunc* f2=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::updateCharacterInfo, this,kantai));
-        CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganizeContainerAction::setPankClose,lKantaiDoor,rKantaiDoor,clippingNode,templateNode));
-        CallFunc* f3=CallFunc::create(CC_CALLBACK_0(OrganizeContainerAction::setPankOpen,lKantaiDoor,rKantaiDoor,clippingNode,templateNode));
-        runAction(Sequence::create(f1,DelayTime::create(0.35),f2,f3,DelayTime::create(0.3), NULL));
-    }
-    else
-    {
-        OrganizeContainerAction::setPankClose(lKantaiDoor, rKantaiDoor,clippingNode,templateNode);
-        CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::updateCharacterInfo, this,kantai));
-        runAction(Sequence::create(DelayTime::create(0.35),f1, NULL));
-    }
-}
-
-void OrganizeContainerAction::setPankClose(cocos2d::Node *left, cocos2d::Node *right,Node* clippingNode,Node* templateNode)
-{
-    templateNode->setVisible(true);
-    clippingNode->setVisible(true);
-    clippingNode->setLocalZOrder(100);
-    CallFunc* f1=CallFunc::create([=]()
-                                  {
+                                      container->setCoverVisble(true,true);
                                       left->setPosition(-left->getContentSize().width,0);
                                       right->setPosition(right->getContentSize().width, 0);
                                       left->runAction(MoveBy::create(0.3, Vec2(left->getContentSize().width, 0)));
@@ -329,7 +313,7 @@ void OrganizeContainerAction::setPankClose(cocos2d::Node *left, cocos2d::Node *r
                                   });
     CallFunc* f2=CallFunc::create([=]()
                                   {
-                                      clippingNode->setLocalZOrder(0);
+                                      //container->setCoverVisble(false);
                                   });
     left->runAction(Sequence::create(f1,DelayTime::create(0.35),f2, NULL));
 }
@@ -337,24 +321,33 @@ void OrganizeContainerAction::setPankClose(cocos2d::Node *left, cocos2d::Node *r
 
 
 
+void OrganizeContainer::changeContainer(Kantai* kantai)
+{
+    if (kantai)
+    {
+        CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganizeContainerAction::setPankClose,this));
+        CallFunc* f2=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::updateCharacterInfo, this,kantai));
+        CallFunc* f3=CallFunc::create(CC_CALLBACK_0(OrganizeContainerAction::setPankOpen,this));
+        runAction(Sequence::create(f1,DelayTime::create(0.35),f2,f3,DelayTime::create(0.3), NULL));
+    }
+    else
+    {
+        CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganizeContainerAction::setPankClose,this));
+        CallFunc* f2=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::updateCharacterInfo, this,kantai));
+        runAction(Sequence::create(f1,DelayTime::create(0.35),f2, NULL));
+    }
+}
+
+
+
 
 void OrganizeContainer::openNewContainer(Kantai *kantai)
 {
     CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::updateCharacterInfo, this,kantai));
-    CallFunc* f2=CallFunc::create(CC_CALLBACK_0(OrganizeContainerAction::setPankOpen, lKantaiDoor,rKantaiDoor,clippingNode,templateNode));
+    CallFunc* f2=CallFunc::create(CC_CALLBACK_0(OrganizeContainerAction::setPankOpen,this));
     runAction(Sequence::create(f1,f2,DelayTime::create(0.35), NULL));
 }
 
-//void OrganizeContainer::removeContainer()
-//{
-//    lKantaiDoor->setVisible(true);
-//    rKantaiDoor->setVisible(true);
-//    OrganizeContainerAction::setPankClose(lKantaiDoor, rKantaiDoor,clippingNode,templateNode);
-//    CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::updateCharacterInfo, this,kantai));
-//    CallFunc* f2=CallFunc::create([this](){setKantaiVisible(false);});
-//    runAction(Sequence::create(DelayTime::create(0.3),f1,DelayTime::create(0.3),f2, NULL));
-//
-//}
 
 
 

@@ -35,17 +35,17 @@ bool SoundPanel::init()
         addChild(SoundBg);
         
         bgmSoundBar=SoundBar::create(SoundBarType::BGM_SOUNDBAR);
-        bgmSoundBar->setPosition(Vec2(50, 205));
+        bgmSoundBar->setPosition(Vec2(50, 202));
         bgmSoundBar->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         SoundBg->addChild(bgmSoundBar);
         
         SESoundBar=SoundBar::create(SoundBarType::SE_SOUNDBAR);
-        SESoundBar->setPosition(Vec2(50, 142));
+        SESoundBar->setPosition(Vec2(50, 140));
         SESoundBar->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         SoundBg->addChild(SESoundBar);
         
         voiceSoundBar=SoundBar::create(SoundBarType::VOICE_SOUNDBAR);
-        voiceSoundBar->setPosition(Vec2(50, 78));
+        voiceSoundBar->setPosition(Vec2(50, 75));
         voiceSoundBar->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         SoundBg->addChild(voiceSoundBar);
         

@@ -9,6 +9,8 @@
 #include "OrganizeSelectEntity.hpp"
 #include "portOrganizeLayer.h"
 #include "KantaiListEntity.hpp"
+#include "ViewMgr.hpp"
+
 
 NS_KCL_BEGIN
 
@@ -102,11 +104,8 @@ void OrganSelectEntity::moveIn()
 
 void OrganSelectEntity::changeShipCallback(cocos2d::Ref *pSender)
 {
-    auto kantaiList=static_cast<KantaiListEntity*>(this->getParent());
-    auto organizeList=static_cast<PortOrganizeLayer*>(kantaiList->getParent());
-    organizeList->changeContainer( kantai);
-    
-
+    auto panel=dynamic_cast<PortOrganizeLayer*>(VIEW_MGR->getPanel(PanelType::PORT_ORGANIZE));
+    panel->changeContainer( kantai);
 }
 
 
@@ -240,9 +239,8 @@ void OrganSelectEntity::setEquipContainerVisible(int equipNumber, bool bVisible)
 
 bool OrganSelectEntity::canChangeKantai(Kantai *kantai)
 {
-    auto kantaiList=static_cast<KantaiListEntity*>(this->getParent());
-    auto organizeList=static_cast<PortOrganizeLayer*>(kantaiList->getParent());
-    return !organizeList->hasSameKantai(kantai->getKantaiNumber(),);
+    auto panel=dynamic_cast<PortOrganizeLayer*>(VIEW_MGR->getPanel(PanelType::PORT_ORGANIZE));
+    return panel->canChangeKantai(kantai);
 }
 
 

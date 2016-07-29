@@ -22,38 +22,42 @@ using namespace cocos2d;
 NS_KCL_BEGIN
 
 class PortOrganizeLayer;
+class OrganizeContainer;
 
 class OrganizeContainerAction
 {
 public:
-    static void setPankOpen(Node* left,Node* right,Node* clippingNode,Node* templateNode);
-    static void setPankClose(Node* left,Node* right,Node* clippingNode,Node* templateNode);
-    static void setPankChange(Node* left,Node* right,Node* clippingNode,Node* templateNode);
+    static void setPankOpen(OrganizeContainer*);
+    static void setPankClose(OrganizeContainer*);
+    static void setPankChange(OrganizeContainer*);
 };
 
 
-class OrganizeContainer:public Node{
-    
+class OrganizeContainer:public Node
+{
+    friend class OrganizeContainerAction;
+    friend class PortOrganizeLayer;
 public:
     static OrganizeContainer* create(int position);
-
-    bool init();
     OrganizeContainer(int position);
-    void updateCharacterInfo(Kantai* kantai);
     
+    void updateCharacterInfo(Kantai* kantai);
+    void setKantaiVisible( bool bVisible);
+    void setCoverVisble(bool bVisible,bool coverButton=false);
+    bool haveKantai() const;
+    int getContainerKantaiNumber() const;
+
+    
+    void changeContainer(Kantai* kantai);
+    void openNewContainer(Kantai* kantai);
+    
+public:
     void detailCallback(Ref* pSender);
     void changeCallback(Ref* pSender);
     void setDetailButtonEnble(bool bEnble);
     void setChangeButtonEnble(bool bEnble);
     void setChangeButtonVisible(bool bVisible);
-    void setKantaiVisible( bool bVisible);
-    bool haveKantai() const;
-    int getContainerKantaiNumber() const;
-    void setClippingNode();
     
-    void changeContainer(Kantai* kantai);
-    void openNewContainer(Kantai* kantai);
-    //void removeContainer();
 private:
     int position;
     Sprite* bg;
@@ -81,9 +85,17 @@ private:
     Sprite* rKantaiDoor;
     
 private:
+    bool init();
+    void initBg();
+    void initMainBody();
+    void initCover();
+    
+    
+private:
     Node* templateNode;
     ClippingNode* clippingNode;
     Node* node;
+
 };
 
 NS_KCL_END
