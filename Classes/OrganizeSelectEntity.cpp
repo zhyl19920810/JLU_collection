@@ -17,7 +17,7 @@ NS_KCL_BEGIN
 OrganSelectEntity::OrganSelectEntity()
 {
     kantai=NULL;
-    hidden = true;
+    Hidden = true;
     equipContainer.resize(4);
     equipEmpty.resize(4);
 }
@@ -36,30 +36,6 @@ OrganSelectEntity* OrganSelectEntity::create()
     return NULL;
 }
 
-
-void OrganSelectEntity::initBg()
-{
-    bgImg=Sprite::create("RepairMain/repairSelectBg1.png");
-    bgImg->setPosition(695,200);
-    addChild(bgImg);
-    auto tmp=bgImg->getContentSize()/2;
-    
-    auto organSelectBar=Sprite::create("RepairMain/repairBar.png");
-    organSelectBar->setPosition(tmp.width+288,tmp.height+197);
-    bgImg->addChild(organSelectBar);
-    
-    
-    
-    auto organSelectTitle=Sprite::create("RepairMain/repairSelectTitle.png");
-    organSelectTitle->setPosition(tmp.width-47,tmp.height+200);
-    bgImg->addChild(organSelectTitle);
-    
-    
-    changeShipButton=MenuItemButton::create(Sprite::create("OrganizeMain/changeShipButton2.png"), Sprite::create("OrganizeMain/changeShipButton3.png"), Sprite::create("OrganizeMain/changeShipButton1.png"), CC_CALLBACK_1(OrganSelectEntity::changeShipCallback, this));
-    changeShipButton->setPosition(tmp.width-10,tmp.height-165);
-    bgImg->addChild(changeShipButton);
-    
-}
 
 
 bool OrganSelectEntity::init()
@@ -82,33 +58,40 @@ bool OrganSelectEntity::init()
     return bRet;
 }
 
-void OrganSelectEntity::moveOut()
+
+
+void OrganSelectEntity::initBg()
 {
-    if (!hidden)
-    {
-        this->runAction(MoveBy::create(0.15, Point(238, 0)));
-        kantai=NULL;
-        hidden = true;
-    }
+    
+    layerCover=LayerCover::create(CC_CALLBACK_0(OrganSelectEntity::moveOut, this));
+    addChild(layerCover);
+    layerCover->setPosition(Vec2(-238, 0));
+    
+    entity=Node::create();
+    entity->setPosition(Vec2::ZERO);
+    addChild(entity);
+    
+    bgImg=Sprite::create("RepairMain/repairSelectBg1.png");
+    bgImg->setPosition(695,200);
+    entity->addChild(bgImg);
+    auto tmp=bgImg->getContentSize()/2;
+    
+    auto organSelectBar=Sprite::create("RepairMain/repairBar.png");
+    organSelectBar->setPosition(tmp.width+288,tmp.height+197);
+    bgImg->addChild(organSelectBar);
+    
+    
+    
+    auto organSelectTitle=Sprite::create("RepairMain/repairSelectTitle.png");
+    organSelectTitle->setPosition(tmp.width-47,tmp.height+200);
+    bgImg->addChild(organSelectTitle);
+    
+    
+    changeShipButton=MenuItemButton::create(Sprite::create("OrganizeMain/changeShipButton2.png"), Sprite::create("OrganizeMain/changeShipButton3.png"), Sprite::create("OrganizeMain/changeShipButton1.png"), CC_CALLBACK_1(OrganSelectEntity::changeShipCallback, this));
+    changeShipButton->setPosition(tmp.width-10,tmp.height-165);
+    bgImg->addChild(changeShipButton);
     
 }
-void OrganSelectEntity::moveIn()
-{
-    if (hidden)
-    {
-        this->runAction(MoveBy::create(0.15, Point(-238, 0)));
-        hidden = false;
-    }
-}
-
-
-void OrganSelectEntity::changeShipCallback(cocos2d::Ref *pSender)
-{
-    auto panel=dynamic_cast<PortOrganizeLayer*>(VIEW_MGR->getPanel(PanelType::PORT_ORGANIZE));
-    panel->changeContainer( kantai);
-}
-
-
 
 
 void OrganSelectEntity::initKantai()
@@ -218,6 +201,58 @@ void OrganSelectEntity::initKantai()
     bgImg->addChild(ammoIcon);
     ammoIcon->setPosition(fuelIcon->getPosition()-Vec2(0, 50));
 }
+
+
+
+
+
+void OrganSelectEntity::moveOut()
+{
+    auto runScene=Director::getInstance()->getRunningScene();
+    if (!Hidden)
+    {
+        CallFunc* moveByBefore=CallFunc::create([=]()
+        {
+           _eventDispatcher->pauseEventListenersForTarget(runScene,true);
+        });
+        auto move=MoveBy::create(0.15, Vec2(238, 0));
+        CallFunc* moveByFinish=CallFunc::create([=]()
+        {
+           _eventDispatcher->resumeEventListenersForTarget(runScene,true);
+           layerCover->setCoverEnable(false);
+        });
+        entity->runAction(Sequence::create(moveByBefore,move,moveByFinish, NULL));
+        kantai=NULL;
+        Hidden = true;
+    }
+}
+void OrganSelectEntity::moveIn()
+{
+    auto runScene=Director::getInstance()->getRunningScene();
+    if (Hidden)
+    {
+        CallFunc* moveByBefore=CallFunc::create([=]()
+        {
+          layerCover->setCoverEnable(true);
+          _eventDispatcher->pauseEventListenersForTarget(runScene,true);
+        });
+        auto move=MoveBy::create(0.15, Point(-238, 0));
+        CallFunc* moveByFinish=CallFunc::create([=]()
+        {
+          _eventDispatcher->resumeEventListenersForTarget(runScene,true);
+        });
+        entity->runAction(Sequence::create(moveByBefore,move,moveByFinish, NULL));
+        Hidden = false;
+    }
+}
+
+
+void OrganSelectEntity::changeShipCallback(cocos2d::Ref *pSender)
+{
+    auto panel=dynamic_cast<PortOrganizeLayer*>(VIEW_MGR->getPanel(PanelType::PORT_ORGANIZE));
+    panel->changeContainer( kantai);
+}
+
 
 
 

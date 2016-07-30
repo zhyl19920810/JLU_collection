@@ -18,6 +18,7 @@
 #include "EquipmentContainer.hpp"
 #include "ValueBar.hpp"
 #include "Star.hpp"
+#include "LayerCover.hpp"
 
 USING_NS_CC;
 
@@ -27,25 +28,34 @@ class OrganSelectEntity:public Layer
 {
 public:
     OrganSelectEntity();
-    
+    ~OrganSelectEntity(){}
     static OrganSelectEntity* create();
     
     bool init();
-    
     void moveOut();
     void moveIn();
     void updateKantai(Kantai* kantai);
+    
+    
 private:
-    Sprite* bgImg;
     void initBg();
     void initKantai();
-    bool hidden;
-    
     void setEquipContainerVisible(int equipNumber,bool bVisible);
     void changeShipCallback(Ref* pSender);
     bool canChangeKantai(Kantai* kantai);
-    MenuItemButton* changeShipButton;
     
+private:
+    int equipSize;
+    Kantai* kantai;
+    bool Hidden;
+    
+private:
+    Node* entity;
+    LayerCover* layerCover;
+    Sprite* bgImg;
+    std::vector<EquipContainer*> equipContainer;
+    std::vector<Sprite*> equipEmpty;
+    MenuItemButton* changeShipButton;
     Label* kantaiName;
     Label* kantaiLv;
     Sprite* lvIcon;
@@ -53,12 +63,6 @@ private:
     Label* kantaiHp;
     Stars* stars;
     KantaiCard* kantaiCard;
-    
-    
-    std::vector<EquipContainer*> equipContainer;
-    std::vector<Sprite*> equipEmpty;
-    int equipSize;
-    
     Label* firePower;
     Label* torpedo;
     Label* antiAir;
@@ -67,12 +71,8 @@ private:
     Sprite* torpedoIcon;
     Sprite* antiAirIcon;
     Sprite* armourIcon;
-    
     ValueBar* ammoBar;
     ValueBar* fuelBar;
-    
-    //kantai
-    Kantai* kantai;
 };
 
 NS_KCL_END

@@ -82,10 +82,10 @@ void PortBattleLayer::callBack2(Ref* pSender)
 
 void PortBattleLayer::ShowMissionSelectPage(Ref* pSender)
 {
-    if (missionPage->isHidden())
-    {
-        missionPage->moveIn();
-    }
+//    if (missionPage->isHidden())
+//    {
+//        //missionPage->moveIn();
+//    }
     
 }
 

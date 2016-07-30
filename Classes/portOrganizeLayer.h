@@ -30,62 +30,62 @@ class PortOrganizeLayer : public Panel
 public:
     bool init();
     CREATE_FUNC(PortOrganizeLayer);
+    ~PortOrganizeLayer();
     PortOrganizeLayer();
-    
-    void hideDetail(Ref* pSender);
-    void showDetail(int index);
-    void hideList(Ref* pSender);
-    void showList(int index);
-    
+
+public:
     void updateContainer();
     void updateContainer(int position);
-    void changeContainer(Kantai* kantai);
-    void removeContainer();
-    inline int getSelectedShipIndex(){ return selectedShipIndex; }
-    inline void setSelectedShipIndex(int index)
-    {
-        this->selectedShipIndex = index;
-    }
-    Fleet* getPanelFleet(){return fleet;}
+    void updateFleet(int fleetNumber);
     bool canChangeKantai(Kantai* kantai);
     
     
+    void changeContainer(Kantai* kantai);
+    void removeContainer();
     void clearFleet(Ref* pSender);
+     Fleet* getPanelFleet(){return fleet;}
     
-    void setListable(bool bVisible);
+public:
+    void showDetail(int index);
+    
+    void hideList(Ref* pSender);
+    void showList(int index);
+    int getSelectedShipIndex(){ return selectedShipIndex; }
+    void setSelectedShipIndex(int index){this->selectedShipIndex = index;}
+    
 private:
-    KantaiDetailEntity* detailEntity;
-    KantaiListEntity* listEntity;
     int selectedShipIndex;
-    std::vector<OrganizeContainer *> containers;
+    int displayChangeButtonPos;
+    int fleetNumber;
+    Fleet* fleet;
     
     
 private:
     void initLayer();
     void initFleetButton();
     void initContainers();
+    bool hasKantai(int position);
+    int findFirstPosNoKantai();
     
-    
-
 private:
     Sprite* bgimg;
-    Fleet* fleet;
-    int fleetNumber;
-    std::vector<Sprite*> fleetSprite;
-    std::vector<MenuItemToggle*> fleetToggle;
-    
+    KantaiDetailEntity* detailEntity;
+    KantaiListEntity* listEntity;
+    LayerCover* listCover;
     FleetButton* fleetButton;
+    std::vector<OrganizeContainer *> containers;
+    
+    
 public:
-    ~PortOrganizeLayer();
-    void updateFleet(int fleetNumber);
-    int findFirstPosNoKantai();
-    bool hasKantai(int position);
+    void showSelect(Kantai* kantai)
+    {
+        organSelectEntity->updateKantai(kantai);
+        organSelectEntity->moveIn();
+    }
     
     
 private:
-    LayerCover* detailCover;
-    LayerCover* listCover;
-    int displayChangeButtonPos;
+    OrganSelectEntity* organSelectEntity;
 };
 
 

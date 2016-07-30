@@ -24,7 +24,7 @@ public:
     void hideSelect(Ref* pSender);
     CREATE_FUNC(KantaiListEntity);
     bool init();
-    OrganSelectEntity* organSelectEntity;
+    //OrganSelectEntity* organSelectEntity;
 
 private:
 

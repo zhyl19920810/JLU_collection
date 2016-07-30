@@ -195,13 +195,7 @@ private:
     KantaiMgr::stKantaiData* kantaiImp;
 };
 
-//
-//class KantaiPrint
-//{
-//public:
-//    void PrintKantaiInfo(const Kantai &_kantai);
-//};
-//
+
 
 NS_KCL_END
 

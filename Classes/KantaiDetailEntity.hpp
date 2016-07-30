@@ -21,7 +21,10 @@ USING_NS_CC;
 
 NS_KCL_BEGIN
 
-class KantaiDetailEntity:public Node
+class LayerCover;
+
+
+class KantaiDetailEntity:public Layer
 {
 public:
     KantaiDetailEntity();
@@ -33,6 +36,8 @@ public:
     void setEquipContainerVisible(int equipNumber,bool bVisible);
     bool isHidden() {return Hidden;}
 private:
+    Node* entity;
+    LayerCover* layerCover;
     int equipSize;
     std::vector<EquipContainer*> equipContainer;
     std::vector<Sprite*> equipEmpty;

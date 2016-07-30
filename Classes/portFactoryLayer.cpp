@@ -140,11 +140,6 @@ void PortFactoryLayer::showDestroy(Ref* pSender)
 
 
 
-//void PortFactoryLayer::callBack(Ref* pSender)
-//{
-//    entity->showEntity();
-//    listCover->setCoverEnable(true);
-//}
 
 void PortFactoryLayer::startBuild(int fuel, int steel, int ammo, int al)
 {

@@ -29,8 +29,7 @@ void FactoryListEntity::showSelect(Kantai* kantai)
 
 void FactoryListEntity::removeCallback(cocos2d::Ref *ref)
 {
-    //PortFactoryLayer* parent=static_cast<PortFactoryLayer*>(_parent);
-    //parent->removeContainer();
+    
 }
 
 bool FactoryListEntity::init()

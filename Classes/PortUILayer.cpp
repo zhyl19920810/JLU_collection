@@ -25,8 +25,6 @@ bool PortUILayer::init()
         ///////////这个需要修改////////////////////
         
         
-        
-        
         initPortSceneBar();
         initClock();
         initTopLeftCircle();

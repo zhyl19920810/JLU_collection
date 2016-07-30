@@ -7,7 +7,7 @@
 //
 
 #include "KantaiDetailEntity.hpp"
-#include "PortRemodeLayer.h"
+#include "LayerCover.hpp"
 
 
 NS_KCL_BEGIN
@@ -26,7 +26,7 @@ bool KantaiDetailEntity::init()
     
     do
     {
-        if (!Node::init()) {
+        if (!Layer::init()) {
             break;
         }
         initPage();
@@ -38,31 +38,40 @@ bool KantaiDetailEntity::init()
 
 void KantaiDetailEntity::initPage()
 {
+    auto visibleSize=Director::getInstance()->getVisibleSize();
+    layerCover=LayerCover::create(CC_CALLBACK_0(KantaiDetailEntity::moveOut, this));
+    layerCover->setPosition(-visibleSize.width,0);
+    addChild(layerCover);
+    
+    entity=Node::create();
+    entity->setPosition(Vec2::ZERO);
+    addChild(entity);
+    
     kantaiDetailBg = Sprite::create("CommonAssets/kantaiDetailBg.png");
-    this->addChild(kantaiDetailBg);
+    entity->addChild(kantaiDetailBg);
     kantaiDetailBg->setOpacity(250);
     kantaiDetailBg->setPosition(620, 195);
     
     auto top_bar = Sprite::create("OrganizeMain/topBar.png");
-    addChild(top_bar);
+    entity->addChild(top_bar);
     top_bar->setPosition(753, 397);
     
     
     auto top_label = Sprite::create("CommonAssets/kantaiDetailLabel.png");
-    this->addChild(top_label);
+    entity->addChild(top_label);
     top_label->setPosition(415, 399);
     
     
     auto paramBoard = Sprite::create("CommonAssets/paramBoard.png");
-    this->addChild(paramBoard);
+    entity->addChild(paramBoard);
     paramBoard->setPosition(450, 90);
     
     kantaiImage = Sprite::create();
-    this->addChild(kantaiImage);
+    entity->addChild(kantaiImage);
     kantaiImage->setPosition(670, 230);
     
     auto LVIcon = Sprite::create("CommonAssets/LVIcon.png");
-    this->addChild(LVIcon);
+    entity->addChild(LVIcon);
     LVIcon->setPosition(485, 370);
     
 
@@ -70,14 +79,14 @@ void KantaiDetailEntity::initPage()
     {
         equipEmpty[i]=Sprite::create("CommonAssets/noEquipBg.png");
         equipEmpty[i]->setPosition(450,310-i*35);
-        addChild(equipEmpty[i]);
+        entity->addChild(equipEmpty[i]);
     }
     
     for (int i=0; i<4; ++i)
     {
         equipContainer[i]=EquipContainer::create();
         equipContainer[i]->setPosition(450,310-i*35);
-        addChild(equipContainer[i]);
+        entity->addChild(equipContainer[i]);
     }
     
     //ability
@@ -127,29 +136,29 @@ void KantaiDetailEntity::initPage()
     range = Sprite::create();
     range->setPosition(430, 33);
     
-    addChild(kantaiName);
-    addChild(kantaiLV);
-    addChild(kantaiHp);
-    addChild(maxHP);
-    addChild(firePower);
-    addChild(antiAircraft);
-    addChild(torpedo);
-    addChild(armour);
-    addChild(dodge);
-    addChild(capacity);
-    addChild(antiSubmarine);
-    addChild(searchEnemy);
-    addChild(luck);
-    addChild(speed);
-    addChild(range);
+    entity->addChild(kantaiName);
+    entity->addChild(kantaiLV);
+    entity->addChild(kantaiHp);
+    entity->addChild(maxHP);
+    entity->addChild(firePower);
+    entity->addChild(antiAircraft);
+    entity->addChild(torpedo);
+    entity->addChild(armour);
+    entity->addChild(dodge);
+    entity->addChild(capacity);
+    entity->addChild(antiSubmarine);
+    entity->addChild(searchEnemy);
+    entity->addChild(luck);
+    entity->addChild(speed);
+    entity->addChild(range);
     
     hpBar=HpBar::create();
-    this->addChild(hpBar);
+    entity->addChild(hpBar);
     hpBar->setPosition(370, 340);
     
     stars =Stars::create();
     stars->setPosition(470, 340);
-    addChild(stars);
+    entity->addChild(stars);
 }
 
 void KantaiDetailEntity::setEquipContainerVisible(int equipNumber, bool bVisible)
@@ -171,9 +180,20 @@ void KantaiDetailEntity::setEquipContainerVisible(int equipNumber, bool bVisible
 void KantaiDetailEntity::moveOut()
 {
     auto size=Director::getInstance()->getVisibleSize();
+    auto runScene=Director::getInstance()->getRunningScene();
     if (!Hidden)
     {
-        this->runAction(MoveBy::create(0.2, ccp(size.width, 0)));
+        CallFunc* moveByBefore=CallFunc::create([=]()
+        {
+            _eventDispatcher->pauseEventListenersForTarget(runScene,true);
+        });
+        auto move=MoveBy::create(0.2, Vec2(size.width, 0));
+        CallFunc* moveByFinish=CallFunc::create([=]()
+        {
+            _eventDispatcher->resumeEventListenersForTarget(runScene,true);
+            layerCover->setCoverEnable(false);
+        });
+        entity->runAction(Sequence::create(moveByBefore,move,moveByFinish, NULL));
         Hidden = true;
     }
     
@@ -181,9 +201,20 @@ void KantaiDetailEntity::moveOut()
 void KantaiDetailEntity::moveIn()
 {
     auto size=Director::getInstance()->getVisibleSize();
+    auto runScene=Director::getInstance()->getRunningScene();
     if (Hidden)
     {
-        this->runAction(MoveBy::create(0.2, ccp(-size.width, 0)));
+        CallFunc* moveByBefore=CallFunc::create([=]()
+        {
+           layerCover->setCoverEnable(true);
+           _eventDispatcher->pauseEventListenersForTarget(runScene,true);
+        });
+        auto move=MoveBy::create(0.2, Vec2(-size.width, 0));
+        CallFunc* moveByFinish=CallFunc::create([=]()
+        {
+           _eventDispatcher->resumeEventListenersForTarget(runScene,true);
+        });
+        entity->runAction(Sequence::create(moveByBefore,move,moveByFinish, NULL));
         Hidden = false;
     }
 }

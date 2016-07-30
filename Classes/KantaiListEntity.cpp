@@ -9,26 +9,26 @@
 
 #include "KantaiListEntity.hpp"
 #include "portOrganizeLayer.h"
+#include "ViewMgr.hpp"
+
 
 NS_KCL_BEGIN
 
 void KantaiListEntity::hideSelect(cocos2d::Ref *pSender)
 {
-    organSelectEntity->moveOut();
-    selectCover->setCoverEnable(false);
+
 }
 
 void KantaiListEntity::showSelect(Kantai* kantai)
 {
-    organSelectEntity->moveIn();
-    organSelectEntity->updateKantai(kantai);
-    selectCover->setCoverEnable(true);
+    PortOrganizeLayer* panel=dynamic_cast<PortOrganizeLayer*>(VIEW_MGR->getPanel(PanelType::PORT_ORGANIZE));
+    panel->showSelect(kantai);
 }
 
 void KantaiListEntity::removeCallback(cocos2d::Ref *ref)
 {
-    PortOrganizeLayer* parent=static_cast<PortOrganizeLayer*>(_parent);
-    parent->removeContainer();
+    PortOrganizeLayer* panel=dynamic_cast<PortOrganizeLayer*>(VIEW_MGR->getPanel(PanelType::PORT_ORGANIZE));
+    panel->removeContainer();
 }
 
 bool KantaiListEntity::init()
@@ -52,11 +52,6 @@ bool KantaiListEntity::init()
         MenuItemLabel* removeButton=MenuItemLabel::create(removeLabel, CC_CALLBACK_1(ListEntity::removeCallback, this));
         removeButton->setPosition(430,345);
         menu->addChild(removeButton);
-        
- 
-        organSelectEntity=OrganSelectEntity::create();
-        organSelectEntity->setPosition(238,0);
-        addChild(organSelectEntity,3);
         
         
         bRet=true;
