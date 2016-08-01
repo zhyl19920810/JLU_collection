@@ -37,6 +37,7 @@ OrganizeContainer::OrganizeContainer(int position)
 
 void OrganizeContainer::setChangeButtonEnble(bool bEnble)
 {
+    cocos2d::log("%d,%d",position,bEnble);
     changeButton->setEnabled(bEnble);
 }
 

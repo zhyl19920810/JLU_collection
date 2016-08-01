@@ -405,6 +405,7 @@ void PortOrganizeLayer::changeContainer(Kantai* kantai)
                 }
             }
         }
+        ++kantaiSize;
     }
 }
 
