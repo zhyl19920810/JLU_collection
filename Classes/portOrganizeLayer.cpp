@@ -119,6 +119,10 @@ void PortOrganizeLayer::initContainers()
         addChild(containers[i]);
     }
     updateContainer();
+    
+    
+    
+    
 
     ///找到第一个没有船的位置，然后设其changeButton为visible
 }
@@ -175,17 +179,18 @@ void PortOrganizeLayer::updateContainer()
     {
         updateContainer(i);
     }
+    
     for (int i=1; i<=6; ++i)
     {
         if (!hasKantai(i))
         {
-            containers[i-1]->setChangeButtonVisible(true);
-            containers[i-1]->setCoverVisble(true,false);
-            displayChangeButtonPos=i-1;
+            kantaiSize=i-1;
+            containers[kantaiSize]->setChangeButtonVisible(true);
+            //containers[i-1]->setCoverVisble(true,false);
             return;
         }
     }
-    displayChangeButtonPos=-1;
+    kantaiSize=6;
 }
 
 void PortOrganizeLayer::updateContainer(int position)
@@ -219,21 +224,15 @@ void PortOrganizeLayer::updateFleet(int _fleetNumber)
 
 void PortOrganizeLayer::clearFleet(cocos2d::Ref *pSender)
 {
-    int maxIndex=1;
-    for (int i=2; i<=6; ++i)
+    for (int i=2; i<=kantaiSize; ++i)
     {
-        if (fleet->getShip(i))
-        {
-            if (i>maxIndex)     maxIndex=i;
-            sPlayer.removeKantai(fleet, i);
-        }
+        sPlayer.removeKantai(fleet, i);
     }
-    //if (displayChangeButtonPos!=-1) containers[displayChangeButtonPos]->setChangeButtonVisible(false);
-    if (maxIndex<6)      containers[maxIndex]->setChangeButtonVisible(false);
+    if (kantaiSize!=6) containers[kantaiSize]->setChangeButtonVisible(false);
     
     CallFunc* f1=CallFunc::create([=]()
                                   {
-                                      for (int i=2; i<=maxIndex; ++i)
+                                      for (int i=2; i<=kantaiSize; ++i)
                                       {
                                           containers[i-1]->changeContainer(fleet->getShip(i));
                                       }
@@ -241,8 +240,10 @@ void PortOrganizeLayer::clearFleet(cocos2d::Ref *pSender)
     CallFunc* f2=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, listEntity));
     CallFunc* f3=CallFunc::create([=]()
                                   {
-                                      containers[1]->setChangeButtonVisible(true);
+                                      kantaiSize=1;
+                                      containers[kantaiSize]->setChangeButtonVisible(true);
                                   });
+    
     runAction(Sequence::create(f1,f2,DelayTime::create(0.7),f3, NULL));
 }
 
@@ -311,7 +312,6 @@ void PortOrganizeLayer::changeContainer(Kantai* kantai)
 
 void PortOrganizeLayer::removeContainer()
 {
-    
     auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
     if ((fleetNumber==1&&!fleet->getShip(2))||(!fleet->getShip(selectedShipIndex)))
     {
@@ -319,29 +319,20 @@ void PortOrganizeLayer::removeContainer()
     }
     sPlayer.removeKantai(fleet, selectedShipIndex);
     
-    int maxIndex=0;
-    for (int i=selectedShipIndex+1; i<=6; ++i)
+    for (int i=selectedShipIndex+1; i<=kantaiSize; ++i)
     {
-        if (hasKantai(i))
-        {
-            if (i>maxIndex) {
-                maxIndex=i;
-            }
             sPlayer.modifyKantaiPosition(fleet, i-1, fleet->getShip(i));
-        }
     }
-    if (!maxIndex) {     maxIndex=selectedShipIndex;  }
-    if (maxIndex<6)
+    if (kantaiSize!=6)
     {
-        containers[maxIndex]->setChangeButtonVisible(false);
+        containers[kantaiSize]->setChangeButtonVisible(false);
     }
-    
     
     CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganSelectEntity::moveOut, organSelectEntity));
     CallFunc* f2=CallFunc::create(CC_CALLBACK_0(PortOrganizeLayer::hideList,this,this));
     CallFunc* f3=CallFunc::create([=]()
       {
-         for (int i=selectedShipIndex; i<=maxIndex; ++i)
+         for (int i=selectedShipIndex; i<=kantaiSize; ++i)
            {
               containers[i-1]->changeContainer(fleet->getShip(i));
            }
@@ -349,9 +340,11 @@ void PortOrganizeLayer::removeContainer()
     CallFunc* f4=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, listEntity));
     CallFunc* f5=CallFunc::create([=]()
       {
-        containers[maxIndex-1]->setChangeButtonVisible(true);
+        kantaiSize=kantaiSize-1;
+        containers[kantaiSize]->setChangeButtonVisible(true);
       });
     runAction(Sequence::create(f1,DelayTime::create(0.15),f2,DelayTime::create(0.1),f3,f4,DelayTime::create(0.65),f5, NULL));
+    
     //把maxIndex位置的changeButton设为Visible
 }
 

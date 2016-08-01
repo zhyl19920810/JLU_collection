@@ -10,7 +10,7 @@
 #include "portOrganizeLayer.h"
 #include "KantaiListEntity.hpp"
 #include "ViewMgr.hpp"
-
+#include "EventPauseGuard.hpp"
 
 NS_KCL_BEGIN
 
@@ -208,18 +208,17 @@ void OrganSelectEntity::initKantai()
 
 void OrganSelectEntity::moveOut()
 {
-    auto runScene=Director::getInstance()->getRunningScene();
     if (!Hidden)
     {
         CallFunc* moveByBefore=CallFunc::create([=]()
         {
-           _eventDispatcher->pauseEventListenersForTarget(runScene,true);
+           EventPauseGuard::pause();
         });
         auto move=MoveBy::create(0.15, Vec2(238, 0));
         CallFunc* moveByFinish=CallFunc::create([=]()
         {
-           _eventDispatcher->resumeEventListenersForTarget(runScene,true);
-           layerCover->setCoverEnable(false);
+          EventPauseGuard::resume();
+          layerCover->setCoverEnable(false);
         });
         entity->runAction(Sequence::create(moveByBefore,move,moveByFinish, NULL));
         kantai=NULL;
@@ -228,18 +227,17 @@ void OrganSelectEntity::moveOut()
 }
 void OrganSelectEntity::moveIn()
 {
-    auto runScene=Director::getInstance()->getRunningScene();
     if (Hidden)
     {
         CallFunc* moveByBefore=CallFunc::create([=]()
         {
           layerCover->setCoverEnable(true);
-          _eventDispatcher->pauseEventListenersForTarget(runScene,true);
+           EventPauseGuard::pause();
         });
         auto move=MoveBy::create(0.15, Point(-238, 0));
         CallFunc* moveByFinish=CallFunc::create([=]()
         {
-          _eventDispatcher->resumeEventListenersForTarget(runScene,true);
+          EventPauseGuard::resume();
         });
         entity->runAction(Sequence::create(moveByBefore,move,moveByFinish, NULL));
         Hidden = false;

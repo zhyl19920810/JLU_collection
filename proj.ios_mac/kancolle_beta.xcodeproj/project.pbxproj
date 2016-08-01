@@ -310,6 +310,8 @@
 		F44D26EF1C4D19A700438F3C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F44D26ED1C4D19A700438F3C /* libsqlite3.tbd */; };
 		F44D26F11C4D1D2300438F3C /* database in Sources */ = {isa = PBXBuildFile; fileRef = F4036D251BDA1F31002788AA /* database */; };
 		F45F91221BF4BCA600327120 /* TestScene.h in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE81BF380210078C5C0 /* TestScene.h */; };
+		F45FD1BA1D4D158000A445D7 /* EventPauseGuard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45FD1B81D4D158000A445D7 /* EventPauseGuard.cpp */; };
+		F45FD1BB1D4D158000A445D7 /* EventPauseGuard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45FD1B81D4D158000A445D7 /* EventPauseGuard.cpp */; };
 		F467184C1BE88E6300320B0A /* BattleEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F467184A1BE88E6300320B0A /* BattleEnemy.cpp */; };
 		F467184D1BE893F700320B0A /* BattleEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F467184A1BE88E6300320B0A /* BattleEnemy.cpp */; };
 		F467184E1BE893F700320B0A /* BattleEnemy.h in Sources */ = {isa = PBXBuildFile; fileRef = F467184B1BE88E6300320B0A /* BattleEnemy.h */; };
@@ -665,6 +667,8 @@
 		F43FFC851C5CE8F600C98BED /* RepairListEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RepairListEntity.hpp; sourceTree = "<group>"; };
 		F44D26EC1C4D19A700438F3C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
 		F44D26ED1C4D19A700438F3C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
+		F45FD1B81D4D158000A445D7 /* EventPauseGuard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventPauseGuard.cpp; sourceTree = "<group>"; };
+		F45FD1B91D4D158000A445D7 /* EventPauseGuard.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EventPauseGuard.hpp; sourceTree = "<group>"; };
 		F467184A1BE88E6300320B0A /* BattleEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleEnemy.cpp; sourceTree = "<group>"; };
 		F467184B1BE88E6300320B0A /* BattleEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleEnemy.h; sourceTree = "<group>"; };
 		F476D34D1C8DE5BA00A1B8EB /* ShowPolygonLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShowPolygonLayer.cpp; sourceTree = "<group>"; };
@@ -1155,6 +1159,8 @@
 				F4036DD51BDA2185002788AA /* scene */,
 				F4036DD41BDA216A002788AA /* database */,
 				F42303C61D2BC4BD00B06189 /* model */,
+				F45FD1B81D4D158000A445D7 /* EventPauseGuard.cpp */,
+				F45FD1B91D4D158000A445D7 /* EventPauseGuard.hpp */,
 			);
 			name = backGround;
 			sourceTree = "<group>";
@@ -1762,6 +1768,7 @@
 				F44D26C11C4D198400438F3C /* XMLParser.h in Sources */,
 				F409531C1C99B0C100E9B958 /* LayerCover.cpp in Sources */,
 				F44D26C21C4D198400438F3C /* XMLBase.h in Sources */,
+				F45FD1BA1D4D158000A445D7 /* EventPauseGuard.cpp in Sources */,
 				F44D26C31C4D198400438F3C /* Player.h in Sources */,
 				F4D5D0891C5FAFDF001441C3 /* FactoryContainer.cpp in Sources */,
 				F432930F1D39967800B7167C /* PortBgLayer.cpp in Sources */,
@@ -1925,6 +1932,7 @@
 				F4F956B51C5B49AD001AA1B3 /* kantaiCard.hpp in Sources */,
 				F4F956B61C5B49AD001AA1B3 /* KantaiDetailEntity.hpp in Sources */,
 				F4F956E61C5B9D4C001AA1B3 /* dock.cpp in Sources */,
+				F45FD1BB1D4D158000A445D7 /* EventPauseGuard.cpp in Sources */,
 				F4F956B71C5B49AD001AA1B3 /* EquipmentContainer.hpp in Sources */,
 				F4F956B81C5B49AD001AA1B3 /* KantaiListEntity.hpp in Sources */,
 				F4938B691C60999100AB1286 /* metaphysics.cpp in Sources */,

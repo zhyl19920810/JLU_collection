@@ -8,7 +8,7 @@
 
 #include "KantaiDetailEntity.hpp"
 #include "LayerCover.hpp"
-
+#include "EventPauseGuard.hpp"
 
 NS_KCL_BEGIN
 
@@ -180,17 +180,16 @@ void KantaiDetailEntity::setEquipContainerVisible(int equipNumber, bool bVisible
 void KantaiDetailEntity::moveOut()
 {
     auto size=Director::getInstance()->getVisibleSize();
-    auto runScene=Director::getInstance()->getRunningScene();
     if (!Hidden)
     {
         CallFunc* moveByBefore=CallFunc::create([=]()
         {
-            _eventDispatcher->pauseEventListenersForTarget(runScene,true);
+            EventPauseGuard::pause();
         });
         auto move=MoveBy::create(0.2, Vec2(size.width, 0));
         CallFunc* moveByFinish=CallFunc::create([=]()
         {
-            _eventDispatcher->resumeEventListenersForTarget(runScene,true);
+            EventPauseGuard::resume();
             layerCover->setCoverEnable(false);
         });
         entity->runAction(Sequence::create(moveByBefore,move,moveByFinish, NULL));
@@ -201,18 +200,17 @@ void KantaiDetailEntity::moveOut()
 void KantaiDetailEntity::moveIn()
 {
     auto size=Director::getInstance()->getVisibleSize();
-    auto runScene=Director::getInstance()->getRunningScene();
     if (Hidden)
     {
         CallFunc* moveByBefore=CallFunc::create([=]()
         {
            layerCover->setCoverEnable(true);
-           _eventDispatcher->pauseEventListenersForTarget(runScene,true);
+           EventPauseGuard::pause();
         });
         auto move=MoveBy::create(0.2, Vec2(-size.width, 0));
         CallFunc* moveByFinish=CallFunc::create([=]()
         {
-           _eventDispatcher->resumeEventListenersForTarget(runScene,true);
+           EventPauseGuard::resume();
         });
         entity->runAction(Sequence::create(moveByBefore,move,moveByFinish, NULL));
         Hidden = false;
@@ -242,7 +240,6 @@ void KantaiDetailEntity::setKantai(Kantai *kantai)
         setEquipContainerVisible(i+1, false);
         equipContainer[i]->updateEquip(NULL);
     }
-    
     
     
     
