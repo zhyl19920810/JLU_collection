@@ -45,10 +45,12 @@ public:
     void setKantaiVisible( bool bVisible);
     void setCoverVisble(bool bVisible,bool coverButton=false);
     bool haveKantai() const;
+    Kantai* getKantai(){return kantai;}
+    
     int getContainerKantaiNumber() const;
 
     
-    void changeContainer(Kantai* kantai);
+    void changeContainer(Kantai* preKantai,Kantai* kantai);
     void openNewContainer(Kantai* kantai);
     
 public:

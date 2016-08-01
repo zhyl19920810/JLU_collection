@@ -21,7 +21,7 @@ void EventPauseGuard::resume()
     if (_count==0)
     {
         auto scene=cocos2d::Director::getInstance()->getRunningScene();
-        cocos2d::Director::getInstance()->getEventDispatcher()->resumeEventListenersForTarget(scene,true);
+        cocos2d::Director::getInstance()->getEventDispatcher()->resumeEventListenersForTarget(scene,true);  
     }
 }
 

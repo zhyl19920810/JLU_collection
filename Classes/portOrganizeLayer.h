@@ -23,6 +23,14 @@ using namespace cocos2d;
 
 NS_KCL_BEGIN
 
+enum kantaiChangeType
+{
+    CHANGE_CONTAINER,
+    REMOVE_CONTAINER,
+    CLEAR_FLEET
+};
+
+
 class PortScene;
 
 class PortOrganizeLayer : public Panel
@@ -40,9 +48,7 @@ public:
     bool canChangeKantai(Kantai* kantai);
     
     
-    void changeContainer(Kantai* kantai);
-    void removeContainer();
-    void clearFleet(Ref* pSender);
+
      Fleet* getPanelFleet(){return fleet;}
     
 public:
@@ -87,6 +93,16 @@ public:
     
 private:
     OrganSelectEntity* organSelectEntity;
+    
+public:
+    void changeContainer(Kantai* kantai);
+    void removeContainer();
+    void clearFleet(Ref* pSender);
+    void containerActionStart(kantaiChangeType type);
+    void modifyContainer(kantaiChangeType type,kancolle::Kantai *_kantai=NULL);
+    void clearFleetCallback(Ref* ref);
+    std::vector<Kantai*> controlGroup;
+    OrganizeContainer* getContainer(int index);
 };
 
 

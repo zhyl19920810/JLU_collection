@@ -248,7 +248,7 @@ void OrganSelectEntity::moveIn()
 void OrganSelectEntity::changeShipCallback(cocos2d::Ref *pSender)
 {
     auto panel=dynamic_cast<PortOrganizeLayer*>(VIEW_MGR->getPanel(PanelType::PORT_ORGANIZE));
-    panel->changeContainer( kantai);
+    panel->modifyContainer(CHANGE_CONTAINER,kantai);
 }
 
 

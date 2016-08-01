@@ -321,9 +321,13 @@ void OrganizeContainerAction::setPankClose(OrganizeContainer* container)
 
 
 
-void OrganizeContainer::changeContainer(Kantai* kantai)
+void OrganizeContainer::changeContainer(Kantai* preKantai,Kantai* kantai)
 {
-    if (kantai)
+    if (!preKantai)
+    {
+        openNewContainer(kantai);
+    }
+    else if (kantai)
     {
         CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganizeContainerAction::setPankClose,this));
         CallFunc* f2=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::updateCharacterInfo, this,kantai));
@@ -337,7 +341,6 @@ void OrganizeContainer::changeContainer(Kantai* kantai)
         runAction(Sequence::create(f1,DelayTime::create(0.35),f2, NULL));
     }
 }
-
 
 
 

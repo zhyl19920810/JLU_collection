@@ -28,7 +28,7 @@ void KantaiListEntity::showSelect(Kantai* kantai)
 void KantaiListEntity::removeCallback(cocos2d::Ref *ref)
 {
     PortOrganizeLayer* panel=dynamic_cast<PortOrganizeLayer*>(VIEW_MGR->getPanel(PanelType::PORT_ORGANIZE));
-    panel->removeContainer();
+    panel->modifyContainer(REMOVE_CONTAINER);
 }
 
 bool KantaiListEntity::init()
