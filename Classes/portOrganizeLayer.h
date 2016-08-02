@@ -101,8 +101,10 @@ public:
     void containerActionStart(kantaiChangeType type);
     void modifyContainer(kantaiChangeType type,kancolle::Kantai *_kantai=NULL);
     void clearFleetCallback(Ref* ref);
-    std::vector<Kantai*> controlGroup;
     OrganizeContainer* getContainer(int index);
+    void setChangeButtonVisdible();
+    std::vector<Kantai*> controlGroup;
+    
 };
 
 
