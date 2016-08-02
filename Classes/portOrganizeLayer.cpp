@@ -129,9 +129,11 @@ void PortOrganizeLayer::initContainers()
 }
 
 
+
 bool PortOrganizeLayer::canChangeKantai(Kantai* kantai)
 {
     if (!kantai) return false;
+    if (sPlayer.getFleetByFleetKey(1)->KantaiSize()==1&&sPlayer.getFleetByFleetKey(1)==kantai->getFleet())      return false;
     auto _fleet=static_cast<Fleet*>(kantai->getFleet());
     
     if (_fleet&&_fleet->getShip(selectedShipIndex))
