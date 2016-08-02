@@ -15,6 +15,12 @@
 
 NS_KCL_BEGIN
 
+
+#define HIDE_SELECT_TIME 0.15
+#define HIDE_LIST_TIME   0.1
+#define CONTAINER_ACTION_TIME 0.6
+
+
 PortOrganizeLayer::PortOrganizeLayer()
 {
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("CommonAssets/commonAssets.plist", "CommonAssets/commonAssets.pvr.ccz");
@@ -133,21 +139,12 @@ void PortOrganizeLayer::initContainers()
 bool PortOrganizeLayer::canChangeKantai(Kantai* kantai)
 {
     if (!kantai) return false;
-    if (sPlayer.getFleetByFleetKey(1)->KantaiSize()==1&&sPlayer.getFleetByFleetKey(1)==kantai->getFleet())      return false;
-    auto _fleet=static_cast<Fleet*>(kantai->getFleet());
+    if (sPlayer.getFleetByFleetKey(1)->KantaiSize()==1&&sPlayer.getFleetByFleetKey(1)==kantai->getFleet())
+        return false;
     
-    if (_fleet&&_fleet->getShip(selectedShipIndex))
+    for (int i=1; i<=6; ++i)
     {
-        if (getContainer(selectedShipIndex)->getKantai()&&getContainer(selectedShipIndex)->getContainerKantaiNumber()==kantai->getKantaiNumber())
-        {
-            return false;
-        }
-        return true;
-    }
-    
-    for (int i=0; i<containers.size(); ++i)
-    {
-        if (containers[i]->haveKantai()&&(getContainer(i+1)->getContainerKantaiNumber()==kantai->getKantaiNumber()))
+        if (getContainer(i)->haveKantai()&&(getContainer(i)->getContainerKantaiNumber()==kantai->getKantaiNumber()))
         {
             return false;
         }
@@ -191,8 +188,7 @@ void PortOrganizeLayer::updateContainer()
         if (!hasKantai(i))
         {
             kantaiSize=i-1;
-            containers[kantaiSize-1+1]->setChangeButtonVisible(true);
-            //containers[i-1]->setCoverVisble(true,false);
+            getContainer(kantaiSize+1)->setChangeButtonVisible(true);
             return;
         }
     }
@@ -203,7 +199,7 @@ void PortOrganizeLayer::updateContainer(int position)
 {
     CCASSERT(position>=1&&position<=6, "position is not exist");
     auto kantai=fleet->getShip(position);
-    containers[position-1]->updateCharacterInfo(kantai);
+    getContainer(position)->updateCharacterInfo(kantai);
 }
 
 
@@ -244,128 +240,11 @@ void PortOrganizeLayer::clearFleetCallback(Ref* ref)
 }
 
 
-//void PortOrganizeLayer::clearFleet(cocos2d::Ref *pSender)
-//{
-//    for (int i=2; i<=kantaiSize; ++i)
-//    {
-//        sPlayer.removeKantai(fleet, i);
-//    }
-//    if (kantaiSize!=6) containers[kantaiSize]->setChangeButtonVisible(false);
-//    
-//    CallFunc* f1=CallFunc::create([=]()
-//                                  {
-//                                      for (int i=2; i<=kantaiSize; ++i)
-//                                      {
-//                                          containers[i-1]->changeContainer(fleet->getShip(i));
-//                                      }
-//                                  });
-//    CallFunc* f2=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, listEntity));
-//    CallFunc* f3=CallFunc::create([=]()
-//                                  {
-//                                      kantaiSize=1;
-//                                      containers[kantaiSize-1+1]->setChangeButtonVisible(true);
-//                                  });
-//    
-//    runAction(Sequence::create(f1,f2,DelayTime::create(0.7),f3, NULL));
-//}
-//
-//
-//
-//void PortOrganizeLayer::changeContainer(Kantai* kantai)
-//{
-//    SND->playEffect("soundSE/changeShip.mp3");
-//    
-//    auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
-//    if (fleet&&fleet->getShip(selectedShipIndex))
-//    {
-//        sPlayer.modifyKantaiPosition(fleet, selectedShipIndex, kantai);
-//        CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganSelectEntity::moveOut,organSelectEntity));
-//        CallFunc* f2=CallFunc::create(CC_CALLBACK_0(PortOrganizeLayer::hideList,this,this));
-//        CallFunc* f3=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::changeContainer, containers[selectedShipIndex-1],kantai));
-//        CallFunc* f4=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, listEntity));
-//        runAction(Sequence::create(f1,DelayTime::create(0.15),f2,DelayTime::create(0.1),f3,f4, NULL));
-//    }
-//    else
-//    {
-//        auto preFleet=dynamic_cast<Fleet*>(kantai->getFleet());
-//        int prePosition=1;
-//        if (preFleet)
-//        {
-//            for (; prePosition<=6; ++prePosition)
-//            {
-//                if (kantai==preFleet->getShip(prePosition)) {
-//                    break;
-//                }
-//            }
-//        }
-//        sPlayer.modifyKantaiPosition(fleet, selectedShipIndex, kantai);
-//        if (preFleet)
-//        {
-//            for (int i=prePosition+1; i<=6; ++i)
-//            {
-//                if (preFleet->getShip(i))
-//                {
-//                    sPlayer.modifyKantaiPosition(preFleet, i-1, preFleet->getShip(i));
-//                }
-//            }
-//        }
-//        
-//        CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganSelectEntity::moveOut,organSelectEntity));
-//        CallFunc* f2=CallFunc::create(CC_CALLBACK_0(PortOrganizeLayer::hideList,this,this));
-//        CallFunc* f3=CallFunc::create(CC_CALLBACK_0(OrganizeContainer::openNewContainer, containers[selectedShipIndex-1],kantai));
-//        CallFunc* f4=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, listEntity));
-//        runAction(Sequence::create(f1,DelayTime::create(0.15),f2,DelayTime::create(0.1),f3,f4, NULL));
-//        if (selectedShipIndex<6)
-//        {
-//            containers[selectedShipIndex]->setChangeButtonVisible(true);
-//        }
-//    }
-//    
-//    //containers[position-1]->changeContainer(kantai);
-//}
-//
-//void PortOrganizeLayer::removeContainer()
-//{
-//    auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
-//    if ((fleetNumber==1&&!fleet->getShip(2))||(!fleet->getShip(selectedShipIndex)))
-//    {
-//        return;
-//    }
-//    sPlayer.removeKantai(fleet, selectedShipIndex);
-//    
-//    for (int i=selectedShipIndex+1; i<=kantaiSize; ++i)
-//    {
-//        sPlayer.modifyKantaiPosition(fleet, i-1, fleet->getShip(i));
-//    }
-//    if (kantaiSize!=6)
-//    {
-//        containers[kantaiSize]->setChangeButtonVisible(false);
-//    }
-//    
-//    CallFunc* f1=CallFunc::create(CC_CALLBACK_0(OrganSelectEntity::moveOut, organSelectEntity));
-//    CallFunc* f2=CallFunc::create(CC_CALLBACK_0(PortOrganizeLayer::hideList,this,this));
-//    CallFunc* f3=CallFunc::create([=]()
-//                                  {
-//                                      for (int i=selectedShipIndex; i<=kantaiSize; ++i)
-//                                      {
-//                                          containers[i-1]->changeContainer(fleet->getShip(i));
-//                                      }
-//                                  });
-//    CallFunc* f4=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::updateRows, listEntity));
-//    CallFunc* f5=CallFunc::create([=]()
-//                                  {
-//                                      kantaiSize=kantaiSize-1;
-//                                      containers[kantaiSize]->setChangeButtonVisible(true);
-//                                  });
-//    runAction(Sequence::create(f1,DelayTime::create(0.15),f2,DelayTime::create(0.1),f3,f4,DelayTime::create(0.65),f5, NULL));
-//    
-//    //把maxIndex位置的changeButton设为Visible
-//}
 
 
 void PortOrganizeLayer::clearFleet(cocos2d::Ref *pSender)
 {
-    if (kantaiSize!=6) containers[kantaiSize]->setChangeButtonVisible(false);
+    if (kantaiSize!=6) getContainer(kantaiSize+1)->setChangeButtonVisible(false);
     for (int i=2; i<=kantaiSize; ++i)
     {
         sPlayer.removeKantai(fleet, i);
@@ -422,7 +301,7 @@ void PortOrganizeLayer::removeContainer()
         return;
     }
     
-    if (kantaiSize!=6) containers[kantaiSize]->setChangeButtonVisible(false);
+    if (kantaiSize!=6) getContainer(kantaiSize+1)->setChangeButtonVisible(false);
     sPlayer.removeKantai(fleet, selectedShipIndex);
     
     for (int i=selectedShipIndex+1; i<=kantaiSize; ++i)
@@ -463,13 +342,11 @@ void PortOrganizeLayer::modifyContainer(kantaiChangeType type,kancolle::Kantai *
     containerActionStart(type);
 }
 
-#define HIDE_SELECT_TIME 0.15
-#define HIDE_LIST_TIME   0.1
-#define CONTAINER_ACTION_TIME 0.6
+
 
 void PortOrganizeLayer::containerActionStart(kantaiChangeType type)
 {
-    EventPauseGuard::pause();
+    EVENT_PAUSE
     
     FiniteTimeAction* _hideSelect;
     {
@@ -524,7 +401,7 @@ void PortOrganizeLayer::containerActionStart(kantaiChangeType type)
             break;
     }
     
-    EventPauseGuard::resume();
+    EVENT_RESUME
 }
 
 
@@ -553,7 +430,7 @@ bool PortOrganizeLayer::hasKantai(int position)
     {
         return false;
     }
-    if (containers[position-1]->haveKantai())
+    if (getContainer(position)->haveKantai())
     {
         return true;
     }

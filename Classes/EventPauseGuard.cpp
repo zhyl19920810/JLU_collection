@@ -13,6 +13,7 @@
 NS_KCL_BEGIN
 
 
+
 int EventPauseGuard::_count=0;
 
 void EventPauseGuard::resume()

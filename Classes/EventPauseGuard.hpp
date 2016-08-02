@@ -13,6 +13,11 @@
 
 NS_KCL_BEGIN
 
+
+#define EVENT_PAUSE EventPauseGuard::pause();
+#define EVENT_RESUME EventPauseGuard::resume();
+
+
 class EventPauseGuard
 {
 public:
