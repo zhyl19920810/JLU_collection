@@ -9,6 +9,7 @@
 #include "LayerSelecter.h"
 #include "SelecterUnit.hpp"
 #include "ViewMgr.hpp"
+#include "EventPauseGuard.hpp"
 
 NS_KCL_BEGIN
 
@@ -179,8 +180,14 @@ void LayerSelecter::changeHookPos(kancolle::PanelType type)
     auto currSelecter=getSelecterUnit(currType);
     auto modifySelecter=getSelecterUnit(type);
     
+    EVENT_PAUSE
+    
     ActionInterval* p1;
     {
+        CallFunc* callBefore=CallFunc::create([=]()
+        {
+            EVENT_PAUSE
+        });
         CallFunc* callfunc=CallFunc::create([=]()
         {
             auto hookMove=MoveTo::create(DropTime, Vec2(xLoc["hookDown"], yLoc[currPos]));
@@ -194,7 +201,7 @@ void LayerSelecter::changeHookPos(kancolle::PanelType type)
             currSelecter->setSelected(false);
             currSelecter->setPosition(xLoc["buttonFree"], yLoc[currPos]);
         });
-        p1=Sequence::create(callfunc,DelayTime::create(DropTime+StopTime),callAfter, NULL);
+        p1=Sequence::create(callBefore,callfunc,DelayTime::create(DropTime+StopTime),callAfter, NULL);
     }
     
     ActionInterval* p2;
@@ -226,7 +233,7 @@ void LayerSelecter::changeHookPos(kancolle::PanelType type)
         CallFunc* callAfter=CallFunc::create([=]()
         {
             modifySelecter->setSelected(true);
-            modifySelecter->setPosition(xLoc["buttonSelected"], yLoc[modifyPos]);
+            modifySelecter->setPosition(xLoc["buttonFree"], yLoc[modifyPos]);
         });
         p4=Sequence::create(callfunc,DelayTime::create(LiftTime+StopTime),callAfter, NULL);
     }
@@ -243,12 +250,14 @@ void LayerSelecter::changeHookPos(kancolle::PanelType type)
         CallFunc* callAfter=CallFunc::create([=]()
         {
             resumeButtonListner();
+            EVENT_RESUME
         });
         p5=Sequence::create(callfunc,DelayTime::create(DropTime+StopTime),callAfter, NULL);
     }
     
     auto seqAction=Sequence::create(p1,p2,p3,p4,p5,DelayTime::create(DropTime*2+LiftTime*2+OrbitMoveTime+StopTime*4),NULL);
     runAction(seqAction);
+    
 }
 
 SelecterUnit* LayerSelecter::getSelecterUnit(PanelType type) const
