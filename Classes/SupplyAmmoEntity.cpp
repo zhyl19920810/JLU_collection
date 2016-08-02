@@ -26,32 +26,8 @@ bool AmmoEntity::init()
             break;
         }
         
-        
-        auto ammoBg =Sprite::createWithSpriteFrameName("ammoBg.png");
-        this->addChild(ammoBg);
-        ammoBg->setPosition(50, 1);
-        
-        leftBottom=Sprite::create("SupplyMain/image 8.png");
-        addChild(leftBottom);
-        leftBottom->setPosition(27-leftBottom->getContentSize().width/2,-73);
-        leftBottom->setAnchorPoint(Vec2(0.0, 0.5));
-        leftBottom->setOpacity(200);
-        leftBottom->setFlippedX(true);
-        
-        rightBottom=Sprite::create("SupplyMain/image 8.png");
-        addChild(rightBottom);
-        rightBottom->setOpacity(200);
-        rightBottom->setPosition(72+rightBottom->getContentSize().width/2,-73);
-        rightBottom->setAnchorPoint(Vec2(1.0, 0.5));
-        
-        
-        auto ammoBox =Sprite::createWithSpriteFrameName("ammoBox.png");
-        this->addChild(ammoBox);
-        ammoBox->setPosition(50, 105);
-        
-        auto supplyLight=Sprite::createWithSpriteFrameName("supplyLight.png");
-        addChild(supplyLight);
-        supplyLight->setPosition(ammoBg->getPosition()-Vec2(0,20));
+        initBg();
+        initBottom();
         
         
         bRet=true;
@@ -59,6 +35,42 @@ bool AmmoEntity::init()
     
     return bRet;
 }
+
+
+
+void AmmoEntity::initBg()
+{
+    auto ammoBg =Sprite::createWithSpriteFrameName("ammoBg.png");
+    this->addChild(ammoBg);
+    ammoBg->setPosition(50, 1);
+    
+    auto ammoBox =Sprite::createWithSpriteFrameName("ammoBox.png");
+    this->addChild(ammoBox);
+    ammoBox->setPosition(50, 105);
+    
+    auto supplyLight=Sprite::createWithSpriteFrameName("supplyLight.png");
+    addChild(supplyLight);
+    supplyLight->setPosition(ammoBg->getPosition()-Vec2(0,20));
+}
+
+
+
+void AmmoEntity::initBottom()
+{
+    leftBottom=Sprite::create("SupplyMain/image 8.png");
+    addChild(leftBottom);
+    leftBottom->setPosition(27-leftBottom->getContentSize().width/2,-73);
+    leftBottom->setAnchorPoint(Vec2(0.0, 0.5));
+    leftBottom->setOpacity(200);
+    leftBottom->setFlippedX(true);
+    
+    rightBottom=Sprite::create("SupplyMain/image 8.png");
+    addChild(rightBottom);
+    rightBottom->setOpacity(200);
+    rightBottom->setPosition(72+rightBottom->getContentSize().width/2,-73);
+    rightBottom->setAnchorPoint(Vec2(1.0, 0.5));
+}
+
 
 
 

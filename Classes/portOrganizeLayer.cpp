@@ -142,14 +142,32 @@ bool PortOrganizeLayer::canChangeKantai(Kantai* kantai)
     if (sPlayer.getFleetByFleetKey(1)->KantaiSize()==1&&sPlayer.getFleetByFleetKey(1)==kantai->getFleet())
         return false;
     
-    for (int i=1; i<=6; ++i)
+    if (fleet->getShip(selectedShipIndex))
     {
-        if (getContainer(i)->haveKantai()&&(getContainer(i)->getContainerKantaiNumber()==kantai->getKantaiNumber()))
+        if (kantai->getFleet()==fleet&&kantai!=fleet->getShip(selectedShipIndex)) return true;
+        if (kantai==fleet->getShip(selectedShipIndex))                            return false;
+        for (int i=1; i<=6; ++i)
         {
-            return false;
+            if (getContainer(i)->haveKantai()&&(getContainer(i)->getContainerKantaiNumber()==kantai->getKantaiNumber()))
+            {
+                return false;
+            }
         }
+        return true;
     }
-    return true;
+    else
+    {
+        for (int i=1; i<=6; ++i)
+        {
+            if (getContainer(i)->haveKantai()&&(getContainer(i)->getContainerKantaiNumber()==kantai->getKantaiNumber()))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+
 }
 
 

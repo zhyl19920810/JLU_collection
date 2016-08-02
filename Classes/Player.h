@@ -25,16 +25,6 @@ NS_KCL_BEGIN
 
 class Player;
 
-class KantaiDock
-{
-public:
-    
-    
-private:
-    
-};
-
-
 
 
 
@@ -173,9 +163,6 @@ public:
     void changeKantaiPosition(Fleet *fleet, int position,Kantai *kantai);
     void removeKantai(Fleet* _fleet,int _position);
     
-//    bool canDeleteKantai(int _kantaiKey);
-//    void deleteKantai(int _kantaiKey); //装备也删除
-//    void changeKantaiPosition(int _kantaiKey,int _fleetNumber,int _position);
 private:
     
     void _changeKantaiPosition(Kantai* kantai,Fleet* fleet,int position);
@@ -199,7 +186,6 @@ protected:
     
 //dock
 private:
-    std::vector<KantaiDock*> kantaiDock;
     void addAttr(float dt);
     void startCircle();
     void endCircle();

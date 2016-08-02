@@ -96,12 +96,13 @@ public:
     void addAmmoTank(int number);
     void minusAmmoTank(int number);
     
-    //void addFuelTank(int number);
-    //void minusFuelTank(int number);
-    //void removeAllAmmoTank();
-    //void removeAllFuelTank();
     
 private:
+    void initBottom();
+    void initBg();
+    
+private:
+    
     std::vector<AmmoTank*> ammoTank;
     Sprite* leftBottom;
     Sprite* rightBottom;

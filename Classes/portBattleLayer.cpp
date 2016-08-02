@@ -8,6 +8,7 @@
 
 #include "portBattleLayer.h"
 #include "MissionSelectPage.h"
+#include "Player.h"
 
 
 NS_KCL_BEGIN
@@ -47,18 +48,14 @@ void PortBattleLayer::initLayer()
     
     auto strikeButton = MenuItemImage::create("interface/SallyMain/SallyMain_361.png", "interface/SallyMain/SallyMain_363.png", CC_CALLBACK_1(PortBattleLayer::ShowMissionSelectPage, this));
     strikeButton->setPosition(230, 240);
-//    auto strikeDescription = Sprite::create("SallyMain/image 388.png");
-//    strikeDescription->setPosition(230, 80);
+    
     
     auto playactButton = MenuItemImage::create("interface/SallyMain/SallyMain_366.png", "interface/SallyMain/SallyMain_368.png", CC_CALLBACK_1(PortBattleLayer::callBack1, this));
     playactButton->setPosition(450, 240);
-//    auto playactDescription = Sprite::create("Resources/interface/SallyMain/image 386.png");
-//    playactDescription->setPosition(450, 80);
+    
     
     auto expeditionButton = MenuItemImage::create("interface/SallyMain/SallyMain_371.png", "interface/SallyMain/SallyMain_373.png", CC_CALLBACK_1(PortBattleLayer::callBack2, this));
     expeditionButton->setPosition(670, 240);
-//    auto expeditionDescription = Sprite::create("Resources/interface/SallyMain/image 387.png");
-//    expeditionDescription->setPosition(670, 80);
     
     
     auto menu = Menu::create(strikeButton, playactButton, expeditionButton, NULL);
@@ -82,6 +79,8 @@ void PortBattleLayer::callBack2(Ref* pSender)
 
 void PortBattleLayer::ShowMissionSelectPage(Ref* pSender)
 {
+    auto fleet=sPlayer.getFleetByFleetKey(1);
+    
 //    if (missionPage->isHidden())
 //    {
 //        //missionPage->moveIn();

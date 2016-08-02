@@ -21,6 +21,9 @@ USING_NS_CC;
 
 NS_KCL_BEGIN
 
+class SupplyImp;
+
+
 class ShipUnit:public Node
 {
     typedef enum
@@ -28,7 +31,7 @@ class ShipUnit:public Node
         SupplyFree,
         SupplyToggle,
         SupplySprite,
-    }UnitCondition;
+    }ShipUnitState;
     friend class PortSupplyLayer;
 public:
     static ShipUnit* create(int position)
@@ -48,12 +51,10 @@ public:
     
     ShipUnit();
     
-    void freshShipCondition();
-    void freshShipAttr();
-    void addAmmo(int ammo);
-    void addFuel(int fuel);
+    void updateShipState();
+    void updateBar();
     void setNoKantai();
-    void setKantai(Kantai* kantai);
+    void updateKantai(Kantai* kantai);
     void callback(Ref* pSender);
 private:
     Sprite* kantaiBg;
@@ -72,9 +73,14 @@ private:
     MenuItemToggle* select;
     int position;
     Kantai* kantai;
-    UnitCondition condition;
+    ShipUnitState unitState;
     bool haveAddFuel;
     bool haveAddAmmo;
+    
+    
+private:
+    void initBg();
+    void initDisplayAttr();
 };
 
 

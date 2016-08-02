@@ -197,6 +197,12 @@
 		F40CF9901BDB7FDF00DD897F /* XMLBase.h in Sources */ = {isa = PBXBuildFile; fileRef = F40CF97E1BDB4D1E00DD897F /* XMLBase.h */; };
 		F40CF9911BDB7FDF00DD897F /* Formation.h in Sources */ = {isa = PBXBuildFile; fileRef = F40CF9881BDB69A300DD897F /* Formation.h */; };
 		F40CF9921BDB7FDF00DD897F /* BattleModel.h in Sources */ = {isa = PBXBuildFile; fileRef = F40CF98D1BDB6A5A00DD897F /* BattleModel.h */; };
+		F413B5471D508F92003E1967 /* SupplyInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F413B5451D508F92003E1967 /* SupplyInfo.cpp */; };
+		F413B5481D508F92003E1967 /* SupplyInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F413B5451D508F92003E1967 /* SupplyInfo.cpp */; };
+		F413B5501D50A3C3003E1967 /* MathUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F413B54E1D50A3C3003E1967 /* MathUtil.cpp */; };
+		F413B5511D50A3C3003E1967 /* MathUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F413B54E1D50A3C3003E1967 /* MathUtil.cpp */; };
+		F413B5541D50A7DF003E1967 /* DataMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F413B5521D50A7DF003E1967 /* DataMgr.cpp */; };
+		F413B5551D50A7DF003E1967 /* DataMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F413B5521D50A7DF003E1967 /* DataMgr.cpp */; };
 		F4198EF01D445FF800429926 /* SelecterUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4198EEE1D445FF800429926 /* SelecterUnit.cpp */; };
 		F4198EF11D445FF800429926 /* SelecterUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4198EEE1D445FF800429926 /* SelecterUnit.cpp */; };
 		F41D54971D2A915B0094CAAD /* Sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F41D54951D2A915B0094CAAD /* Sound.cpp */; };
@@ -600,6 +606,12 @@
 		F40CF9881BDB69A300DD897F /* Formation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Formation.h; sourceTree = "<group>"; };
 		F40CF98C1BDB6A5A00DD897F /* BattleModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleModel.cpp; sourceTree = "<group>"; };
 		F40CF98D1BDB6A5A00DD897F /* BattleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleModel.h; sourceTree = "<group>"; };
+		F413B5451D508F92003E1967 /* SupplyInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SupplyInfo.cpp; sourceTree = "<group>"; };
+		F413B5461D508F92003E1967 /* SupplyInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SupplyInfo.hpp; sourceTree = "<group>"; };
+		F413B54E1D50A3C3003E1967 /* MathUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MathUtil.cpp; sourceTree = "<group>"; };
+		F413B54F1D50A3C3003E1967 /* MathUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MathUtil.hpp; sourceTree = "<group>"; };
+		F413B5521D50A7DF003E1967 /* DataMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataMgr.cpp; sourceTree = "<group>"; };
+		F413B5531D50A7DF003E1967 /* DataMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataMgr.hpp; sourceTree = "<group>"; };
 		F4198EEE1D445FF800429926 /* SelecterUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SelecterUnit.cpp; sourceTree = "<group>"; };
 		F4198EEF1D445FF800429926 /* SelecterUnit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SelecterUnit.hpp; sourceTree = "<group>"; };
 		F41D54951D2A915B0094CAAD /* Sound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sound.cpp; sourceTree = "<group>"; };
@@ -1148,19 +1160,21 @@
 		F4036DD31BDA2160002788AA /* backGround */ = {
 			isa = PBXGroup;
 			children = (
-				F41D548E1D2A903D0094CAAD /* Sound */,
-				F4FABB121C50D89000F75BCE /* GameManger.cpp */,
-				F4FABB131C50D89000F75BCE /* GameManger.hpp */,
-				F4FABB0E1C50D42600F75BCE /* Singleton.cpp */,
-				F4FABB0F1C50D42600F75BCE /* Singleton.hpp */,
 				F4FABB011C50D2D200F75BCE /* CSV */,
-				F4036DD71BDA2216002788AA /* XML */,
-				F4036DD61BDA21A9002788AA /* player */,
-				F4036DD51BDA2185002788AA /* scene */,
 				F4036DD41BDA216A002788AA /* database */,
-				F42303C61D2BC4BD00B06189 /* model */,
 				F45FD1B81D4D158000A445D7 /* EventPauseGuard.cpp */,
 				F45FD1B91D4D158000A445D7 /* EventPauseGuard.hpp */,
+				F4FABB121C50D89000F75BCE /* GameManger.cpp */,
+				F4FABB131C50D89000F75BCE /* GameManger.hpp */,
+				F42303C61D2BC4BD00B06189 /* model */,
+				F4036DD61BDA21A9002788AA /* player */,
+				F4036DD51BDA2185002788AA /* scene */,
+				F4FABB0E1C50D42600F75BCE /* Singleton.cpp */,
+				F4FABB0F1C50D42600F75BCE /* Singleton.hpp */,
+				F41D548E1D2A903D0094CAAD /* Sound */,
+				F4036DD71BDA2216002788AA /* XML */,
+				F413B5521D50A7DF003E1967 /* DataMgr.cpp */,
+				F413B5531D50A7DF003E1967 /* DataMgr.hpp */,
 			);
 			name = backGround;
 			sourceTree = "<group>";
@@ -1259,6 +1273,8 @@
 				F4D9C3651C860096002A93EC /* SupplyAmmoEntity.hpp */,
 				F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */,
 				F4D38E1A1C871AB9009BE55C /* SupplyFuelEntity.hpp */,
+				F413B5451D508F92003E1967 /* SupplyInfo.cpp */,
+				F413B5461D508F92003E1967 /* SupplyInfo.hpp */,
 			);
 			name = supply;
 			sourceTree = "<group>";
@@ -1395,6 +1411,8 @@
 				F43BD5F71D2ABE2F00B572C9 /* TinaMgr.hpp */,
 				F43BD5FA1D2ABE5800B572C9 /* TinaConfig.cpp */,
 				F43BD5FB1D2ABE5800B572C9 /* TinaConfig.hpp */,
+				F413B54E1D50A3C3003E1967 /* MathUtil.cpp */,
+				F413B54F1D50A3C3003E1967 /* MathUtil.hpp */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -1775,6 +1793,7 @@
 				F44D26C41C4D198400438F3C /* DatabaseScene.h in Sources */,
 				F43BD6031D2AC1B100B572C9 /* tinaMacros.cpp in Sources */,
 				F40B47A11D3E7B7D006F5375 /* SoundPanelButton.cpp in Sources */,
+				F413B5541D50A7DF003E1967 /* DataMgr.cpp in Sources */,
 				F44D26C51C4D198400438F3C /* XMLControl.h in Sources */,
 				F42303CA1D2BCDF200B06189 /* BundleMgrExt.cpp in Sources */,
 				F40C1BB31C619A8F0093774E /* buildKantaiUnit.cpp in Sources */,
@@ -1823,6 +1842,7 @@
 				F44D26E51C4D198400438F3C /* portMainLayer.h in Sources */,
 				F44D26E61C4D198400438F3C /* portOrganizeLayer.h in Sources */,
 				F4FABB101C50D42600F75BCE /* Singleton.cpp in Sources */,
+				F413B5471D508F92003E1967 /* SupplyInfo.cpp in Sources */,
 				F44D26E71C4D198400438F3C /* portRemodeLayer.h in Sources */,
 				F44D26E81C4D198400438F3C /* portRepairLayer.h in Sources */,
 				F43BD5F81D2ABE2F00B572C9 /* TinaMgr.cpp in Sources */,
@@ -1914,6 +1934,7 @@
 				F4036DA21BDA1FDD002788AA /* MissionSelectPage.cpp in Sources */,
 				F4036D901BDA1FDD002788AA /* HelloWorldScene.cpp in Sources */,
 				F4036DAA1BDA1FDD002788AA /* portBattleLayer.cpp in Sources */,
+				F413B5501D50A3C3003E1967 /* MathUtil.cpp in Sources */,
 				F4036DBA1BDA1FDD002788AA /* SallyScene.cpp in Sources */,
 				F42DB8F21C59DBF600CBE2C7 /* KantaiListEntity.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -2011,7 +2032,9 @@
 				F42ECDA31D2FF75600E09EA0 /* signBoardGirl.cpp in Sources */,
 				F4036E0D1BDA2316002788AA /* kantaiDB.cpp in Sources */,
 				F4036E0E1BDA2316002788AA /* kantaiDB.h in Sources */,
+				F413B5551D50A7DF003E1967 /* DataMgr.cpp in Sources */,
 				F4036E0F1BDA2316002788AA /* playerDB.cpp in Sources */,
+				F413B5511D50A3C3003E1967 /* MathUtil.cpp in Sources */,
 				F4E62F421BDCD9B900180F6B /* BattleHero.cpp in Sources */,
 				F40CF98F1BDB6A5A00DD897F /* BattleModel.cpp in Sources */,
 				F4D38E201C8731EF009BE55C /* OrganizeSelectEntity.cpp in Sources */,
@@ -2024,6 +2047,7 @@
 				F4036E131BDA2316002788AA /* HelloWorldScene.cpp in Sources */,
 				F4036E141BDA2316002788AA /* HelloWorldScene.h in Sources */,
 				F4036E151BDA2316002788AA /* kantai.cpp in Sources */,
+				F413B5481D508F92003E1967 /* SupplyInfo.cpp in Sources */,
 				F4036E161BDA2316002788AA /* kantai.h in Sources */,
 				F43907A51C8B3E10004B5B2D /* FactoryListEntity.cpp in Sources */,
 				F4036E171BDA2316002788AA /* Equip.cpp in Sources */,
