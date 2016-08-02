@@ -127,8 +127,18 @@ void LayerSelecter::initButton()
     addChild(factoryButton);
 }
 
+void LayerSelecter::setBattleState()
+{
+    
+}
+
 void LayerSelecter::setLayerType(PanelType type)
 {
+    if (type==PanelType::PORT_BATTLE)
+    {
+        setBattleState();
+        return;
+    }
     currType=type;
     if (isPortPanel(currType))
     {
@@ -180,7 +190,6 @@ void LayerSelecter::changeHookPos(kancolle::PanelType type)
     auto currSelecter=getSelecterUnit(currType);
     auto modifySelecter=getSelecterUnit(type);
     
-    EVENT_PAUSE
     
     ActionInterval* p1;
     {
@@ -250,6 +259,7 @@ void LayerSelecter::changeHookPos(kancolle::PanelType type)
         CallFunc* callAfter=CallFunc::create([=]()
         {
             resumeButtonListner();
+            currType=type;
             EVENT_RESUME
         });
         p5=Sequence::create(callfunc,DelayTime::create(DropTime+StopTime),callAfter, NULL);

@@ -73,7 +73,7 @@ private:
     
 private:
     LayerColor* coverLayer;
-    void changePortPanelAction();
+    void changePortPanelAction(PanelType newType);
 };
 
 NS_KCL_END

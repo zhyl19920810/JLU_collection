@@ -68,7 +68,10 @@ cocos2d::Scene* ViewMgr::showScene(SceneType sceneType,bool replaceScene,const c
 
 Panel* ViewMgr::showPanel(PanelType panelType,bool replaceScene,bool prePanelVisible,const cocos2d::Value& data)
 {
-    if (panelType==currPanelType||panelType==PanelType::NONE) {
+    cocos2d::log("before showPanel,panelSize is %d",static_cast<int>(sceneStack.begin()->panelQueue.size()));
+    if (panelType==currPanelType||panelType==PanelType::NONE)
+    {
+        cocos2d::log("have the panel,panelSize is %d",static_cast<int>(sceneStack.begin()->panelQueue.size()));
         return ViewMgrFactory::getPanel(panelType);
     }
     
@@ -111,6 +114,7 @@ Panel* ViewMgr::showPanel(PanelType panelType,bool replaceScene,bool prePanelVis
     
     currPanelType=panelType;
     
+    cocos2d::log("after showPanel,panelSize is %d",static_cast<int>(sceneStack.begin()->panelQueue.size()));
     return _panel;
 }
 

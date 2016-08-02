@@ -141,8 +141,7 @@ void PortPanelState::Enter(PanelType preType,kancolle::PortScene *portScene)
         case kancolle::PanelType::PORT_REPAIR:
         case kancolle::PanelType::PORT_SUPPLY:
             portScene->layerSelecter->changeHookPos(newType);
-            portScene->changePortPanelAction();
-            portScene->layerSelecter->currType=newType;
+            portScene->changePortPanelAction(newType);
             break;
         case kancolle::PanelType::NONE:
             VIEW_MGR->showPanel(newType);
@@ -151,16 +150,22 @@ void PortPanelState::Enter(PanelType preType,kancolle::PortScene *portScene)
             portScene->portUIlayer->changeTitlePic(newType);
             break;
         case kancolle::PanelType::SOUND:
-            
             break;
         default:
             break;
     }
 }
 
-void PortPanelState::Exit(PanelType preType,kancolle::PortScene *portScene)
+void PortPanelState::Exit(PanelType newType,kancolle::PortScene *portScene)
 {
-    
+    switch (newType)
+    {
+        case kancolle::PanelType::PORT_MAINLAYER:
+            
+            break;
+        default:
+            break;
+    }
 }
 
 

@@ -78,7 +78,7 @@ private:
     bool isPortPanel(PanelType type) const;
     void stopButtonListner();
     void resumeButtonListner();
-    
+    void setBattleState();
 private:
     std::map<std::string,float> xLoc;
     std::map<std::string,float> yLoc;

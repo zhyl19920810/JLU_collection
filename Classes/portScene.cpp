@@ -114,9 +114,9 @@ bool PortScene::init()
 }
 
 
-void PortScene::changePortPanelAction()
+void PortScene::changePortPanelAction(PanelType newType)
 {
-
+    
     ActionInterval* p1;
     {
         CallFunc* callfunc=CallFunc::create([=]()
@@ -134,8 +134,8 @@ void PortScene::changePortPanelAction()
     {
         CallFunc* callfunc=CallFunc::create([=]()
         {
-            VIEW_MGR->showPanel(getCurrPanelType(),true);
-            portUIlayer->changeTitlePic(getCurrPanelType());
+            VIEW_MGR->showPanel(newType,true);
+            portUIlayer->changeTitlePic(newType);
         });
         p2=Sequence::create(callfunc,DelayTime::create(OrbitMoveTime), NULL);
     }

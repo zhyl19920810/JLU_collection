@@ -346,7 +346,12 @@ void PortOrganizeLayer::modifyContainer(kantaiChangeType type,kancolle::Kantai *
 
 void PortOrganizeLayer::containerActionStart(kantaiChangeType type)
 {
-    EVENT_PAUSE
+    
+    
+    auto _eventBefore=CallFunc::create([=]()
+    {
+           EVENT_PAUSE
+    });
     
     FiniteTimeAction* _hideSelect;
     {
@@ -371,7 +376,7 @@ void PortOrganizeLayer::containerActionStart(kantaiChangeType type)
                     getContainer(i)->changeContainer(controlGroup[i-1],fleet->getShip(i));
             }
         });
-        _changeContainer=Sequence::create(p1,DelayTime::create(CHANGE_CONTAINER), NULL);
+        _changeContainer=Sequence::create(p1,DelayTime::create(CONTAINER_ACTION_TIME), NULL);
     }
     
     FiniteTimeAction* _updateRow;
@@ -386,22 +391,30 @@ void PortOrganizeLayer::containerActionStart(kantaiChangeType type)
         _setChangeButton=Sequence::create(DelayTime::create(0.4),p1, NULL);
     }
     
+    auto _eventAfter=CallFunc::create([=]()
+    {
+         EVENT_RESUME
+    });
+    
+    
     switch (type)
     {
         case CHANGE_CONTAINER:
-            runAction(Sequence::create(_hideSelect,_hideList,_changeContainer,_updateRow,_setChangeButton, NULL));
+            runAction(Sequence::create(_eventBefore,_hideSelect,_hideList,_changeContainer,_updateRow,_setChangeButton,_eventAfter, NULL));
             break;
         case REMOVE_CONTAINER:
-            runAction(Sequence::create(_hideList,_changeContainer,_updateRow,_setChangeButton, NULL));
+            runAction(Sequence::create(_eventBefore,_hideList,_changeContainer,_updateRow,_setChangeButton,_eventAfter, NULL));
             break;
         case CLEAR_FLEET:
-            runAction(Sequence::create(_changeContainer,_updateRow,_setChangeButton, NULL));
+            runAction(Sequence::create(_eventBefore,_changeContainer,_updateRow,_setChangeButton,_eventAfter, NULL));
             break;
         default:
             break;
     }
     
-    EVENT_RESUME
+
+    
+    
 }
 
 
