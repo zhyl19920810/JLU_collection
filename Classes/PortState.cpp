@@ -16,6 +16,10 @@
 
 NS_KCL_BEGIN
 
+
+#define MAIN_PORT_TIME 0.15
+#define PORT_PORT_TIME  0.7
+
 PortStateMachine::PortStateMachine(PortScene* _owner):
 owner(_owner),
 m_pPreviousState(&nullState),
@@ -72,7 +76,7 @@ void MainPanelState::Enter(PanelType preType,kancolle::PortScene *portScene)
             VIEW_MGR->showPanel(PanelType::PORT_MAINLAYER);
             portScene->portUIlayer->setVisible(true);
             portScene->layerSelecter->setVisible(true);
-            portScene->portUIlayer->changeTitlePic(PanelType::PORT_MAINLAYER);
+            //portScene->portUIlayer->changeTitlePic(PanelType::PORT_MAINLAYER);
             break;
         case kancolle::PanelType::PORT_BATTLE:
         case kancolle::PanelType::PORT_FACTORY:
@@ -82,7 +86,7 @@ void MainPanelState::Enter(PanelType preType,kancolle::PortScene *portScene)
         case kancolle::PanelType::PORT_SUPPLY:
             VIEW_MGR->showPanel(PanelType::PORT_MAINLAYER);
             portScene->soundButton->setVisible(true);
-            portScene->portUIlayer->changeTitlePic(PanelType::PORT_MAINLAYER);
+            portScene->portUIlayer->changeTitlePic(PanelType::PORT_MAINLAYER,MAIN_PORT_TIME);
             portScene->layerSelecter->moveOut();
             dynamic_cast<PortMainLayer*>(VIEW_MGR->getPanel(PanelType::PORT_MAINLAYER))->buttonFlyIn();
             dynamic_cast<PortMainLayer*>(VIEW_MGR->getPanel(PanelType::PORT_MAINLAYER))->updateGirl();
@@ -130,7 +134,7 @@ void PortPanelState::Enter(PanelType preType,kancolle::PortScene *portScene)
     {
         case kancolle::PanelType::PORT_MAINLAYER:
             VIEW_MGR->showPanel(newType,false);
-            portScene->portUIlayer->changeTitlePic(newType);
+            portScene->portUIlayer->changeTitlePic(newType,MAIN_PORT_TIME);
             portScene->layerSelecter->setLayerType(newType);
             portScene->layerSelecter->moveIn();
             break;
@@ -147,7 +151,7 @@ void PortPanelState::Enter(PanelType preType,kancolle::PortScene *portScene)
             VIEW_MGR->showPanel(newType);
             portScene->portUIlayer->setVisible(true);
             portScene->layerSelecter->setVisible(true);
-            portScene->portUIlayer->changeTitlePic(newType);
+            portScene->portUIlayer->changeTitlePic(newType,MAIN_PORT_TIME);
             break;
         case kancolle::PanelType::SOUND:
             break;

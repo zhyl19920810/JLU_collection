@@ -268,6 +268,8 @@
 		F43FFC831C5CE8E500C98BED /* RepairListRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43FFC801C5CE8E500C98BED /* RepairListRow.cpp */; };
 		F43FFC861C5CE8F600C98BED /* RepairListEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43FFC841C5CE8F600C98BED /* RepairListEntity.cpp */; };
 		F43FFC871C5CE8F600C98BED /* RepairListEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43FFC841C5CE8F600C98BED /* RepairListEntity.cpp */; };
+		F445E9231D513E3C00855D10 /* TitlePic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F445E9211D513E3C00855D10 /* TitlePic.cpp */; };
+		F445E9241D513E3C00855D10 /* TitlePic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F445E9211D513E3C00855D10 /* TitlePic.cpp */; };
 		F44D26C01C4D198400438F3C /* XMLBuilder.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D731BDA1FDD002788AA /* XMLBuilder.h */; };
 		F44D26C11C4D198400438F3C /* XMLParser.h in Sources */ = {isa = PBXBuildFile; fileRef = F4036D771BDA1FDD002788AA /* XMLParser.h */; };
 		F44D26C21C4D198400438F3C /* XMLBase.h in Sources */ = {isa = PBXBuildFile; fileRef = F40CF97E1BDB4D1E00DD897F /* XMLBase.h */; };
@@ -677,6 +679,8 @@
 		F43FFC811C5CE8E500C98BED /* RepairListRow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RepairListRow.hpp; sourceTree = "<group>"; };
 		F43FFC841C5CE8F600C98BED /* RepairListEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RepairListEntity.cpp; sourceTree = "<group>"; };
 		F43FFC851C5CE8F600C98BED /* RepairListEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RepairListEntity.hpp; sourceTree = "<group>"; };
+		F445E9211D513E3C00855D10 /* TitlePic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitlePic.cpp; sourceTree = "<group>"; };
+		F445E9221D513E3C00855D10 /* TitlePic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TitlePic.hpp; sourceTree = "<group>"; };
 		F44D26EC1C4D19A700438F3C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
 		F44D26ED1C4D19A700438F3C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
 		F45FD1B81D4D158000A445D7 /* EventPauseGuard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventPauseGuard.cpp; sourceTree = "<group>"; };
@@ -1388,6 +1392,8 @@
 				F40B47A41D3E7DA8006F5375 /* PortState.hpp */,
 				F40B479F1D3E7B7D006F5375 /* SoundPanelButton.cpp */,
 				F40B47A01D3E7B7D006F5375 /* SoundPanelButton.hpp */,
+				F445E9211D513E3C00855D10 /* TitlePic.cpp */,
+				F445E9221D513E3C00855D10 /* TitlePic.hpp */,
 			);
 			name = frame;
 			sourceTree = "<group>";
@@ -1819,6 +1825,7 @@
 				F44D26D51C4D198400438F3C /* SallyScene.h in Sources */,
 				F4F956E91C5B9D7F001AA1B3 /* dockDB.cpp in Sources */,
 				F44D26D61C4D198400438F3C /* Compass.h in Sources */,
+				F445E9231D513E3C00855D10 /* TitlePic.cpp in Sources */,
 				F44D26D71C4D198400438F3C /* BattleModel.h in Sources */,
 				F44D26D81C4D198400438F3C /* GameScene.h in Sources */,
 				F44D26D91C4D198400438F3C /* BattleBar.h in Sources */,
@@ -2089,6 +2096,7 @@
 				F40CF98A1BDB69A300DD897F /* Formation.cpp in Sources */,
 				F48253B01D33EA0900165D61 /* MainLayerButton.cpp in Sources */,
 				F4D5D0971C5FB08C001441C3 /* arsenalDB.cpp in Sources */,
+				F445E9241D513E3C00855D10 /* TitlePic.cpp in Sources */,
 				F439079C1C8B373B004B5B2D /* ListEntity.cpp in Sources */,
 				F4036E2B1BDA2316002788AA /* layerSelecter.cpp in Sources */,
 				F48189871C592F5F00A0D0F5 /* KantaiDetailEntity.cpp in Sources */,

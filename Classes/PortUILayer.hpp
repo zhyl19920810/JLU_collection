@@ -16,6 +16,9 @@ NS_KCL_BEGIN
 
 USING_NS_CC;
 
+
+class TitlePic;
+
 class PortUILayer:public Layer
 {
 public:
@@ -59,20 +62,20 @@ public:
     void endCircle();
     void update(float dt) override;
     
+    void changeTitlePic(kancolle::PanelType type,float delayTime);
     
-    void changeTitlePic(kancolle::PanelType type);
 private:
     bool init() override;
     
     
 private:
+    TitlePic* titlePic;
     Sprite *black;
     Layer* currentLayer;
     Label *labelFuel;
     Label *labelSteel;
     Label *labelAmmo;
     Label *labelAluminium;
-    Sprite *title;
     Label *playerName;
     Label  *playerLevel;
     Label  *playerTitle;

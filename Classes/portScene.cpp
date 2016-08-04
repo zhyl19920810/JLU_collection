@@ -36,11 +36,7 @@ PortScene* PortScene::createScene()
 }
 
 
-PortUILayer::PortUILayer():
-title(NULL)
-{
-    
-}
+PortUILayer::PortUILayer(){}
 
 PortScene::PortScene():
 portStateMachine(this),
@@ -135,7 +131,7 @@ void PortScene::changePortPanelAction(PanelType newType)
         CallFunc* callfunc=CallFunc::create([=]()
         {
             VIEW_MGR->showPanel(newType,true);
-            portUIlayer->changeTitlePic(newType);
+            portUIlayer->changeTitlePic(newType,0.7);
         });
         p2=Sequence::create(callfunc,DelayTime::create(OrbitMoveTime), NULL);
     }

@@ -8,6 +8,7 @@
 
 #include "PortUILayer.hpp"
 #include "Player.h"
+#include "TitlePic.hpp"
 
 
 NS_KCL_BEGIN
@@ -85,23 +86,12 @@ void PortUILayer::initTopLeftCircle()
     
     auto borderCircle=Sprite::createWithSpriteFrameName("borderCircle.png");
     borderCircle->setPosition(62,423);
-    borderCircle->setZOrder(1);
-    addChild(borderCircle);
+    addChild(borderCircle,1);
     
-    title=Sprite::createWithSpriteFrameName("porttitle.png");
-    title->setPosition(49,438);
-    RotateBy* circleAction2=RotateBy::create(1, 13);
-    RepeatForever* repeat2=RepeatForever::create((ActionInterval*)circleAction2);
-    title->runAction(repeat2);
-    title->setZOrder(1);
-    addChild(title);
+    titlePic=TitlePic::create();
+    addChild(titlePic,1);
+    titlePic->setPosition(49,438);
     
-    Sprite* shader=Sprite::createWithSpriteFrameName("shader.png");
-    shader->setPosition(49,438);
-    shader->setZOrder(1);
-    shader->setOpacity(10);
-    shader->runAction(RepeatForever::create((ActionInterval*)Sequence::create(FadeTo::create(1.5, 170),FadeTo::create(1.5, 10), NULL)));
-    addChild(shader);
 }
 
 
@@ -290,40 +280,10 @@ void PortUILayer::updatePlayerAttr(float dt)
 }
 
 
-
-void PortUILayer::changeTitlePic(kancolle::PanelType type)
+void PortUILayer::changeTitlePic(kancolle::PanelType type,float delayTime)
 {
-    title->setVisible(true);
-    std::string titleName;
-    switch (type) {
-        case PanelType::PORT_MAINLAYER:
-            titleName="porttitle.png";
-            break;
-        case PanelType::PORT_SUPPLY:
-            titleName="supplytitle.png";
-            break;
-        case PanelType::PORT_FACTORY:
-            titleName="factorytitle.png";
-            break;
-        case PanelType::PORT_ORGANIZE:
-            titleName="organizetitle.png";
-            break;
-        case PanelType::PORT_REMODE:
-            titleName="remodeltitle.png";
-            break;
-        case PanelType::PORT_REPAIR:
-            titleName="repairtitle.png";
-            break;
-        case PanelType::PORT_BATTLE:
-            titleName="battletitle.png";
-            break;
-        default:
-            title->setVisible(false);
-            break;
-    }
-    title->setSpriteFrame(titleName);
+    titlePic->changeTitlePic(type,delayTime);
 }
-
 
 
 NS_KCL_END
