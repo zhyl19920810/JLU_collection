@@ -98,7 +98,6 @@ public:
     
     
 private:
-    void initBottom();
     void initBg();
     
 private:

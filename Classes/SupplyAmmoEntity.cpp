@@ -27,7 +27,6 @@ bool AmmoEntity::init()
         }
         
         initBg();
-        initBottom();
         
         
         bRet=true;
@@ -44,19 +43,6 @@ void AmmoEntity::initBg()
     this->addChild(ammoBg);
     ammoBg->setPosition(50, 1);
     
-    auto ammoBox =Sprite::createWithSpriteFrameName("ammoBox.png");
-    this->addChild(ammoBox);
-    ammoBox->setPosition(50, 105);
-    
-    auto supplyLight=Sprite::createWithSpriteFrameName("supplyLight.png");
-    addChild(supplyLight);
-    supplyLight->setPosition(ammoBg->getPosition()-Vec2(0,20));
-}
-
-
-
-void AmmoEntity::initBottom()
-{
     leftBottom=Sprite::create("SupplyMain/image 8.png");
     addChild(leftBottom);
     leftBottom->setPosition(27-leftBottom->getContentSize().width/2,-73);
@@ -69,8 +55,15 @@ void AmmoEntity::initBottom()
     rightBottom->setOpacity(200);
     rightBottom->setPosition(72+rightBottom->getContentSize().width/2,-73);
     rightBottom->setAnchorPoint(Vec2(1.0, 0.5));
+    
+    auto ammoBox =Sprite::createWithSpriteFrameName("ammoBox.png");
+    this->addChild(ammoBox);
+    ammoBox->setPosition(50, 105);
+    
+    auto supplyLight=Sprite::createWithSpriteFrameName("supplyLight.png");
+    addChild(supplyLight);
+    supplyLight->setPosition(ammoBg->getPosition()-Vec2(0,20));
 }
-
 
 
 

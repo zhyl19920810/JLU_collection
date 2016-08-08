@@ -35,17 +35,14 @@ public:
         return NULL;
     }
     bool init(ButtonUpdate buttonUpdate);
-    void SetFleetButtonVisible(int fleetNumber,bool bVisible);
     void fleetCallback(Ref* pSender,int layNumber);
     void changeFleet(int fleetNumber);
     void update(int fleetNumber);
 private:
-    //std::vector<Sprite*> fleetSprite;
     std::vector<MenuItemToggle*> fleetToggle;
     
     function<void(int)> buttonUpdate;
     int fleetNumber;
-    //Fleet* fleet;
 };
 
 NS_KCL_END

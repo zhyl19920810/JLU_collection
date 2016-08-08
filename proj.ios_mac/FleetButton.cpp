@@ -14,7 +14,6 @@ NS_KCL_BEGIN
 FleetButton::FleetButton()
 {
     fleetToggle.resize(4);
-    //fleetSprite.resize(4);
     fleetNumber=1;
 }
 
@@ -46,8 +45,6 @@ bool FleetButton::init(ButtonUpdate buttonUpdate)
         fleetToggle[2]=MenuItemToggle::createWithCallback(CC_CALLBACK_1(FleetButton::fleetCallback, this,3), MenuItemSprite::create(Sprite::createWithSpriteFrameName("three2.png"), Sprite::createWithSpriteFrameName("three2.png"),Sprite::createWithSpriteFrameName("three1.png")),
                                                           MenuItemSprite::create(Sprite::createWithSpriteFrameName("three3.png"), Sprite::createWithSpriteFrameName("three3.png")), NULL);
         fleetToggle[2]->setPosition(fleetToggle[1]->getPosition()+Vec2(30, 0));
-        
-        
         
         
         fleetToggle[3]=MenuItemToggle::createWithCallback(CC_CALLBACK_1(FleetButton::fleetCallback, this,4), MenuItemSprite::create(Sprite::createWithSpriteFrameName("four2.png"), Sprite::createWithSpriteFrameName("four2.png"),Sprite::createWithSpriteFrameName("four1.png")),
@@ -101,18 +98,6 @@ void FleetButton::update(int fleetNumber)
     buttonUpdate(fleetNumber);
 }
 
-void FleetButton::SetFleetButtonVisible(int fleetNumber, bool bVisible)
-{
-//    if (bVisible)
-//    {
-//        fleetToggle[fleetNumber-1]->setVisible(true);
-//        fleetSprite[fleetNumber-1]->setVisible(false);
-//    }
-//    else
-//    {
-//        fleetToggle[fleetNumber-1]->setVisible(false);
-//        fleetSprite[fleetNumber-1]->setVisible(true);
-//    }
-}
+
 
 NS_KCL_END
