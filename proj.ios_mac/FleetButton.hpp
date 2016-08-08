@@ -40,12 +40,12 @@ public:
     void changeFleet(int fleetNumber);
     void update(int fleetNumber);
 private:
-    std::vector<Sprite*> fleetSprite;
+    //std::vector<Sprite*> fleetSprite;
     std::vector<MenuItemToggle*> fleetToggle;
     
     function<void(int)> buttonUpdate;
     int fleetNumber;
-    Fleet* fleet;
+    //Fleet* fleet;
 };
 
 NS_KCL_END

@@ -65,12 +65,21 @@ void ShipUnit::initDisplayAttr()
     star->setPosition(22,size.height/2-2);
     kantaiBg->addChild(star);
     
-    kantaiName=Label::create();
+    supplyBg1=Sprite::create();
+    supplyBg1->setPosition(241,size.height/2);
+    kantaiBg->addChild(supplyBg1);
+    
+    supplyBg2=Sprite::create();
+    supplyBg2->setPosition(390,size.height/2);
+    kantaiBg->addChild(supplyBg2);
+    
+    
+    kantaiName=Label::create("", "fonts/DengXian.ttf", 20);
     kantaiName->setPosition(200,size.height/2+5);
-    kantaiName->setSystemFontSize(20);
     kantaiName->setColor(Color3B::WHITE);
     kantaiName->setAlignment(TextHAlignment::RIGHT);
     kantaiBg->addChild(kantaiName);
+    
     
     kantaiLV = Label::create("", "fonts/DengXian.ttf", 13);
     kantaiLV->setPosition(290, size.height/2+5);
@@ -81,14 +90,6 @@ void ShipUnit::initDisplayAttr()
     kantaiState=Sprite::create();
     kantaiState->setPosition(88,size.height/2-3);
     kantaiBg->addChild(kantaiState);
-    
-    supplyBg1=Sprite::create();
-    supplyBg1->setPosition(241,size.height/2);
-    kantaiBg->addChild(supplyBg1);
-    
-    supplyBg2=Sprite::create();
-    supplyBg2->setPosition(390,size.height/2);
-    kantaiBg->addChild(supplyBg2);
     
     fuelBar=ValueBar::create();
     kantaiBg->addChild(fuelBar);

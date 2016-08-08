@@ -76,10 +76,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->getOpenGLView()->setDesignResolutionSize(800, 480, ResolutionPolicy::SHOW_ALL);
     glview->setFrameSize(800, 480);
     
-    director->setDisplayStats(true);
+    //director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
-    director->setAnimationInterval(1.0 / 30);
+    director->setAnimationInterval(1.0 / 60);
 
     
 //    auto visibleSize=Director::getInstance()->getVisibleSize();
@@ -92,7 +92,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
 //    log("winSize:  %f %f",winSize.width,winSize.height);
     
     register_all_packages();
-    
     BUNDLE_MGR->onLaunchApp();
     //battleModel(director);
     

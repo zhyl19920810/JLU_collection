@@ -1102,7 +1102,6 @@
 				F4D38E211C8746B5009BE55C /* ValueBar */,
 				F4A328491C84AA810048F939 /* FleetButton */,
 				F40C1BB51C61E4EF0093774E /* MenuItem */,
-				F4D5D0851C5FACD7001441C3 /* Clock */,
 				F42DB8FB1C5A33A800CBE2C7 /* Star */,
 				F42DB8F51C5A30D800CBE2C7 /* HpBar */,
 				F4036DD11BDA210A002788AA /* kantai */,
@@ -1352,13 +1351,6 @@
 			name = Widget;
 			sourceTree = "<group>";
 		};
-		F42303CD1D2BD53200B06189 /* TiLayer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = TiLayer;
-			sourceTree = "<group>";
-		};
 		F42DB8F51C5A30D800CBE2C7 /* HpBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1426,7 +1418,6 @@
 		F43BD5FE1D2ABE8E00B572C9 /* Tina */ = {
 			isa = PBXGroup;
 			children = (
-				F42303CD1D2BD53200B06189 /* TiLayer */,
 				F42303CC1D2BD52100B06189 /* Widget */,
 				F43BD5FF1D2AC17800B572C9 /* include */,
 				F43BD5F51D2ABE0B00B572C9 /* util */,
@@ -1505,13 +1496,6 @@
 				F4D38E231C8746CB009BE55C /* ValueBar.hpp */,
 			);
 			name = ValueBar;
-			sourceTree = "<group>";
-		};
-		F4D5D0851C5FACD7001441C3 /* Clock */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Clock;
 			sourceTree = "<group>";
 		};
 		F4D5D0861C5FAF1D001441C3 /* factory */ = {
