@@ -11,7 +11,7 @@
 
 NS_KCL_BEGIN
 
-bool BuildKantaiUnit::init(factoryBuildingMode mode)
+bool BuildKantaiUnit::init(factoryBM mode)
 {
     bool bRet=false;
     do
@@ -23,7 +23,8 @@ bool BuildKantaiUnit::init(factoryBuildingMode mode)
         initRes();
         initBg();
         initIcon();
-        updateButtonAndLabel();
+        schedule(CC_CALLBACK_1(BuildKantaiUnit::updateButtonAndLabel, this), "BuildUnitUpdate");
+        updateButtonAndLabel(0.0);
         bRet=true;
     }while(0);
     
@@ -32,18 +33,21 @@ bool BuildKantaiUnit::init(factoryBuildingMode mode)
 
 void BuildKantaiUnit::initRes()
 {
-    if (mode==factoryBuildingMode::kantaiBuilding) {
-        minRes=currRes=30;
-    }
-    else
+    switch (mode)
     {
-        minRes=currRes=10;
+        case factoryBM::kantaiBuilding:
+            minRes=30;
+            currRes=min(getPlayerRes(), minRes);
+            break;
+        case factoryBM::equipBuilding:
+            minRes=10;
+            currRes=min(getPlayerRes(), minRes);
+            break;
+        default:
+            break;
     }
-    if (getPlayerRes()<currRes) {
-        canBuild=false;
-    }
-    else
-        canBuild=true;
+    if (getPlayerRes()<currRes)   canBuild=false;
+    else                          canBuild=true;
     maxRes=999;
 }
 
@@ -57,29 +61,37 @@ void BuildKantaiUnit::arrowCallback(cocos2d::Ref *pSender, bool addDir)
         tmp2=(tmp2>10)?10:tmp2;
         int add=min(tmp1,tmp2);
         currRes+=add;
-        updateButtonAndLabel();
     }
     else
     {
-        currRes-=10;
-        currRes=(currRes<minRes)?minRes:currRes;
-        updateButtonAndLabel();
+        if (currRes>minRes)
+        {
+            currRes-=10;
+            currRes=(currRes<minRes)?minRes:currRes;
+        }
     }
 }
 
 void BuildKantaiUnit::resetCallback(cocos2d::Ref *pSender)
 {
-    currRes=minRes;
-    updateButtonAndLabel();
+    
+    if (currRes>minRes)
+    {
+        currRes=minRes;
+    }
+    else
+    {
+        int tmp=getPlayerRes()-currRes;
+        currRes+=tmp;
+    }
 }
 
 void BuildKantaiUnit::maxCallback(cocos2d::Ref *pSender)
 {
     int tmp=getPlayerRes();
     tmp=(tmp>maxRes)?maxRes:tmp;
-    tmp=(tmp<minRes)?minRes:tmp;
+    //tmp=(tmp<minRes)?minRes:tmp;
     currRes=tmp;
-    updateButtonAndLabel();
 }
 
 void BuildKantaiUnit::decadeCallback(cocos2d::Ref *pSender, bool addDir)
@@ -92,13 +104,14 @@ void BuildKantaiUnit::decadeCallback(cocos2d::Ref *pSender, bool addDir)
         tmp2=(tmp2>10)?10:tmp2;
         int add=min(tmp1,tmp2);
         currRes+=add;
-        updateButtonAndLabel();
     }
     else
     {
-        currRes-=10;
-        currRes=(currRes<minRes)?minRes:currRes;
-        updateButtonAndLabel();
+        if (currRes>minRes)
+        {
+            currRes-=10;
+            currRes=(currRes<minRes)?minRes:currRes;
+        }
     }
 }
 
@@ -113,16 +126,16 @@ void BuildKantaiUnit::hundredCallback(cocos2d::Ref *pSender, bool addDir)
         tmp2=(tmp2>100)?100:tmp2;
         int add=min(tmp1,tmp2);
         currRes+=add;
-        updateButtonAndLabel();
     }
     else
     {
-        currRes-=100;
-        currRes=(currRes<minRes)?minRes:currRes;
-        updateButtonAndLabel();
+        if (currRes>minRes)
+        {
+            currRes-=100;
+            currRes=(currRes<minRes)?minRes:currRes;
+        }
     }
 }
-
 
 
 
@@ -149,37 +162,22 @@ void BuildKantaiUnit::initBg()
     minusArrow->setPosition(56,17);
     mn->addChild(minusArrow);
     
-    addDecade=MenuItemSprite::create(Sprite::create("ArsenalMain/addButton1.png"), Sprite::create("ArsenalMain/addButton1.png"),CC_CALLBACK_1(BuildKantaiUnit::decadeCallback, this,true));
+    addDecade=MenuItemSprite::create(Sprite::create("ArsenalMain/addButton1.png"), Sprite::create("ArsenalMain/addButton1.png"),Sprite::create("ArsenalMain/addButton2.png"),CC_CALLBACK_1(BuildKantaiUnit::decadeCallback, this,true));
     addDecade->setPosition(185,102);
     mn->addChild(addDecade);
-    addDecadeUp=Sprite::create("ArsenalMain/addButton2.png");
-    addDecadeUp->setPosition(addDecade->getPosition());
-    unitBg->addChild(addDecadeUp);
     
-    
-    minusDecade=MenuItemSprite::create(Sprite::create("ArsenalMain/minusButton1.png"),Sprite::create("ArsenalMain/minusButton1.png"),CC_CALLBACK_1(BuildKantaiUnit::decadeCallback, this,false));
+    minusDecade=MenuItemSprite::create(Sprite::create("ArsenalMain/minusButton1.png"),Sprite::create("ArsenalMain/minusButton1.png"),Sprite::create("ArsenalMain/minusButton2.png"),CC_CALLBACK_1(BuildKantaiUnit::decadeCallback, this,false));
     minusDecade->setPosition(132,102);
     mn->addChild(minusDecade);
-    minusDecadeUp=Sprite::create("ArsenalMain/minusButton2.png");
-    minusDecadeUp->setPosition(minusDecade->getPosition());
-    unitBg->addChild(minusDecadeUp);
     
-    
-    addHundred=MenuItemSprite::create(Sprite::create("ArsenalMain/addButton1.png"), Sprite::create("ArsenalMain/addButton1.png"),CC_CALLBACK_1(BuildKantaiUnit::hundredCallback, this,true));
+    addHundred=MenuItemSprite::create(Sprite::create("ArsenalMain/addButton1.png"), Sprite::create("ArsenalMain/addButton1.png"),Sprite::create("ArsenalMain/addButton2.png"),CC_CALLBACK_1(BuildKantaiUnit::hundredCallback, this,true));
     addHundred->setPosition(185,76);
     mn->addChild(addHundred);
-    addHundredUp=Sprite::create("ArsenalMain/addButton2.png");
-    addHundredUp->setPosition(addHundred->getPosition());
-    unitBg->addChild(addHundredUp);
     
-    
-    minusHundred=MenuItemSprite::create(Sprite::create("ArsenalMain/minusButton1.png"), Sprite::create("ArsenalMain/minusButton1.png"),CC_CALLBACK_1(BuildKantaiUnit::hundredCallback, this,false));
+    minusHundred=MenuItemSprite::create(Sprite::create("ArsenalMain/minusButton1.png"), Sprite::create("ArsenalMain/minusButton1.png"),Sprite::create("ArsenalMain/minusButton2.png"),CC_CALLBACK_1(BuildKantaiUnit::hundredCallback, this,false));
     minusHundred->setPosition(132,76);
     mn->addChild(minusHundred);
-    minusHundredUp=Sprite::create("ArsenalMain/minusButton2.png");
-    minusHundredUp->setPosition(minusHundred->getPosition());
-    unitBg->addChild(minusHundredUp);
-    
+
     
     resetButton=MenuItemSprite::create(Sprite::create("ArsenalMain/resetButton.png"), Sprite::create("ArsenalMain/resetButton.png"),CC_CALLBACK_1(BuildKantaiUnit::resetCallback, this));
     resetButton->setPosition(160,46);
@@ -196,132 +194,57 @@ int BuildKantaiUnit::getPlayerRes()
     return sPlayer.getFuel();
 }
 
-
-
 bool BuildKantaiUnit::canAddDecade()
 {
-    if ((getPlayerRes()>currRes)&&(currRes!=maxRes))
-    {
-        return true;
-    }
+    if ((getPlayerRes()>currRes)&&(currRes!=maxRes)) return true;
     return false;
 }
 
 bool BuildKantaiUnit::canAddHundred()
 {
-    if ((getPlayerRes()>currRes)&&(currRes!=maxRes))
-    {
-        return true;
-    }
+    if ((getPlayerRes()>currRes)&&(currRes!=maxRes)) return true;
     return false;
 }
 
 bool BuildKantaiUnit::canMinusDecade()
 {
-    if (currRes==30) {
-        return false;
-    }
-    return true;
+    if (currRes>minRes) return true;
+    return false;
 }
 
 bool BuildKantaiUnit::canMinusHundred()
 {
-    if (currRes==30) {
-        return false;
-    }
-    return true;
+    if (currRes>minRes) return true;
+    return false;
 }
 
-void BuildKantaiUnit::updateButtonAndLabel()
+void BuildKantaiUnit::updateButtonAndLabel(float dt)
 {
     resLabel->setString(to_string(currRes));
-    if (canAddDecade()) {
-        setAddDecadeVisible(true);
-    }
-    else
-    {
-        setAddDecadeVisible(false);
-    }
     
-    if (canMinusDecade())
-    {
-        setMinusDecadeVisible(true);
-    }
-    else
-    {
-        setMinusDecadeVisible(false);
-    }
+    if (canAddDecade())    { addDecade->setEnabled(true);    addArrow->setVisible(true);}
+    else                   { addDecade->setEnabled(false);   addArrow->setVisible(false);}
     
-    if (canAddHundred())
-    {
-        setAddHundredVisible(true);
-    }
-    else
-    {
-        setAddHundredVisible(false);
-    }
+    if (canMinusDecade())  {minusDecade->setEnabled(true);   minusArrow->setVisible(true);}
+    else                   {minusDecade->setEnabled(false);  minusArrow->setVisible(false);}
     
-    if (canMinusHundred())
-    {
-        setMinusHundredVisible(true);
-    }
-    else
-    {
-        setMinusHundredVisible(false);
-    }
-    if (canAddDecade())
-    {
-        addArrow->setVisible(true);
-        addArrow->setEnabled(true);
-    }
-    else
-    {
-        addArrow->setVisible(false);
-        addArrow->setEnabled(false);
-    }
-    if (canMinusDecade())
-    {
-        minusArrow->setVisible(true);
-        minusArrow->setEnabled(true);
-    }
-    else
-    {
-        minusArrow->setVisible(false);
-        minusArrow->setEnabled(false);
-    }
+    if (canAddHundred())   addHundred->setEnabled(true);
+    else                   addHundred->setEnabled(false);
+    
+    if (canMinusHundred()) minusHundred->setEnabled(true);
+    else                   minusHundred->setEnabled(false);
 }
 
-void BuildKantaiUnit::setAddDecadeVisible(bool bVisible)
+void BuildKantaiUnit::updateRes()
 {
-    addDecade->setEnabled(bVisible);
-    addDecade->setVisible(bVisible);
-    addDecadeUp->setVisible(!bVisible);
-}
-
-void BuildKantaiUnit::setMinusDecadeVisible(bool bVisible)
-{
-    minusDecade->setEnabled(bVisible);
-    minusDecade->setVisible(bVisible);
-    minusDecadeUp->setVisible(!bVisible);
-}
-
-void BuildKantaiUnit::setAddHundredVisible(bool bVisible)
-{
-    addHundred->setEnabled(bVisible);
-    addHundred->setVisible(bVisible);
-    addHundredUp->setVisible(!bVisible);
-}
-
-void BuildKantaiUnit::setMinusHundredVisible(bool bVisible)
-{
-    minusHundred->setEnabled(bVisible);
-    minusHundred->setVisible(bVisible);
-    minusHundredUp->setVisible(!bVisible);
+    if (currRes>getPlayerRes())
+        currRes=getPlayerRes();
+    if (currRes<minRes) canBuild=false;
 }
 
 
 //fuel
-FuelBuildUnit* FuelBuildUnit::create(factoryBuildingMode mode)
+FuelBuildUnit* FuelBuildUnit::create(factoryBM mode)
 {
     FuelBuildUnit* pRet=new FuelBuildUnit;
     if (pRet&&pRet->init(mode))
@@ -354,7 +277,7 @@ void FuelBuildUnit::minusPlayerRes(int res)
 
 
 //ammo
-AmmoBuildUnit* AmmoBuildUnit::create(factoryBuildingMode mode)
+AmmoBuildUnit* AmmoBuildUnit::create(factoryBM mode)
 {
     AmmoBuildUnit* pRet=new AmmoBuildUnit;
     if (pRet&&pRet->init(mode))
@@ -387,7 +310,7 @@ void AmmoBuildUnit::minusPlayerRes(int res)
 
 
 //steel
-SteelBuildUnit* SteelBuildUnit::create(factoryBuildingMode mode)
+SteelBuildUnit* SteelBuildUnit::create(factoryBM mode)
 {
     SteelBuildUnit* pRet=new SteelBuildUnit;
     if (pRet&&pRet->init(mode))
@@ -419,7 +342,7 @@ void SteelBuildUnit::minusPlayerRes(int res)
 }
 
 //Al
-AlBuildUnit* AlBuildUnit::create(factoryBuildingMode mode)
+AlBuildUnit* AlBuildUnit::create(factoryBM mode)
 {
     AlBuildUnit* pRet=new AlBuildUnit;
     if (pRet&&pRet->init(mode))
@@ -447,7 +370,6 @@ void AlBuildUnit::initIcon()
 void AlBuildUnit::minusPlayerRes(int res)
 {
     sPlayer.minusAluminium(res);
-    ////////////////////////////////
 }
 
 NS_KCL_END

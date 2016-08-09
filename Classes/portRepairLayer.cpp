@@ -62,13 +62,9 @@ void PortRepairLayer::initLayer()
     bgimg->setOpacity(200);
     bgimg->setPosition(450, 200);
     
-    auto repairBar = Sprite::create("RepairMain/repairBar.png");
-    addChild(repairBar);
-    repairBar->setPosition(bgimg->getPosition()+Vec2(0, 197));
-    
     auto repairTitle = Sprite::create("RepairMain/repairTitle.png");
     addChild(repairTitle);
-    repairTitle->setPosition(repairBar->getPosition()+Vec2(-290, 4));
+    repairTitle->setPosition(bgimg->getPosition()+Vec2(0, 197)+Vec2(-290, 4));
     
     listCover=LayerCover::create(CC_CALLBACK_1(PortRepairLayer::hideList, this));
     listCover->setPosition(0,0);

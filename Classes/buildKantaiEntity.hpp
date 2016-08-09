@@ -21,11 +21,12 @@ class LayerCover;
 class BuildKantaiEntity:public Node
 {
 public:
-    static BuildKantaiEntity* create(factoryBuildingMode mode,Vec2 pos);
-    bool init(factoryBuildingMode mode,Vec2 pos);
+    static BuildKantaiEntity* create(factoryBM mode,Vec2 pos);
+    bool init(factoryBM mode,Vec2 pos);
     
     void moveIn();
     void moveOut(Ref* ref);
+    void updateRes();
 private:
     void initBg(Vec2 pos);
     bool hidden;
@@ -36,7 +37,7 @@ private:
     SteelBuildUnit* steelUnit;
     AmmoBuildUnit* ammoUnit;
     AlBuildUnit* AlUnit;
-    factoryBuildingMode mode;
+    factoryBM mode;
     
     MenuItemSprite* startBuild;
     Sprite* startBuildUp;

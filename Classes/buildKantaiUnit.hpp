@@ -18,18 +18,19 @@ typedef enum
 {
     kantaiBuilding,
     equipBuilding
-}factoryBuildingMode;
+}factoryBM;
 
 
 class BuildKantaiUnit:public Node
 {
 public:
-    bool init(factoryBuildingMode mode);
+    bool init(factoryBM mode);
     
     //build
     bool canBuildKantai() const {return canBuild;}
     void setCanBuild(bool canBuild){this->canBuild=canBuild;}
     int getResouce() const {return currRes;}
+    void updateRes();
 private:
     bool canBuild;
     
@@ -44,7 +45,7 @@ private:
     int minRes;
     int maxRes;
     int currRes;
-    factoryBuildingMode mode;
+    factoryBM mode;
     
     virtual int getPlayerRes()=0;
     virtual void minusPlayerRes(int res)=0;
@@ -67,35 +68,25 @@ private:
     MenuItemSprite* minusArrow;
     
     MenuItemSprite* addDecade;
-    Sprite* addDecadeUp;
-    
     MenuItemSprite* minusDecade;
-    Sprite* minusDecadeUp;
-    
     MenuItemSprite* addHundred;
-    Sprite* addHundredUp;
-    
     MenuItemSprite* minusHundred;
-    Sprite* minusHundredUp;
     
     MenuItemSprite* resetButton;
     MenuItemSprite* maxButton;
     
-    void setAddDecadeVisible(bool bVisible);
-    void setMinusDecadeVisible(bool bVisible);
-    void setAddHundredVisible(bool bVisible);
-    void setMinusHundredVisible(bool bVisible);
-    
-    void updateButtonAndLabel();
+
+    void updateButtonAndLabel(float dt);
 protected:
     Sprite* unitBg;
 };
 
 
+
 class FuelBuildUnit:public BuildKantaiUnit
 {
 public:
-    static FuelBuildUnit* create(factoryBuildingMode mode);
+    static FuelBuildUnit* create(factoryBM mode);
     virtual int getPlayerRes();
     virtual void initIcon();
     virtual void minusPlayerRes(int res);
@@ -104,7 +95,7 @@ public:
 class AmmoBuildUnit:public BuildKantaiUnit
 {
 public:
-    static AmmoBuildUnit* create(factoryBuildingMode mode);
+    static AmmoBuildUnit* create(factoryBM mode);
     virtual int getPlayerRes();
     virtual void initIcon();
     virtual void minusPlayerRes(int res);
@@ -114,7 +105,7 @@ public:
 class SteelBuildUnit:public BuildKantaiUnit
 {
 public:
-    static SteelBuildUnit* create(factoryBuildingMode mode);
+    static SteelBuildUnit* create(factoryBM mode);
     virtual int getPlayerRes();
     virtual void initIcon();
     virtual void minusPlayerRes(int res);
@@ -123,7 +114,7 @@ public:
 class AlBuildUnit:public BuildKantaiUnit
 {
 public:
-    static AlBuildUnit* create(factoryBuildingMode mode);
+    static AlBuildUnit* create(factoryBM mode);
     virtual int getPlayerRes();
     virtual void initIcon();
     virtual void minusPlayerRes(int res);

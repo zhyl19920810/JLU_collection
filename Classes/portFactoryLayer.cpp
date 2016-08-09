@@ -130,6 +130,7 @@ void PortFactoryLayer::startBuild(int fuel, int steel, int ammo, int al)
     CallFunc* actionPost=CallFunc::create([=]()
     {
         EventPauseGuard::resume();
+        entity->updateRes();
     });
     runAction(Sequence::create(actionPre,p1,DelayTime::create(0.26),actionPost, NULL));
 }

@@ -20,7 +20,7 @@ NS_KCL_BEGIN
 #define MOVE_TIME 0.25
 
 
-BuildKantaiEntity* BuildKantaiEntity::create(factoryBuildingMode mode,Vec2 pos)
+BuildKantaiEntity* BuildKantaiEntity::create(factoryBM mode,Vec2 pos)
 {
     BuildKantaiEntity* pRet=new BuildKantaiEntity;
     if (pRet&&pRet->init(mode,pos))
@@ -34,7 +34,7 @@ BuildKantaiEntity* BuildKantaiEntity::create(factoryBuildingMode mode,Vec2 pos)
 }
 
 
-bool BuildKantaiEntity::init(factoryBuildingMode mode,Vec2 pos)
+bool BuildKantaiEntity::init(factoryBM mode,Vec2 pos)
 {
     this->hidden=true;
     this->mode=mode;
@@ -228,6 +228,14 @@ void BuildKantaiEntity::moveOut(Ref* ref)
     }
 }
 
+void BuildKantaiEntity::updateRes()
+{
+    ammoUnit->updateRes();
+    AlUnit->updateRes();
+    steelUnit->updateRes();
+    fuelUnit->updateRes();
+    updateButton();
+}
 
 NS_KCL_END
 
