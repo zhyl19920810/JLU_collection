@@ -1,1 +1,1 @@
-# JLU_collection
+底层使用cocos2d-x引擎,仿照kancolle页游制作而成的手游版kancolle
