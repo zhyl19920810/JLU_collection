@@ -188,6 +188,7 @@ void BuildKantaiUnit::initBg()
     maxButton=MenuItemSprite::create(Sprite::create("ArsenalMain/maxButton.png"), Sprite::create("ArsenalMain/maxButton.png"),CC_CALLBACK_1(BuildKantaiUnit::maxCallback, this));
     maxButton->setPosition(160,19);
     mn->addChild(maxButton);
+    
 }
 
 int BuildKantaiUnit::getPlayerRes()

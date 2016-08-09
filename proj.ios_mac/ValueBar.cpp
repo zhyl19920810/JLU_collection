@@ -8,7 +8,7 @@
 
 #include "ValueBar.hpp"
 
-NS_CC_BEGIN
+NS_KCL_BEGIN
 
 void  ValueBar::setVisible(bool visible)
 {
@@ -48,4 +48,4 @@ void ValueBar::update(int value)
     barPic->setSpriteFrame(name);
 }
 
-NS_CC_END
+NS_KCL_END

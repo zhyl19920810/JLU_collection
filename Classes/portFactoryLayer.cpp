@@ -19,6 +19,7 @@ NS_KCL_BEGIN
 PortFactoryLayer::PortFactoryLayer()
 {
     container.resize(4);
+    arsenalPosition=0;
 }
 
 
@@ -44,7 +45,6 @@ bool PortFactoryLayer::init()
 
 
 
-
 void PortFactoryLayer::initLayer()
 {
     auto factorTitle=Sprite::create("ArsenalMain/factoryTitle.png");
@@ -61,7 +61,7 @@ void PortFactoryLayer::initLayer()
     bgimg->addChild(arsenalBg);
     arsenalBg->setPosition(Vec2(tmp.width+125, tmp.height-10));
     
-    log("%f %f",arsenalBg->getPosition().x-arsenalBg->getContentSize().width/2,arsenalBg->getPosition().y-arsenalBg->getContentSize().height/2);//arsenal左下角为253，2.5
+
     auto arsenalLB=arsenalBg->getPosition()-arsenalBg->getContentSize()/2;
     auto arsenalUpright1=Sprite::create("ArsenalMain/arsenalUpright.png");
     arsenalBg->addChild(arsenalUpright1);
@@ -85,16 +85,10 @@ void PortFactoryLayer::initLayer()
     menu->setPosition(tmp);
     bgimg->addChild(menu);
     
-    
-    listCover=LayerCover::create(CC_CALLBACK_1(PortFactoryLayer::hideList, this));
-    listCover->setPosition(0,0);
-    addChild(listCover,2);
-    
-    
-    entity=BuildKantaiEntity::create(kantaiBuilding);
-    entity->setPosition(1150,tmp.height);
+    auto pos=Vec2(1150, tmp.height);
+    entity=BuildKantaiEntity::create(kantaiBuilding,-pos);
+    entity->setPosition(pos);
     addChild(entity,3);
-    
 }
 
 
@@ -112,31 +106,33 @@ void PortFactoryLayer::initContainer()
 
 void PortFactoryLayer::showList(int position)
 {
-    UserDefault::getInstance()->setIntegerForKey("arsenalPosition", position);
-    entity->showEntity();
-    listCover->setCoverEnable(true);
-}
-
-void PortFactoryLayer::hideList(cocos2d::Ref *pSender)
-{
-    listCover->setCoverEnable(false);
-    entity->hideEntity();
+    arsenalPosition=position;
+    entity->moveIn();
 }
 
 
 void PortFactoryLayer::startBuild(int fuel, int steel, int ammo, int al)
 {
-    int position=UserDefault::getInstance()->getIntegerForKey("arsenalPosition");
-    UserDefault::getInstance()->setIntegerForKey("arsenalPosition",0);
-    if (position==0) {
-        return;
-    }
-    sArsenal.buildNewKantai(position, fuel,steel,ammo,al, 10);
-    container[position-1]->update();
-    hideList(this);
+    if (arsenalPosition==0) return;
+    
+    sArsenal.buildNewKantai(arsenalPosition, fuel,steel,ammo,al, 10);
+    container[arsenalPosition-1]->update();
+    arsenalPosition=0;
+    
+    CallFunc* actionPre=CallFunc::create([=]()
+    {
+         EventPauseGuard::pause();
+    });
+    CallFunc* p1=CallFunc::create([=]()
+    {
+        entity->moveOut(this);
+    });
+    CallFunc* actionPost=CallFunc::create([=]()
+    {
+        EventPauseGuard::resume();
+    });
+    runAction(Sequence::create(actionPre,p1,DelayTime::create(0.26),actionPost, NULL));
 }
-
-
 
 
 ///////destory
@@ -170,14 +166,6 @@ void PortFactoryLayer::hideDestroy(Ref* pSender)
     destoryCover->setCoverEnable(false);
 }
 
-void PortFactoryLayer::destroyKantai(Kantai *kantai, int fuel, int steel, int ammo, int al)
-{
-    sPlayer.deleteKantai(kantai);
-    sPlayer.addAluminium(al);
-    sPlayer.addFuel(fuel);
-    sPlayer.addSteel(steel);
-    sPlayer.addAmmo(ammo);
-}
 void PortFactoryLayer::showSelect(kancolle::Kantai *kantai)
 {
     kantaiDestroyEntity->moveIn();
@@ -216,7 +204,14 @@ void PortFactoryLayer::destroyCallback(Kantai* kantai,int fuel,int steel,int amm
     this->runAction(Sequence::create(actionPre,f1,f2,DelayTime::create(0.2),f3,DelayTime::create(0.5),f4,actionPost, NULL));
 }
 
-
+void PortFactoryLayer::destroyKantai(Kantai *kantai, int fuel, int steel, int ammo, int al)
+{
+    sPlayer.deleteKantai(kantai);
+    sPlayer.addAluminium(al);
+    sPlayer.addFuel(fuel);
+    sPlayer.addSteel(steel);
+    sPlayer.addAmmo(ammo);
+}
 
 
 /////other

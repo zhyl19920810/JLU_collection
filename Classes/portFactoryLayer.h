@@ -46,17 +46,13 @@ private:
 public:
     FactoryContainer* getContainer(int position);
     void startBuild(int fuel,int steel,int ammo,int al);
-public:
-    void hideList(Ref* pSender);
     void showList(int position);
 private:
     void initContainer();
     void buildCallback(Ref* pSender);
     
-    
     std::vector<FactoryContainer*> container;
     BuildKantaiEntity* entity;
-    LayerCover* listCover;
     //destroy
 public:
     void showSelect(Kantai* kantai);
@@ -73,6 +69,7 @@ private:
     //other
 private:
     void NullCallback(Ref* pSender);
+    int arsenalPosition;
 };
 
 

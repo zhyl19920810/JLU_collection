@@ -9,14 +9,21 @@
 #include "buildKantaiEntity.hpp"
 #include "arsenal.hpp"
 #include "portFactoryLayer.h"
+#include "LayerCover.hpp"
+#include "EventPauseGuard.hpp"
 
 
 NS_KCL_BEGIN
 
-BuildKantaiEntity* BuildKantaiEntity::create(factoryBuildingMode mode)
+#define HIDE_POS (Vec2(550,0))
+#define SHOW_POS (Vec2(-550,0))
+#define MOVE_TIME 0.25
+
+
+BuildKantaiEntity* BuildKantaiEntity::create(factoryBuildingMode mode,Vec2 pos)
 {
     BuildKantaiEntity* pRet=new BuildKantaiEntity;
-    if (pRet&&pRet->init(mode))
+    if (pRet&&pRet->init(mode,pos))
     {
         pRet->autorelease();
         return pRet;
@@ -27,7 +34,7 @@ BuildKantaiEntity* BuildKantaiEntity::create(factoryBuildingMode mode)
 }
 
 
-bool BuildKantaiEntity::init(factoryBuildingMode mode)
+bool BuildKantaiEntity::init(factoryBuildingMode mode,Vec2 pos)
 {
     this->hidden=true;
     this->mode=mode;
@@ -38,7 +45,7 @@ bool BuildKantaiEntity::init(factoryBuildingMode mode)
         {
             break;
         }
-        initBg();
+        initBg(pos);
         updateButton();
         bRet=true;
     }while(0);
@@ -47,11 +54,19 @@ bool BuildKantaiEntity::init(factoryBuildingMode mode)
 }
 
 
-void BuildKantaiEntity::initBg()
+void BuildKantaiEntity::initBg(Vec2 pos)
 {
+    cover=LayerCover::create(CC_CALLBACK_1(BuildKantaiEntity::moveOut, this));
+    cover->setPosition(pos);
+    addChild(cover,-1);
+
+    entity=Node::create();
+    addChild(entity);
+    entity->setPosition(Vec2::ZERO);
+    
     imgbg=Sprite::create("ArsenalMain/factoryBg.png");
     imgbg->setPosition(Vec2::ZERO);
-    addChild(imgbg);
+    entity->addChild(imgbg);
     //log("%f  %f",imgbg->getContentSize().width,imgbg->getContentSize().height);
     
     Sprite* imgbg2=Sprite::create("ArsenalMain/imgbg2.png");
@@ -116,7 +131,22 @@ void BuildKantaiEntity::initBg()
     shop->setPosition(335,37);
     imgbg->addChild(shop);
     
-
+    eventListener=EventListenerTouchOneByOne::create();
+    eventListener->setSwallowTouches(true);
+    eventListener->onTouchBegan=[=](Touch* touch,Event* event)->bool
+    {
+        auto rect=Rect(0,0,imgbg->getContentSize().width,imgbg->getContentSize().height);
+        auto pos=imgbg->convertToNodeSpace(touch->getLocation());
+        if (rect.containsPoint(pos))
+        {
+            return true;
+        }
+        return false;
+    };
+    eventListener->onTouchMoved=[=](Touch* touch,Event* event){};
+    eventListener->onTouchEnded=[=](Touch* touch,Event* event){};
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(eventListener, this);
+    
 }
 
 
@@ -158,23 +188,43 @@ void BuildKantaiEntity::updateButton()
     }
 }
 
-void BuildKantaiEntity::showEntity()
+void BuildKantaiEntity::moveIn()
 {
     if (hidden)
     {
-        runAction(MoveBy::create(0.6f, Vec2(-550, 0)));
-        hidden=false;
+        CallFunc* moveByBefore=CallFunc::create([=]()
+        {
+           cover->setCoverEnable(true);
+           EventPauseGuard::pause();
+        });
+        auto move=MoveBy::create(MOVE_TIME, SHOW_POS);
+        CallFunc* moveByFinish=CallFunc::create([=]()
+        {
+            EventPauseGuard::resume();
+        });
+        entity->runAction(Sequence::create(moveByBefore,move,moveByFinish, NULL));
+        hidden = false;
     }
 }
 
 
 
-void BuildKantaiEntity::hideEntity()
+void BuildKantaiEntity::moveOut(Ref* ref)
 {
     if (!hidden)
     {
-        runAction(MoveBy::create(0.6f, Vec2(550, 0)));
-        hidden=true;
+        CallFunc* moveByBefore=CallFunc::create([=]()
+        {
+           EventPauseGuard::pause();
+        });
+        auto move=MoveBy::create(MOVE_TIME, HIDE_POS);
+        CallFunc* moveByFinish=CallFunc::create([=]()
+        {
+            EventPauseGuard::resume();
+            cover->setCoverEnable(false);
+        });
+        entity->runAction(Sequence::create(moveByBefore,move,moveByFinish, NULL));
+        hidden = true;
     }
 }
 

@@ -11,6 +11,15 @@
 #include "KantaiListEntity.hpp"
 #include "ViewMgr.hpp"
 #include "EventPauseGuard.hpp"
+#include "ValueBar.hpp"
+#include "Star.hpp"
+#include "LayerCover.hpp"
+#include "HpBar.hpp"
+#include "kantaiCard.hpp"
+#include "MenuItemTouch.hpp"
+#include "EquipmentContainer.hpp"
+#include "ValueBar.hpp"
+
 
 NS_KCL_BEGIN
 

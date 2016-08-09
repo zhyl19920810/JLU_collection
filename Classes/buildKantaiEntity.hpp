@@ -16,16 +16,18 @@ USING_NS_CC;
 
 NS_KCL_BEGIN
 
+class LayerCover;
+
 class BuildKantaiEntity:public Node
 {
 public:
-    static BuildKantaiEntity* create(factoryBuildingMode mode);
-    bool init(factoryBuildingMode mode);
+    static BuildKantaiEntity* create(factoryBuildingMode mode,Vec2 pos);
+    bool init(factoryBuildingMode mode,Vec2 pos);
     
-    void showEntity();
-    void hideEntity();
+    void moveIn();
+    void moveOut(Ref* ref);
 private:
-    void initBg();
+    void initBg(Vec2 pos);
     bool hidden;
     Sprite* imgbg;
     Menu* mn;
@@ -43,7 +45,10 @@ private:
     void startBuildCallback(Ref* pSender);
     void callback(Ref* pSender);
     void updateButton();
-
+    
+    Node* entity;
+    LayerCover* cover;
+    EventListenerTouchOneByOne* eventListener;
 };
 
 NS_KCL_END

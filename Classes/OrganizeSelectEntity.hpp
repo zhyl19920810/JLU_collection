@@ -12,18 +12,23 @@
 
 #include "cocos2d.h"
 #include "kantai.h"
-#include "kantaiCard.hpp"
-#include "HpBar.hpp"
-#include "MenuItemTouch.hpp"
-#include "EquipmentContainer.hpp"
-#include "ValueBar.hpp"
-#include "Star.hpp"
-#include "LayerCover.hpp"
+
+
 #include "unityEntity.hpp"
 
 USING_NS_CC;
 
 NS_KCL_BEGIN
+
+
+class Stars;
+class ValueBar;
+class EquipContainer;
+class LayerCover;
+class HpBar;
+class KantaiCard;
+class MenuItemButton;
+class EquipContainer;
 
 
 
