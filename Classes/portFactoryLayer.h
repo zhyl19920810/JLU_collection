@@ -15,10 +15,12 @@
 #include "Player.h"
 #include "buildKantaiEntity.hpp"
 #include "FactoryListEntity.hpp"
-#include "LayerCover.hpp"
 #include "Panel.hpp"
 
 using namespace cocos2d;
+
+class LayerCover;
+
 
 NS_KCL_BEGIN
 
@@ -30,11 +32,8 @@ class PortFactoryLayer : public Panel
 public:
     PortFactoryLayer();
     CREATE_FUNC(PortFactoryLayer);
-    
-    bool init();
-    
 private:
-    
+    bool init();
 private:
     //bg
     void initLayer();
@@ -46,35 +45,34 @@ private:
     //build
 public:
     FactoryContainer* getContainer(int position);
-    
     void startBuild(int fuel,int steel,int ammo,int al);
-    void destroyKantai(Kantai* kantai,int fuel,int steel,int ammo,int al);
-    
-    void showDestroy(Ref* pSender);
-    void hideDestroy(Ref* pSender);
+public:
     void hideList(Ref* pSender);
     void showList(int position);
 private:
-    BuildKantaiEntity* entity;
-    
     void initContainer();
-    std::vector<FactoryContainer*> container;
     void buildCallback(Ref* pSender);
     
     
-    
-    void NullCallback(Ref* pSender);
-    LayerCover* destoryCover;
-    
+    std::vector<FactoryContainer*> container;
+    BuildKantaiEntity* entity;
+    LayerCover* listCover;
+    //destroy
 public:
     void showSelect(Kantai* kantai);
-    
+    void showDestroy(Ref* pSender);
+    void hideDestroy(Ref* pSender);
 private:
+    void destroyKantai(Kantai* kantai,int fuel,int steel,int ammo,int al);
     void destroyCallback(Kantai* kantai,int fuel,int steel,int ammo,int al);
     void initDestroyShipEntity();
     FactoryListEntity* destoryList;
     KantaiDestroyEntity* kantaiDestroyEntity;
-    LayerCover* listCover;
+    LayerCover* destoryCover;
+    
+    //other
+private:
+    void NullCallback(Ref* pSender);
 };
 
 

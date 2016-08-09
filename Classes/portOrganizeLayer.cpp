@@ -96,7 +96,7 @@ void PortOrganizeLayer::initLayer()
     addChild(listCover,2);
     
     detailEntity=KantaiDetailEntity::create();
-    addChild(detailEntity,3);
+    addChild(detailEntity,4);
     detailEntity->setPosition(visibleSize.width,0);
     detailEntity->setKantai(fleet->getShip(1));
     
@@ -104,8 +104,9 @@ void PortOrganizeLayer::initLayer()
     addChild(listEntity,3);
     listEntity->setPosition(visibleSize.width,0);
     
-    organSelectEntity=OrganSelectEntity::create();
-    organSelectEntity->setPosition(238,0);
+    auto pos=Vec2(695,200);
+    organSelectEntity=OrganSelectEntity::create(pos);
+    organSelectEntity->setPosition(pos);
     addChild(organSelectEntity,4);
     
 }
@@ -429,10 +430,6 @@ void PortOrganizeLayer::containerActionStart(kantaiChangeType type)
         default:
             break;
     }
-    
-
-    
-    
 }
 
 

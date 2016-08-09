@@ -10,6 +10,7 @@
 #include "KantaiDestroyEntity.hpp"
 #include "EventPauseGuard.hpp"
 #include "Sound.hpp"
+#include "LayerCover.hpp"
 
 
 NS_KCL_BEGIN

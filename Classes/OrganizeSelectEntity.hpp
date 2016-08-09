@@ -19,42 +19,34 @@
 #include "ValueBar.hpp"
 #include "Star.hpp"
 #include "LayerCover.hpp"
+#include "unityEntity.hpp"
 
 USING_NS_CC;
 
 NS_KCL_BEGIN
 
-class OrganSelectEntity:public Layer
+
+
+class OrganSelectEntity:public UnitEntity
 {
 public:
     OrganSelectEntity();
-    ~OrganSelectEntity(){}
-    static OrganSelectEntity* create();
-    
-    bool init();
-    void moveOut();
-    void moveIn();
+    static OrganSelectEntity* create(Vec2 pos);
     void updateKantai(Kantai* kantai);
     
     
 private:
-    void initBg();
-    void initKantai();
-    void setEquipContainerVisible(int equipNumber,bool bVisible);
     void changeShipCallback(Ref* pSender);
     bool canChangeKantai(Kantai* kantai);
     
-private:
-    int equipSize;
-    Kantai* kantai;
-    bool Hidden;
     
 private:
-    Node* entity;
-    LayerCover* layerCover;
-    Sprite* bgImg;
+    void setEquipContainerVisible(int equipNumber,bool bVisible);
+    int equipSize;
     std::vector<EquipContainer*> equipContainer;
     std::vector<Sprite*> equipEmpty;
+    
+private:
     MenuItemButton* changeShipButton;
     Label* kantaiName;
     Label* kantaiLv;
@@ -73,6 +65,13 @@ private:
     Sprite* armourIcon;
     ValueBar* ammoBar;
     ValueBar* fuelBar;
+    
+private:
+    bool init(Vec2 pos);
+    void initButton();
+    void initKantai();
+    void initTitle();
+    void initEntity();
 };
 
 NS_KCL_END

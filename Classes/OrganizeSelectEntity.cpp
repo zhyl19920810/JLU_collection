@@ -16,17 +16,15 @@ NS_KCL_BEGIN
 
 OrganSelectEntity::OrganSelectEntity()
 {
-    kantai=NULL;
-    Hidden = true;
     equipContainer.resize(4);
     equipEmpty.resize(4);
 }
 
 
-OrganSelectEntity* OrganSelectEntity::create()
+OrganSelectEntity* OrganSelectEntity::create(Vec2 pos)
 {
     OrganSelectEntity* pRet=new OrganSelectEntity;
-    if (pRet&&pRet->init())
+    if (pRet&&pRet->init(pos))
     {
         pRet->autorelease();
         return pRet;
@@ -38,18 +36,18 @@ OrganSelectEntity* OrganSelectEntity::create()
 
 
 
-bool OrganSelectEntity::init()
+bool OrganSelectEntity::init(Vec2 pos)
 {
     bool bRet=false;
     do
     {
-        if (!Layer::init())
+        if (!UnitEntity::init(pos))
         {
             break;
         }
         
-        initBg();
-        initKantai();
+        initTitle();
+        initEntity();
         
         bRet=true;
     }while(0);
@@ -58,40 +56,35 @@ bool OrganSelectEntity::init()
     return bRet;
 }
 
-
-
-void OrganSelectEntity::initBg()
+void OrganSelectEntity::initTitle()
 {
-    
-    layerCover=LayerCover::create(CC_CALLBACK_0(OrganSelectEntity::moveOut, this));
-    addChild(layerCover);
-    layerCover->setPosition(Vec2(-238, 0));
-    
-    entity=Node::create();
-    entity->setPosition(Vec2::ZERO);
-    addChild(entity);
-    
-    bgImg=Sprite::create("RepairMain/repairSelectBg1.png");
-    bgImg->setPosition(695,200);
-    entity->addChild(bgImg);
     auto tmp=bgImg->getContentSize()/2;
-    
     auto organSelectBar=Sprite::create("RepairMain/repairBar.png");
     organSelectBar->setPosition(tmp.width+288,tmp.height+197);
     bgImg->addChild(organSelectBar);
     
-    
-    
     auto organSelectTitle=Sprite::create("RepairMain/repairSelectTitle.png");
     organSelectTitle->setPosition(tmp.width-47,tmp.height+200);
     bgImg->addChild(organSelectTitle);
-    
-    
+}
+
+
+
+void OrganSelectEntity::initEntity()
+{
+    initButton();
+    initKantai();
+}
+
+void OrganSelectEntity::initButton()
+{
+    auto tmp=bgImg->getContentSize()/2;
     changeShipButton=MenuItemButton::create(Sprite::create("OrganizeMain/changeShipButton2.png"), Sprite::create("OrganizeMain/changeShipButton3.png"), Sprite::create("OrganizeMain/changeShipButton1.png"), CC_CALLBACK_1(OrganSelectEntity::changeShipCallback, this));
     changeShipButton->setPosition(tmp.width-10,tmp.height-165);
     bgImg->addChild(changeShipButton);
-    
 }
+
+
 
 
 void OrganSelectEntity::initKantai()
@@ -204,54 +197,11 @@ void OrganSelectEntity::initKantai()
 
 
 
-
-
-void OrganSelectEntity::moveOut()
-{
-    if (!Hidden)
-    {
-        CallFunc* moveByBefore=CallFunc::create([=]()
-        {
-           EventPauseGuard::pause();
-        });
-        auto move=MoveBy::create(0.15, Vec2(238, 0));
-        CallFunc* moveByFinish=CallFunc::create([=]()
-        {
-          EventPauseGuard::resume();
-          layerCover->setCoverEnable(false);
-        });
-        entity->runAction(Sequence::create(moveByBefore,move,moveByFinish, NULL));
-        kantai=NULL;
-        Hidden = true;
-    }
-}
-void OrganSelectEntity::moveIn()
-{
-    if (Hidden)
-    {
-        CallFunc* moveByBefore=CallFunc::create([=]()
-        {
-          layerCover->setCoverEnable(true);
-           EventPauseGuard::pause();
-        });
-        auto move=MoveBy::create(0.15, Point(-238, 0));
-        CallFunc* moveByFinish=CallFunc::create([=]()
-        {
-          EventPauseGuard::resume();
-        });
-        entity->runAction(Sequence::create(moveByBefore,move,moveByFinish, NULL));
-        Hidden = false;
-    }
-}
-
-
 void OrganSelectEntity::changeShipCallback(cocos2d::Ref *pSender)
 {
     auto panel=dynamic_cast<PortOrganizeLayer*>(VIEW_MGR->getPanel(PanelType::PORT_ORGANIZE));
     panel->modifyContainer(CHANGE_CONTAINER,kantai);
 }
-
-
 
 
 

@@ -197,7 +197,6 @@ int BuildKantaiUnit::getPlayerRes()
 
 
 
-
 bool BuildKantaiUnit::canAddDecade()
 {
     if ((getPlayerRes()>currRes)&&(currRes!=maxRes))
