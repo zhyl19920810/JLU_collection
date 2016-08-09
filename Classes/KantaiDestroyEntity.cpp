@@ -9,28 +9,66 @@
 #include "KantaiDestroyEntity.hpp"
 #include "FactoryListEntity.hpp"
 #include "portFactoryLayer.h"
+#include "ViewMgr.hpp"
 
 
 NS_KCL_BEGIN
 
-void KantaiDestroyEntity::initBg()
+
+
+
+KantaiDestroyEntity* KantaiDestroyEntity::create(cocos2d::Vec2 pos)
 {
-    bgImg=Sprite::create("RepairMain/repairSelectBg1.png");
-    bgImg->setPosition(695,200);
-    addChild(bgImg);
+    auto pRet=new KantaiDestroyEntity;
+    if (pRet&&pRet->init(pos))
+    {
+        pRet->autorelease();
+        return pRet;
+    }
+    delete pRet;
+    pRet=NULL;
+    return NULL;
+}
+
+bool KantaiDestroyEntity::init(Vec2 pos)
+{
+    bool bRet=false;
+    do
+    {
+        if (!UnitEntity::init(pos))
+        {
+            break;
+        }
+        initTitle();
+        initEntity();
+        
+        bRet=true;
+    }while(0);
+    
+    
+    return bRet;
+}
+
+
+void KantaiDestroyEntity::initTitle()
+{
     auto tmp=bgImg->getContentSize()/2;
-    
-    auto destroyEntityBar=Sprite::create("RepairMain/repairBar.png");
-    destroyEntityBar->setPosition(tmp.width+288,tmp.height+197);
-    bgImg->addChild(destroyEntityBar);
-    
-    
-    
     auto destroyEntityTitle=Sprite::create("ArsenalMain/image 435.png");
     destroyEntityTitle->setPosition(tmp.width-47,tmp.height+200);
     bgImg->addChild(destroyEntityTitle);
-    
-    
+}
+
+void KantaiDestroyEntity::initEntity()
+{
+    initBg();
+    initKantai();
+}
+
+
+
+void KantaiDestroyEntity::initBg()
+{
+    auto tmp=bgImg->getContentSize()/2;
     auto fuelIcon=Sprite::create("ArsenalMain/image 456.png");
     fuelIcon->setPosition(tmp.width-100,tmp.height+123);
     fuelIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
@@ -48,6 +86,7 @@ void KantaiDestroyEntity::initBg()
     alIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     bgImg->addChild(alIcon);
 }
+
 
 void KantaiDestroyEntity::initKantai()
 {
@@ -85,6 +124,7 @@ void KantaiDestroyEntity::initKantai()
     destroyButton->setPosition(tmp.width-5,tmp.height-160);
 }
 
+
 void KantaiDestroyEntity::update(Kantai *kantai)
 {
     this->kantai=kantai;
@@ -101,6 +141,7 @@ void KantaiDestroyEntity::update(Kantai *kantai)
     destroyButton->setButtonVisible(canDestroyKantai(kantai));
 }
 
+
 bool KantaiDestroyEntity::canDestroyKantai(Kantai *kantai)
 {
     bool canDestory=true;
@@ -112,77 +153,18 @@ bool KantaiDestroyEntity::canDestroyKantai(Kantai *kantai)
 
 KantaiDestroyEntity::KantaiDestroyEntity()
 {
-    kantai=NULL;
-    hidden=true;
 }
 
 void KantaiDestroyEntity::destroyCallback(cocos2d::Ref *pSender)
 {
-    auto factoryList=static_cast<FactoryListEntity*>(this->getParent());
-    auto factoryLayer=static_cast<PortFactoryLayer*>(factoryList->getParent());
-    CallFunc* f1=CallFunc::create([=]()
-                                  {
-                                      factoryLayer->destroyKantai(kantai, fuelVal, steelVal, ammoVal, alVal);
-                                      factoryList->destoryKantai(kantai);
-                                  });
-    CallFunc* f2=CallFunc::create([=]()
-                                  {
-                                      factoryList->hideSelect(this);
-                                  });
-    CallFunc* f3=CallFunc::create([=]()
-                                  {
-                                      factoryList->updateRows();
-                                  });
-    CallFunc* f4=CallFunc::create([=]()
-                                  {
-                                      factoryLayer->hideDestroy(this);
-                                  });
-    this->runAction(Sequence::create(f1,f3,f2,DelayTime::create(0.5),f4,DelayTime::create(1.5), NULL));
+    auto panel=dynamic_cast<PortFactoryLayer*>(VIEW_MGR->getPanel(PanelType::PORT_FACTORY));
+    panel->destroyCallback(kantai, fuelVal, steelVal, ammoVal, alVal);
 
-    
     //这里加上layer中destroy的函数
     //organizeList->changeContainer( kantai);
 }
 
 
-void KantaiDestroyEntity::moveOut()
-{
-    if (!hidden)
-    {
-        kantai=NULL;
-        this->runAction(MoveBy::create(0.15, Point(238, 0)));
-        hidden = true;
-    }
-    
-}
-void KantaiDestroyEntity::moveIn()
-{
-    if (hidden)
-    {
-        this->runAction(MoveBy::create(0.15, Point(-238, 0)));
-        hidden = false;
-    }
-}
-
-bool KantaiDestroyEntity::init()
-{
-    bool bRet=false;
-    do
-    {
-        if (!Layer::init())
-        {
-            break;
-        }
-        
-        initBg();
-        initKantai();
-        
-        bRet=true;
-    }while(0);
-    
-    
-    return bRet;
-}
 
 
 NS_KCL_END

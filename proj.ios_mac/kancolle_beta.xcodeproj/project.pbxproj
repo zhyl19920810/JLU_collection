@@ -382,6 +382,8 @@
 		F4D38E201C8731EF009BE55C /* OrganizeSelectEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E1D1C8731EF009BE55C /* OrganizeSelectEntity.cpp */; };
 		F4D38E241C8746CB009BE55C /* ValueBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E221C8746CB009BE55C /* ValueBar.cpp */; };
 		F4D38E251C8746CB009BE55C /* ValueBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E221C8746CB009BE55C /* ValueBar.cpp */; };
+		F4D4318E1D596A3C0042A780 /* unityEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D4318C1D596A3C0042A780 /* unityEntity.cpp */; };
+		F4D4318F1D596A3C0042A780 /* unityEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D4318C1D596A3C0042A780 /* unityEntity.cpp */; };
 		F4D5D0891C5FAFDF001441C3 /* FactoryContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0871C5FAFDF001441C3 /* FactoryContainer.cpp */; };
 		F4D5D08A1C5FAFDF001441C3 /* FactoryContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0871C5FAFDF001441C3 /* FactoryContainer.cpp */; };
 		F4D5D08D1C5FB006001441C3 /* buildKantaiEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D08B1C5FB006001441C3 /* buildKantaiEntity.cpp */; };
@@ -726,6 +728,8 @@
 		F4D38E1E1C8731EF009BE55C /* OrganizeSelectEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OrganizeSelectEntity.hpp; sourceTree = "<group>"; };
 		F4D38E221C8746CB009BE55C /* ValueBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ValueBar.cpp; sourceTree = "<group>"; };
 		F4D38E231C8746CB009BE55C /* ValueBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ValueBar.hpp; sourceTree = "<group>"; };
+		F4D4318C1D596A3C0042A780 /* unityEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unityEntity.cpp; sourceTree = "<group>"; };
+		F4D4318D1D596A3C0042A780 /* unityEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unityEntity.hpp; sourceTree = "<group>"; };
 		F4D5D0871C5FAFDF001441C3 /* FactoryContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FactoryContainer.cpp; sourceTree = "<group>"; };
 		F4D5D0881C5FAFDF001441C3 /* FactoryContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FactoryContainer.hpp; sourceTree = "<group>"; };
 		F4D5D08B1C5FB006001441C3 /* buildKantaiEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildKantaiEntity.cpp; sourceTree = "<group>"; };
@@ -1096,6 +1100,7 @@
 		F4036DCD1BDA20DE002788AA /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				F4D4318B1D596A2C0042A780 /* unityEntity */,
 				F40953181C99B06500E9B958 /* LayerCover */,
 				F476D34C1C8DE5A800A1B8EB /* ShowPolygonLayer */,
 				F43907A11C8B3D86004B5B2D /* ListEntity */,
@@ -1498,6 +1503,15 @@
 			name = ValueBar;
 			sourceTree = "<group>";
 		};
+		F4D4318B1D596A2C0042A780 /* unityEntity */ = {
+			isa = PBXGroup;
+			children = (
+				F4D4318C1D596A3C0042A780 /* unityEntity.cpp */,
+				F4D4318D1D596A3C0042A780 /* unityEntity.hpp */,
+			);
+			name = unityEntity;
+			sourceTree = "<group>";
+		};
 		F4D5D0861C5FAF1D001441C3 /* factory */ = {
 			isa = PBXGroup;
 			children = (
@@ -1825,6 +1839,7 @@
 				F44D26E11C4D198400438F3C /* MissionSelectPage.h in Sources */,
 				F44D26E21C4D198400438F3C /* layerSelecter.h in Sources */,
 				F4F956C61C5B538E001AA1B3 /* RepairContainer.cpp in Sources */,
+				F4D4318E1D596A3C0042A780 /* unityEntity.cpp in Sources */,
 				F43FFC821C5CE8E500C98BED /* RepairListRow.cpp in Sources */,
 				F44D26E31C4D198400438F3C /* portBattleLayer.h in Sources */,
 				F44D26E41C4D198400438F3C /* portFactoryLayer.h in Sources */,
@@ -2082,6 +2097,7 @@
 				F4D5D0971C5FB08C001441C3 /* arsenalDB.cpp in Sources */,
 				F445E9241D513E3C00855D10 /* TitlePic.cpp in Sources */,
 				F439079C1C8B373B004B5B2D /* ListEntity.cpp in Sources */,
+				F4D4318F1D596A3C0042A780 /* unityEntity.cpp in Sources */,
 				F4036E2B1BDA2316002788AA /* layerSelecter.cpp in Sources */,
 				F48189871C592F5F00A0D0F5 /* KantaiDetailEntity.cpp in Sources */,
 				F4036E2C1BDA2316002788AA /* layerSelecter.h in Sources */,

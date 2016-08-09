@@ -8,23 +8,22 @@
 
 #include "FactoryListEntity.hpp"
 #include "portFactoryLayer.h"
-
+#include "ViewMgr.hpp"
 
 NS_KCL_BEGIN
 
 
 void FactoryListEntity::hideSelect(cocos2d::Ref *pSender)
 {
-    kantaiDestroyEntity->moveOut();
-    selectCover->setCoverEnable(false);
+    //kantaiDestroyEntity->moveOut();
+    //selectCover->setCoverEnable(false);
     
 }
 
 void FactoryListEntity::showSelect(Kantai* kantai)
 {
-    kantaiDestroyEntity->moveIn();
-    kantaiDestroyEntity->update(kantai);
-    selectCover->setCoverEnable(true);
+    auto panel=dynamic_cast<PortFactoryLayer*>(VIEW_MGR->getPanel(PanelType::PORT_FACTORY));
+    panel->showSelect(kantai);
 }
 
 void FactoryListEntity::removeCallback(cocos2d::Ref *ref)
@@ -42,11 +41,6 @@ bool FactoryListEntity::init()
             break;
         }
 
-        kantaiDestroyEntity=KantaiDestroyEntity::create();
-        kantaiDestroyEntity->setPosition(238,0);
-        addChild(kantaiDestroyEntity,2);
-        
-        
         bRet=true;
     }while(0);
     

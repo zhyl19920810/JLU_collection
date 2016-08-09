@@ -27,6 +27,7 @@ void ListEntity::moveOut()
 {
     if (!hidden)
     {
+        
         listener->setEnabled(false);
         this->runAction(MoveBy::create(0.4, Point(800, 0)));
         hidden = true;

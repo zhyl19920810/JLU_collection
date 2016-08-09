@@ -13,36 +13,28 @@
 #include "cocos2d.h"
 #include "kantaiCard.hpp"
 #include "MenuItemTouch.hpp"
+#include "unityEntity.hpp"
+
 USING_NS_CC;
 
 NS_KCL_BEGIN
 
+class LayerCover;
 
 
-class KantaiDestroyEntity:public Layer
+class KantaiDestroyEntity:public UnitEntity
 {
 public:
-    CREATE_FUNC(KantaiDestroyEntity);
-    bool init();
-    
+    static KantaiDestroyEntity* create(Vec2 pos);
     KantaiDestroyEntity();
-    
-    
-    void initBg();
-    void initKantai();
     void update(Kantai* kantai);
-    
-    void moveOut();
-    void moveIn();
     void destroyCallback(Ref* pSender);
     bool canDestroyKantai(Kantai* kantai);
-private:
     
-    bool hidden;
-    Sprite* bgImg;
+    
+private:
     MenuItemButton* destroyButton;
     KantaiCard* kantaiCard;
-    Kantai* kantai;
     
     Label* fuel;
     Label* ammo;
@@ -54,6 +46,13 @@ private:
     int steelVal;
     int alVal;
     
+    
+private:
+    bool init(Vec2 pos);
+    void initTitle();
+    void initEntity();
+    void initBg();
+    void initKantai();
 };
 
 NS_KCL_END

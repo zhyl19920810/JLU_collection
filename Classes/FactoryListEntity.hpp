@@ -10,7 +10,6 @@
 #define FactoryListEntity_hpp
 
 #include "ListEntity.hpp"
-#include "KantaiDestroyEntity.hpp"
 
 
 NS_KCL_BEGIN
@@ -25,7 +24,7 @@ public:
     bool init();
     
     void destoryKantai(Kantai* kantai);
-    KantaiDestroyEntity* kantaiDestroyEntity;
+
 private:
 };
 

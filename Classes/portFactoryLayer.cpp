@@ -7,13 +7,16 @@
 //
 
 #include "portFactoryLayer.h"
+#include "KantaiDestroyEntity.hpp"
+#include "EventPauseGuard.hpp"
+#include "Sound.hpp"
+
 
 NS_KCL_BEGIN
 
 
 PortFactoryLayer::PortFactoryLayer()
 {
-    //container.resize(sPlayer.getMaxDockSize());
     container.resize(4);
 }
 
@@ -29,6 +32,7 @@ bool PortFactoryLayer::init()
         }
         initLayer();
         initContainer();
+        initDestroyShipEntity();
         
         bRet=true;
     }while(0);
@@ -36,6 +40,7 @@ bool PortFactoryLayer::init()
     
     return bRet;
 }
+
 
 
 
@@ -80,10 +85,6 @@ void PortFactoryLayer::initLayer()
     bgimg->addChild(menu);
     
     
-    destoryCover=LayerCover::create(CC_CALLBACK_1(PortFactoryLayer::hideDestroy, this));
-    destoryCover->setPosition(0,0);
-    addChild(destoryCover,2);
-    
     listCover=LayerCover::create(CC_CALLBACK_1(PortFactoryLayer::hideList, this));
     listCover->setPosition(0,0);
     addChild(listCover,2);
@@ -93,28 +94,10 @@ void PortFactoryLayer::initLayer()
     entity->setPosition(1150,tmp.height);
     addChild(entity,3);
     
-    
-    auto visible=Director::getInstance()->getVisibleSize();
-    destoryList=FactoryListEntity::create();
-    addChild(destoryList,3);
-    destoryList->setPosition(visible.width,0);
-    
 }
 
-void PortFactoryLayer::hideDestroy(Ref* pSender)
-{
-    destoryList->moveOut();
-    destoryCover->setCoverEnable(false);
-    //destoryHideItem->setEnabled(false);
-}
 
-void PortFactoryLayer::hideList(cocos2d::Ref *pSender)
-{
-    //hideListItem->setEnabled(false);
-    listCover->setCoverEnable(false);
-    entity->hideEntity();
-}
-
+////////build
 void PortFactoryLayer::initContainer()
 {
     for (int i=0; i<4; ++i)
@@ -125,6 +108,7 @@ void PortFactoryLayer::initContainer()
     }
 }
 
+
 void PortFactoryLayer::showList(int position)
 {
     UserDefault::getInstance()->setIntegerForKey("arsenalPosition", position);
@@ -132,13 +116,11 @@ void PortFactoryLayer::showList(int position)
     listCover->setCoverEnable(true);
 }
 
-void PortFactoryLayer::showDestroy(Ref* pSender)
+void PortFactoryLayer::hideList(cocos2d::Ref *pSender)
 {
-    destoryList->moveIn();
-    destoryCover->setCoverEnable(true);
+    listCover->setCoverEnable(false);
+    entity->hideEntity();
 }
-
-
 
 
 void PortFactoryLayer::startBuild(int fuel, int steel, int ammo, int al)
@@ -154,6 +136,39 @@ void PortFactoryLayer::startBuild(int fuel, int steel, int ammo, int al)
 }
 
 
+
+
+///////destory
+void PortFactoryLayer::initDestroyShipEntity()
+{
+    destoryCover=LayerCover::create(CC_CALLBACK_1(PortFactoryLayer::hideDestroy, this));
+    destoryCover->setPosition(0,0);
+    addChild(destoryCover,2);
+    
+    auto visible=Director::getInstance()->getVisibleSize();
+    destoryList=FactoryListEntity::create();
+    addChild(destoryList,3);
+    destoryList->setPosition(visible.width,0);
+    
+    auto pos=Vec2(695,200);
+    kantaiDestroyEntity=KantaiDestroyEntity::create(pos);
+    kantaiDestroyEntity->setPosition(pos);
+    addChild(kantaiDestroyEntity,4);
+}
+
+
+void PortFactoryLayer::showDestroy(Ref* pSender)
+{
+    destoryList->moveIn();
+    destoryCover->setCoverEnable(true);
+}
+
+void PortFactoryLayer::hideDestroy(Ref* pSender)
+{
+    destoryList->moveOut();
+    destoryCover->setCoverEnable(false);
+}
+
 void PortFactoryLayer::destroyKantai(Kantai *kantai, int fuel, int steel, int ammo, int al)
 {
     sPlayer.deleteKantai(kantai);
@@ -162,12 +177,53 @@ void PortFactoryLayer::destroyKantai(Kantai *kantai, int fuel, int steel, int am
     sPlayer.addSteel(steel);
     sPlayer.addAmmo(ammo);
 }
+void PortFactoryLayer::showSelect(kancolle::Kantai *kantai)
+{
+    kantaiDestroyEntity->moveIn();
+    kantaiDestroyEntity->update(kantai);
+}
+
+void PortFactoryLayer::destroyCallback(Kantai* kantai,int fuel,int steel,int ammo,int al)
+{
+    SND->playEffect("soundSE/scrapShip.mp3");
+    CallFunc* actionPre=CallFunc::create([=]()
+                                 {
+                                     EVENT_PAUSE;
+                                 });
+    CallFunc* f1=CallFunc::create([=]()
+                                  {
+                                      destroyKantai(kantai, fuel, steel, ammo, al);
+                                      destoryList->destoryKantai(kantai);
+                                  });
+    CallFunc* f2=CallFunc::create([=]()
+                                  {
+                                      kantaiDestroyEntity->moveOut();
+                                  });
+
+    CallFunc* f3=CallFunc::create([=]()
+                                  {
+                                      hideDestroy(this);
+                                  });
+    CallFunc* f4=CallFunc::create([=]()
+                                  {
+                                      destoryList->updateRows();
+                                  });
+    CallFunc* actionPost=CallFunc::create([=]()
+                                  {
+                                      EVENT_RESUME;
+                                  });
+    this->runAction(Sequence::create(actionPre,f1,f2,DelayTime::create(0.2),f3,DelayTime::create(0.5),f4,actionPost, NULL));
+}
 
 
+
+
+/////other
 void PortFactoryLayer::NullCallback(cocos2d::Ref *pSender)
 {
     
 }
+
 
 
 NS_KCL_END

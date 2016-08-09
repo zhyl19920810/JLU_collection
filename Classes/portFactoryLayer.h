@@ -22,8 +22,11 @@ using namespace cocos2d;
 
 NS_KCL_BEGIN
 
+class KantaiDestroyEntity;
+
 class PortFactoryLayer : public Panel
 {
+    friend class KantaiDestroyEntity;
 public:
     PortFactoryLayer();
     CREATE_FUNC(PortFactoryLayer);
@@ -53,19 +56,25 @@ public:
     void showList(int position);
 private:
     BuildKantaiEntity* entity;
-    FactoryListEntity* destoryList;
+    
     void initContainer();
     std::vector<FactoryContainer*> container;
     void buildCallback(Ref* pSender);
-    //void callBack(Ref* pSender);
     
     
     
     void NullCallback(Ref* pSender);
-    
     LayerCover* destoryCover;
-    LayerCover* listCover;
     
+public:
+    void showSelect(Kantai* kantai);
+    
+private:
+    void destroyCallback(Kantai* kantai,int fuel,int steel,int ammo,int al);
+    void initDestroyShipEntity();
+    FactoryListEntity* destoryList;
+    KantaiDestroyEntity* kantaiDestroyEntity;
+    LayerCover* listCover;
 };
 
 
