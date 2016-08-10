@@ -67,7 +67,6 @@ void BuildKantaiEntity::initBg(Vec2 pos)
     imgbg=Sprite::create("ArsenalMain/factoryBg.png");
     imgbg->setPosition(Vec2::ZERO);
     entity->addChild(imgbg);
-    //log("%f  %f",imgbg->getContentSize().width,imgbg->getContentSize().height);
     
     Sprite* imgbg2=Sprite::create("ArsenalMain/imgbg2.png");
     imgbg2->setPosition(260,84);

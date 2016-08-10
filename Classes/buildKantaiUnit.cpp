@@ -74,15 +74,13 @@ void BuildKantaiUnit::arrowCallback(cocos2d::Ref *pSender, bool addDir)
 
 void BuildKantaiUnit::resetCallback(cocos2d::Ref *pSender)
 {
-    
-    if (currRes>minRes)
+    if (getPlayerRes()>=minRes)
     {
         currRes=minRes;
     }
     else
     {
-        int tmp=getPlayerRes()-currRes;
-        currRes+=tmp;
+        currRes=getPlayerRes();
     }
 }
 
@@ -90,7 +88,6 @@ void BuildKantaiUnit::maxCallback(cocos2d::Ref *pSender)
 {
     int tmp=getPlayerRes();
     tmp=(tmp>maxRes)?maxRes:tmp;
-    //tmp=(tmp<minRes)?minRes:tmp;
     currRes=tmp;
 }
 
