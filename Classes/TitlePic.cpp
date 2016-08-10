@@ -14,7 +14,8 @@ NS_KCL_BEGIN
 USING_NS_CC;
 
 #define FADE_TIME 0.8
-
+#define NODE_SHOW 255
+#define NODE_HIDE 0
 
 TitlePic* TitlePic::create()
 {
@@ -37,7 +38,6 @@ void TitlePic::changeTitlePic(kancolle::PanelType type,float delayTime)
     if (currType==type)  return;
     
     currType=type;
-    float rotateAngle=getRotation();
     std::string titleName;
     
     switch (type) {
@@ -79,25 +79,25 @@ void TitlePic::changeAction(float delayTime)
     {
         CallFunc* callBefore=CallFunc::create([=]()
         {
-            title->setOpacity(255);
+            auto spriteTemp=preTitle->getSpriteFrame();
+            preTitle->setSpriteFrame(title->getSpriteFrame());
+            title->setSpriteFrame(spriteTemp);
+            title->setOpacity(NODE_HIDE);
             title->setVisible(true);
-            preTitle->setOpacity(0);
+            preTitle->setOpacity(NODE_SHOW);
             preTitle->setVisible(true);
        });
         CallFunc* fadeAction=CallFunc::create([=]()
        {
-           title->runAction(FadeTo::create(delayTime, 0));
-           preTitle->runAction(FadeTo::create(delayTime, 255));
+           title->runAction(FadeTo::create(delayTime, NODE_SHOW));
+           preTitle->runAction(FadeTo::create(delayTime, NODE_HIDE));
        });
         CallFunc* callAfter=CallFunc::create([=]()
         {
-            auto spriteTemp=preTitle->getSpriteFrame();
-            preTitle->setSpriteFrame(title->getSpriteFrame());
-            title->setSpriteFrame(spriteTemp);
-            title->setOpacity(255);
-            preTitle->setOpacity(0);
-            preTitle->setVisible(false);
+            title->setOpacity(NODE_SHOW);
             title->setVisible(true);
+            preTitle->setOpacity(NODE_HIDE);
+            preTitle->setVisible(false);
        });
         p1=Sequence::create(callBefore,fadeAction,DelayTime::create(delayTime+0.1),callAfter, NULL);
     }

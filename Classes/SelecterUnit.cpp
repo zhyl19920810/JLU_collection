@@ -61,18 +61,15 @@ bool SelecterUnit::init(PanelType panelType)
 void SelecterUnit::setSelected(bool enable)
 {
     if (enable==_enable) return;
-    std::string modifyPos=getPanelName(_panelType);
     
     if (enable)
     {
-        //setPosition(xLoc["buttonSelected"], yLoc[modifyPos]);
         _selecterState=LayerSelecterState::SELECTED;
         _button->setEnabled(false);
         _enable=enable;
     }
     else
     {
-        //setPosition(xLoc["buttonFree"], yLoc[modifyPos]);
         _selecterState=LayerSelecterState::FREE;
         _button->setEnabled(true);
         _enable=enable;

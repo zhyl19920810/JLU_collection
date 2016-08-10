@@ -76,8 +76,6 @@ private:
     SelecterUnit* getSelecterUnit(PanelType type) const;
     std::string getPanelName(PanelType type) const;
     bool isPortPanel(PanelType type) const;
-    void stopButtonListner();
-    void resumeButtonListner();
     void setBattleState();
 private:
     std::map<std::string,float> xLoc;

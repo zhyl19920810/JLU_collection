@@ -164,21 +164,6 @@ bool LayerSelecter::isPortPanel(PanelType type) const
     return false;
 }
 
-void LayerSelecter::stopButtonListner()
-{
-    auto _dispatcher= _director->getEventDispatcher();
-    auto _scene=VIEW_MGR->getScene(SceneType::HOME);
-    _dispatcher->pauseEventListenersForTarget(_scene,true);
-}
-
-
-void LayerSelecter::resumeButtonListner()
-{
-    auto _dispatcher= _director->getEventDispatcher();
-    auto _scene=VIEW_MGR->getScene(SceneType::HOME);
-    _dispatcher->resumeEventListenersForTarget(_scene,true);
-}
-
 
 void LayerSelecter::changeHookPos(kancolle::PanelType type)
 {
@@ -191,26 +176,28 @@ void LayerSelecter::changeHookPos(kancolle::PanelType type)
     auto modifySelecter=getSelecterUnit(type);
     
     
+    CallFunc* callPre=CallFunc::create([=]()
+    {
+        EVENT_PAUSE
+    });
+    
     ActionInterval* p1;
     {
-        CallFunc* callBefore=CallFunc::create([=]()
-        {
-            EVENT_PAUSE
-        });
+
         CallFunc* callfunc=CallFunc::create([=]()
         {
             auto hookMove=MoveTo::create(DropTime, Vec2(xLoc["hookDown"], yLoc[currPos]));
             hook->runAction(hookMove);
             auto buttonMove=MoveTo::create(DropTime, Vec2(xLoc["buttonFree"], yLoc[currPos]));
             currSelecter->runAction(buttonMove);
-            stopButtonListner();
         });
+        
         CallFunc* callAfter=CallFunc::create([=]()
         {
             currSelecter->setSelected(false);
             currSelecter->setPosition(xLoc["buttonFree"], yLoc[currPos]);
         });
-        p1=Sequence::create(callBefore,callfunc,DelayTime::create(DropTime+StopTime),callAfter, NULL);
+        p1=Sequence::create(callfunc,DelayTime::create(DropTime+StopTime),callAfter, NULL);
     }
     
     ActionInterval* p2;
@@ -230,7 +217,7 @@ void LayerSelecter::changeHookPos(kancolle::PanelType type)
             auto hookMove=MoveTo::create(OrbitMoveTime, Vec2(xLoc["hookMoved"], yLoc[modifyPos]));
             hook->runAction(hookMove);
         });
-        p3=Sequence::create(callfunc,DelayTime::create(OrbitMoveTime), NULL);
+        p3=Sequence::create(callfunc,DelayTime::create(OrbitMoveTime+StopTime), NULL);
     }
     
     ActionInterval* p4;
@@ -258,14 +245,16 @@ void LayerSelecter::changeHookPos(kancolle::PanelType type)
         });
         CallFunc* callAfter=CallFunc::create([=]()
         {
-            resumeButtonListner();
             currType=type;
-            EVENT_RESUME
         });
-        p5=Sequence::create(callfunc,DelayTime::create(DropTime+StopTime),callAfter, NULL);
+        p5=Sequence::create(callfunc,DelayTime::create(DropTime),callAfter, NULL);
     }
+    CallFunc* callPost=CallFunc::create([=]()
+    {
+         EVENT_RESUME
+    });
     
-    auto seqAction=Sequence::create(p1,p2,p3,p4,p5,DelayTime::create(DropTime*2+LiftTime*2+OrbitMoveTime+StopTime*4),NULL);
+    auto seqAction=Sequence::create(callPre,p1,p2,p3,p4,p5,callPost,NULL);
     runAction(seqAction);
     
 }

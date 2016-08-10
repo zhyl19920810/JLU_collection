@@ -24,7 +24,7 @@
 #include "ViewMgr.hpp"
 #include "PortBgLayer.hpp"
 #include "SoundPanelButton.hpp"
-
+#include "EventPauseGuard.hpp"
 
 
 NS_KCL_BEGIN
@@ -112,14 +112,17 @@ bool PortScene::init()
 
 void PortScene::changePortPanelAction(PanelType newType)
 {
-    
+    CallFunc* actionPre=CallFunc::create([]()
+    {
+        EVENT_PAUSE
+    });
     ActionInterval* p1;
     {
         CallFunc* callfunc=CallFunc::create([=]()
         {
             coverLayer->setVisible(true);
             coverLayer->setOpacity(0);
-            Action* layerColorChange=FadeIn::create(StopTime*2+DropTime+LiftTime);
+            Action* layerColorChange=FadeIn::create(DropTime+LiftTime);
             coverLayer->runAction(layerColorChange);
         });
         p1=Sequence::create(callfunc,DelayTime::create(StopTime*2+DropTime+LiftTime), NULL);
@@ -130,8 +133,9 @@ void PortScene::changePortPanelAction(PanelType newType)
     {
         CallFunc* callfunc=CallFunc::create([=]()
         {
+            coverLayer->setOpacity(255);
+            portUIlayer->changeTitlePic(newType,0.5);
             VIEW_MGR->showPanel(newType,true);
-            portUIlayer->changeTitlePic(newType,0.7);
         });
         p2=Sequence::create(callfunc,DelayTime::create(OrbitMoveTime), NULL);
     }
@@ -141,18 +145,22 @@ void PortScene::changePortPanelAction(PanelType newType)
     {
         CallFunc* callfunc=CallFunc::create([=]()
         {
-            Action* layerColorChange=FadeOut::create(StopTime*2+DropTime+LiftTime);
+            Action* layerColorChange=FadeOut::create(DropTime+LiftTime);
             coverLayer->runAction(layerColorChange);
         });
         
         CallFunc* callAfter=CallFunc::create([=]()
         {
             coverLayer->setVisible(false);
-            coverLayer->setOpacity(255);
+            coverLayer->setOpacity(0);
         });
-        p3=Sequence::create(callfunc,DelayTime::create(OrbitMoveTime),callAfter, NULL);
+        p3=Sequence::create(DelayTime::create(StopTime*2),callfunc,DelayTime::create(DropTime+LiftTime),callAfter, NULL);
     }
-    auto seqAction=Sequence::create(p1,p2,p3,DelayTime::create(DropTime*2+LiftTime*2+OrbitMoveTime+StopTime*4),NULL);
+    CallFunc* actionPost=CallFunc::create([]()
+    {
+        EVENT_RESUME
+    });
+    auto seqAction=Sequence::create(actionPre,p1,p2,p3,actionPost,NULL);
     runAction(seqAction);
 }
 
