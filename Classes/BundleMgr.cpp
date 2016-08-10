@@ -14,8 +14,6 @@
 #include "databaseInit.h"
 #include "databaseBase.h"
 #include "portScene.h"
-#include "GameScene.h"
-#include "MissionNode.h"
 #include "TestScene.h"
 #include <fstream>
 #include <dirent.h>
@@ -26,7 +24,6 @@
 #include "KantaiMgr.hpp"
 #include "EquipMgr.hpp"
 #include "ExpMgr.hpp"
-#include "SallyScene.h"
 #include "EquipPicMgr.hpp"
 #include "RepairFactorMgr.hpp"
 

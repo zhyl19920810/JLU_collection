@@ -7,7 +7,6 @@
 //
 
 #include "portBattleLayer.h"
-#include "MissionSelectPage.h"
 #include "Player.h"
 
 
@@ -65,10 +64,6 @@ void PortBattleLayer::initLayer()
     menu->setPosition(0, 0);
     this->addChild(menu);
     
-    //Sub Pages
-    missionPage = new MissionSelectPage(this);
-    missionPage->setPosition(800, 0);
-    this->addChild(missionPage);
 }
 
 void PortBattleLayer::callBack1(Ref* pSender)
@@ -80,11 +75,18 @@ void PortBattleLayer::callBack2(Ref* pSender)
 void PortBattleLayer::ShowMissionSelectPage(Ref* pSender)
 {
     auto fleet=sPlayer.getFleetByFleetKey(1);
-    
-//    if (missionPage->isHidden())
-//    {
-//        //missionPage->moveIn();
-//    }
+    for(int i=1;i<=6;++i)
+    {
+        auto kantai=fleet->getShip(i);
+        if (kantai)
+        {
+            kantai->setCurrAmmo(kantai->getCurrAmmo()*0.9);
+            kantai->setCurrFuel(kantai->getCurrFuel()*0.9);
+            kantai->setCurrHp(kantai->getCurrHp()*0.9);
+        }
+        
+    }
+
     
 }
 
