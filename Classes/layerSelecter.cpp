@@ -14,10 +14,6 @@
 NS_KCL_BEGIN
 
 
-//const static float DropTime=0.07;
-//const static float LiftTime=0.17;
-//const static float OrbitMoveTime=0.3;
-
 
 LayerSelecter::LayerSelecter()
 {

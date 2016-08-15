@@ -26,7 +26,7 @@
 #include "ExpMgr.hpp"
 #include "EquipPicMgr.hpp"
 #include "RepairFactorMgr.hpp"
-
+#include "TimerMgr.hpp"
 
 
 NS_KCL_BEGIN
@@ -71,9 +71,7 @@ void BundleMgr::destroy()
 void BundleMgr::onLaunchApp()
 {
     initTinaConfig();
-    //resize();
     readFromCache();
-    //setSearchPath();
     initialization();
     exeLaunch();
 }
@@ -92,6 +90,15 @@ void BundleMgr::onEnterForeground()
 
 void BundleMgr::onDestroy()
 {
+    TimerMgr::getInstance()->delInstance();
+    Arsenal::delInstance();
+    Dock::delInstance();
+    Player::delInstance();
+    RepairFactorMgr::delInstance();
+    EquipPicMgr::delInstance();
+    ExpMgr::delInstance();
+    EquipMgr::delInstance();
+    KantaiMgr::delInstance();
     tina::TinaMgr::destroy();
 }
 
@@ -102,7 +109,6 @@ void BundleMgr::LoadConfig()
     ExpMgr::newInstance();
     EquipPicMgr::newInstance();
     RepairFactorMgr::newInstance();
-    
     sKantaiMgr.loadConf();
     sEquipMgr.loadConf();
     sExpMgr.loadConf();
@@ -119,6 +125,7 @@ void BundleMgr::initialization()
     Player::newInstance();
     Dock::newInstance();
     Arsenal::newInstance();
+    TimerMgr::getInstance()->startTimer();
     
     
 #if DB_IN_COMPUTER

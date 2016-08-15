@@ -107,16 +107,8 @@ void PortMainLayer::setButtonDisable()
     signBoardGirl->setDisable();
 }
 
-void PortMainLayer::resumeDispatcher()
-{
-//    EventDispatcher* eventDispatcher=Director::getInstance()->getEventDispatcher();
-//    eventDispatcher->resumeEventListenersForTarget(organizeButton);
-//    eventDispatcher->resumeEventListenersForTarget(supplyButton);
-//    eventDispatcher->resumeEventListenersForTarget(remodeButton);
-//    eventDispatcher->resumeEventListenersForTarget(repairButton);
-//    eventDispatcher->resumeEventListenersForTarget(factoryButton);
-//    eventDispatcher->resumeEventListenersForTarget(battleButton);
-}
+
+
 
 void PortMainLayer::initMenu()
 {

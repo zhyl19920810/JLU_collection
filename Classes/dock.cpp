@@ -36,7 +36,7 @@ void Dock::initDock(int playerKey)
             dock[it->position-1]=tmp;
         }
     }
-    startCircle();
+    //startCircle();
 }
 
 void Dock::buildNewDock()
@@ -97,16 +97,16 @@ bool Dock::haveDock(int position)
 }
 
 
-void Dock::startCircle()
-{
-    std::function<void(float)> f1=std::bind(&Dock::repairTimeCircle, this,std::placeholders::_1);
-    Director::getInstance()->getScheduler()->schedule(f1, this, 1, false, "DockRepairTime");
-}
-
-void Dock::endCircle()
-{
-    Director::getInstance()->getScheduler()->unschedule("DockRepairTime", this);
-}
+//void Dock::startCircle()
+//{
+//    std::function<void(float)> f1=std::bind(&Dock::repairTimeCircle, this,std::placeholders::_1);
+//    Director::getInstance()->getScheduler()->schedule(f1, this, 1, false, "DockRepairTime");
+//}
+//
+//void Dock::endCircle()
+//{
+//    Director::getInstance()->getScheduler()->unschedule("DockRepairTime", this);
+//}
 
 void Dock::repairTimeCircle(float dt)
 {

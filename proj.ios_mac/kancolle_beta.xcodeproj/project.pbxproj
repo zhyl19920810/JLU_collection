@@ -196,6 +196,10 @@
 		F42303CF1D2BEC0C00B06189 /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = F42303CE1D2BEC0C00B06189 /* Resources */; };
 		F42303D91D2C049E00B06189 /* ViewMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42303D71D2C049E00B06189 /* ViewMgr.cpp */; };
 		F42303DA1D2C049E00B06189 /* ViewMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42303D71D2C049E00B06189 /* ViewMgr.cpp */; };
+		F427A49B1D618DE2001C6B45 /* TimerMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F427A4991D618DE2001C6B45 /* TimerMgr.cpp */; };
+		F427A49C1D618DE2001C6B45 /* TimerMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F427A4991D618DE2001C6B45 /* TimerMgr.cpp */; };
+		F427A4A51D619484001C6B45 /* TimeUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F427A4A31D619484001C6B45 /* TimeUtil.cpp */; };
+		F427A4A61D619484001C6B45 /* TimeUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F427A4A31D619484001C6B45 /* TimeUtil.cpp */; };
 		F42DB8E61C599DCA00CBE2C7 /* EquipmentContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8E41C599DCA00CBE2C7 /* EquipmentContainer.cpp */; };
 		F42DB8E71C599DCA00CBE2C7 /* EquipmentContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8E41C599DCA00CBE2C7 /* EquipmentContainer.cpp */; };
 		F42DB8EE1C59B10100CBE2C7 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = F42DB8ED1C59B10100CBE2C7 /* icons */; };
@@ -557,6 +561,10 @@
 		F42303D71D2C049E00B06189 /* ViewMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ViewMgr.cpp; sourceTree = "<group>"; };
 		F42303D81D2C049E00B06189 /* ViewMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ViewMgr.hpp; sourceTree = "<group>"; };
 		F42303DD1D2C0B4500B06189 /* ViewMgrMacro.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ViewMgrMacro.hpp; sourceTree = "<group>"; };
+		F427A4991D618DE2001C6B45 /* TimerMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimerMgr.cpp; sourceTree = "<group>"; };
+		F427A49A1D618DE2001C6B45 /* TimerMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TimerMgr.hpp; sourceTree = "<group>"; };
+		F427A4A31D619484001C6B45 /* TimeUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimeUtil.cpp; sourceTree = "<group>"; };
+		F427A4A41D619484001C6B45 /* TimeUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TimeUtil.hpp; sourceTree = "<group>"; };
 		F42DB8E41C599DCA00CBE2C7 /* EquipmentContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EquipmentContainer.cpp; sourceTree = "<group>"; };
 		F42DB8E51C599DCA00CBE2C7 /* EquipmentContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EquipmentContainer.hpp; sourceTree = "<group>"; };
 		F42DB8ED1C59B10100CBE2C7 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = icons; sourceTree = "<group>"; };
@@ -1026,6 +1034,7 @@
 		F4036DD31BDA2160002788AA /* backGround */ = {
 			isa = PBXGroup;
 			children = (
+				F427A4A21D61946F001C6B45 /* Time */,
 				F4FABB011C50D2D200F75BCE /* CSV */,
 				F4036DD41BDA216A002788AA /* database */,
 				F45FD1B81D4D158000A445D7 /* EventPauseGuard.cpp */,
@@ -1194,6 +1203,17 @@
 				F41E32041D3A904D00B679E0 /* Panel.hpp */,
 			);
 			name = Widget;
+			sourceTree = "<group>";
+		};
+		F427A4A21D61946F001C6B45 /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				F427A4991D618DE2001C6B45 /* TimerMgr.cpp */,
+				F427A49A1D618DE2001C6B45 /* TimerMgr.hpp */,
+				F427A4A31D619484001C6B45 /* TimeUtil.cpp */,
+				F427A4A41D619484001C6B45 /* TimeUtil.hpp */,
+			);
+			name = Time;
 			sourceTree = "<group>";
 		};
 		F42DB8F51C5A30D800CBE2C7 /* HpBar */ = {
@@ -1697,6 +1717,7 @@
 				F4036DC01BDA1FDD002788AA /* XMLBuilder.cpp in Sources */,
 				F4A328421C847CA70048F939 /* SupplyShipUnit.cpp in Sources */,
 				F48253AF1D33EA0900165D61 /* MainLayerButton.cpp in Sources */,
+				F427A49B1D618DE2001C6B45 /* TimerMgr.cpp in Sources */,
 				F4036D8A1BDA1FDD002788AA /* fleetDB.cpp in Sources */,
 				F4BC4CAB1D2D242300374317 /* ViewMgrFactory.cpp in Sources */,
 				F4FABB041C50D30600F75BCE /* KantaiMgr.cpp in Sources */,
@@ -1714,6 +1735,7 @@
 				F42DB8F91C5A30EB00CBE2C7 /* HpBar.cpp in Sources */,
 				F43FFC7D1C5CD6CB00C98BED /* RepairHpBar.cpp in Sources */,
 				F4FABB141C50D89000F75BCE /* GameManger.cpp in Sources */,
+				F427A4A51D619484001C6B45 /* TimeUtil.cpp in Sources */,
 				F40C4FC31C5BCF89000FAA89 /* RepairFactorMgr.cpp in Sources */,
 				F4036DB41BDA1FDD002788AA /* portRepairLayer.cpp in Sources */,
 				F4938B681C60999100AB1286 /* metaphysics.cpp in Sources */,
@@ -1789,6 +1811,7 @@
 				F4B173FD1C545F4600D2BC1C /* EquipMgr.hpp in Sources */,
 				F4B173FE1C545F4600D2BC1C /* ExpMgr.cpp in Sources */,
 				F4F956CD1C5B5E49001AA1B3 /* RepairTimer.cpp in Sources */,
+				F427A4A61D619484001C6B45 /* TimeUtil.cpp in Sources */,
 				F4B173FF1C545F4600D2BC1C /* ExpMgr.hpp in Sources */,
 				F45F91221BF4BCA600327120 /* TestScene.h in Sources */,
 				F42DB8FF1C5A33B500CBE2C7 /* Star.cpp in Sources */,
@@ -1878,6 +1901,7 @@
 				F445E9241D513E3C00855D10 /* TitlePic.cpp in Sources */,
 				F439079C1C8B373B004B5B2D /* ListEntity.cpp in Sources */,
 				F4D4318F1D596A3C0042A780 /* unityEntity.cpp in Sources */,
+				F427A49C1D618DE2001C6B45 /* TimerMgr.cpp in Sources */,
 				F4036E2B1BDA2316002788AA /* layerSelecter.cpp in Sources */,
 				F48189871C592F5F00A0D0F5 /* KantaiDetailEntity.cpp in Sources */,
 				F4036E2C1BDA2316002788AA /* layerSelecter.h in Sources */,

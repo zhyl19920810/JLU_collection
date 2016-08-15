@@ -34,7 +34,6 @@ public:
     
     
     void updateGirl();
-    void resumeDispatcher();
     void buttonFlyIn();
     void setButtonEnable();
     void setButtonDisable();

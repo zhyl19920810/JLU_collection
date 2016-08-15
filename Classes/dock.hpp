@@ -49,8 +49,8 @@ private:
     int maxDockSize;
     int playerKey;
     std::vector<DockData> dock;
-    void startCircle();
-    void endCircle();
+//    void startCircle();
+//    void endCircle();
 };
 
 NS_KCL_END

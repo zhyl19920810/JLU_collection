@@ -8,7 +8,9 @@
 
 #include "arsenal.hpp"
 
+
 NS_KCL_BEGIN
+
 
 void Arsenal::initArsenal(int playerKey)
 {
@@ -35,7 +37,6 @@ void Arsenal::initArsenal(int playerKey)
         
         arsenal[it->position-1]=tmp;
     }
-    startCircle();
 }
 
 void Arsenal::buildNewArsenal()
@@ -101,16 +102,16 @@ bool Arsenal::isBuildingFinished(int position)
     return arsenal[position-1].finished;
 }
 
-void Arsenal::startCircle()
-{
-    std::function<void(float)> f1=std::bind(&Arsenal::buildTimeCircle, this,std::placeholders::_1);
-    Director::getInstance()->getScheduler()->schedule(f1, this, 1, false, "ArsenalBuildTime");
-}
-
-void Arsenal::endCircle()
-{
-    Director::getInstance()->getScheduler()->unschedule("ArsenalBuildTime", this);
-}
+//void Arsenal::startCircle()
+//{
+//    std::function<void(float)> f1=std::bind(&Arsenal::buildTimeCircle, this,std::placeholders::_1);
+//    Director::getInstance()->getScheduler()->schedule(f1, this, 1, false, "ArsenalBuildTime");
+//}
+//
+//void Arsenal::endCircle()
+//{
+//    Director::getInstance()->getScheduler()->unschedule("ArsenalBuildTime", this);
+//}
 
 bool Arsenal::haveShip(int position)
 {

@@ -19,6 +19,8 @@
 NS_KCL_BEGIN
 
 #define sArsenal Arsenal::getInstance()
+#define ArsenalBuildTime "ArsenalBuildTime"
+
 
 class Arsenal:public Singleton<Arsenal>
 {
@@ -48,8 +50,6 @@ private:
     int maxArsenalSize;
     int playerKey;
     std::vector<ArsenalData> arsenal;
-    void startCircle();
-    void endCircle();
     
     MetaPhysics* metaPhysics;
 };

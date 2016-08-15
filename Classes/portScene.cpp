@@ -82,7 +82,7 @@ bool PortScene::init()
     {
         CC_BREAK_IF(!Scene::init());
         
-        schedule([this](float dt){SetCurrPanel(PanelType::PORT_MAINLAYER);}, 0, 0, 0, "init_portScene");
+        //schedule([this](float dt){SetCurrPanel(PanelType::PORT_MAINLAYER);}, 0, 0, 0, "init_portScene");
         
         layerSelecter=LayerSelecter::create();
         layerSelecter->setPosition(-50,220);
