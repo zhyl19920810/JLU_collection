@@ -317,6 +317,47 @@ void EventDispatcher::pauseEventListenersForTarget(Node* target, bool recursive/
     }
 }
 
+void EventDispatcher::pauseEventListenersForListenerID(const EventListener::ListenerID& listenerID)
+{
+    auto listenerItemIter = _listenerMap.find(listenerID);
+    if (listenerItemIter != _listenerMap.end())
+    {
+        auto listeners = listenerItemIter->second;
+        auto fixedPriorityListeners = listeners->getFixedPriorityListeners();
+        auto sceneGraphPriorityListeners = listeners->getSceneGraphPriorityListeners();
+        
+        if (fixedPriorityListeners)
+        {
+            for(auto& l:*fixedPriorityListeners)
+            {
+                l->setPaused(true);
+            }
+        }
+        
+        if (sceneGraphPriorityListeners)
+        {
+            for(auto& l:*sceneGraphPriorityListeners)
+            {
+                l->setPaused(true);
+                setDirtyForNode(l->getAssociatedNode());
+            }
+        }
+        
+        for (auto& listener : _toAddedListeners)
+        {
+            if (listener->getListenerID()==listenerID)
+            {
+                listener->setPaused(true);
+                auto node=listener->getAssociatedNode();
+                if (node) setDirtyForNode(node);
+            }
+        }
+    }
+}
+
+
+
+
 void EventDispatcher::resumeEventListenersForTarget(Node* target, bool recursive/* = false */)
 {
     auto listenerIter = _nodeListenersMap.find(target);
@@ -348,6 +389,47 @@ void EventDispatcher::resumeEventListenersForTarget(Node* target, bool recursive
         }
     }
 }
+
+void EventDispatcher::resumeEventListenersForListenerID(const EventListener::ListenerID& listenerID)
+{
+    auto listenerItemIter = _listenerMap.find(listenerID);
+    if (listenerItemIter != _listenerMap.end())
+    {
+        auto listeners = listenerItemIter->second;
+        auto fixedPriorityListeners = listeners->getFixedPriorityListeners();
+        auto sceneGraphPriorityListeners = listeners->getSceneGraphPriorityListeners();
+        
+        if (fixedPriorityListeners)
+        {
+            for(auto& l:*fixedPriorityListeners)
+            {
+                l->setPaused(false);
+            }
+        }
+        
+        if (sceneGraphPriorityListeners)
+        {
+            for(auto& l:*sceneGraphPriorityListeners)
+            {
+                l->setPaused(false);
+                setDirtyForNode(l->getAssociatedNode());
+            }
+        }
+        
+        for (auto& listener : _toAddedListeners)
+        {
+            if (listener->getListenerID()==listenerID)
+            {
+                listener->setPaused(false);
+                auto node=listener->getAssociatedNode();
+                if (node) setDirtyForNode(node);
+            }
+        }
+    }
+}
+
+
+
 
 void EventDispatcher::removeEventListenersForTarget(Node* target, bool recursive/* = false */)
 {

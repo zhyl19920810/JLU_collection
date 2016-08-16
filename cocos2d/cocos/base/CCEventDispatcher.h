@@ -321,6 +321,11 @@ protected:
     int _nodePriorityIndex;
     
     std::set<std::string> _internalCustomListenerIDs;
+    
+public:
+    void resumeEventListenersForListenerID(const EventListener::ListenerID& listenerID);
+    
+    void pauseEventListenersForListenerID(const EventListener::ListenerID& listenerID);
 };
 
 
