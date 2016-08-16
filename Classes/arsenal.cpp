@@ -7,7 +7,7 @@
 //
 
 #include "arsenal.hpp"
-
+#include "TimeUtil.hpp"
 
 NS_KCL_BEGIN
 
@@ -21,12 +21,13 @@ void Arsenal::initArsenal(int playerKey)
     
     
     arsenal.resize(maxArsenalSize);
+    auto currTime=TimeUtil::getTimestamp();
     for (auto it=data.begin(); it!=data.end(); ++it)
     {
         ArsenalData tmp;
         tmp.kantaiNumber=it->kantaiNumber;
-        tmp.remainTime=it->completeTime;
-        if (it->completeTime<=0)
+        tmp.completeTime=it->completeTime;
+        if (it->completeTime<=currTime)
         {
             tmp.finished=true;
         }
@@ -56,11 +57,12 @@ void Arsenal::buildNewKantai(int position, int fuel, int steel, int ammo, int al
     sPlayer.minusFuel(fuel);
     sPlayer.minusSteel(steel);
     int buildTime=sKantaiMgr.GetKantaiMap(kantaiNumber)->buildTime;
-    sArsenalDB->insertKantai(playerKey, kantaiNumber, position, buildTime);
+    ino64_t completeTime=buildTime+TimeUtil::getTimestamp();
+    sArsenalDB->insertKantai(playerKey, kantaiNumber, position, completeTime);
     
     ArsenalData tmp;
     tmp.kantaiNumber=kantaiNumber;
-    tmp.remainTime=buildTime;
+    tmp.completeTime=completeTime;
     tmp.finished=false;
     arsenal[position-1]=tmp;
 }
@@ -68,17 +70,16 @@ void Arsenal::buildNewKantai(int position, int fuel, int steel, int ammo, int al
 
 void Arsenal::buildTimeCircle(float dt)
 {
+    auto currTime=TimeUtil::getTimestamp();
     for (int i=0; i<arsenal.size(); ++i)
     {
         auto unit=arsenal[i];
         if ((unit.kantaiNumber)&&(!unit.finished))
         {
-            if (unit.remainTime<=0)
+            if (unit.completeTime>=currTime)
             {
                 unit.finished=true;
             }
-            else
-            --unit.remainTime;
         }
     }
 }
@@ -90,7 +91,7 @@ void Arsenal::finishBuildingKantai(int position)
     CCASSERT(kantaiNumber, "there is not a ship in the position");
     sArsenalDB->deleteKantai(playerKey, position);
     arsenal[position-1].kantaiNumber=0;
-    arsenal[position-1].remainTime=0;
+    arsenal[position-1].completeTime=0;
     arsenal[position-1].finished=false;
     sPlayer.buildNewKantai(kantaiNumber);
 }

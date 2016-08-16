@@ -16,8 +16,8 @@
 NS_KCL_BEGIN
 
 
-static uint64_t m_beginTimeStamp = TimeUtil::getLocalTimestamp();
-static std::chrono::steady_clock::time_point m_beginTimePoint = std::chrono::steady_clock::now();
+uint64_t TimeUtil::m_beginTimeStamp = TimeUtil::getLocalTimestamp();
+std::chrono::steady_clock::time_point TimeUtil::m_beginTimePoint = std::chrono::steady_clock::now();
 
 
 uint64_t TimeUtil::getTimestamp()

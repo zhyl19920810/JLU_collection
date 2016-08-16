@@ -13,7 +13,7 @@
 #include "cocos2d.h"
 #include "kantaiCard.hpp"
 #include "MenuItemTouch.hpp"
-#include "unityEntity.hpp"
+#include "unitEntity.hpp"
 
 USING_NS_CC;
 

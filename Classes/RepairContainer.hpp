@@ -10,7 +10,7 @@
 #define RepairContainer_hpp
 
 #include "cocos2d.h"
-#include "RepairTimer.hpp"
+#include "TimerEntity.hpp"
 #include "Star.hpp"
 #include "kantaiCard.hpp"
 #include "RepairHpBar.hpp"
@@ -39,7 +39,7 @@ protected:
     MenuItemSprite* selectDocks;
     Sprite* LVIcon;
     Menu* mn;
-    RepairTimer* timer;
+    TimerEntity* timer;
 };
 
 class RepairContainer:public RepairContainerParent

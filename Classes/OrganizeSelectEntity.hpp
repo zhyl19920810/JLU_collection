@@ -14,7 +14,7 @@
 #include "kantai.h"
 
 
-#include "unityEntity.hpp"
+#include "unitEntity.hpp"
 
 USING_NS_CC;
 

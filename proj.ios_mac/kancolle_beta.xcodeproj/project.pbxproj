@@ -167,7 +167,7 @@
 		F40C4FC31C5BCF89000FAA89 /* RepairFactorMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C4FC11C5BCF89000FAA89 /* RepairFactorMgr.cpp */; };
 		F40C4FC41C5BCF89000FAA89 /* RepairFactorMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C4FC11C5BCF89000FAA89 /* RepairFactorMgr.cpp */; };
 		F40C4FC91C5BDA6A000FAA89 /* RepairContainer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956C51C5B538E001AA1B3 /* RepairContainer.hpp */; };
-		F40C4FCA1C5BDA6A000FAA89 /* RepairTimer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956CB1C5B5E49001AA1B3 /* RepairTimer.hpp */; };
+		F40C4FCA1C5BDA6A000FAA89 /* TimerEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956CB1C5B5E49001AA1B3 /* TimerEntity.hpp */; };
 		F40C4FCD1C5BDA78000FAA89 /* EquipPicMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C4FCB1C5BDA78000FAA89 /* EquipPicMgr.cpp */; };
 		F40C4FCE1C5BDA78000FAA89 /* EquipPicMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C4FCB1C5BDA78000FAA89 /* EquipPicMgr.cpp */; };
 		F40CF97F1BDB4D1E00DD897F /* XMLBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40CF97D1BDB4D1E00DD897F /* XMLBase.cpp */; };
@@ -330,8 +330,8 @@
 		F4D38E201C8731EF009BE55C /* OrganizeSelectEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E1D1C8731EF009BE55C /* OrganizeSelectEntity.cpp */; };
 		F4D38E241C8746CB009BE55C /* ValueBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E221C8746CB009BE55C /* ValueBar.cpp */; };
 		F4D38E251C8746CB009BE55C /* ValueBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E221C8746CB009BE55C /* ValueBar.cpp */; };
-		F4D4318E1D596A3C0042A780 /* unityEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D4318C1D596A3C0042A780 /* unityEntity.cpp */; };
-		F4D4318F1D596A3C0042A780 /* unityEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D4318C1D596A3C0042A780 /* unityEntity.cpp */; };
+		F4D4318E1D596A3C0042A780 /* unitEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D4318C1D596A3C0042A780 /* unitEntity.cpp */; };
+		F4D4318F1D596A3C0042A780 /* unitEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D4318C1D596A3C0042A780 /* unitEntity.cpp */; };
 		F4D5D0891C5FAFDF001441C3 /* FactoryContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0871C5FAFDF001441C3 /* FactoryContainer.cpp */; };
 		F4D5D08A1C5FAFDF001441C3 /* FactoryContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0871C5FAFDF001441C3 /* FactoryContainer.cpp */; };
 		F4D5D08D1C5FB006001441C3 /* buildKantaiEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D08B1C5FB006001441C3 /* buildKantaiEntity.cpp */; };
@@ -360,8 +360,8 @@
 		F4F956C31C5B5359001AA1B3 /* RepairMain in Resources */ = {isa = PBXBuildFile; fileRef = F4F956C21C5B5359001AA1B3 /* RepairMain */; };
 		F4F956C61C5B538E001AA1B3 /* RepairContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956C41C5B538E001AA1B3 /* RepairContainer.cpp */; };
 		F4F956C71C5B538E001AA1B3 /* RepairContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956C41C5B538E001AA1B3 /* RepairContainer.cpp */; };
-		F4F956CC1C5B5E49001AA1B3 /* RepairTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956CA1C5B5E49001AA1B3 /* RepairTimer.cpp */; };
-		F4F956CD1C5B5E49001AA1B3 /* RepairTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956CA1C5B5E49001AA1B3 /* RepairTimer.cpp */; };
+		F4F956CC1C5B5E49001AA1B3 /* TimerEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956CA1C5B5E49001AA1B3 /* TimerEntity.cpp */; };
+		F4F956CD1C5B5E49001AA1B3 /* TimerEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956CA1C5B5E49001AA1B3 /* TimerEntity.cpp */; };
 		F4F956E51C5B9D4C001AA1B3 /* dock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956E31C5B9D4C001AA1B3 /* dock.cpp */; };
 		F4F956E61C5B9D4C001AA1B3 /* dock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956E31C5B9D4C001AA1B3 /* dock.cpp */; };
 		F4F956E91C5B9D7F001AA1B3 /* dockDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956E71C5B9D7F001AA1B3 /* dockDB.cpp */; };
@@ -650,8 +650,8 @@
 		F4D38E1E1C8731EF009BE55C /* OrganizeSelectEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OrganizeSelectEntity.hpp; sourceTree = "<group>"; };
 		F4D38E221C8746CB009BE55C /* ValueBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ValueBar.cpp; sourceTree = "<group>"; };
 		F4D38E231C8746CB009BE55C /* ValueBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ValueBar.hpp; sourceTree = "<group>"; };
-		F4D4318C1D596A3C0042A780 /* unityEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unityEntity.cpp; sourceTree = "<group>"; };
-		F4D4318D1D596A3C0042A780 /* unityEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unityEntity.hpp; sourceTree = "<group>"; };
+		F4D4318C1D596A3C0042A780 /* unitEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unitEntity.cpp; sourceTree = "<group>"; };
+		F4D4318D1D596A3C0042A780 /* unitEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unitEntity.hpp; sourceTree = "<group>"; };
 		F4D5D0871C5FAFDF001441C3 /* FactoryContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FactoryContainer.cpp; sourceTree = "<group>"; };
 		F4D5D0881C5FAFDF001441C3 /* FactoryContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FactoryContainer.hpp; sourceTree = "<group>"; };
 		F4D5D08B1C5FB006001441C3 /* buildKantaiEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildKantaiEntity.cpp; sourceTree = "<group>"; };
@@ -669,8 +669,8 @@
 		F4F956C21C5B5359001AA1B3 /* RepairMain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RepairMain; sourceTree = "<group>"; };
 		F4F956C41C5B538E001AA1B3 /* RepairContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RepairContainer.cpp; sourceTree = "<group>"; };
 		F4F956C51C5B538E001AA1B3 /* RepairContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RepairContainer.hpp; sourceTree = "<group>"; };
-		F4F956CA1C5B5E49001AA1B3 /* RepairTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RepairTimer.cpp; sourceTree = "<group>"; };
-		F4F956CB1C5B5E49001AA1B3 /* RepairTimer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RepairTimer.hpp; sourceTree = "<group>"; };
+		F4F956CA1C5B5E49001AA1B3 /* TimerEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimerEntity.cpp; path = ../Classes/TimerEntity.cpp; sourceTree = "<group>"; };
+		F4F956CB1C5B5E49001AA1B3 /* TimerEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TimerEntity.hpp; path = ../Classes/TimerEntity.hpp; sourceTree = "<group>"; };
 		F4F956E31C5B9D4C001AA1B3 /* dock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dock.cpp; sourceTree = "<group>"; };
 		F4F956E41C5B9D4C001AA1B3 /* dock.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = dock.hpp; sourceTree = "<group>"; };
 		F4F956E71C5B9D7F001AA1B3 /* dockDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dockDB.cpp; sourceTree = "<group>"; };
@@ -852,11 +852,8 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F40E9CBC1D2DE582002593FA /* Socket */,
 				F43BD5FE1D2ABE8E00B572C9 /* Tina */,
 				F4938B651C60998500AB1286 /* metaphysics */,
-				F4D5D08F1C5FB05D001441C3 /* arsenal */,
-				F4F956E21C5B9D41001AA1B3 /* dock */,
 				F4036DD31BDA2160002788AA /* backGround */,
 				F4036DD21BDA2142002788AA /* init */,
 				F4036DCD1BDA20DE002788AA /* entity */,
@@ -919,8 +916,14 @@
 		F4036DC61BDA1FF4002788AA /* interface */ = {
 			isa = PBXGroup;
 			children = (
-				F481896E1C58B03800A0D0F5 /* card */,
-				F4036DCA1BDA201F002788AA /* layerSelecter */,
+				F41E32021D3A902A00B679E0 /* Sound */,
+				F4F956C81C5B59C0001AA1B3 /* repair */,
+				F432930C1D39962900B7167C /* frame */,
+				F48253AC1D33E9EB00165D61 /* main */,
+				F40C1BBC1C624F930093774E /* supply */,
+				F40C1BBB1C624F820093774E /* remode */,
+				F4D5D0861C5FAF1D001441C3 /* factory */,
+				F4F956C91C5B5B12001AA1B3 /* organize */,
 				F4036DCB1BDA202F002788AA /* port */,
 			);
 			name = interface;
@@ -935,19 +938,12 @@
 				F4198EEF1D445FF800429926 /* SelecterUnit.hpp */,
 			);
 			name = layerSelecter;
+			path = ../Classes;
 			sourceTree = "<group>";
 		};
 		F4036DCB1BDA202F002788AA /* port */ = {
 			isa = PBXGroup;
 			children = (
-				F41E32021D3A902A00B679E0 /* Sound */,
-				F432930C1D39962900B7167C /* frame */,
-				F48253AC1D33E9EB00165D61 /* main */,
-				F40C1BBC1C624F930093774E /* supply */,
-				F40C1BBB1C624F820093774E /* remode */,
-				F4D5D0861C5FAF1D001441C3 /* factory */,
-				F4F956C91C5B5B12001AA1B3 /* organize */,
-				F4F956C81C5B59C0001AA1B3 /* repair */,
 				F4036D5C1BDA1FDD002788AA /* portBattleLayer.cpp */,
 				F4036D5D1BDA1FDD002788AA /* portBattleLayer.h */,
 			);
@@ -966,18 +962,18 @@
 		F4036DCD1BDA20DE002788AA /* entity */ = {
 			isa = PBXGroup;
 			children = (
-				F4D4318B1D596A2C0042A780 /* unityEntity */,
+				F481896E1C58B03800A0D0F5 /* card */,
+				F4036DCA1BDA201F002788AA /* layerSelecter */,
+				F427A4AC1D628CEC001C6B45 /* TimerEntity */,
+				F4A328491C84AA810048F939 /* FleetButton */,
+				F43907A11C8B3D86004B5B2D /* ListEntity */,
+				F4D4318B1D596A2C0042A780 /* unitEntity */,
 				F40953181C99B06500E9B958 /* LayerCover */,
 				F476D34C1C8DE5A800A1B8EB /* ShowPolygonLayer */,
-				F43907A11C8B3D86004B5B2D /* ListEntity */,
 				F4D38E211C8746B5009BE55C /* ValueBar */,
-				F4A328491C84AA810048F939 /* FleetButton */,
 				F40C1BB51C61E4EF0093774E /* MenuItem */,
 				F42DB8FB1C5A33A800CBE2C7 /* Star */,
 				F42DB8F51C5A30D800CBE2C7 /* HpBar */,
-				F4036DD11BDA210A002788AA /* kantai */,
-				F4036DD01BDA2103002788AA /* equipment */,
-				F4036DCF1BDA20FD002788AA /* fleet */,
 				F4036DCE1BDA20F6002788AA /* equipGrid */,
 			);
 			name = entity;
@@ -1000,6 +996,7 @@
 				F4036D401BDA1FDD002788AA /* Fleet.h */,
 			);
 			name = fleet;
+			path = ../proj.ios_mac;
 			sourceTree = "<group>";
 		};
 		F4036DD01BDA2103002788AA /* equipment */ = {
@@ -1009,6 +1006,7 @@
 				F4036D381BDA1FDD002788AA /* Equip.h */,
 			);
 			name = equipment;
+			path = ../proj.ios_mac;
 			sourceTree = "<group>";
 		};
 		F4036DD11BDA210A002788AA /* kantai */ = {
@@ -1018,6 +1016,7 @@
 				F4036D4B1BDA1FDD002788AA /* kantai.h */,
 			);
 			name = kantai;
+			path = ../proj.ios_mac;
 			sourceTree = "<group>";
 		};
 		F4036DD21BDA2142002788AA /* init */ = {
@@ -1034,6 +1033,11 @@
 		F4036DD31BDA2160002788AA /* backGround */ = {
 			isa = PBXGroup;
 			children = (
+				F4036DD01BDA2103002788AA /* equipment */,
+				F4036DD11BDA210A002788AA /* kantai */,
+				F4036DCF1BDA20FD002788AA /* fleet */,
+				F4D5D08F1C5FB05D001441C3 /* arsenal */,
+				F4F956E21C5B9D41001AA1B3 /* dock */,
 				F427A4A21D61946F001C6B45 /* Time */,
 				F4FABB011C50D2D200F75BCE /* CSV */,
 				F4036DD41BDA216A002788AA /* database */,
@@ -1048,8 +1052,6 @@
 				F4FABB0F1C50D42600F75BCE /* Singleton.hpp */,
 				F41D548E1D2A903D0094CAAD /* Sound */,
 				F4036DD71BDA2216002788AA /* XML */,
-				F413B5521D50A7DF003E1967 /* DataMgr.cpp */,
-				F413B5531D50A7DF003E1967 /* DataMgr.hpp */,
 			);
 			name = backGround;
 			sourceTree = "<group>";
@@ -1154,13 +1156,6 @@
 			name = supply;
 			sourceTree = "<group>";
 		};
-		F40E9CBC1D2DE582002593FA /* Socket */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Socket;
-			sourceTree = "<group>";
-		};
 		F41D548E1D2A903D0094CAAD /* Sound */ = {
 			isa = PBXGroup;
 			children = (
@@ -1192,6 +1187,8 @@
 				F42303DD1D2C0B4500B06189 /* ViewMgrMacro.hpp */,
 				F4BC4CA91D2D242300374317 /* ViewMgrFactory.cpp */,
 				F4BC4CAA1D2D242300374317 /* ViewMgrFactory.hpp */,
+				F413B5521D50A7DF003E1967 /* DataMgr.cpp */,
+				F413B5531D50A7DF003E1967 /* DataMgr.hpp */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1214,6 +1211,15 @@
 				F427A4A41D619484001C6B45 /* TimeUtil.hpp */,
 			);
 			name = Time;
+			sourceTree = "<group>";
+		};
+		F427A4AC1D628CEC001C6B45 /* TimerEntity */ = {
+			isa = PBXGroup;
+			children = (
+				F4F956CA1C5B5E49001AA1B3 /* TimerEntity.cpp */,
+				F4F956CB1C5B5E49001AA1B3 /* TimerEntity.hpp */,
+			);
+			name = TimerEntity;
 			sourceTree = "<group>";
 		};
 		F42DB8F51C5A30D800CBE2C7 /* HpBar */ = {
@@ -1319,6 +1325,7 @@
 				F42DB8E41C599DCA00CBE2C7 /* EquipmentContainer.cpp */,
 			);
 			name = card;
+			path = ../Classes;
 			sourceTree = "<group>";
 		};
 		F48253AC1D33E9EB00165D61 /* main */ = {
@@ -1363,13 +1370,13 @@
 			name = ValueBar;
 			sourceTree = "<group>";
 		};
-		F4D4318B1D596A2C0042A780 /* unityEntity */ = {
+		F4D4318B1D596A2C0042A780 /* unitEntity */ = {
 			isa = PBXGroup;
 			children = (
-				F4D4318C1D596A3C0042A780 /* unityEntity.cpp */,
-				F4D4318D1D596A3C0042A780 /* unityEntity.hpp */,
+				F4D4318C1D596A3C0042A780 /* unitEntity.cpp */,
+				F4D4318D1D596A3C0042A780 /* unitEntity.hpp */,
 			);
-			name = unityEntity;
+			name = unitEntity;
 			sourceTree = "<group>";
 		};
 		F4D5D0861C5FAF1D001441C3 /* factory */ = {
@@ -1409,8 +1416,6 @@
 				F4036D671BDA1FDD002788AA /* portRepairLayer.h */,
 				F4F956C41C5B538E001AA1B3 /* RepairContainer.cpp */,
 				F4F956C51C5B538E001AA1B3 /* RepairContainer.hpp */,
-				F4F956CA1C5B5E49001AA1B3 /* RepairTimer.cpp */,
-				F4F956CB1C5B5E49001AA1B3 /* RepairTimer.hpp */,
 				F43FFC7B1C5CD6CB00C98BED /* RepairHpBar.cpp */,
 				F43FFC7C1C5CD6CB00C98BED /* RepairHpBar.hpp */,
 				F43FFC801C5CE8E500C98BED /* RepairListRow.cpp */,
@@ -1684,7 +1689,7 @@
 				F4D38E1F1C8731EF009BE55C /* OrganizeSelectEntity.cpp in Sources */,
 				F44D26E21C4D198400438F3C /* layerSelecter.h in Sources */,
 				F4F956C61C5B538E001AA1B3 /* RepairContainer.cpp in Sources */,
-				F4D4318E1D596A3C0042A780 /* unityEntity.cpp in Sources */,
+				F4D4318E1D596A3C0042A780 /* unitEntity.cpp in Sources */,
 				F43FFC821C5CE8E500C98BED /* RepairListRow.cpp in Sources */,
 				F44D26E31C4D198400438F3C /* portBattleLayer.h in Sources */,
 				F44D26E41C4D198400438F3C /* portFactoryLayer.h in Sources */,
@@ -1723,7 +1728,7 @@
 				F4FABB041C50D30600F75BCE /* KantaiMgr.cpp in Sources */,
 				F4D38E241C8746CB009BE55C /* ValueBar.cpp in Sources */,
 				F4036D881BDA1FDD002788AA /* equipGrid.cpp in Sources */,
-				F4F956CC1C5B5E49001AA1B3 /* RepairTimer.cpp in Sources */,
+				F4F956CC1C5B5E49001AA1B3 /* TimerEntity.cpp in Sources */,
 				F439079B1C8B373B004B5B2D /* ListEntity.cpp in Sources */,
 				F4F956E51C5B9D4C001AA1B3 /* dock.cpp in Sources */,
 				F4D5D0921C5FB073001441C3 /* arsenal.cpp in Sources */,
@@ -1785,7 +1790,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F40C4FC91C5BDA6A000FAA89 /* RepairContainer.hpp in Sources */,
-				F40C4FCA1C5BDA6A000FAA89 /* RepairTimer.hpp in Sources */,
+				F40C4FCA1C5BDA6A000FAA89 /* TimerEntity.hpp in Sources */,
 				F4F956B31C5B49AD001AA1B3 /* Star.hpp in Sources */,
 				F4F956B41C5B49AD001AA1B3 /* HpBar.hpp in Sources */,
 				F4F956B51C5B49AD001AA1B3 /* kantaiCard.hpp in Sources */,
@@ -1810,7 +1815,7 @@
 				F4B173FC1C545F4600D2BC1C /* EquipMgr.cpp in Sources */,
 				F4B173FD1C545F4600D2BC1C /* EquipMgr.hpp in Sources */,
 				F4B173FE1C545F4600D2BC1C /* ExpMgr.cpp in Sources */,
-				F4F956CD1C5B5E49001AA1B3 /* RepairTimer.cpp in Sources */,
+				F4F956CD1C5B5E49001AA1B3 /* TimerEntity.cpp in Sources */,
 				F427A4A61D619484001C6B45 /* TimeUtil.cpp in Sources */,
 				F4B173FF1C545F4600D2BC1C /* ExpMgr.hpp in Sources */,
 				F45F91221BF4BCA600327120 /* TestScene.h in Sources */,
@@ -1900,7 +1905,7 @@
 				F4D5D0971C5FB08C001441C3 /* arsenalDB.cpp in Sources */,
 				F445E9241D513E3C00855D10 /* TitlePic.cpp in Sources */,
 				F439079C1C8B373B004B5B2D /* ListEntity.cpp in Sources */,
-				F4D4318F1D596A3C0042A780 /* unityEntity.cpp in Sources */,
+				F4D4318F1D596A3C0042A780 /* unitEntity.cpp in Sources */,
 				F427A49C1D618DE2001C6B45 /* TimerMgr.cpp in Sources */,
 				F4036E2B1BDA2316002788AA /* layerSelecter.cpp in Sources */,
 				F48189871C592F5F00A0D0F5 /* KantaiDetailEntity.cpp in Sources */,

@@ -47,7 +47,9 @@ bool FactoryContainer::init(int position)
     return bRet;
 }
 
-
+FactoryContainer::FactoryContainer()
+{
+}
 
 
 void FactoryContainer::initBg()
@@ -111,7 +113,7 @@ void FactoryContainer::initArsenal()
     addChild(title);
     title->setPosition(50,65);
     
-    timer=RepairTimer::create();
+    timer=TimerEntity::create(CC_CALLBACK_0(FactoryContainer::update, this));
     timer->setPosition(10,15);
     addChild(timer);
     
@@ -129,6 +131,7 @@ void FactoryContainer::update()
             buildButton->setVisible(false);
             getButton->setVisible(true);
             shipFinish->setVisible(true);
+            timer->setState(TimerEntity::TimerState::FINISH);
         }
         else
         {
@@ -139,7 +142,8 @@ void FactoryContainer::update()
             fastBuild->setButtonVisible(true);
             state=building;
             title->setTexture("ArsenalMain/image 118.png");
-            timer->setTime(data.remainTime);
+            timer->setTime(data.completeTime);
+            
         }
     }else
     {
@@ -149,6 +153,7 @@ void FactoryContainer::update()
         fastBuild->setButtonVisible(false);
         state=free;
         title->setTexture("ArsenalMain/image 116.png");
+        timer->setState(TimerEntity::TimerState::FREE);
     }
     
     //时间加上

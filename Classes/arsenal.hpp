@@ -29,7 +29,7 @@ public:
     struct ArsenalData
     {
         int kantaiNumber;
-        float remainTime;
+        int64_t completeTime;
         bool finished;
         ArsenalData(){bzero(this, sizeof(this));}
     };

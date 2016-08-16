@@ -20,7 +20,7 @@ typedef struct
 {
     int kantaiNumber;
     int position;
-    int completeTime;
+    int64_t completeTime;
 }ArsenalDBData;
 
 
@@ -29,7 +29,7 @@ class ArsenalDB:public DBBase
 public:
     void initArsenalDB(int playerKey,std::vector<ArsenalDBData>& data);
     
-    void insertKantai(int playerKey,int kantaiNumber,int position,int buildTime);
+    void insertKantai(int playerKey,int kantaiNumber,int position,int64_t buildTime);
     
     void deleteKantai(int playerKey,int position);
     

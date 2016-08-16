@@ -13,7 +13,7 @@
 #include "cocos2d.h"
 #include "MenuItemTouch.hpp"
 #include "arsenal.hpp"
-#include "RepairTimer.hpp"
+#include "TimerEntity.hpp"
 
 USING_NS_CC;
 
@@ -40,8 +40,11 @@ public:
     void buildCallback(Ref* pSender);
     void getCallback(Ref* pSender);
     void update();
+    FactoryContainer();
 private:
     int position;
+    
+    //bool firstTime;
     FactoryState state;
     MenuItemButton* fastBuild;
     MenuItemSprite* buildButton;
@@ -50,7 +53,7 @@ private:
     Menu* mn;
     Sprite* title;
     
-    RepairTimer* timer;
+    TimerEntity* timer;
     Sprite* slipway;
 };
 

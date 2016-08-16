@@ -86,6 +86,8 @@ void BundleMgr::onEnterForeground()
     readFromCache();
     if (!checkEnterForeground())
         return;
+    EventCustom event("updateTimestamp");
+    Director::getInstance()->getEventDispatcher()->dispatchEvent(&event);
 }
 
 void BundleMgr::onDestroy()
@@ -137,7 +139,7 @@ void BundleMgr::initialization()
     writablePath+= GAME_DB_NAME;
     ssize_t dbSize=0;
     FileUtils::getInstance()->getFileData(writablePath.c_str(), "r", &dbSize);
-    if(dbSize){
+    if(!dbSize){
         fstream fsCopee( dbFilePath.c_str(), ios::binary | ios::in ) ;
         fstream fsCoper( writablePath.c_str(), ios::binary | ios::out ) ;
         fsCoper << fsCopee.rdbuf();

@@ -158,7 +158,7 @@ void RepairContainer::initKantai()
     kantaiCard->setPosition(125,37);
     kantaiBg->addChild(kantaiCard,0);
     
-    timer=RepairTimer::create();
+    timer=TimerEntity::create(NULL);
     timer->setPosition(480,kantaiBg->getContentSize().height/2-10);
     kantaiBg->addChild(timer);
 }
