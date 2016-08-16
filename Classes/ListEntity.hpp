@@ -29,7 +29,6 @@ public:
     
     inline bool isHidden(){ return hidden; }
     bool init(Vec2 vec);
-    void update();
     void updateRows();
     
 private:

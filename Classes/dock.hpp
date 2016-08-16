@@ -23,7 +23,7 @@ public:
     struct DockData
     {
         Kantai* kantai;
-        float remainTime;
+        int64_t complateTime;
         DockData(){bzero(this, sizeof(this));}
     };
     
@@ -49,8 +49,6 @@ private:
     int maxDockSize;
     int playerKey;
     std::vector<DockData> dock;
-//    void startCircle();
-//    void endCircle();
 };
 
 NS_KCL_END

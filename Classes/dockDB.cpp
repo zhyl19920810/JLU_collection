@@ -42,38 +42,16 @@ void DockDB::initDockDB(int playerKey, std::vector<DockDBData>& data)
         }
     }
     sqlite3_finalize(statement);
-    
-    int nowTime;
-    std::string qsql1="SELECT strftime('%s','now')";
-    if (sqlite3_prepare_v2(kancolleDB, qsql1.c_str(), -1, &statement, NULL)==SQLITE_OK)
-    {
-        if (sqlite3_step(statement)==SQLITE_ROW)
-        {
-            nowTime=sqlite3_column_int(statement, 0);
-        }
-    }
-    for (auto it=data.begin(); it!=data.end(); ++it)
-    {
-        it->completeTime=it->completeTime-nowTime;
-    }
-    
-    for (auto it=data.begin(); it!=data.end(); ++it)
-    {
-        printf("%d  %d  %d\n",it->kantaiKey,it->position,it->completeTime);
-    }
-    
-    sqlite3_finalize(statement);
 }
 
 
 
 
-void DockDB::insertKantai(int playerKey,int kantaiKey, int position, int repairTime)
+void DockDB::insertKantai(int playerKey,int kantaiKey, int position, int64_t complateTime)
 {
     char name[100];
     bzero(name, sizeof(name));
-    std::string sqlStr="INSERT OR REPLACE INTO kantai_in_repair(playerKey,kantaiKey,position,completeTime) Values(?,?,?,strftime('%s','now','+"+std::to_string(repairTime);
-    sqlStr+=" second'))";
+    std::string sqlStr="INSERT OR REPLACE INTO kantai_in_repair(playerKey,kantaiKey,position,completeTime) Values(?,?,?,?)";
     sqlite3_stmt* statement;
     
     if (sqlite3_prepare_v2(kancolleDB, sqlStr.c_str(), -1, &statement, NULL)==SQLITE_OK)
@@ -81,6 +59,8 @@ void DockDB::insertKantai(int playerKey,int kantaiKey, int position, int repairT
         sqlite3_bind_int(statement, 1, playerKey);
         sqlite3_bind_int(statement, 2, kantaiKey);
         sqlite3_bind_int(statement, 3, position);
+        sqlite3_bind_int64(statement, 4, complateTime);
+        
         if (sqlite3_step(statement)!=SQLITE_DONE)
         {
             CCASSERT(false, "can not insert");

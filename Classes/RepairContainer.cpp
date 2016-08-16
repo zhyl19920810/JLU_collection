@@ -9,6 +9,8 @@
 #include "RepairContainer.hpp"
 #include "dock.hpp"
 #include "portRepairLayer.h"
+#include "TimeUtil.hpp"
+
 
 NS_KCL_BEGIN
 
@@ -46,13 +48,15 @@ void RepairContainer::updateUnit()
         stars->setNumber(kantai->getStars());
         repairHpBar->setHp(kantai->getMaxHp(), kantai->getCurrHp());
         kantaiCard->updateCard(kantai);
-        timer->setTime(data.remainTime);
+        timer->setTime(data.complateTime);
     }
     else
     {
         haveKantaiInReparing(false);
     }
 }
+
+
 
 void RepairContainer::fastRepairCallback(cocos2d::Ref *pSender)
 {
@@ -158,7 +162,7 @@ void RepairContainer::initKantai()
     kantaiCard->setPosition(125,37);
     kantaiBg->addChild(kantaiCard,0);
     
-    timer=TimerEntity::create(NULL);
+    timer=TimerEntity::create(CC_CALLBACK_0(RepairContainer::updateUnit, this));
     timer->setPosition(480,kantaiBg->getContentSize().height/2-10);
     kantaiBg->addChild(timer);
 }

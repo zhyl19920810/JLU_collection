@@ -22,7 +22,7 @@ typedef struct
 {
     int kantaiKey;
     int position;
-    int completeTime;
+    int64_t completeTime;
 }DockDBData;
 
 
@@ -31,7 +31,7 @@ class DockDB:public DBBase
 public:
     void initDockDB(int playerKey,std::vector<DockDBData>&  data);
     
-    void insertKantai(int playerKey,int kantaiKey,int position,int repairTime);
+    void insertKantai(int playerKey,int kantaiKey,int position,int64_t complateTime);
     
     void deleteKantai(int playerKey,int kantaiKey);
     

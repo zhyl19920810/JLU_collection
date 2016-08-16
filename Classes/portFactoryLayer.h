@@ -57,7 +57,7 @@ private:
 public:
     void showSelect(Kantai* kantai);
     void showDestroy(Ref* pSender);
-    void finishBuildingKantai();
+    void finishBuildingKantai(int position);
     
 private:
     void destroyKantai(Kantai* kantai,int fuel,int steel,int ammo,int al);

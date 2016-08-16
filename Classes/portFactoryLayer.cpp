@@ -12,7 +12,6 @@
 #include "Sound.hpp"
 #include "LayerCover.hpp"
 
-
 NS_KCL_BEGIN
 
 
@@ -205,9 +204,10 @@ void PortFactoryLayer::destroyKantai(Kantai *kantai, int fuel, int steel, int am
     sPlayer.addAmmo(ammo);
 }
 
-void PortFactoryLayer::finishBuildingKantai()
+void PortFactoryLayer::finishBuildingKantai(int position)
 {
-    
+    sArsenal.finishBuildingKantai(position);
+    destoryList->updateRows();
 }
 
 

@@ -43,6 +43,7 @@ bool TimerMgr::init()
     uint64_t timeDiff=ts-_lastSaveAttrTimestamp;
     int numAttrAdd=timeDiff/ATTR_COUNTDOWN;
     totalSecond=timeDiff-numAttrAdd*ATTR_COUNTDOWN;
+    sPlayer.addAttr(0.0, numAttrAdd);
     
     startTimer();
     return true;

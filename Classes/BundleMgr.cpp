@@ -128,8 +128,6 @@ void BundleMgr::initialization()
     Player::newInstance();
     Dock::newInstance();
     Arsenal::newInstance();
-    TimerMgr::getInstance()->startTimer();
-    
     
 #if DB_IN_COMPUTER
     std::string writablePath = FileUtils::getInstance()->fullPathForFilename("/Volumes/opengl/kancolle_beta/Resources/database/kancolle_2.sqlite3");
@@ -149,10 +147,12 @@ void BundleMgr::initialization()
     DBBase::init(writablePath);
     DBInit init;
     init.initDB(1);
+    TimerMgr::getInstance()->startTimer();
+    
+    
     sDock.initDock(1);
     sArsenal.initArsenal(1);
     Sound::getInstance()->initVolume();
-
 }
 
 
