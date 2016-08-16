@@ -205,6 +205,11 @@ void PortFactoryLayer::destroyKantai(Kantai *kantai, int fuel, int steel, int am
     sPlayer.addAmmo(ammo);
 }
 
+void PortFactoryLayer::finishBuildingKantai()
+{
+    
+}
+
 
 /////other
 void PortFactoryLayer::NullCallback(cocos2d::Ref *pSender)

@@ -20,7 +20,7 @@
 
 #define HIDE_POS (Vec2(bgimg->getContentSize().width,0))
 #define SHOW_POS (Vec2(-bgimg->getContentSize().width,0))
-#define MOVE_TIME 0.4
+#define MOVE_TIME 0.2
 
 
 NS_KCL_BEGIN

@@ -180,15 +180,15 @@ public:
     std::vector<Fleet*> fleetData;
     std::vector<Equip*> equipData;
     std::vector<int> planeLoad;
-    
+    void addAttr(float dt,int numAttr);
 protected:
     Player();
     
 //dock
 private:
-    void addAttr(float dt);
-    void startCircle();
-    void endCircle();
+//    
+//    void startCircle();
+//    void endCircle();
 };
 
 

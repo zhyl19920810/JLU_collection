@@ -25,12 +25,17 @@ public:
     
     void startTimer();
     void stopTimer();
+    void addAttr(float dt);
     
+    void enterForeGround();
     ~TimerMgr();
 private:
     void scheduleFunc(float dt);
     static TimerMgr* m_instance;
     bool init();
+    
+    float totalSecond;
+    int64_t _lastSaveAttrTimestamp;
 };
 
 

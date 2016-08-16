@@ -34,7 +34,7 @@ void Player::initDatabaseData(std::unordered_map<int,Fleet*>& _fleetData,std::un
              {
                  equipData.push_back(temp.second);
              });
-    startCircle();
+    //startCircle();
 }
 
 
@@ -787,12 +787,12 @@ void Player::_changeKantaiPosition(Kantai *kantai, Fleet *fleet, int position)
     KantaiDB::getInstance()->changeKantaiPosition(kantai->getKantaiKey(),fleet->getFleetKey(),position);
 }
 
-void Player::addAttr(float dt)
+void Player::addAttr(float dt,int numAttr)
 {
-    addAluminium(1);
-    addSteel(1);
-    addAmmo(1);
-    addFuel(1);
+    addAluminium(numAttr);
+    addSteel(numAttr);
+    addAmmo(numAttr);
+    addFuel(numAttr);
 }
 
 //
@@ -927,15 +927,15 @@ Fleet* Player::getFleetByFleetKey(int _fleetKey)
     return NULL;
 }
 
-void Player::startCircle()
-{
-    std::function<void(float)> f2=std::bind(&Player::addAttr, this,std::placeholders::_1);
-    Director::getInstance()->getScheduler()->schedule(f2, this, 20, false, "playerAddAttr");
-}
-void Player::endCircle()
-{
-    Director::getInstance()->getScheduler()->unschedule("playerAddAttr", this);
-}
+//void Player::startCircle()
+//{
+//    std::function<void(float)> f2=std::bind(&Player::addAttr, this,std::placeholders::_1);
+//    Director::getInstance()->getScheduler()->schedule(f2, this, 20, false, "playerAddAttr");
+//}
+//void Player::endCircle()
+//{
+//    Director::getInstance()->getScheduler()->unschedule("playerAddAttr", this);
+//}
 
 NS_KCL_END
 

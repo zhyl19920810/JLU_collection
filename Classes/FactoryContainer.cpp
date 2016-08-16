@@ -8,6 +8,8 @@
 
 #include "FactoryContainer.hpp"
 #include "portFactoryLayer.h"
+#include "ViewMgr.hpp"
+
 
 NS_KCL_BEGIN
 

@@ -86,6 +86,7 @@ void BundleMgr::onEnterForeground()
     readFromCache();
     if (!checkEnterForeground())
         return;
+    TimerMgr::getInstance()->enterForeGround();
     EventCustom event("updateTimestamp");
     Director::getInstance()->getEventDispatcher()->dispatchEvent(&event);
 }

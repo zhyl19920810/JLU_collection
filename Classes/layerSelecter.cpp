@@ -15,13 +15,14 @@ NS_KCL_BEGIN
 
 
 
+
+
+
+
 LayerSelecter::LayerSelecter()
 {
 
 }
-
-
-
 
 
 void LayerSelecter::moveOut()

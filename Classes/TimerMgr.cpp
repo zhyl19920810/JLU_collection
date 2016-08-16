@@ -10,6 +10,8 @@
 #include "arsenal.hpp"
 #include "dock.hpp"
 #include "Player.h"
+#include "TimeUtil.hpp"
+
 
 NS_KCL_BEGIN
 
@@ -19,7 +21,7 @@ USING_NS_CC;
 TimerMgr* TimerMgr::m_instance = nullptr;
 
 #define TIMER_MGR_SCHEDULE "TimerMgrSchedule"
-
+#define ATTR_COUNTDOWN 20.0
 
 TimerMgr* TimerMgr::getInstance()
 {
@@ -36,6 +38,12 @@ TimerMgr* TimerMgr::getInstance()
 
 bool TimerMgr::init()
 {
+    _lastSaveAttrTimestamp=UserDefault::getInstance()->getIntegerForKey("lastSaveAttrTimestamp");
+    auto ts=TimeUtil::getTimestamp();
+    uint64_t timeDiff=ts-_lastSaveAttrTimestamp;
+    int numAttrAdd=timeDiff/ATTR_COUNTDOWN;
+    totalSecond=timeDiff-numAttrAdd*ATTR_COUNTDOWN;
+    
     startTimer();
     return true;
 }
@@ -73,9 +81,31 @@ void TimerMgr::scheduleFunc(float dt)
 {
     sArsenal.buildTimeCircle(dt);
     sDock.repairTimeCircle(dt);
+    addAttr(dt);
+}
+
+void TimerMgr::addAttr(float dt)
+{
+    totalSecond+=dt;
+    if (totalSecond>=ATTR_COUNTDOWN)
+    {
+        totalSecond-=ATTR_COUNTDOWN;
+        sPlayer.addAttr(dt,1);
+        _lastSaveAttrTimestamp=TimeUtil::getTimestamp();
+        UserDefault::getInstance()->setIntegerForKey("lastSaveAttrTimestamp", _lastSaveAttrTimestamp);
+    }
 }
 
 
+void TimerMgr::enterForeGround()
+{
+    _lastSaveAttrTimestamp=UserDefault::getInstance()->getIntegerForKey("lastSaveAttrTimestamp");
+    uint64_t timeDiff=TimeUtil::getTimestamp()-_lastSaveAttrTimestamp;
+    int numAttrAdd=timeDiff/ATTR_COUNTDOWN;
+    totalSecond=timeDiff-numAttrAdd*ATTR_COUNTDOWN;
+    
+    sPlayer.addAttr(0.0, numAttrAdd);
+}
 
 
 NS_KCL_END
