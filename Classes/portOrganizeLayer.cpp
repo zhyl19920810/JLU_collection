@@ -8,7 +8,6 @@
 
 #include "portOrganizeLayer.h"
 #include "PortScene.h"
-#include "GameManger.hpp"
 #include "Sound.hpp"
 #include "EventPauseGuard.hpp"
 #include <map>

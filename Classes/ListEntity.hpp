@@ -61,7 +61,7 @@ private:
     //sort
     void initSortButton();
     MenuItemToggle* sortButton;
-    void sortButtonCallback	(Ref* pSender);
+    
     
     
     
@@ -72,7 +72,7 @@ public:
     virtual void hideSelect(cocos2d::Ref *pSender)=0;
     
 protected:
-    
+    void sortButtonCallback	(Ref* pSender);
     bool hidden;
     std::vector<Kantai*> displayKantai;
     Menu *menu;

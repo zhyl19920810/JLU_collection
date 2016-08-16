@@ -8,7 +8,9 @@
 
 #include "RepairListRow.hpp"
 #include "RepairListEntity.hpp"
-#include "GameManger.hpp"
+#include "ViewMgr.hpp"
+#include "portRepairLayer.h"
+
 
 NS_KCL_BEGIN
 
@@ -161,8 +163,8 @@ RepairListRow::RepairListRow():kantai(NULL)
 
 void RepairListRow::exchangeCallback(cocos2d::Ref *pSender)
 {
-    auto parent=dynamic_cast<RepairListEntity*>(this->getParent());
-    parent->showSelect(kantai);
+    auto panel=dynamic_cast<PortRepairLayer*>(VIEW_MGR->getPanel(PanelType::PORT_REPAIR));
+    panel->showSelect(kantai);
 }
 
 void RepairListRow::setEnable(bool bVisible)

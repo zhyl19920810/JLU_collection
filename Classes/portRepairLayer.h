@@ -27,30 +27,40 @@ public:
     CREATE_FUNC(PortRepairLayer);
     bool init();
     
+    
     //list
-    void showList(int index);
-    void hideList(Ref* pSender);
-    
     void updateContainer();
-private:
-    
+
     
 private:
     //bg
     void initLayer();
     std::vector<RepairContainerParent*> container;
-    
     int containerSize;
-    
     
     //container
     void initContainer();
-   
     
 private:
     RepairListEntity* listEntity;
     LayerCover* listCover;
+public:
+    void showList(int index);
+    void hideList(Ref* pSender);
+    
+    
+private:
+    RepairSelectEntity* selectEntity;
+public:
+    void showSelect(Kantai* kantai);
+    
+public:
+    void startRepairKantai(Kantai* kantai,int steel,int fuel,int time);
+    void selectKantai(int positon);
+private:
+    int position;
 };
+
 
 
 NS_KCL_END

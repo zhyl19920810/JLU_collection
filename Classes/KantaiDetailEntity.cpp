@@ -276,9 +276,9 @@ void KantaiDetailEntity::setKantai(Kantai *kantai)
     capacity->setString(name);
     
     if (kantai->getSpeed() ==high_speed)
-        speed->setTexture("CommonAssets/high_speed.png");
+        speed->setTexture("CommonAssets/highSpeed.png");
     else
-        speed->setTexture("CommonAssets/low_speed.png");
+        speed->setTexture("CommonAssets/lowSpeed.png");
     
     Shooting_Range kantaiRange=kantai->getRange();
     if (kantaiRange == Shooting_Range::range_exlong)

@@ -22,6 +22,7 @@ public:
     void hideSelect(Ref* pSender);
     bool init(Vec2 vec);
     void destoryKantai(Kantai* kantai);
+    void addKantai(Kantai* kantai);
     
     static FactoryListEntity* create(Vec2 vec);
 

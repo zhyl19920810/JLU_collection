@@ -21,8 +21,6 @@ void EventPauseGuard::resume()
     --_count;
     if (_count==0)
     {
-        //auto scene=cocos2d::Director::getInstance()->getRunningScene();
-        //cocos2d::Director::getInstance()->getEventDispatcher()->resumeEventListenersForTarget(scene,true);
         cocos2d::Director::getInstance()->getEventDispatcher()->resumeEventListenersForListenerID(cocos2d::EventListenerTouchOneByOne::LISTENER_ID);
         cocos2d::Director::getInstance()->getEventDispatcher()->resumeEventListenersForListenerID(cocos2d::EventListenerTouchAllAtOnce::LISTENER_ID);
     }
@@ -34,8 +32,6 @@ void EventPauseGuard::pause()
 {
     if (_count==0)
     {
-        //auto scene=cocos2d::Director::getInstance()->getRunningScene();
-        //cocos2d::Director::getInstance()->getEventDispatcher()->pauseEventListenersForTarget(scene,true);
         cocos2d::Director::getInstance()->getEventDispatcher()->pauseEventListenersForListenerID(cocos2d::EventListenerTouchOneByOne::LISTENER_ID);
         cocos2d::Director::getInstance()->getEventDispatcher()->pauseEventListenersForListenerID(cocos2d::EventListenerTouchAllAtOnce::LISTENER_ID);
     }

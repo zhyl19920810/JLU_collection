@@ -73,7 +73,13 @@ void PortRepairLayer::initLayer()
     listEntity=RepairListEntity::create();
     addChild(listEntity,3);
     listEntity->setPosition(size.width,0);
-    addChild(listEntity->selectEntity,4);
+    
+    
+    auto pos=Vec2(695,200);
+    selectEntity=RepairSelectEntity::create(pos);
+    selectEntity->setPosition(pos);
+    addChild(selectEntity,4);
+    
 }
 
 void PortRepairLayer::updateContainer()
@@ -99,6 +105,35 @@ void PortRepairLayer::hideList(cocos2d::Ref *pSender)
     listEntity->moveOut();
     listCover->setCoverEnable(false);
 }
+
+
+
+void PortRepairLayer::showSelect(Kantai* kantai)
+{
+    selectEntity->updateKantai(kantai);
+    selectEntity->moveIn();
+    
+}
+
+
+void PortRepairLayer::selectKantai(int _positon)
+{
+    this->position=_positon;
+    showList(position);
+}
+
+
+void PortRepairLayer::startRepairKantai(kancolle::Kantai *kantai, int steel, int fuel, int time)
+{
+    sDock.repairKantai(kantai, position, steel, fuel, time);
+    selectEntity->moveOut();
+    hideList(this);
+    updateContainer();
+}
+
+
+
+
 
 NS_KCL_END
 

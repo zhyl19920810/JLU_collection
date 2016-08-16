@@ -927,15 +927,6 @@ Fleet* Player::getFleetByFleetKey(int _fleetKey)
     return NULL;
 }
 
-//void Player::startCircle()
-//{
-//    std::function<void(float)> f2=std::bind(&Player::addAttr, this,std::placeholders::_1);
-//    Director::getInstance()->getScheduler()->schedule(f2, this, 20, false, "playerAddAttr");
-//}
-//void Player::endCircle()
-//{
-//    Director::getInstance()->getScheduler()->unschedule("playerAddAttr", this);
-//}
 
 NS_KCL_END
 

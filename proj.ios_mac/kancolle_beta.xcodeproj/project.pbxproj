@@ -303,8 +303,6 @@
 		F4AAFA041C5D0EEF006981BB /* RepairSelectEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4AAFA021C5D0EEF006981BB /* RepairSelectEntity.cpp */; };
 		F4AAFA051C5D0EEF006981BB /* RepairSelectEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4AAFA021C5D0EEF006981BB /* RepairSelectEntity.cpp */; };
 		F4B173F31C545F3800D2BC1C /* csv in Resources */ = {isa = PBXBuildFile; fileRef = F4FABB2F1C51368200F75BCE /* csv */; };
-		F4B173F41C545F4600D2BC1C /* GameManger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB121C50D89000F75BCE /* GameManger.cpp */; };
-		F4B173F51C545F4600D2BC1C /* GameManger.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB131C50D89000F75BCE /* GameManger.hpp */; };
 		F4B173F61C545F4600D2BC1C /* Singleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0E1C50D42600F75BCE /* Singleton.cpp */; };
 		F4B173F71C545F4600D2BC1C /* Singleton.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0F1C50D42600F75BCE /* Singleton.hpp */; };
 		F4B173F81C545F4600D2BC1C /* KantaiMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB021C50D30600F75BCE /* KantaiMgr.cpp */; };
@@ -371,7 +369,6 @@
 		F4FABB0A1C50D36C00F75BCE /* EquipMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB081C50D36B00F75BCE /* EquipMgr.cpp */; };
 		F4FABB0D1C50D3E400F75BCE /* ExpMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0B1C50D3E400F75BCE /* ExpMgr.cpp */; };
 		F4FABB101C50D42600F75BCE /* Singleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0E1C50D42600F75BCE /* Singleton.cpp */; };
-		F4FABB141C50D89000F75BCE /* GameManger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB121C50D89000F75BCE /* GameManger.cpp */; };
 		F4FABB301C51368200F75BCE /* csv in Resources */ = {isa = PBXBuildFile; fileRef = F4FABB2F1C51368200F75BCE /* csv */; };
 /* End PBXBuildFile section */
 
@@ -685,8 +682,6 @@
 		F4FABB0C1C50D3E400F75BCE /* ExpMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExpMgr.hpp; sourceTree = "<group>"; };
 		F4FABB0E1C50D42600F75BCE /* Singleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Singleton.cpp; sourceTree = "<group>"; };
 		F4FABB0F1C50D42600F75BCE /* Singleton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Singleton.hpp; sourceTree = "<group>"; };
-		F4FABB121C50D89000F75BCE /* GameManger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameManger.cpp; sourceTree = "<group>"; };
-		F4FABB131C50D89000F75BCE /* GameManger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameManger.hpp; sourceTree = "<group>"; };
 		F4FABB2F1C51368200F75BCE /* csv */ = {isa = PBXFileReference; lastKnownFileType = folder; path = csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1043,8 +1038,6 @@
 				F4036DD41BDA216A002788AA /* database */,
 				F45FD1B81D4D158000A445D7 /* EventPauseGuard.cpp */,
 				F45FD1B91D4D158000A445D7 /* EventPauseGuard.hpp */,
-				F4FABB121C50D89000F75BCE /* GameManger.cpp */,
-				F4FABB131C50D89000F75BCE /* GameManger.hpp */,
 				F42303C61D2BC4BD00B06189 /* model */,
 				F4036DD61BDA21A9002788AA /* player */,
 				F4036DD51BDA2185002788AA /* scene */,
@@ -1739,7 +1732,6 @@
 				F4036D781BDA1FDD002788AA /* AppDelegate.cpp in Sources */,
 				F42DB8F91C5A30EB00CBE2C7 /* HpBar.cpp in Sources */,
 				F43FFC7D1C5CD6CB00C98BED /* RepairHpBar.cpp in Sources */,
-				F4FABB141C50D89000F75BCE /* GameManger.cpp in Sources */,
 				F427A4A51D619484001C6B45 /* TimeUtil.cpp in Sources */,
 				F40C4FC31C5BCF89000FAA89 /* RepairFactorMgr.cpp in Sources */,
 				F4036DB41BDA1FDD002788AA /* portRepairLayer.cpp in Sources */,
@@ -1803,8 +1795,6 @@
 				F48189771C59111500A0D0F5 /* OrganizeContainer.hpp in Sources */,
 				F43293101D39967800B7167C /* PortBgLayer.cpp in Sources */,
 				F41E32061D3A904D00B679E0 /* Panel.cpp in Sources */,
-				F4B173F41C545F4600D2BC1C /* GameManger.cpp in Sources */,
-				F4B173F51C545F4600D2BC1C /* GameManger.hpp in Sources */,
 				F4B173F61C545F4600D2BC1C /* Singleton.cpp in Sources */,
 				F4B173F71C545F4600D2BC1C /* Singleton.hpp in Sources */,
 				F4B173F81C545F4600D2BC1C /* KantaiMgr.cpp in Sources */,

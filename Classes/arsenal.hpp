@@ -36,7 +36,7 @@ public:
     void initArsenal(int playerKey);
     void buildNewArsenal();
     
-    void finishBuildingKantai(int position);
+    Kantai* finishBuildingKantai(int position);
     void cancelBuildingKantai(int position);
     void buildNewKantai(int position,int fuel,int steel,int ammo,int aluminium,int developMaterial,bool fastRepair=false);
     bool isBuildingFinished(int position);

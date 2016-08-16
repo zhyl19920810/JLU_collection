@@ -19,7 +19,6 @@
 #include "portRepairLayer.h"
 #include "portOrganizeLayer.h"
 #include "PortUILayer.hpp"
-#include "GameManger.hpp"
 #include "Sound.hpp"
 #include "ViewMgr.hpp"
 #include "PortBgLayer.hpp"

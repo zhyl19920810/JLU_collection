@@ -9,15 +9,16 @@
 #include "RepairSelectEntity.hpp"
 #include "dock.hpp"
 #include "portRepairLayer.h"
+#include "ViewMgr.hpp"
 
 
 NS_KCL_BEGIN
 
 
-RepairSelectEntity* RepairSelectEntity::create()
+RepairSelectEntity* RepairSelectEntity::create(Vec2 vec)
 {
     RepairSelectEntity* pRet=new RepairSelectEntity;
-    if (pRet&&pRet->init())
+    if (pRet&&pRet->init(vec))
     {
         pRet->autorelease();
         return pRet;
@@ -28,16 +29,9 @@ RepairSelectEntity* RepairSelectEntity::create()
 }
 
 
-void RepairSelectEntity::initBg()
+void RepairSelectEntity::initTitle()
 {
-    bgImg=Sprite::create("RepairMain/repairSelectBg1.png");
-    bgImg->setPosition(695,200);
-    addChild(bgImg);
     auto tmp=bgImg->getContentSize()/2;
-    
-    auto repairSelectBar=Sprite::create("RepairMain/repairBar.png");
-    repairSelectBar->setPosition(tmp.width+288,tmp.height+197);
-    bgImg->addChild(repairSelectBar);
     
     auto repairSelectTitle=Sprite::create("RepairMain/repairSelectTitle.png");
     repairSelectTitle->setPosition(tmp.width-47,tmp.height+200);
@@ -65,33 +59,26 @@ void RepairSelectEntity::initBg()
     repairFuelSprite->setPosition(tmp.width-45,tmp.height-80);
     bgImg->addChild(repairFuelSprite);
     
-    startRepair=MenuItemSprite::create(Sprite::create("RepairMain/startRepair1.png"), Sprite::create("RepairMain/startRepair2.png"), CC_CALLBACK_1(RepairSelectEntity::startRepairCallback, this));
+    startRepair=MenuItemSprite::create(Sprite::create("RepairMain/startRepair1.png"), Sprite::create("RepairMain/startRepair2.png"),Sprite::create("RepairMain/startRepair3.png"), CC_CALLBACK_1(RepairSelectEntity::startRepairCallback, this));
     startRepair->setPosition(tmp.width-10,tmp.height-155);
     mn=Menu::create();
     mn->setPosition(Vec2::ZERO);
     mn->addChild(startRepair);
     bgImg->addChild(mn);
-    
-    startRepairUp=Sprite::create("RepairMain/startRepair3.png");
-    startRepairUp->setPosition(startRepair->getPosition());
-    bgImg->addChild(startRepairUp);
 }
 
 
 
 
-bool RepairSelectEntity::init()
+bool RepairSelectEntity::init(Vec2 vec)
 {
     bool bRet=false;
     do
     {
-        if (!Layer::init())
-        {
-            break;
-        }
+        CC_BREAK_IF(!UnitEntity::init(vec));
 
-        initBg();
-        initKantai();
+        initTitle();
+        initEntity();
         
         bRet=true;
     }while(0);
@@ -100,41 +87,29 @@ bool RepairSelectEntity::init()
     return bRet;
 }
 
-void RepairSelectEntity::moveOut()
+
+void RepairSelectEntity::initEntity()
 {
-    if (!hidden)
-    {
-        this->runAction(MoveBy::create(0.2, Point(238, 0)));
-        hidden = true;
-    }
-    
-}
-void RepairSelectEntity::moveIn()
-{
-    if (hidden)
-    {
-        this->runAction(MoveBy::create(0.2, Point(-238, 0)));
-        hidden = false;
-    }
+    initKantai();
 }
 
 
 void RepairSelectEntity::startRepairCallback(cocos2d::Ref *pSender)
 {
-    
-    int position=UserDefault::getInstance()->getIntegerForKey("repairPosition");
-    auto parent=dynamic_cast<PortRepairLayer*>(getParent());
-    sDock.repairKantai(kantai, position, repairSteel, repairFuel, repairTime);
-    moveOut();
-    parent->hideList(NULL);
-    parent->updateContainer();
+    auto panel=dynamic_cast<PortRepairLayer*>(VIEW_MGR->getPanel(PanelType::PORT_REPAIR));
+    panel->startRepairKantai(kantai, repairSteel, repairFuel, repairTime);
+//    int position=UserDefault::getInstance()->getIntegerForKey("repairPosition");
+//    auto parent=dynamic_cast<PortRepairLayer*>(getParent());
+//    sDock.repairKantai(kantai, position, repairSteel, repairFuel, repairTime);
+//    moveOut();
+//    parent->hideList(NULL);
+//    parent->updateContainer();
 }
 
 
 void RepairSelectEntity::setStartRepairVisible(bool bVisible)
 {
-    startRepair->setVisible(bVisible);
-    startRepairUp->setVisible(!bVisible);
+    startRepair->setEnabled(bVisible);
 }
 
 

@@ -85,7 +85,7 @@ void KantaiCard::setBrokenMark(BrokenType brokenType)
             shader->setTexture("CommonAssets/dapoShader.png");
             break;
         case BrokenType::drown:
-            brokenMark->setTexture("commonAssets/dapoState.png");
+            brokenMark->setTexture("CommonAssets/dapoState.png");
             mainImage->setColor(Color3B(192, 192, 192));//GRAY
             shader->setTexture("CommonAssets/dapoShader.png");
             break;

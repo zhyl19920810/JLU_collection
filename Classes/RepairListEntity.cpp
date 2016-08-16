@@ -9,6 +9,8 @@
 #include "RepairListEntity.hpp"
 #include "KantaiListEntity.hpp"
 #include "portRepairLayer.h"
+#include "EventPauseGuard.hpp"
+
 #include <algorithm>
 
 NS_KCL_BEGIN
@@ -16,7 +18,9 @@ NS_KCL_BEGIN
 #define SHIPS_PER_PAGE 10
 #define FONT_COLOR Color3B::BLACK
 
-
+#define HIDE_POS (Vec2(800,0))
+#define SHOW_POS (Vec2(-800,0))
+#define MOVE_TIME 0.2
 
 RepairListEntity::RepairListEntity()
 {
@@ -27,7 +31,7 @@ void RepairListEntity::moveOut()
 {
     if (!hidden)
     {
-        this->runAction(MoveBy::create(0.2, Point(800, 0)));
+        this->runAction(MoveBy::create(MOVE_TIME, HIDE_POS));
         hidden = true;
     }
     
@@ -36,10 +40,53 @@ void RepairListEntity::moveIn()
 {
     if (hidden)
     {
-        this->runAction(MoveBy::create(0.2, Point(-800, 0)));
+        this->runAction(MoveBy::create(MOVE_TIME, SHOW_POS));
         hidden = false;
     }
 }
+
+//void RepairListEntity::moveOut()
+//{
+//    if (!hidden)
+//    {
+//        CallFunc* moveByBefore=CallFunc::create([=]()
+//                                                {
+//                                                    EventPauseGuard::pause();
+//                                                });
+//        auto move=MoveBy::create(MOVE_TIME, HIDE_POS);
+//        CallFunc* moveByFinish=CallFunc::create([=]()
+//                                                {
+//                                                    EventPauseGuard::resume();
+//                                                    layerCover->setCoverEnable(false);
+//                                                });
+//        entity->runAction(Sequence::create(moveByBefore,move,moveByFinish, NULL));
+//        hidden = true;
+//    }
+//    
+//}
+//
+//
+//void RepairListEntity::moveIn()
+//{
+//    if (hidden)
+//    {
+//        CallFunc* moveByBefore=CallFunc::create([=]()
+//                                                {
+//                                                    layerCover->setCoverEnable(true);
+//                                                    EventPauseGuard::pause();
+//                                                });
+//        auto move=MoveBy::create(MOVE_TIME, SHOW_POS);
+//        CallFunc* moveByFinish=CallFunc::create([=]()
+//                                                {
+//                                                    EventPauseGuard::resume();
+//                                                });
+//        entity->runAction(Sequence::create(moveByBefore,move,moveByFinish, NULL));
+//        hidden = false;
+//    }
+//}
+//
+//
+
 
 
 void RepairListEntity::setRowVisble(int position, bool bVisible)
@@ -72,18 +119,6 @@ void RepairListEntity::initBg()
 
 }
 
-void RepairListEntity::hideSelect(cocos2d::Ref *pSender)
-{
-    selectEntity->moveOut();
-    selectCover->setCoverEnable(false);
-}
-
-void RepairListEntity::showSelect(Kantai* kantai)
-{
-    selectEntity->moveIn();
-    selectEntity->updateKantai(kantai);
-    selectCover->setCoverEnable(true);
-}
 
 void RepairListEntity::initSortButton()
 {
@@ -278,14 +313,6 @@ bool RepairListEntity::init()
         addChild(menu);
         updateRows();
         
-        
-        selectCover=LayerCover::create(CC_CALLBACK_1(RepairListEntity::hideSelect, this));
-        selectCover->setPosition(0,0);
-        addChild(selectCover,2);
-        
-        selectEntity=RepairSelectEntity::create();
-        selectEntity->setPosition(238,0);
-        //addChild(selectEntity,3);
         
         bRet=true;
     }while(0);

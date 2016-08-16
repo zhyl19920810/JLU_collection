@@ -10,9 +10,11 @@
 #include "dock.hpp"
 #include "portRepairLayer.h"
 #include "TimeUtil.hpp"
+#include "ViewMgr.hpp"
 
 
 NS_KCL_BEGIN
+
 
 RepairContainer::RepairContainer()
 {
@@ -29,6 +31,26 @@ RepairContainer* RepairContainer::create(int position)
     delete pRet;
     pRet=NULL;
     return NULL;
+}
+
+bool RepairContainer::init(int position)
+{
+    bool bRet=false;
+    this->position=position;
+    do
+    {
+        if (!Node::init())
+        {
+            break;
+        }
+        initBg();
+        initKantai();
+        updateUnit();
+        
+        bRet=true;
+    }while(0);
+    
+    return bRet;
 }
 
 void RepairContainer::updateUnit()
@@ -101,12 +123,7 @@ void RepairContainer::initBg()
     kantaiBg->addChild(LVIcon);
 }
 
-void RepairContainer::selectKantai(cocos2d::Ref *pSender)
-{
-    UserDefault::getInstance()->setIntegerForKey("repairPosition", position);
-    auto parent=dynamic_cast<PortRepairLayer*>(this->getParent());
-    parent->showList(position);
-}
+
 
 
 void RepairContainer::haveKantaiInReparing(bool visible)
@@ -167,26 +184,6 @@ void RepairContainer::initKantai()
     kantaiBg->addChild(timer);
 }
 
-bool RepairContainer::init(int position)
-{
-    bool bRet=false;
-    this->position=position;
-    do
-    {
-        if (!Node::init())
-        {
-            break;
-        }
-        initBg();
-        initKantai();
-        updateUnit();
-        
-        bRet=true;
-    }while(0);
-
-    return bRet;
-}
-
 
 
 
@@ -221,6 +218,14 @@ bool NoReapirContainer::init(int position)
     
     return bRet;
 }
+
+void RepairContainer::selectKantai(cocos2d::Ref *pSender)
+{
+    auto panel=dynamic_cast<PortRepairLayer*>(VIEW_MGR->getPanel(PanelType::PORT_REPAIR));
+    panel->selectKantai(position);
+}
+
+
 
 NS_KCL_END
 

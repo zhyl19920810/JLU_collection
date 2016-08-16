@@ -147,9 +147,9 @@ void ListRow::update(Kantai* kantai)
     antiAir->setString(name);
     
     if (kantai->getSpeed() == high_speed)
-        speed->setTexture("commonAssets/high_speed.png");
+        speed->setTexture("CommonAssets/highSpeed.png");
     else
-        speed->setTexture("commonAssets/low_speed.png");
+        speed->setTexture("CommonAssets/lowSpeed.png");
 }
 
 

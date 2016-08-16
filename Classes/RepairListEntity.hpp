@@ -13,7 +13,6 @@
 #include "cocos2d.h"
 #include "kantai.h"
 #include "RepairListRow.hpp"
-#include "RepairSelectEntity.hpp"
 #include "LayerCover.hpp"
 using namespace cocos2d;
 
@@ -29,7 +28,6 @@ public:
     inline bool isHidden(){ return hidden; }
     CREATE_FUNC(RepairListEntity);
     bool init() override;
-    void update();
     void updateRows();
 private:
 
@@ -67,14 +65,9 @@ private:
     void sortButtonCallback	(Ref* pSender);
     std::vector<Kantai*> displayKantai;
     
-    LayerCover* selectCover;
-public:
-    void hideSelect(Ref* pSender);
-    void showSelect(Kantai* kantai);
     
 public:
     
-    RepairSelectEntity* selectEntity;
 };
 
 NS_KCL_END

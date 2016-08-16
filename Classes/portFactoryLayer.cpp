@@ -206,8 +206,8 @@ void PortFactoryLayer::destroyKantai(Kantai *kantai, int fuel, int steel, int am
 
 void PortFactoryLayer::finishBuildingKantai(int position)
 {
-    sArsenal.finishBuildingKantai(position);
-    destoryList->updateRows();
+    auto kantai=sArsenal.finishBuildingKantai(position);
+    destoryList->addKantai(kantai);
 }
 
 

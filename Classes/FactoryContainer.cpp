@@ -93,10 +93,9 @@ void FactoryContainer::buildCallback(Ref* pSender)
 
 void FactoryContainer::getCallback(cocos2d::Ref *pSender)
 {
-    
-    update();
     auto panel=dynamic_cast<PortFactoryLayer*>(VIEW_MGR->getPanel(PanelType::PORT_FACTORY));
     panel->finishBuildingKantai(position);
+    update();
     //还有引出新的界面
 }
 

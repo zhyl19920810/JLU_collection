@@ -62,6 +62,13 @@ bool FactoryListEntity::init(Vec2 vec)
     return bRet;
 }
 
+void FactoryListEntity::addKantai(Kantai* kantai)
+{
+    displayKantai.push_back(kantai);
+    sortButtonCallback(this);
+    updateRows();
+}
+
 
 void FactoryListEntity::destoryKantai(Kantai *kantai)
 {
