@@ -53,8 +53,6 @@ public:
     
 public:
     void showDetail(int index);
-    
-    void hideList(Ref* pSender);
     void showList(int index);
     int getSelectedShipIndex(){ return selectedShipIndex; }
     void setSelectedShipIndex(int index){this->selectedShipIndex = index;}
@@ -78,7 +76,6 @@ private:
     Sprite* bgimg;
     KantaiDetailEntity* detailEntity;
     KantaiListEntity* listEntity;
-    LayerCover* listCover;
     FleetButton* fleetButton;
     std::vector<OrganizeContainer *> containers;
     

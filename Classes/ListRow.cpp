@@ -8,8 +8,8 @@
 
 
 #include "ListRow.hpp"
-#include "GameManger.hpp"
 #include "ListEntity.hpp"
+#include "ViewMgr.hpp"
 
 NS_KCL_BEGIN
 
@@ -160,7 +160,8 @@ ListRow::ListRow():kantai(NULL)
 
 void ListRow::exchangeCallback(cocos2d::Ref *pSender)
 {
-    auto parent=static_cast<ListEntity*>(this->getParent());
+    auto parentNode=static_cast<Node*>(this->getParent());
+    auto parent=static_cast<ListEntity*>(parentNode->getParent());
     parent->showSelect(kantai);
 }
 

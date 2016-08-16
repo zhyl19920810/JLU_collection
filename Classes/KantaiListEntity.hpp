@@ -19,13 +19,13 @@ NS_KCL_BEGIN
 class KantaiListEntity:public ListEntity
 {
 public:
+    static KantaiListEntity* create(Vec2 vec);
     void removeCallback(Ref* ref);
     void showSelect(Kantai* kantai);
     void hideSelect(Ref* pSender);
-    CREATE_FUNC(KantaiListEntity);
-    bool init();
-    //OrganSelectEntity* organSelectEntity;
-
+    bool init(Vec2 vec);
+    
+    
 private:
 
 };

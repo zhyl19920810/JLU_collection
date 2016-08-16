@@ -20,6 +20,21 @@ void FactoryListEntity::hideSelect(cocos2d::Ref *pSender)
     
 }
 
+FactoryListEntity* FactoryListEntity::create(cocos2d::Vec2 vec)
+{
+    FactoryListEntity* pRet=new FactoryListEntity;
+    if (pRet&&pRet->FactoryListEntity::init(vec))
+    {
+        pRet->autorelease();
+        return pRet;
+    }
+    delete pRet;
+    pRet=NULL;
+    return pRet;
+}
+
+
+
 void FactoryListEntity::showSelect(Kantai* kantai)
 {
     auto panel=dynamic_cast<PortFactoryLayer*>(VIEW_MGR->getPanel(PanelType::PORT_FACTORY));
@@ -31,12 +46,12 @@ void FactoryListEntity::removeCallback(cocos2d::Ref *ref)
     
 }
 
-bool FactoryListEntity::init()
+bool FactoryListEntity::init(Vec2 vec)
 {
     bool bRet=false;
     do
     {
-        if (!ListEntity::init())
+        if (!ListEntity::init(vec))
         {
             break;
         }

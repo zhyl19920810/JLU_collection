@@ -90,19 +90,18 @@ void PortOrganizeLayer::initLayer()
     editFleetNameButton->setAnchorPoint(Vec2(0, 0.5));
     editFleetNameButton->setPosition(fleet_name_text_box->getPosition()+Vec2(fleet_name_text_box->getContentSize().width/2, 0));
     
-
-    listCover=LayerCover::create(CC_CALLBACK_1(PortOrganizeLayer::hideList, this));
-    listCover->setPosition(0,0);
-    addChild(listCover,2);
     
     detailEntity=KantaiDetailEntity::create();
     addChild(detailEntity,4);
     detailEntity->setPosition(visibleSize.width,0);
     detailEntity->setKantai(fleet->getShip(1));
     
-    listEntity=KantaiListEntity::create();
+    auto visible=Director::getInstance()->getVisibleSize();
+    auto listPos=Vec2(visible.width,200);
+    listEntity=KantaiListEntity::create(listPos);
     addChild(listEntity,3);
-    listEntity->setPosition(visibleSize.width,0);
+    listEntity->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    listEntity->setPosition(listPos);
     
     auto pos=Vec2(695,200);
     organSelectEntity=OrganSelectEntity::create(pos);
@@ -178,12 +177,6 @@ OrganizeContainer* PortOrganizeLayer::getContainer(int index)
 }
 
 
-void PortOrganizeLayer::hideList(Ref* pSender)
-{
-    listEntity->moveOut();
-    listCover->setCoverEnable(false);
-
-}
 
 void PortOrganizeLayer::showList(int index)
 {
@@ -191,7 +184,6 @@ void PortOrganizeLayer::showList(int index)
     {
         listEntity->moveIn();
     }
-    listCover->setCoverEnable(true);
 }
 
 
@@ -381,7 +373,7 @@ void PortOrganizeLayer::containerActionStart(kantaiChangeType type)
     
     FiniteTimeAction* _hideList;
     {
-        CallFunc* p1=CallFunc::create(CC_CALLBACK_0(PortOrganizeLayer::hideList,this,this));
+        CallFunc* p1=CallFunc::create(CC_CALLBACK_0(KantaiListEntity::moveOut,this->listEntity));
         _hideList=Sequence::create(p1,DelayTime::create(HIDE_LIST_TIME), NULL);
     }
     

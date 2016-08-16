@@ -139,14 +139,12 @@ void PortFactoryLayer::startBuild(int fuel, int steel, int ammo, int al)
 ///////destory
 void PortFactoryLayer::initDestroyShipEntity()
 {
-    destoryCover=LayerCover::create(CC_CALLBACK_1(PortFactoryLayer::hideDestroy, this));
-    destoryCover->setPosition(0,0);
-    addChild(destoryCover,2);
-    
     auto visible=Director::getInstance()->getVisibleSize();
-    destoryList=FactoryListEntity::create();
+    auto listPos=Vec2(visible.width, 200);
+    destoryList=FactoryListEntity::create(listPos);
     addChild(destoryList,3);
-    destoryList->setPosition(visible.width,0);
+    destoryList->setPosition(listPos);
+    destoryList->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     
     auto pos=Vec2(695,200);
     kantaiDestroyEntity=KantaiDestroyEntity::create(pos);
@@ -158,13 +156,6 @@ void PortFactoryLayer::initDestroyShipEntity()
 void PortFactoryLayer::showDestroy(Ref* pSender)
 {
     destoryList->moveIn();
-    destoryCover->setCoverEnable(true);
-}
-
-void PortFactoryLayer::hideDestroy(Ref* pSender)
-{
-    destoryList->moveOut();
-    destoryCover->setCoverEnable(false);
 }
 
 void PortFactoryLayer::showSelect(kancolle::Kantai *kantai)
@@ -192,7 +183,7 @@ void PortFactoryLayer::destroyCallback(Kantai* kantai,int fuel,int steel,int amm
 
     CallFunc* f3=CallFunc::create([=]()
                                   {
-                                      hideDestroy(this);
+                                      destoryList->moveOut();
                                   });
     CallFunc* f4=CallFunc::create([=]()
                                   {

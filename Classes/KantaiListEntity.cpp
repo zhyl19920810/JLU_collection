@@ -31,26 +31,29 @@ void KantaiListEntity::removeCallback(cocos2d::Ref *ref)
     panel->modifyContainer(REMOVE_CONTAINER);
 }
 
-bool KantaiListEntity::init()
+bool KantaiListEntity::init(Vec2 vec)
 {
     bool bRet=false;
     do
     {
-        if (!ListEntity::init())
+        if (!ListEntity::init(vec))
         {
             break;
         }
         
+        Vec2 tmp=bgimg->getContentSize()/2;
         Sprite* line = Sprite::create("CommonAssets/Line.png");
-        addChild(line);
-        line->setPosition(540+35, 345-12);
+        entity->addChild(line);
+        //line->setPosition(540+35, 345-12);
+        line->setPosition(tmp+Vec2(-29, 138));
         
         Label *removeLabel = Label::create("remove", "fonts/DengXian.ttf", 13);
         removeLabel->setPosition(Vec2::ZERO);
         removeLabel->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         removeLabel->setColor(Color3B::BLACK);
         MenuItemLabel* removeButton=MenuItemLabel::create(removeLabel, CC_CALLBACK_1(ListEntity::removeCallback, this));
-        removeButton->setPosition(430,345);
+        //removeButton->setPosition(430,345);
+        removeButton->setPosition(tmp+Vec2(-174,150));
         menu->addChild(removeButton);
         
         
@@ -59,6 +62,23 @@ bool KantaiListEntity::init()
     
     return bRet;
 }
+
+
+KantaiListEntity* KantaiListEntity::create(Vec2 vec)
+{
+    KantaiListEntity* pRet=new KantaiListEntity;
+    if (pRet&&pRet->init(vec))
+    {
+        pRet->autorelease();
+        return pRet;
+    }
+    delete pRet;
+    pRet=NULL;
+    return NULL;
+}
+
+
+
 
 
 NS_KCL_END

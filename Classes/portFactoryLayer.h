@@ -57,14 +57,12 @@ private:
 public:
     void showSelect(Kantai* kantai);
     void showDestroy(Ref* pSender);
-    void hideDestroy(Ref* pSender);
 private:
     void destroyKantai(Kantai* kantai,int fuel,int steel,int ammo,int al);
     void destroyCallback(Kantai* kantai,int fuel,int steel,int ammo,int al);
     void initDestroyShipEntity();
     FactoryListEntity* destoryList;
     KantaiDestroyEntity* kantaiDestroyEntity;
-    LayerCover* destoryCover;
     
     //other
 private:

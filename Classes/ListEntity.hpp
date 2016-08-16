@@ -19,21 +19,22 @@ using namespace cocos2d;
 
 NS_KCL_BEGIN
 
-class ListEntity:public Layer
+class ListEntity:public Node
 {
 public:
     ListEntity();
     void moveOut();
     void moveIn();
+    
+    
     inline bool isHidden(){ return hidden; }
-    bool init() override;
+    bool init(Vec2 vec);
     void update();
     void updateRows();
     
 private:
     //bg
-    bool hidden;
-    void initBg();
+    void initBg(Vec2 vec);
     
     //row
     std::vector<ListRow*> rows;
@@ -58,8 +59,6 @@ private:
     void updatePage();
     
     
-    
-    
     //sort
     void initSortButton();
     MenuItemToggle* sortButton;
@@ -68,17 +67,20 @@ private:
     
     
 public:
-    
+    void setHide(bool _hide);
     virtual void showSelect(Kantai* kantai)=0;
     virtual void removeCallback(Ref* ref)=0;
     virtual void hideSelect(cocos2d::Ref *pSender)=0;
     
 protected:
+    
+    bool hidden;
     std::vector<Kantai*> displayKantai;
     Menu *menu;
-    LayerCover* selectCover;
+    LayerCover* layerCover;
     EventListenerTouchOneByOne* listener;
     Sprite* bgimg;
+    Node* entity;
 private:
     
     void hideFunc(Ref* pSender){hideSelect(pSender);}

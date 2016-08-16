@@ -20,10 +20,10 @@ public:
     void removeCallback(Ref* ref);
     void showSelect(Kantai* kantai);
     void hideSelect(Ref* pSender);
-    CREATE_FUNC(FactoryListEntity);
-    bool init();
-    
+    bool init(Vec2 vec);
     void destoryKantai(Kantai* kantai);
+    
+    static FactoryListEntity* create(Vec2 vec);
 
 private:
 };
