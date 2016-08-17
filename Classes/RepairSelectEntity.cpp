@@ -98,12 +98,6 @@ void RepairSelectEntity::startRepairCallback(cocos2d::Ref *pSender)
 {
     auto panel=dynamic_cast<PortRepairLayer*>(VIEW_MGR->getPanel(PanelType::PORT_REPAIR));
     panel->startRepairKantai(kantai, repairSteel, repairFuel, repairTime);
-//    int position=UserDefault::getInstance()->getIntegerForKey("repairPosition");
-//    auto parent=dynamic_cast<PortRepairLayer*>(getParent());
-//    sDock.repairKantai(kantai, position, repairSteel, repairFuel, repairTime);
-//    moveOut();
-//    parent->hideList(NULL);
-//    parent->updateContainer();
 }
 
 

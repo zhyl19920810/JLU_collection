@@ -14,10 +14,7 @@
 
 NS_KCL_BEGIN
 
-void KantaiListEntity::hideSelect(cocos2d::Ref *pSender)
-{
 
-}
 
 void KantaiListEntity::showSelect(Kantai* kantai)
 {
@@ -51,7 +48,7 @@ bool KantaiListEntity::init(Vec2 vec)
         removeLabel->setPosition(Vec2::ZERO);
         removeLabel->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         removeLabel->setColor(Color3B::BLACK);
-        MenuItemLabel* removeButton=MenuItemLabel::create(removeLabel, CC_CALLBACK_1(ListEntity::removeCallback, this));
+        MenuItemLabel* removeButton=MenuItemLabel::create(removeLabel, CC_CALLBACK_1(KantaiListEntity::removeCallback, this));
         //removeButton->setPosition(430,345);
         removeButton->setPosition(tmp+Vec2(-174,150));
         menu->addChild(removeButton);

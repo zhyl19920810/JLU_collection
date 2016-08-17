@@ -68,8 +68,7 @@ private:
 public:
     void setHide(bool _hide);
     virtual void showSelect(Kantai* kantai)=0;
-    virtual void removeCallback(Ref* ref)=0;
-    virtual void hideSelect(cocos2d::Ref *pSender)=0;
+    //virtual void removeCallback(Ref* ref)=0;
     
 protected:
     void sortButtonCallback	(Ref* pSender);
@@ -82,7 +81,6 @@ protected:
     Node* entity;
 private:
     
-    void hideFunc(Ref* pSender){hideSelect(pSender);}
 };
 
 NS_KCL_END

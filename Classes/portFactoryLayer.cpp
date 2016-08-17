@@ -38,7 +38,6 @@ bool PortFactoryLayer::init()
         bRet=true;
     }while(0);
     
-    
     return bRet;
 }
 
@@ -133,7 +132,6 @@ void PortFactoryLayer::startBuild(int fuel, int steel, int ammo, int al)
     });
     runAction(Sequence::create(actionPre,p1,DelayTime::create(0.26),actionPost, NULL));
 }
-
 
 ///////destory
 void PortFactoryLayer::initDestroyShipEntity()

@@ -17,16 +17,14 @@ NS_KCL_BEGIN
 class FactoryListEntity:public ListEntity
 {
 public:
-    void removeCallback(Ref* ref);
     void showSelect(Kantai* kantai);
-    void hideSelect(Ref* pSender);
     bool init(Vec2 vec);
     void destoryKantai(Kantai* kantai);
     void addKantai(Kantai* kantai);
     
     static FactoryListEntity* create(Vec2 vec);
-
 private:
+    
 };
 
 

@@ -13,7 +13,6 @@ NS_KCL_BEGIN
 
 PortRepairLayer::PortRepairLayer()
 {
-    //this->setZOrder(-1);
     containerSize=sPlayer.getMaxDockSize();
     container.resize(4);
 }
@@ -70,16 +69,18 @@ void PortRepairLayer::initLayer()
     listCover->setPosition(0,0);
     addChild(listCover,2);
     
-    listEntity=RepairListEntity::create();
+    auto visible=Director::getInstance()->getVisibleSize();
+    auto listPos=Vec2(visible.width, 200);
+    listEntity=RepairListEntity::create(listPos);
     addChild(listEntity,3);
-    listEntity->setPosition(size.width,0);
+    listEntity->setPosition(listPos);
+    listEntity->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     
     
     auto pos=Vec2(695,200);
     selectEntity=RepairSelectEntity::create(pos);
     selectEntity->setPosition(pos);
     addChild(selectEntity,4);
-    
 }
 
 void PortRepairLayer::updateContainer()
@@ -90,20 +91,22 @@ void PortRepairLayer::updateContainer()
     }
 }
 
-void PortRepairLayer::showList(int index)
+void PortRepairLayer::showList(int position)
 {
-    if (listEntity->isHidden()) {
-        listEntity->moveIn();
-    }
-    listCover->setCoverEnable(true);
-    listEntity->updateRows();
+    this->position=position;
+    listEntity->moveIn();
+//    if (listEntity->isHidden()) {
+//        listEntity->moveIn();
+//    }
+//    listCover->setCoverEnable(true);
+//    listEntity->updateRows();
     
 }
 
 void PortRepairLayer::hideList(cocos2d::Ref *pSender)
 {
     listEntity->moveOut();
-    listCover->setCoverEnable(false);
+    //listCover->setCoverEnable(false);
 }
 
 

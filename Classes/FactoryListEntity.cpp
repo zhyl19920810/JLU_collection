@@ -13,12 +13,7 @@
 NS_KCL_BEGIN
 
 
-void FactoryListEntity::hideSelect(cocos2d::Ref *pSender)
-{
-    //kantaiDestroyEntity->moveOut();
-    //selectCover->setCoverEnable(false);
-    
-}
+
 
 FactoryListEntity* FactoryListEntity::create(cocos2d::Vec2 vec)
 {
@@ -34,17 +29,12 @@ FactoryListEntity* FactoryListEntity::create(cocos2d::Vec2 vec)
 }
 
 
-
 void FactoryListEntity::showSelect(Kantai* kantai)
 {
     auto panel=dynamic_cast<PortFactoryLayer*>(VIEW_MGR->getPanel(PanelType::PORT_FACTORY));
     panel->showSelect(kantai);
 }
 
-void FactoryListEntity::removeCallback(cocos2d::Ref *ref)
-{
-    
-}
 
 bool FactoryListEntity::init(Vec2 vec)
 {
