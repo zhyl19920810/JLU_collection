@@ -68,7 +68,6 @@ private:
 public:
     void setHide(bool _hide);
     virtual void showSelect(Kantai* kantai)=0;
-    //virtual void removeCallback(Ref* ref)=0;
     
 protected:
     void sortButtonCallback	(Ref* pSender);

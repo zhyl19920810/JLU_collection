@@ -57,7 +57,6 @@ public:
     
 private:
     int selectedShipIndex;
-    int displayChangeButtonPos;
     int fleetNumber;
     int kantaiSize;
     Fleet* fleet;

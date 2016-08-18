@@ -253,11 +253,11 @@ void ShipUnit::callback(cocos2d::Ref *pSender)
     auto supplyImp=panel->supplyImp;
     
     MenuItemToggle* toggle=select;
-    if (toggle->getSelectedIndex()&&(unitState==SupplySprite))
-    {
-        toggle->setSelectedIndex(0);
-        return;
-    }
+//    if (toggle->getSelectedIndex()&&(unitState==SupplySprite))
+//    {
+//        toggle->setSelectedIndex(0);
+//        return;
+//    }
     if (toggle->getSelectedIndex()) //由关到开
     {
         if (supplyImp->canFillUpFuel(kantai))
