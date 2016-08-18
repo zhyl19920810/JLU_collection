@@ -26,21 +26,17 @@ typedef struct
 
 class ArsenalDB:public DBBase
 {
+    friend class DataBaseMgr;
 public:
     void initArsenalDB(int playerKey,std::vector<ArsenalDBData>& data);
     
     void insertKantai(int playerKey,int kantaiNumber,int position,int64_t buildTime);
     
     void deleteKantai(int playerKey,int position);
-    
-    static ArsenalDB* getInstance();
-protected:
-    ArsenalDB();
-private:
-    static ArsenalDB* arsenalDB;
-};
 
-#define sArsenalDB ArsenalDB::getInstance()
+private:
+    ArsenalDB();
+};
 
 NS_KCL_END
 

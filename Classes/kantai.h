@@ -11,7 +11,6 @@
 
 #include "cocos2d.h"
 #include "SystemHeader.h"
-#include "kantaiDB.h"
 #include "Equip.h"
 #include "KantaiMgr.hpp"
 #include "ExpMgr.hpp"

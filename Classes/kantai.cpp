@@ -6,6 +6,9 @@
 //
 //
 #include "kantai.h"
+#include "kantaiDB.h"
+#include "DataBaseMgr.hpp"
+
 
 NS_KCL_BEGIN
 
@@ -192,20 +195,20 @@ void Kantai::init(int kantaiKey, int kantaiNumber, LoadState state,Ref* parent)
 void Kantai::setCurrLV(int _currLV)
 {
     currLV=_currLV;
-    KantaiDB::getInstance()->setCurrLV(kantaiKey, currLV);
+    DB_MGR->getKantaiDB()->setCurrLV(kantaiKey, currLV);
     setUpdateExp();
 }
 
 void Kantai::setCurrFuel(int _currFuel)
 {
     currFuel=_currFuel;
-    KantaiDB::getInstance()->setCurrFuel(kantaiKey, _currFuel);
+    DB_MGR->getKantaiDB()->setCurrFuel(kantaiKey, _currFuel);
 }
 
 void Kantai::setCurrAmmo(int _currAmmo)
 {
     currAmmo=_currAmmo;
-    KantaiDB::getInstance()->setCurrAmmo(kantaiKey, _currAmmo);
+    DB_MGR->getKantaiDB()->setCurrAmmo(kantaiKey, _currAmmo);
 }
 void Kantai::setCurrHp(int _currHp)
 {
@@ -213,7 +216,7 @@ void Kantai::setCurrHp(int _currHp)
         currHp=0;
     currHp=_currHp;
     setBrokenType();
-    KantaiDB::getInstance()->setCurrHp(kantaiKey, _currHp);
+    DB_MGR->getKantaiDB()->setCurrHp(kantaiKey, _currHp);
 }
 bool Kantai::fillUpFuel()
 {
@@ -239,42 +242,42 @@ bool Kantai::fillUpAmmo()
 void Kantai::setFirePower(int _firePower)
 {
     firePower=_firePower;
-    KantaiDB::getInstance()->setFirePower(kantaiKey, _firePower);
+    DB_MGR->getKantaiDB()->setFirePower(kantaiKey, _firePower);
 }
 void Kantai::setArmor(int _armor)
 {
     armor=_armor;
-    KantaiDB::getInstance()->setArmor(kantaiKey, _armor);
+    DB_MGR->getKantaiDB()->setArmor(kantaiKey, _armor);
 }
 void Kantai::setTorpedo(int _torpedo)
 {
     torpedo=_torpedo;
-    KantaiDB::getInstance()->setTorpedo(kantaiKey, _torpedo);
+    DB_MGR->getKantaiDB()->setTorpedo(kantaiKey, _torpedo);
 }
 void Kantai::setDodge(int _dodge)
 {
     dodge=_dodge;
-    KantaiDB::getInstance()->setDodge(kantaiKey, _dodge);
+    DB_MGR->getKantaiDB()->setDodge(kantaiKey, _dodge);
 }
 void Kantai::setAntiAir(int _antiAir)
 {
     antiAir=_antiAir;
-    KantaiDB::getInstance()->setAntiAir(kantaiKey, _antiAir);
+    DB_MGR->getKantaiDB()->setAntiAir(kantaiKey, _antiAir);
 }
 void Kantai::setAntiSubmarine(int _antiSubmarine)
 {
     AntiSubMarine=_antiSubmarine;
-    KantaiDB::getInstance()->setAntiSubmarine(kantaiKey, _antiSubmarine);
+    DB_MGR->getKantaiDB()->setAntiSubmarine(kantaiKey, _antiSubmarine);
 }
 void Kantai::setSearchEnemy(int _serachEnemy)
 {
     searchEnemy=_serachEnemy;
-    KantaiDB::getInstance()->setSearchEnemy(kantaiKey, _serachEnemy);
+    DB_MGR->getKantaiDB()->setSearchEnemy(kantaiKey, _serachEnemy);
 }
 void Kantai::setLuck(int _luck)
 {
     luck=_luck;
-    KantaiDB::getInstance()->setLuck(kantaiKey, _luck);
+    DB_MGR->getKantaiDB()->setLuck(kantaiKey, _luck);
 }
 
 bool Kantai::addExp(int exp)
@@ -289,7 +292,7 @@ bool Kantai::addExp(int exp)
         if (currExp>=updateExp)
         {
             currExp=currExp-updateExp;
-            KantaiDB::getInstance()->setCurrExp(kantaiKey, currExp);
+            DB_MGR->getKantaiDB()->setCurrExp(kantaiKey, currExp);
             setCurrLV(getCurrLV()+1);
         }
     bRet=true;
@@ -306,22 +309,22 @@ void Kantai::setUpdateExp()
 void Kantai::setFatigueValue(int _fatigueValue)
 {
     fatigueValue=_fatigueValue;
-    KantaiDB::getInstance()->setFatigueValue(kantaiKey, _fatigueValue);
+    DB_MGR->getKantaiDB()->setFatigueValue(kantaiKey, _fatigueValue);
 }
 void Kantai::setKantaiLock(bool _kantaiLock)
 {
     kantaiLock=_kantaiLock;
-    KantaiDB::getInstance()->setKantaiLock(kantaiKey, _kantaiLock);
+    DB_MGR->getKantaiDB()->setKantaiLock(kantaiKey, _kantaiLock);
 }
 void Kantai::setKantaiStar(int _kantaiStar)
 {
     kantaiStar=_kantaiStar;
-    KantaiDB::getInstance()->setKantaiStar(kantaiKey, _kantaiStar);
+    DB_MGR->getKantaiDB()->setKantaiStar(kantaiKey, _kantaiStar);
 }
 void Kantai::setKantaiState(KantaiState _kantaiState)
 {
     kantaiState=_kantaiState;
-    KantaiDB::getInstance()->setKantaiState(kantaiKey, _kantaiState);
+    DB_MGR->getKantaiDB()->setKantaiState(kantaiKey, _kantaiState);
 }
 void Kantai::setBrokenType()
 {

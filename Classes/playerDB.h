@@ -16,10 +16,10 @@ using namespace cocos2d;
 
 NS_KCL_BEGIN
 
-#define sPlayerDB PlayerDB::getInstance()
 
 class PlayerDB:public DBBase
 {
+    friend class DataBaseMgr;
 public:
     void modifyPlayerName(int playerKey,const std::string &playerName);
     
@@ -41,13 +41,8 @@ public:
     
     void modifyMaxMissionSize(int playerKey,int missionSize);
     
-    
-    static PlayerDB* getInstance();
-    
-protected:
-    PlayerDB();
 private:
-    static PlayerDB* playerDB;
+    PlayerDB();
 };
 
 NS_KCL_END

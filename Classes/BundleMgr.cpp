@@ -28,6 +28,8 @@
 #include "RepairFactorMgr.hpp"
 #include "TimerMgr.hpp"
 
+#include "DataBaseMgr.hpp"
+
 
 NS_KCL_BEGIN
 
@@ -144,9 +146,10 @@ void BundleMgr::initialization()
         fsCoper << fsCopee.rdbuf();
     }
 #endif
-    DBBase::init(writablePath);
-    DBInit init;
-    init.initDB(1);
+//    DBBase::init(writablePath);
+//    DBInit init;
+//    init.initDB(1);
+    DB_MGR->initDB(writablePath, 1);
     TimerMgr::getInstance()->startTimer();
     
     

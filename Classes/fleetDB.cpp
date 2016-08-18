@@ -10,13 +10,6 @@
 
 NS_KCL_BEGIN
 
-FleetDB* FleetDB::fleetDB=new FleetDB;
-
-
-FleetDB* FleetDB::getInstance()
-{
-    return fleetDB;
-}
 
 FleetDB::FleetDB(){}
 

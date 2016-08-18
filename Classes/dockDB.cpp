@@ -10,17 +10,10 @@
 
 NS_KCL_BEGIN
 
-DockDB* DockDB::dockDB=new DockDB;
-
 
 DockDB::DockDB()
 {
     
-}
-
-DockDB* DockDB::getInstance()
-{
-    return dockDB;
 }
 
 void DockDB::initDockDB(int playerKey, std::vector<DockDBData>& data)

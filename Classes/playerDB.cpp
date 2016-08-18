@@ -11,8 +11,6 @@
 NS_KCL_BEGIN
 
 
-PlayerDB* PlayerDB::playerDB=new PlayerDB;
-
 void PlayerDB::modifyPlayerName(int playerKey,const std::string &playerName)
 {
     std::string sqlStr="UPDATE player set playerName=? where playerKey=?";
@@ -204,22 +202,5 @@ void PlayerDB::modifyMaxMissionSize(int playerKey,int missionSize)
 
 PlayerDB::PlayerDB(){}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-PlayerDB* PlayerDB::getInstance()
-{
-    return playerDB;
-}
 
 NS_KCL_END

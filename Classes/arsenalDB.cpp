@@ -10,17 +10,10 @@
 
 
 NS_KCL_BEGIN
-ArsenalDB* ArsenalDB::arsenalDB=new ArsenalDB;
-
 
 ArsenalDB::ArsenalDB()
 {
     
-}
-
-ArsenalDB* ArsenalDB::getInstance()
-{
-    return arsenalDB;
 }
 
 void ArsenalDB::initArsenalDB(int playerKey, std::vector<ArsenalDBData> &data)

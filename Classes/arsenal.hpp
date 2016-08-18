@@ -12,8 +12,6 @@
 #include "cocos2d.h"
 #include "Player.h"
 #include "Singleton.hpp"
-#include "arsenalDB.hpp"
-#include "metaphysics.hpp"
 
 
 NS_KCL_BEGIN
@@ -21,6 +19,8 @@ NS_KCL_BEGIN
 #define sArsenal Arsenal::getInstance()
 #define ArsenalBuildTime "ArsenalBuildTime"
 
+
+class MetaPhysics;
 
 class Arsenal:public Singleton<Arsenal>
 {

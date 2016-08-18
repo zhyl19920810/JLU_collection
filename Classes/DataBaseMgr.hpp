@@ -15,9 +15,7 @@
 
 NS_KCL_BEGIN
 
-
-#define DB_MGR (
-
+#define DB_MGR (DataBaseMgr::getInstance())
 
 class EquipDB;
 class KantaiDB;
@@ -31,13 +29,15 @@ class DataBaseMgr
 {
 public:
     static DataBaseMgr* getInstance();
-    static void destory();
+    static void destroy();
     
     EquipDB*    getEquipDB();
     KantaiDB*   getKantaiDB();
     PlayerDB*   getPlayerDB();
     DockDB*     getDockDB();
     ArsenalDB*  getArsenalDB();
+    FleetDB*    getFleetDB();
+    
     
     void initDB(const std::string& path,int playerKey);
     
@@ -49,6 +49,7 @@ private:
     
     
 private:
+    FleetDB*    m_fleetDB;
     EquipDB*    m_equipDB;
     KantaiDB*   m_kantaiDB;
     PlayerDB*   m_playerDB;

@@ -19,12 +19,11 @@ NS_KCL_BEGIN
 
 class KantaiDB:public DBBase
 {
+    friend class DataBaseMgr;
 public:
     int getNewKantaiByNumber(int kantaiNumber);
     
     int getNewKantaiByNumber(ValueVector& _kantaiData); //返回kantaikey
-    
-    static KantaiDB* getInstance();
     
     std::vector<std::pair<int,int>>  getNewKantaiEquip(int _kantaiKey,ValueVector& _kantaiData);
     
@@ -77,12 +76,8 @@ public:
     
     void setKantaiState(int kantaiKey,int kantaiState);
     
-    
-protected:
-    KantaiDB();
-    
 private:
-    static KantaiDB* kantaiDB;
+    KantaiDB();
 };
 
 NS_KCL_END

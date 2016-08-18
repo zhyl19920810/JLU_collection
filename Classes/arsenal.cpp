@@ -8,6 +8,9 @@
 
 #include "arsenal.hpp"
 #include "TimeUtil.hpp"
+#include "arsenalDB.hpp"
+#include "metaphysics.hpp"
+#include "DataBaseMgr.hpp"
 
 NS_KCL_BEGIN
 
@@ -17,7 +20,7 @@ void Arsenal::initArsenal(int playerKey)
     this->playerKey=playerKey;
     this->maxArsenalSize=sPlayer.getMaxDockSize();
     std::vector<ArsenalDBData> data;
-    ArsenalDB::getInstance()->initArsenalDB(playerKey, data);
+    DB_MGR->getArsenalDB()->initArsenalDB(playerKey, data);
     
     
     arsenal.resize(maxArsenalSize);
@@ -58,7 +61,7 @@ void Arsenal::buildNewKantai(int position, int fuel, int steel, int ammo, int al
     sPlayer.minusSteel(steel);
     int buildTime=sKantaiMgr.GetKantaiMap(kantaiNumber)->buildTime;
     ino64_t completeTime=buildTime+TimeUtil::getTimestamp();
-    sArsenalDB->insertKantai(playerKey, kantaiNumber, position, completeTime);
+    DB_MGR->getArsenalDB()->insertKantai(playerKey, kantaiNumber, position, completeTime);
     
     ArsenalData tmp;
     tmp.kantaiNumber=kantaiNumber;
@@ -89,7 +92,7 @@ Kantai* Arsenal::finishBuildingKantai(int position)
     CCASSERT(position>=1&&position<=maxArsenalSize, "position is out of range");
     int kantaiNumber=arsenal[position-1].kantaiNumber;
     CCASSERT(kantaiNumber, "there is not a ship in the position");
-    sArsenalDB->deleteKantai(playerKey, position);
+    DB_MGR->getArsenalDB()->deleteKantai(playerKey, position);
     arsenal[position-1].kantaiNumber=0;
     arsenal[position-1].completeTime=0;
     arsenal[position-1].finished=false;
@@ -103,16 +106,6 @@ bool Arsenal::isBuildingFinished(int position)
     return arsenal[position-1].finished;
 }
 
-//void Arsenal::startCircle()
-//{
-//    std::function<void(float)> f1=std::bind(&Arsenal::buildTimeCircle, this,std::placeholders::_1);
-//    Director::getInstance()->getScheduler()->schedule(f1, this, 1, false, "ArsenalBuildTime");
-//}
-//
-//void Arsenal::endCircle()
-//{
-//    Director::getInstance()->getScheduler()->unschedule("ArsenalBuildTime", this);
-//}
 
 bool Arsenal::haveShip(int position)
 {

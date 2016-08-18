@@ -11,7 +11,6 @@
 
 NS_KCL_BEGIN
 
-EquipDB* EquipDB::equipDB=new EquipDB;
 
 int EquipDB::getNewEquipByNumber(int equipNumber,int kantaiKey,int position)
 {
@@ -134,14 +133,5 @@ void EquipDB::changeEquipPosition(int _equipKey, int _kantaiKey, int _position)
     sqlite3_finalize(statement);
 }
 
-
-
-
-
-
-EquipDB* EquipDB::getInstance()
-{
-    return equipDB;
-}
 
 NS_KCL_END

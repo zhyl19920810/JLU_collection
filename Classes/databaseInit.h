@@ -22,6 +22,7 @@ class Kantai;
 
 class DBInit:public DBBase
 {
+    friend class DataBaseMgr;
 public:
     void initDB(int _playerKey);
     

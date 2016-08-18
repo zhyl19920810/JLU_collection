@@ -7,6 +7,7 @@
 //
 
 #include "dock.hpp"
+#include "DataBaseMgr.hpp"
 #include "dockDB.hpp"
 #include "RepairFactorMgr.hpp"
 #include "TimeUtil.hpp"
@@ -19,7 +20,7 @@ void Dock::initDock(int playerKey)
     this->playerKey=playerKey;
     this->maxDockSize=sPlayer.getMaxDockSize();
     std::vector<DockDBData>  data;
-    DockDB::getInstance()->initDockDB(playerKey,data);
+    DB_MGR->getDockDB()->initDockDB(playerKey,data);
     
     dock.resize(maxDockSize);
     for (auto it=data.begin(); it!=data.end(); ++it)
@@ -56,7 +57,7 @@ void Dock::repairKantai(Kantai *kantai, int position,int repairSteel,int repairA
     sPlayer.minusAmmo(repairAmmo);
     
     uint64_t complateTime=TimeUtil::getTimestamp()+repairTime;
-    sDockDB->insertKantai(playerKey, kantai->getKantaiKey(), position, complateTime);
+    DB_MGR->getDockDB()->insertKantai(playerKey, kantai->getKantaiKey(), position, complateTime);
     DockData tmp;
     tmp.kantai=kantai;
     tmp.complateTime=complateTime;
@@ -118,7 +119,7 @@ void Dock::repairTimeCircle(float dt)
 void Dock::cancelRepairKantai(Kantai *kantai, int position)
 {
     CCASSERT(kantai, "can not cancel the repaired kantai");
-    sDockDB->deleteKantai(playerKey, kantai->getKantaiKey());
+    DB_MGR->getDockDB()->deleteKantai(playerKey, kantai->getKantaiKey());
     kantai->setKantaiState(KantaiState::Free);
     dock[position-1].kantai=NULL;
     dock[position-1].complateTime=0;
@@ -128,7 +129,7 @@ void Dock::cancelRepairKantai(Kantai *kantai, int position)
 void Dock::finishRepairKantai(Kantai *kantai, int position)
 {
     CCASSERT(kantai, "can not finish the repaired kantai");
-    sDockDB->deleteKantai(playerKey, kantai->getKantaiKey());
+    DB_MGR->getDockDB()->deleteKantai(playerKey, kantai->getKantaiKey());
     kantai->setKantaiState(KantaiState::Free);
     kantai->setCurrHp(kantai->getMaxHp());
     dock[position-1].kantai=NULL;

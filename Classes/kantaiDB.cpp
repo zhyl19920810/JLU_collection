@@ -9,15 +9,11 @@
 #include "kantaiDB.h"
 #include "equipDB.h"
 #include "KantaiMgr.hpp"
+#include "DataBaseMgr.hpp"
+
 
 NS_KCL_BEGIN
 
-KantaiDB* KantaiDB::kantaiDB=new KantaiDB;
-
-KantaiDB* KantaiDB::getInstance()
-{
-    return kantaiDB;
-}
 
 KantaiDB::KantaiDB(){}
 
@@ -102,7 +98,7 @@ std::vector<std::pair<int,int>> KantaiDB::getNewKantaiEquip(int _kantaiKey, std:
         int _equipNumber=returnVal[i];
         int _position=i+1;
         
-        int _equipKey=EquipDB::getInstance()->getNewEquipByNumber(_equipNumber,_kantaiKey,_position);
+        int _equipKey=DB_MGR->getEquipDB()->getNewEquipByNumber(_equipNumber,_kantaiKey,_position);
         returnKey.push_back(std::pair<int, int>(_equipKey,_equipNumber));
     }
     return returnKey;
@@ -206,7 +202,7 @@ std::vector<std::pair<int,int>> KantaiDB::getNewKantaiEquip(int _kantaiKey, Valu
         int _equipNumber=returnVal[i];
         int _position=i+1;
         
-        int _equipKey=EquipDB::getInstance()->getNewEquipByNumber(_equipNumber,_kantaiKey,_position);
+        int _equipKey=DB_MGR->getEquipDB()->getNewEquipByNumber(_equipNumber,_kantaiKey,_position);
         returnKey.push_back(std::pair<int, int>(_equipKey,_equipNumber));
     }
     return returnKey;

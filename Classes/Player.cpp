@@ -8,6 +8,12 @@
 
 #include "Player.h"
 #include <algorithm>
+#include "fleetDB.h"
+#include "playerDB.h"
+#include "equipDB.h"
+#include "kantaiDB.h"
+#include "DataBaseMgr.hpp"
+
 
 NS_KCL_BEGIN
 
@@ -45,7 +51,7 @@ void Player::LVup()
         CCASSERT(false, "can not update");
     }
     currLV+=1;
-    PlayerDB::getInstance()->modifyCurrLV(playerKey, currLV);
+    DB_MGR->getPlayerDB()->modifyCurrLV(playerKey, currLV);
 }
 
 void Player::addPlayerCurrExp(int addExp)
@@ -63,16 +69,16 @@ void Player::addPlayerCurrExp(int addExp)
         if (getCurrLV()==MAX_PLAYER_LV)
         {
             this->playerCurrExp=MAX_PLAYER_LV_EXP;
-            PlayerDB::getInstance()->modifyCurrLV(playerKey,getCurrLV());
-            PlayerDB::getInstance()->modifyPlayerCurrExp(playerKey,getCurrExp());
+            DB_MGR->getPlayerDB()->modifyCurrLV(playerKey,getCurrLV());
+            DB_MGR->getPlayerDB()->modifyPlayerCurrExp(playerKey,getCurrExp());
             setMaxAttr();
             ///updateExp 用不用加？
             return;
         }
     }
     setMaxAttr();
-    PlayerDB::getInstance()->modifyCurrLV(playerKey,getCurrLV());
-    PlayerDB::getInstance()->modifyPlayerCurrExp(playerKey,getCurrExp());
+    DB_MGR->getPlayerDB()->modifyCurrLV(playerKey,getCurrLV());
+    DB_MGR->getPlayerDB()->modifyPlayerCurrExp(playerKey,getCurrExp());
     //updateExp 用不用加？
 }
 
@@ -126,13 +132,13 @@ void Player::setUpdateExp()
 void Player::setPlayerName(const std::string &name)
 {
     playerName=name;
-    PlayerDB::getInstance()->modifyPlayerName(playerKey,playerName);
+    DB_MGR->getPlayerDB()->modifyPlayerName(playerKey,playerName);
 }
 
 void Player::setPlayerSign(const std::string &name)
 {
     playerSign=name;
-    PlayerDB::getInstance()->modifyPlayerSign(playerKey, name);
+    DB_MGR->getPlayerDB()->modifyPlayerSign(playerKey, name);
 }
 
 void Player::addFuel(int addFuel)
@@ -147,7 +153,7 @@ void Player::addFuel(int addFuel)
     {
         return;
     }
-    PlayerDB::getInstance()->modifyFuel(playerKey, fuel);
+    DB_MGR->getPlayerDB()->modifyFuel(playerKey, fuel);
 }
 
 void Player::addAmmo(int addAmmo)
@@ -162,7 +168,7 @@ void Player::addAmmo(int addAmmo)
     {
         return;
     }
-    PlayerDB::getInstance()->modifyAmmo(playerKey, ammo);
+    DB_MGR->getPlayerDB()->modifyAmmo(playerKey, ammo);
     
 }
 
@@ -177,7 +183,7 @@ void Player::addAluminium(int addAluminium)
     if (tempAluminium==aluminium) {
         return;
     }
-    PlayerDB::getInstance()->modifyAluminium(playerKey, aluminium);
+    DB_MGR->getPlayerDB()->modifyAluminium(playerKey, aluminium);
 }
 
 void Player::addSteel(int addSteel)
@@ -191,7 +197,7 @@ void Player::addSteel(int addSteel)
     if (tempSteel==steel) {
         return;
     }
-    PlayerDB::getInstance()->modifySteel(playerKey, steel);
+    DB_MGR->getPlayerDB()->modifySteel(playerKey, steel);
 }
 
 bool Player::canMinusFuel(int miFuel)
@@ -233,7 +239,7 @@ void Player::minusFuel(int miFuel)
         return;
     }
     fuel-=miFuel;
-    PlayerDB::getInstance()->modifyFuel(playerKey, fuel);
+    DB_MGR->getPlayerDB()->modifyFuel(playerKey, fuel);
 }
 void Player::minusAmmo(int miAmmo)
 {
@@ -241,28 +247,28 @@ void Player::minusAmmo(int miAmmo)
         return;
     }
     ammo-=miAmmo;
-    PlayerDB::getInstance()->modifyAmmo(playerKey, ammo);
+    DB_MGR->getPlayerDB()->modifyAmmo(playerKey, ammo);
 }
 void Player::minusAluminium(int miAluminium)
 {
     aluminium-=miAluminium;
-    PlayerDB::getInstance()->modifyAluminium(playerKey, aluminium);
+    DB_MGR->getPlayerDB()->modifyAluminium(playerKey, aluminium);
 }
 void Player::minusSteel(int miSteel)
 {
     steel-=miSteel;
-    PlayerDB::getInstance()->modifySteel(playerKey, steel);
+    DB_MGR->getPlayerDB()->modifySteel(playerKey, steel);
 }
 void Player::setMaxDockSize(int _dockSize)
 {
     maxDockSize=_dockSize;
-    PlayerDB::getInstance()->modifyMaxDockSize(playerKey,_dockSize);
+    DB_MGR->getPlayerDB()->modifyMaxDockSize(playerKey,_dockSize);
 }
 
 void Player::setMaxMissionSize(int _maxMissionSize)
 {
     maxMissionSize=_maxMissionSize;
-    PlayerDB::getInstance()->modifyMaxMissionSize(playerKey, _maxMissionSize);
+    DB_MGR->getPlayerDB()->modifyMaxMissionSize(playerKey, _maxMissionSize);
 }
 
 
@@ -290,7 +296,8 @@ Equip* Player::buildNewEquip(int _equipNumber,int _kantaiKey,int _position)
         {
             CCASSERT(false, "can not find the kantai in the function buildNewEquip");
         }
-        int _equipKey=EquipDB::getInstance()->getNewEquipByNumber(_equipNumber,_kantaiKey,_position);
+        
+        int _equipKey=DB_MGR->getEquipDB()->getNewEquipByNumber(_equipNumber,_kantaiKey,_position);
         _equip=Equip::create(_equipKey,_equipNumber);
         _equip->setKantai(kantai);
         kantai->equipGrid[_position-1]=_equip;
@@ -298,7 +305,7 @@ Equip* Player::buildNewEquip(int _equipNumber,int _kantaiKey,int _position)
     }
     else
     {
-        int _equipKey=EquipDB::getInstance()->getNewEquipByNumber(_equipNumber);
+        int _equipKey=DB_MGR->getEquipDB()->getNewEquipByNumber(_equipNumber);
         _equip=Equip::create(_equipKey,_equipNumber);
         equipData.push_back(_equip);
     }
@@ -381,11 +388,11 @@ void Player::deleteEquip(Equip *_equip)
 {
     if (_deleteEquipNodb(_equip))
     {
-        EquipDB::getInstance()->deleteEquipKey(_equip->getEquipKey(), 1);
+        DB_MGR->getEquipDB()->deleteEquipKey(_equip->getEquipKey(), 1);
     }
     else
     {
-        EquipDB::getInstance()->deleteEquipKey(_equip->getEquipKey(), 0);
+        DB_MGR->getEquipDB()->deleteEquipKey(_equip->getEquipKey(), 0);
     }
     
 }
@@ -398,7 +405,7 @@ void Player::removeEquip(Kantai* kantai,int _position)
     auto equip=kantai->equipGrid[_position-1];
     equip->setKantai(NULL);
     kantai->equipGrid[_position-1]=NULL;
-    EquipDB::getInstance()->deleteEquipRelation(_equipKey);
+    DB_MGR->getEquipDB()->deleteEquipRelation(_equipKey);
 }
 
 Equip* Player::getEquipByEquipKey(int _equipKey)
@@ -448,11 +455,11 @@ void Player::deleteEquip(int _equipKey)
     
     if (_deleteEquipByEquipKey(_equipKey))
     {
-        EquipDB::getInstance()->deleteEquipKey(_equipKey, 1);
+        DB_MGR->getEquipDB()->deleteEquipKey(_equipKey, 1);
     }
     else
     {
-        EquipDB::getInstance()->deleteEquipKey(_equipKey, 0);
+        DB_MGR->getEquipDB()->deleteEquipKey(_equipKey, 0);
     }
 }
 
@@ -490,7 +497,7 @@ void Player::_changeEquipPosition(Equip* _equip, Kantai* _kantai, int _position)
     _kantai->equipGrid[_position-1]=_equip;
     _equip->setKantai(_kantai);
     
-    EquipDB::getInstance()->changeEquipPosition(_equip->getEquipKey(), _kantai->getKantaiKey(), _position);
+    DB_MGR->getEquipDB()->changeEquipPosition(_equip->getEquipKey(), _kantai->getKantaiKey(), _position);
 }
 
 
@@ -512,7 +519,7 @@ bool Player::canBuildNewKantai(int _kantaiNumber)
 Kantai* Player::buildNewKantai(int _kantaiNumber)
 {
     Kantai* kantai=Kantai::create(-1, _kantaiNumber, LoadState::INIT_UNIT);
-    int _kantaiKey=KantaiDB::getInstance()->getNewKantaiByNumber(kantai->kantaiNumber);
+    int _kantaiKey=DB_MGR->getKantaiDB()->getNewKantaiByNumber(kantai->kantaiNumber);
     vector<int> equipVec;
     for (int i=0; i<kantai->getKantaiEquipSize(); ++i)
     {
@@ -521,7 +528,7 @@ Kantai* Player::buildNewKantai(int _kantaiNumber)
             equipVec.push_back(tmp);
         }
     }
-    auto _equipKey=KantaiDB::getInstance()->getNewKantaiEquip(_kantaiKey, equipVec);
+    auto _equipKey=DB_MGR->getKantaiDB()->getNewKantaiEquip(_kantaiKey, equipVec);
     kantai->kantaiKey=_kantaiKey;
     kantaiData.push_back(kantai);
     
@@ -574,7 +581,7 @@ void Player::deleteKantai(Kantai *kantai)
                 if (fleet->ship[i]==kantai)
                 {
                     fleet->ship[i]=NULL;
-                    KantaiDB::getInstance()->deleteKantaiFleet(kantai->getKantaiKey());
+                    DB_MGR->getKantaiDB()->deleteKantaiFleet(kantai->getKantaiKey());
                 }
             }
         }
@@ -603,11 +610,11 @@ void Player::deleteKantai(Kantai *kantai)
             equipData.erase(equipIt);
             delete equipTemp;
             *it=NULL;
-            EquipDB::getInstance()->deleteEquipKey(_equipKey, true);
+            DB_MGR->getEquipDB()->deleteEquipKey(_equipKey, true);
         }
     }
     kantaiData.erase(kantaiIt);
-    KantaiDB::getInstance()->deleteKantaiKey(kantai->getKantaiKey(), false);
+    DB_MGR->getKantaiDB()->deleteKantaiKey(kantai->getKantaiKey(), false);
     delete kantai;
     kantai=NULL;
     
@@ -777,14 +784,14 @@ void Player::removeKantai(Fleet *_fleet, int _position)
     kantaiTemp->setFleet(NULL);
     
     int _kantaiKey=kantaiTemp->getKantaiKey();
-    KantaiDB::getInstance()->deleteKantaiFleet(_kantaiKey);
+    DB_MGR->getKantaiDB()->deleteKantaiFleet(_kantaiKey);
 }
 
 void Player::_changeKantaiPosition(Kantai *kantai, Fleet *fleet, int position)
 {
     fleet->ship[position-1]=kantai;
     kantai->setFleet(fleet);
-    KantaiDB::getInstance()->changeKantaiPosition(kantai->getKantaiKey(),fleet->getFleetKey(),position);
+    DB_MGR->getKantaiDB()->changeKantaiPosition(kantai->getKantaiKey(),fleet->getFleetKey(),position);
 }
 
 void Player::addAttr(float dt,int numAttr)
@@ -910,7 +917,7 @@ void Player::deleteFleet(int _fleetKey)
         if (*it)
         {
             int _kantaiKey=(*it)->getKantaiKey();
-            KantaiDB::getInstance()->deleteKantaiFleet(_kantaiKey);
+            DB_MGR->getKantaiDB()->deleteKantaiFleet(_kantaiKey);
         }
     }
     fleetData[_fleetKey-1]=NULL;

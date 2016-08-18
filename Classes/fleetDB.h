@@ -18,6 +18,7 @@ NS_KCL_BEGIN
 
 class FleetDB:public DBBase
 {
+    friend class DataBaseMgr;
 public:
     void getNewFleetByNumber(int fleetKey,const std::string& name,int fleetState);
     
@@ -28,15 +29,12 @@ public:
     void setFleetName(int _fleetKey,const std::string &_fleetName);
     
     void setFleetState(int _fleetKey,int state);
-protected:
-    FleetDB();
     
 private:
-    static FleetDB* fleetDB;
+    FleetDB();
     
 };
 
-#define sFleetDB FleetDB::getInstance()
 
 NS_KCL_END
 

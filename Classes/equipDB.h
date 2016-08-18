@@ -16,10 +16,10 @@ using namespace cocos2d;
 
 NS_KCL_BEGIN
 
-#define sEquipDB EquipDB::getInstance()
 
 class EquipDB:public DBBase
 {
+    friend class DataBaseMgr;
 public:
     int getNewEquipByNumber(int equipNumber,int kantaiKey=-1,int position=0);
     
@@ -29,13 +29,8 @@ public:
     
     void changeEquipPosition(int _equipKey, int _kantaiKey, int _position);
     
-    
-    static EquipDB* getInstance();
-protected:
-    EquipDB();
-    
 private:
-    static EquipDB* equipDB;
+    EquipDB();
 };
 
 NS_KCL_END

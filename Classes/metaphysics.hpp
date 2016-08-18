@@ -10,6 +10,9 @@
 #define metaphysics_hpp
 
 #include "cocos2d.h"
+#include "SystemHeader.h"
+
+NS_KCL_BEGIN
 
 class MetaPhysics
 {
@@ -23,6 +26,7 @@ private:
     
 };
 
+NS_KCL_END
 
 
 #endif /* metaphysics_hpp */

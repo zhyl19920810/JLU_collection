@@ -16,7 +16,6 @@ USING_NS_CC;
 
 NS_KCL_BEGIN
 
-#define sDockDB DockDB::getInstance()
 
 typedef struct
 {
@@ -28,21 +27,16 @@ typedef struct
 
 class DockDB:public DBBase
 {
+    friend class DataBaseMgr;
 public:
     void initDockDB(int playerKey,std::vector<DockDBData>&  data);
     
     void insertKantai(int playerKey,int kantaiKey,int position,int64_t complateTime);
     
     void deleteKantai(int playerKey,int kantaiKey);
-    
-    static DockDB* getInstance();
-protected:
-    DockDB();
-    
-    
+
 private:
-    static DockDB* dockDB;
-    
+    DockDB();
 };
 
 NS_KCL_END

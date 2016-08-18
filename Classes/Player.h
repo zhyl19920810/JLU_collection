@@ -13,9 +13,7 @@
 #include "Equip.h"
 #include "Fleet.h"
 #include "kantai.h"
-#include "playerDB.h"
-#include "XMLControl.h"
-#include "fleetDB.h"
+
 #include "Singleton.hpp"
 
 using namespace cocos2d;
@@ -24,8 +22,6 @@ using namespace cocos2d;
 NS_KCL_BEGIN
 
 class Player;
-
-
 
 
 class Player:public Singleton<Player>,public Ref
