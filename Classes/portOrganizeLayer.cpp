@@ -273,27 +273,25 @@ void PortOrganizeLayer::changeContainer(Kantai* kantai)
 {
     if (!kantai) CC_ASSERT("PortOrganizeLayer::changeContainer");
     
-    SND->playEffect("soundSE/changeShip.mp3");
-    auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
-    auto preFleet=dynamic_cast<Fleet*>(kantai->getFleet());
-    int prePosition=1;
+
+    if (getContainer(selectedShipIndex)&&!getContainer(selectedShipIndex)->getKantai())
     {
-        if (preFleet&&preFleet!=fleet)
+        auto fleet=sPlayer.getFleetByFleetKey(fleetNumber);
+        auto preFleet=dynamic_cast<Fleet*>(kantai->getFleet());
+        int prePosition=1;
         {
-            for (; prePosition<=6; ++prePosition)
+            if (preFleet&&preFleet!=fleet)
             {
-                if (kantai==preFleet->getShip(prePosition)) {
-                    break;
+                for (; prePosition<=6; ++prePosition)
+                {
+                    if (kantai==preFleet->getShip(prePosition)) {
+                        break;
+                    }
                 }
             }
         }
-    }
-    
-    if (getContainer(selectedShipIndex)&&!getContainer(selectedShipIndex)->getKantai())
+        sPlayer.modifyKantaiPosition(fleet, selectedShipIndex, kantai);
         ++kantaiSize;
-    sPlayer.modifyKantaiPosition(fleet, selectedShipIndex, kantai);
-    //移过来的kantai之前在fleet中,需要修改preFleet的container
-    {
         if (preFleet&&preFleet!=fleet)
         {
             for (int i=prePosition+1; i<=6; ++i)
@@ -305,7 +303,10 @@ void PortOrganizeLayer::changeContainer(Kantai* kantai)
             }
         }
     }
-
+    else
+    {
+        sPlayer.modifyKantaiPosition(fleet, selectedShipIndex, kantai);
+    }
 }
 
 void PortOrganizeLayer::removeContainer()
@@ -339,6 +340,7 @@ void PortOrganizeLayer::modifyContainer(kantaiChangeType type,kancolle::Kantai *
             controlGroup[i]=NULL;
     }
     
+    SND->playEffect("soundSE/changeShip.mp3");
     switch (type)
     {
         case CHANGE_CONTAINER:
