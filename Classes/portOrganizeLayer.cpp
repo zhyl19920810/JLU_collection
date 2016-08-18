@@ -223,6 +223,11 @@ void PortOrganizeLayer::showDetail(int index)
 }
 
 
+void PortOrganizeLayer::showSelect(Kantai* kantai)
+{
+    organSelectEntity->updateKantai(kantai);
+    organSelectEntity->moveIn();
+}
 
 void PortOrganizeLayer::updateFleet(int _fleetNumber)
 {

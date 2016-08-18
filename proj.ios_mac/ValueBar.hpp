@@ -33,7 +33,7 @@ public:
         return NULL;
     }
     bool init();
-    void update(int value);
+    void update(int currValue,int maxValue);
     
     ValueBar();
     void setVisible(bool visible);

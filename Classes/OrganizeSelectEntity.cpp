@@ -284,16 +284,8 @@ void OrganSelectEntity::updateKantai(Kantai *kantai)
     sprintf(name, "%d",kantai->getArmor());
     armour->setString(name);
     
-    double ammoNo=kantai->getCurrAmmo()*10/kantai->getMaxAmmo();
-    double fuelNo=kantai->getCurrFuel()*10/kantai->getMaxFuel();
-    if (ammoNo<0.0001&&ammoNo>-0.0001) {
-        ammoNo=0;
-    }
-    if (fuelNo<0.0001&&fuelNo>-0.0001) {
-        fuelNo=0;
-    }
-    ammoBar->update(ceil(ammoNo));
-    fuelBar->update(ceil(fuelNo));
+    ammoBar->update(kantai->getCurrAmmo(),kantai->getMaxAmmo());
+    fuelBar->update(kantai->getCurrFuel(),kantai->getMaxFuel());
 }
 
 NS_KCL_END

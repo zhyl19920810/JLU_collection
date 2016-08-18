@@ -40,8 +40,13 @@ bool ValueBar::init()
     return bRet;
 }
 
-void ValueBar::update(int value)
+void ValueBar::update(int currValue,int maxValue)
 {
+    double scale=currValue*10/maxValue;
+    if (scale<0.0001&&scale>0.0001) scale=0;
+        
+    int value=ceil(scale);
+    
     char name[30];
     bzero(name, sizeof(name));
     sprintf(name, "value%d.png",value);

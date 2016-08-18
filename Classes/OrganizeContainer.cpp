@@ -28,6 +28,7 @@ OrganizeContainer* OrganizeContainer::create(int position)
     return nullptr;
 }
 
+
 OrganizeContainer::OrganizeContainer(int position)
 {
     this->position=position;
@@ -35,25 +36,14 @@ OrganizeContainer::OrganizeContainer(int position)
 }
 
 
-void OrganizeContainer::setChangeButtonEnble(bool bEnble)
-{
-    changeButton->setEnabled(bEnble);
-}
-
 void OrganizeContainer::setChangeButtonVisible(bool bVisible)
 {
-    cocos2d::log("%d,%d",position,bVisible);
     changeButton->setVisible(bVisible);
-}
-
-void OrganizeContainer::setDetailButtonEnble(bool bEnble)
-{
-    detailButton->setEnabled(bEnble);
 }
 
 void OrganizeContainer::setCoverVisble(bool bVisible,bool coverButton)
 {
-    templateNode->setVisible(bVisible);
+    //templateNode->setVisible(bVisible);
     clippingNode->setVisible(bVisible);
     if (bVisible&&coverButton)
         clippingNode->setLocalZOrder(COVER_SHOW);
@@ -97,20 +87,20 @@ void OrganizeContainer::initBg()
 
 void OrganizeContainer::initMainBody()
 {
-    if (position == 1)
-        indexIcon = Sprite::create("OrganizeMain/star1.png");
-    else if (position ==2)
-        indexIcon = Sprite::create("OrganizeMain/star2.png");
-    else if (position == 3)
-        indexIcon = Sprite::create("OrganizeMain/star3.png");
-    else if (position == 4)
-        indexIcon = Sprite::create("OrganizeMain/star4.png");
-    else if (position == 5)
-        indexIcon = Sprite::create("OrganizeMain/star5.png");
-    else if (position == 6)
-        indexIcon = Sprite::create("OrganizeMain/star6.png");
-    addChild(indexIcon);
-    indexIcon->setPosition(-160, 41);
+//    if (position == 1)
+//        indexIcon = Sprite::create("OrganizeMain/star1.png");
+//    else if (position ==2)
+//        indexIcon = Sprite::create("OrganizeMain/star2.png");
+//    else if (position == 3)
+//        indexIcon = Sprite::create("OrganizeMain/star3.png");
+//    else if (position == 4)
+//        indexIcon = Sprite::create("OrganizeMain/star4.png");
+//    else if (position == 5)
+//        indexIcon = Sprite::create("OrganizeMain/star5.png");
+//    else if (position == 6)
+//        indexIcon = Sprite::create("OrganizeMain/star6.png");
+//    addChild(indexIcon);
+//    indexIcon->setPosition(-160, 41);
     
     //exp
     expBar = Sprite::create("OrganizeMain/expBar.png");
@@ -196,11 +186,12 @@ void OrganizeContainer::setKantaiVisible(bool bVisible)
     }
     
     kantaiExist=bVisible;
-    if (!kantaiExist) {
+    if (!kantaiExist)
+    {
         kantai=NULL;
     }
     bg->setVisible(bVisible);
-    indexIcon->setVisible(bVisible);
+    //indexIcon->setVisible(bVisible);
     kantaiCard->setVisible(bVisible);
     kantaiName->setVisible(bVisible);
     currLV->setVisible(bVisible);

@@ -46,14 +46,12 @@ public:
     void updateContainer(int position);
     void updateFleet(int fleetNumber);
     bool canChangeKantai(Kantai* kantai);
-    
-    
-
-     Fleet* getPanelFleet(){return fleet;}
+    Fleet* getPanelFleet(){return fleet;}
     
 public:
     void showDetail(int index);
     void showList(int index);
+    void showSelect(Kantai* kantai);
     int getSelectedShipIndex(){ return selectedShipIndex; }
     void setSelectedShipIndex(int index){this->selectedShipIndex = index;}
     
@@ -78,18 +76,8 @@ private:
     KantaiListEntity* listEntity;
     FleetButton* fleetButton;
     std::vector<OrganizeContainer *> containers;
-    
-    
-public:
-    void showSelect(Kantai* kantai)
-    {
-        organSelectEntity->updateKantai(kantai);
-        organSelectEntity->moveIn();
-    }
-    
-    
-private:
     OrganSelectEntity* organSelectEntity;
+    
     
 public:
     void changeContainer(Kantai* kantai);

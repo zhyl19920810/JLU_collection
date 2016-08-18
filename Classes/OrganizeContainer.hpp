@@ -40,52 +40,20 @@ class OrganizeContainer:public Node
 public:
     static OrganizeContainer* create(int position);
     OrganizeContainer(int position);
-    
     void updateCharacterInfo(Kantai* kantai);
-    void setKantaiVisible( bool bVisible);
-    void setCoverVisble(bool bVisible,bool coverButton=false);
-    bool haveKantai() const;
-    Kantai* getKantai(){return kantai;}
-    
-    int getContainerKantaiNumber() const;
-
-    
     void changeContainer(Kantai* preKantai,Kantai* kantai);
     void openNewContainer(Kantai* kantai);
-    
-public:
-    void detailCallback(Ref* pSender);
-    void changeCallback(Ref* pSender);
-    void setDetailButtonEnble(bool bEnble);
-    void setChangeButtonEnble(bool bEnble);
+    bool haveKantai() const;
+    Kantai* getKantai(){return kantai;}
+    int getContainerKantaiNumber() const;
     void setChangeButtonVisible(bool bVisible);
     
 private:
-    int position;
-    Sprite* bg;
-    Sprite *indexIcon;
-    
-    
-    MenuItemImage * detailButton;
-    MenuItemImage * changeButton;
-    bool kantaiExist;
-    KantaiCard * kantaiCard;
-    Label * kantaiName;
-    Label * currLV;
-    Label * currHp;
-    Label* firePower;
-    Label * antiAir;
-    Label * torpedo;
-    Label * armour;
-    HpBar* hpBar;
-    Stars * stars;
-    Sprite* expBar;
-    Menu* menu;
-    
-    Kantai* kantai;
-    Sprite* lKantaiDoor;
-    Sprite* rKantaiDoor;
-    
+    void setCoverVisble(bool bVisible,bool coverButton=false);
+    void setKantaiVisible( bool bVisible);
+    void detailCallback(Ref* pSender);
+    void changeCallback(Ref* pSender);
+
 private:
     bool init();
     void initBg();
@@ -94,6 +62,27 @@ private:
     
     
 private:
+    int position;
+    Sprite* bg;
+    //Sprite *indexIcon;
+    MenuItemImage * detailButton;
+    MenuItemImage * changeButton;
+    bool kantaiExist;
+    KantaiCard * kantaiCard;
+    Label* kantaiName;
+    Label* currLV;
+    Label* currHp;
+    Label* firePower;
+    Label* antiAir;
+    Label* torpedo;
+    Label* armour;
+    HpBar* hpBar;
+    Stars * stars;
+    Sprite* expBar;
+    Menu* menu;
+    Kantai* kantai;
+    Sprite* lKantaiDoor;
+    Sprite* rKantaiDoor;
     Node* templateNode;
     ClippingNode* clippingNode;
     Node* node;
