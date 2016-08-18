@@ -71,35 +71,8 @@ void g_loadtxt(const char* aFileName, fnParseLine pfnCallBack, string aSplitChar
         return;
     }
     
-    //    unsigned char *fileText = NULL;
-    //    unsigned long len = 0;
-    //
-    //    fileText = CCFileUtils::sharedFileUtils()->getFileData(aFileName, "r", &len);
-    //
-    //    string text;
-    //    text.assign((char *)fileText);
-    //
-    //
-    //    vector<string> linesBuff = splitText(text, "\n");
-    
     vector<string> linesBuff = readFileTxt(aFileName);
     
-    //    pfnCallBack(lines);
-    
-    //	free(fileText);
-    //	if (NULL == aFileName || NULL == pfnCallBack)
-    //	{
-    //		return;
-    //	}
-    //
-    //	int temp_len = 0;
-    //	char* temp = wyUtils::loadRaw(aFileName, false, (size_t*)&temp_len, true);
-    //	char* fileText = (char*)malloc(temp_len+1);
-    //	memcpy(fileText, temp, temp_len);
-    //	fileText[temp_len] = 0;
-    //	free(temp);
-    //
-    //	vector<const char*>* linesBuff = wyUtils::breakLines(fileText, wyCharMap::make(), MAX_STRINLINE, 0.0f, 8.0f);
     for (vector<string>::const_iterator iter = linesBuff.begin(); iter != linesBuff.end(); iter++)
     {
         char lineBuff[MAX_LINE_CHAR];

@@ -40,8 +40,8 @@ public:
 public:
     int getKantaiKey() const {return kantaiKey;}
     int getKantaiNumber()const {return kantaiNumber;}
-    char* getKantaiName() const {return kantaiImp->kantaiName;}
-    char* getKantaiFullName() const {return kantaiImp->kantaiFullName;}
+    const char* getKantaiName() const {return kantaiImp->kantaiName;}
+    const char* getKantaiFullName() const {return kantaiImp->kantaiFullName;}
     KantaiType getKantaiType() const{return kantaiImp->kantaiType;}
     int getBuildTime() const {return kantaiImp->buildTime;} //有可能进一步修改
     int getCurrLV() const{return currLV;}
@@ -192,7 +192,7 @@ public:
 private:
     Ref* parent;//
     
-    KantaiMgr::stKantaiData* kantaiImp;
+    const KantaiMgr::stKantaiData* kantaiImp;
 };
 
 

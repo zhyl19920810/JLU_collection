@@ -43,7 +43,6 @@ private:
     
 private:
     RepairListEntity* listEntity;
-    LayerCover* listCover;
 public:
     void showList(int index);
     void hideList(Ref* pSender);

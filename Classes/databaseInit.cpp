@@ -7,6 +7,7 @@
 //
 
 #include "databaseInit.h"
+#include "Player.h"
 
 
 NS_KCL_BEGIN

@@ -11,9 +11,14 @@
 
 #include "cocos2d.h"
 #include "databaseBase.h"
-#include "Player.h"
+
 
 NS_KCL_BEGIN
+
+
+class Fleet;
+class Equip;
+class Kantai;
 
 class DBInit:public DBBase
 {

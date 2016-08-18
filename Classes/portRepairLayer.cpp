@@ -65,10 +65,6 @@ void PortRepairLayer::initLayer()
     addChild(repairTitle);
     repairTitle->setPosition(bgimg->getPosition()+Vec2(0, 197)+Vec2(-290, 4));
     
-    listCover=LayerCover::create(CC_CALLBACK_1(PortRepairLayer::hideList, this));
-    listCover->setPosition(0,0);
-    addChild(listCover,2);
-    
     auto visible=Director::getInstance()->getVisibleSize();
     auto listPos=Vec2(visible.width, 200);
     listEntity=RepairListEntity::create(listPos);
@@ -95,18 +91,11 @@ void PortRepairLayer::showList(int position)
 {
     this->position=position;
     listEntity->moveIn();
-//    if (listEntity->isHidden()) {
-//        listEntity->moveIn();
-//    }
-//    listCover->setCoverEnable(true);
-//    listEntity->updateRows();
-    
 }
 
 void PortRepairLayer::hideList(cocos2d::Ref *pSender)
 {
     listEntity->moveOut();
-    //listCover->setCoverEnable(false);
 }
 
 

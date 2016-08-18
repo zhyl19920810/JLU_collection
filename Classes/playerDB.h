@@ -42,7 +42,6 @@ public:
     void modifyMaxMissionSize(int playerKey,int missionSize);
     
     
-    
     static PlayerDB* getInstance();
     
 protected:
