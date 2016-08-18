@@ -72,11 +72,6 @@ void FleetButton::fleetCallback(cocos2d::Ref *pSender, int layNumber)
     auto toggle=dynamic_cast<MenuItemToggle*>(pSender);
     if (toggle->getSelectedIndex())  //关到开
     {
-        if (layNumber==fleetNumber)
-        {
-            toggle->setSelectedIndex(0);
-            return;
-        }
         fleetToggle[fleetNumber-1]->setSelectedIndex(0);
         
         changeFleet(layNumber);

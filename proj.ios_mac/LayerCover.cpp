@@ -41,17 +41,19 @@ bool LayerCover::init(FUNC callback)
         addChild(bgCover,2);
         bgCover->setVisible(false);
         
-        auto listen_layer = Layer::create();
-        this->addChild(listen_layer,2);
+//        auto listen_layer = Layer::create();
+//        this->addChild(listen_layer,2);
         
         listener = EventListenerTouchOneByOne::create();
+        listener->setSwallowTouches(true);
         listener->onTouchBegan = [=](Touch *touch, Event *event)
         {
-            listener->setSwallowTouches(true);
-            callback(this);
+            if (callback)
+                callback(this);
+            
             return true;
         };
-        _eventDispatcher->addEventListenerWithSceneGraphPriority(listener,listen_layer);
+        _eventDispatcher->addEventListenerWithSceneGraphPriority(listener,this);
         listener->setEnabled(false);
         
         

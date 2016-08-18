@@ -20,7 +20,7 @@ NS_KCL_BEGIN
 
 class EventPauseGuard
 {
-public:
+public: 
     static void resume();
     static void pause();
     
