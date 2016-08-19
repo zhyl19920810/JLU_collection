@@ -175,16 +175,9 @@ public:
     std::vector<Kantai*> kantaiData;
     std::vector<Fleet*> fleetData;
     std::vector<Equip*> equipData;
-    std::vector<int> planeLoad;
     void addAttr(float dt,int numAttr);
 protected:
     Player();
-    
-//dock
-private:
-//    
-//    void startCircle();
-//    void endCircle();
 };
 
 

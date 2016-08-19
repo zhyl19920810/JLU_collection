@@ -59,7 +59,6 @@ private:
     std::string fleetName;
     
     FleetState fleetState;
-
 };
 
 NS_KCL_END
