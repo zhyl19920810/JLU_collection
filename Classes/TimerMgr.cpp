@@ -69,7 +69,7 @@ void TimerMgr::startTimer()
 {
     auto _scheduler = Director::getInstance()->getScheduler();
     _scheduler->unschedule(TIMER_MGR_SCHEDULE, this);
-    _scheduler->schedule(CC_CALLBACK_1(TimerMgr::scheduleFunc, this), this, 1.f, false, TIMER_MGR_SCHEDULE);
+    _scheduler->schedule(CC_CALLBACK_1(TimerMgr::scheduleFunc, this), this, 0.f, false, TIMER_MGR_SCHEDULE);
 }
 
 

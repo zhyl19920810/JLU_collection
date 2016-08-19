@@ -50,8 +50,6 @@ bool SoundPanel::init()
         SoundBg->addChild(voiceSoundBar);
         
         
-
-        
         bRet=true;
     }while(0);
     

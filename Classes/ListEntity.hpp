@@ -26,14 +26,15 @@ public:
     void moveOut();
     void moveIn();
     
-    
     inline bool isHidden(){ return hidden; }
     bool init(Vec2 vec);
     void updateRows();
-    
+    void destoryKantai(Kantai* kantai);
+    void addKantai(Kantai* kantai);
 private:
     //bg
     void initBg(Vec2 vec);
+    void setHide(bool _hide);
     
     //row
     std::vector<ListRow*> rows;
@@ -57,20 +58,15 @@ private:
     void pageNumberCallback(Ref* pSender,int index);
     void updatePage();
     
-    
     //sort
     void initSortButton();
     MenuItemToggle* sortButton;
     
     
-    
-    
 public:
-    void setHide(bool _hide);
     virtual void showSelect(Kantai* kantai)=0;
     
 protected:
-    void sortButtonCallback	(Ref* pSender);
     bool hidden;
     std::vector<Kantai*> displayKantai;
     Menu *menu;
@@ -78,7 +74,10 @@ protected:
     EventListenerTouchOneByOne* listener;
     Sprite* bgimg;
     Node* entity;
-private:
+    
+protected:
+
+    void sortButtonCallback	(Ref* pSender);
     
 };
 

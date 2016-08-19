@@ -35,14 +35,17 @@ public:
     void cancelRepairKantai(Kantai* kantai,int position);
     bool canRepairKantai(Kantai* kantai,int& repairSteel,int& repairAmmo,int& repairTime);
     void repairKantai(Kantai* kantai,int position,int repairSteel,int repairFuel,int repairTime);
-    int calRepairTime(Kantai* kantai,int lostHp);
-    int calRepairFuel(Kantai* kantai,int lostHp);
-    int calRepairSteel(Kantai* kantai,int lostHp);
-    
-    int calAugValue(int currLV);
     void repairTimeCircle(float dt);
     const DockData& getDockData(int position);
     bool haveDock(int position);
+    
+private:
+    int calRepairTime(Kantai* kantai,int lostHp);
+    int calRepairFuel(Kantai* kantai,int lostHp);
+    int calRepairSteel(Kantai* kantai,int lostHp);
+    int calAugValue(int currLV);
+    
+    
 private:
     Scheduler ts;
     void kantaiComplete(int position);

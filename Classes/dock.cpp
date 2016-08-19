@@ -180,8 +180,6 @@ int Dock::calRepairTime(Kantai *kantai,int lostHp)
 }
 
 
-
-
 bool Dock::canRepairKantai(Kantai *kantai,int& repairSteel,int& repairFuel,int& repairTime)
 {
     if (kantai->getKantaiState()!=Free) {

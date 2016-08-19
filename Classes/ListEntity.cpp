@@ -423,6 +423,30 @@ void ListEntity::updateRows()
 }
 
 
+void ListEntity::addKantai(Kantai* kantai)
+{
+    displayKantai.push_back(kantai);
+    sortButtonCallback(this);
+    updateRows();
+}
+
+
+void ListEntity::destoryKantai(Kantai *kantai)
+{
+    int p1=0,p2=0;
+    while (p2<displayKantai.size())
+    {
+        if (displayKantai[p2]!=kantai)
+        {
+            displayKantai[p1++]=displayKantai[p2++];
+        }else
+        {
+            ++p2;
+        }
+    }
+    displayKantai.pop_back();
+}
+
 NS_KCL_END
 
 

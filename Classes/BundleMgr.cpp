@@ -73,8 +73,10 @@ void BundleMgr::destroy()
 void BundleMgr::onLaunchApp()
 {
     initTinaConfig();
-    readFromCache();
+    LoadConfig();
     initialization();
+    readFromCache();
+    onEnterForeground();
     exeLaunch();
 }
 
@@ -126,10 +128,8 @@ void BundleMgr::LoadConfig()
 
 void BundleMgr::initialization()
 {
-    LoadConfig();
     Player::newInstance();
-    Dock::newInstance();
-    Arsenal::newInstance();
+
     
 #if DB_IN_COMPUTER
     std::string writablePath = FileUtils::getInstance()->fullPathForFilename("/Volumes/opengl/kancolle_beta/Resources/database/kancolle_2.sqlite3");
@@ -146,15 +146,14 @@ void BundleMgr::initialization()
         fsCoper << fsCopee.rdbuf();
     }
 #endif
-//    DBBase::init(writablePath);
-//    DBInit init;
-//    init.initDB(1);
     DB_MGR->initDB(writablePath, 1);
-    TimerMgr::getInstance()->startTimer();
-    
-    
+    Dock::newInstance();
+    Arsenal::newInstance();
     sDock.initDock(1);
     sArsenal.initArsenal(1);
+    
+    
+    TimerMgr::getInstance()->startTimer();
     Sound::getInstance()->initVolume();
 }
 

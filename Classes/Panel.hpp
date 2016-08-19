@@ -16,8 +16,6 @@
 NS_KCL_BEGIN
 
 
-class SoundBar;
-
 
 
 class Panel:public cocos2d::Layer
