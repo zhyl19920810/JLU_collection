@@ -35,9 +35,6 @@ NS_KCL_BEGIN
 
 #define CACHE_BG_MUSIC_SWITCH ("cache_bg_music_switch")
 #define CACHE_EFF_MUSIC_SWITCH ("cache_eff_music_switch")
-#define CACHE_ENTER_BACKGROUND_TS ("cache_enter_background_ts")
-#define CACHE_SCENE_ENTER_TIMES "cache_scene_enter_times_%lld_%d"
-#define CACHE_PANEL_ENTER_TIMES "cache_panel_enter_times_%lld_%d"
 #define CACHE_ACTIVITY_ENTER_TIMES "cache_panel_enter_times_%lld_%d_%d"
 #define CACHE (UserDefault::getInstance())
 #define FILE_UTIL FileUtils::getInstance()
