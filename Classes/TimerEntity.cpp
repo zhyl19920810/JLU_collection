@@ -55,6 +55,7 @@ bool TimerEntity::init(FinishCallback callback)
               if (state==TimerState::CONUTDOWN)
               {
                    remainTime=static_cast<float>(completeTime-TimeUtil::getTimestamp());
+                  update(0.0);
                }
          });
         

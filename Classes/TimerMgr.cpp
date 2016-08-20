@@ -100,7 +100,7 @@ void TimerMgr::addAttr(float dt)
 
 void TimerMgr::enterForeGround()
 {
-    _lastSaveAttrTimestamp=UserDefault::getInstance()->getIntegerForKey("lastSaveAttrTimestamp");
+    _lastSaveAttrTimestamp=UserDefault::getInstance()->getIntegerForKey("lastSaveAttrTimestamp",TimeUtil::getTimestamp());
     uint64_t timeDiff=TimeUtil::getTimestamp()-_lastSaveAttrTimestamp;
     int numAttrAdd=timeDiff/ATTR_COUNTDOWN;
     totalSecond=timeDiff-numAttrAdd*ATTR_COUNTDOWN;
