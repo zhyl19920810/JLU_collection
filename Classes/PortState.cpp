@@ -74,8 +74,8 @@ void MainPanelState::Enter(PanelType preType,kancolle::PortScene *portScene)
             break;
         case kancolle::PanelType::NONE:
             VIEW_MGR->showPanel(PanelType::PORT_MAINLAYER);
-            portScene->portUIlayer->setVisible(true);
-            portScene->layerSelecter->setVisible(true);
+//            portScene->portUIlayer->setVisible(true);
+//            portScene->layerSelecter->setVisible(true);
             //portScene->portUIlayer->changeTitlePic(PanelType::PORT_MAINLAYER);
             break;
         case kancolle::PanelType::PORT_BATTLE:

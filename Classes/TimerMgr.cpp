@@ -21,7 +21,7 @@ USING_NS_CC;
 TimerMgr* TimerMgr::m_instance = nullptr;
 
 #define TIMER_MGR_SCHEDULE "TimerMgrSchedule"
-#define ATTR_COUNTDOWN 20.0
+#define ATTR_COUNTDOWN 200.0
 
 TimerMgr* TimerMgr::getInstance()
 {

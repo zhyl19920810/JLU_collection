@@ -10,12 +10,13 @@
 #include "portOrganizeLayer.h"
 #include "EventPauseGuard.hpp"
 #include <algorithm>
+#include "PageSwitch.hpp"
 
 
 
 
 #define SHIPS_PER_PAGE 10
-#define FONT_COLOR Color3B::BLACK
+
 
 
 #define HIDE_POS (Vec2(bgimg->getContentSize().width,0))
@@ -122,10 +123,6 @@ void ListEntity::initBg(Vec2 vec)
     addChild(layerCover,-1);
     
     
-    menu = Menu::create(NULL);
-    menu->setPosition(Vec2::ZERO);
-    bgimg->addChild(menu,2);
-    
     auto titleBar = Sprite::create("OrganizeMain/kantaiListTitle.png");
     bgimg->addChild(titleBar);
     //titleBar->setPosition(753, 397);
@@ -175,6 +172,10 @@ void ListEntity::initSortButton()
     sortButton=MenuItemToggle::createWithCallback(CC_CALLBACK_1(ListEntity::sortButtonCallback, this), sortButtonUnitLV,sortButtonUnitCate,sortButtonUnitHP,sortButtonUnitNew, NULL);
     sortButton->setPosition(tmp+Vec2(180, 150));
     //sortButton->setPosition(773, 370);
+    
+    menu = Menu::create(NULL);
+    menu->setPosition(Vec2::ZERO);
+    bgimg->addChild(menu,2);
     menu->addChild(sortButton);
     
     
@@ -200,157 +201,6 @@ void ListEntity::initRows()
 
 
 
-void ListEntity::initPageSwitch()
-{
-    Vec2 tmp=bgimg->getContentSize()/2;
-    currentPage=0;
-    maxPage=(displayKantai.size()-1)/10;
-    midPage=2;
-    if (maxPage<5)
-    {
-        isMove=false;
-    }else
-    {
-        isMove=true;
-    }
-    
-    firstPage = MenuItemImage::create("CommonAssets/firstPage.png", "CommonAssets/firstPage.png",CC_CALLBACK_1(ListEntity::pageButtonCallback, this, 1));
-    //firstPage->setPosition(430,33);
-    firstPage->setPosition(tmp+Vec2(-174,-162));
-    previousPage = MenuItemImage::create("CommonAssets/previousPage.png", "CommonAssets/previousPage.png",CC_CALLBACK_1(ListEntity::pageButtonCallback, this, 2));
-    //previousPage->setPosition(465, 33);
-    previousPage->setPosition(tmp+Vec2(-139,-162));
-    nextPage = MenuItemImage::create("CommonAssets/nextPage.png", "CommonAssets/nextPage.png",CC_CALLBACK_1(ListEntity::pageButtonCallback, this, 3));
-    //nextPage->setPosition(685, 33);
-    nextPage->setPosition(tmp+Vec2(81,-162));
-    lastPage = MenuItemImage::create("CommonAssets/lastPage.png", "CommonAssets/lastPage.png",CC_CALLBACK_1(ListEntity::pageButtonCallback, this, 4));
-    //lastPage->setPosition(720, 33);
-    lastPage->setPosition(tmp+Vec2(116,-162));
-    menu->addChild(firstPage);
-    menu->addChild(previousPage);
-    menu->addChild(nextPage);
-    menu->addChild(lastPage);
-    
-    if (maxPage<5) {
-        labelPage.resize(maxPage+1);
-    }
-    else
-        labelPage.resize(5);
-    for (int i=0; i<labelPage.size(); ++i)
-    {
-        labelPage[i]=MenuItemLabel::create(Label::create(to_string(i+1), "fonts/DengXian.ttf", 16), CC_CALLBACK_1(ListEntity::pageNumberCallback, this, i));
-        //labelPage[i]->setPosition(Vec2(502+i*37, 33));
-        labelPage[i]->setPosition(tmp+Vec2(-102+i*37, -162));
-        labelPage[i]->setColor(FONT_COLOR);
-        menu->addChild(labelPage[i]);
-    }
-    labelPage[0]->setColor(Color3B(0,127,255));
-}
-
-void ListEntity::pageNumberCallback(cocos2d::Ref *pSender, int index)
-{
-    preCurrPage=currentPage;
-    preMidPage=midPage;
-    labelPage[currentPage-midPage+2]->setColor(FONT_COLOR);
-    int foot=index-2;
-    currentPage=foot+midPage;
-    if (!isMove)
-    {
-        
-    }else
-    {
-        if (foot>0)
-        {
-            while (foot&&((midPage+2)<maxPage))
-            {
-                ++midPage;
-                --foot;
-            }
-        }
-        else
-        {
-            while (foot&&((midPage-2)>0))
-            {
-                --midPage;
-                ++foot;
-            }
-        }
-    }
-    
-    labelPage[currentPage-midPage+2]->setColor(Color3B(0,127,255));
-    updatePage();
-}
-
-
-
-void ListEntity::pageButtonCallback(cocos2d::Ref *pSender, int index)
-{
-    preCurrPage=currentPage;
-    preMidPage=midPage;
-    labelPage[currentPage-midPage+2]->setColor(FONT_COLOR);
-    switch (index)
-    {
-        case 1:
-            currentPage=0;
-            if (isMove) {
-                midPage=2;
-            }
-            
-            break;
-        case 2:
-            if (!currentPage) {
-                break;
-            }
-            --currentPage;
-            if (isMove)
-            {
-                while (midPage>currentPage&&(midPage-2)>0)
-                    --midPage;
-            }
-            break;
-        case 3:
-            if (currentPage==maxPage) {
-                break;
-            }
-            ++currentPage;
-            if (isMove)
-            {
-                while (midPage<currentPage&&(midPage+2)<maxPage)
-                    ++midPage;
-            }
-            break;
-        case 4:
-            currentPage=maxPage;
-            if (isMove) {
-                midPage=maxPage-2;
-            }
-            break;
-        default:
-            break;
-    }
-    labelPage[currentPage-midPage+2]->setColor(Color3B(0,127,255));
-    updatePage();
-}
-
-void ListEntity::updatePage()
-{
-    if (preCurrPage!=currentPage)
-    {
-        updateRows();
-    }
-    preCurrPage=currentPage;
-    
-    if (isMove) {
-        if (preMidPage!=midPage)
-        {
-            for (int i=0; i<5; ++i)
-            {
-                labelPage[i]->setString(to_string(midPage-1+i));
-            }
-        }
-    }
-}
-
 
 bool ListEntity::init(Vec2 vec)
 {
@@ -368,9 +218,10 @@ bool ListEntity::init(Vec2 vec)
         initBg(vec);
         initSortButton();
         initRows();
-        initPageSwitch();
         setHide(true);
+        initPageSwitch();
         updateRows();
+        
         
         bRet=true;
     }while(0);
@@ -402,32 +253,36 @@ void ListEntity::sortButtonCallback(cocos2d::Ref *pSender)
     updateRows();
 }
 
-void ListEntity::updateRows()
+void ListEntity::updateRow(int currPage)
 {
-    int i=currentPage*10;
+    this->currPage=currPage;
+    int i=currPage*10;
     int j=0;
     while (i<displayKantai.size()&&j<10)
     {
         rows[j]->update(displayKantai[i]);
         rows[j]->setVisible(true);
-        //rows[j]->setEnable(true);
         ++j;
         ++i;
     }
     while (j<10)
     {
         rows[j]->setVisible(false);
-        //rows[j]->setEnable(false);
         ++j;
     }
 }
 
+void ListEntity::updateRows()
+{
+    updateRow(currPage);
+}
 
 void ListEntity::addKantai(Kantai* kantai)
 {
     displayKantai.push_back(kantai);
     sortButtonCallback(this);
-    updateRows();
+    pageSwitch->addKantai();
+    
 }
 
 
@@ -445,7 +300,20 @@ void ListEntity::destoryKantai(Kantai *kantai)
         }
     }
     displayKantai.pop_back();
+    pageSwitch->destroyKantai();
 }
+
+void ListEntity::initPageSwitch()
+{
+    currPage=0;
+    Vec2 tmp=bgimg->getContentSize()/2;
+    pageSwitch=PageSwitch::create(std::bind(&ListEntity::updateRow,this,std::placeholders::_1),static_cast<int>(displayKantai.size()));
+    pageSwitch->setPosition(tmp);
+    bgimg->addChild(pageSwitch);
+    
+}
+
+
 
 NS_KCL_END
 

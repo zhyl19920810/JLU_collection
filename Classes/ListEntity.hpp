@@ -15,9 +15,15 @@
 #include "ListRow.hpp"
 #include "OrganizeSelectEntity.hpp"
 #include "LayerCover.hpp"
+
+
 using namespace cocos2d;
 
 NS_KCL_BEGIN
+
+
+class PageSwitch;
+
 
 class ListEntity:public Node
 {
@@ -28,6 +34,7 @@ public:
     
     inline bool isHidden(){ return hidden; }
     bool init(Vec2 vec);
+    void updateRow(int currPage);
     void updateRows();
     void destoryKantai(Kantai* kantai);
     void addKantai(Kantai* kantai);
@@ -41,27 +48,10 @@ private:
     void setRowVisble(int position,bool bVisible);
     void initRows();
     //page
-    void setPageCallback(Ref* pSender,int pageNumber);
-    void initPageSwitch();
-    int currentPage;
-    int maxPage;
-    int midPage;
-    int preMidPage;
-    int preCurrPage;
-    bool isMove;
-    MenuItemImage* firstPage;
-    MenuItemImage* previousPage;
-    MenuItemImage* nextPage;
-    MenuItemImage* lastPage;
-    std::vector<MenuItemLabel*> labelPage;
-    void pageButtonCallback(Ref* pSender,int index);
-    void pageNumberCallback(Ref* pSender,int index);
-    void updatePage();
-    
+
     //sort
     void initSortButton();
     MenuItemToggle* sortButton;
-    
     
 public:
     virtual void showSelect(Kantai* kantai)=0;
@@ -69,16 +59,19 @@ public:
 protected:
     bool hidden;
     std::vector<Kantai*> displayKantai;
-    Menu *menu;
     LayerCover* layerCover;
     EventListenerTouchOneByOne* listener;
     Sprite* bgimg;
     Node* entity;
-    
+    Menu* menu;
 protected:
-
     void sortButtonCallback	(Ref* pSender);
     
+private:
+    void initPageSwitch();
+    PageSwitch* pageSwitch;
+    int currPage;
+
 };
 
 NS_KCL_END

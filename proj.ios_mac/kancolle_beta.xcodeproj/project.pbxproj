@@ -342,6 +342,8 @@
 		F4D5D0971C5FB08C001441C3 /* arsenalDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0941C5FB08C001441C3 /* arsenalDB.cpp */; };
 		F4D6CBE91BF380210078C5C0 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE71BF380210078C5C0 /* TestScene.cpp */; };
 		F4D6CBEA1BF380210078C5C0 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE71BF380210078C5C0 /* TestScene.cpp */; };
+		F4D793681D7502F100111A0D /* PageSwitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D793661D7502F100111A0D /* PageSwitch.cpp */; };
+		F4D793691D7502F100111A0D /* PageSwitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D793661D7502F100111A0D /* PageSwitch.cpp */; };
 		F4D8028E1BE604EB0032C724 /* Mission.xml in Resources */ = {isa = PBXBuildFile; fileRef = F4D8028D1BE604EB0032C724 /* Mission.xml */; };
 		F4D8028F1BE604EB0032C724 /* Mission.xml in Resources */ = {isa = PBXBuildFile; fileRef = F4D8028D1BE604EB0032C724 /* Mission.xml */; };
 		F4D9C3661C860096002A93EC /* SupplyAmmoEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D9C3641C860096002A93EC /* SupplyAmmoEntity.cpp */; };
@@ -663,6 +665,8 @@
 		F4D5D0951C5FB08C001441C3 /* arsenalDB.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = arsenalDB.hpp; sourceTree = "<group>"; };
 		F4D6CBE71BF380210078C5C0 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
 		F4D6CBE81BF380210078C5C0 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
+		F4D793661D7502F100111A0D /* PageSwitch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PageSwitch.cpp; sourceTree = "<group>"; };
+		F4D793671D7502F100111A0D /* PageSwitch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PageSwitch.hpp; sourceTree = "<group>"; };
 		F4D8028D1BE604EB0032C724 /* Mission.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Mission.xml; sourceTree = "<group>"; };
 		F4D9C3641C860096002A93EC /* SupplyAmmoEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SupplyAmmoEntity.cpp; sourceTree = "<group>"; };
 		F4D9C3651C860096002A93EC /* SupplyAmmoEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SupplyAmmoEntity.hpp; sourceTree = "<group>"; };
@@ -1267,6 +1271,8 @@
 				F439079A1C8B373B004B5B2D /* ListEntity.hpp */,
 				F439079D1C8B377E004B5B2D /* ListRow.cpp */,
 				F439079E1C8B377E004B5B2D /* ListRow.hpp */,
+				F4D793661D7502F100111A0D /* PageSwitch.cpp */,
+				F4D793671D7502F100111A0D /* PageSwitch.hpp */,
 			);
 			name = ListEntity;
 			path = ../Classes;
@@ -1742,6 +1748,7 @@
 				F40C4FC31C5BCF89000FAA89 /* RepairFactorMgr.cpp in Sources */,
 				F4036DB41BDA1FDD002788AA /* portRepairLayer.cpp in Sources */,
 				F4938B681C60999100AB1286 /* metaphysics.cpp in Sources */,
+				F4D793681D7502F100111A0D /* PageSwitch.cpp in Sources */,
 				F42303D91D2C049E00B06189 /* ViewMgr.cpp in Sources */,
 				F4036DB81BDA1FDD002788AA /* portSupplyLayer.cpp in Sources */,
 				F4036DBE1BDA1FDD002788AA /* SystemHeader.cpp in Sources */,
@@ -1815,6 +1822,7 @@
 				F4F956CD1C5B5E49001AA1B3 /* TimerEntity.cpp in Sources */,
 				F427A4A61D619484001C6B45 /* TimeUtil.cpp in Sources */,
 				F4B173FF1C545F4600D2BC1C /* ExpMgr.hpp in Sources */,
+				F4D793691D7502F100111A0D /* PageSwitch.cpp in Sources */,
 				F45F91221BF4BCA600327120 /* TestScene.h in Sources */,
 				F42DB8FF1C5A33B500CBE2C7 /* Star.cpp in Sources */,
 				F43BD5F91D2ABE2F00B572C9 /* TinaMgr.cpp in Sources */,
