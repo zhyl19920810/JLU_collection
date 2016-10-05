@@ -7,6 +7,8 @@
 //
 
 #include "Fleet.h"
+#include "DataBaseMgr.hpp"
+
 
 NS_KCL_BEGIN
 
@@ -69,14 +71,14 @@ void Fleet::setFleetName(const std::string &_fleetName)
 {
     CCASSERT(_fleetName.size()<=30, "fleetName is too big");
     fleetName=_fleetName;
-    FleetDB::getInstance()->setFleetName(fleetKey,_fleetName);
+    DB_MGR->getFleetDB()->setFleetName(fleetKey,_fleetName);
 }
 
 void Fleet::setFleetState(FleetState _fleetState)
 {
     
     fleetState=_fleetState;
-    FleetDB::getInstance()->setFleetState(fleetKey,_fleetState);
+    DB_MGR->getFleetDB()->setFleetState(fleetKey,_fleetState);
 }
 
 NS_KCL_END

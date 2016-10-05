@@ -22,8 +22,6 @@ class FleetDB:public DBBase
 public:
     void getNewFleetByNumber(int fleetKey,const std::string& name,int fleetState);
     
-    static FleetDB* getInstance();
-    
     void deleteFleetByKey(int _fleetKey);
     
     void setFleetName(int _fleetKey,const std::string &_fleetName);

@@ -23,7 +23,7 @@ void Arsenal::initArsenal(int playerKey)
     DB_MGR->getArsenalDB()->initArsenalDB(playerKey, data);
     
     
-    arsenal.resize(maxArsenalSize);
+    arsenal.resize(maxArsenalSize) ;
     auto currTime=TimeUtil::getTimestamp();
     for (auto it=data.begin(); it!=data.end(); ++it)
     {

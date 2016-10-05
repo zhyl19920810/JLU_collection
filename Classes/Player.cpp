@@ -889,7 +889,7 @@ Fleet* Player::buildNewFleet()
         {
             Fleet* fleet=Fleet::create(i+1, INIT_UNIT);
             fleetData[i]=fleet;
-            FleetDB::getInstance()->getNewFleetByNumber(i+1,fleet->getFleetName(),fleet->getFleetState());
+            DB_MGR->getFleetDB()->getNewFleetByNumber(i+1,fleet->getFleetName(),fleet->getFleetState());
             return fleet;
         }
     }
@@ -923,7 +923,7 @@ void Player::deleteFleet(int _fleetKey)
     fleetData[_fleetKey-1]=NULL;
     delete _fleet;
     _fleet=NULL;
-    FleetDB::getInstance()->deleteFleetByKey(_fleetKey);
+    DB_MGR->getFleetDB()->deleteFleetByKey(_fleetKey);
 }
 
 Fleet* Player::getFleetByFleetKey(int _fleetKey)
