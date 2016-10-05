@@ -108,7 +108,7 @@ void ArsenalDB::deleteKantai(int playerKey,int position)
     if (sqlite3_prepare_v2(kancolleDB, qsql2.c_str(), -1, &statement, NULL)==SQLITE_OK)
     {
         sqlite3_bind_int(statement, 1, playerKey);
-        sqlite3_bind_int(statement, 3, position);
+        sqlite3_bind_int(statement, 2, position);
         
         if (sqlite3_step(statement)!=SQLITE_DONE)
         {
