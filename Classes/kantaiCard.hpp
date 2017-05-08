@@ -27,7 +27,7 @@ public:
     void updateCard(Kantai* kantai,bool isEnemy=false);
     
 private:
-    bool isEnemy;
+    bool    m_bIsEnemy;
     Sprite* mainImage;
     Sprite* shader;
     Sprite* brokenMark;

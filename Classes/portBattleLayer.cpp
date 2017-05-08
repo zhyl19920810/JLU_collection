@@ -8,6 +8,7 @@
 
 #include "portBattleLayer.h"
 #include "Player.h"
+#include "MissonSelectPage.hpp"
 
 
 NS_KCL_BEGIN
@@ -58,12 +59,12 @@ void PortBattleLayer::initLayer()
     
     
     auto menu = Menu::create(strikeButton, playactButton, expeditionButton, NULL);
-    //	menu->addChild(strikeDescription);
-    //	menu->addChild(playactDescription);
-    //	menu->addChild(expeditionDescription);
     menu->setPosition(0, 0);
     this->addChild(menu);
     
+    m_pMissionPage=MissionSelectPage::create();
+    m_pMissionPage->setPosition(800, 0);
+    addChild(m_pMissionPage);
 }
 
 void PortBattleLayer::callBack1(Ref* pSender)
@@ -74,25 +75,30 @@ void PortBattleLayer::callBack2(Ref* pSender)
 
 void PortBattleLayer::ShowMissionSelectPage(Ref* pSender)
 {
-    auto fleet=sPlayer.getFleetByFleetKey(1);
-    for(int i=1;i<=6;++i)
+//    auto fleet=sPlayer.getFleetByFleetKey(1);
+//    for(int i=1;i<=6;++i)
+//    {
+//        auto kantai=fleet->getShip(i);
+//        if (kantai)
+//        {
+//            kantai->setCurrAmmo(kantai->getCurrAmmo()*0.9);
+//            kantai->setCurrFuel(kantai->getCurrFuel()*0.9);
+//            kantai->setCurrHp(kantai->getCurrHp()*0.9);
+//        }
+//        
+//    }
+    if (m_pMissionPage->isHidden())
     {
-        auto kantai=fleet->getShip(i);
-        if (kantai)
-        {
-            kantai->setCurrAmmo(kantai->getCurrAmmo()*0.9);
-            kantai->setCurrFuel(kantai->getCurrFuel()*0.9);
-            kantai->setCurrHp(kantai->getCurrHp()*0.9);
-        }
-        
+        m_pMissionPage->MoveIn();
     }
-
-    
 }
 
-void PortBattleLayer::hideMissionPage()
+void PortBattleLayer::HideMissionPage()
 {
-    //this->missionPage->moveOut();
+    if (!m_pMissionPage->isHidden())
+    {
+        m_pMissionPage->MoveOut();
+    }
 }
 
 

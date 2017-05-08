@@ -33,11 +33,11 @@ public:
     
     void ShowMissionSelectPage(Ref* pSender);
     
-    void hideMissionPage();
+    void HideMissionPage();
 private:
     Node* parent;
     
-    MissionSelectPage * missionPage;
+    MissionSelectPage* m_pMissionPage;
 private:
     void initLayer();
 

@@ -277,6 +277,47 @@
 		F44D26EE1C4D19A700438F3C /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F44D26EC1C4D19A700438F3C /* libsqlite3.0.tbd */; };
 		F44D26EF1C4D19A700438F3C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F44D26ED1C4D19A700438F3C /* libsqlite3.tbd */; };
 		F44D26F11C4D1D2300438F3C /* database in Sources */ = {isa = PBXBuildFile; fileRef = F4036D251BDA1F31002788AA /* database */; };
+		F452379F1EBA1F190029EAED /* SallyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F452379D1EBA1F190029EAED /* SallyScene.cpp */; };
+		F45237A01EBA1F190029EAED /* SallyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F452379D1EBA1F190029EAED /* SallyScene.cpp */; };
+		F45237A31EBA1F240029EAED /* SallyPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237A11EBA1F240029EAED /* SallyPanel.cpp */; };
+		F45237A41EBA1F240029EAED /* SallyPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237A11EBA1F240029EAED /* SallyPanel.cpp */; };
+		F45237A81EBA1F660029EAED /* MissionNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237A61EBA1F660029EAED /* MissionNode.cpp */; };
+		F45237A91EBA1F660029EAED /* MissionNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237A61EBA1F660029EAED /* MissionNode.cpp */; };
+		F45237AC1EBA1F700029EAED /* MissonUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237AA1EBA1F700029EAED /* MissonUnit.cpp */; };
+		F45237AD1EBA1F700029EAED /* MissonUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237AA1EBA1F700029EAED /* MissonUnit.cpp */; };
+		F45237B01EBA1FD20029EAED /* MissonSelectPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237AE1EBA1FD20029EAED /* MissonSelectPage.cpp */; };
+		F45237B11EBA1FD20029EAED /* MissonSelectPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237AE1EBA1FD20029EAED /* MissonSelectPage.cpp */; };
+		F45237B41EBA20810029EAED /* Compass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237B21EBA20810029EAED /* Compass.cpp */; };
+		F45237B51EBA20810029EAED /* Compass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237B21EBA20810029EAED /* Compass.cpp */; };
+		F45237B81EBA20970029EAED /* Formation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237B61EBA20970029EAED /* Formation.cpp */; };
+		F45237B91EBA20970029EAED /* Formation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237B61EBA20970029EAED /* Formation.cpp */; };
+		F45237BC1EBA22EC0029EAED /* SallyShip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237BA1EBA22EC0029EAED /* SallyShip.cpp */; };
+		F45237BD1EBA22EC0029EAED /* SallyShip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237BA1EBA22EC0029EAED /* SallyShip.cpp */; };
+		F45237C01EBA26E70029EAED /* SallyInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237BE1EBA26E70029EAED /* SallyInfo.cpp */; };
+		F45237C11EBA26E70029EAED /* SallyInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237BE1EBA26E70029EAED /* SallyInfo.cpp */; };
+		F45CEC9E1EBC240800F2E7C1 /* BattlePanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CEC9C1EBC240800F2E7C1 /* BattlePanel.cpp */; };
+		F45CEC9F1EBC240800F2E7C1 /* BattlePanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CEC9C1EBC240800F2E7C1 /* BattlePanel.cpp */; };
+		F45CECA21EBC241600F2E7C1 /* BattleEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECA01EBC241600F2E7C1 /* BattleEnemy.cpp */; };
+		F45CECA31EBC241600F2E7C1 /* BattleEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECA01EBC241600F2E7C1 /* BattleEnemy.cpp */; };
+		F45CECA61EBC242A00F2E7C1 /* BattleCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECA41EBC242A00F2E7C1 /* BattleCharacter.cpp */; };
+		F45CECA71EBC242A00F2E7C1 /* BattleCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECA41EBC242A00F2E7C1 /* BattleCharacter.cpp */; };
+		F45CECAA1EBC243600F2E7C1 /* BattleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECA81EBC243600F2E7C1 /* BattleScene.cpp */; };
+		F45CECAB1EBC243600F2E7C1 /* BattleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECA81EBC243600F2E7C1 /* BattleScene.cpp */; };
+		F45CECAE1EBC243F00F2E7C1 /* BattleInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECAC1EBC243F00F2E7C1 /* BattleInfo.cpp */; };
+		F45CECAF1EBC243F00F2E7C1 /* BattleInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECAC1EBC243F00F2E7C1 /* BattleInfo.cpp */; };
+		F45CECB21EBC253E00F2E7C1 /* BattleBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECB01EBC253D00F2E7C1 /* BattleBar.cpp */; };
+		F45CECB31EBC253E00F2E7C1 /* BattleBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECB01EBC253D00F2E7C1 /* BattleBar.cpp */; };
+		F45CECB71EBC5D2800F2E7C1 /* BattleKantaiInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECB51EBC5D2800F2E7C1 /* BattleKantaiInfo.cpp */; };
+		F45CECBA1EBC5D3800F2E7C1 /* BattleEnemyInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECB81EBC5D3800F2E7C1 /* BattleEnemyInfo.cpp */; };
+		F45CECBB1EBC5D3800F2E7C1 /* BattleEnemyInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECB81EBC5D3800F2E7C1 /* BattleEnemyInfo.cpp */; };
+		F45CECBE1EBC5D4400F2E7C1 /* BattleCharacterInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECBC1EBC5D4400F2E7C1 /* BattleCharacterInfo.cpp */; };
+		F45CECBF1EBC5D4400F2E7C1 /* BattleCharacterInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECBC1EBC5D4400F2E7C1 /* BattleCharacterInfo.cpp */; };
+		F45CECC21EBC975000F2E7C1 /* AnimationMaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECC01EBC975000F2E7C1 /* AnimationMaker.cpp */; };
+		F45CECC31EBC975000F2E7C1 /* AnimationMaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECC01EBC975000F2E7C1 /* AnimationMaker.cpp */; };
+		F45CECC61EBCC56F00F2E7C1 /* BattleAvatarCard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECC41EBCC56F00F2E7C1 /* BattleAvatarCard.cpp */; };
+		F45CECC71EBCC56F00F2E7C1 /* BattleAvatarCard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECC41EBCC56F00F2E7C1 /* BattleAvatarCard.cpp */; };
+		F45CECCA1EBDBBED00F2E7C1 /* BattleEquipInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECC81EBDBBED00F2E7C1 /* BattleEquipInfo.cpp */; };
+		F45CECCB1EBDBBED00F2E7C1 /* BattleEquipInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECC81EBDBBED00F2E7C1 /* BattleEquipInfo.cpp */; };
 		F45F91221BF4BCA600327120 /* TestScene.h in Sources */ = {isa = PBXBuildFile; fileRef = F4D6CBE81BF380210078C5C0 /* TestScene.h */; };
 		F45FD1BA1D4D158000A445D7 /* EventPauseGuard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45FD1B81D4D158000A445D7 /* EventPauseGuard.cpp */; };
 		F45FD1BB1D4D158000A445D7 /* EventPauseGuard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45FD1B81D4D158000A445D7 /* EventPauseGuard.cpp */; };
@@ -295,6 +336,18 @@
 		F48189871C592F5F00A0D0F5 /* KantaiDetailEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48189841C592F5F00A0D0F5 /* KantaiDetailEntity.cpp */; };
 		F48253AF1D33EA0900165D61 /* MainLayerButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48253AD1D33EA0900165D61 /* MainLayerButton.cpp */; };
 		F48253B01D33EA0900165D61 /* MainLayerButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48253AD1D33EA0900165D61 /* MainLayerButton.cpp */; };
+		F489FA041EBAC81F0030EE85 /* Misson.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA021EBAC81F0030EE85 /* Misson.cpp */; };
+		F489FA051EBAC81F0030EE85 /* Misson.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA021EBAC81F0030EE85 /* Misson.cpp */; };
+		F489FA081EBACABA0030EE85 /* FlagShip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA061EBACABA0030EE85 /* FlagShip.cpp */; };
+		F489FA091EBACABA0030EE85 /* FlagShip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA061EBACABA0030EE85 /* FlagShip.cpp */; };
+		F489FA0C1EBAE0A20030EE85 /* FormationSelecter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA0A1EBAE0A20030EE85 /* FormationSelecter.cpp */; };
+		F489FA0D1EBAE0A20030EE85 /* FormationSelecter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA0A1EBAE0A20030EE85 /* FormationSelecter.cpp */; };
+		F489FA101EBB438C0030EE85 /* BattleFleetInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA0E1EBB438C0030EE85 /* BattleFleetInfo.cpp */; };
+		F489FA111EBB438C0030EE85 /* BattleFleetInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA0E1EBB438C0030EE85 /* BattleFleetInfo.cpp */; };
+		F489FA141EBB50E60030EE85 /* BattleKantai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA121EBB50E60030EE85 /* BattleKantai.cpp */; };
+		F489FA151EBB50E60030EE85 /* BattleKantai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA121EBB50E60030EE85 /* BattleKantai.cpp */; };
+		F489FA181EBB513D0030EE85 /* BattleEquip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA161EBB513D0030EE85 /* BattleEquip.cpp */; };
+		F489FA191EBB513D0030EE85 /* BattleEquip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA161EBB513D0030EE85 /* BattleEquip.cpp */; };
 		F48B1B081D4806F50078E23E /* sound in Resources */ = {isa = PBXBuildFile; fileRef = F48B1B071D4806BF0078E23E /* sound */; };
 		F4938B681C60999100AB1286 /* metaphysics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4938B661C60999100AB1286 /* metaphysics.cpp */; };
 		F4938B691C60999100AB1286 /* metaphysics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4938B661C60999100AB1286 /* metaphysics.cpp */; };
@@ -321,6 +374,193 @@
 		F4B174101C54657E00D2BC1C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B1740F1C54657D00D2BC1C /* libz.tbd */; };
 		F4B926CE1C55FA74005DB127 /* PortMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CC1C55FA74005DB127 /* PortMain */; };
 		F4B926CF1C55FA74005DB127 /* SupplyMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CD1C55FA74005DB127 /* SupplyMain */; };
+		F4B9796F1EBE08230053EE42 /* MissionNode.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237A71EBA1F660029EAED /* MissionNode.hpp */; };
+		F4B979701EBE08230053EE42 /* MissonUnit.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237AB1EBA1F700029EAED /* MissonUnit.hpp */; };
+		F4B979711EBE08230053EE42 /* MissonSelectPage.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237AF1EBA1FD20029EAED /* MissonSelectPage.hpp */; };
+		F4B979721EBE08230053EE42 /* Misson.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA031EBAC81F0030EE85 /* Misson.hpp */; };
+		F4B979731EBE08230053EE42 /* SallyScene.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F452379E1EBA1F190029EAED /* SallyScene.hpp */; };
+		F4B979741EBE08230053EE42 /* SallyShip.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237BB1EBA22EC0029EAED /* SallyShip.hpp */; };
+		F4B979751EBE08230053EE42 /* SallyPanel.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237A21EBA1F240029EAED /* SallyPanel.hpp */; };
+		F4B979761EBE08230053EE42 /* Formation.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237B71EBA20970029EAED /* Formation.hpp */; };
+		F4B979771EBE08230053EE42 /* Compass.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237B31EBA20810029EAED /* Compass.hpp */; };
+		F4B979781EBE08230053EE42 /* SallyInfo.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237BF1EBA26E70029EAED /* SallyInfo.hpp */; };
+		F4B979791EBE08230053EE42 /* FlagShip.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA071EBACABA0030EE85 /* FlagShip.hpp */; };
+		F4B9797A1EBE08230053EE42 /* FormationSelecter.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA0B1EBAE0A20030EE85 /* FormationSelecter.hpp */; };
+		F4B9797B1EBE08230053EE42 /* BattleFleetInfo.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA0F1EBB438C0030EE85 /* BattleFleetInfo.hpp */; };
+		F4B9797C1EBE08230053EE42 /* BattleKantai.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA131EBB50E60030EE85 /* BattleKantai.hpp */; };
+		F4B9797D1EBE08230053EE42 /* BattleEquip.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA171EBB513D0030EE85 /* BattleEquip.hpp */; };
+		F4B9797E1EBE08230053EE42 /* BattlePanel.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CEC9D1EBC240800F2E7C1 /* BattlePanel.hpp */; };
+		F4B9797F1EBE08230053EE42 /* BattleEnemy.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECA11EBC241600F2E7C1 /* BattleEnemy.hpp */; };
+		F4B979801EBE08230053EE42 /* BattleCharacter.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECA51EBC242A00F2E7C1 /* BattleCharacter.hpp */; };
+		F4B979811EBE08230053EE42 /* BattleScene.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECA91EBC243600F2E7C1 /* BattleScene.hpp */; };
+		F4B979821EBE08230053EE42 /* BattleInfo.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECAD1EBC243F00F2E7C1 /* BattleInfo.hpp */; };
+		F4B979831EBE08230053EE42 /* BattleBar.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECB11EBC253E00F2E7C1 /* BattleBar.hpp */; };
+		F4B979841EBE08230053EE42 /* BattleKantaiInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECB51EBC5D2800F2E7C1 /* BattleKantaiInfo.cpp */; };
+		F4B979851EBE08230053EE42 /* BattleKantaiInfo.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECB61EBC5D2800F2E7C1 /* BattleKantaiInfo.hpp */; };
+		F4B979861EBE08230053EE42 /* BattleEnemyInfo.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECB91EBC5D3800F2E7C1 /* BattleEnemyInfo.hpp */; };
+		F4B979871EBE08230053EE42 /* BattleCharacterInfo.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECBD1EBC5D4400F2E7C1 /* BattleCharacterInfo.hpp */; };
+		F4B979881EBE08230053EE42 /* BattleEquipInfo.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECC91EBDBBED00F2E7C1 /* BattleEquipInfo.hpp */; };
+		F4B979891EBE08230053EE42 /* AnimationMaker.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECC11EBC975000F2E7C1 /* AnimationMaker.hpp */; };
+		F4B9798A1EBE08230053EE42 /* BattleAvatarCard.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECC51EBCC56F00F2E7C1 /* BattleAvatarCard.hpp */; };
+		F4B9798B1EBE08230053EE42 /* Panel.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F41E32041D3A904D00B679E0 /* Panel.hpp */; };
+		F4B9798C1EBE08230053EE42 /* tinaMacros.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43BD6021D2AC1B100B572C9 /* tinaMacros.hpp */; };
+		F4B9798D1EBE08230053EE42 /* TinaMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43BD5F71D2ABE2F00B572C9 /* TinaMgr.hpp */; };
+		F4B9798E1EBE08230053EE42 /* TinaConfig.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43BD5FB1D2ABE5800B572C9 /* TinaConfig.hpp */; };
+		F4B9798F1EBE08230053EE42 /* MathUtil.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F413B54F1D50A3C3003E1967 /* MathUtil.hpp */; };
+		F4B979901EBE08230053EE42 /* metaphysics.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4938B671C60999100AB1286 /* metaphysics.hpp */; };
+		F4B979911EBE08230053EE42 /* arsenal.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0911C5FB073001441C3 /* arsenal.hpp */; };
+		F4B979921EBE08230053EE42 /* dock.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956E41C5B9D4C001AA1B3 /* dock.hpp */; };
+		F4B979931EBE08230053EE42 /* TimerMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F427A49A1D618DE2001C6B45 /* TimerMgr.hpp */; };
+		F4B979941EBE08230053EE42 /* TimeUtil.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F427A4A41D619484001C6B45 /* TimeUtil.hpp */; };
+		F4B979951EBE08230053EE42 /* RepairFactorMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C4FC21C5BCF89000FAA89 /* RepairFactorMgr.hpp */; };
+		F4B979961EBE08230053EE42 /* EquipPicMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C4FCC1C5BDA78000FAA89 /* EquipPicMgr.hpp */; };
+		F4B979971EBE08230053EE42 /* dockDB.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956E81C5B9D7F001AA1B3 /* dockDB.hpp */; };
+		F4B979981EBE08230053EE42 /* arsenalDB.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0951C5FB08C001441C3 /* arsenalDB.hpp */; };
+		F4B979991EBE08230053EE42 /* EventPauseGuard.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45FD1B91D4D158000A445D7 /* EventPauseGuard.hpp */; };
+		F4B9799A1EBE08230053EE42 /* BundleMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F42303C31D2BC4B500B06189 /* BundleMgr.hpp */; };
+		F4B9799B1EBE08230053EE42 /* ViewMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F42303D81D2C049E00B06189 /* ViewMgr.hpp */; };
+		F4B9799C1EBE08230053EE42 /* ViewMgrMacro.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F42303DD1D2C0B4500B06189 /* ViewMgrMacro.hpp */; };
+		F4B9799D1EBE08230053EE42 /* ViewMgrFactory.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4BC4CAA1D2D242300374317 /* ViewMgrFactory.hpp */; };
+		F4B9799E1EBE08230053EE42 /* DataMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F413B5531D50A7DF003E1967 /* DataMgr.hpp */; };
+		F4B9799F1EBE08230053EE42 /* DataBaseMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4305CE31D653B2D00B20CF4 /* DataBaseMgr.hpp */; };
+		F4B979A01EBE08230053EE42 /* Sound.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F41D54961D2A915B0094CAAD /* Sound.hpp */; };
+		F4B979A11EBE08230053EE42 /* SelecterUnit.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4198EEF1D445FF800429926 /* SelecterUnit.hpp */; };
+		F4B979A21EBE08230053EE42 /* FleetButton.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A328461C84AA790048F939 /* FleetButton.hpp */; };
+		F4B979A31EBE08230053EE42 /* ListEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F439079A1C8B373B004B5B2D /* ListEntity.hpp */; };
+		F4B979A41EBE08230053EE42 /* ListRow.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F439079E1C8B377E004B5B2D /* ListRow.hpp */; };
+		F4B979A51EBE08230053EE42 /* PageSwitch.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D793671D7502F100111A0D /* PageSwitch.hpp */; };
+		F4B979A61EBE08230053EE42 /* unitEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D4318D1D596A3C0042A780 /* unitEntity.hpp */; };
+		F4B979A71EBE08230053EE42 /* LayerCover.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F409531B1C99B0C100E9B958 /* LayerCover.hpp */; };
+		F4B979A81EBE08230053EE42 /* ShowPolygonLayer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F476D34E1C8DE5BA00A1B8EB /* ShowPolygonLayer.hpp */; };
+		F4B979A91EBE08230053EE42 /* ValueBar.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E231C8746CB009BE55C /* ValueBar.hpp */; };
+		F4B979AA1EBE08230053EE42 /* MenuItemTouch.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C1BB71C61E5490093774E /* MenuItemTouch.hpp */; };
+		F4B979AB1EBE08230053EE42 /* SoundPanel.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F41E32081D3A910900B679E0 /* SoundPanel.hpp */; };
+		F4B979AC1EBE08230053EE42 /* SoundBar.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F41E320C1D3A911600B679E0 /* SoundBar.hpp */; };
+		F4B979AD1EBE08230053EE42 /* RepairListEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43FFC851C5CE8F600C98BED /* RepairListEntity.hpp */; };
+		F4B979AE1EBE08230053EE42 /* RepairHpBar.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43FFC7C1C5CD6CB00C98BED /* RepairHpBar.hpp */; };
+		F4B979AF1EBE08230053EE42 /* RepairListRow.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43FFC811C5CE8E500C98BED /* RepairListRow.hpp */; };
+		F4B979B01EBE08230053EE42 /* RepairSelectEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4AAFA031C5D0EEF006981BB /* RepairSelectEntity.hpp */; };
+		F4B979B11EBE08230053EE42 /* PortUILayer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43293091D3993F600B7167C /* PortUILayer.hpp */; };
+		F4B979B21EBE08230053EE42 /* PortBgLayer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F432930E1D39967800B7167C /* PortBgLayer.hpp */; };
+		F4B979B31EBE08230053EE42 /* IndicatorBar.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43293121D39974300B7167C /* IndicatorBar.hpp */; };
+		F4B979B41EBE08230053EE42 /* PortState.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F40B47A41D3E7DA8006F5375 /* PortState.hpp */; };
+		F4B979B51EBE08230053EE42 /* SoundPanelButton.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F40B47A01D3E7B7D006F5375 /* SoundPanelButton.hpp */; };
+		F4B979B61EBE08230053EE42 /* TitlePic.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F445E9221D513E3C00855D10 /* TitlePic.hpp */; };
+		F4B979B71EBE08230053EE42 /* signBoardGirl.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F42ECDA11D2FF75600E09EA0 /* signBoardGirl.hpp */; };
+		F4B979B81EBE08230053EE42 /* MainLayerButton.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F48253AE1D33EA0900165D61 /* MainLayerButton.hpp */; };
+		F4B979B91EBE08230053EE42 /* furnitureBG.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43293051D398F2000B7167C /* furnitureBG.hpp */; };
+		F4B979BA1EBE08230053EE42 /* SupplyShipUnit.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A328411C847CA70048F939 /* SupplyShipUnit.hpp */; };
+		F4B979BB1EBE08230053EE42 /* SupplyAmmoEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D9C3651C860096002A93EC /* SupplyAmmoEntity.hpp */; };
+		F4B979BC1EBE08230053EE42 /* SupplyFuelEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E1A1C871AB9009BE55C /* SupplyFuelEntity.hpp */; };
+		F4B979BD1EBE08230053EE42 /* SupplyInfo.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F413B5461D508F92003E1967 /* SupplyInfo.hpp */; };
+		F4B979BE1EBE08230053EE42 /* FactoryContainer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0881C5FAFDF001441C3 /* FactoryContainer.hpp */; };
+		F4B979BF1EBE08230053EE42 /* buildKantaiEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D08C1C5FB006001441C3 /* buildKantaiEntity.hpp */; };
+		F4B979C01EBE08230053EE42 /* buildKantaiUnit.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C1BB21C619A8F0093774E /* buildKantaiUnit.hpp */; };
+		F4B979C11EBE08230053EE42 /* FactoryListEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43907A31C8B3E10004B5B2D /* FactoryListEntity.hpp */; };
+		F4B979C21EBE08230053EE42 /* KantaiDestroyEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43907A71C8B3E7A004B5B2D /* KantaiDestroyEntity.hpp */; };
+		F4B979C31EBE08230053EE42 /* OrganizeSelectEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E1E1C8731EF009BE55C /* OrganizeSelectEntity.hpp */; };
+		F4B979C41EBE08460053EE42 /* MissionNode.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237A71EBA1F660029EAED /* MissionNode.hpp */; };
+		F4B979C51EBE08460053EE42 /* MissonUnit.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237AB1EBA1F700029EAED /* MissonUnit.hpp */; };
+		F4B979C61EBE08460053EE42 /* MissonSelectPage.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237AF1EBA1FD20029EAED /* MissonSelectPage.hpp */; };
+		F4B979C71EBE08460053EE42 /* Misson.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA031EBAC81F0030EE85 /* Misson.hpp */; };
+		F4B979C81EBE08460053EE42 /* SallyScene.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F452379E1EBA1F190029EAED /* SallyScene.hpp */; };
+		F4B979C91EBE08460053EE42 /* SallyShip.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237BB1EBA22EC0029EAED /* SallyShip.hpp */; };
+		F4B979CA1EBE08460053EE42 /* SallyPanel.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237A21EBA1F240029EAED /* SallyPanel.hpp */; };
+		F4B979CB1EBE08460053EE42 /* Formation.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237B71EBA20970029EAED /* Formation.hpp */; };
+		F4B979CC1EBE08460053EE42 /* Compass.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237B31EBA20810029EAED /* Compass.hpp */; };
+		F4B979CD1EBE08460053EE42 /* SallyInfo.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45237BF1EBA26E70029EAED /* SallyInfo.hpp */; };
+		F4B979CE1EBE08460053EE42 /* FlagShip.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA071EBACABA0030EE85 /* FlagShip.hpp */; };
+		F4B979CF1EBE08460053EE42 /* FormationSelecter.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA0B1EBAE0A20030EE85 /* FormationSelecter.hpp */; };
+		F4B979D01EBE08460053EE42 /* BattleFleetInfo.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA0F1EBB438C0030EE85 /* BattleFleetInfo.hpp */; };
+		F4B979D11EBE08460053EE42 /* BattleKantai.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA131EBB50E60030EE85 /* BattleKantai.hpp */; };
+		F4B979D21EBE08460053EE42 /* BattleEquip.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F489FA171EBB513D0030EE85 /* BattleEquip.hpp */; };
+		F4B979D31EBE08460053EE42 /* BattlePanel.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CEC9D1EBC240800F2E7C1 /* BattlePanel.hpp */; };
+		F4B979D41EBE08460053EE42 /* BattleEnemy.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECA11EBC241600F2E7C1 /* BattleEnemy.hpp */; };
+		F4B979D51EBE08460053EE42 /* BattleCharacter.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECA51EBC242A00F2E7C1 /* BattleCharacter.hpp */; };
+		F4B979D61EBE08460053EE42 /* BattleScene.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECA91EBC243600F2E7C1 /* BattleScene.hpp */; };
+		F4B979D71EBE08460053EE42 /* BattleInfo.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECAD1EBC243F00F2E7C1 /* BattleInfo.hpp */; };
+		F4B979D81EBE08460053EE42 /* BattleBar.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECB11EBC253E00F2E7C1 /* BattleBar.hpp */; };
+		F4B979D91EBE08460053EE42 /* BattleKantaiInfo.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECB61EBC5D2800F2E7C1 /* BattleKantaiInfo.hpp */; };
+		F4B979DA1EBE08460053EE42 /* BattleEnemyInfo.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECB91EBC5D3800F2E7C1 /* BattleEnemyInfo.hpp */; };
+		F4B979DB1EBE08460053EE42 /* BattleCharacterInfo.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECBD1EBC5D4400F2E7C1 /* BattleCharacterInfo.hpp */; };
+		F4B979DC1EBE08460053EE42 /* BattleEquipInfo.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECC91EBDBBED00F2E7C1 /* BattleEquipInfo.hpp */; };
+		F4B979DD1EBE08460053EE42 /* AnimationMaker.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECC11EBC975000F2E7C1 /* AnimationMaker.hpp */; };
+		F4B979DE1EBE08460053EE42 /* BattleAvatarCard.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45CECC51EBCC56F00F2E7C1 /* BattleAvatarCard.hpp */; };
+		F4B979DF1EBE08460053EE42 /* Panel.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F41E32041D3A904D00B679E0 /* Panel.hpp */; };
+		F4B979E01EBE08460053EE42 /* tinaMacros.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43BD6021D2AC1B100B572C9 /* tinaMacros.hpp */; };
+		F4B979E11EBE08460053EE42 /* TinaMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43BD5F71D2ABE2F00B572C9 /* TinaMgr.hpp */; };
+		F4B979E21EBE08460053EE42 /* TinaConfig.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43BD5FB1D2ABE5800B572C9 /* TinaConfig.hpp */; };
+		F4B979E31EBE08460053EE42 /* MathUtil.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F413B54F1D50A3C3003E1967 /* MathUtil.hpp */; };
+		F4B979E41EBE08460053EE42 /* metaphysics.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4938B671C60999100AB1286 /* metaphysics.hpp */; };
+		F4B979E51EBE08460053EE42 /* arsenal.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0911C5FB073001441C3 /* arsenal.hpp */; };
+		F4B979E61EBE08460053EE42 /* dock.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956E41C5B9D4C001AA1B3 /* dock.hpp */; };
+		F4B979E71EBE08460053EE42 /* TimerMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F427A49A1D618DE2001C6B45 /* TimerMgr.hpp */; };
+		F4B979E81EBE08460053EE42 /* TimeUtil.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F427A4A41D619484001C6B45 /* TimeUtil.hpp */; };
+		F4B979E91EBE08460053EE42 /* KantaiMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB031C50D30600F75BCE /* KantaiMgr.hpp */; };
+		F4B979EA1EBE08460053EE42 /* loadTxt.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB061C50D34000F75BCE /* loadTxt.hpp */; };
+		F4B979EB1EBE08460053EE42 /* EquipMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB091C50D36B00F75BCE /* EquipMgr.hpp */; };
+		F4B979EC1EBE08460053EE42 /* ExpMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0C1C50D3E400F75BCE /* ExpMgr.hpp */; };
+		F4B979ED1EBE08460053EE42 /* RepairFactorMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C4FC21C5BCF89000FAA89 /* RepairFactorMgr.hpp */; };
+		F4B979EE1EBE08460053EE42 /* EquipPicMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C4FCC1C5BDA78000FAA89 /* EquipPicMgr.hpp */; };
+		F4B979EF1EBE08460053EE42 /* dockDB.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956E81C5B9D7F001AA1B3 /* dockDB.hpp */; };
+		F4B979F01EBE08460053EE42 /* arsenalDB.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0951C5FB08C001441C3 /* arsenalDB.hpp */; };
+		F4B979F11EBE08460053EE42 /* EventPauseGuard.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F45FD1B91D4D158000A445D7 /* EventPauseGuard.hpp */; };
+		F4B979F21EBE08460053EE42 /* BundleMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F42303C31D2BC4B500B06189 /* BundleMgr.hpp */; };
+		F4B979F31EBE08460053EE42 /* ViewMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F42303D81D2C049E00B06189 /* ViewMgr.hpp */; };
+		F4B979F41EBE08460053EE42 /* ViewMgrMacro.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F42303DD1D2C0B4500B06189 /* ViewMgrMacro.hpp */; };
+		F4B979F51EBE08460053EE42 /* ViewMgrFactory.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4BC4CAA1D2D242300374317 /* ViewMgrFactory.hpp */; };
+		F4B979F61EBE08460053EE42 /* DataMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F413B5531D50A7DF003E1967 /* DataMgr.hpp */; };
+		F4B979F71EBE08460053EE42 /* DataBaseMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4305CE31D653B2D00B20CF4 /* DataBaseMgr.hpp */; };
+		F4B979F81EBE08460053EE42 /* Singleton.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0F1C50D42600F75BCE /* Singleton.hpp */; };
+		F4B979F91EBE08460053EE42 /* Sound.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F41D54961D2A915B0094CAAD /* Sound.hpp */; };
+		F4B979FA1EBE08460053EE42 /* kantaiCard.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F481897F1C5926F900A0D0F5 /* kantaiCard.hpp */; };
+		F4B979FB1EBE08460053EE42 /* EquipmentContainer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8E51C599DCA00CBE2C7 /* EquipmentContainer.hpp */; };
+		F4B979FC1EBE08460053EE42 /* KantaiDetailEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F48189851C592F5F00A0D0F5 /* KantaiDetailEntity.hpp */; };
+		F4B979FD1EBE08460053EE42 /* SelecterUnit.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4198EEF1D445FF800429926 /* SelecterUnit.hpp */; };
+		F4B979FE1EBE08460053EE42 /* TimerEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956CB1C5B5E49001AA1B3 /* TimerEntity.hpp */; };
+		F4B979FF1EBE08460053EE42 /* FleetButton.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A328461C84AA790048F939 /* FleetButton.hpp */; };
+		F4B97A001EBE08460053EE42 /* ListEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F439079A1C8B373B004B5B2D /* ListEntity.hpp */; };
+		F4B97A011EBE08460053EE42 /* ListRow.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F439079E1C8B377E004B5B2D /* ListRow.hpp */; };
+		F4B97A021EBE08460053EE42 /* PageSwitch.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D793671D7502F100111A0D /* PageSwitch.hpp */; };
+		F4B97A031EBE08460053EE42 /* unitEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D4318D1D596A3C0042A780 /* unitEntity.hpp */; };
+		F4B97A041EBE08460053EE42 /* LayerCover.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F409531B1C99B0C100E9B958 /* LayerCover.hpp */; };
+		F4B97A051EBE08460053EE42 /* ShowPolygonLayer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F476D34E1C8DE5BA00A1B8EB /* ShowPolygonLayer.hpp */; };
+		F4B97A061EBE08460053EE42 /* ValueBar.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E231C8746CB009BE55C /* ValueBar.hpp */; };
+		F4B97A071EBE08460053EE42 /* MenuItemTouch.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C1BB71C61E5490093774E /* MenuItemTouch.hpp */; };
+		F4B97A081EBE08460053EE42 /* Star.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8FD1C5A33B500CBE2C7 /* Star.hpp */; };
+		F4B97A091EBE08460053EE42 /* HpBar.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8F81C5A30EB00CBE2C7 /* HpBar.hpp */; };
+		F4B97A0A1EBE08460053EE42 /* SoundPanel.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F41E32081D3A910900B679E0 /* SoundPanel.hpp */; };
+		F4B97A0B1EBE08460053EE42 /* SoundBar.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F41E320C1D3A911600B679E0 /* SoundBar.hpp */; };
+		F4B97A0C1EBE08460053EE42 /* RepairListEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43FFC851C5CE8F600C98BED /* RepairListEntity.hpp */; };
+		F4B97A0D1EBE08460053EE42 /* RepairContainer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F956C51C5B538E001AA1B3 /* RepairContainer.hpp */; };
+		F4B97A0E1EBE08460053EE42 /* RepairHpBar.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43FFC7C1C5CD6CB00C98BED /* RepairHpBar.hpp */; };
+		F4B97A0F1EBE08460053EE42 /* RepairListRow.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43FFC811C5CE8E500C98BED /* RepairListRow.hpp */; };
+		F4B97A101EBE08460053EE42 /* RepairSelectEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4AAFA031C5D0EEF006981BB /* RepairSelectEntity.hpp */; };
+		F4B97A111EBE08460053EE42 /* PortUILayer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43293091D3993F600B7167C /* PortUILayer.hpp */; };
+		F4B97A121EBE08460053EE42 /* PortBgLayer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F432930E1D39967800B7167C /* PortBgLayer.hpp */; };
+		F4B97A131EBE08460053EE42 /* IndicatorBar.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43293121D39974300B7167C /* IndicatorBar.hpp */; };
+		F4B97A141EBE08460053EE42 /* PortState.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F40B47A41D3E7DA8006F5375 /* PortState.hpp */; };
+		F4B97A151EBE08460053EE42 /* SoundPanelButton.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F40B47A01D3E7B7D006F5375 /* SoundPanelButton.hpp */; };
+		F4B97A161EBE08460053EE42 /* TitlePic.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F445E9221D513E3C00855D10 /* TitlePic.hpp */; };
+		F4B97A171EBE08460053EE42 /* signBoardGirl.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F42ECDA11D2FF75600E09EA0 /* signBoardGirl.hpp */; };
+		F4B97A181EBE08460053EE42 /* MainLayerButton.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F48253AE1D33EA0900165D61 /* MainLayerButton.hpp */; };
+		F4B97A191EBE08460053EE42 /* furnitureBG.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43293051D398F2000B7167C /* furnitureBG.hpp */; };
+		F4B97A1A1EBE08460053EE42 /* SupplyShipUnit.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A328411C847CA70048F939 /* SupplyShipUnit.hpp */; };
+		F4B97A1B1EBE08460053EE42 /* SupplyAmmoEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D9C3651C860096002A93EC /* SupplyAmmoEntity.hpp */; };
+		F4B97A1C1EBE08460053EE42 /* SupplyFuelEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E1A1C871AB9009BE55C /* SupplyFuelEntity.hpp */; };
+		F4B97A1D1EBE08460053EE42 /* SupplyInfo.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F413B5461D508F92003E1967 /* SupplyInfo.hpp */; };
+		F4B97A1E1EBE08460053EE42 /* FactoryContainer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D0881C5FAFDF001441C3 /* FactoryContainer.hpp */; };
+		F4B97A1F1EBE08460053EE42 /* buildKantaiEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D08C1C5FB006001441C3 /* buildKantaiEntity.hpp */; };
+		F4B97A201EBE08460053EE42 /* buildKantaiUnit.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C1BB21C619A8F0093774E /* buildKantaiUnit.hpp */; };
+		F4B97A211EBE08460053EE42 /* FactoryListEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43907A31C8B3E10004B5B2D /* FactoryListEntity.hpp */; };
+		F4B97A221EBE08460053EE42 /* KantaiDestroyEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F43907A71C8B3E7A004B5B2D /* KantaiDestroyEntity.hpp */; };
+		F4B97A231EBE08460053EE42 /* KantaiListEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F42DB8F11C59DBF600CBE2C7 /* KantaiListEntity.hpp */; };
+		F4B97A241EBE08460053EE42 /* OrganizeContainer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F481896B1C58AFC500A0D0F5 /* OrganizeContainer.hpp */; };
+		F4B97A251EBE08460053EE42 /* OrganizeSelectEntity.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E1E1C8731EF009BE55C /* OrganizeSelectEntity.hpp */; };
+		F4B97A291EBECE520053EE42 /* BattleMacro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4B97A271EBECE520053EE42 /* BattleMacro.cpp */; };
+		F4B97A2A1EBECE520053EE42 /* BattleMacro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4B97A271EBECE520053EE42 /* BattleMacro.cpp */; };
+		F4B97A2D1EBF29DC0053EE42 /* MissonLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4B97A2B1EBF29DC0053EE42 /* MissonLoader.cpp */; };
+		F4B97A2E1EBF29DC0053EE42 /* MissonLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4B97A2B1EBF29DC0053EE42 /* MissonLoader.cpp */; };
 		F4BC4CAB1D2D242300374317 /* ViewMgrFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4BC4CA91D2D242300374317 /* ViewMgrFactory.cpp */; };
 		F4BC4CAC1D2D242300374317 /* ViewMgrFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4BC4CA91D2D242300374317 /* ViewMgrFactory.cpp */; };
 		F4C0E81F1D4267D100E345CB /* shader in Resources */ = {isa = PBXBuildFile; fileRef = F4C0E81E1D4267D100E345CB /* shader */; };
@@ -612,6 +852,48 @@
 		F445E9221D513E3C00855D10 /* TitlePic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TitlePic.hpp; sourceTree = "<group>"; };
 		F44D26EC1C4D19A700438F3C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
 		F44D26ED1C4D19A700438F3C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
+		F452379D1EBA1F190029EAED /* SallyScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SallyScene.cpp; sourceTree = "<group>"; };
+		F452379E1EBA1F190029EAED /* SallyScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SallyScene.hpp; sourceTree = "<group>"; };
+		F45237A11EBA1F240029EAED /* SallyPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SallyPanel.cpp; sourceTree = "<group>"; };
+		F45237A21EBA1F240029EAED /* SallyPanel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SallyPanel.hpp; sourceTree = "<group>"; };
+		F45237A61EBA1F660029EAED /* MissionNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MissionNode.cpp; sourceTree = "<group>"; };
+		F45237A71EBA1F660029EAED /* MissionNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MissionNode.hpp; sourceTree = "<group>"; };
+		F45237AA1EBA1F700029EAED /* MissonUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MissonUnit.cpp; sourceTree = "<group>"; };
+		F45237AB1EBA1F700029EAED /* MissonUnit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MissonUnit.hpp; sourceTree = "<group>"; };
+		F45237AE1EBA1FD20029EAED /* MissonSelectPage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MissonSelectPage.cpp; sourceTree = "<group>"; };
+		F45237AF1EBA1FD20029EAED /* MissonSelectPage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MissonSelectPage.hpp; sourceTree = "<group>"; };
+		F45237B21EBA20810029EAED /* Compass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Compass.cpp; sourceTree = "<group>"; };
+		F45237B31EBA20810029EAED /* Compass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Compass.hpp; sourceTree = "<group>"; };
+		F45237B61EBA20970029EAED /* Formation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Formation.cpp; sourceTree = "<group>"; };
+		F45237B71EBA20970029EAED /* Formation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Formation.hpp; sourceTree = "<group>"; };
+		F45237BA1EBA22EC0029EAED /* SallyShip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SallyShip.cpp; sourceTree = "<group>"; };
+		F45237BB1EBA22EC0029EAED /* SallyShip.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SallyShip.hpp; sourceTree = "<group>"; };
+		F45237BE1EBA26E70029EAED /* SallyInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SallyInfo.cpp; sourceTree = "<group>"; };
+		F45237BF1EBA26E70029EAED /* SallyInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SallyInfo.hpp; sourceTree = "<group>"; };
+		F45CEC9C1EBC240800F2E7C1 /* BattlePanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattlePanel.cpp; sourceTree = "<group>"; };
+		F45CEC9D1EBC240800F2E7C1 /* BattlePanel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattlePanel.hpp; sourceTree = "<group>"; };
+		F45CECA01EBC241600F2E7C1 /* BattleEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleEnemy.cpp; sourceTree = "<group>"; };
+		F45CECA11EBC241600F2E7C1 /* BattleEnemy.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattleEnemy.hpp; sourceTree = "<group>"; };
+		F45CECA41EBC242A00F2E7C1 /* BattleCharacter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleCharacter.cpp; sourceTree = "<group>"; };
+		F45CECA51EBC242A00F2E7C1 /* BattleCharacter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattleCharacter.hpp; sourceTree = "<group>"; };
+		F45CECA81EBC243600F2E7C1 /* BattleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleScene.cpp; sourceTree = "<group>"; };
+		F45CECA91EBC243600F2E7C1 /* BattleScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattleScene.hpp; sourceTree = "<group>"; };
+		F45CECAC1EBC243F00F2E7C1 /* BattleInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleInfo.cpp; sourceTree = "<group>"; };
+		F45CECAD1EBC243F00F2E7C1 /* BattleInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattleInfo.hpp; sourceTree = "<group>"; };
+		F45CECB01EBC253D00F2E7C1 /* BattleBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleBar.cpp; sourceTree = "<group>"; };
+		F45CECB11EBC253E00F2E7C1 /* BattleBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattleBar.hpp; sourceTree = "<group>"; };
+		F45CECB51EBC5D2800F2E7C1 /* BattleKantaiInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleKantaiInfo.cpp; sourceTree = "<group>"; };
+		F45CECB61EBC5D2800F2E7C1 /* BattleKantaiInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattleKantaiInfo.hpp; sourceTree = "<group>"; };
+		F45CECB81EBC5D3800F2E7C1 /* BattleEnemyInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleEnemyInfo.cpp; sourceTree = "<group>"; };
+		F45CECB91EBC5D3800F2E7C1 /* BattleEnemyInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattleEnemyInfo.hpp; sourceTree = "<group>"; };
+		F45CECBC1EBC5D4400F2E7C1 /* BattleCharacterInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleCharacterInfo.cpp; sourceTree = "<group>"; };
+		F45CECBD1EBC5D4400F2E7C1 /* BattleCharacterInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattleCharacterInfo.hpp; sourceTree = "<group>"; };
+		F45CECC01EBC975000F2E7C1 /* AnimationMaker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationMaker.cpp; sourceTree = "<group>"; };
+		F45CECC11EBC975000F2E7C1 /* AnimationMaker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AnimationMaker.hpp; sourceTree = "<group>"; };
+		F45CECC41EBCC56F00F2E7C1 /* BattleAvatarCard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleAvatarCard.cpp; sourceTree = "<group>"; };
+		F45CECC51EBCC56F00F2E7C1 /* BattleAvatarCard.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattleAvatarCard.hpp; sourceTree = "<group>"; };
+		F45CECC81EBDBBED00F2E7C1 /* BattleEquipInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleEquipInfo.cpp; sourceTree = "<group>"; };
+		F45CECC91EBDBBED00F2E7C1 /* BattleEquipInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattleEquipInfo.hpp; sourceTree = "<group>"; };
 		F45FD1B81D4D158000A445D7 /* EventPauseGuard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventPauseGuard.cpp; sourceTree = "<group>"; };
 		F45FD1B91D4D158000A445D7 /* EventPauseGuard.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EventPauseGuard.hpp; sourceTree = "<group>"; };
 		F476D34D1C8DE5BA00A1B8EB /* ShowPolygonLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShowPolygonLayer.cpp; sourceTree = "<group>"; };
@@ -625,6 +907,18 @@
 		F48189851C592F5F00A0D0F5 /* KantaiDetailEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KantaiDetailEntity.hpp; sourceTree = "<group>"; };
 		F48253AD1D33EA0900165D61 /* MainLayerButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainLayerButton.cpp; sourceTree = "<group>"; };
 		F48253AE1D33EA0900165D61 /* MainLayerButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MainLayerButton.hpp; sourceTree = "<group>"; };
+		F489FA021EBAC81F0030EE85 /* Misson.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Misson.cpp; sourceTree = "<group>"; };
+		F489FA031EBAC81F0030EE85 /* Misson.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Misson.hpp; sourceTree = "<group>"; };
+		F489FA061EBACABA0030EE85 /* FlagShip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FlagShip.cpp; sourceTree = "<group>"; };
+		F489FA071EBACABA0030EE85 /* FlagShip.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FlagShip.hpp; sourceTree = "<group>"; };
+		F489FA0A1EBAE0A20030EE85 /* FormationSelecter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FormationSelecter.cpp; sourceTree = "<group>"; };
+		F489FA0B1EBAE0A20030EE85 /* FormationSelecter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FormationSelecter.hpp; sourceTree = "<group>"; };
+		F489FA0E1EBB438C0030EE85 /* BattleFleetInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleFleetInfo.cpp; sourceTree = "<group>"; };
+		F489FA0F1EBB438C0030EE85 /* BattleFleetInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattleFleetInfo.hpp; sourceTree = "<group>"; };
+		F489FA121EBB50E60030EE85 /* BattleKantai.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleKantai.cpp; sourceTree = "<group>"; };
+		F489FA131EBB50E60030EE85 /* BattleKantai.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattleKantai.hpp; sourceTree = "<group>"; };
+		F489FA161EBB513D0030EE85 /* BattleEquip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleEquip.cpp; sourceTree = "<group>"; };
+		F489FA171EBB513D0030EE85 /* BattleEquip.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattleEquip.hpp; sourceTree = "<group>"; };
 		F48B1B071D4806BF0078E23E /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sound; path = ../Resources/sound; sourceTree = "<group>"; };
 		F4938B661C60999100AB1286 /* metaphysics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metaphysics.cpp; sourceTree = "<group>"; };
 		F4938B671C60999100AB1286 /* metaphysics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = metaphysics.hpp; sourceTree = "<group>"; };
@@ -644,6 +938,10 @@
 		F4B1740F1C54657D00D2BC1C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		F4B926CC1C55FA74005DB127 /* PortMain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PortMain; sourceTree = "<group>"; };
 		F4B926CD1C55FA74005DB127 /* SupplyMain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SupplyMain; sourceTree = "<group>"; };
+		F4B97A271EBECE520053EE42 /* BattleMacro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleMacro.cpp; sourceTree = "<group>"; };
+		F4B97A281EBECE520053EE42 /* BattleMacro.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattleMacro.hpp; sourceTree = "<group>"; };
+		F4B97A2B1EBF29DC0053EE42 /* MissonLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MissonLoader.cpp; sourceTree = "<group>"; };
+		F4B97A2C1EBF29DC0053EE42 /* MissonLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MissonLoader.hpp; sourceTree = "<group>"; };
 		F4BC4CA91D2D242300374317 /* ViewMgrFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ViewMgrFactory.cpp; sourceTree = "<group>"; };
 		F4BC4CAA1D2D242300374317 /* ViewMgrFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ViewMgrFactory.hpp; sourceTree = "<group>"; };
 		F4C0E81E1D4267D100E345CB /* shader */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shader; path = ../Resources/shader; sourceTree = "<group>"; };
@@ -855,6 +1153,8 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F45237991EBA1E0D0029EAED /* Sally */,
+				F45237971EBA1DCD0029EAED /* Battle */,
 				F43BD5FE1D2ABE8E00B572C9 /* Tina */,
 				F4938B651C60998500AB1286 /* metaphysics */,
 				F4036DD31BDA2160002788AA /* backGround */,
@@ -1310,6 +1610,86 @@
 			name = include;
 			sourceTree = "<group>";
 		};
+		F45237971EBA1DCD0029EAED /* Battle */ = {
+			isa = PBXGroup;
+			children = (
+				F489FA121EBB50E60030EE85 /* BattleKantai.cpp */,
+				F489FA131EBB50E60030EE85 /* BattleKantai.hpp */,
+				F489FA161EBB513D0030EE85 /* BattleEquip.cpp */,
+				F489FA171EBB513D0030EE85 /* BattleEquip.hpp */,
+				F45CEC9C1EBC240800F2E7C1 /* BattlePanel.cpp */,
+				F45CEC9D1EBC240800F2E7C1 /* BattlePanel.hpp */,
+				F45CECA01EBC241600F2E7C1 /* BattleEnemy.cpp */,
+				F45CECA11EBC241600F2E7C1 /* BattleEnemy.hpp */,
+				F45CECA41EBC242A00F2E7C1 /* BattleCharacter.cpp */,
+				F45CECA51EBC242A00F2E7C1 /* BattleCharacter.hpp */,
+				F45CECA81EBC243600F2E7C1 /* BattleScene.cpp */,
+				F45CECA91EBC243600F2E7C1 /* BattleScene.hpp */,
+				F45CECAC1EBC243F00F2E7C1 /* BattleInfo.cpp */,
+				F45CECAD1EBC243F00F2E7C1 /* BattleInfo.hpp */,
+				F45CECB01EBC253D00F2E7C1 /* BattleBar.cpp */,
+				F45CECB11EBC253E00F2E7C1 /* BattleBar.hpp */,
+				F489FA0E1EBB438C0030EE85 /* BattleFleetInfo.cpp */,
+				F489FA0F1EBB438C0030EE85 /* BattleFleetInfo.hpp */,
+				F45CECB51EBC5D2800F2E7C1 /* BattleKantaiInfo.cpp */,
+				F45CECB61EBC5D2800F2E7C1 /* BattleKantaiInfo.hpp */,
+				F45CECB81EBC5D3800F2E7C1 /* BattleEnemyInfo.cpp */,
+				F45CECB91EBC5D3800F2E7C1 /* BattleEnemyInfo.hpp */,
+				F45CECBC1EBC5D4400F2E7C1 /* BattleCharacterInfo.cpp */,
+				F45CECBD1EBC5D4400F2E7C1 /* BattleCharacterInfo.hpp */,
+				F45CECC81EBDBBED00F2E7C1 /* BattleEquipInfo.cpp */,
+				F45CECC91EBDBBED00F2E7C1 /* BattleEquipInfo.hpp */,
+				F45CECC01EBC975000F2E7C1 /* AnimationMaker.cpp */,
+				F45CECC11EBC975000F2E7C1 /* AnimationMaker.hpp */,
+				F45CECC41EBCC56F00F2E7C1 /* BattleAvatarCard.cpp */,
+				F45CECC51EBCC56F00F2E7C1 /* BattleAvatarCard.hpp */,
+				F4B97A271EBECE520053EE42 /* BattleMacro.cpp */,
+				F4B97A281EBECE520053EE42 /* BattleMacro.hpp */,
+			);
+			name = Battle;
+			sourceTree = "<group>";
+		};
+		F45237991EBA1E0D0029EAED /* Sally */ = {
+			isa = PBXGroup;
+			children = (
+				F45237A51EBA1F580029EAED /* Misson */,
+				F452379D1EBA1F190029EAED /* SallyScene.cpp */,
+				F452379E1EBA1F190029EAED /* SallyScene.hpp */,
+				F45237BA1EBA22EC0029EAED /* SallyShip.cpp */,
+				F45237BB1EBA22EC0029EAED /* SallyShip.hpp */,
+				F45237A11EBA1F240029EAED /* SallyPanel.cpp */,
+				F45237A21EBA1F240029EAED /* SallyPanel.hpp */,
+				F45237B61EBA20970029EAED /* Formation.cpp */,
+				F45237B71EBA20970029EAED /* Formation.hpp */,
+				F45237B21EBA20810029EAED /* Compass.cpp */,
+				F45237B31EBA20810029EAED /* Compass.hpp */,
+				F45237BE1EBA26E70029EAED /* SallyInfo.cpp */,
+				F45237BF1EBA26E70029EAED /* SallyInfo.hpp */,
+				F489FA061EBACABA0030EE85 /* FlagShip.cpp */,
+				F489FA071EBACABA0030EE85 /* FlagShip.hpp */,
+				F489FA0A1EBAE0A20030EE85 /* FormationSelecter.cpp */,
+				F489FA0B1EBAE0A20030EE85 /* FormationSelecter.hpp */,
+			);
+			name = Sally;
+			sourceTree = "<group>";
+		};
+		F45237A51EBA1F580029EAED /* Misson */ = {
+			isa = PBXGroup;
+			children = (
+				F45237A61EBA1F660029EAED /* MissionNode.cpp */,
+				F45237A71EBA1F660029EAED /* MissionNode.hpp */,
+				F45237AA1EBA1F700029EAED /* MissonUnit.cpp */,
+				F45237AB1EBA1F700029EAED /* MissonUnit.hpp */,
+				F45237AE1EBA1FD20029EAED /* MissonSelectPage.cpp */,
+				F45237AF1EBA1FD20029EAED /* MissonSelectPage.hpp */,
+				F489FA021EBAC81F0030EE85 /* Misson.cpp */,
+				F489FA031EBAC81F0030EE85 /* Misson.hpp */,
+				F4B97A2B1EBF29DC0053EE42 /* MissonLoader.cpp */,
+				F4B97A2C1EBF29DC0053EE42 /* MissonLoader.hpp */,
+			);
+			name = Misson;
+			sourceTree = "<group>";
+		};
 		F476D34C1C8DE5A800A1B8EB /* ShowPolygonLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1655,12 +2035,114 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B979C41EBE08460053EE42 /* MissionNode.hpp in Sources */,
+				F4B979C51EBE08460053EE42 /* MissonUnit.hpp in Sources */,
+				F4B979C61EBE08460053EE42 /* MissonSelectPage.hpp in Sources */,
+				F4B979C71EBE08460053EE42 /* Misson.hpp in Sources */,
+				F4B979C81EBE08460053EE42 /* SallyScene.hpp in Sources */,
+				F4B979C91EBE08460053EE42 /* SallyShip.hpp in Sources */,
+				F4B979CA1EBE08460053EE42 /* SallyPanel.hpp in Sources */,
+				F4B979CB1EBE08460053EE42 /* Formation.hpp in Sources */,
+				F4B979CC1EBE08460053EE42 /* Compass.hpp in Sources */,
+				F4B979CD1EBE08460053EE42 /* SallyInfo.hpp in Sources */,
+				F4B979CE1EBE08460053EE42 /* FlagShip.hpp in Sources */,
+				F4B979CF1EBE08460053EE42 /* FormationSelecter.hpp in Sources */,
+				F4B979D01EBE08460053EE42 /* BattleFleetInfo.hpp in Sources */,
+				F4B979D11EBE08460053EE42 /* BattleKantai.hpp in Sources */,
+				F4B979D21EBE08460053EE42 /* BattleEquip.hpp in Sources */,
+				F4B979D31EBE08460053EE42 /* BattlePanel.hpp in Sources */,
+				F4B979D41EBE08460053EE42 /* BattleEnemy.hpp in Sources */,
+				F4B979D51EBE08460053EE42 /* BattleCharacter.hpp in Sources */,
+				F4B979D61EBE08460053EE42 /* BattleScene.hpp in Sources */,
+				F4B979D71EBE08460053EE42 /* BattleInfo.hpp in Sources */,
+				F4B979D81EBE08460053EE42 /* BattleBar.hpp in Sources */,
+				F4B979D91EBE08460053EE42 /* BattleKantaiInfo.hpp in Sources */,
+				F4B979DA1EBE08460053EE42 /* BattleEnemyInfo.hpp in Sources */,
+				F4B979DB1EBE08460053EE42 /* BattleCharacterInfo.hpp in Sources */,
+				F4B979DC1EBE08460053EE42 /* BattleEquipInfo.hpp in Sources */,
+				F4B979DD1EBE08460053EE42 /* AnimationMaker.hpp in Sources */,
+				F4B979DE1EBE08460053EE42 /* BattleAvatarCard.hpp in Sources */,
+				F4B979DF1EBE08460053EE42 /* Panel.hpp in Sources */,
+				F4B979E01EBE08460053EE42 /* tinaMacros.hpp in Sources */,
+				F4B979E11EBE08460053EE42 /* TinaMgr.hpp in Sources */,
+				F4B979E21EBE08460053EE42 /* TinaConfig.hpp in Sources */,
+				F4B979E31EBE08460053EE42 /* MathUtil.hpp in Sources */,
+				F4B979E41EBE08460053EE42 /* metaphysics.hpp in Sources */,
+				F4B979E51EBE08460053EE42 /* arsenal.hpp in Sources */,
+				F4B979E61EBE08460053EE42 /* dock.hpp in Sources */,
+				F4B979E71EBE08460053EE42 /* TimerMgr.hpp in Sources */,
+				F4B979E81EBE08460053EE42 /* TimeUtil.hpp in Sources */,
+				F4B979E91EBE08460053EE42 /* KantaiMgr.hpp in Sources */,
+				F4B979EA1EBE08460053EE42 /* loadTxt.hpp in Sources */,
+				F4B979EB1EBE08460053EE42 /* EquipMgr.hpp in Sources */,
+				F4B979EC1EBE08460053EE42 /* ExpMgr.hpp in Sources */,
+				F4B979ED1EBE08460053EE42 /* RepairFactorMgr.hpp in Sources */,
+				F4B979EE1EBE08460053EE42 /* EquipPicMgr.hpp in Sources */,
+				F4B979EF1EBE08460053EE42 /* dockDB.hpp in Sources */,
+				F4B979F01EBE08460053EE42 /* arsenalDB.hpp in Sources */,
+				F4B979F11EBE08460053EE42 /* EventPauseGuard.hpp in Sources */,
+				F4B979F21EBE08460053EE42 /* BundleMgr.hpp in Sources */,
+				F4B979F31EBE08460053EE42 /* ViewMgr.hpp in Sources */,
+				F4B979F41EBE08460053EE42 /* ViewMgrMacro.hpp in Sources */,
+				F4B979F51EBE08460053EE42 /* ViewMgrFactory.hpp in Sources */,
+				F4B979F61EBE08460053EE42 /* DataMgr.hpp in Sources */,
+				F4B979F71EBE08460053EE42 /* DataBaseMgr.hpp in Sources */,
+				F4B979F81EBE08460053EE42 /* Singleton.hpp in Sources */,
+				F4B979F91EBE08460053EE42 /* Sound.hpp in Sources */,
+				F4B979FA1EBE08460053EE42 /* kantaiCard.hpp in Sources */,
+				F4B979FB1EBE08460053EE42 /* EquipmentContainer.hpp in Sources */,
+				F4B979FC1EBE08460053EE42 /* KantaiDetailEntity.hpp in Sources */,
+				F4B979FD1EBE08460053EE42 /* SelecterUnit.hpp in Sources */,
+				F4B979FE1EBE08460053EE42 /* TimerEntity.hpp in Sources */,
+				F4B979FF1EBE08460053EE42 /* FleetButton.hpp in Sources */,
+				F4B97A001EBE08460053EE42 /* ListEntity.hpp in Sources */,
+				F4B97A011EBE08460053EE42 /* ListRow.hpp in Sources */,
+				F4B97A021EBE08460053EE42 /* PageSwitch.hpp in Sources */,
+				F4B97A031EBE08460053EE42 /* unitEntity.hpp in Sources */,
+				F4B97A041EBE08460053EE42 /* LayerCover.hpp in Sources */,
+				F4B97A051EBE08460053EE42 /* ShowPolygonLayer.hpp in Sources */,
+				F4B97A061EBE08460053EE42 /* ValueBar.hpp in Sources */,
+				F4B97A071EBE08460053EE42 /* MenuItemTouch.hpp in Sources */,
+				F4B97A081EBE08460053EE42 /* Star.hpp in Sources */,
+				F4B97A091EBE08460053EE42 /* HpBar.hpp in Sources */,
+				F4B97A0A1EBE08460053EE42 /* SoundPanel.hpp in Sources */,
+				F4B97A0B1EBE08460053EE42 /* SoundBar.hpp in Sources */,
+				F4B97A0C1EBE08460053EE42 /* RepairListEntity.hpp in Sources */,
+				F4B97A0D1EBE08460053EE42 /* RepairContainer.hpp in Sources */,
+				F4B97A0E1EBE08460053EE42 /* RepairHpBar.hpp in Sources */,
+				F4B97A0F1EBE08460053EE42 /* RepairListRow.hpp in Sources */,
+				F4B97A101EBE08460053EE42 /* RepairSelectEntity.hpp in Sources */,
+				F4B97A111EBE08460053EE42 /* PortUILayer.hpp in Sources */,
+				F4B97A121EBE08460053EE42 /* PortBgLayer.hpp in Sources */,
+				F4B97A131EBE08460053EE42 /* IndicatorBar.hpp in Sources */,
+				F4B97A141EBE08460053EE42 /* PortState.hpp in Sources */,
+				F4B97A151EBE08460053EE42 /* SoundPanelButton.hpp in Sources */,
+				F4B97A161EBE08460053EE42 /* TitlePic.hpp in Sources */,
+				F4B97A171EBE08460053EE42 /* signBoardGirl.hpp in Sources */,
+				F4B97A181EBE08460053EE42 /* MainLayerButton.hpp in Sources */,
+				F4B97A191EBE08460053EE42 /* furnitureBG.hpp in Sources */,
+				F4B97A1A1EBE08460053EE42 /* SupplyShipUnit.hpp in Sources */,
+				F4B97A1B1EBE08460053EE42 /* SupplyAmmoEntity.hpp in Sources */,
+				F4B97A1C1EBE08460053EE42 /* SupplyFuelEntity.hpp in Sources */,
+				F4B97A2D1EBF29DC0053EE42 /* MissonLoader.cpp in Sources */,
+				F4B97A1D1EBE08460053EE42 /* SupplyInfo.hpp in Sources */,
+				F4B97A1E1EBE08460053EE42 /* FactoryContainer.hpp in Sources */,
+				F4B97A1F1EBE08460053EE42 /* buildKantaiEntity.hpp in Sources */,
+				F4B97A201EBE08460053EE42 /* buildKantaiUnit.hpp in Sources */,
+				F4B97A211EBE08460053EE42 /* FactoryListEntity.hpp in Sources */,
+				F4B97A221EBE08460053EE42 /* KantaiDestroyEntity.hpp in Sources */,
+				F4B97A231EBE08460053EE42 /* KantaiListEntity.hpp in Sources */,
+				F4B97A241EBE08460053EE42 /* OrganizeContainer.hpp in Sources */,
+				F4B97A251EBE08460053EE42 /* OrganizeSelectEntity.hpp in Sources */,
+				F452379F1EBA1F190029EAED /* SallyScene.cpp in Sources */,
 				F44D26F11C4D1D2300438F3C /* database in Sources */,
 				F44D26C01C4D198400438F3C /* XMLBuilder.h in Sources */,
 				F44D26C11C4D198400438F3C /* XMLParser.h in Sources */,
 				F409531C1C99B0C100E9B958 /* LayerCover.cpp in Sources */,
 				F44D26C21C4D198400438F3C /* XMLBase.h in Sources */,
+				F489FA141EBB50E60030EE85 /* BattleKantai.cpp in Sources */,
 				F45FD1BA1D4D158000A445D7 /* EventPauseGuard.cpp in Sources */,
+				F45CECA61EBC242A00F2E7C1 /* BattleCharacter.cpp in Sources */,
 				F44D26C31C4D198400438F3C /* Player.h in Sources */,
 				F4D5D0891C5FAFDF001441C3 /* FactoryContainer.cpp in Sources */,
 				F432930F1D39967800B7167C /* PortBgLayer.cpp in Sources */,
@@ -1671,13 +2153,18 @@
 				F44D26C51C4D198400438F3C /* XMLControl.h in Sources */,
 				F42303CA1D2BCDF200B06189 /* BundleMgrExt.cpp in Sources */,
 				F40C1BB31C619A8F0093774E /* buildKantaiUnit.cpp in Sources */,
+				F45237B01EBA1FD20029EAED /* MissonSelectPage.cpp in Sources */,
 				F44D26C61C4D198400438F3C /* databaseBase.h in Sources */,
+				F45CECB21EBC253E00F2E7C1 /* BattleBar.cpp in Sources */,
+				F45CECBA1EBC5D3800F2E7C1 /* BattleEnemyInfo.cpp in Sources */,
 				F44D26C71C4D198400438F3C /* databaseInit.h in Sources */,
 				F44D26C81C4D198400438F3C /* equipDB.h in Sources */,
 				F43FFC861C5CE8F600C98BED /* RepairListEntity.cpp in Sources */,
 				F44D26C91C4D198400438F3C /* fleetDB.h in Sources */,
 				F44D26CA1C4D198400438F3C /* kantaiDB.h in Sources */,
+				F45237AC1EBA1F700029EAED /* MissonUnit.cpp in Sources */,
 				F44D26CB1C4D198400438F3C /* playerDB.h in Sources */,
+				F45237A81EBA1F660029EAED /* MissionNode.cpp in Sources */,
 				F42303C41D2BC4B500B06189 /* BundleMgr.cpp in Sources */,
 				F44D26CC1C4D198400438F3C /* AppDelegate.h in Sources */,
 				F44D26CD1C4D198400438F3C /* HelloWorldScene.h in Sources */,
@@ -1686,6 +2173,7 @@
 				F44D26CF1C4D198400438F3C /* Equip.h in Sources */,
 				F42ECDA21D2FF75600E09EA0 /* signBoardGirl.cpp in Sources */,
 				F44D26D01C4D198400438F3C /* Fleet.h in Sources */,
+				F45CEC9E1EBC240800F2E7C1 /* BattlePanel.cpp in Sources */,
 				F44D26D11C4D198400438F3C /* equipGrid.h in Sources */,
 				F44D26D21C4D198400438F3C /* SystemHeader.h in Sources */,
 				F4F956E91C5B9D7F001AA1B3 /* dockDB.cpp in Sources */,
@@ -1700,7 +2188,10 @@
 				F44D26E41C4D198400438F3C /* portFactoryLayer.h in Sources */,
 				F42DB8E61C599DCA00CBE2C7 /* EquipmentContainer.cpp in Sources */,
 				F43907A81C8B3E7A004B5B2D /* KantaiDestroyEntity.cpp in Sources */,
+				F45237B81EBA20970029EAED /* Formation.cpp in Sources */,
+				F489FA101EBB438C0030EE85 /* BattleFleetInfo.cpp in Sources */,
 				F44D26E51C4D198400438F3C /* portMainLayer.h in Sources */,
+				F489FA041EBAC81F0030EE85 /* Misson.cpp in Sources */,
 				F44D26E61C4D198400438F3C /* portOrganizeLayer.h in Sources */,
 				F4FABB101C50D42600F75BCE /* Singleton.cpp in Sources */,
 				F413B5471D508F92003E1967 /* SupplyInfo.cpp in Sources */,
@@ -1708,6 +2199,7 @@
 				F44D26E81C4D198400438F3C /* portRepairLayer.h in Sources */,
 				F43BD5F81D2ABE2F00B572C9 /* TinaMgr.cpp in Sources */,
 				F44D26E91C4D198400438F3C /* portScene.h in Sources */,
+				F489FA081EBACABA0030EE85 /* FlagShip.cpp in Sources */,
 				F44D26EA1C4D198400438F3C /* portSupplyLayer.h in Sources */,
 				F4D9C3661C860096002A93EC /* SupplyAmmoEntity.cpp in Sources */,
 				F44D26EB1C4D198400438F3C /* TestScene.h in Sources */,
@@ -1723,7 +2215,9 @@
 				F4036DC41BDA1FDD002788AA /* XMLParser.cpp in Sources */,
 				F4036DB61BDA1FDD002788AA /* portScene.cpp in Sources */,
 				F4AAFA041C5D0EEF006981BB /* RepairSelectEntity.cpp in Sources */,
+				F45237BC1EBA22EC0029EAED /* SallyShip.cpp in Sources */,
 				F4D5D0961C5FB08C001441C3 /* arsenalDB.cpp in Sources */,
+				F45CECB71EBC5D2800F2E7C1 /* BattleKantaiInfo.cpp in Sources */,
 				F4036DC01BDA1FDD002788AA /* XMLBuilder.cpp in Sources */,
 				F4A328421C847CA70048F939 /* SupplyShipUnit.cpp in Sources */,
 				F48253AF1D33EA0900165D61 /* MainLayerButton.cpp in Sources */,
@@ -1733,13 +2227,17 @@
 				F4FABB041C50D30600F75BCE /* KantaiMgr.cpp in Sources */,
 				F4D38E241C8746CB009BE55C /* ValueBar.cpp in Sources */,
 				F4036D881BDA1FDD002788AA /* equipGrid.cpp in Sources */,
+				F489FA181EBB513D0030EE85 /* BattleEquip.cpp in Sources */,
 				F4F956CC1C5B5E49001AA1B3 /* TimerEntity.cpp in Sources */,
 				F439079B1C8B373B004B5B2D /* ListEntity.cpp in Sources */,
 				F4F956E51C5B9D4C001AA1B3 /* dock.cpp in Sources */,
+				F45CECC21EBC975000F2E7C1 /* AnimationMaker.cpp in Sources */,
 				F4D5D0921C5FB073001441C3 /* arsenal.cpp in Sources */,
 				F4D38E1B1C871AB9009BE55C /* SupplyFuelEntity.cpp in Sources */,
 				F4036D841BDA1FDD002788AA /* Equip.cpp in Sources */,
+				F45237B41EBA20810029EAED /* Compass.cpp in Sources */,
 				F41D54971D2A915B0094CAAD /* Sound.cpp in Sources */,
+				F45CECAE1EBC243F00F2E7C1 /* BattleInfo.cpp in Sources */,
 				F4036D821BDA1FDD002788AA /* DatabaseScene.cpp in Sources */,
 				F4036D781BDA1FDD002788AA /* AppDelegate.cpp in Sources */,
 				F42DB8F91C5A30EB00CBE2C7 /* HpBar.cpp in Sources */,
@@ -1747,6 +2245,8 @@
 				F427A4A51D619484001C6B45 /* TimeUtil.cpp in Sources */,
 				F40C4FC31C5BCF89000FAA89 /* RepairFactorMgr.cpp in Sources */,
 				F4036DB41BDA1FDD002788AA /* portRepairLayer.cpp in Sources */,
+				F45237C01EBA26E70029EAED /* SallyInfo.cpp in Sources */,
+				F45CECCA1EBDBBED00F2E7C1 /* BattleEquipInfo.cpp in Sources */,
 				F4938B681C60999100AB1286 /* metaphysics.cpp in Sources */,
 				F4D793681D7502F100111A0D /* PageSwitch.cpp in Sources */,
 				F42303D91D2C049E00B06189 /* ViewMgr.cpp in Sources */,
@@ -1762,11 +2262,14 @@
 				F4305CE41D653B2D00B20CF4 /* DataBaseMgr.cpp in Sources */,
 				F476D34F1C8DE5BA00A1B8EB /* ShowPolygonLayer.cpp in Sources */,
 				F4036D941BDA1FDD002788AA /* kantaiDB.cpp in Sources */,
+				F45CECAA1EBC243600F2E7C1 /* BattleScene.cpp in Sources */,
 				F4036D9A1BDA1FDD002788AA /* layerSelecter.cpp in Sources */,
 				F432930A1D3993F600B7167C /* PortUILayer.cpp in Sources */,
 				F4FABB0A1C50D36C00F75BCE /* EquipMgr.cpp in Sources */,
+				F45CECA21EBC241600F2E7C1 /* BattleEnemy.cpp in Sources */,
 				F4FABB0D1C50D3E400F75BCE /* ExpMgr.cpp in Sources */,
 				F4A328471C84AA790048F939 /* FleetButton.cpp in Sources */,
+				F45CECC61EBCC56F00F2E7C1 /* BattleAvatarCard.cpp in Sources */,
 				F4036D8C1BDA1FDD002788AA /* Fleet.cpp in Sources */,
 				F40C4FCD1C5BDA78000FAA89 /* EquipPicMgr.cpp in Sources */,
 				F4036D981BDA1FDD002788AA /* kantai.cpp in Sources */,
@@ -1774,14 +2277,18 @@
 				F40CF97F1BDB4D1E00DD897F /* XMLBase.cpp in Sources */,
 				F41E32051D3A904D00B679E0 /* Panel.cpp in Sources */,
 				F4036DAC1BDA1FDD002788AA /* portFactoryLayer.cpp in Sources */,
+				F45CECBE1EBC5D4400F2E7C1 /* BattleCharacterInfo.cpp in Sources */,
 				F4036DB01BDA1FDD002788AA /* portOrganizeLayer.cpp in Sources */,
+				F45237A31EBA1F240029EAED /* SallyPanel.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				F41E320D1D3A911600B679E0 /* SoundBar.cpp in Sources */,
 				F43BD5FC1D2ABE5800B572C9 /* TinaConfig.cpp in Sources */,
 				F4036DC21BDA1FDD002788AA /* XMLControl.cpp in Sources */,
 				F481896C1C58AFC500A0D0F5 /* OrganizeContainer.cpp in Sources */,
 				F43907A41C8B3E10004B5B2D /* FactoryListEntity.cpp in Sources */,
+				F4B97A291EBECE520053EE42 /* BattleMacro.cpp in Sources */,
 				F4036D861BDA1FDD002788AA /* equipDB.cpp in Sources */,
+				F489FA0C1EBAE0A20030EE85 /* FormationSelecter.cpp in Sources */,
 				F4036D901BDA1FDD002788AA /* HelloWorldScene.cpp in Sources */,
 				F4036DAA1BDA1FDD002788AA /* portBattleLayer.cpp in Sources */,
 				F413B5501D50A3C3003E1967 /* MathUtil.cpp in Sources */,
@@ -1795,13 +2302,104 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B9796F1EBE08230053EE42 /* MissionNode.hpp in Sources */,
+				F4B979701EBE08230053EE42 /* MissonUnit.hpp in Sources */,
+				F4B979711EBE08230053EE42 /* MissonSelectPage.hpp in Sources */,
+				F4B979721EBE08230053EE42 /* Misson.hpp in Sources */,
+				F4B979731EBE08230053EE42 /* SallyScene.hpp in Sources */,
+				F4B979741EBE08230053EE42 /* SallyShip.hpp in Sources */,
+				F4B979751EBE08230053EE42 /* SallyPanel.hpp in Sources */,
+				F4B979761EBE08230053EE42 /* Formation.hpp in Sources */,
+				F4B979771EBE08230053EE42 /* Compass.hpp in Sources */,
+				F4B979781EBE08230053EE42 /* SallyInfo.hpp in Sources */,
+				F4B979791EBE08230053EE42 /* FlagShip.hpp in Sources */,
+				F4B9797A1EBE08230053EE42 /* FormationSelecter.hpp in Sources */,
+				F4B9797B1EBE08230053EE42 /* BattleFleetInfo.hpp in Sources */,
+				F4B9797C1EBE08230053EE42 /* BattleKantai.hpp in Sources */,
+				F4B9797D1EBE08230053EE42 /* BattleEquip.hpp in Sources */,
+				F4B9797E1EBE08230053EE42 /* BattlePanel.hpp in Sources */,
+				F4B9797F1EBE08230053EE42 /* BattleEnemy.hpp in Sources */,
+				F4B979801EBE08230053EE42 /* BattleCharacter.hpp in Sources */,
+				F4B979811EBE08230053EE42 /* BattleScene.hpp in Sources */,
+				F4B979821EBE08230053EE42 /* BattleInfo.hpp in Sources */,
+				F4B979831EBE08230053EE42 /* BattleBar.hpp in Sources */,
+				F4B979841EBE08230053EE42 /* BattleKantaiInfo.cpp in Sources */,
+				F4B979851EBE08230053EE42 /* BattleKantaiInfo.hpp in Sources */,
+				F4B979861EBE08230053EE42 /* BattleEnemyInfo.hpp in Sources */,
+				F4B979871EBE08230053EE42 /* BattleCharacterInfo.hpp in Sources */,
+				F4B979881EBE08230053EE42 /* BattleEquipInfo.hpp in Sources */,
+				F4B979891EBE08230053EE42 /* AnimationMaker.hpp in Sources */,
+				F4B9798A1EBE08230053EE42 /* BattleAvatarCard.hpp in Sources */,
+				F4B9798B1EBE08230053EE42 /* Panel.hpp in Sources */,
+				F4B9798C1EBE08230053EE42 /* tinaMacros.hpp in Sources */,
+				F4B9798D1EBE08230053EE42 /* TinaMgr.hpp in Sources */,
+				F4B9798E1EBE08230053EE42 /* TinaConfig.hpp in Sources */,
+				F4B9798F1EBE08230053EE42 /* MathUtil.hpp in Sources */,
+				F4B979901EBE08230053EE42 /* metaphysics.hpp in Sources */,
+				F4B979911EBE08230053EE42 /* arsenal.hpp in Sources */,
+				F4B979921EBE08230053EE42 /* dock.hpp in Sources */,
+				F4B979931EBE08230053EE42 /* TimerMgr.hpp in Sources */,
+				F4B979941EBE08230053EE42 /* TimeUtil.hpp in Sources */,
+				F4B979951EBE08230053EE42 /* RepairFactorMgr.hpp in Sources */,
+				F4B979961EBE08230053EE42 /* EquipPicMgr.hpp in Sources */,
+				F4B979971EBE08230053EE42 /* dockDB.hpp in Sources */,
+				F4B979981EBE08230053EE42 /* arsenalDB.hpp in Sources */,
+				F4B979991EBE08230053EE42 /* EventPauseGuard.hpp in Sources */,
+				F4B9799A1EBE08230053EE42 /* BundleMgr.hpp in Sources */,
+				F4B9799B1EBE08230053EE42 /* ViewMgr.hpp in Sources */,
+				F4B9799C1EBE08230053EE42 /* ViewMgrMacro.hpp in Sources */,
+				F4B9799D1EBE08230053EE42 /* ViewMgrFactory.hpp in Sources */,
+				F4B97A2E1EBF29DC0053EE42 /* MissonLoader.cpp in Sources */,
+				F4B9799E1EBE08230053EE42 /* DataMgr.hpp in Sources */,
+				F4B9799F1EBE08230053EE42 /* DataBaseMgr.hpp in Sources */,
+				F4B979A01EBE08230053EE42 /* Sound.hpp in Sources */,
+				F4B979A11EBE08230053EE42 /* SelecterUnit.hpp in Sources */,
+				F4B979A21EBE08230053EE42 /* FleetButton.hpp in Sources */,
+				F4B979A31EBE08230053EE42 /* ListEntity.hpp in Sources */,
+				F4B979A41EBE08230053EE42 /* ListRow.hpp in Sources */,
+				F4B979A51EBE08230053EE42 /* PageSwitch.hpp in Sources */,
+				F4B979A61EBE08230053EE42 /* unitEntity.hpp in Sources */,
+				F4B979A71EBE08230053EE42 /* LayerCover.hpp in Sources */,
+				F4B979A81EBE08230053EE42 /* ShowPolygonLayer.hpp in Sources */,
+				F4B979A91EBE08230053EE42 /* ValueBar.hpp in Sources */,
+				F4B979AA1EBE08230053EE42 /* MenuItemTouch.hpp in Sources */,
+				F4B979AB1EBE08230053EE42 /* SoundPanel.hpp in Sources */,
+				F4B979AC1EBE08230053EE42 /* SoundBar.hpp in Sources */,
+				F4B979AD1EBE08230053EE42 /* RepairListEntity.hpp in Sources */,
+				F4B979AE1EBE08230053EE42 /* RepairHpBar.hpp in Sources */,
+				F4B979AF1EBE08230053EE42 /* RepairListRow.hpp in Sources */,
+				F4B979B01EBE08230053EE42 /* RepairSelectEntity.hpp in Sources */,
+				F4B979B11EBE08230053EE42 /* PortUILayer.hpp in Sources */,
+				F4B979B21EBE08230053EE42 /* PortBgLayer.hpp in Sources */,
+				F4B979B31EBE08230053EE42 /* IndicatorBar.hpp in Sources */,
+				F4B97A2A1EBECE520053EE42 /* BattleMacro.cpp in Sources */,
+				F4B979B41EBE08230053EE42 /* PortState.hpp in Sources */,
+				F4B979B51EBE08230053EE42 /* SoundPanelButton.hpp in Sources */,
+				F4B979B61EBE08230053EE42 /* TitlePic.hpp in Sources */,
+				F4B979B71EBE08230053EE42 /* signBoardGirl.hpp in Sources */,
+				F4B979B81EBE08230053EE42 /* MainLayerButton.hpp in Sources */,
+				F4B979B91EBE08230053EE42 /* furnitureBG.hpp in Sources */,
+				F4B979BA1EBE08230053EE42 /* SupplyShipUnit.hpp in Sources */,
+				F4B979BB1EBE08230053EE42 /* SupplyAmmoEntity.hpp in Sources */,
+				F4B979BC1EBE08230053EE42 /* SupplyFuelEntity.hpp in Sources */,
+				F4B979BD1EBE08230053EE42 /* SupplyInfo.hpp in Sources */,
+				F4B979BE1EBE08230053EE42 /* FactoryContainer.hpp in Sources */,
+				F4B979BF1EBE08230053EE42 /* buildKantaiEntity.hpp in Sources */,
+				F4B979C01EBE08230053EE42 /* buildKantaiUnit.hpp in Sources */,
+				F4B979C11EBE08230053EE42 /* FactoryListEntity.hpp in Sources */,
+				F4B979C21EBE08230053EE42 /* KantaiDestroyEntity.hpp in Sources */,
+				F4B979C31EBE08230053EE42 /* OrganizeSelectEntity.hpp in Sources */,
+				F489FA151EBB50E60030EE85 /* BattleKantai.cpp in Sources */,
 				F40C4FC91C5BDA6A000FAA89 /* RepairContainer.hpp in Sources */,
 				F40C4FCA1C5BDA6A000FAA89 /* TimerEntity.hpp in Sources */,
 				F4F956B31C5B49AD001AA1B3 /* Star.hpp in Sources */,
 				F4F956B41C5B49AD001AA1B3 /* HpBar.hpp in Sources */,
+				F45CECBF1EBC5D4400F2E7C1 /* BattleCharacterInfo.cpp in Sources */,
+				F45CECBB1EBC5D3800F2E7C1 /* BattleEnemyInfo.cpp in Sources */,
 				F4F956B51C5B49AD001AA1B3 /* kantaiCard.hpp in Sources */,
 				F4F956B61C5B49AD001AA1B3 /* KantaiDetailEntity.hpp in Sources */,
 				F4F956E61C5B9D4C001AA1B3 /* dock.cpp in Sources */,
+				F45237A41EBA1F240029EAED /* SallyPanel.cpp in Sources */,
 				F45FD1BB1D4D158000A445D7 /* EventPauseGuard.cpp in Sources */,
 				F4F956B71C5B49AD001AA1B3 /* EquipmentContainer.hpp in Sources */,
 				F4F956B81C5B49AD001AA1B3 /* KantaiListEntity.hpp in Sources */,
@@ -1811,6 +2409,7 @@
 				F41E32061D3A904D00B679E0 /* Panel.cpp in Sources */,
 				F4B173F61C545F4600D2BC1C /* Singleton.cpp in Sources */,
 				F4B173F71C545F4600D2BC1C /* Singleton.hpp in Sources */,
+				F45CEC9F1EBC240800F2E7C1 /* BattlePanel.cpp in Sources */,
 				F4B173F81C545F4600D2BC1C /* KantaiMgr.cpp in Sources */,
 				F4B173F91C545F4600D2BC1C /* KantaiMgr.hpp in Sources */,
 				F4B173FA1C545F4600D2BC1C /* loadTxt.cpp in Sources */,
@@ -1818,6 +2417,7 @@
 				F4F956EA1C5B9D7F001AA1B3 /* dockDB.cpp in Sources */,
 				F4B173FC1C545F4600D2BC1C /* EquipMgr.cpp in Sources */,
 				F4B173FD1C545F4600D2BC1C /* EquipMgr.hpp in Sources */,
+				F45237A91EBA1F660029EAED /* MissionNode.cpp in Sources */,
 				F4B173FE1C545F4600D2BC1C /* ExpMgr.cpp in Sources */,
 				F4F956CD1C5B5E49001AA1B3 /* TimerEntity.cpp in Sources */,
 				F427A4A61D619484001C6B45 /* TimeUtil.cpp in Sources */,
@@ -1833,8 +2433,11 @@
 				F40CF9901BDB7FDF00DD897F /* XMLBase.h in Sources */,
 				F43BD5FD1D2ABE5800B572C9 /* TinaConfig.cpp in Sources */,
 				F4036DFB1BDA2316002788AA /* XMLBuilder.cpp in Sources */,
+				F45CECAB1EBC243600F2E7C1 /* BattleScene.cpp in Sources */,
+				F45CECA71EBC242A00F2E7C1 /* BattleCharacter.cpp in Sources */,
 				F40B47A61D3E7DA8006F5375 /* PortState.cpp in Sources */,
 				F4D5D0931C5FB073001441C3 /* arsenal.cpp in Sources */,
+				F489FA0D1EBAE0A20030EE85 /* FormationSelecter.cpp in Sources */,
 				F4036DFC1BDA2316002788AA /* XMLBuilder.h in Sources */,
 				F43BD6041D2AC1B100B572C9 /* tinaMacros.cpp in Sources */,
 				F43FFC871C5CE8F600C98BED /* RepairListEntity.cpp in Sources */,
@@ -1853,10 +2456,13 @@
 				F481896D1C58AFC500A0D0F5 /* OrganizeContainer.cpp in Sources */,
 				F40C4FCE1C5BDA78000FAA89 /* EquipPicMgr.cpp in Sources */,
 				F4036E051BDA2316002788AA /* databaseBase.cpp in Sources */,
+				F45CECC31EBC975000F2E7C1 /* AnimationMaker.cpp in Sources */,
 				F4036E061BDA2316002788AA /* databaseBase.h in Sources */,
 				F4D38E1C1C871AB9009BE55C /* SupplyFuelEntity.cpp in Sources */,
 				F43FFC831C5CE8E500C98BED /* RepairListRow.cpp in Sources */,
+				F489FA051EBAC81F0030EE85 /* Misson.cpp in Sources */,
 				F4036E071BDA2316002788AA /* databaseInit.cpp in Sources */,
+				F45CECCB1EBDBBED00F2E7C1 /* BattleEquipInfo.cpp in Sources */,
 				F4D6CBEA1BF380210078C5C0 /* TestScene.cpp in Sources */,
 				F4F956C71C5B538E001AA1B3 /* RepairContainer.cpp in Sources */,
 				F4036E081BDA2316002788AA /* databaseInit.h in Sources */,
@@ -1870,17 +2476,23 @@
 				F42ECDA31D2FF75600E09EA0 /* signBoardGirl.cpp in Sources */,
 				F4036E0D1BDA2316002788AA /* kantaiDB.cpp in Sources */,
 				F4036E0E1BDA2316002788AA /* kantaiDB.h in Sources */,
+				F45237B11EBA1FD20029EAED /* MissonSelectPage.cpp in Sources */,
 				F413B5551D50A7DF003E1967 /* DataMgr.cpp in Sources */,
+				F45237A01EBA1F190029EAED /* SallyScene.cpp in Sources */,
 				F4036E0F1BDA2316002788AA /* playerDB.cpp in Sources */,
 				F413B5511D50A3C3003E1967 /* MathUtil.cpp in Sources */,
+				F489FA091EBACABA0030EE85 /* FlagShip.cpp in Sources */,
 				F4D38E201C8731EF009BE55C /* OrganizeSelectEntity.cpp in Sources */,
 				F4036E101BDA2316002788AA /* playerDB.h in Sources */,
 				F4036E111BDA2316002788AA /* AppDelegate.cpp in Sources */,
 				F4AAFA051C5D0EEF006981BB /* RepairSelectEntity.cpp in Sources */,
 				F4036E121BDA2316002788AA /* AppDelegate.h in Sources */,
+				F45237C11EBA26E70029EAED /* SallyInfo.cpp in Sources */,
 				F4BC4CAC1D2D242300374317 /* ViewMgrFactory.cpp in Sources */,
 				F4A328481C84AA790048F939 /* FleetButton.cpp in Sources */,
 				F4036E131BDA2316002788AA /* HelloWorldScene.cpp in Sources */,
+				F489FA111EBB438C0030EE85 /* BattleFleetInfo.cpp in Sources */,
+				F45CECC71EBCC56F00F2E7C1 /* BattleAvatarCard.cpp in Sources */,
 				F4036E141BDA2316002788AA /* HelloWorldScene.h in Sources */,
 				F4036E151BDA2316002788AA /* kantai.cpp in Sources */,
 				F413B5481D508F92003E1967 /* SupplyInfo.cpp in Sources */,
@@ -1890,6 +2502,7 @@
 				F42303CB1D2BCDF200B06189 /* BundleMgrExt.cpp in Sources */,
 				F4036E181BDA2316002788AA /* Equip.h in Sources */,
 				F4036E191BDA2316002788AA /* Fleet.cpp in Sources */,
+				F45237B51EBA20810029EAED /* Compass.cpp in Sources */,
 				F43293141D39974300B7167C /* IndicatorBar.cpp in Sources */,
 				F4036E1A1BDA2316002788AA /* Fleet.h in Sources */,
 				F4036E1B1BDA2316002788AA /* equipGrid.cpp in Sources */,
@@ -1904,12 +2517,17 @@
 				F40C4FC41C5BCF89000FAA89 /* RepairFactorMgr.cpp in Sources */,
 				F42303DA1D2C049E00B06189 /* ViewMgr.cpp in Sources */,
 				F4D38E251C8746CB009BE55C /* ValueBar.cpp in Sources */,
+				F45CECB31EBC253E00F2E7C1 /* BattleBar.cpp in Sources */,
 				F4D9C3671C860096002A93EC /* SupplyAmmoEntity.cpp in Sources */,
+				F45237BD1EBA22EC0029EAED /* SallyShip.cpp in Sources */,
 				F4A328431C847CA70048F939 /* SupplyShipUnit.cpp in Sources */,
+				F45CECAF1EBC243F00F2E7C1 /* BattleInfo.cpp in Sources */,
 				F41E320E1D3A911600B679E0 /* SoundBar.cpp in Sources */,
+				F45237B91EBA20970029EAED /* Formation.cpp in Sources */,
 				F48253B01D33EA0900165D61 /* MainLayerButton.cpp in Sources */,
 				F4D5D0971C5FB08C001441C3 /* arsenalDB.cpp in Sources */,
 				F445E9241D513E3C00855D10 /* TitlePic.cpp in Sources */,
+				F489FA191EBB513D0030EE85 /* BattleEquip.cpp in Sources */,
 				F439079C1C8B373B004B5B2D /* ListEntity.cpp in Sources */,
 				F4D4318F1D596A3C0042A780 /* unitEntity.cpp in Sources */,
 				F427A49C1D618DE2001C6B45 /* TimerMgr.cpp in Sources */,
@@ -1922,6 +2540,7 @@
 				F4036E301BDA2316002788AA /* portFactoryLayer.h in Sources */,
 				F4036E311BDA2316002788AA /* portMainLayer.cpp in Sources */,
 				F4036E321BDA2316002788AA /* portMainLayer.h in Sources */,
+				F45CECA31EBC241600F2E7C1 /* BattleEnemy.cpp in Sources */,
 				F4036E331BDA2316002788AA /* portOrganizeLayer.cpp in Sources */,
 				F4036E341BDA2316002788AA /* portOrganizeLayer.h in Sources */,
 				F43907A01C8B377E004B5B2D /* ListRow.cpp in Sources */,
@@ -1930,6 +2549,7 @@
 				F4036E371BDA2316002788AA /* portRepairLayer.cpp in Sources */,
 				F4036E381BDA2316002788AA /* portRepairLayer.h in Sources */,
 				F4036E391BDA2316002788AA /* portScene.cpp in Sources */,
+				F45237AD1EBA1F700029EAED /* MissonUnit.cpp in Sources */,
 				F4036E3A1BDA2316002788AA /* portScene.h in Sources */,
 				F4036E3B1BDA2316002788AA /* portSupplyLayer.cpp in Sources */,
 				F43FFC7E1C5CD6CB00C98BED /* RepairHpBar.cpp in Sources */,

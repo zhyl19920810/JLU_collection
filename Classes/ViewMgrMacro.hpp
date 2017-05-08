@@ -17,8 +17,8 @@ enum class SceneType
 {
     HOME=1001,
     LOGIN,
-    
-    
+    SALLY,
+    BATTLE,
     
     
     
@@ -36,6 +36,8 @@ enum class PanelType
     PORT_REPAIR,
     PORT_MAINLAYER,
     PORT_BATTLE,
+    SALLY_MAIN,
+    BATTLE_MAIN,
     
     SOUND=2001
 };

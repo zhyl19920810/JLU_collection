@@ -31,7 +31,7 @@ NS_KCL_BEGIN
 #define MAX_PLAYER_LV 100
 #define MAX_PLAYER_LV_EXP -1
 
-
+#define MAX_SHIPS_PER_FLEET 6
 
 ///kantai type
 typedef enum
@@ -194,6 +194,25 @@ typedef enum
     READ_KANTAI_DATABASE
 }LoadState;
 
+enum FormationType{
+    DanZong = 1,
+    FuZong = 2,
+    LunXing = 3,
+    TiXing = 4,
+    DanHeng = 5
+};
+
+enum CompassDirection
+{
+    compass_N,
+    compass_NE,
+    compass_E,
+    compass_SE,
+    compass_S,
+    compass_SW,
+    compass_W,
+    compass_NW
+};
 
 
 class NameResolution

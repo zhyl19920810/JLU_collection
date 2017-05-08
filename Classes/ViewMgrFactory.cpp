@@ -16,6 +16,10 @@
 #include "portOrganizeLayer.h"
 #include "portBattleLayer.h"
 #include "SoundPanel.hpp"
+#include "SallyPanel.hpp"
+#include "BattlePanel.hpp"
+#include "SallyScene.hpp"
+#include "BattleScene.hpp"
 
 
 NS_KCL_BEGIN
@@ -29,7 +33,13 @@ cocos2d::Scene* ViewMgrFactory::getScene(SceneType type,const cocos2d::Value& da
             _scene=PortScene::createScene();
             break;
         case SceneType::LOGIN:
-            
+            break;
+        case SceneType::SALLY:
+            _scene=SallyScene::create();
+            break;
+        case SceneType::BATTLE:
+            _scene=BattleScene::create();
+            break;
         default:
             break;
     }
@@ -66,6 +76,11 @@ Panel* ViewMgrFactory::getPanel(PanelType type,const cocos2d::Value& data)
         case PanelType::SOUND:
             _panel=SoundPanel::create();
             break;
+        case PanelType::SALLY_MAIN:
+            _panel=SallyPanel::create();
+            break;
+        case PanelType::BATTLE_MAIN:
+            
         default:
             break;
     }

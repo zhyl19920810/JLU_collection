@@ -10,8 +10,8 @@
 #include "SoundBar.hpp"
 #include "LayerCover.hpp"
 
-
 NS_KCL_BEGIN
+
 
 USING_NS_CC;
 
@@ -56,7 +56,6 @@ bool SoundPanel::init()
     
     return bRet;
 }
-
 
 
 void SoundPanel::sceneCallback(cocos2d::Ref *ref)

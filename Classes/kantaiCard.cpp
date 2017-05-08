@@ -21,7 +21,7 @@ bool KantaiCard::init()
     bool bRet=false;
     do
     {
-        this->isEnemy = false;
+        m_bIsEnemy = false;
         mainImage = Sprite::create();
         shader = Sprite::create();
         brokenMark = Sprite::create();
@@ -37,7 +37,7 @@ bool KantaiCard::init()
 
 void KantaiCard::updateCard(Kantai* kantai,bool isEnemy)
 {
-    this->isEnemy=isEnemy;
+    m_bIsEnemy=isEnemy;
     char name[30];
     bzero(name, sizeof(name));
     BrokenType type=kantai->getBrokenType();
