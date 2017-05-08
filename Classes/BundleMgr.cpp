@@ -27,8 +27,8 @@
 #include "EquipPicMgr.hpp"
 #include "RepairFactorMgr.hpp"
 #include "TimerMgr.hpp"
-
 #include "DataBaseMgr.hpp"
+#include "MissonLoader.hpp"
 
 
 NS_KCL_BEGIN
@@ -104,6 +104,8 @@ void BundleMgr::onDestroy()
     EquipMgr::delInstance();
     KantaiMgr::delInstance();
     tina::TinaMgr::destroy();
+    MissonLoader::delInstance();
+    
 }
 
 void BundleMgr::LoadConfig()
@@ -118,6 +120,7 @@ void BundleMgr::LoadConfig()
     sExpMgr.loadConf();
     sEquipPicMgr.loadConf();
     sRepairFactorMgr.loadConf();
+    MissonLoader::getInstance();
 }
 
 

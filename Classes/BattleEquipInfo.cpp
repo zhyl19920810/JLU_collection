@@ -33,6 +33,11 @@ BattleEquipInfo* BattleEquipInfo::create(int equipNumber)
 }
 
 
+BattleEquipInfo::BattleEquipInfo()
+{
+    
+}
+
 
 bool BattleEquipInfo::init(int equipNumber)
 {

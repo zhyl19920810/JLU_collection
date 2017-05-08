@@ -564,6 +564,13 @@
 		F4BC4CAB1D2D242300374317 /* ViewMgrFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4BC4CA91D2D242300374317 /* ViewMgrFactory.cpp */; };
 		F4BC4CAC1D2D242300374317 /* ViewMgrFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4BC4CA91D2D242300374317 /* ViewMgrFactory.cpp */; };
 		F4C0E81F1D4267D100E345CB /* shader in Resources */ = {isa = PBXBuildFile; fileRef = F4C0E81E1D4267D100E345CB /* shader */; };
+		F4CE00F81EC06D69008D4DB0 /* BattleMain in Resources */ = {isa = PBXBuildFile; fileRef = F4CE00F11EC06D66008D4DB0 /* BattleMain */; };
+		F4CE00F91EC06D69008D4DB0 /* RemodelMain in Resources */ = {isa = PBXBuildFile; fileRef = F4CE00F31EC06D67008D4DB0 /* RemodelMain */; };
+		F4CE00FA1EC06D69008D4DB0 /* SallyMain in Resources */ = {isa = PBXBuildFile; fileRef = F4CE00F51EC06D68008D4DB0 /* SallyMain */; };
+		F4CE00FB1EC06D69008D4DB0 /* TitleMain in Resources */ = {isa = PBXBuildFile; fileRef = F4CE00F71EC06D68008D4DB0 /* TitleMain */; };
+		F4CE01001EC07E4F008D4DB0 /* btxt_flat in Resources */ = {isa = PBXBuildFile; fileRef = F4CE00FD1EC07E4E008D4DB0 /* btxt_flat */; };
+		F4CE01011EC07E4F008D4DB0 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = F4CE00FE1EC07E4E008D4DB0 /* Data */; };
+		F4CE01021EC07E4F008D4DB0 /* item_up in Resources */ = {isa = PBXBuildFile; fileRef = F4CE00FF1EC07E4F008D4DB0 /* item_up */; };
 		F4D38E1B1C871AB9009BE55C /* SupplyFuelEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */; };
 		F4D38E1C1C871AB9009BE55C /* SupplyFuelEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */; };
 		F4D38E1F1C8731EF009BE55C /* OrganizeSelectEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E1D1C8731EF009BE55C /* OrganizeSelectEntity.cpp */; };
@@ -945,6 +952,17 @@
 		F4BC4CA91D2D242300374317 /* ViewMgrFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ViewMgrFactory.cpp; sourceTree = "<group>"; };
 		F4BC4CAA1D2D242300374317 /* ViewMgrFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ViewMgrFactory.hpp; sourceTree = "<group>"; };
 		F4C0E81E1D4267D100E345CB /* shader */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shader; path = ../Resources/shader; sourceTree = "<group>"; };
+		F4CE00F01EC06D66008D4DB0 /* ArsenalMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ArsenalMain; path = ../Resources/ArsenalMain; sourceTree = "<group>"; };
+		F4CE00F11EC06D66008D4DB0 /* BattleMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BattleMain; path = ../Resources/BattleMain; sourceTree = "<group>"; };
+		F4CE00F21EC06D67008D4DB0 /* PortMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PortMain; path = ../Resources/PortMain; sourceTree = "<group>"; };
+		F4CE00F31EC06D67008D4DB0 /* RemodelMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RemodelMain; path = ../Resources/RemodelMain; sourceTree = "<group>"; };
+		F4CE00F41EC06D67008D4DB0 /* RepairMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RepairMain; path = ../Resources/RepairMain; sourceTree = "<group>"; };
+		F4CE00F51EC06D68008D4DB0 /* SallyMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SallyMain; path = ../Resources/SallyMain; sourceTree = "<group>"; };
+		F4CE00F61EC06D68008D4DB0 /* SupplyMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SupplyMain; path = ../Resources/SupplyMain; sourceTree = "<group>"; };
+		F4CE00F71EC06D68008D4DB0 /* TitleMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = TitleMain; path = ../Resources/TitleMain; sourceTree = "<group>"; };
+		F4CE00FD1EC07E4E008D4DB0 /* btxt_flat */ = {isa = PBXFileReference; lastKnownFileType = folder; name = btxt_flat; path = ../Resources/btxt_flat; sourceTree = "<group>"; };
+		F4CE00FE1EC07E4E008D4DB0 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../Resources/Data; sourceTree = "<group>"; };
+		F4CE00FF1EC07E4F008D4DB0 /* item_up */ = {isa = PBXFileReference; lastKnownFileType = folder; name = item_up; path = ../Resources/item_up; sourceTree = "<group>"; };
 		F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SupplyFuelEntity.cpp; sourceTree = "<group>"; };
 		F4D38E1A1C871AB9009BE55C /* SupplyFuelEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SupplyFuelEntity.hpp; sourceTree = "<group>"; };
 		F4D38E1D1C8731EF009BE55C /* OrganizeSelectEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OrganizeSelectEntity.cpp; sourceTree = "<group>"; };
@@ -1073,6 +1091,17 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				F4CE00FD1EC07E4E008D4DB0 /* btxt_flat */,
+				F4CE00FE1EC07E4E008D4DB0 /* Data */,
+				F4CE00FF1EC07E4F008D4DB0 /* item_up */,
+				F4CE00F01EC06D66008D4DB0 /* ArsenalMain */,
+				F4CE00F11EC06D66008D4DB0 /* BattleMain */,
+				F4CE00F21EC06D67008D4DB0 /* PortMain */,
+				F4CE00F31EC06D67008D4DB0 /* RemodelMain */,
+				F4CE00F41EC06D67008D4DB0 /* RepairMain */,
+				F4CE00F51EC06D68008D4DB0 /* SallyMain */,
+				F4CE00F61EC06D68008D4DB0 /* SupplyMain */,
+				F4CE00F71EC06D68008D4DB0 /* TitleMain */,
 				F48B1B071D4806BF0078E23E /* sound */,
 				F4C0E81E1D4267D100E345CB /* shader */,
 				F42303CE1D2BEC0C00B06189 /* Resources */,
@@ -1957,15 +1986,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4CE01001EC07E4F008D4DB0 /* btxt_flat in Resources */,
+				F4CE01011EC07E4F008D4DB0 /* Data in Resources */,
+				F4CE01021EC07E4F008D4DB0 /* item_up in Resources */,
+				F47CEB121C63402B008600E7 /* ArsenalMain in Resources */,
+				F4CE00F81EC06D69008D4DB0 /* BattleMain in Resources */,
+				F4B926CE1C55FA74005DB127 /* PortMain in Resources */,
+				F4CE00F91EC06D69008D4DB0 /* RemodelMain in Resources */,
+				F47CEB131C63402B008600E7 /* RepairMain in Resources */,
+				F4CE00FA1EC06D69008D4DB0 /* SallyMain in Resources */,
+				F4B926CF1C55FA74005DB127 /* SupplyMain in Resources */,
+				F4CE00FB1EC06D69008D4DB0 /* TitleMain in Resources */,
 				F48B1B081D4806F50078E23E /* sound in Resources */,
 				F4C0E81F1D4267D100E345CB /* shader in Resources */,
-				F47CEB121C63402B008600E7 /* ArsenalMain in Resources */,
-				F47CEB131C63402B008600E7 /* RepairMain in Resources */,
 				F4EFACC01C574DD4000FFF74 /* CommonAssets in Resources */,
 				F481897B1C5912F700A0D0F5 /* OrganizeMain in Resources */,
 				F42DB8EE1C59B10100CBE2C7 /* icons in Resources */,
-				F4B926CE1C55FA74005DB127 /* PortMain in Resources */,
-				F4B926CF1C55FA74005DB127 /* SupplyMain in Resources */,
 				F4FABB301C51368200F75BCE /* csv in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				F4014AF31BF0E8A100C9C5AE /* equip in Resources */,

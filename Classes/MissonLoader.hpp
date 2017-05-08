@@ -33,19 +33,24 @@ class MissonLoader
 public :
     static MissonLoader* getInstance()
     {
+        
         if (instance == NULL)
-            instance = new MissonLoader();
+        {
+            instance=new MissonLoader();
+            instance->init();
+        }
         return instance;
     }
     Mission*               LoadMissionInfo(std::string id);
     BattleCharacterInfo*   LoadCharacterInfo(std::string id);
     std::string GetStringByName(std::string name);
     
-    
+    void parse();
+    static void delInstance();
 private:
+    bool init();
     MissonLoader();
     static MissonLoader *instance;
-    //tinyxml2::XMLDocument missionDoc;
     tinyxml2::XMLDocument missionDoc;
     tinyxml2::XMLElement* FindNodeByName(std::string name, ScriptType type);
 };

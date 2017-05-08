@@ -16,6 +16,37 @@ NS_KCL_BEGIN
 
 MissonLoader* MissonLoader::instance=NULL;
 
+void MissonLoader::parse()
+{
+    ssize_t bufferSize = 0;
+    std::string xmlFile4 = FileUtils::getInstance()->fullPathForFilename("Data/Mission.xml").c_str();
+    unsigned char* pBuffer4 = FileUtils::sharedFileUtils()->getFileData(xmlFile4.c_str(), "rb", &bufferSize);
+    missionDoc.Parse((const char*)pBuffer4);
+}
+
+void MissonLoader::delInstance()
+{
+    delete instance;
+}
+
+MissonLoader::MissonLoader()
+{
+    
+}
+
+bool MissonLoader::init()
+{
+    bool bRet=false;
+    do
+    {
+        parse();
+        bRet=true;
+    }while(0);
+    
+    return bRet;
+}
+
+
 
 Mission* MissonLoader::LoadMissionInfo(std::string id)
 {

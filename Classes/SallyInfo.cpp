@@ -7,6 +7,8 @@
 //
 
 #include "SallyInfo.hpp"
+#include "MissonLoader.hpp"
+#include "Misson.hpp"
 
 
 NS_KCL_BEGIN
@@ -27,7 +29,6 @@ SallyInfo* SallyInfo::create()
 
 bool SallyInfo::init()
 {
-    m_pMission=NULL;///这里需要改
     // this->currentMissionNode = mission->nodes[0];
     
     m_Status=SALLY_START;
@@ -36,6 +37,8 @@ bool SallyInfo::init()
 
 void SallyInfo::SetMission(int areaId, int index)
 {
+    string strTmp=std::to_string(areaId)+"-"+std::to_string(index);
+    m_pMission=MissonLoader::getInstance()->LoadMissionInfo(strTmp);
     
 }
 

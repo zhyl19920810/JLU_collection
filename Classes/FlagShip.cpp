@@ -14,7 +14,7 @@ NS_KCL_BEGIN
 bool FlagShip::init()
 {
     std::string resource=std::to_string(sPlayer.getFlagShip()->getKantaiNumber());
-    m_pShipImage=Sprite::create("Character/" + resource + "/image 17.png");
+    m_pShipImage=Sprite::create("kantai/" + resource + "/image 17.png");
     addChild(m_pShipImage);
     
     return true;

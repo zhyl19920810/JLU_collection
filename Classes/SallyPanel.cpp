@@ -48,14 +48,15 @@ void SallyPanel::InitBg()
     bgImg->setPosition(400, 240);
     bgImg->setOpacity(0);
     addChild(bgImg);
-    sallyMap = Sprite::create("Map/" +m_SallyInfo->GetMissionName()+ "/image 1.png");
+
+    sallyMap=Sprite::create();
     addChild(sallyMap);
     sallyMap->setPosition(400, 240);
     sallyMap->setOpacity(0);
     
-    m_pFlagShip=FlagShip::create();
-    m_pFlagShip->setZOrder(1);
-    m_pFlagShip->setVisible(false);
+    m_pSallyShip=SallyShip::create();
+    m_pSallyShip->setZOrder(1);
+    m_pSallyShip->setVisible(false);
     
     
     m_pFlagShip=FlagShip::create();
@@ -291,6 +292,7 @@ void SallyPanel::SetFormationCallback(Ref* pSender, FormationType formation)
 void SallyPanel::SetMission(int areaId, int index)
 {
     m_SallyInfo->SetMission(areaId, index);
+    sallyMap->setTexture("Map/" +m_SallyInfo->GetMissionName()+ "/image 1.png");
 }
 
 
