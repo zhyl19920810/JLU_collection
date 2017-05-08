@@ -42,16 +42,16 @@ bool MissionSelectPage::init()
         m_pContainer4->updateContainer(m_iCurrentArea, 3);
         
 
-        MenuItem*  missionButton1 = MenuItemSprite::create(Sprite::create("SallyMain/image 481.png"), Sprite::create("SallyMain/image 481.png"),CC_CALLBACK_1(MissionSelectPage::StartMission,this,0));
+        MenuItem*  missionButton1 = MenuItemSprite::create(Sprite::create("SallyMain/image 481.png"), Sprite::create("SallyMain/image 481.png"),CC_CALLBACK_1(MissionSelectPage::StartMission,this,1));
         missionButton1->setPosition(290, 280);
         
-        MenuItem*  missionButton2 = MenuItemSprite::create(Sprite::create("SallyMain/image 481.png"), Sprite::create("SallyMain/image 481.png"), CC_CALLBACK_1(MissionSelectPage::StartMission, this, 1));
+        MenuItem*  missionButton2 = MenuItemSprite::create(Sprite::create("SallyMain/image 481.png"), Sprite::create("SallyMain/image 481.png"), CC_CALLBACK_1(MissionSelectPage::StartMission, this, 2));
         missionButton2->setPosition(620, 280);
         
-        MenuItem*  missionButton3 = MenuItemSprite::create(Sprite::create("SallyMain/image 481.png"), Sprite::create("SallyMain/image 481.png"), CC_CALLBACK_1(MissionSelectPage::StartMission, this, 2));
+        MenuItem*  missionButton3 = MenuItemSprite::create(Sprite::create("SallyMain/image 481.png"), Sprite::create("SallyMain/image 481.png"), CC_CALLBACK_1(MissionSelectPage::StartMission, this, 3));
         missionButton3->setPosition(290, 140);
         
-        MenuItem*  missionButton4 = MenuItemSprite::create(Sprite::create("SallyMain/image 481.png"), Sprite::create("SallyMain/image 481.png"), CC_CALLBACK_1(MissionSelectPage::StartMission, this, 3));
+        MenuItem*  missionButton4 = MenuItemSprite::create(Sprite::create("SallyMain/image 481.png"), Sprite::create("SallyMain/image 481.png"), CC_CALLBACK_1(MissionSelectPage::StartMission, this, 4));
         missionButton4->setPosition(620, 140);
         
         

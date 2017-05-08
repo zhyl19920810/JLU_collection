@@ -571,6 +571,7 @@
 		F4CE01001EC07E4F008D4DB0 /* btxt_flat in Resources */ = {isa = PBXBuildFile; fileRef = F4CE00FD1EC07E4E008D4DB0 /* btxt_flat */; };
 		F4CE01011EC07E4F008D4DB0 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = F4CE00FE1EC07E4E008D4DB0 /* Data */; };
 		F4CE01021EC07E4F008D4DB0 /* item_up in Resources */ = {isa = PBXBuildFile; fileRef = F4CE00FF1EC07E4F008D4DB0 /* item_up */; };
+		F4CE01061EC0CD82008D4DB0 /* Map in Resources */ = {isa = PBXBuildFile; fileRef = F4CE01051EC0CD81008D4DB0 /* Map */; };
 		F4D38E1B1C871AB9009BE55C /* SupplyFuelEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */; };
 		F4D38E1C1C871AB9009BE55C /* SupplyFuelEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */; };
 		F4D38E1F1C8731EF009BE55C /* OrganizeSelectEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D38E1D1C8731EF009BE55C /* OrganizeSelectEntity.cpp */; };
@@ -963,6 +964,7 @@
 		F4CE00FD1EC07E4E008D4DB0 /* btxt_flat */ = {isa = PBXFileReference; lastKnownFileType = folder; name = btxt_flat; path = ../Resources/btxt_flat; sourceTree = "<group>"; };
 		F4CE00FE1EC07E4E008D4DB0 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = ../Resources/Data; sourceTree = "<group>"; };
 		F4CE00FF1EC07E4F008D4DB0 /* item_up */ = {isa = PBXFileReference; lastKnownFileType = folder; name = item_up; path = ../Resources/item_up; sourceTree = "<group>"; };
+		F4CE01051EC0CD81008D4DB0 /* Map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Map; path = ../Resources/Map; sourceTree = "<group>"; };
 		F4D38E191C871AB9009BE55C /* SupplyFuelEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SupplyFuelEntity.cpp; sourceTree = "<group>"; };
 		F4D38E1A1C871AB9009BE55C /* SupplyFuelEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SupplyFuelEntity.hpp; sourceTree = "<group>"; };
 		F4D38E1D1C8731EF009BE55C /* OrganizeSelectEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OrganizeSelectEntity.cpp; sourceTree = "<group>"; };
@@ -1091,6 +1093,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				F4CE01051EC0CD81008D4DB0 /* Map */,
 				F4CE00FD1EC07E4E008D4DB0 /* btxt_flat */,
 				F4CE00FE1EC07E4E008D4DB0 /* Data */,
 				F4CE00FF1EC07E4F008D4DB0 /* item_up */,
@@ -1986,6 +1989,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4CE01061EC0CD82008D4DB0 /* Map in Resources */,
 				F4CE01001EC07E4F008D4DB0 /* btxt_flat in Resources */,
 				F4CE01011EC07E4F008D4DB0 /* Data in Resources */,
 				F4CE01021EC07E4F008D4DB0 /* item_up in Resources */,

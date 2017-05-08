@@ -57,6 +57,7 @@ void SallyPanel::InitBg()
     m_pSallyShip=SallyShip::create();
     m_pSallyShip->setZOrder(1);
     m_pSallyShip->setVisible(false);
+    addChild(m_pSallyShip);
     
     
     m_pFlagShip=FlagShip::create();

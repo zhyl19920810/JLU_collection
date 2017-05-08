@@ -24,7 +24,7 @@
         <url>image 3.png</url>
         <position></position>
       </arrow>
-      <enemy>DO</enemy>
+      <enemy>10</enemy>
     </Node>
     <Node>
       <index>2</index>
@@ -33,7 +33,7 @@
       <positionY>365</positionY>
       <parent>1</parent>
       <direction>NE</direction>
-      <enemy>DO#DO#DO</enemy>
+      <enemy>10#10#10</enemy>
     </Node>
     <Node>
       <index>3</index>
@@ -42,7 +42,7 @@
       <positionY>215</positionY>
       <parent>1</parent>
       <direction>SE</direction>
-      <enemy>LI#DO#DO#HO</enemy>
+      <enemy>11#10#10#12</enemy>
     </Node>
    </Mission>
   <Mission>

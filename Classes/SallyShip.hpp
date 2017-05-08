@@ -24,12 +24,9 @@ public:
     
     virtual bool init() override;
     
-    
 private:
     Sprite*   m_pShipImage;
 };
-
-
 
 
 

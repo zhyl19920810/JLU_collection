@@ -7,6 +7,7 @@
 //
 
 #include "MissonLoader.hpp"
+#include "BattleCharacterInfo.hpp"
 #include "Compass.hpp"
 #include <string>
 
@@ -19,6 +20,7 @@ MissonLoader* MissonLoader::instance=NULL;
 void MissonLoader::parse()
 {
     ssize_t bufferSize = 0;
+    
     std::string xmlFile4 = FileUtils::getInstance()->fullPathForFilename("Data/Mission.xml").c_str();
     unsigned char* pBuffer4 = FileUtils::sharedFileUtils()->getFileData(xmlFile4.c_str(), "rb", &bufferSize);
     missionDoc.Parse((const char*)pBuffer4);
@@ -45,6 +47,11 @@ bool MissonLoader::init()
     
     return bRet;
 }
+
+
+
+
+
 
 
 

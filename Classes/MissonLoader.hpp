@@ -52,6 +52,7 @@ private:
     MissonLoader();
     static MissonLoader *instance;
     tinyxml2::XMLDocument missionDoc;
+    tinyxml2::XMLDocument characterDoc;
     tinyxml2::XMLElement* FindNodeByName(std::string name, ScriptType type);
 };
 
