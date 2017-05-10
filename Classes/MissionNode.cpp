@@ -16,6 +16,15 @@ NS_KCL_BEGIN
 
 MissionNode::~MissionNode()
 {
+    if (m_pBattleFleet)
+    {
+        delete m_pBattleFleet;
+    }
+    
+    for (int i=0; i<m_vChildren.size(); ++i)
+    {
+        delete m_vChildren[i];
+    }
     release();
 }
 
@@ -38,7 +47,7 @@ bool MissionNode::init()
     bool bRet=false;
     do
     {
-        
+        m_pBattleFleet=NULL;
         bRet=true;
     }while(0);
     return bRet;
@@ -71,12 +80,14 @@ void MissionNode::ParseEnemyFleet(std::string FleetText)
 {
     std::vector<std::string> strings;
     strings=splitText(FleetText,"#");
-    m_pBattleFleet=BattleFleet::create();
-    for (int i = 0; i < strings.size(); i++)
+    if (!strings.empty())
     {
-        m_pBattleFleet->AddShip(MissonLoader::getInstance()->LoadCharacterInfo(strings[i]));
+        m_pBattleFleet=BattleFleet::create();
+        for (int i = 0; i < strings.size(); i++)
+        {
+            m_pBattleFleet->AddShip(MissonLoader::getInstance()->LoadCharacterInfo(strings[i]));
+        }
     }
-    
 }
 
 

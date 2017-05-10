@@ -54,10 +54,13 @@ bool FormationSelecter::init()
     return bRet;
 }
 
-void FormationSelecter::ShowSelecter()
+void FormationSelecter::ShowSelecter(int kantaiSize)
 {
+    m_iKantaiSize=kantaiSize;
     for(Formation* formation:m_vFormation)
     {
+        formation->UpdateInfo(m_iKantaiSize);
+        formation->ShowPoints();
         formation->setVisible(true);
     }
 }
@@ -66,6 +69,7 @@ void FormationSelecter::HideSelecter()
 {
     for(Formation* formation:m_vFormation)
     {
+        formation->HidePoints();
         formation->setVisible(true);
     }
 }

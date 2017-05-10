@@ -67,6 +67,10 @@ public:
     static BattleInfo* create(BattleFleet* kantaiFleet,BattleFleet* enemyFleet,FormationType kantaiFormation,FormationType enemyFormation);
     bool init(BattleFleet* kantaiFleet,BattleFleet* enemyFleet,FormationType kantaiFormation,FormationType enemyFormation);
     
+    static BattleInfo* create();
+    bool init();
+    
+    
     ~BattleInfo();
 public:
     inline BattleFleet*  GetKantais(){ return m_pKantaiFleet; }

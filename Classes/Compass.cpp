@@ -17,7 +17,7 @@ Compass::Compass()
 
 }
 
-bool Compass::Init()
+bool Compass::init()
 {
     bool bRet=false;
     

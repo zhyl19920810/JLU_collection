@@ -21,17 +21,21 @@ NS_KCL_BEGIN
 
 USING_NS_CC;
 
+class BattleFleet;
+
+
 class FormationSelecter:public Node
 {
 public:
     CREATE_FUNC(FormationSelecter);
     virtual bool init() override;
     
-    void ShowSelecter();
+    void ShowSelecter(int kantaiSize);
     void HideSelecter();
     
 private:
     std::vector<Formation*>  m_vFormation;
+    int                      m_iKantaiSize;
 };
 
 

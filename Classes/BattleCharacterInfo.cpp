@@ -8,6 +8,7 @@
 
 #include "BattleCharacterInfo.hpp"
 #include "KantaiMgr.hpp"
+#include "kantai.h"
 
 NS_KCL_BEGIN
 
@@ -74,8 +75,10 @@ bool BattleCharacterInfo::init(kancolle::Kantai *kantai)
                 m_vEquipInfo[i]=BattleEquipInfo::create(kantai->getEquip(i)->getEquipNumber());
             }
         }
-        m_vCurrPlaneLoad=kantai->currPlaneLoad;
-        
+//        for (int i=0; i<kantai->currPlaneLoad.size(); ++i)
+//        {
+//            m_vCurrPlaneLoad.push_back(kantai->currPlaneLoad[i]);
+//        }
         
         bRet=true;
     }while(0);
@@ -242,11 +245,21 @@ bool BattleCharacterInfo::GetAirCraftId(std::string &plane1, std::string &plane2
     return false;
 }
 
+void BattleCharacterInfo::setCurrHp(int hp)
+{
+    currHp=hp;
+    if (!m_bIsEnemy)
+    {
+        m_Kantai->setCurrHp(hp);
+    }
+}
+
+
 void BattleCharacterInfo::GetDamage(int damage)
 {
     if (damage > 0)
     {
-        setCurrHp(getCurrHp()-damage);
+        setCurrHp(static_cast<int>(getCurrHp()-damage));
         float persentage = (float)getCurrHp()/(float)getMaxHp();
         if (persentage>0.75)
         {

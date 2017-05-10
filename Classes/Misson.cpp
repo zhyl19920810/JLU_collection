@@ -40,6 +40,10 @@ bool Mission::init()
 
 Mission::~Mission()
 {
+    for (int i=0; i<nodes.size(); ++i)
+    {
+        delete nodes[i];
+    }
     release();
 }
 

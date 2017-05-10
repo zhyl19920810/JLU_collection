@@ -106,6 +106,17 @@ std::string BattleEquipInfo::getIcon()
     
 }
 
+std::string BattleEquipInfo::getLabel() const
+{
+    string tempS=std::to_string(getEquipNumber());
+    while (tempS.size()!=3)
+    {
+        tempS="0"+tempS;
+    }
+    return "Equipment/btxt_flat/"+tempS+".png";
+}
+
+
 //bool Equip::isSupKantaiType(KantaiType type)
 //{
 //    for (int i=0; i<MAX_SUPSHIP; ++i)

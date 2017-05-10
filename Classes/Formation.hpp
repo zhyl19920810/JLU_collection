@@ -32,7 +32,7 @@ public:
     void ShowPoints();
     void HidePoints();
     void AddBattleBorder();
-    
+    void UpdateInfo(int kantaiSize);
     
 private:
     void OrganizePoints();

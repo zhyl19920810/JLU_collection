@@ -19,6 +19,7 @@ SallyInfo* SallyInfo::create()
     SallyInfo* pRet=new SallyInfo;
     if(pRet&&pRet->init())
     {
+        pRet->retain();
         return pRet;
     }
     delete pRet;
@@ -26,11 +27,15 @@ SallyInfo* SallyInfo::create()
     return NULL;
 }
 
+SallyInfo::~SallyInfo()
+{
+    delete m_pMission;
+    release();
+}
+
 
 bool SallyInfo::init()
 {
-    // this->currentMissionNode = mission->nodes[0];
-    
     m_Status=SALLY_START;
     return true;
 }
@@ -47,7 +52,10 @@ std::string SallyInfo::GetMissionName()
     return std::to_string(m_pMission->areaId)+"-"+std::to_string(m_pMission->index+1);
 }
 
-
+MissionNode* SallyInfo::GetCurMissionNode()
+{
+    return m_CurMissonNode;
+}
 
 
 NS_KCL_END

@@ -41,8 +41,9 @@ bool BattleCharacter::init()
         hpBar = Sprite::create("BattleMain/image 430.png");
         hpBar->setAnchorPoint(Point::ANCHOR_MIDDLE_BOTTOM);
         maxHpLabel = Label::create();
-        currentHpLabel = Label::create();
         maxHpLabel->setColor(Color3B::WHITE);
+        
+        currentHpLabel = Label::create();
         currentHpLabel->setColor(Color3B::WHITE);
         
         bRet=true;

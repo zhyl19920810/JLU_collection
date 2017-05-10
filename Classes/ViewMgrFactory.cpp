@@ -80,7 +80,7 @@ Panel* ViewMgrFactory::getPanel(PanelType type,const cocos2d::Value& data)
             _panel=SallyPanel::create();
             break;
         case PanelType::BATTLE_MAIN:
-            
+            _panel=BattlePanel::create();
         default:
             break;
     }

@@ -54,8 +54,11 @@ public:
     
     bool init(BattleFleet* kantaiFleet,BattleFleet* enemyFleet,FormationType kantaiFormation,FormationType enemyFormation);
     
+    static BattlePanel* create();
+    bool init();
     int BattleEnemiesSize();
     int BattleKantaiSize();
+    void SetInfo(BattleFleet* kantaiFleet,BattleFleet* enemyFleet,FormationType kantaiFormation,FormationType enemyFormation);
 private:
     void onStatusOverCallBack();
 

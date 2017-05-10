@@ -122,28 +122,22 @@ void BattleBar::openAndCloseAnimation(GreenBarPosition position, GreenBarLableTy
     switch (type)
     {
         case scout_start:
-            label->setTexture("BattleMain/image 517.png");
-            //label = Sprite::create("BattleMain/image 517.png");
+            label = Sprite::create("BattleMain/image 517.png");
             break;
         case scouter_doesnt_back:
-            label->setTexture("BattleMain/image 516.png");
-            //label = Sprite::create("BattleMain/image 516.png");
+            label = Sprite::create("BattleMain/image 516.png");
             break;
         case enemy_scouted:
-            label->setTexture("BattleMain/image 520.png");
-            //label = Sprite::create("BattleMain/image 520.png");
+            label = Sprite::create("BattleMain/image 520.png");
             break;
         case enemy_scouted_scouter_doesnt_back:
-            label->setTexture("BattleMain/image 518.png");
-            //label = Sprite::create("BattleMain/image 518.png");
+            label = Sprite::create("BattleMain/image 518.png");
             break;
         case enemy_not_scouted:
-            label->setTexture("BattleMain/image 519.png");
-            //label = Sprite::create("BattleMain/image 519.png");
+            label = Sprite::create("BattleMain/image 519.png");
             break;
         case enemy_seen:
-            label->setTexture("BattleMain/image 521.png");
-            //label = Sprite::create("BattleMain/image 521.png");
+            label = Sprite::create("BattleMain/image 521.png");
             break;
         default:
             break;

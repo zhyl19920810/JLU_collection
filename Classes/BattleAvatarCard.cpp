@@ -77,21 +77,21 @@ void BattleAvatarCard::SetBrokenMark(BrokenType brokenType)
             m_pShader->setTexture("");
             break;
         case BrokenType::tiny:
-            m_pBrokenMark->setTexture("commonAssets/image 344.png");
-            m_pShader->setTexture("commonAssets/image 367.png");
+            m_pBrokenMark->setTexture("CommonAssets/image 344.png");
+            m_pShader->setTexture("CommonAssets/image 367.png");
             break;
         case BrokenType::mid:
-            m_pBrokenMark->setTexture("commonAssets/image 346.png");
-            m_pShader->setTexture("commonAssets/image 369.png");
+            m_pBrokenMark->setTexture("CommonAssets/image 346.png");
+            m_pShader->setTexture("CommonAssets/image 369.png");
             break;
         case BrokenType::large:
-            m_pBrokenMark->setTexture("commonAssets/image 348.png");
-            m_pShader->setTexture("commonAssets/image 371.png");
+            m_pBrokenMark->setTexture("CommonAssets/image 348.png");
+            m_pShader->setTexture("CommonAssets/image 371.png");
             break;
         case BrokenType::drown:
-            m_pBrokenMark->setTexture("commonAssets/image 350.png");
+            m_pBrokenMark->setTexture("CommonAssets/image 350.png");
             m_pMainImage->setColor(Color3B(192, 192, 192));//GRAY
-            m_pShader->setTexture("commonAssets/image 371.png");
+            m_pShader->setTexture("CommonAssets/image 371.png");
             break;
         default:
             break;

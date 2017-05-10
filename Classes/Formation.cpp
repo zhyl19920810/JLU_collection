@@ -244,17 +244,24 @@ void Formation::RotatePoints()
 
 void Formation::ShowPoints()
 {
-    for (int i = 0; i < m_vPoints.size(); i++)
+    for (int i = 0; i < m_iShipCount; i++)
+        m_vPoints[i]->setVisible(false);
+    
+    for (int i = 0; i < m_iShipCount; i++)
         m_vPoints[i]->setVisible(true);
 }
 void Formation::HidePoints()
 {
+    
     for (int i = 0; i < m_vPoints.size(); i++)
         m_vPoints[i]->setVisible(false);
 }
 
 
-
+void Formation::UpdateInfo(int kantaiSize)
+{
+    
+}
 /*
 Formation::Formation(FormationType type,SallyScene* parent)
 {

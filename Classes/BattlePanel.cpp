@@ -92,6 +92,90 @@ bool BattlePanel::init(kancolle::BattleFleet *kantaiFleet, kancolle::BattleFleet
     return bRet;
 }
 
+
+
+BattlePanel* BattlePanel::create()
+{
+    BattlePanel* pRet=new BattlePanel;
+    if (pRet&&pRet->init())
+    {
+        pRet->autorelease();
+        return pRet;
+    }
+    delete pRet;
+    pRet=NULL;
+    return NULL;
+}
+
+
+bool BattlePanel::init()
+{
+    bool bRet=false;
+    do
+    {
+        if (!Panel::init())  break;
+        
+        leftCornerLable=NULL;
+        m_pBattleInfo=NULL;
+        m_pBattleBar=BattleBar::create();
+        addChild(m_pBattleBar);
+        m_bNightFight=false;
+        Size visibleSize = Director::getInstance()->getVisibleSize();
+        
+        Sprite *bgImg;
+        if (!m_bNightFight)
+            bgImg = Sprite::create("BattleMain/image 86.jpg");
+        else
+            bgImg = Sprite::create("BattleMain/image 87.jpg");
+        bgImg->setPosition(400,240);
+        addChild(bgImg);
+        
+        closeUpBorder = Sprite::create("BattleMain/image 303.png");
+        this->addChild(closeUpBorder);
+        closeUpBorder->setZOrder(1);
+        closeUpBorder->setOpacity(0);
+        
+        temptimer = Sprite::create("BattleMain/image 478.png");
+        this->addChild(temptimer);
+        InitLeftCornerBar();
+        
+        if (DEBUG)
+        {
+            //            std::vector<CharacterInfo*> heros = model->getAllies();
+            //            for (int i = 0; i < heros.size(); i++)
+            //            {
+            //                BattleHero *hero = BattleHero::create(heros[i], this, (i + 1));
+            //                hero->setMaxHp(heros[i]->maxHP);
+            //                battleHeros.push_back(hero);
+            //            }
+            //            std::vector<CharacterInfo*> enemies = model->getEnemies();
+            //            for (int i = 0; i < enemies.size(); i++)
+            //            {
+            //                BattleEnemy *enemy = BattleEnemy::create(enemies[i], this, (i + 1));
+            //                enemy->setMaxHp(enemies[i]->maxHP);
+            //                battleEnemies.push_back(enemy);
+            //            }
+            //            //status = BattleStatus::firebattle;
+            //            fireBattle();
+            //            //BattleStart();
+        }
+        else
+        {
+            status = start;
+            BattleStart();
+        }
+        
+        bRet=true;
+    }while(0);
+    
+    
+    return bRet;
+}
+
+
+
+
+
 void BattlePanel::InitLeftCornerBar()
 {
     leftCornerBar=Sprite::create("BattleMain/image 164.png");
@@ -110,6 +194,8 @@ void BattlePanel::InitLeftCornerBar()
     auto *repeat = RepeatForever::create((ActionInterval*)sequence);
     leftCornerCircle->runAction(repeat);
     this->addChild(leftCornerCircle);
+    
+    
 }
 
 
@@ -239,8 +325,8 @@ void BattlePanel::onStatusOverCallBack(){
 void BattlePanel::BattleStart()
 {
     HideLeftCornerBar();
-    startBorderUp = Sprite::create("commonAssets/image 472.png");
-    startBorderDown = Sprite::create("commonAssets/image 470.png");
+    startBorderUp = Sprite::create("CommonAssets/image 472.png");
+    startBorderDown = Sprite::create("CommonAssets/image 470.png");
     startBorderDown->setPosition(400, 130);
     startBorderUp->setPosition(400, 330);
     this->addChild(startBorderDown);
@@ -728,8 +814,8 @@ void BattlePanel::DayEnd()
     ShowLeftCornerBar(lituopanding);
     startBorderUp->setZOrder(1);
     startBorderDown->setZOrder(1);
-    startBorderUp->setTexture("commonAssets/image 473.png");
-    startBorderDown->setTexture("commonAssets/image 471.png");
+    startBorderUp->setTexture("CommonAssets/image 473.png");
+    startBorderDown->setTexture("CommonAssets/image 471.png");
     startBorderUp->runAction(MoveTo::create(1, ccp(400, 352)));
     startBorderDown->runAction(MoveTo::create(1, ccp(400, 130)));
     startBorderDown->setScaleY(1.05);
@@ -750,6 +836,13 @@ void BattlePanel::DayEnd()
     
     NextStatus(5);
 }
+
+void BattlePanel::SetInfo(kancolle::BattleFleet *kantaiFleet, kancolle::BattleFleet *enemyFleet, kancolle::FormationType kantaiFormation, kancolle::FormationType enemyFormation)
+{
+    m_pBattleInfo=BattleInfo::create(kantaiFleet, enemyFleet, kantaiFormation, enemyFormation);
+}
+
+
 
 
 NS_KCL_END

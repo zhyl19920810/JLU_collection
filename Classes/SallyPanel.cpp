@@ -9,6 +9,10 @@
 #include "SallyPanel.hpp"
 #include "ViewMgr.hpp"
 #include "portScene.h"
+#include "Player.h"
+#include "ViewMgr.hpp"
+#include "BattlePanel.hpp"
+#include "MissionNode.hpp"
 
 
 NS_KCL_BEGIN
@@ -36,7 +40,7 @@ bool SallyPanel::init()
 
 SallyPanel::~SallyPanel()
 {
-    
+    delete m_SallyInfo;
 }
 
 
@@ -86,8 +90,7 @@ void SallyPanel::InitBg()
     m_pNodePointShader = Sprite::create();
     addChild(m_pNodePointShader);
     
-    m_pFormationSelecter=FormationSelecter::create();
-    addChild(m_pFormationSelecter);
+    m_pFormationSelecter=NULL;
     
     SallyStart();
 }
@@ -95,7 +98,12 @@ void SallyPanel::InitBg()
 void SallyPanel::SallyFormation()
 {
     m_pFlagShip->runAction(MoveTo::create(0.5, ccp(100, 150)));
-    m_pFormationSelecter->ShowSelecter();
+    if (!m_pFormationSelecter)
+    {
+        m_pFormationSelecter=FormationSelecter::create();
+        addChild(m_pFormationSelecter);
+    }
+    m_pFormationSelecter->ShowSelecter(sPlayer.getFleetByFleetKey(1)->KantaiSize());
 }
 
 
@@ -282,6 +290,23 @@ void SallyPanel::SetFormationCallback(Ref* pSender, FormationType formation)
     m_pFormationSelecter->HideSelecter();
     
     NextStatus(1);
+    
+    VIEW_MGR->showScene(SceneType::BATTLE);
+    BattlePanel* panel=dynamic_cast<BattlePanel*>(VIEW_MGR->showPanel(PanelType::BATTLE_MAIN));
+    
+    //TODO
+    BattleFleet* kantaiFleet=BattleFleet::create();
+    Fleet* fleet=sPlayer.getFleetByFleetKey(1);
+    for (int i=0; i<fleet->KantaiSize(); ++i)
+    {
+        if (fleet->getShip(i+1))
+        {
+            kantaiFleet->AddShip(BattleCharacterInfo::create(fleet->getShip(i+1)));
+        }
+    }
+    
+    BattleFleet* enemyFleet=m_SallyInfo->GetCurMissionNode()->m_pBattleFleet;
+    panel->SetInfo(kantaiFleet, enemyFleet,formation, formation);
     //TODO
 //    Fleet* allies = GameModel::getInstance()->getFleet(0);
 //    Fleet* enemy = currentMissionNode->enemyFleet;

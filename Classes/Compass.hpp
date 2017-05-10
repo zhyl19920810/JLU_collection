@@ -22,7 +22,7 @@ class Compass :public Node
 public:
     Compass();
     CREATE_FUNC(Compass);
-    virtual bool Init();
+    virtual bool init();
     static CompassDirection parseDirection(std::string direction);
     
 private:

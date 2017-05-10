@@ -29,6 +29,8 @@ bool BattleEnemy::init(BattleCharacterInfo *info,int row)
     bool bRet=false;
     do
     {
+        BattleCharacter::init();
+        
         m_pBattleCharacterInfo=info;
         m_pBattleAvatarCard=BattleAvatarCard::create(m_pBattleCharacterInfo->getKantaiNumber(), m_pBattleCharacterInfo->isEnemy());
         m_pBattleAvatarCard->setPosition(718, 360 - 41 * row);
@@ -58,7 +60,10 @@ bool BattleEnemy::init(BattleCharacterInfo *info,int row)
         battleBar=BattleBar::create();
         addChild(battleBar);
         
-        closeUp = Sprite::create("Enemy/" + std::to_string(m_pBattleCharacterInfo->getKantaiNumber()) + "/image 3.png");
+        string tempStr="Resources/kantai/" + std::to_string(m_pBattleCharacterInfo->getKantaiNumber()) + "/image 13.png";
+        closeUp = Sprite::create(tempStr);
+        //TODO
+        //closeUp = Sprite::create("Enemy/" + std::to_string(m_pBattleCharacterInfo->getKantaiNumber()) + "/image 3.png");
         addChild(closeUp);
         closeUp->setZOrder(3);
         

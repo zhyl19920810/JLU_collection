@@ -27,16 +27,18 @@ enum SallyStatus{
 };
 
 
-class SallyInfo
+class SallyInfo:public Ref
 {
     friend class SallyPanel;
 public:
     static SallyInfo* create();
+    ~SallyInfo();
     
     SallyStatus GetStatus() const{return m_Status;}
     void SetStatus(SallyStatus _status) {m_Status=_status;}
     std::string GetMissionName();
     void SetMission(int areaId,int index);
+    MissionNode* GetCurMissionNode();
 private:
     bool init();
     

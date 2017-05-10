@@ -54,6 +54,40 @@ bool BattleInfo::init(BattleFleet* kantaiFleet,BattleFleet* enemyFleet,Formation
     return bRet;
 }
 
+BattleInfo* BattleInfo::create()
+{
+    BattleInfo* pRet=new BattleInfo;
+    if (pRet&&pRet->init())
+    {
+        pRet->retain();
+        return pRet;
+    }
+    delete pRet;
+    pRet=NULL;
+    return pRet;
+}
+
+
+bool BattleInfo::init()
+{
+    bool bRet=false;
+    
+    do
+    {
+        m_pKantaiFleet=NULL;
+        m_pEnemyFleet=NULL;
+        m_KantaiFormationType=DanZong;
+        m_EnemyFormationType=DanZong;
+        m_tWord=TongHang;
+        m_AirControl=FULL;
+        
+        bRet=true;
+    }while(0);
+    
+    return bRet;
+}
+
+
 
 
 

@@ -622,6 +622,7 @@
 		F4FABB0D1C50D3E400F75BCE /* ExpMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0B1C50D3E400F75BCE /* ExpMgr.cpp */; };
 		F4FABB101C50D42600F75BCE /* Singleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0E1C50D42600F75BCE /* Singleton.cpp */; };
 		F4FABB301C51368200F75BCE /* csv in Resources */ = {isa = PBXBuildFile; fileRef = F4FABB2F1C51368200F75BCE /* csv */; };
+		F4FE65431EC1C77F00E331F5 /* Equipment in Resources */ = {isa = PBXBuildFile; fileRef = F4FE65411EC1C77F00E331F5 /* Equipment */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -786,7 +787,6 @@
 		F40C4FCC1C5BDA78000FAA89 /* EquipPicMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EquipPicMgr.hpp; sourceTree = "<group>"; };
 		F40CF97D1BDB4D1E00DD897F /* XMLBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XMLBase.cpp; sourceTree = "<group>"; };
 		F40CF97E1BDB4D1E00DD897F /* XMLBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLBase.h; sourceTree = "<group>"; };
-		F40CF9821BDB51B200DD897F /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = map; path = "../../kancolle_alpha/Resources/2.150228BGM&音效&UI素材/map"; sourceTree = "<group>"; };
 		F413B5451D508F92003E1967 /* SupplyInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SupplyInfo.cpp; sourceTree = "<group>"; };
 		F413B5461D508F92003E1967 /* SupplyInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SupplyInfo.hpp; sourceTree = "<group>"; };
 		F413B54E1D50A3C3003E1967 /* MathUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MathUtil.cpp; sourceTree = "<group>"; };
@@ -878,6 +878,7 @@
 		F45237BB1EBA22EC0029EAED /* SallyShip.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SallyShip.hpp; sourceTree = "<group>"; };
 		F45237BE1EBA26E70029EAED /* SallyInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SallyInfo.cpp; sourceTree = "<group>"; };
 		F45237BF1EBA26E70029EAED /* SallyInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SallyInfo.hpp; sourceTree = "<group>"; };
+		F45A19091EC1ED28008AC3AB /* CommonAssets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CommonAssets; path = ../Resources/CommonAssets; sourceTree = "<group>"; };
 		F45CEC9C1EBC240800F2E7C1 /* BattlePanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattlePanel.cpp; sourceTree = "<group>"; };
 		F45CEC9D1EBC240800F2E7C1 /* BattlePanel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattlePanel.hpp; sourceTree = "<group>"; };
 		F45CECA01EBC241600F2E7C1 /* BattleEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleEnemy.cpp; sourceTree = "<group>"; };
@@ -1009,6 +1010,10 @@
 		F4FABB0E1C50D42600F75BCE /* Singleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Singleton.cpp; sourceTree = "<group>"; };
 		F4FABB0F1C50D42600F75BCE /* Singleton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Singleton.hpp; sourceTree = "<group>"; };
 		F4FABB2F1C51368200F75BCE /* csv */ = {isa = PBXFileReference; lastKnownFileType = folder; path = csv; sourceTree = "<group>"; };
+		F4FE653F1EC1C6DF00E331F5 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../Resources/fonts; sourceTree = "<group>"; };
+		F4FE65401EC1C77E00E331F5 /* btxt_flat */ = {isa = PBXFileReference; lastKnownFileType = folder; name = btxt_flat; path = ../Resources/btxt_flat; sourceTree = "<group>"; };
+		F4FE65411EC1C77F00E331F5 /* Equipment */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Equipment; path = ../Resources/Equipment; sourceTree = "<group>"; };
+		F4FE65421EC1C77F00E331F5 /* furniture */ = {isa = PBXFileReference; lastKnownFileType = folder; name = furniture; path = ../Resources/furniture; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1093,6 +1098,11 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				F45A19091EC1ED28008AC3AB /* CommonAssets */,
+				F4FE65401EC1C77E00E331F5 /* btxt_flat */,
+				F4FE65411EC1C77F00E331F5 /* Equipment */,
+				F4FE65421EC1C77F00E331F5 /* furniture */,
+				F4FE653F1EC1C6DF00E331F5 /* fonts */,
 				F4CE01051EC0CD81008D4DB0 /* Map */,
 				F4CE00FD1EC07E4E008D4DB0 /* btxt_flat */,
 				F4CE00FE1EC07E4E008D4DB0 /* Data */,
@@ -1167,7 +1177,6 @@
 				F4B926CD1C55FA74005DB127 /* SupplyMain */,
 				F4FABB2F1C51368200F75BCE /* csv */,
 				F4014AF21BF0E8A000C9C5AE /* equip */,
-				F40CF9821BDB51B200DD897F /* map */,
 				F4036D281BDA1F39002788AA /* equipment */,
 				F4036D251BDA1F31002788AA /* database */,
 				F4036D221BDA1F1A002788AA /* furniture */,
@@ -1989,8 +1998,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4CE01061EC0CD82008D4DB0 /* Map in Resources */,
+				F4EFACC01C574DD4000FFF74 /* CommonAssets in Resources */,
 				F4CE01001EC07E4F008D4DB0 /* btxt_flat in Resources */,
+				F4FE65431EC1C77F00E331F5 /* Equipment in Resources */,
+				F4036D231BDA1F1A002788AA /* furniture in Resources */,
+				521A8EA919F11F5000D177D7 /* fonts in Resources */,
+				F4CE01061EC0CD82008D4DB0 /* Map in Resources */,
 				F4CE01011EC07E4F008D4DB0 /* Data in Resources */,
 				F4CE01021EC07E4F008D4DB0 /* item_up in Resources */,
 				F47CEB121C63402B008600E7 /* ArsenalMain in Resources */,
@@ -2003,7 +2016,6 @@
 				F4CE00FB1EC06D69008D4DB0 /* TitleMain in Resources */,
 				F48B1B081D4806F50078E23E /* sound in Resources */,
 				F4C0E81F1D4267D100E345CB /* shader in Resources */,
-				F4EFACC01C574DD4000FFF74 /* CommonAssets in Resources */,
 				F481897B1C5912F700A0D0F5 /* OrganizeMain in Resources */,
 				F42DB8EE1C59B10100CBE2C7 /* icons in Resources */,
 				F4FABB301C51368200F75BCE /* csv in Resources */,
@@ -2020,10 +2032,8 @@
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				F4D8028E1BE604EB0032C724 /* Mission.xml in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
-				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				F4036D291BDA1F39002788AA /* equipment in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
-				F4036D231BDA1F1A002788AA /* furniture in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				F4036D1D1BDA1F0A002788AA /* kantai in Resources */,

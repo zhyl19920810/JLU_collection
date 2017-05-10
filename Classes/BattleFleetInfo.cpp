@@ -47,12 +47,19 @@ bool BattleFleet::init()
 
 BattleFleet::~BattleFleet()
 {
+    for (int i=0; i<m_vBattleShip.size(); ++i)
+    {
+        if (m_vBattleShip[i])
+        {
+            delete m_vBattleShip[i];
+        }
+    }
     release();
 }
 
 void BattleFleet::AddShip(BattleCharacterInfo* info)
 {
-    for (int i=0; i<6; ++i)
+    for (int i=0; i<MAX_SHIPS_PER_FLEET; ++i)
     {
         if (!m_vBattleShip[i])
         {
@@ -61,6 +68,8 @@ void BattleFleet::AddShip(BattleCharacterInfo* info)
         }
     }
 }
+
+
 
 
 /////////////////////////////////////////////////////////////

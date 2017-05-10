@@ -38,7 +38,7 @@ public:
     int getDodge() const {return equipImp->dodge;}
     Shooting_Range getRange() const {return equipImp->range;}
     int getArmor() const {return equipImp->armor;}
-    std::string getLabel() const{return "Equipment/btxt_flat/"+std::to_string(getEquipNumber())+".png";}
+    std::string getLabel() const;
     std::string getIcon();
     //bool isSupKantaiType(KantaiType type);
     ~BattleEquipInfo();

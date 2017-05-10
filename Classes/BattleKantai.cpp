@@ -73,7 +73,7 @@ bool BattleKantai::init(kancolle::BattleCharacterInfo *info,int row)
         maxHp=m_pBattleCharacterInfo->getMaxHp();
         currentHp=m_pBattleCharacterInfo->getCurrHp();
         
-        closeUp = Sprite::create("Character/" + std::to_string(m_pBattleCharacterInfo->getKantaiNumber()) + "/image 9.png");
+        closeUp = Sprite::create("kantai/" + std::to_string(m_pBattleCharacterInfo->getKantaiNumber()) + "/image 9.png");
         addChild(closeUp);
         closeUp->setZOrder(3);
         closeUp->setScale(0.8);
@@ -84,7 +84,8 @@ bool BattleKantai::init(kancolle::BattleCharacterInfo *info,int row)
         m_pMainCannon=m_pBattleCharacterInfo->GetMainCannon();
         if (m_pMainCannon)
         {
-            equipmentLabel = Sprite::create(m_pMainCannon->getLabel());
+            string tempStr=m_pMainCannon->getLabel();
+            equipmentLabel = Sprite::create("btxt_flat/001.png");
             equipmentLabel->setPosition(650, 100);
             equipmentLabel->setOpacity(0);
         }
@@ -153,12 +154,18 @@ void BattleKantai::InitInfo()
     informationBoard->setZOrder(4);
     
     
-    firePowerLabel = Label::create("","fonts/STXINWEI.ttf",20);
-    torpedoLabel = Label::create("", "fonts/STXINWEI.ttf", 20);
-    antiaircraftLabel = Label::create("", "fonts/STXINWEI.ttf", 20);
-    armourLabel = Label::create("", "fonts/STXINWEI.ttf", 20);
-    nameLabel = Label::create("", "fonts/STXINWEI.ttf", 35);
-    levelLabel = Label::create("", "fonts/STXINWEI.ttf", 25);
+    firePowerLabel =Label::create();
+    torpedoLabel =Label::create();
+    antiaircraftLabel =Label::create();
+    armourLabel = Label::create();
+    nameLabel =Label::create();
+    levelLabel = Label::create();
+//    firePowerLabel = Label::createWithTTF("","fonts/STXINWEI.TTF",20);
+//    torpedoLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 20);
+//    antiaircraftLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 20);
+//    armourLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 20);
+//    nameLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 35);
+//    levelLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 25);
     
     
     
