@@ -14,6 +14,7 @@
 #include "BattleCharacterInfo.hpp"
 #include "BattleBar.hpp"
 #include "BattleAvatarCard.hpp"
+#include "BattleInfoBoard.hpp"
 
 //#include "AnimationMaker.h"
 //#include "CharacterCard.h"
@@ -50,23 +51,14 @@ protected:
     Sprite * closeUp;
     BattleBar * battleBar;
     Sprite* equipmentLabel;
-    Sprite * informationBoard;
-    Label *firePowerLabel;
-    Label *torpedoLabel;
-    Label *antiaircraftLabel;
-    Label *nameLabel;
-    Label *levelLabel;
-    Label *armourLabel;
-    Sprite *equipment1;
-    Sprite *equipment2;
-    Sprite* equipment3;
-    Sprite* equipment4;
+
     Label *maxHpLabel;
     Label *currentHpLabel;
     int maxHp;
     int currentHp;
     BattleCharacterInfo* m_pBattleCharacterInfo;
     BattleAvatarCard*    m_pBattleAvatarCard;
+    BattleInfoBorard*    m_pBattleInfoBorard;
     
 public:
     
@@ -81,7 +73,7 @@ protected:
     void GetDamage(int damage);
     void ShowAttackedAnime(float delay);
     void ShowDamageAnime(float delay, bool miss, bool critical, int damage);
-    virtual void UpdateInformationBoard(){};
+   // virtual void UpdateInformationBoard(){};
     
 
     

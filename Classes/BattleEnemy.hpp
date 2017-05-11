@@ -34,7 +34,7 @@ public:
     ~BattleEnemy();
 private:
     virtual void ThreeDigitMode();
-    virtual void UpdateInfo();
+   // virtual void UpdateInfo();
     
 };
 

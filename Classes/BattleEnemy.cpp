@@ -76,10 +76,14 @@ bool BattleEnemy::init(BattleCharacterInfo *info,int row)
         closeUp->setZOrder(3);
         addChild(closeUp);
         
-        informationBoard = Sprite::create("BattleMain/image 530.png");
-        addChild(informationBoard);
-        informationBoard->setPosition(600, 70);
-        informationBoard->setZOrder(4);
+        m_pBattleInfoBorard=BattleInfoBorard::create();
+        addChild(m_pBattleInfoBorard);
+        m_pBattleInfoBorard->setPosition(600, 70);
+        m_pBattleInfoBorard->setZOrder(4);
+//        informationBoard = Sprite::create("BattleMain/image 530.png");
+//        addChild(informationBoard);
+//        informationBoard->setPosition(600, 70);
+//        informationBoard->setZOrder(4);
         
         bRet=true;
     }while(0);
@@ -90,8 +94,11 @@ float BattleEnemy::ShowAttackingAnime(float delay)
 {
     closeUp->setPosition(1200, 0);
     AnimationMaker::FlyToPositionAndFadeOut(closeUp, delay,ccp(700,240),0.5);
-    UpdateInformationBoard();
-    informationBoard->runAction(Sequence::create(DelayTime::create(delay), FadeIn::create(0.05), DelayTime::create(0.5), FadeOut::create(0.3), NULL));
+    m_pBattleInfoBorard->UpdateInfo(m_pBattleCharacterInfo);
+    m_pBattleInfoBorard->MoveIn(delay);
+    //UpdateInformationBoard();
+//    
+//    informationBoard->runAction(Sequence::create(DelayTime::create(delay), FadeIn::create(0.05), DelayTime::create(0.5), FadeOut::create(0.3), NULL));
     return 0.85;
 }
 void BattleEnemy::ApearAnimation()
@@ -136,10 +143,10 @@ void BattleEnemy::StepBack(float delay){
     this->runAction(Sequence::create(DelayTime::create(delay), back, NULL));
 }
 
-void BattleEnemy::UpdateInfo()
-{
-    informationBoard->setOpacity(0);
-}
+//void BattleEnemy::UpdateInfo()
+//{
+//    informationBoard->setOpacity(0);
+//}
 
 
 void BattleEnemy::ThreeDigitMode(){

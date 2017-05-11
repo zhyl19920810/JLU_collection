@@ -30,7 +30,7 @@ public:
     virtual float ShowAttackingAnime(float delay);
     
 protected:
-    virtual void UpdateInfo();
+    //virtual void UpdateInfo();
     
 private:
     void InitInfo();
