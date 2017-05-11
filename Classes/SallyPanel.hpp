@@ -52,7 +52,6 @@ private:
     Sprite*        m_pBottomBorder;
     Label*         m_pBottomLabel;
     Sprite*        temptimer;
-    SallyInfo*     m_SallyInfo;
     bool           m_bShowingBottomPanel;
     Sprite*        m_pNodePointShader;
     

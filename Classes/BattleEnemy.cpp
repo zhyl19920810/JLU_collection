@@ -29,15 +29,31 @@ bool BattleEnemy::init(BattleCharacterInfo *info,int row)
     bool bRet=false;
     do
     {
-        BattleCharacter::init();
+        if (!BattleCharacter::init()) break;
         
         m_pBattleCharacterInfo=info;
+        
+        hpBar = Sprite::create("BattleMain/image 430.png");
+        hpBar->setAnchorPoint(Point::ANCHOR_MIDDLE_BOTTOM);
+        hpBar->setPosition(635, 341 - 41 * row);
+        addChild(hpBar);
+        
+        maxHpLabel = Label::create();
+        maxHpLabel->setColor(Color3B::WHITE);
+        maxHpLabel->setPosition(618, 360 - 41 * row);
+        addChild(maxHpLabel);
+        
+        currentHpLabel = Label::create();
+        currentHpLabel->setColor(Color3B::WHITE);
+        currentHpLabel->setPosition(602, 360 - 41 * row);
+        currentHpLabel->setAlignment(TextHAlignment::RIGHT);
+        addChild(currentHpLabel);
+        
         m_pBattleAvatarCard=BattleAvatarCard::create(m_pBattleCharacterInfo->getKantaiNumber(), m_pBattleCharacterInfo->isEnemy());
         m_pBattleAvatarCard->setPosition(718, 360 - 41 * row);
         addChild(m_pBattleAvatarCard);
         
-        hpBar->setPosition(635, 341 - 41 * row);
-        addChild(hpBar);
+
         if (row == 1)
         {
             border = Sprite::create("BattleMain/image 446.png");
@@ -50,28 +66,20 @@ bool BattleEnemy::init(BattleCharacterInfo *info,int row)
         border->setPosition(714, 363 - 41 * row);
         this->addChild(border);
         
-        
-        currentHpLabel->setPosition(602, 360 - 41 * row);
-        currentHpLabel->setAlignment(TextHAlignment::RIGHT);
-        maxHpLabel->setPosition(618, 360 - 41 * row);
-        this->addChild(currentHpLabel);
-        this->addChild(maxHpLabel);
-        
         battleBar=BattleBar::create();
         addChild(battleBar);
         
-        string tempStr="Resources/kantai/" + std::to_string(m_pBattleCharacterInfo->getKantaiNumber()) + "/image 13.png";
+        string tempStr="kantai/" + std::to_string(m_pBattleCharacterInfo->getKantaiNumber()) + "/image 13.png";
         closeUp = Sprite::create(tempStr);
         //TODO
         //closeUp = Sprite::create("Enemy/" + std::to_string(m_pBattleCharacterInfo->getKantaiNumber()) + "/image 3.png");
-        addChild(closeUp);
         closeUp->setZOrder(3);
+        addChild(closeUp);
         
         informationBoard = Sprite::create("BattleMain/image 530.png");
         addChild(informationBoard);
         informationBoard->setPosition(600, 70);
         informationBoard->setZOrder(4);
-        
         
         bRet=true;
     }while(0);
@@ -183,6 +191,13 @@ void BattleEnemy::SetMaxHp(int hp)
     this->maxHpLabel->setString("/"+CCString::createWithFormat("%d", maxHp)->_string);
     SetCurrentHp(hp);
 }
+
+
+BattleEnemy::~BattleEnemy()
+{
+    
+}
+
 
 NS_KCL_END
 

@@ -66,15 +66,26 @@ bool BattleCharacterInfo::init(kancolle::Kantai *kantai)
         kantaiStar=kantai->getKantaiStar();
         setBrokenType();
         
-        m_vEquipInfo.resize(kantai->getKantaiEquipSize());
-        for (int i=1; i<=m_vEquipInfo.size(); ++i)
-        {
-            m_vEquipInfo[i]=NULL;
-            if (kantai->getEquip(i))
-            {
-                m_vEquipInfo[i]=BattleEquipInfo::create(kantai->getEquip(i)->getEquipNumber());
-            }
-        }
+        int iSize=kantai->getKantaiEquipSize();
+        
+        
+//        ////////////*
+//        m_vEquipInfo.resize(iSize);
+////        while (--iSize)
+////        {
+////            m_vEquipInfo.push_back(NULL);
+////        }
+//        for (int i=1; i<=m_vEquipInfo.size(); ++i)
+//        {
+//            m_vEquipInfo[i]=NULL;
+//            if (kantai->getEquip(i))
+//            {
+//                m_vEquipInfo[i]=BattleEquipInfo::create(kantai->getEquip(i)->getEquipNumber());
+//            }
+//        }
+//          ////////////*
+        
+        
 //        for (int i=0; i<kantai->currPlaneLoad.size(); ++i)
 //        {
 //            m_vCurrPlaneLoad.push_back(kantai->currPlaneLoad[i]);
@@ -94,7 +105,7 @@ bool BattleCharacterInfo::init(int kantaiNumber)
     do
     {
         m_Kantai=NULL;
-        kantaiNumber=kantaiNumber;
+        this->kantaiNumber=kantaiNumber;
         m_bIsEnemy=true;
         m_KantaiImp=sKantaiMgr.GetKantaiMap(kantaiNumber);
         
@@ -116,21 +127,24 @@ bool BattleCharacterInfo::init(int kantaiNumber)
         //TODO
         kantaiStar=1;
         setBrokenType();
-        
-        m_vEquipInfo.resize(sKantaiMgr.GetKantaiMap(kantaiNumber)->kantaiEquipSize);
-        m_vCurrPlaneLoad.resize(sKantaiMgr.GetKantaiMap(kantaiNumber)->kantaiEquipSize);
-        for (int i=0; i<m_vEquipInfo.size(); ++i)
-        {
-            m_vEquipInfo[i]=NULL;
-            if (sKantaiMgr.GetKantaiMap(kantaiNumber)->kantaiEquipInit)
-            {
-                m_vEquipInfo[i]=BattleEquipInfo::create(sKantaiMgr.GetKantaiMap(kantaiNumber)->kantaiEquipInit[i]);
-            }
-        }
-        for (int i=0; i<m_vEquipInfo.size(); ++i)
-        {
-            m_vCurrPlaneLoad[i]=sKantaiMgr.GetKantaiMap(kantaiNumber)->planeLoad[i];
-        }
+      
+        //////////////*
+//        m_vEquipInfo.resize(sKantaiMgr.GetKantaiMap(kantaiNumber)->kantaiEquipSize);
+//        m_vCurrPlaneLoad.resize(sKantaiMgr.GetKantaiMap(kantaiNumber)->kantaiEquipSize);
+//        for (int i=0; i<m_vEquipInfo.size(); ++i)
+//        {
+//            m_vEquipInfo[i]=NULL;
+//            if (sKantaiMgr.GetKantaiMap(kantaiNumber)->kantaiEquipInit)
+//            {
+//                m_vEquipInfo[i]=BattleEquipInfo::create(sKantaiMgr.GetKantaiMap(kantaiNumber)->kantaiEquipInit[i]);
+//            }
+//        }
+//        for (int i=0; i<m_vEquipInfo.size(); ++i)
+//        {
+//            m_vCurrPlaneLoad[i]=sKantaiMgr.GetKantaiMap(kantaiNumber)->planeLoad[i];
+//        }
+//
+        //////////////*
         
         bRet=true;
     }while(0);

@@ -283,9 +283,9 @@ int BattleInfo::GetTargetIndex(bool alliesAttack)
     std::vector<int> aliveTargets;
     std::vector<BattleCharacterInfo*> *targets;
     if (alliesAttack)
-        targets = &(m_pKantaiFleet->m_vBattleShip);
-    else
         targets = &(m_pEnemyFleet->m_vBattleShip);
+    else
+        targets = &(m_pKantaiFleet->m_vBattleShip);
 
     for (int i = 0; i < targets->size(); i++)
     {

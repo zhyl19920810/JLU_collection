@@ -38,13 +38,18 @@ bool BattleCharacter::init()
     bool bRet=false;
     do
     {
-        hpBar = Sprite::create("BattleMain/image 430.png");
-        hpBar->setAnchorPoint(Point::ANCHOR_MIDDLE_BOTTOM);
-        maxHpLabel = Label::create();
-        maxHpLabel->setColor(Color3B::WHITE);
         
-        currentHpLabel = Label::create();
-        currentHpLabel->setColor(Color3B::WHITE);
+        if (!Node::init()) break;
+        
+//        hpBar = Sprite::create("BattleMain/image 430.png");
+//        hpBar->setAnchorPoint(Point::ANCHOR_MIDDLE_BOTTOM);
+//        maxHpLabel = Label::create();
+//        maxHpLabel->setColor(Color3B::WHITE);
+//        addChild(maxHpLabel);
+//        
+//        currentHpLabel = Label::create();
+//        currentHpLabel->setColor(Color3B::WHITE);
+//        addChild(currentHpLabel);
         
         bRet=true;
     }while(0);

@@ -39,15 +39,39 @@ bool BattleKantai::init(kancolle::BattleCharacterInfo *info,int row)
     
     do
     {
-        BattleCharacter::init();
+        if (!BattleCharacter::init()) break;
+        
         m_pBattleCharacterInfo=info;
+        
+        hpBar = Sprite::create("BattleMain/image 430.png");
+        hpBar->setAnchorPoint(Point::ANCHOR_MIDDLE_BOTTOM);
+        hpBar->setPosition(163, 391 - 41 * row);
+        addChild(hpBar);
+        
+        //TODO
+        maxHp=m_pBattleCharacterInfo->getMaxHp();
+        maxHpLabel = Label::create();
+        maxHpLabel->setColor(Color3B::WHITE);
+        maxHpLabel->setPosition(197, 410 - 41 * row);
+        maxHpLabel->setString(std::to_string(maxHp));
+        addChild(maxHpLabel);
+        
+        
+        currentHp=m_pBattleCharacterInfo->getCurrHp();
+        currentHpLabel = Label::create();
+        currentHpLabel->setColor(Color3B::WHITE);
+        currentHpLabel->setPosition(180, 410 - 41 *row);
+        currentHpLabel->setString(std::to_string(currentHp));
+        addChild(currentHpLabel);
+        
+        InitInfo();
+        
         
         m_pBattleAvatarCard=BattleAvatarCard::create(info->getKantaiNumber(), info->isEnemy());
         m_pBattleAvatarCard->setPosition(80, 410 - 41 * row);
         this->addChild(m_pBattleAvatarCard);
-        
-        hpBar->setPosition(163, 391 - 41 * row);
-        addChild(hpBar);
+        SetBroken(info->getBrokenType());
+
         if (row == 1)
         {
             border = Sprite::create("BattleMain/image 442.png");
@@ -61,24 +85,19 @@ bool BattleKantai::init(kancolle::BattleCharacterInfo *info,int row)
         addChild(border);
         
         
-        currentHpLabel->setPosition(180, 410 - 41 *row);
-        maxHpLabel->setPosition(197, 410 - 41 * row);
-        this->addChild(currentHpLabel);
-        this->addChild(maxHpLabel);
-        
+
         battleBar=BattleBar::create();
         addChild(battleBar);
         
         //default
-        maxHp=m_pBattleCharacterInfo->getMaxHp();
-        currentHp=m_pBattleCharacterInfo->getCurrHp();
+
         
         closeUp = Sprite::create("kantai/" + std::to_string(m_pBattleCharacterInfo->getKantaiNumber()) + "/image 9.png");
         addChild(closeUp);
         closeUp->setZOrder(3);
         closeUp->setScale(0.8);
         
-        InitInfo();
+        
         
         m_pMainCannon=NULL;
         m_pMainCannon=m_pBattleCharacterInfo->GetMainCannon();
@@ -148,18 +167,37 @@ void BattleKantai::StepBack(float delay){
 
 void BattleKantai::InitInfo()
 {
+
     informationBoard = Sprite::create("BattleMain/image 530.png");
     addChild(informationBoard);
     informationBoard->setPosition(200, 70);
     informationBoard->setZOrder(4);
-    
+    informationBoard->setCascadeOpacityEnabled(true);
     
     firePowerLabel =Label::create();
+    firePowerLabel->setPosition(80, 17);
+    informationBoard->addChild(firePowerLabel);
+    
     torpedoLabel =Label::create();
+    torpedoLabel->setPosition(160, 17);
+    informationBoard->addChild(torpedoLabel);
+    
     antiaircraftLabel =Label::create();
+    antiaircraftLabel->setPosition(240, 17);
+    informationBoard->addChild(antiaircraftLabel);
+    
     armourLabel = Label::create();
+    armourLabel->setPosition(320, 17);
+    informationBoard->addChild(armourLabel);
+    
     nameLabel =Label::create();
+    nameLabel->setPosition(45, 80);
+    informationBoard->addChild(nameLabel);
+    
     levelLabel = Label::create();
+    levelLabel->setPosition(60, 40);
+    informationBoard->addChild(levelLabel);
+    
 //    firePowerLabel = Label::createWithTTF("","fonts/STXINWEI.TTF",20);
 //    torpedoLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 20);
 //    antiaircraftLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 20);
@@ -167,14 +205,6 @@ void BattleKantai::InitInfo()
 //    nameLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 35);
 //    levelLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 25);
     
-    
-    
-    firePowerLabel->setPosition(80, 17);
-    torpedoLabel->setPosition(160, 17);
-    antiaircraftLabel->setPosition(240, 17);
-    armourLabel->setPosition(320, 17);
-    nameLabel->setPosition(45, 80);
-    levelLabel->setPosition(60, 40);
     
     equipment1 = Sprite::create();
     equipment2 = Sprite::create();
@@ -184,16 +214,6 @@ void BattleKantai::InitInfo()
     equipment2->setPosition(230, 72);
     equipment3->setPosition(270, 72);
     equipment4->setPosition(310, 72);
-    
-    
-    informationBoard->setCascadeOpacityEnabled(true);
-    
-    informationBoard->addChild(firePowerLabel);
-    informationBoard->addChild(torpedoLabel);
-    informationBoard->addChild(antiaircraftLabel);
-    informationBoard->addChild(armourLabel);
-    informationBoard->addChild(nameLabel);
-    informationBoard->addChild(levelLabel);
     informationBoard->addChild(equipment1);
     informationBoard->addChild(equipment2);
     informationBoard->addChild(equipment3);

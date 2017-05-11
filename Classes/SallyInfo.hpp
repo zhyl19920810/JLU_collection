@@ -27,13 +27,18 @@ enum SallyStatus{
 };
 
 
-class SallyInfo:public Ref
+#define  SALLY_MGR SallyMgr::GetInstance()
+
+
+class SallyMgr:public Ref
 {
     friend class SallyPanel;
 public:
-    static SallyInfo* create();
-    ~SallyInfo();
+    static SallyMgr* GetInstance();
+    void DelInstance();
+    ~SallyMgr();
     
+    void SallyReset();
     SallyStatus GetStatus() const{return m_Status;}
     void SetStatus(SallyStatus _status) {m_Status=_status;}
     std::string GetMissionName();
@@ -47,6 +52,7 @@ private:
     Mission*        m_pMission;
     SallyStatus     m_Status;
     MissionNode*    m_CurMissonNode;
+    static SallyMgr*  m_pInstance;
     
 };
 

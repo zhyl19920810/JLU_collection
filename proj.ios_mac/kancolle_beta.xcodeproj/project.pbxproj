@@ -368,8 +368,6 @@
 		F4B173FD1C545F4600D2BC1C /* EquipMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB091C50D36B00F75BCE /* EquipMgr.hpp */; };
 		F4B173FE1C545F4600D2BC1C /* ExpMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0B1C50D3E400F75BCE /* ExpMgr.cpp */; };
 		F4B173FF1C545F4600D2BC1C /* ExpMgr.hpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FABB0C1C50D3E400F75BCE /* ExpMgr.hpp */; };
-		F4B174081C54621A00D2BC1C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B174061C54621A00D2BC1C /* libsqlite3.dylib */; };
-		F4B174091C54621A00D2BC1C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B174071C54621A00D2BC1C /* libsqlite3.dylib */; };
 		F4B1740E1C54656F00D2BC1C /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B1740D1C54656F00D2BC1C /* libz.1.dylib */; };
 		F4B174101C54657E00D2BC1C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B1740F1C54657D00D2BC1C /* libz.tbd */; };
 		F4B926CE1C55FA74005DB127 /* PortMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CC1C55FA74005DB127 /* PortMain */; };
@@ -597,6 +595,11 @@
 		F4D9C3661C860096002A93EC /* SupplyAmmoEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D9C3641C860096002A93EC /* SupplyAmmoEntity.cpp */; };
 		F4D9C3671C860096002A93EC /* SupplyAmmoEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D9C3641C860096002A93EC /* SupplyAmmoEntity.cpp */; };
 		F4EAC7691C54FEC000BF8E36 /* interface in Resources */ = {isa = PBXBuildFile; fileRef = F4036D1F1BDA1F16002788AA /* interface */; };
+		F4ED7A521EC2B079002EC21D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B174001C54608500D2BC1C /* libsqlite3.0.tbd */; };
+		F4ED7A531EC2B079002EC21D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B174011C54608500D2BC1C /* libsqlite3.tbd */; };
+		F4ED7A551EC2B1EC002EC21D /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4ED7A541EC2B1EC002EC21D /* libsqlite3.0.dylib */; };
+		F4ED7A581EC3FB4E002EC21D /* BattleInfoBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4ED7A561EC3FB4E002EC21D /* BattleInfoBoard.cpp */; };
+		F4ED7A591EC3FB4E002EC21D /* BattleInfoBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4ED7A561EC3FB4E002EC21D /* BattleInfoBoard.cpp */; };
 		F4EFACC01C574DD4000FFF74 /* CommonAssets in Resources */ = {isa = PBXBuildFile; fileRef = F4EFACBF1C574DD4000FFF74 /* CommonAssets */; };
 		F4EFACC21C577D12000FFF74 /* CommonAssets in Resources */ = {isa = PBXBuildFile; fileRef = F4EFACBF1C574DD4000FFF74 /* CommonAssets */; };
 		F4EFACC31C577D12000FFF74 /* PortMain in Resources */ = {isa = PBXBuildFile; fileRef = F4B926CC1C55FA74005DB127 /* PortMain */; };
@@ -989,6 +992,9 @@
 		F4D8028D1BE604EB0032C724 /* Mission.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Mission.xml; sourceTree = "<group>"; };
 		F4D9C3641C860096002A93EC /* SupplyAmmoEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SupplyAmmoEntity.cpp; sourceTree = "<group>"; };
 		F4D9C3651C860096002A93EC /* SupplyAmmoEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SupplyAmmoEntity.hpp; sourceTree = "<group>"; };
+		F4ED7A541EC2B1EC002EC21D /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libsqlite3.0.dylib; sourceTree = DEVELOPER_DIR; };
+		F4ED7A561EC3FB4E002EC21D /* BattleInfoBoard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleInfoBoard.cpp; sourceTree = "<group>"; };
+		F4ED7A571EC3FB4E002EC21D /* BattleInfoBoard.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BattleInfoBoard.hpp; sourceTree = "<group>"; };
 		F4EFACBF1C574DD4000FFF74 /* CommonAssets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CommonAssets; sourceTree = "<group>"; };
 		F4F956C21C5B5359001AA1B3 /* RepairMain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RepairMain; sourceTree = "<group>"; };
 		F4F956C41C5B538E001AA1B3 /* RepairContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RepairContainer.cpp; sourceTree = "<group>"; };
@@ -1042,10 +1048,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4ED7A551EC2B1EC002EC21D /* libsqlite3.0.dylib in Frameworks */,
+				F4ED7A521EC2B079002EC21D /* libsqlite3.0.tbd in Frameworks */,
+				F4ED7A531EC2B079002EC21D /* libsqlite3.tbd in Frameworks */,
 				F4B174101C54657E00D2BC1C /* libz.tbd in Frameworks */,
 				F4B1740E1C54656F00D2BC1C /* libz.1.dylib in Frameworks */,
-				F4B174081C54621A00D2BC1C /* libsqlite3.dylib in Frameworks */,
-				F4B174091C54621A00D2BC1C /* libsqlite3.dylib in Frameworks */,
 				1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */,
 				8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */,
 				503AE11B17EB9C5A00D1A890 /* IOKit.framework in Frameworks */,
@@ -1132,6 +1139,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4ED7A541EC2B1EC002EC21D /* libsqlite3.0.dylib */,
 				F4B1740F1C54657D00D2BC1C /* libz.tbd */,
 				F4B1740D1C54656F00D2BC1C /* libz.1.dylib */,
 				F4B1740A1C54633500D2BC1C /* libbz2.tbd */,
@@ -1686,6 +1694,8 @@
 				F45CECC51EBCC56F00F2E7C1 /* BattleAvatarCard.hpp */,
 				F4B97A271EBECE520053EE42 /* BattleMacro.cpp */,
 				F4B97A281EBECE520053EE42 /* BattleMacro.hpp */,
+				F4ED7A561EC3FB4E002EC21D /* BattleInfoBoard.cpp */,
+				F4ED7A571EC3FB4E002EC21D /* BattleInfoBoard.hpp */,
 			);
 			name = Battle;
 			sourceTree = "<group>";
@@ -2111,6 +2121,7 @@
 				F4B979DB1EBE08460053EE42 /* BattleCharacterInfo.hpp in Sources */,
 				F4B979DC1EBE08460053EE42 /* BattleEquipInfo.hpp in Sources */,
 				F4B979DD1EBE08460053EE42 /* AnimationMaker.hpp in Sources */,
+				F4ED7A581EC3FB4E002EC21D /* BattleInfoBoard.cpp in Sources */,
 				F4B979DE1EBE08460053EE42 /* BattleAvatarCard.hpp in Sources */,
 				F4B979DF1EBE08460053EE42 /* Panel.hpp in Sources */,
 				F4B979E01EBE08460053EE42 /* tinaMacros.hpp in Sources */,
@@ -2421,6 +2432,7 @@
 				F4B979B01EBE08230053EE42 /* RepairSelectEntity.hpp in Sources */,
 				F4B979B11EBE08230053EE42 /* PortUILayer.hpp in Sources */,
 				F4B979B21EBE08230053EE42 /* PortBgLayer.hpp in Sources */,
+				F4ED7A591EC3FB4E002EC21D /* BattleInfoBoard.cpp in Sources */,
 				F4B979B31EBE08230053EE42 /* IndicatorBar.hpp in Sources */,
 				F4B97A2A1EBECE520053EE42 /* BattleMacro.cpp in Sources */,
 				F4B979B41EBE08230053EE42 /* PortState.hpp in Sources */,

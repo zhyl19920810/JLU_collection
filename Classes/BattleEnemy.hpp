@@ -30,6 +30,8 @@ public:
     virtual void StepBack(float delay);
     void ApearAnimation();
     virtual float ShowAttackingAnime(float delay);
+    
+    ~BattleEnemy();
 private:
     virtual void ThreeDigitMode();
     virtual void UpdateInfo();

@@ -29,7 +29,7 @@ bool SallyPanel::init()
     bool bRet=false;
     do
     {
-        m_SallyInfo=SallyInfo::create();
+        //m_SallyInfo=SallyInfo::create();
         InitBg();
         
         bRet=true;
@@ -40,7 +40,7 @@ bool SallyPanel::init()
 
 SallyPanel::~SallyPanel()
 {
-    delete m_SallyInfo;
+    //delete m_SallyInfo;
 }
 
 
@@ -148,7 +148,7 @@ void SallyPanel::SallyMove()
 {
     ShowBottomPanel();
     
-    MissionNode* curMissionNode=m_SallyInfo->m_CurMissonNode;
+    MissionNode* curMissionNode=SALLY_MGR->m_CurMissonNode;
     bool needRollCompass=false;
     float timepassed = 0;
     m_pSallyShip->setVisible(true);
@@ -218,8 +218,10 @@ void SallyPanel::SallyMove()
     }
     if (nextNode->m_type == NODE_BOSS || nextNode->m_type == NODE_ENEMY)
     {
-        m_SallyInfo->m_Status = SALLY_FORMATION;
-        m_SallyInfo->m_CurMissonNode = nextNode;
+        SALLY_MGR->SetStatus(SALLY_FORMATION);
+        SALLY_MGR->m_CurMissonNode = nextNode;
+//        m_SallyInfo->m_Status = SALLY_FORMATION;
+//        m_SallyInfo->m_CurMissonNode = nextNode;
         NextStatus(timepassed);
     }
     
@@ -240,16 +242,16 @@ void SallyPanel::SallyFinish()
 
 void SallyPanel::OnStatusOverCallBack()
 {
-    if (m_SallyInfo->m_Status == SallyStatus::SALLY_START)
+    if (SALLY_MGR->m_Status == SallyStatus::SALLY_START)
     {
-        m_SallyInfo->m_Status = SALLY_MOVE;
+        SALLY_MGR->m_Status = SALLY_MOVE;
         SallyMove();
     }
-    else if (m_SallyInfo->m_Status == SallyStatus::SALLY_BATTLE)
+    else if (SALLY_MGR->m_Status == SallyStatus::SALLY_BATTLE)
     {
         SallyBattle();
     }
-    else if (m_SallyInfo->m_Status == SallyStatus::SALLY_FORMATION)
+    else if (SALLY_MGR->m_Status == SallyStatus::SALLY_FORMATION)
     {
         SallyFormation();
     }
@@ -285,7 +287,7 @@ void SallyPanel::SetFormationCallback(Ref* pSender, FormationType formation)
 {
     
     m_pFlagShip->runAction(MoveBy::create(0.5, ccp(-400, 0)));
-    m_SallyInfo->m_Status = SALLY_START;
+    SALLY_MGR->m_Status = SALLY_START;
     m_pNodePointShader->setVisible(false);
     m_pFormationSelecter->HideSelecter();
     
@@ -305,7 +307,7 @@ void SallyPanel::SetFormationCallback(Ref* pSender, FormationType formation)
         }
     }
     
-    BattleFleet* enemyFleet=m_SallyInfo->GetCurMissionNode()->m_pBattleFleet;
+    BattleFleet* enemyFleet=SALLY_MGR->GetCurMissionNode()->m_pBattleFleet;
     panel->SetInfo(kantaiFleet, enemyFleet,formation, formation);
     //TODO
 //    Fleet* allies = GameModel::getInstance()->getFleet(0);
@@ -317,8 +319,8 @@ void SallyPanel::SetFormationCallback(Ref* pSender, FormationType formation)
 
 void SallyPanel::SetMission(int areaId, int index)
 {
-    m_SallyInfo->SetMission(areaId, index);
-    sallyMap->setTexture("Map/" +m_SallyInfo->GetMissionName()+ "/image 1.png");
+    SALLY_MGR->SetMission(areaId, index);
+    sallyMap->setTexture("Map/" +SALLY_MGR->GetMissionName()+ "/image 1.png");
 }
 
 

@@ -43,20 +43,20 @@ bool BattleAvatarCard::init(int kantaiNumber,bool isEnemy)
     return bRet;
 }
 
-
+//TODO
 void BattleAvatarCard::UpdateCard(BrokenType type)
 {
     if (m_bIsEnemy)
     {
-        m_pMainImage->setTexture("Enemy/" + std::to_string(m_iKantaiNumber) + "/image 1.png");
+        m_pMainImage->setTexture("kantai/" + std::to_string(m_iKantaiNumber) + "/image 1.png");
     }
     else if (type == BrokenType::normal || type == BrokenType::tiny)
     {
-        m_pMainImage->setTexture("Character/" + std::to_string(m_iKantaiNumber) + "/image 1.png");
+        m_pMainImage->setTexture("kantai/" + std::to_string(m_iKantaiNumber) + "/image 1.png");
     }
     else
     {
-        m_pMainImage->setTexture("Character/" + std::to_string(m_iKantaiNumber) + "/image 3.png");
+        m_pMainImage->setTexture("kantai/" + std::to_string(m_iKantaiNumber) + "/image 3.png");
     }
     SetBrokenMark(type);
 }

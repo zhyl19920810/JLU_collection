@@ -367,6 +367,7 @@ void BattlePanel::InitCharacters()
                 auto action = Sequence::create(CCDelayTime::create(0.1 * i), actionMoveOut, NULL);
                 kantai->runAction(action);
                 ++countKantai;
+                addChild(kantai);
             }
 
         }
@@ -385,6 +386,11 @@ void BattlePanel::InitEnemy()
     {
         BattleFleet* enemyFleet= m_pBattleInfo->getEnemies();
         std::vector<BattleCharacterInfo*> vBattleEnemy=enemyFleet->m_vBattleShip;
+        m_vBattleEnemies.resize(vBattleEnemy.size());
+        for (int i=0; i<m_vBattleEnemies.size(); ++i)
+        {
+            m_vBattleEnemies[i]=NULL;
+        }
         
         int countEnemy=0;
         for (int i = 0; i < vBattleEnemy.size(); i++)
@@ -395,8 +401,10 @@ void BattlePanel::InitEnemy()
                 //TODO
                 BattleEnemy *enemy = BattleEnemy::create(enemyInfo,(i + 1));
                 enemy->SetMaxHp(enemyInfo->getMaxHp());
-                m_vBattleEnemies.push_back(enemy);
+                m_vBattleEnemies[i]=enemy;
+                addChild(enemy);
                 enemy->ApearAnimation();
+                
             }
 
             ++countEnemy;
@@ -571,7 +579,7 @@ void BattlePanel::AirBattle()
     
     for (int i = vKantai.size()-1; i >=0; i--)
     {
-        if (vKantai[i]->CanAirBattle())
+        if (vKantai[i]&&vKantai[i]->CanAirBattle())
         {
             firstCVindex = i;
             airBattleHappens = true;
@@ -682,7 +690,8 @@ void BattlePanel::fireBattle()
             delay3 = delay1 + 1.5;
             
             
-            m_vBattleEnemies[targetIndex]->StepOut(timePassed);
+            BattleEnemy* _enemy=m_vBattleEnemies[targetIndex];
+            _enemy->StepOut(timePassed);
             m_pBattleInfo->GetFireDamage(allieAttack, index, targetIndex, doubleHit, special, ci, damage, critical, miss);
             if (!miss)
                 m_pBattleInfo->getEnemies()->m_vBattleShip[targetIndex]->GetDamage(damage);

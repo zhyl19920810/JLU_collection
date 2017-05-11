@@ -117,7 +117,8 @@ public:
     
     BattleEquipInfo* GetEquipInfo(int number)
     {
-        return m_vEquipInfo[number-1];
+        return NULL;
+       // return m_vEquipInfo[number-1];
     }
     
     BattleEquipInfo*  GetMainCannon();
