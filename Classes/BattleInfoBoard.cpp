@@ -34,37 +34,40 @@ void BattleInfoBorard::InitInfo()
     informationBoard = Sprite::create("BattleMain/image 530.png");
     addChild(informationBoard);
     
-    firePowerLabel =Label::create();
+    
+    firePowerLabel = Label::createWithTTF("","fonts/STXINWEI.TTF",20);
+    torpedoLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 20);
+    antiaircraftLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 20);
+    armourLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 20);
+    nameLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 35);
+    levelLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 25);
+    
+    //firePowerLabel =Label::create();
     firePowerLabel->setPosition(80, 17);
-    addChild(firePowerLabel);
+    informationBoard->addChild(firePowerLabel);
     
-    torpedoLabel =Label::create();
+    //torpedoLabel =Label::create();
     torpedoLabel->setPosition(160, 17);
-    addChild(torpedoLabel);
+    informationBoard->addChild(torpedoLabel);
     
-    antiaircraftLabel =Label::create();
+    //antiaircraftLabel =Label::create();
     antiaircraftLabel->setPosition(240, 17);
-    addChild(antiaircraftLabel);
+    informationBoard->addChild(antiaircraftLabel);
     
-    armourLabel = Label::create();
+    //armourLabel = Label::create();
     armourLabel->setPosition(320, 17);
-    addChild(armourLabel);
+    informationBoard->addChild(armourLabel);
     
-    nameLabel =Label::create();
+    //nameLabel =Label::create();
     nameLabel->setPosition(45, 80);
-    addChild(nameLabel);
+    informationBoard->addChild(nameLabel);
     
-    levelLabel = Label::create();
+    //levelLabel = Label::create();
     levelLabel->setPosition(60, 40);
-    addChild(levelLabel);
+    informationBoard->addChild(levelLabel);
     
-    //    firePowerLabel = Label::createWithTTF("","fonts/STXINWEI.TTF",20);
-    //    torpedoLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 20);
-    //    antiaircraftLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 20);
-    //    armourLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 20);
-    //    nameLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 35);
-    //    levelLabel = Label::createWithTTF("", "fonts/STXINWEI.TTF", 25);
-    
+
+    informationBoard->setCascadeOpacityEnabled(true);
     
     equipment1 = Sprite::create();
     equipment2 = Sprite::create();
@@ -74,10 +77,12 @@ void BattleInfoBorard::InitInfo()
     equipment2->setPosition(230, 72);
     equipment3->setPosition(270, 72);
     equipment4->setPosition(310, 72);
-    addChild(equipment1);
-    addChild(equipment2);
-    addChild(equipment3);
-    addChild(equipment4);
+    informationBoard->addChild(equipment1);
+    informationBoard->addChild(equipment2);
+    informationBoard->addChild(equipment3);
+    informationBoard->addChild(equipment4);
+    
+    setOpacity(0);
 }
 
 
@@ -111,7 +116,7 @@ void BattleInfoBorard::MoveOut(int delay)
     setOpacity(0);
 }
 
-void BattleInfoBorard::MoveIn(int delay)
+void BattleInfoBorard::FadeIn(int delay)
 {
      runAction(Sequence::create(DelayTime::create(delay), FadeIn::create(0.05), DelayTime::create(0.5), FadeOut::create(0.3), NULL));
 }

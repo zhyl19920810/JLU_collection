@@ -69,21 +69,20 @@ bool BattleEnemy::init(BattleCharacterInfo *info,int row)
         battleBar=BattleBar::create();
         addChild(battleBar);
         
-        string tempStr="kantai/" + std::to_string(m_pBattleCharacterInfo->getKantaiNumber()) + "/image 13.png";
-        closeUp = Sprite::create(tempStr);
+        
         //TODO
         //closeUp = Sprite::create("Enemy/" + std::to_string(m_pBattleCharacterInfo->getKantaiNumber()) + "/image 3.png");
+        closeUp = Sprite::create("kantai/" + std::to_string(m_pBattleCharacterInfo->getKantaiNumber()) + "/image 9.png");
         closeUp->setZOrder(3);
+        closeUp->setPosition(1200, -0);
         addChild(closeUp);
+        closeUp->setVisible(false);
+        closeUp->setGlobalZOrder(10);
         
         m_pBattleInfoBorard=BattleInfoBorard::create();
         addChild(m_pBattleInfoBorard);
         m_pBattleInfoBorard->setPosition(600, 70);
-        m_pBattleInfoBorard->setZOrder(4);
-//        informationBoard = Sprite::create("BattleMain/image 530.png");
-//        addChild(informationBoard);
-//        informationBoard->setPosition(600, 70);
-//        informationBoard->setZOrder(4);
+        m_pBattleInfoBorard->setGlobalZOrder(10);
         
         bRet=true;
     }while(0);
@@ -93,12 +92,11 @@ bool BattleEnemy::init(BattleCharacterInfo *info,int row)
 float BattleEnemy::ShowAttackingAnime(float delay)
 {
     closeUp->setPosition(1200, 0);
-    AnimationMaker::FlyToPositionAndFadeOut(closeUp, delay,ccp(700,240),0.5);
+    closeUp->setVisible(true);
+    AnimationMaker::FlyToPositionAndFadeOut(closeUp, delay,Vec2(700,240),0.5);
     m_pBattleInfoBorard->UpdateInfo(m_pBattleCharacterInfo);
-    m_pBattleInfoBorard->MoveIn(delay);
-    //UpdateInformationBoard();
-//    
-//    informationBoard->runAction(Sequence::create(DelayTime::create(delay), FadeIn::create(0.05), DelayTime::create(0.5), FadeOut::create(0.3), NULL));
+    m_pBattleInfoBorard->FadeIn(delay);
+    
     return 0.85;
 }
 void BattleEnemy::ApearAnimation()
@@ -142,11 +140,6 @@ void BattleEnemy::StepBack(float delay){
     FiniteTimeAction *back = MoveBy::create(0.3, Point(40, 0));
     this->runAction(Sequence::create(DelayTime::create(delay), back, NULL));
 }
-
-//void BattleEnemy::UpdateInfo()
-//{
-//    informationBoard->setOpacity(0);
-//}
 
 
 void BattleEnemy::ThreeDigitMode(){

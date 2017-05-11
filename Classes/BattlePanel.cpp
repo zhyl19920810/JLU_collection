@@ -14,6 +14,13 @@
 NS_KCL_BEGIN
 
 
+#define BG_ZORDER        -1
+#define FORMATION_ZORDER  3
+#define SHELL_ZORDER      6
+#define AVATAR_ZORDER     8
+#define INTERFACE_ZORDER  10
+#define BUTTON_ZORDER     12
+
 BattlePanel* BattlePanel::create(BattleFleet* kantaiFleet,BattleFleet* enemyFleet,FormationType kantaiFormation,FormationType enemyFormation)
 {
     BattlePanel* pRet=new BattlePanel;
@@ -48,10 +55,10 @@ bool BattlePanel::init(kancolle::BattleFleet *kantaiFleet, kancolle::BattleFleet
         else
             bgImg = Sprite::create("BattleMain/image 87.jpg");
         bgImg->setPosition(400,240);
-        addChild(bgImg);
+        addChild(bgImg,BG_ZORDER);
         
         closeUpBorder = Sprite::create("BattleMain/image 303.png");
-        this->addChild(closeUpBorder);
+        this->addChild(closeUpBorder,INTERFACE_ZORDER);
         closeUpBorder->setZOrder(1);
         closeUpBorder->setOpacity(0);
         
@@ -180,20 +187,19 @@ void BattlePanel::InitLeftCornerBar()
 {
     leftCornerBar=Sprite::create("BattleMain/image 164.png");
     leftCornerBar->setPosition(128, 427);
-    leftCornerBar->setZOrder(1);
     //leftCornerBar->setVisible(false);
-    this->addChild(leftCornerBar);
+    this->addChild(leftCornerBar,FORMATION_ZORDER);
     if (m_bNightFight)
         leftCornerCircle = Sprite::create("BattleMain/image 161.png");
     else
         leftCornerCircle = Sprite::create("BattleMain/image 159.png");
     leftCornerCircle->setPosition(18, 427);
-    leftCornerCircle->setZOrder(1);
+    //leftCornerCircle->setZOrder(1);
     auto *circleAction = RotateBy::create(1, 90);
     auto *sequence = Sequence::create(circleAction, NULL);
     auto *repeat = RepeatForever::create((ActionInterval*)sequence);
     leftCornerCircle->runAction(repeat);
-    this->addChild(leftCornerCircle);
+    this->addChild(leftCornerCircle,FORMATION_ZORDER);
     
     
 }
@@ -201,18 +207,16 @@ void BattlePanel::InitLeftCornerBar()
 
 void BattlePanel::InitFormation()
 {
-    //    myFormation= new Formation(model->getAllies().size(), model->getAlliesFormation());
-    //    enemyFormation= new Formation(model->getEnemies().size(), model->getEnemyFormation(), true);
     
     m_pKantaiFormation=Formation::create(m_pBattleInfo->GetKantaiFormation());
     m_pKantaiFormation->AddBattleBorder();
-    addChild(m_pKantaiFormation);
+    addChild(m_pKantaiFormation,FORMATION_ZORDER);
     m_pKantaiFormation->setPosition(75, 90);
     m_pKantaiFormation->setVisible(false);
     
     m_pEnemyFormation=Formation::create(m_pBattleInfo->GetEnemyFormation());
     m_pEnemyFormation->AddBattleBorder();
-    addChild(m_pEnemyFormation);
+    addChild(m_pEnemyFormation,FORMATION_ZORDER);
     m_pEnemyFormation->setPosition(715, 400);
     m_pEnemyFormation->setVisible(false);
     
@@ -329,15 +333,14 @@ void BattlePanel::BattleStart()
     startBorderDown = Sprite::create("CommonAssets/image 470.png");
     startBorderDown->setPosition(400, 130);
     startBorderUp->setPosition(400, 330);
-    this->addChild(startBorderDown);
-    this->addChild(startBorderUp);
+    this->addChild(startBorderDown,INTERFACE_ZORDER);
+    this->addChild(startBorderUp,INTERFACE_ZORDER);
+    
     auto *battleStart = Sprite::create("BattleMain/image 51.png");
     battleStart->setPosition(400, 240);
-    this->addChild(battleStart);
+    this->addChild(battleStart,INTERFACE_ZORDER);
     
     //animation
-    
-    
     startBorderDown->runAction(CCMoveTo::create(1, Point(400, -100)));
     startBorderUp->runAction(CCMoveTo::create(1, Point(400, 580)));
     battleStart->runAction(CCFadeOut::create(0.6));
@@ -367,7 +370,7 @@ void BattlePanel::InitCharacters()
                 auto action = Sequence::create(CCDelayTime::create(0.1 * i), actionMoveOut, NULL);
                 kantai->runAction(action);
                 ++countKantai;
-                addChild(kantai);
+                addChild(kantai,AVATAR_ZORDER);
             }
 
         }
@@ -402,7 +405,7 @@ void BattlePanel::InitEnemy()
                 BattleEnemy *enemy = BattleEnemy::create(enemyInfo,(i + 1));
                 enemy->SetMaxHp(enemyInfo->getMaxHp());
                 m_vBattleEnemies[i]=enemy;
-                addChild(enemy);
+                addChild(enemy,AVATAR_ZORDER);
                 enemy->ApearAnimation();
                 
             }
@@ -474,10 +477,9 @@ void BattlePanel::ShowLeftCornerBar(LeftCornerType type)
         default:
             break;
     }
-    leftCornerLable->setZOrder(1);
     leftCornerLable->setPosition(40, 427);
     leftCornerLable->setAnchorPoint(ccp(0, 0.5));
-    this->addChild(leftCornerLable);
+    this->addChild(leftCornerLable,FORMATION_ZORDER);
     auto *fadeIn3 = FadeIn::create(0.3);
     leftCornerLable->runAction(fadeIn3);
     
@@ -530,13 +532,13 @@ void BattlePanel::DoScout()
     FiniteTimeAction *scale = ScaleBy::create(0.8, 40, 1);
     FiniteTimeAction *fadeOut = FadeOut::create(0.5);
     auto actionSlide = Sequence::create(scale, CCDelayTime::create(2.5), fadeOut, NULL);
-    this->addChild(slide);
+    this->addChild(slide,SHELL_ZORDER);
     slide->runAction(actionSlide);
     
     //plane
     auto *plane = Sprite::create("BattleMain/image 114.png");
     plane->setPosition(20, -20);
-    this->addChild(plane);
+    this->addChild(plane,SHELL_ZORDER);
     FiniteTimeAction *move = MoveTo::create(1.5, Point(880, 520));
     Sequence *planeAction = Sequence::create(CCDelayTime::create(0.75), move, CallFunc::create(CC_CALLBACK_0(BattlePanel::ScoutResult, this)),NULL);
     plane->runAction(planeAction);
@@ -556,11 +558,10 @@ void BattlePanel::ScoutResult()
         
         auto *statusUp = Sprite::create("BattleMain/image 515.png");
         statusUp->setPosition(400, 330);
-        statusUp->setZOrder(1);
+        this->addChild(statusUp,INTERFACE_ZORDER);
+        
         auto *moveLeft = MoveTo::create(0.2, Point(-400, 330));
         auto actionStatusUp = Sequence::create(CCDelayTime::create(1), moveLeft, NULL);
-        
-        this->addChild(statusUp);
         statusUp->runAction(actionStatusUp);
     }
     
@@ -821,8 +822,6 @@ void BattlePanel::fireBattle()
 void BattlePanel::DayEnd()
 {
     ShowLeftCornerBar(lituopanding);
-    startBorderUp->setZOrder(1);
-    startBorderDown->setZOrder(1);
     startBorderUp->setTexture("CommonAssets/image 473.png");
     startBorderDown->setTexture("CommonAssets/image 471.png");
     startBorderUp->runAction(MoveTo::create(1, ccp(400, 352)));
@@ -839,9 +838,8 @@ void BattlePanel::DayEnd()
     escape->runAction(Sequence::create(DelayTime::create(0.8), FadeIn::create(0.5), NULL));
     nightBattle->runAction(Sequence::create(DelayTime::create(0.8), FadeIn::create(0.5), NULL));
     auto menu = Menu::create(escape, nightBattle,NULL);
-    this->addChild(menu);
+    this->addChild(menu,BUTTON_ZORDER);
     menu->setPosition(Point::ZERO);
-    menu->setZOrder(2);
     
     NextStatus(5);
 }

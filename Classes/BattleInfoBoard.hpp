@@ -27,7 +27,7 @@ public:
     void InitInfo();
     void UpdateInfo(BattleCharacterInfo* characterInfo);
     void MoveOut(int delay);
-    void MoveIn(int delay);
+    void FadeIn(int delay);
     
 private:
     Sprite * informationBoard;
