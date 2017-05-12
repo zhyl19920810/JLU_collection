@@ -28,10 +28,16 @@ ViewMgr* ViewMgr::getInstance()
 
 cocos2d::Scene* ViewMgr::showScene(SceneType sceneType,bool replaceScene,const cocos2d::Value& data)
 {
-    cocos2d::Scene* _scene=ViewMgrFactory::getScene(sceneType);
-    _scene->setTag(static_cast<int>(sceneType));
+//    cocos2d::Scene* _scene=ViewMgrFactory::getScene(sceneType);
+//    _scene->setTag(static_cast<int>(sceneType));
+    cocos2d::Scene* _scene=NULL;
+    
     if (!m_director->getRunningScene())
     {
+        _scene=ViewMgrFactory::getScene(sceneType);
+        _scene->setTag(static_cast<int>(sceneType));
+        
+        
         SceneStruct sceneStruct;
         sceneStruct.type=sceneType;
         sceneStruct.scene=_scene;
@@ -51,10 +57,14 @@ cocos2d::Scene* ViewMgr::showScene(SceneType sceneType,bool replaceScene,const c
                 }
             }
             sceneStack.pop_front();
+            _scene=ViewMgrFactory::getScene(sceneType);
+            _scene->setTag(static_cast<int>(sceneType));
             m_director->replaceScene(_scene);
         }
         else
         {
+            _scene=ViewMgrFactory::getScene(sceneType);
+            _scene->setTag(static_cast<int>(sceneType));
             m_director->pushScene(_scene);
         }
         SceneStruct sceneStruct;

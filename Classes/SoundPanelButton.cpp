@@ -55,6 +55,9 @@ SoundPanelButton* SoundPanelButton::create(soundButtonCallBack _callback)
     return pRet;
 }
 
-
+SoundPanelButton::~SoundPanelButton()
+{
+    
+}
 
 NS_KCL_END

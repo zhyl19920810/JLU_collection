@@ -85,7 +85,9 @@ void MainPanelState::Enter(PanelType preType,kancolle::PortScene *portScene)
         case kancolle::PanelType::PORT_REPAIR:
         case kancolle::PanelType::PORT_SUPPLY:
             VIEW_MGR->showPanel(PanelType::PORT_MAINLAYER);
-            portScene->soundButton->setVisible(true);
+            if (portScene->soundButton)
+                portScene->soundButton->setVisible(true);
+            
             portScene->portUIlayer->changeTitlePic(PanelType::PORT_MAINLAYER,MAIN_PORT_TIME);
             portScene->layerSelecter->moveOut();
             dynamic_cast<PortMainLayer*>(VIEW_MGR->getPanel(PanelType::PORT_MAINLAYER))->buttonFlyIn();
@@ -114,7 +116,8 @@ void MainPanelState::Exit(PanelType newType,kancolle::PortScene *portScene)
         case kancolle::PanelType::PORT_REMODE:
         case kancolle::PanelType::PORT_REPAIR:
         case kancolle::PanelType::PORT_SUPPLY:
-            portScene->soundButton->setVisible(false);
+            if (portScene->soundButton)
+                portScene->soundButton->setVisible(false);
             dynamic_cast<PortMainLayer*>(VIEW_MGR->getPanel(PanelType::PORT_MAINLAYER))->setButtonDisable();
             break;
         default:

@@ -187,11 +187,12 @@ void PortScene::changeToSoundPanel()
 
 void PortScene::initSoundButton()
 {
-    openSoundPanel=false;
-    soundButton=SoundPanelButton::create(CC_CALLBACK_0(PortScene::changeToSoundPanel, this));
-    Vec2 pos=Vec2(Director::getInstance()->getWinSize().width-26, 26);
-    soundButton->setPosition(pos);
-    addChild(soundButton,5);
+    soundButton=NULL;
+//    openSoundPanel=false;
+//    soundButton=SoundPanelButton::create(CC_CALLBACK_0(PortScene::changeToSoundPanel, this));
+//    Vec2 pos=Vec2(Director::getInstance()->getWinSize().width-26, 26);
+//    soundButton->setPosition(pos);
+//    addChild(soundButton,5);
 }
 
 

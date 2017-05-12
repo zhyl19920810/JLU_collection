@@ -25,6 +25,7 @@ public:
     
     void intoCallback(Ref*);
     bool init(soundButtonCallBack);
+    ~SoundPanelButton();
 private:
     bool SoundPanelOpen;
     cocos2d::MenuItem* button;

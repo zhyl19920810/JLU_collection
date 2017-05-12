@@ -21,10 +21,10 @@ MissionNode::~MissionNode()
         delete m_pBattleFleet;
     }
     
-    for (int i=0; i<m_vChildren.size(); ++i)
-    {
-        delete m_vChildren[i];
-    }
+//    for (int i=0; i<m_vChildren.size(); ++i)
+//    {
+//        delete m_vChildren[i];
+//    }
     release();
 }
 
