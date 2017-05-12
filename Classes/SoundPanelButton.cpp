@@ -20,9 +20,11 @@ bool SoundPanelButton::init(soundButtonCallBack _callback)
     {
         CC_BREAK_IF(!Node::init());
         
-        callback=_callback;
         button=MenuItemSprite::create(Sprite::create("PortMain/image 81.png"), Sprite::create("PortMain/image 81.png"), CC_CALLBACK_1(SoundPanelButton::intoCallback, this));
         button->setPosition(Vec2::ZERO);
+        callback=_callback;
+
+        
         Menu* mn=Menu::create();
         mn->setPosition(Vec2::ZERO);
         mn->addChild(button);

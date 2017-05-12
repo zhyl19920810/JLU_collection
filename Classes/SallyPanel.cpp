@@ -323,5 +323,11 @@ void SallyPanel::SetMission(int areaId, int index)
     sallyMap->setTexture("Map/" +SALLY_MGR->GetMissionName()+ "/image 1.png");
 }
 
+void SallyPanel::SetMission()
+{
+    sallyMap->setTexture("Map/" +SALLY_MGR->GetMissionName()+ "/image 1.png");
+}
+
+
 
 NS_KCL_END

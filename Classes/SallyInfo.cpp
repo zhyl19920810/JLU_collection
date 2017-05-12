@@ -76,4 +76,18 @@ MissionNode* SallyMgr::GetCurMissionNode()
 }
 
 
+bool SallyMgr::IfEndSally()
+{
+    if (m_CurMissonNode)
+    {
+        int size=static_cast<int>(m_CurMissonNode->m_vChildren.size());
+        return size==0;
+    }
+    return true;
+}
+
+
+
+
+
 NS_KCL_END

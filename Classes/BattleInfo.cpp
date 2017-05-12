@@ -451,9 +451,6 @@ void BattleInfo::GetFireDamage(bool alliesAttack, int alliesIndex, int enemyInde
 
 
 
-
-
-
 NS_KCL_END
 
 

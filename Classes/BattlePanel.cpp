@@ -8,6 +8,10 @@
 
 #include "BattlePanel.hpp"
 #include "AnimationMaker.hpp"
+#include "ViewMgr.hpp"
+#include "SallyPanel.hpp"
+#include "portScene.h"
+
 
 #define DEBUG false
 
@@ -320,12 +324,16 @@ void BattlePanel::onStatusOverCallBack(){
         status = BattleStatus::dayEnd;
         DayEnd();
     }
-    else {
-        
-        Director::getInstance()->popScene();
+    else
+    {
+        EndBattle();
     }
     
 }
+
+
+
+
 void BattlePanel::BattleStart()
 {
     HideLeftCornerBar();
@@ -630,6 +638,23 @@ void BattlePanel::AirBattle()
     
 }
 
+void BattlePanel::EndBattle()
+{
+    if (SALLY_MGR->IfEndSally())
+    {
+        auto scene=dynamic_cast<PortScene*>(VIEW_MGR->showScene(SceneType::HOME));
+        scene->SetCurrPanel(PanelType::PORT_MAINLAYER);
+    }
+    else
+    {
+        VIEW_MGR->showScene(SceneType::SALLY);
+        SallyPanel* sallyPanel=dynamic_cast<SallyPanel*>(VIEW_MGR->showPanel(PanelType::SALLY_MAIN));
+        sallyPanel->SetMission();
+    }
+}
+
+
+
 int BattlePanel::BattleKantaiSize()
 {
     int total=0;
@@ -830,17 +855,17 @@ void BattlePanel::DayEnd()
     startBorderDown->setScaleY(1.05);
     startBorderUp->setScaleY(1.05);
     
-    auto escape = MenuItemImage::create("BattleMain/image 2.png","BattleMain/image 9.png");
-    auto nightBattle = MenuItemImage::create("BattleMain/image 12.png", "BattleMain/image 14.png");
-    escape->setPosition(300, 240);
-    nightBattle->setPosition(500, 240);
-    escape->setOpacity(0);
-    nightBattle->setOpacity(0);
-    escape->runAction(Sequence::create(DelayTime::create(0.8), FadeIn::create(0.5), NULL));
-    nightBattle->runAction(Sequence::create(DelayTime::create(0.8), FadeIn::create(0.5), NULL));
-    auto menu = Menu::create(escape, nightBattle,NULL);
-    this->addChild(menu,BUTTON_ZORDER);
-    menu->setPosition(Point::ZERO);
+//    auto escape = MenuItemImage::create("BattleMain/image 2.png","BattleMain/image 9.png");
+//    auto nightBattle = MenuItemImage::create("BattleMain/image 12.png", "BattleMain/image 14.png");
+//    escape->setPosition(300, 240);
+//    nightBattle->setPosition(500, 240);
+//    escape->setOpacity(0);
+//    nightBattle->setOpacity(0);
+//    escape->runAction(Sequence::create(DelayTime::create(0.8), FadeIn::create(0.5), NULL));
+//    nightBattle->runAction(Sequence::create(DelayTime::create(0.8), FadeIn::create(0.5), NULL));
+//    auto menu = Menu::create(escape, nightBattle,NULL);
+//    this->addChild(menu,BUTTON_ZORDER);
+//    menu->setPosition(Point::ZERO);
     
     NextStatus(5);
 }

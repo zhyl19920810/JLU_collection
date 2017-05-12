@@ -70,6 +70,7 @@ private:
     void AirBattle();
     void fireBattle();
     void DayEnd();
+    void EndBattle();
     void NextStatus(float DelayTime);
     //void initLeftCornerBar();
     void HideLeftCornerBar();

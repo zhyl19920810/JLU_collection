@@ -44,6 +44,8 @@ public:
     std::string GetMissionName();
     void SetMission(int areaId,int index);
     MissionNode* GetCurMissionNode();
+    bool IfEndSally();
+
 private:
     bool init();
     

@@ -31,8 +31,10 @@ public:
     virtual ~SallyPanel();
     void SetFormationCallback(Ref* pSender, FormationType formation);
     void SetMission(int areaId,int index);
+    void SetMission();
     
 private:
+    
     void InitBg();
     
     
