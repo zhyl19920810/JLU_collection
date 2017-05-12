@@ -208,13 +208,13 @@ void BattlePanel::InitLeftCornerBar()
 void BattlePanel::InitFormation()
 {
     
-    m_pKantaiFormation=Formation::create(m_pBattleInfo->GetKantaiFormation());
+    m_pKantaiFormation=Formation::create(m_pBattleInfo->GetKantaiFormation(),false);
     m_pKantaiFormation->AddBattleBorder();
     addChild(m_pKantaiFormation,FORMATION_ZORDER);
     m_pKantaiFormation->setPosition(75, 90);
     m_pKantaiFormation->setVisible(false);
     
-    m_pEnemyFormation=Formation::create(m_pBattleInfo->GetEnemyFormation());
+    m_pEnemyFormation=Formation::create(m_pBattleInfo->GetEnemyFormation(),false);
     m_pEnemyFormation->AddBattleBorder();
     addChild(m_pEnemyFormation,FORMATION_ZORDER);
     m_pEnemyFormation->setPosition(715, 400);
@@ -341,10 +341,10 @@ void BattlePanel::BattleStart()
     this->addChild(battleStart,INTERFACE_ZORDER);
     
     //animation
-    startBorderDown->runAction(CCMoveTo::create(1, Point(400, -100)));
-    startBorderUp->runAction(CCMoveTo::create(1, Point(400, 580)));
-    battleStart->runAction(CCFadeOut::create(0.6));
-    battleStart->runAction(CCMoveTo::create(0.6, Point(360, 240)));
+    startBorderDown->runAction(MoveTo::create(1, Point(400, -100)));
+    startBorderUp->runAction(MoveTo::create(1, Point(400, 580)));
+    battleStart->runAction(FadeOut::create(0.6));
+    battleStart->runAction(MoveTo::create(0.6, Point(360, 240)));
     
     NextStatus(1);
 }
@@ -366,8 +366,8 @@ void BattlePanel::InitCharacters()
                 kantai->SetMaxHp(kantaiInfo->getMaxHp());
                 m_vBattleKantais.push_back(kantai);
                 kantai->setPosition(-160, 0);
-                CCFiniteTimeAction *actionMoveOut = CCMoveTo::create(0.3, Point(0, 0));
-                auto action = Sequence::create(CCDelayTime::create(0.1 * i), actionMoveOut, NULL);
+                CCFiniteTimeAction *actionMoveOut = MoveTo::create(0.3, Point(0, 0));
+                auto action = Sequence::create(DelayTime::create(0.1 * i), actionMoveOut, NULL);
                 kantai->runAction(action);
                 ++countKantai;
                 addChild(kantai,AVATAR_ZORDER);
@@ -403,10 +403,11 @@ void BattlePanel::InitEnemy()
             {
                 //TODO
                 BattleEnemy *enemy = BattleEnemy::create(enemyInfo,(i + 1));
-                enemy->SetMaxHp(enemyInfo->getMaxHp());
+//                enemy->SetMaxHp(enemyInfo->getMaxHp());
+//                enemy->SetCurrentHp(enemyInfo->getCurrHp());
                 m_vBattleEnemies[i]=enemy;
                 addChild(enemy,AVATAR_ZORDER);
-                enemy->ApearAnimation();
+                //enemy->ApearAnimation();
                 
             }
 

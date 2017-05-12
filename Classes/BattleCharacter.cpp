@@ -155,7 +155,7 @@ void BattleCharacter::SetBroken(BrokenType type)
 float BattleCharacter::ReceiveDamage(float delay, bool miss, bool critical, int damage,int explodeTimes)
 {
     float time = AnimationMaker::playExplodeAnimation(delay, this->GetRealPosition(), explodeTimes);
-    this->ShowAttackingAnime(delay);
+    this->ShowAttackedAnime(delay);
     this->ShowDamageAnime(delay + 0.1, miss, critical, damage);
     return time;
 }

@@ -13,6 +13,8 @@
 NS_KCL_BEGIN
 
 
+#define ACTION_GORDER  9
+
 void DamageAnimation(Sprite* sprite,float delay);
 bool AnimationMaker::damageNumberInitialized = false;
 float AnimationMaker::playPlaneAnimation(float delay)
@@ -99,7 +101,7 @@ float AnimationMaker::playAirBattleAnimation(float delay)
         plane1->runAction(Sequence::create(DelayTime::create(delay + 0.05*i), move, move2, move3, move4, move5,NULL));
         plane1->setPosition(100 - 30 * i, 300 - 35 * i);
         Panel*  panel=VIEW_MGR->getPanel(PanelType::BATTLE_MAIN);
-        panel->addChild(plane1);
+        panel->addChild(plane1,ACTION_GORDER);
     }
     return 3.6;
 }
@@ -162,7 +164,7 @@ float AnimationMaker::playExplodeAnimation(float delay, Point position)
     node->setPosition(position);
     
     Panel*  panel=VIEW_MGR->getPanel(PanelType::BATTLE_MAIN);
-    panel->addChild(node);
+    panel->addChild(node,ACTION_GORDER);
     node->runAction(Sequence::create(DelayTime::create(delay), animate, fadeOut, NULL));
     return delay+0.45 + 0.1;
     
@@ -183,7 +185,7 @@ void  AnimationMaker::playDamageNumberAnimation(Point position,float delay, bool
     if (miss)
     {
         Sprite *miss = Sprite::createWithTexture(TextureCache::sharedTextureCache()->getTextureForKey("miss"));
-        panel->addChild(miss);
+        panel->addChild(miss,ACTION_GORDER);
         miss->setPosition(position);
         DamageAnimation(miss, delay);
     }
@@ -198,7 +200,7 @@ void  AnimationMaker::playDamageNumberAnimation(Point position,float delay, bool
         {
             key = "critical";
             Sprite *critical = Sprite::createWithTexture(TextureCache::sharedTextureCache()->getTextureForKey(key));
-            panel->addChild(critical);
+            panel->addChild(critical,ACTION_GORDER);
             critical->setPosition(position.x,position.y-10);
             DamageAnimation(critical, delay);
             position = ccp(position.x, position.y + 10);
@@ -215,7 +217,7 @@ void  AnimationMaker::playDamageNumberAnimation(Point position,float delay, bool
             remainingdamage = damage - 1000 * i;
             std::string tempKey = key + numStr;
             Sprite* damage = Sprite::createWithTexture(TextureCache::sharedTextureCache()->getTextureForKey(tempKey));
-            panel->addChild(damage);
+            panel->addChild(damage,ACTION_GORDER);
             damage->setPosition(position.x - 26, position.y);
             DamageAnimation(damage, delay);
             
@@ -227,7 +229,7 @@ void  AnimationMaker::playDamageNumberAnimation(Point position,float delay, bool
             remainingdamage = remainingdamage - 100 * i;
             std::string tempKey = key + numStr;
             Sprite* damage = Sprite::createWithTexture(TextureCache::sharedTextureCache()->getTextureForKey(tempKey));
-            panel->addChild(damage);
+            panel->addChild(damage,ACTION_GORDER);
             damage->setPosition(position.x-13,position.y);
             DamageAnimation(damage, delay);
             
@@ -239,14 +241,14 @@ void  AnimationMaker::playDamageNumberAnimation(Point position,float delay, bool
             numStr = int2str(i);
             std::string tempKey = key + numStr;
             Sprite* damage = Sprite::createWithTexture(TextureCache::sharedTextureCache()->getTextureForKey(tempKey));
-            panel->addChild(damage);
+            panel->addChild(damage,ACTION_GORDER);
             damage->setPosition(position);
             DamageAnimation(damage, delay);
         }
         numStr = int2str(remainingdamage);
         std::string tempKey = key + numStr;
         Sprite* damage = Sprite::createWithTexture(TextureCache::sharedTextureCache()->getTextureForKey(tempKey));
-        panel->addChild(damage);
+        panel->addChild(damage,ACTION_GORDER);
         damage->setPosition(position.x+13,position.y);
         DamageAnimation(damage, delay);
         

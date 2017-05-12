@@ -117,6 +117,7 @@ bool BattleKantai::init(kancolle::BattleCharacterInfo *info,int row)
         
         SetMaxHp(m_pBattleCharacterInfo->getMaxHp());
         SetCurrentHp(m_pBattleCharacterInfo->getCurrHp());
+        SetBroken(m_pBattleCharacterInfo->getBrokenType());
         
         bRet=true;
     }while(0);

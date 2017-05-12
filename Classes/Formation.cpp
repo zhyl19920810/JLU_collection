@@ -15,10 +15,10 @@
 NS_KCL_BEGIN
 
 
-Formation* Formation::create(kancolle::FormationType _type)
+Formation* Formation::create(kancolle::FormationType _type,bool hasBg)
 {
     Formation* pRet=new Formation;
-    if(pRet&&pRet->init(_type))
+    if(pRet&&pRet->init(_type,hasBg))
     {
         pRet->autorelease();
         return pRet;
@@ -28,15 +28,18 @@ Formation* Formation::create(kancolle::FormationType _type)
     return pRet;
 }
 
-bool Formation::init(kancolle::FormationType _type)
+bool Formation::init(kancolle::FormationType _type,bool hasBg)
 {
     bool bRet=false;
     
     do
     {
         m_FormationType=_type;
+        if (hasBg)
+        {
+            InitBg();
+        }
         
-        InitBg();
         for(int i=0;i<6;++i)
         {
             Sprite *temp = Sprite::create("BattleMain/image 686.png");

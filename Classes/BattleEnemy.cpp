@@ -41,18 +41,26 @@ bool BattleEnemy::init(BattleCharacterInfo *info,int row)
         maxHpLabel = Label::create();
         maxHpLabel->setColor(Color3B::WHITE);
         maxHpLabel->setPosition(618, 360 - 41 * row);
+        maxHpLabel->setString(std::to_string(maxHp));
         addChild(maxHpLabel);
         
         currentHpLabel = Label::create();
         currentHpLabel->setColor(Color3B::WHITE);
         currentHpLabel->setPosition(602, 360 - 41 * row);
         currentHpLabel->setAlignment(TextHAlignment::RIGHT);
+        currentHpLabel->setString(std::to_string(currentHp));
         addChild(currentHpLabel);
+        
+        m_pBattleInfoBorard=BattleInfoBorard::create();
+        addChild(m_pBattleInfoBorard);
+        m_pBattleInfoBorard->setPosition(600, 70);
+        m_pBattleInfoBorard->setGlobalZOrder(10);
+        m_pBattleInfoBorard->setCascadeOpacityEnabled(true);
         
         m_pBattleAvatarCard=BattleAvatarCard::create(m_pBattleCharacterInfo->getKantaiNumber(), m_pBattleCharacterInfo->isEnemy());
         m_pBattleAvatarCard->setPosition(718, 360 - 41 * row);
         addChild(m_pBattleAvatarCard);
-        
+        SetBroken(m_pBattleCharacterInfo->getBrokenType());
 
         if (row == 1)
         {
@@ -79,10 +87,10 @@ bool BattleEnemy::init(BattleCharacterInfo *info,int row)
         closeUp->setVisible(false);
         closeUp->setGlobalZOrder(10);
         
-        m_pBattleInfoBorard=BattleInfoBorard::create();
-        addChild(m_pBattleInfoBorard);
-        m_pBattleInfoBorard->setPosition(600, 70);
-        m_pBattleInfoBorard->setGlobalZOrder(10);
+
+        
+        SetMaxHp(m_pBattleCharacterInfo->getMaxHp());
+        
         
         bRet=true;
     }while(0);
@@ -182,6 +190,7 @@ void BattleEnemy::SetCurrentHp(int hp)
     {
         SetBroken(drown);
     }
+    
 }
 void BattleEnemy::SetMaxHp(int hp)
 {

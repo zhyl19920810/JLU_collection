@@ -17,27 +17,27 @@ bool FormationSelecter::init()
     
     do
     {
-        Formation* danzong=Formation::create(DanZong);
+        Formation* danzong=Formation::create(DanZong,true);
         danzong->setPosition(450, 370);
         danzong->setVisible(false);
         addChild(danzong);
         
-        Formation * fuzong = Formation::create(FuZong);
+        Formation * fuzong = Formation::create(FuZong,true);
         fuzong->setPosition(580, 370);
         fuzong->setVisible(false);
         this->addChild(fuzong);
         
-        Formation * lunxing =Formation::create(LunXing);
+        Formation * lunxing =Formation::create(LunXing,true);
         lunxing->setPosition(710, 370);
         lunxing->setVisible(false);
         this->addChild(lunxing);
         
-        Formation * tixing =Formation::create(TiXing);
+        Formation * tixing =Formation::create(TiXing,true);
         tixing->setPosition(510, 210);
         tixing->setVisible(false);
         this->addChild(tixing);
         
-        Formation * danheng =Formation::create(DanHeng);
+        Formation * danheng =Formation::create(DanHeng,true);
         danheng->setPosition(640, 210);
         danheng->setVisible(false);
         this->addChild(danheng);

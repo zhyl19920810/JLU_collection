@@ -27,8 +27,8 @@ class Formation : public Node{
 public:
     
     FormationType GetType() {return m_FormationType;}
-    static Formation* create(FormationType _type);
-    virtual bool init(FormationType _type);
+    static Formation* create(FormationType _type,bool hasBg);
+    virtual bool init(FormationType _type,bool hasBg);
     void ShowPoints();
     void HidePoints();
     void AddBattleBorder();
