@@ -7,7 +7,7 @@
 //
 
 #include "SallyScene.hpp"
-
+#include "Sound.hpp"
 
 NS_KCL_BEGIN
 
@@ -31,7 +31,7 @@ bool SallyScene::init()
     do
     {
         if (!Scene::init()) break;
-        
+        SND->playMusic("sound_b_bgm_1/sound 1.mp3");
         
         
         bRet=true;

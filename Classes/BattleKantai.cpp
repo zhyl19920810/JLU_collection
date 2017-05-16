@@ -74,7 +74,6 @@ bool BattleKantai::init(kancolle::BattleCharacterInfo *info,int row)
         m_pBattleAvatarCard=BattleAvatarCard::create(info->getKantaiNumber(), info->isEnemy());
         m_pBattleAvatarCard->setPosition(80, 410 - 41 * row);
         this->addChild(m_pBattleAvatarCard);
-        SetBroken(info->getBrokenType());
 
         if (row == 1)
         {
@@ -117,7 +116,8 @@ bool BattleKantai::init(kancolle::BattleCharacterInfo *info,int row)
         
         SetMaxHp(m_pBattleCharacterInfo->getMaxHp());
         SetCurrentHp(m_pBattleCharacterInfo->getCurrHp());
-        SetBroken(m_pBattleCharacterInfo->getBrokenType());
+        UpdateCard();
+        
         
         bRet=true;
     }while(0);

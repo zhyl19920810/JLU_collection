@@ -7,7 +7,7 @@
 //
 
 #include "BattleScene.hpp"
-
+#include "Sound.hpp"
 
 
 NS_KCL_BEGIN
@@ -32,7 +32,7 @@ bool BattleScene::init()
     do
     {
         if (!Scene::init())  break;
-            
+        SND->playMusic("sound_b_bgm_3/sound 1.mp3");
             
         
         bRet=true;

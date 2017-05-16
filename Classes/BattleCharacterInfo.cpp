@@ -157,6 +157,32 @@ bool BattleCharacterInfo::init(int kantaiNumber)
 void BattleCharacterInfo::setBrokenType()
 {
     
+    float persentage = 0;
+    int maxHp=getMaxHp();
+    int currHp=getCurrHp();
+    if (maxHp!=0)
+        persentage = (float)currHp / (float)maxHp;
+
+    if (persentage>0.75)
+    {
+        brokenType=BrokenType::normal;
+    }
+    else if (persentage>0.50)
+    {
+        brokenType=BrokenType::tiny;
+    }
+    else if (persentage>0.25)//÷–∆∆
+    {
+        brokenType=BrokenType::mid;
+    }
+    else if (persentage>0)//¥Û∆∆
+    {
+        brokenType=BrokenType::large;
+    }
+    else
+    {
+        brokenType=BrokenType::drown;
+    }
 }
 
 

@@ -63,36 +63,37 @@ void BattleCharacter::SetCurrentHp(int hp)
 {
     currentHp = hp;
     currentHpLabel->setString(CCString::createWithFormat("%d", currentHp)->_string+"/");
+    m_pBattleCharacterInfo->setBrokenType();
+    
+    
+    BrokenType type=m_pBattleCharacterInfo->getBrokenType();
+    
     float persentage = 0;
     if (maxHp!=0)
         persentage = (float)currentHp / (float)maxHp;
-    
     hpBar->setScaleY(persentage);
     
+    switch (type)
+    {
+        case BrokenType::normal:
+            hpBar->setColor(Color3B::GREEN);
+            break;
+        case BrokenType::tiny:
+            hpBar->setColor(Color3B::YELLOW);
+            break;
+        case BrokenType::mid:
+            hpBar->setColor(Color3B::ORANGE);
+            break;
+        case BrokenType::large:
+            hpBar->setColor(Color3B::RED);
+            break;
+        case BrokenType::drown:
+            break;
+        default:
+            break;
+    }
+     m_pBattleAvatarCard->UpdateCard(m_pBattleCharacterInfo->getBrokenType());
     
-    if (persentage>0.75)
-    {
-        hpBar->setColor(Color3B::GREEN);
-    }
-    else if (persentage>0.50) //–°∆∆
-    {
-        hpBar->setColor(Color3B::YELLOW);
-        SetBroken(BrokenType::tiny);
-    }
-    else if (persentage>0.25)//÷–∆∆
-    {
-        hpBar->setColor(Color3B::ORANGE);
-        SetBroken(BrokenType::mid);
-    }
-    else if (persentage>0)//¥Û∆∆
-    {
-        hpBar->setColor(Color3B::RED);
-        SetBroken(BrokenType::large);
-    }
-    else
-    {
-        SetBroken(drown);
-    }
 }
 void BattleCharacter::SetMaxHp(int hp)
 {
@@ -166,6 +167,11 @@ std::string BattleCharacter::int2str(int &i) {
     ss << i;
     
     return ss.str();
+}
+
+void BattleCharacter::UpdateCard()
+{
+    m_pBattleAvatarCard->UpdateCard(m_pBattleCharacterInfo->getBrokenType());
 }
 
 

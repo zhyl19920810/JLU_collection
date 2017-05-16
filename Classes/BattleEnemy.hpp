@@ -23,8 +23,7 @@ class BattleEnemy :public BattleCharacter
 public:
     static BattleEnemy* create(BattleCharacterInfo *info,int row);
     bool init(BattleCharacterInfo *info,int row);
-    virtual void SetCurrentHp(int hp);
-    virtual void SetMaxHp(int hp);
+    
     virtual void ShowCloseUp();
     virtual void StepOut(float delay);
     virtual void StepBack(float delay);
@@ -35,6 +34,8 @@ public:
 private:
     virtual void ThreeDigitMode();
    // virtual void UpdateInfo();
+   //virtual void SetMaxHp(int hp);
+   //virtual void SetCurrentHp(int hp);
     
 };
 

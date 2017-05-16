@@ -43,7 +43,7 @@ public:
     inline void SetInfo(BattleCharacterInfo *info){ m_pBattleCharacterInfo=info; }
     inline BattleCharacterInfo* GetInfo(){ return m_pBattleCharacterInfo; }
     virtual void ThreeDigitMode(){};
-    
+    void UpdateCard();
 protected:
     Sprite * border;
     Sprite * hpBar;

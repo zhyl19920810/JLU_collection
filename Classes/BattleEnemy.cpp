@@ -60,7 +60,6 @@ bool BattleEnemy::init(BattleCharacterInfo *info,int row)
         m_pBattleAvatarCard=BattleAvatarCard::create(m_pBattleCharacterInfo->getKantaiNumber(), m_pBattleCharacterInfo->isEnemy());
         m_pBattleAvatarCard->setPosition(718, 360 - 41 * row);
         addChild(m_pBattleAvatarCard);
-        SetBroken(m_pBattleCharacterInfo->getBrokenType());
 
         if (row == 1)
         {
@@ -88,9 +87,9 @@ bool BattleEnemy::init(BattleCharacterInfo *info,int row)
         closeUp->setGlobalZOrder(10);
         
 
-        
         SetMaxHp(m_pBattleCharacterInfo->getMaxHp());
-        
+        SetCurrentHp(m_pBattleCharacterInfo->getCurrHp());
+        UpdateCard();
         
         bRet=true;
     }while(0);
@@ -155,52 +154,51 @@ void BattleEnemy::ThreeDigitMode(){
     maxHpLabel->runAction(MoveBy::create(0.01, ccp(-3, 0)));
 }
 
-void BattleEnemy::SetCurrentHp(int hp)
-{
-    currentHp = hp;
-    currentHpLabel->setString(CCString::createWithFormat("%d", currentHp)->_string );
-    float persentage = 0;
-    if (maxHp != 0)
-        persentage = (float)hp / (float)maxHp;
-    
-    hpBar->setScaleY(persentage);
-    
-    //setBroken(info->brokenType);
-    
-    if (persentage>0.75)
-    {
-        hpBar->setColor(Color3B::GREEN);
-    }
-    else if (persentage>0.50) //–°∆∆
-    {
-        hpBar->setColor(Color3B::YELLOW);
-        SetBroken(tiny);
-    }
-    else if (persentage>0.25)//÷–∆∆
-    {
-        hpBar->setColor(Color3B::ORANGE);
-        SetBroken(BrokenType::mid);
-    }
-    else if (persentage>0)//¥Û∆∆
-    {
-        hpBar->setColor(Color3B::RED);
-        SetBroken(large);
-    }
-    else
-    {
-        SetBroken(drown);
-    }
-    
-}
-void BattleEnemy::SetMaxHp(int hp)
-{
-    if (hp > 99)
-        ThreeDigitMode();
-    this->maxHp = hp;
-    this->maxHpLabel->setString("/"+CCString::createWithFormat("%d", maxHp)->_string);
-    SetCurrentHp(hp);
-}
-
+//void BattleEnemy::SetCurrentHp(int hp)
+//{
+//    currentHp = hp;
+//    currentHpLabel->setString(CCString::createWithFormat("%d", currentHp)->_string );
+//    float persentage = 0;
+//    if (maxHp != 0)
+//        persentage = (float)hp / (float)maxHp;
+//    
+//    hpBar->setScaleY(persentage);
+//    
+//    //setBroken(info->brokenType);
+//    
+//    if (persentage>0.75)
+//    {
+//        hpBar->setColor(Color3B::GREEN);
+//    }
+//    else if (persentage>0.50) //–°∆∆
+//    {
+//        hpBar->setColor(Color3B::YELLOW);
+//        SetBroken(tiny);
+//    }
+//    else if (persentage>0.25)//÷–∆∆
+//    {
+//        hpBar->setColor(Color3B::ORANGE);
+//        SetBroken(BrokenType::mid);
+//    }
+//    else if (persentage>0)//¥Û∆∆
+//    {
+//        hpBar->setColor(Color3B::RED);
+//        SetBroken(large);
+//    }
+//    else
+//    {
+//        SetBroken(drown);
+//    }
+//    
+//}
+//void BattleEnemy::SetMaxHp(int hp)
+//{
+//    if (hp > 99)
+//        ThreeDigitMode();
+//    this->maxHp = hp;
+//    this->maxHpLabel->setString("/"+CCString::createWithFormat("%d", maxHp)->_string);
+//}
+//
 
 BattleEnemy::~BattleEnemy()
 {
