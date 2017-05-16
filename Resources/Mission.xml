@@ -69,7 +69,7 @@
         <url>image 3.png</url>
         <position></position>
       </arrow>
-      <enemy>DO</enemy>
+      <enemy>-2</enemy>
     </Node>
     <Node>
       <index>2</index>
@@ -78,7 +78,7 @@
       <positionY>365</positionY>
       <parent>1</parent>
       <direction>NE</direction>
-      <enemy>DO#DO#DO</enemy>
+      <enemy>-2#-2#-2</enemy>
     </Node>
     <Node>
       <index>3</index>
@@ -87,7 +87,7 @@
       <positionY>210</positionY>
       <parent>0</parent>
       <direction>SE</direction>
-      <enemy>LI#DO#DO#HO</enemy>
+      <enemy>-10#-2#-2#-5</enemy>
     </Node>
       <Node>
       <index>4</index>
@@ -96,7 +96,7 @@
       <positionY>210</positionY>
       <parent>3</parent>
       <direction>SE</direction>
-      <enemy>LI#DO#DO#HO</enemy>
+      <enemy>-10#-2#-2#-5</enemy>
     </Node>
    </Mission>
   <Mission>
@@ -123,7 +123,7 @@
         <url>image 3.png</url>
         <position></position>
       </arrow>
-      <enemy>DO</enemy>
+      <enemy>-2</enemy>
     </Node>
     <Node>
       <index>2</index>
@@ -132,7 +132,7 @@
       <positionY>365</positionY>
       <parent>1</parent>
       <direction>NE</direction>
-      <enemy>DO#DO#DO</enemy>
+      <enemy>-2#-2#-2</enemy>
     </Node>
     <Node>
       <index>3</index>
@@ -141,7 +141,7 @@
       <positionY>210</positionY>
       <parent>0</parent>
       <direction>SE</direction>
-      <enemy>LI#DO#DO#HO</enemy>
+      <enemy>-10#-2#-2#-5</enemy>
     </Node>
       <Node>
       <index>4</index>
@@ -150,7 +150,7 @@
       <positionY>210</positionY>
       <parent>3</parent>
       <direction>SE</direction>
-      <enemy>LI#DO#DO#HO</enemy>
+      <enemy>-10#-2#-2#-5</enemy>
     </Node>
    </Mission>
   <Mission>
@@ -177,7 +177,7 @@
         <url>image 3.png</url>
         <position></position>
       </arrow>
-      <enemy>DO</enemy>
+      <enemy>-2</enemy>
     </Node>
     <Node>
       <index>2</index>
@@ -186,7 +186,7 @@
       <positionY>365</positionY>
       <parent>1</parent>
       <direction>NE</direction>
-      <enemy>DO#DO#DO</enemy>
+      <enemy>-2#-2#-2</enemy>
     </Node>
     <Node>
       <index>3</index>
@@ -195,7 +195,7 @@
       <positionY>210</positionY>
       <parent>0</parent>
       <direction>SE</direction>
-      <enemy>LI#DO#DO#HO</enemy>
+      <enemy>-10#-2#-2#-5</enemy>
     </Node>
       <Node>
       <index>4</index>
@@ -204,7 +204,7 @@
       <positionY>210</positionY>
       <parent>3</parent>
       <direction>SE</direction>
-      <enemy>LI#DO#DO#HO</enemy>
+      <enemy>-10#-2#-2#-5</enemy>
     </Node>
    </Mission>
 </MissionData>

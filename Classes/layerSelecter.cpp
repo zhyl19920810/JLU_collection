@@ -258,7 +258,8 @@ void LayerSelecter::changeHookPos(kancolle::PanelType type)
 
 SelecterUnit* LayerSelecter::getSelecterUnit(PanelType type) const
 {
-    SelecterUnit* pRet=NULL;
+    //TODO
+    SelecterUnit* pRet=mainButton;
     switch (type)
     {
         case PanelType::PORT_MAINLAYER:

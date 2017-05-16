@@ -55,48 +55,48 @@
     <Node>
       <index>0</index>
       <type>home</type>
-      <positionX>124</positionX>
-      <positionY>310</positionY>
+      <positionX>154</positionX>
+      <positionY>303</positionY>
       <parent>-1</parent>
     </Node>
     <Node>
       <index>1</index>
       <type>enemy</type>
-      <positionX>265</positionX>
-      <positionY>285</positionY>
+      <positionX>304</positionX>
+      <positionY>232</positionY>
       <parent>0</parent>
       <arrow>
         <url>image 3.png</url>
         <position></position>
       </arrow>
-      <enemy>DO</enemy>
+      <enemy>10</enemy>
     </Node>
     <Node>
       <index>2</index>
       <type>enemy</type>
-      <positionX>380</positionX>
-      <positionY>365</positionY>
+      <positionX>421</positionX>
+      <positionY>155</positionY>
       <parent>1</parent>
       <direction>NE</direction>
-      <enemy>DO#DO#DO</enemy>
+      <enemy>10#10#10</enemy>
     </Node>
     <Node>
       <index>3</index>
       <type>boss</type>
-      <positionX>340</positionX>
-      <positionY>210</positionY>
+      <positionX>352</positionX>
+      <positionY>339</positionY>
       <parent>0</parent>
       <direction>SE</direction>
-      <enemy>LI#DO#DO#HO</enemy>
+      <enemy>11#10#10#12</enemy>
     </Node>
       <Node>
       <index>4</index>
       <type>boss</type>
-      <positionX>340</positionX>
-      <positionY>210</positionY>
+      <positionX>508</positionX>
+      <positionY>368</positionY>
       <parent>3</parent>
       <direction>SE</direction>
-      <enemy>LI#DO#DO#HO</enemy>
+      <enemy>11#10#10#12</enemy>
     </Node>
    </Mission>
   <Mission>
@@ -109,49 +109,76 @@
     <Node>
       <index>0</index>
       <type>home</type>
-      <positionX>124</positionX>
-      <positionY>310</positionY>
+      <positionX>147</positionX>
+      <positionY>321</positionY>
       <parent>-1</parent>
     </Node>
     <Node>
       <index>1</index>
       <type>enemy</type>
-      <positionX>265</positionX>
-      <positionY>285</positionY>
+      <positionX>312</positionX>
+      <positionY>376</positionY>
       <parent>0</parent>
       <arrow>
         <url>image 3.png</url>
         <position></position>
       </arrow>
-      <enemy>DO</enemy>
+      <enemy>10</enemy>
     </Node>
     <Node>
       <index>2</index>
       <type>enemy</type>
-      <positionX>380</positionX>
-      <positionY>365</positionY>
+      <positionX>504</positionX>
+      <positionY>363</positionY>
       <parent>1</parent>
       <direction>NE</direction>
-      <enemy>DO#DO#DO</enemy>
+      <enemy>10#10#10</enemy>
     </Node>
     <Node>
       <index>3</index>
       <type>boss</type>
-      <positionX>340</positionX>
-      <positionY>210</positionY>
-      <parent>0</parent>
+      <positionX>634</positionX>
+      <positionY>363</positionY>
+      <parent>2</parent>
       <direction>SE</direction>
-      <enemy>LI#DO#DO#HO</enemy>
+      <enemy>11#10#10#12</enemy>
     </Node>
       <Node>
       <index>4</index>
-      <type>boss</type>
-      <positionX>340</positionX>
-      <positionY>210</positionY>
-      <parent>3</parent>
+      <type>enemy</type>
+      <positionX>256</positionX>
+      <positionY>223</positionY>
+      <parent>0</parent>
       <direction>SE</direction>
-      <enemy>LI#DO#DO#HO</enemy>
+      <enemy>11#10#10#12</enemy>
     </Node>
+      <Node>
+          <index>5</index>
+          <type>enemy</type>
+          <positionX>420</positionX>
+          <positionY>240</positionY>
+          <parent>4</parent>
+          <direction>SE</direction>
+          <enemy>11#10#10#12</enemy>
+      </Node>
+      <Node>
+          <index>6</index>
+          <type>enemy</type>
+          <positionX>357</positionX>
+          <positionY>142</positionY>
+          <parent>4</parent>
+          <direction>SE</direction>
+          <enemy>11#10#10#12</enemy>
+      </Node>
+      <Node>
+          <index>7</index>
+          <type>boss</type>
+          <positionX>481</positionX>
+          <positionY>129</positionY>
+          <parent>6</parent>
+          <direction>SE</direction>
+          <enemy>11#10#10#12</enemy>
+      </Node>
    </Mission>
   <Mission>
     <id>1-4</id>
@@ -163,48 +190,102 @@
     <Node>
       <index>0</index>
       <type>home</type>
-      <positionX>124</positionX>
-      <positionY>310</positionY>
+      <positionX>147</positionX>
+      <positionY>321</positionY>
       <parent>-1</parent>
     </Node>
     <Node>
       <index>1</index>
       <type>enemy</type>
-      <positionX>265</positionX>
-      <positionY>285</positionY>
+      <positionX>255</positionX>
+      <positionY>381</positionY>
       <parent>0</parent>
       <arrow>
         <url>image 3.png</url>
         <position></position>
       </arrow>
-      <enemy>DO</enemy>
+      <enemy>10</enemy>
     </Node>
     <Node>
       <index>2</index>
       <type>enemy</type>
-      <positionX>380</positionX>
-      <positionY>365</positionY>
-      <parent>1</parent>
+      <positionX>405</positionX>
+      <positionY>337</positionY>
+      <parent>5</parent>
       <direction>NE</direction>
-      <enemy>DO#DO#DO</enemy>
+      <enemy>10#10#10</enemy>
     </Node>
     <Node>
       <index>3</index>
       <type>boss</type>
-      <positionX>340</positionX>
-      <positionY>210</positionY>
-      <parent>0</parent>
+      <positionX>580</positionX>
+      <positionY>370</positionY>
+      <parent>2</parent>
       <direction>SE</direction>
-      <enemy>LI#DO#DO#HO</enemy>
+      <enemy>11#10#10#12</enemy>
     </Node>
       <Node>
       <index>4</index>
       <type>boss</type>
-      <positionX>340</positionX>
-      <positionY>210</positionY>
+      <positionX>677</positionX>
+      <positionY>280</positionY>
       <parent>3</parent>
       <direction>SE</direction>
-      <enemy>LI#DO#DO#HO</enemy>
+      <enemy>11#10#10#12</enemy>
     </Node>
+      <Node>
+          <index>5</index>
+          <type>enemy</type>
+          <positionX>295</positionX>
+          <positionY>267</positionY>
+          <parent>0</parent>
+          <direction>NE</direction>
+          <enemy>10#10#10</enemy>
+      </Node>
+      <Node>
+          <index>6</index>
+          <type>boss</type>
+          <positionX>521</positionX>
+          <positionY>273</positionY>
+          <parent>2</parent>
+          <direction>SE</direction>
+          <enemy>11#10#10#12</enemy>
+      </Node>
+      <Node>
+          <index>7</index>
+          <type>boss</type>
+          <positionX>282</positionX>
+          <positionY>204</positionY>
+          <parent>0</parent>
+          <direction>SE</direction>
+          <enemy>11#10#10#12</enemy>
+      </Node>
+      <Node>
+          <index>8</index>
+          <type>enemy</type>
+          <positionX>414</positionX>
+          <positionY>205</positionY>
+          <parent>7</parent>
+          <direction>NE</direction>
+          <enemy>10#10#10</enemy>
+      </Node>
+      <Node>
+          <index>9</index>
+          <type>boss</type>
+          <positionX>543</positionX>
+          <positionY>188</positionY>
+          <parent>8</parent>
+          <direction>SE</direction>
+          <enemy>11#10#10#12</enemy>
+      </Node>
+      <Node>
+          <index>10</index>
+          <type>boss</type>
+          <positionX>720</positionX>
+          <positionY>150</positionY>
+          <parent>9</parent>
+          <direction>SE</direction>
+          <enemy>11#10#10#12</enemy>
+      </Node>
    </Mission>
 </MissionData>
