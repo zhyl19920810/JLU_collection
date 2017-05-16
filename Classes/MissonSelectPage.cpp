@@ -9,6 +9,7 @@
 #include "MissonSelectPage.hpp"
 #include "ViewMgr.hpp"
 #include "SallyPanel.hpp"
+#include "Sound.hpp"
 
 
 NS_KCL_BEGIN
@@ -129,12 +130,14 @@ void  MissionSelectPage::SetCurrentArea(Ref* pSender, int areaId)
     m_pContainer2->updateContainer(m_iCurrentArea, 1);
     m_pContainer3->updateContainer(m_iCurrentArea, 2);
     m_pContainer4->updateContainer(m_iCurrentArea, 3);
+    SND->playEffect("sound_se/sound 6.mp3");
 }
 void MissionSelectPage::StartMission(Ref* pSender, int index)
 {
+    //TODO
     VIEW_MGR->showScene(SceneType::SALLY);
     SallyPanel* sallyPanel=dynamic_cast<SallyPanel*>(VIEW_MGR->showPanel(PanelType::SALLY_MAIN));
-    sallyPanel->SetMission(m_iCurrentArea, index);
+    sallyPanel->SetMission(1, index);
     //auto model = new BattleModel(GameModel::getInstance()->getFleet(0), new Fleet(5), DanZong, LunXing);
     //auto scene = new GameScene(model);
     //auto scene = new SallyScene(XMLParser::getInstance()->loadMissionInfo(Helper::getMissionId(currentArea, index)));

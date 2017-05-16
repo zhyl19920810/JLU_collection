@@ -211,13 +211,13 @@
       <type>enemy</type>
       <positionX>405</positionX>
       <positionY>337</positionY>
-      <parent>5</parent>
+      <parent>1</parent>
       <direction>NE</direction>
       <enemy>10#10#10</enemy>
     </Node>
     <Node>
       <index>3</index>
-      <type>boss</type>
+      <type>enemy</type>
       <positionX>580</positionX>
       <positionY>370</positionY>
       <parent>2</parent>
@@ -233,59 +233,5 @@
       <direction>SE</direction>
       <enemy>11#10#10#12</enemy>
     </Node>
-      <Node>
-          <index>5</index>
-          <type>enemy</type>
-          <positionX>295</positionX>
-          <positionY>267</positionY>
-          <parent>0</parent>
-          <direction>NE</direction>
-          <enemy>10#10#10</enemy>
-      </Node>
-      <Node>
-          <index>6</index>
-          <type>boss</type>
-          <positionX>521</positionX>
-          <positionY>273</positionY>
-          <parent>2</parent>
-          <direction>SE</direction>
-          <enemy>11#10#10#12</enemy>
-      </Node>
-      <Node>
-          <index>7</index>
-          <type>boss</type>
-          <positionX>282</positionX>
-          <positionY>204</positionY>
-          <parent>0</parent>
-          <direction>SE</direction>
-          <enemy>11#10#10#12</enemy>
-      </Node>
-      <Node>
-          <index>8</index>
-          <type>enemy</type>
-          <positionX>414</positionX>
-          <positionY>205</positionY>
-          <parent>7</parent>
-          <direction>NE</direction>
-          <enemy>10#10#10</enemy>
-      </Node>
-      <Node>
-          <index>9</index>
-          <type>boss</type>
-          <positionX>543</positionX>
-          <positionY>188</positionY>
-          <parent>8</parent>
-          <direction>SE</direction>
-          <enemy>11#10#10#12</enemy>
-      </Node>
-      <Node>
-          <index>10</index>
-          <type>boss</type>
-          <positionX>720</positionX>
-          <positionY>150</positionY>
-          <parent>9</parent>
-          <direction>SE</direction>
-          <enemy>11#10#10#12</enemy>
-      </Node>
    </Mission>
 </MissionData>

@@ -47,6 +47,8 @@ public:
     }
     int KantaiSize();
     ~Fleet(){}
+    
+    bool IsKantaiRepairing();
 public:
     std::vector<Kantai*> ship;
     

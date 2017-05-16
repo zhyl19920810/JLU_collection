@@ -13,6 +13,7 @@
 #include "ViewMgr.hpp"
 #include "BattlePanel.hpp"
 #include "MissionNode.hpp"
+#include "Sound.hpp"
 
 
 NS_KCL_BEGIN
@@ -131,7 +132,7 @@ void SallyPanel::SallyStart()
     this->addChild(slide);
     this->addChild(start);
     this->addChild(startShader);
-    
+    SND->playEffect("sound_se/sound 26.mp3");
     
     
     //animation
@@ -170,9 +171,10 @@ void SallyPanel::SallyMove()
         nextNode = curMissionNode->m_vChildren[1];
     }
     
-    
+    function<void()> soundFun=[](){ SND->playEffect("sound_se/sound 3.mp3");};
+    CallFunc* soundCall=CallFunc::create(soundFun);
     timepassed += 2;
-    m_pSallyShip->runAction(Sequence::create(DelayTime::create(timepassed),MoveTo::create(1, nextNode->position),NULL));
+    m_pSallyShip->runAction(Sequence::create(DelayTime::create(timepassed),MoveTo::create(1, nextNode->position),soundCall,NULL));
     timepassed += 1;
     
     
@@ -182,7 +184,7 @@ void SallyPanel::SallyMove()
     nodePoint->setOpacity(0);
     nodePoint->runAction(Sequence::create(DelayTime::create(timepassed),FadeIn::create(0.5),NULL));
     this->addChild(nodePoint);
-    
+    //SND->playEffect("sound_se/sound 4.mp3");
     
     
     m_pNodePointShader->setPosition(nextNode->position);
@@ -290,6 +292,7 @@ void SallyPanel::SetFormationCallback(Ref* pSender, FormationType formation)
     SALLY_MGR->m_Status = SALLY_START;
     m_pNodePointShader->setVisible(false);
     m_pFormationSelecter->HideSelecter();
+    SND->playEffect("sound_se/sound 15.mp3");
     
     NextStatus(1);
     

@@ -81,4 +81,18 @@ void Fleet::setFleetState(FleetState _fleetState)
     DB_MGR->getFleetDB()->setFleetState(fleetKey,_fleetState);
 }
 
+bool Fleet::IsKantaiRepairing()
+{
+    bool bRet=false;
+    for (int i=0; i<ship.size(); ++i)
+    {
+        if (ship[i]&&ship[i]->getKantaiState()==KantaiState::Repairing)
+        {
+            bRet=true;
+        }
+    }
+    return bRet;
+}
+
+
 NS_KCL_END

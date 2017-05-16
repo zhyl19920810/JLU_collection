@@ -8,6 +8,7 @@
 
 #include "AnimationMaker.hpp"
 #include "ViewMgr.hpp"
+#include "Sound.hpp"
 
 
 NS_KCL_BEGIN
@@ -165,7 +166,9 @@ float AnimationMaker::playExplodeAnimation(float delay, Point position)
     
     Panel*  panel=VIEW_MGR->getPanel(PanelType::BATTLE_MAIN);
     panel->addChild(node,ACTION_GORDER);
-    node->runAction(Sequence::create(DelayTime::create(delay), animate, fadeOut, NULL));
+    std::function<void()> soundOpen=[](){SND->playEffect("sound_se/sound 47.mp3");};
+    CallFunc* soundCallfunc=CallFunc::create(soundOpen);
+    node->runAction(Sequence::create(DelayTime::create(delay),soundCallfunc, animate, fadeOut, NULL));
     return delay+0.45 + 0.1;
     
 }

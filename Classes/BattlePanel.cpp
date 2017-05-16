@@ -11,7 +11,7 @@
 #include "ViewMgr.hpp"
 #include "SallyPanel.hpp"
 #include "portScene.h"
-
+#include "Sound.hpp"
 
 #define DEBUG false
 
@@ -521,6 +521,7 @@ void BattlePanel::ScoutStart()
     m_pKantaiFormation->runAction(myscaleUp);
     m_pEnemyFormation->runAction(enemyscaleUp);
     
+    
     //scout start
     ShowLeftCornerBar(suodi);
     
@@ -548,8 +549,10 @@ void BattlePanel::DoScout()
     auto *plane = Sprite::create("BattleMain/image 114.png");
     plane->setPosition(20, -20);
     this->addChild(plane,SHELL_ZORDER);
+    function<void()> soundOpen=[](){SND->playEffect("sound_se/sound 37.mp3");};
+    CallFunc* soundCallfunc=CallFunc::create(soundOpen);
     FiniteTimeAction *move = MoveTo::create(1.5, Point(880, 520));
-    Sequence *planeAction = Sequence::create(CCDelayTime::create(0.75), move, CallFunc::create(CC_CALLBACK_0(BattlePanel::ScoutResult, this)),NULL);
+    Sequence *planeAction = Sequence::create(CCDelayTime::create(0.75),soundCallfunc, move, CallFunc::create(CC_CALLBACK_0(BattlePanel::ScoutResult, this)),NULL);
     plane->runAction(planeAction);
     
 }
@@ -570,7 +573,9 @@ void BattlePanel::ScoutResult()
         this->addChild(statusUp,INTERFACE_ZORDER);
         
         auto *moveLeft = MoveTo::create(0.2, Point(-400, 330));
-        auto actionStatusUp = Sequence::create(CCDelayTime::create(1), moveLeft, NULL);
+        function<void()> soundOpen=[](){SND->playEffect("sound_se/sound 38.mp3");};
+        CallFunc* soundCallfunc=CallFunc::create(soundOpen);
+        auto actionStatusUp = Sequence::create(CCDelayTime::create(1),soundCallfunc, moveLeft, NULL);
         statusUp->runAction(actionStatusUp);
     }
     
@@ -848,6 +853,7 @@ void BattlePanel::fireBattle()
 void BattlePanel::DayEnd()
 {
     ShowLeftCornerBar(lituopanding);
+    SND->playEffect("sound_se/sound 38.mp3");
     startBorderUp->setTexture("CommonAssets/image 473.png");
     startBorderDown->setTexture("CommonAssets/image 471.png");
     startBorderUp->runAction(MoveTo::create(1, ccp(400, 352)));

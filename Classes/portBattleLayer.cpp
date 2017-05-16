@@ -9,6 +9,8 @@
 #include "portBattleLayer.h"
 #include "Player.h"
 #include "MissonSelectPage.hpp"
+#include "Fleet.h"
+#include "Sound.hpp"
 
 
 NS_KCL_BEGIN
@@ -75,6 +77,7 @@ void PortBattleLayer::callBack2(Ref* pSender)
 
 void PortBattleLayer::ShowMissionSelectPage(Ref* pSender)
 {
+    
 //    auto fleet=sPlayer.getFleetByFleetKey(1);
 //    for(int i=1;i<=6;++i)
 //    {
@@ -87,6 +90,12 @@ void PortBattleLayer::ShowMissionSelectPage(Ref* pSender)
 //        }
 //        
 //    }
+    if (sPlayer.getFleetByFleetKey(1)->IsKantaiRepairing())
+    {
+        SND->playEffect("sound_se/sound 19.mp3");
+        return;
+    }
+        
     if (m_pMissionPage->isHidden())
     {
         m_pMissionPage->MoveIn();
